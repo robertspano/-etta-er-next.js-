@@ -10,6 +10,74 @@ export const translations = {
     contact: "Contact",
     postProject: "Post Project",
     signIn: "Sign In",
+    signUp: "Sign Up",
+    dashboard: "Dashboard",
+    profile: "Profile",
+    logout: "Logout",
+    
+    // Authentication
+    login: "Login",
+    register: "Register",
+    email: "Email",
+    password: "Password",
+    confirmPassword: "Confirm Password",
+    firstName: "First Name",
+    lastName: "Last Name",
+    phone: "Phone",
+    role: "I am a",
+    customer: "Customer",
+    professional: "Professional",
+    admin: "Admin",
+    loginButton: "Login",
+    registerButton: "Create Account",
+    forgotPassword: "Forgot Password?",
+    resetPassword: "Reset Password",
+    backToLogin: "Back to Login",
+    alreadyHaveAccount: "Already have an account?",
+    dontHaveAccount: "Don't have an account?",
+    
+    // Role specific
+    companyName: "Company Name",
+    companyId: "Company ID (KT Number)",
+    tradeCertifications: "Trade Certifications",
+    serviceAreas: "Service Areas (Postcodes)",
+    
+    // Profile
+    profileSettings: "Profile Settings",
+    updateProfile: "Update Profile",
+    personalInfo: "Personal Information",
+    companyInfo: "Company Information",
+    switchRole: "Switch Role",
+    becomeAProfessional: "Become a Professional",
+    
+    // Dashboard
+    myDashboard: "My Dashboard",
+    myProjects: "My Projects",
+    myQuotes: "My Quotes",
+    myMessages: "My Messages",
+    myCalendar: "My Calendar",
+    jobRequests: "Job Requests",
+    activeQuotes: "Active Quotes",
+    completedProjects: "Completed Projects",
+    earnings: "Earnings",
+    
+    // Professional Dashboard
+    professionalDashboard: "Professional Dashboard",
+    jobRequestsTitle: "Job Requests",
+    quotesTitle: "Quotes & Bids",
+    calendarTitle: "Calendar & Schedule",
+    noJobRequests: "No job requests at the moment",
+    noActiveQuotes: "No active quotes",
+    upcomingAppointments: "Upcoming Appointments",
+    noUpcomingAppointments: "No upcoming appointments",
+    
+    // Errors and Messages
+    loginError: "Invalid email or password",
+    registerError: "Registration failed. Please try again.",
+    sessionExpired: "Your session has expired. Please login again.",
+    accessDenied: "Access denied. You don't have permission to view this page.",
+    profileUpdated: "Profile updated successfully",
+    roleUpdated: "Role updated successfully",
     
     // Hero Section
     heroTitle: "Find Trusted Construction Professionals Near You",
@@ -97,6 +165,74 @@ export const translations = {
     contact: "Samband",
     postProject: "Birta Verkefni",
     signIn: "Skrá Inn",
+    signUp: "Skrá Sig",
+    dashboard: "Stjórnborð",
+    profile: "Prófíll",
+    logout: "Útskráning",
+    
+    // Authentication
+    login: "Innskráning",
+    register: "Nýskráning",
+    email: "Netfang",
+    password: "Lykilorð",
+    confirmPassword: "Staðfesta Lykilorð",
+    firstName: "Fornafn",
+    lastName: "Eftirnafn",
+    phone: "Sími",
+    role: "Ég er",
+    customer: "Viðskiptavinur",
+    professional: "Sérfræðingur",
+    admin: "Stjórnandi",
+    loginButton: "Skrá Inn",
+    registerButton: "Búa til Reikning",
+    forgotPassword: "Gleymt Lykilorð?",
+    resetPassword: "Endurstilla Lykilorð",
+    backToLogin: "Til baka í Innskráningu",
+    alreadyHaveAccount: "Ertu með reikning?",
+    dontHaveAccount: "Ertu ekki með reikning?",
+    
+    // Role specific
+    companyName: "Fyrirtækisnafn",
+    companyId: "Fyrirtækjanúmer (KT númer)",
+    tradeCertifications: "Iðnréttindi",
+    serviceAreas: "Þjónustusvæði (Póstnúmer)",
+    
+    // Profile
+    profileSettings: "Prófílstillingar",
+    updateProfile: "Uppfæra Prófíl",
+    personalInfo: "Persónulegar Upplýsingar",
+    companyInfo: "Fyrirtækjaupplýsingar",
+    switchRole: "Skipta um Hlutverk",
+    becomeAProfessional: "Verða Sérfræðingur",
+    
+    // Dashboard
+    myDashboard: "Mitt Stjórnborð",
+    myProjects: "Verkefnin Mín",
+    myQuotes: "Tilboðin Mín",
+    myMessages: "Skilaboðin Mín",
+    myCalendar: "Dagatalið Mitt",
+    jobRequests: "Verkbeiðnir",
+    activeQuotes: "Virk Tilboð",
+    completedProjects: "Kláruð Verkefni",
+    earnings: "Tekjur",
+    
+    // Professional Dashboard
+    professionalDashboard: "Sérfræðinga Stjórnborð",
+    jobRequestsTitle: "Verkbeiðnir",
+    quotesTitle: "Tilboð og Bjóða",
+    calendarTitle: "Dagatal og Tímasetning",
+    noJobRequests: "Engar verkbeiðnir í augnablikinu",
+    noActiveQuotes: "Engin virk tilboð",
+    upcomingAppointments: "Komandi Fundir",
+    noUpcomingAppointments: "Engir komandi fundir",
+    
+    // Errors and Messages
+    loginError: "Ógilt netfang eða lykilorð",
+    registerError: "Nýskráning mistókst. Vinsamlegast reyndu aftur.",
+    sessionExpired: "Lotunni þinni er lokið. Vinsamlegast skráðu þig inn aftur.",
+    accessDenied: "Aðgangi hafnað. Þú hefur ekki leyfi til að skoða þessa síðu.",
+    profileUpdated: "Prófíll uppfærður með góðum árangri",
+    roleUpdated: "Hlutverki breytt með góðum árangri",
     
     // Hero Section
     heroTitle: "Finndu Trausta Byggingasérfræðinga Nálægt Þér",
