@@ -16,6 +16,10 @@ class UserManager(BaseUserManager[User, str]):
     """Custom user manager for handling user operations"""
     reset_password_token_secret = os.getenv("SECRET_KEY", "your-secret-key-change-this")
     verification_token_secret = os.getenv("SECRET_KEY", "your-secret-key-change-this")
+    
+    def parse_id(self, value: str) -> str:
+        """Parse the user ID from string"""
+        return str(value)
 
     async def on_after_register(self, user: User, request: Optional[Request] = None):
         print(f"User {user.email} has registered.")
