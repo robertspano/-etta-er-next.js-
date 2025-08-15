@@ -58,6 +58,7 @@ async def get_status_checks():
     return [StatusCheck(**status_check) for status_check in status_checks]
 
 # Include all route modules
+api_router.include_router(auth.router)
 api_router.include_router(projects.router)
 api_router.include_router(services.router)
 api_router.include_router(stats.router)
