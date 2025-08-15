@@ -94,7 +94,10 @@ class DatabaseService:
     
     async def delete_document(self, collection: str, document_id: str) -> bool:
         """Delete document by ID"""
-        result = await self.db[collection].delete_one({"id": document_id})
+        # Try both _id and id fields for compatibility
+        result = await self.db[collection].delete_one({"_id": document_id})
+        if result.deleted_count == 0:
+            result = await self.db[collection].delete_one({"id": document_id})
         return result.deleted_count > 0
     
     async def count_documents(self, collection: str, filter_dict: dict = None) -> int:
