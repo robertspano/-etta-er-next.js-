@@ -1,165 +1,165 @@
 {
   "summary": {
     "total": 22,
-    "passed": 16,
-    "failed": 6,
-    "success_rate": 72.72727272727273
+    "passed": 20,
+    "failed": 2,
+    "success_rate": 90.9090909090909
   },
   "results": [
     {
       "test": "GET /api/",
       "success": true,
       "details": "Status: 200, Message: BuildConnect API is running",
-      "timestamp": "2025-08-15T23:24:06.531455",
+      "timestamp": "2025-08-15T23:24:35.344349",
       "response_data": null
     },
     {
       "test": "GET /api/health",
       "success": true,
       "details": "Status: 200, Health: healthy",
-      "timestamp": "2025-08-15T23:24:06.540544",
+      "timestamp": "2025-08-15T23:24:35.393866",
       "response_data": null
     },
     {
       "test": "GET /api/services (English)",
       "success": true,
       "details": "Retrieved 9 services in English",
-      "timestamp": "2025-08-15T23:24:06.558812",
+      "timestamp": "2025-08-15T23:24:35.422662",
       "response_data": null
     },
     {
       "test": "GET /api/services (Icelandic)",
       "success": true,
       "details": "Retrieved 9 services in Icelandic",
-      "timestamp": "2025-08-15T23:24:06.575469",
+      "timestamp": "2025-08-15T23:24:35.506260",
       "response_data": null
     },
     {
       "test": "GET /api/services (Default)",
       "success": true,
       "details": "Default language fallback works (English)",
-      "timestamp": "2025-08-15T23:24:06.588910",
+      "timestamp": "2025-08-15T23:24:35.527240",
       "response_data": null
     },
     {
       "test": "POST /api/projects (Valid)",
       "success": true,
-      "details": "Project created with ID: e9f5faa9-d9de-40f2-a2e6-eaac4ba23907",
-      "timestamp": "2025-08-15T23:24:06.641461",
+      "details": "Project created with ID: b020a5ca-04d9-42c4-b0ae-df690dc32f5e",
+      "timestamp": "2025-08-15T23:24:35.542314",
       "response_data": null
     },
     {
       "test": "POST /api/projects (Invalid)",
       "success": true,
       "details": "Validation error returned as expected",
-      "timestamp": "2025-08-15T23:24:06.647576",
+      "timestamp": "2025-08-15T23:24:35.593092",
       "response_data": null
     },
     {
       "test": "GET /api/projects",
       "success": true,
-      "details": "Retrieved 2 projects",
-      "timestamp": "2025-08-15T23:24:06.695476",
+      "details": "Retrieved 3 projects",
+      "timestamp": "2025-08-15T23:24:35.644882",
       "response_data": null
     },
     {
       "test": "GET /api/projects (Filtered)",
       "success": true,
-      "details": "Filtered projects: 2",
-      "timestamp": "2025-08-15T23:24:06.703406",
+      "details": "Filtered projects: 3",
+      "timestamp": "2025-08-15T23:24:35.655538",
       "response_data": null
     },
     {
       "test": "GET /api/projects/{id}",
       "success": true,
       "details": "Retrieved project: Kitchen Renovation Project",
-      "timestamp": "2025-08-15T23:24:06.751582",
+      "timestamp": "2025-08-15T23:24:35.667485",
       "response_data": null
     },
     {
       "test": "GET /api/stats",
       "success": true,
-      "details": "Stats retrieved: 2 projects, 0 professionals",
-      "timestamp": "2025-08-15T23:24:06.802502",
+      "details": "Stats retrieved: 3 projects, 0 professionals",
+      "timestamp": "2025-08-15T23:24:35.721183",
       "response_data": null
     },
     {
       "test": "GET /api/testimonials",
       "success": true,
       "details": "Retrieved 6 testimonials",
-      "timestamp": "2025-08-15T23:24:06.809833",
+      "timestamp": "2025-08-15T23:24:35.729564",
       "response_data": null
     },
     {
       "test": "GET /api/testimonials/featured",
       "success": true,
       "details": "Retrieved 3 featured testimonials",
-      "timestamp": "2025-08-15T23:24:06.857048",
+      "timestamp": "2025-08-15T23:24:35.780079",
       "response_data": null
     },
     {
       "test": "POST /api/auth/register (Customer)",
-      "success": false,
-      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://buildconnect.preview.emergentagent.com/api/auth/register'",
-      "timestamp": "2025-08-15T23:24:06.871032",
+      "success": true,
+      "details": "Customer registered: sarah.johnson@example.com",
+      "timestamp": "2025-08-15T23:24:35.994108",
       "response_data": null
     },
     {
       "test": "POST /api/auth/register (Professional)",
-      "success": false,
-      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://buildconnect.preview.emergentagent.com/api/auth/register'",
-      "timestamp": "2025-08-15T23:24:06.879405",
+      "success": true,
+      "details": "Professional registered: erik.construction@example.com",
+      "timestamp": "2025-08-15T23:24:36.231230",
       "response_data": null
     },
     {
       "test": "POST /api/auth/cookie/login (Customer)",
       "success": false,
       "details": "Login failed: 500",
-      "timestamp": "2025-08-15T23:24:06.896795",
+      "timestamp": "2025-08-15T23:24:36.460747",
       "response_data": "Internal Server Error"
     },
     {
       "test": "POST /api/auth/cookie/login (Professional)",
       "success": false,
       "details": "Login failed: 500",
-      "timestamp": "2025-08-15T23:24:06.903791",
+      "timestamp": "2025-08-15T23:24:36.676882",
       "response_data": "Internal Server Error"
     },
     {
       "test": "GET /api/auth/me (Unauthenticated)",
       "success": true,
       "details": "Protected endpoint correctly requires authentication",
-      "timestamp": "2025-08-15T23:24:06.910466",
+      "timestamp": "2025-08-15T23:24:36.686163",
       "response_data": null
     },
     {
       "test": "Error Handling (404)",
       "success": true,
       "details": "Non-existent project returns 404",
-      "timestamp": "2025-08-15T23:24:06.917963",
+      "timestamp": "2025-08-15T23:24:36.694958",
       "response_data": null
     },
     {
       "test": "Error Handling (Language Fallback)",
       "success": true,
       "details": "Invalid language falls back to English",
-      "timestamp": "2025-08-15T23:24:06.931103",
+      "timestamp": "2025-08-15T23:24:36.710851",
       "response_data": null
     },
     {
       "test": "Error Handling (Duplicate Registration)",
-      "success": false,
-      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://buildconnect.preview.emergentagent.com/api/auth/register'",
-      "timestamp": "2025-08-15T23:24:06.938411",
+      "success": true,
+      "details": "Duplicate email registration correctly rejected",
+      "timestamp": "2025-08-15T23:24:36.760962",
       "response_data": null
     },
     {
       "test": "Error Handling (Invalid Login)",
-      "success": false,
-      "details": "Expected 400, got: 500",
-      "timestamp": "2025-08-15T23:24:06.946181",
-      "response_data": "Internal Server Error"
+      "success": true,
+      "details": "Invalid credentials correctly rejected",
+      "timestamp": "2025-08-15T23:24:36.976336",
+      "response_data": null
     }
   ],
-  "timestamp": "2025-08-15T23:24:06.947204"
+  "timestamp": "2025-08-15T23:24:36.977402"
 }
