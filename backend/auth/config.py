@@ -33,7 +33,7 @@ class UserManager(BaseUserManager[User, str]):
                     user.profile.company_id = data.get('company_id')
                 await user.save()
 
-    async def on_after_login(self, user: User, request: Optional[Request] = None):
+    async def on_after_login(self, user: User, request: Optional[Request] = None, response=None):
         print(f"User {user.email} has logged in.")
         # Update last login timestamp
         from datetime import datetime
