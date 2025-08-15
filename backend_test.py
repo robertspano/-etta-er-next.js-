@@ -300,9 +300,13 @@ class BuildConnectAPITester:
         """Test comprehensive authentication system"""
         print("\n=== Testing Authentication System ===")
         
+        # Use unique emails for each test run to avoid conflicts
+        import time
+        timestamp = str(int(time.time()))
+        
         # Test data for different user types
         customer_data = {
-            "email": "sarah.johnson@example.com",
+            "email": f"customer_{timestamp}@example.com",
             "password": "SecurePass123!",
             "role": "customer",
             "first_name": "Sarah",
@@ -312,7 +316,7 @@ class BuildConnectAPITester:
         }
         
         professional_data = {
-            "email": "erik.construction@example.com", 
+            "email": f"professional_{timestamp}@example.com", 
             "password": "BuildStrong456!",
             "role": "professional",
             "first_name": "Erik",
