@@ -636,6 +636,419 @@ class BuildConnectAPITester:
         except Exception as e:
             self.log_test("Error Handling (Invalid Login)", False, f"Request failed: {str(e)}")
     
+    async def test_marketplace_apis(self):
+        """Test comprehensive marketplace functionality"""
+        print("\n=== Testing Marketplace APIs ===")
+        
+        # Create test users first
+        import time
+        timestamp = str(int(time.time()))
+        
+        customer_data = {
+            "email": f"marketplace_customer_{timestamp}@example.com",
+            "password": "CustomerPass123!",
+            "role": "customer",
+            "first_name": "Emma",
+            "last_name": "Wilson",
+            "phone": "+354-555-1234",
+            "language": "en"
+        }
+        
+        professional_data = {
+            "email": f"marketplace_pro_{timestamp}@example.com",
+            "password": "ProPass123!",
+            "role": "professional",
+            "first_name": "Magnus",
+            "last_name": "Eriksson",
+            "phone": "+354-555-5678",
+            "company_name": "Eriksson Construction",
+            "company_id": "KT-987654321",
+            "language": "is"
+        }
+        
+        # Register users
+        customer_session = None
+        professional_session = None
+        
+        try:
+            # Register customer
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/register",
+                json=customer_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status == 201:
+                    self.log_test("Marketplace Customer Registration", True, "Customer registered successfully")
+                else:
+                    data = await response.json()
+                    self.log_test("Marketplace Customer Registration", False, f"Registration failed: {response.status}", data)
+                    return
+            
+            # Register professional
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/register",
+                json=professional_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status == 201:
+                    self.log_test("Marketplace Professional Registration", True, "Professional registered successfully")
+                else:
+                    data = await response.json()
+                    self.log_test("Marketplace Professional Registration", False, f"Registration failed: {response.status}", data)
+                    return
+            
+            # Login customer
+            login_data = {"username": customer_data["email"], "password": customer_data["password"]}
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/cookie/login",
+                data=login_data,
+                headers={"Content-Type": "application/x-www-form-urlencoded"}
+            ) as response:
+                if response.status == 204:
+                    cookies = response.cookies
+                    if "buildconnect_auth" in cookies:
+                        customer_session = cookies["buildconnect_auth"].value
+                        self.log_test("Marketplace Customer Login", True, "Customer login successful")
+                    else:
+                        self.log_test("Marketplace Customer Login", False, "No auth cookie received")
+                        return
+                else:
+                    self.log_test("Marketplace Customer Login", False, f"Login failed: {response.status}")
+                    return
+            
+            # Login professional
+            login_data = {"username": professional_data["email"], "password": professional_data["password"]}
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/cookie/login",
+                data=login_data,
+                headers={"Content-Type": "application/x-www-form-urlencoded"}
+            ) as response:
+                if response.status == 204:
+                    cookies = response.cookies
+                    if "buildconnect_auth" in cookies:
+                        professional_session = cookies["buildconnect_auth"].value
+                        self.log_test("Marketplace Professional Login", True, "Professional login successful")
+                    else:
+                        self.log_test("Marketplace Professional Login", False, "No auth cookie received")
+                        return
+                else:
+                    self.log_test("Marketplace Professional Login", False, f"Login failed: {response.status}")
+                    return
+            
+            # Now test marketplace functionality
+            await self.test_job_request_apis(customer_session, professional_session)
+            await self.test_quote_management_apis(customer_session, professional_session)
+            await self.test_messaging_apis(customer_session, professional_session)
+            await self.test_notification_apis(customer_session, professional_session)
+            
+        except Exception as e:
+            self.log_test("Marketplace API Setup", False, f"Setup failed: {str(e)}")
+    
+    async def test_job_request_apis(self, customer_session, professional_session):
+        """Test job request CRUD operations"""
+        print("\n--- Testing Job Request APIs ---")
+        
+        job_id = None
+        
+        # Test create job request (customer only)
+        job_data = {
+            "category": "plumbing",
+            "title": "Kitchen Sink Installation",
+            "description": "Need to install a new kitchen sink with modern fixtures. The old sink needs to be removed and disposed of properly.",
+            "postcode": "101",
+            "address": "Laugavegur 15, Reykjavik",
+            "budget_min": 50000,
+            "budget_max": 100000,
+            "priority": "medium"
+        }
+        
+        try:
+            cookies = {"buildconnect_auth": customer_session}
+            async with self.session.post(
+                f"{BACKEND_URL}/job-requests/",
+                json=job_data,
+                cookies=cookies,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 200 and data.get("id"):
+                    job_id = data["id"]
+                    self.log_test("POST /api/job-requests", True, f"Job created with ID: {job_id}")
+                else:
+                    self.log_test("POST /api/job-requests", False, f"Job creation failed: {response.status}", data)
+                    return
+        except Exception as e:
+            self.log_test("POST /api/job-requests", False, f"Request failed: {str(e)}")
+            return
+        
+        # Test get all job requests
+        try:
+            async with self.session.get(f"{BACKEND_URL}/job-requests/") as response:
+                data = await response.json()
+                if response.status == 200 and isinstance(data, list):
+                    self.log_test("GET /api/job-requests", True, f"Retrieved {len(data)} job requests")
+                else:
+                    self.log_test("GET /api/job-requests", False, f"Failed to get jobs: {response.status}", data)
+        except Exception as e:
+            self.log_test("GET /api/job-requests", False, f"Request failed: {str(e)}")
+        
+        # Test get specific job request
+        if job_id:
+            try:
+                async with self.session.get(f"{BACKEND_URL}/job-requests/{job_id}") as response:
+                    data = await response.json()
+                    if response.status == 200 and data.get("id") == job_id:
+                        self.log_test("GET /api/job-requests/{id}", True, f"Retrieved job: {data.get('title')}")
+                    else:
+                        self.log_test("GET /api/job-requests/{id}", False, f"Failed to get job: {response.status}", data)
+            except Exception as e:
+                self.log_test("GET /api/job-requests/{id}", False, f"Request failed: {str(e)}")
+        
+        # Test update job request
+        if job_id:
+            try:
+                update_data = {"title": "Updated Kitchen Sink Installation", "priority": "high"}
+                cookies = {"buildconnect_auth": customer_session}
+                async with self.session.put(
+                    f"{BACKEND_URL}/job-requests/{job_id}",
+                    json=update_data,
+                    cookies=cookies,
+                    headers={"Content-Type": "application/json"}
+                ) as response:
+                    data = await response.json()
+                    if response.status == 200 and data.get("title") == update_data["title"]:
+                        self.log_test("PUT /api/job-requests/{id}", True, "Job updated successfully")
+                    else:
+                        self.log_test("PUT /api/job-requests/{id}", False, f"Update failed: {response.status}", data)
+            except Exception as e:
+                self.log_test("PUT /api/job-requests/{id}", False, f"Request failed: {str(e)}")
+        
+        # Test filtering by category
+        try:
+            async with self.session.get(f"{BACKEND_URL}/job-requests/?category=plumbing") as response:
+                data = await response.json()
+                if response.status == 200 and isinstance(data, list):
+                    self.log_test("GET /api/job-requests (Category Filter)", True, f"Filtered {len(data)} plumbing jobs")
+                else:
+                    self.log_test("GET /api/job-requests (Category Filter)", False, f"Filter failed: {response.status}", data)
+        except Exception as e:
+            self.log_test("GET /api/job-requests (Category Filter)", False, f"Request failed: {str(e)}")
+        
+        # Store job_id for quote tests
+        self.job_id = job_id
+    
+    async def test_quote_management_apis(self, customer_session, professional_session):
+        """Test quote management functionality"""
+        print("\n--- Testing Quote Management APIs ---")
+        
+        if not hasattr(self, 'job_id') or not self.job_id:
+            self.log_test("Quote Tests Setup", False, "No job ID available for quote tests")
+            return
+        
+        quote_id = None
+        
+        # Test create quote (professional only)
+        from datetime import datetime, timedelta
+        expires_at = (datetime.utcnow() + timedelta(days=7)).isoformat()
+        
+        quote_data = {
+            "job_request_id": self.job_id,
+            "amount": 75000,
+            "message": "I can complete this kitchen sink installation professionally. I have 10 years of experience in plumbing work.",
+            "estimated_duration": "1-2 days",
+            "expires_at": expires_at,
+            "includes_materials": True,
+            "materials_cost": 25000,
+            "labor_cost": 50000
+        }
+        
+        try:
+            cookies = {"buildconnect_auth": professional_session}
+            async with self.session.post(
+                f"{BACKEND_URL}/quotes/",
+                json=quote_data,
+                cookies=cookies,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 200 and data.get("id"):
+                    quote_id = data["id"]
+                    self.log_test("POST /api/quotes", True, f"Quote created with ID: {quote_id}")
+                else:
+                    self.log_test("POST /api/quotes", False, f"Quote creation failed: {response.status}", data)
+                    return
+        except Exception as e:
+            self.log_test("POST /api/quotes", False, f"Request failed: {str(e)}")
+            return
+        
+        # Test get quotes for job
+        try:
+            async with self.session.get(f"{BACKEND_URL}/quotes/?job_request_id={self.job_id}") as response:
+                data = await response.json()
+                if response.status == 200 and isinstance(data, list) and len(data) > 0:
+                    self.log_test("GET /api/quotes (Job Filter)", True, f"Retrieved {len(data)} quotes for job")
+                else:
+                    self.log_test("GET /api/quotes (Job Filter)", False, f"Failed to get quotes: {response.status}", data)
+        except Exception as e:
+            self.log_test("GET /api/quotes (Job Filter)", False, f"Request failed: {str(e)}")
+        
+        # Test get specific quote
+        if quote_id:
+            try:
+                cookies = {"buildconnect_auth": customer_session}
+                async with self.session.get(
+                    f"{BACKEND_URL}/quotes/{quote_id}",
+                    cookies=cookies
+                ) as response:
+                    data = await response.json()
+                    if response.status == 200 and data.get("id") == quote_id:
+                        self.log_test("GET /api/quotes/{id}", True, f"Retrieved quote: {data.get('amount')} ISK")
+                    else:
+                        self.log_test("GET /api/quotes/{id}", False, f"Failed to get quote: {response.status}", data)
+            except Exception as e:
+                self.log_test("GET /api/quotes/{id}", False, f"Request failed: {str(e)}")
+        
+        # Test accept quote (customer only)
+        if quote_id:
+            try:
+                cookies = {"buildconnect_auth": customer_session}
+                async with self.session.post(
+                    f"{BACKEND_URL}/quotes/{quote_id}/accept",
+                    cookies=cookies
+                ) as response:
+                    data = await response.json()
+                    if response.status == 200:
+                        self.log_test("POST /api/quotes/{id}/accept", True, "Quote accepted successfully")
+                    else:
+                        self.log_test("POST /api/quotes/{id}/accept", False, f"Accept failed: {response.status}", data)
+            except Exception as e:
+                self.log_test("POST /api/quotes/{id}/accept", False, f"Request failed: {str(e)}")
+        
+        # Store quote_id for message tests
+        self.quote_id = quote_id
+    
+    async def test_messaging_apis(self, customer_session, professional_session):
+        """Test messaging functionality"""
+        print("\n--- Testing Messaging APIs ---")
+        
+        if not hasattr(self, 'job_id') or not self.job_id:
+            self.log_test("Messaging Tests Setup", False, "No job ID available for messaging tests")
+            return
+        
+        # Get professional user ID for messaging
+        professional_id = None
+        try:
+            cookies = {"buildconnect_auth": professional_session}
+            async with self.session.get(f"{BACKEND_URL}/auth/me", cookies=cookies) as response:
+                data = await response.json()
+                if response.status == 200:
+                    professional_id = data.get("id")
+        except Exception as e:
+            self.log_test("Get Professional ID", False, f"Failed to get professional ID: {str(e)}")
+            return
+        
+        # Test send message (customer to professional)
+        message_data = {
+            "job_request_id": self.job_id,
+            "recipient_id": professional_id,
+            "content": "Hi Magnus, I'm interested in your quote. When would you be available to start the work?"
+        }
+        
+        try:
+            cookies = {"buildconnect_auth": customer_session}
+            async with self.session.post(
+                f"{BACKEND_URL}/messages/",
+                json=message_data,
+                cookies=cookies,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 200 and data.get("id"):
+                    self.log_test("POST /api/messages", True, f"Message sent: {data.get('id')}")
+                else:
+                    self.log_test("POST /api/messages", False, f"Message send failed: {response.status}", data)
+        except Exception as e:
+            self.log_test("POST /api/messages", False, f"Request failed: {str(e)}")
+        
+        # Test get job messages
+        try:
+            cookies = {"buildconnect_auth": customer_session}
+            async with self.session.get(
+                f"{BACKEND_URL}/messages/job/{self.job_id}",
+                cookies=cookies
+            ) as response:
+                data = await response.json()
+                if response.status == 200 and isinstance(data, list):
+                    self.log_test("GET /api/messages/job/{id}", True, f"Retrieved {len(data)} messages")
+                else:
+                    self.log_test("GET /api/messages/job/{id}", False, f"Failed to get messages: {response.status}", data)
+        except Exception as e:
+            self.log_test("GET /api/messages/job/{id}", False, f"Request failed: {str(e)}")
+        
+        # Test get conversations
+        try:
+            cookies = {"buildconnect_auth": customer_session}
+            async with self.session.get(
+                f"{BACKEND_URL}/messages/conversations",
+                cookies=cookies
+            ) as response:
+                data = await response.json()
+                if response.status == 200 and isinstance(data, list):
+                    self.log_test("GET /api/messages/conversations", True, f"Retrieved {len(data)} conversations")
+                else:
+                    self.log_test("GET /api/messages/conversations", False, f"Failed to get conversations: {response.status}", data)
+        except Exception as e:
+            self.log_test("GET /api/messages/conversations", False, f"Request failed: {str(e)}")
+    
+    async def test_notification_apis(self, customer_session, professional_session):
+        """Test notification functionality"""
+        print("\n--- Testing Notification APIs ---")
+        
+        # Test get user notifications
+        try:
+            cookies = {"buildconnect_auth": customer_session}
+            async with self.session.get(
+                f"{BACKEND_URL}/notifications/",
+                cookies=cookies
+            ) as response:
+                data = await response.json()
+                if response.status == 200 and isinstance(data, list):
+                    self.log_test("GET /api/notifications", True, f"Retrieved {len(data)} notifications")
+                else:
+                    self.log_test("GET /api/notifications", False, f"Failed to get notifications: {response.status}", data)
+        except Exception as e:
+            self.log_test("GET /api/notifications", False, f"Request failed: {str(e)}")
+        
+        # Test get notification stats
+        try:
+            cookies = {"buildconnect_auth": customer_session}
+            async with self.session.get(
+                f"{BACKEND_URL}/notifications/stats",
+                cookies=cookies
+            ) as response:
+                data = await response.json()
+                if response.status == 200 and "total_notifications" in data:
+                    self.log_test("GET /api/notifications/stats", True, f"Stats: {data.get('total_notifications')} total, {data.get('unread_count')} unread")
+                else:
+                    self.log_test("GET /api/notifications/stats", False, f"Failed to get stats: {response.status}", data)
+        except Exception as e:
+            self.log_test("GET /api/notifications/stats", False, f"Request failed: {str(e)}")
+        
+        # Test mark all notifications as read
+        try:
+            cookies = {"buildconnect_auth": customer_session}
+            async with self.session.put(
+                f"{BACKEND_URL}/notifications/mark-all-read",
+                cookies=cookies
+            ) as response:
+                data = await response.json()
+                if response.status == 200:
+                    self.log_test("PUT /api/notifications/mark-all-read", True, f"Marked notifications as read: {data.get('message')}")
+                else:
+                    self.log_test("PUT /api/notifications/mark-all-read", False, f"Failed to mark as read: {response.status}", data)
+        except Exception as e:
+            self.log_test("PUT /api/notifications/mark-all-read", False, f"Request failed: {str(e)}")
+
     async def run_all_tests(self):
         """Run all test suites"""
         print("🚀 Starting BuildConnect Backend API Tests")
@@ -651,6 +1064,7 @@ class BuildConnectAPITester:
             await self.test_stats_endpoint()
             await self.test_testimonials_endpoints()
             await self.test_authentication_system()
+            await self.test_marketplace_apis()
             await self.test_error_handling()
         finally:
             await self.cleanup()
