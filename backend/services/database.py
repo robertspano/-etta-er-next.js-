@@ -12,7 +12,7 @@ class DatabaseService:
         self.db = None
     
     async def connect_to_database(self):
-        """Create database connection"""
+        """Create database connection and initialize Beanie"""
         try:
             mongo_url = os.environ.get('MONGO_URL')
             db_name = os.environ.get('DB_NAME', 'buildconnect')
@@ -23,6 +23,11 @@ class DatabaseService:
             # Test connection
             await self.client.admin.command('ping')
             logger.info("Successfully connected to MongoDB")
+            
+            # Initialize Beanie with User model
+            from models.user import User
+            await init_beanie(database=self.db, document_models=[User])
+            logger.info("Initialized Beanie with User model")
             
         except Exception as e:
             logger.error(f"Failed to connect to MongoDB: {e}")
