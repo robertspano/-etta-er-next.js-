@@ -595,10 +595,10 @@ class BuildConnectAPITester:
         except Exception as e:
             self.log_test("Error Handling (Language Fallback)", False, f"Request failed: {str(e)}")
         
-        # Test duplicate user registration
+        # Test duplicate user registration (using known existing email)
         try:
             duplicate_user = {
-                "email": "sarah.johnson@example.com",  # Same as registered customer
+                "email": "sarah.johnson@example.com",  # Known existing user from previous tests
                 "password": "AnotherPass123!",
                 "role": "customer",
                 "first_name": "Another",
