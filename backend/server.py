@@ -11,7 +11,7 @@ from datetime import datetime
 
 # Import our routes and services
 from services.database import db_service
-from routes import projects, services, stats, testimonials, auth
+from routes import projects, services, stats, testimonials, auth, job_requests, quotes, messages, notifications
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
