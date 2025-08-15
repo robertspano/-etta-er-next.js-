@@ -24,10 +24,17 @@ class DatabaseService:
             await self.client.admin.command('ping')
             logger.info("Successfully connected to MongoDB")
             
-            # Initialize Beanie with User model
+            # Initialize Beanie with all models
             from models.user import User
-            await init_beanie(database=self.db, document_models=[User])
-            logger.info("Initialized Beanie with User model")
+            from models.job_request import JobRequest
+            from models.quote import Quote
+            from models.message import JobMessage
+            from models.notification import Notification
+            
+            await init_beanie(database=self.db, document_models=[
+                User, JobRequest, Quote, JobMessage, Notification
+            ])
+            logger.info("Initialized Beanie with all marketplace models")
             
         except Exception as e:
             logger.error(f"Failed to connect to MongoDB: {e}")
