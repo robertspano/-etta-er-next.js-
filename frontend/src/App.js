@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from './contexts/AuthContext';
+import ProtectedRoute, { CustomerRoute, ProfessionalRoute, AdminRoute } from './components/ProtectedRoute';
+
+// Components
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -7,6 +11,19 @@ import HowItWorks from './components/HowItWorks';
 import Stats from './components/Stats';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
+
+// Auth Components
+import LoginForm from './components/auth/LoginForm';
+import RegisterForm from './components/auth/RegisterForm';
+import Profile from './components/auth/Profile';
+
+// Dashboard Components
+import Dashboard from './components/dashboard/Dashboard';
+
+// Utility Components
+import Unauthorized from './components/Unauthorized';
+import LoadingSpinner from './components/LoadingSpinner';
+
 import { translations } from './data/translations';
 import "./App.css";
 
@@ -28,6 +45,32 @@ const HomePage = ({ language, setLanguage, currentTranslations }) => {
   );
 };
 
+const AuthLayout = ({ children, language, setLanguage, currentTranslations }) => {
+  return (
+    <div className="min-h-screen bg-white">
+      <Header 
+        language={language} 
+        setLanguage={setLanguage} 
+        translations={currentTranslations} 
+      />
+      {children}
+    </div>
+  );
+};
+
+const DashboardLayout = ({ children, language, setLanguage, currentTranslations }) => {
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Header 
+        language={language} 
+        setLanguage={setLanguage} 
+        translations={currentTranslations} 
+      />
+      {children}
+    </div>
+  );
+};
+
 function App() {
   const [language, setLanguage] = useState('en');
   const currentTranslations = translations[language];
@@ -35,18 +78,185 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route 
-            path="/" 
-            element={
-              <HomePage 
-                language={language} 
-                setLanguage={setLanguage} 
-                currentTranslations={currentTranslations} 
-              />
-            } 
-          />
-        </Routes>
+        <AuthProvider>
+          <Routes>
+            {/* Public Routes */}
+            <Route 
+              path="/" 
+              element={
+                <HomePage 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations} 
+                />
+              } 
+            />
+            
+            {/* Auth Routes */}
+            <Route 
+              path="/login" 
+              element={
+                <AuthLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <LoginForm 
+                    translations={currentTranslations} 
+                    language={language} 
+                  />
+                </AuthLayout>
+              } 
+            />
+            
+            <Route 
+              path="/register" 
+              element={
+                <AuthLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <RegisterForm 
+                    translations={currentTranslations} 
+                    language={language} 
+                  />
+                </AuthLayout>
+              } 
+            />
+
+            {/* Protected Routes */}
+            <Route 
+              path="/dashboard" 
+              element={
+                <ProtectedRoute>
+                  <DashboardLayout 
+                    language={language} 
+                    setLanguage={setLanguage} 
+                    currentTranslations={currentTranslations}
+                  >
+                    <Dashboard 
+                      translations={currentTranslations} 
+                      language={language} 
+                    />
+                  </DashboardLayout>
+                </ProtectedRoute>
+              } 
+            />
+
+            <Route 
+              path="/profile" 
+              element={
+                <ProtectedRoute>
+                  <DashboardLayout 
+                    language={language} 
+                    setLanguage={setLanguage} 
+                    currentTranslations={currentTranslations}
+                  >
+                    <Profile 
+                      translations={currentTranslations} 
+                      language={language}
+                      setLanguage={setLanguage} 
+                    />
+                  </DashboardLayout>
+                </ProtectedRoute>
+              } 
+            />
+
+            {/* Customer Only Routes */}
+            <Route 
+              path="/my-projects" 
+              element={
+                <CustomerRoute>
+                  <DashboardLayout 
+                    language={language} 
+                    setLanguage={setLanguage} 
+                    currentTranslations={currentTranslations}
+                  >
+                    <div className="container mx-auto px-4 py-8">
+                      <h1 className="text-3xl font-bold">My Projects</h1>
+                      <p className="text-gray-600 mt-2">Customer projects view coming soon</p>
+                    </div>
+                  </DashboardLayout>
+                </CustomerRoute>
+              } 
+            />
+
+            {/* Professional Only Routes */}
+            <Route 
+              path="/job-requests" 
+              element={
+                <ProfessionalRoute>
+                  <DashboardLayout 
+                    language={language} 
+                    setLanguage={setLanguage} 
+                    currentTranslations={currentTranslations}
+                  >
+                    <div className="container mx-auto px-4 py-8">
+                      <h1 className="text-3xl font-bold">Job Requests</h1>
+                      <p className="text-gray-600 mt-2">Professional job requests view coming soon</p>
+                    </div>
+                  </DashboardLayout>
+                </ProfessionalRoute>
+              } 
+            />
+
+            {/* Admin Only Routes */}
+            <Route 
+              path="/admin" 
+              element={
+                <AdminRoute>
+                  <DashboardLayout 
+                    language={language} 
+                    setLanguage={setLanguage} 
+                    currentTranslations={currentTranslations}
+                  >
+                    <div className="container mx-auto px-4 py-8">
+                      <h1 className="text-3xl font-bold">Admin Panel</h1>
+                      <p className="text-gray-600 mt-2">Admin features coming soon</p>
+                    </div>
+                  </DashboardLayout>
+                </AdminRoute>
+              } 
+            />
+
+            {/* Error Routes */}
+            <Route 
+              path="/unauthorized" 
+              element={
+                <AuthLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <Unauthorized translations={currentTranslations} />
+                </AuthLayout>
+              } 
+            />
+
+            {/* Catch all route for 404 */}
+            <Route 
+              path="*" 
+              element={
+                <AuthLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <div className="min-h-screen flex items-center justify-center">
+                    <div className="text-center">
+                      <h1 className="text-4xl font-bold text-gray-900 mb-4">404</h1>
+                      <p className="text-gray-600 mb-4">Page not found</p>
+                      <a href="/" className="text-blue-600 hover:text-blue-700">
+                        Go back home
+                      </a>
+                    </div>
+                  </div>
+                </AuthLayout>
+              } 
+            />
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </div>
   );
