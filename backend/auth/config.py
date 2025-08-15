@@ -1,12 +1,11 @@
 import os
 from typing import Optional
-from beanie import PydanticObjectId
 from fastapi import Depends, Request
 from fastapi_users import BaseUserManager, FastAPIUsers
 from fastapi_users.authentication import (
     AuthenticationBackend,
     CookieTransport,
-    JWTAuthentication,
+    JWTStrategy,
 )
 from fastapi_users.db import BeanieUserDatabase
 from httpx_oauth.clients.google import GoogleOAuth2
@@ -69,14 +68,17 @@ cookie_transport = CookieTransport(
     cookie_samesite="lax"
 )
 
+def get_jwt_strategy() -> JWTStrategy:
+    return JWTStrategy(
+        secret=os.getenv("SECRET_KEY", "your-secret-key-change-this"),
+        lifetime_seconds=3600 * 24 * 7,  # 7 days
+    )
+
 # JWT Authentication
 auth_backend = AuthenticationBackend(
     name="cookie",
     transport=cookie_transport,
-    get_strategy=lambda: JWTAuthentication(
-        secret=os.getenv("SECRET_KEY", "your-secret-key-change-this"),
-        lifetime_seconds=3600 * 24 * 7,  # 7 days
-    ),
+    get_strategy=get_jwt_strategy,
 )
 
 # Google OAuth client (will be configured with environment variables)
