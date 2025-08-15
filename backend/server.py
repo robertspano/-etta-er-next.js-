@@ -10,8 +10,8 @@ import uuid
 from datetime import datetime
 
 # Import our routes and services
-from .services.database import db_service
-from .routes import projects, services, stats, testimonials
+from services.database import db_service
+from routes import projects, services, stats, testimonials
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
