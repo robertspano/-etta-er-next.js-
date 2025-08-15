@@ -43,6 +43,7 @@ class User(Document):
     
     class Settings:
         name = "users"
+        email_collation = None
 
 # FastAPI Users schemas
 class UserRead(schemas.BaseUser[str]):
