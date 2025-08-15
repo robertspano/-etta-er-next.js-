@@ -641,6 +641,7 @@ class BuildConnectAPITester:
             await self.test_projects_retrieval()
             await self.test_stats_endpoint()
             await self.test_testimonials_endpoints()
+            await self.test_authentication_system()
             await self.test_error_handling()
         finally:
             await self.cleanup()
