@@ -1,214 +1,338 @@
 {
   "summary": {
-    "total": 29,
-    "passed": 29,
-    "failed": 0,
-    "success_rate": 100.0
+    "total": 45,
+    "passed": 37,
+    "failed": 8,
+    "success_rate": 82.22222222222221
   },
   "results": [
     {
       "test": "GET /api/",
       "success": true,
       "details": "Status: 200, Message: BuildConnect API is running",
-      "timestamp": "2025-08-15T23:26:30.835662",
+      "timestamp": "2025-08-15T23:50:15.605659",
       "response_data": null
     },
     {
       "test": "GET /api/health",
       "success": true,
       "details": "Status: 200, Health: healthy",
-      "timestamp": "2025-08-15T23:26:30.882439",
+      "timestamp": "2025-08-15T23:50:15.614277",
       "response_data": null
     },
     {
       "test": "GET /api/services (English)",
       "success": true,
       "details": "Retrieved 9 services in English",
-      "timestamp": "2025-08-15T23:26:30.899804",
+      "timestamp": "2025-08-15T23:50:15.634490",
       "response_data": null
     },
     {
       "test": "GET /api/services (Icelandic)",
       "success": true,
       "details": "Retrieved 9 services in Icelandic",
-      "timestamp": "2025-08-15T23:26:30.918207",
+      "timestamp": "2025-08-15T23:50:15.654028",
       "response_data": null
     },
     {
       "test": "GET /api/services (Default)",
       "success": true,
       "details": "Default language fallback works (English)",
-      "timestamp": "2025-08-15T23:26:30.930151",
+      "timestamp": "2025-08-15T23:50:15.667826",
       "response_data": null
     },
     {
       "test": "POST /api/projects (Valid)",
       "success": true,
-      "details": "Project created with ID: fc8a101a-a99c-4c2b-ae76-6e73cbc69e5c",
-      "timestamp": "2025-08-15T23:26:30.977805",
+      "details": "Project created with ID: 01f38d4b-0c60-4801-a1cf-990c88c1c33e",
+      "timestamp": "2025-08-15T23:50:15.716611",
       "response_data": null
     },
     {
       "test": "POST /api/projects (Invalid)",
       "success": true,
       "details": "Validation error returned as expected",
-      "timestamp": "2025-08-15T23:26:30.986133",
+      "timestamp": "2025-08-15T23:50:15.723635",
       "response_data": null
     },
     {
       "test": "GET /api/projects",
       "success": true,
-      "details": "Retrieved 6 projects",
-      "timestamp": "2025-08-15T23:26:30.994881",
+      "details": "Retrieved 7 projects",
+      "timestamp": "2025-08-15T23:50:15.732074",
       "response_data": null
     },
     {
       "test": "GET /api/projects (Filtered)",
       "success": true,
-      "details": "Filtered projects: 6",
-      "timestamp": "2025-08-15T23:26:31.009494",
+      "details": "Filtered projects: 7",
+      "timestamp": "2025-08-15T23:50:15.739924",
       "response_data": null
     },
     {
       "test": "GET /api/projects/{id}",
       "success": true,
       "details": "Retrieved project: Kitchen Renovation Project",
-      "timestamp": "2025-08-15T23:26:31.058354",
+      "timestamp": "2025-08-15T23:50:15.746575",
       "response_data": null
     },
     {
       "test": "GET /api/stats",
       "success": true,
-      "details": "Stats retrieved: 6 projects, 0 professionals",
-      "timestamp": "2025-08-15T23:26:31.069154",
+      "details": "Stats retrieved: 7 projects, 0 professionals",
+      "timestamp": "2025-08-15T23:50:15.796503",
       "response_data": null
     },
     {
       "test": "GET /api/testimonials",
       "success": true,
       "details": "Retrieved 6 testimonials",
-      "timestamp": "2025-08-15T23:26:31.076779",
+      "timestamp": "2025-08-15T23:50:15.806745",
       "response_data": null
     },
     {
       "test": "GET /api/testimonials/featured",
       "success": true,
       "details": "Retrieved 3 featured testimonials",
-      "timestamp": "2025-08-15T23:26:31.124791",
+      "timestamp": "2025-08-15T23:50:15.854576",
       "response_data": null
     },
     {
       "test": "POST /api/auth/register (Customer)",
       "success": true,
-      "details": "Customer registered: customer_1755300391@example.com",
-      "timestamp": "2025-08-15T23:26:31.323038",
+      "details": "Customer registered: customer_1755301815@example.com",
+      "timestamp": "2025-08-15T23:50:16.121626",
       "response_data": null
     },
     {
       "test": "POST /api/auth/register (Professional)",
       "success": true,
-      "details": "Professional registered: professional_1755300391@example.com",
-      "timestamp": "2025-08-15T23:26:31.489124",
+      "details": "Professional registered: professional_1755301815@example.com",
+      "timestamp": "2025-08-15T23:50:16.325606",
       "response_data": null
     },
     {
       "test": "POST /api/auth/cookie/login (Customer)",
       "success": true,
       "details": "Customer login successful with cookie",
-      "timestamp": "2025-08-15T23:26:31.753560",
+      "timestamp": "2025-08-15T23:50:16.494217",
       "response_data": null
     },
     {
       "test": "POST /api/auth/cookie/login (Professional)",
       "success": true,
       "details": "Professional login successful with cookie",
-      "timestamp": "2025-08-15T23:26:31.971448",
+      "timestamp": "2025-08-15T23:50:16.768228",
       "response_data": null
     },
     {
       "test": "GET /api/auth/me (Customer)",
       "success": true,
-      "details": "User info retrieved: customer_1755300391@example.com",
-      "timestamp": "2025-08-15T23:26:31.979489",
+      "details": "User info retrieved: customer_1755301815@example.com",
+      "timestamp": "2025-08-15T23:50:16.775788",
       "response_data": null
     },
     {
       "test": "PUT /api/auth/profile",
       "success": true,
       "details": "Profile updated successfully",
-      "timestamp": "2025-08-15T23:26:31.989700",
+      "timestamp": "2025-08-15T23:50:16.825503",
       "response_data": null
     },
     {
       "test": "POST /api/auth/switch-role",
       "success": true,
       "details": "Role switched to professional",
-      "timestamp": "2025-08-15T23:26:32.040314",
+      "timestamp": "2025-08-15T23:50:16.835087",
       "response_data": null
     },
     {
       "test": "GET /api/auth/customer-only (Customer)",
       "success": true,
       "details": "Customer access correctly denied after role switch",
-      "timestamp": "2025-08-15T23:26:32.048448",
+      "timestamp": "2025-08-15T23:50:16.885203",
       "response_data": null
     },
     {
       "test": "GET /api/auth/professional-only (Professional)",
       "success": true,
       "details": "Professional access granted",
-      "timestamp": "2025-08-15T23:26:32.097785",
+      "timestamp": "2025-08-15T23:50:16.934541",
       "response_data": null
     },
     {
       "test": "GET /api/auth/admin-only (Customer Denied)",
       "success": true,
       "details": "Admin access correctly denied to customer",
-      "timestamp": "2025-08-15T23:26:32.105434",
+      "timestamp": "2025-08-15T23:50:16.943321",
       "response_data": null
     },
     {
       "test": "GET /api/auth/me (Unauthenticated)",
       "success": true,
       "details": "Protected endpoint correctly requires authentication",
-      "timestamp": "2025-08-15T23:26:32.129009",
+      "timestamp": "2025-08-15T23:50:17.010320",
       "response_data": null
     },
     {
       "test": "POST /api/auth/cookie/logout",
       "success": true,
       "details": "Logout successful",
-      "timestamp": "2025-08-15T23:26:32.137730",
+      "timestamp": "2025-08-15T23:50:17.019242",
+      "response_data": null
+    },
+    {
+      "test": "Marketplace Customer Registration",
+      "success": true,
+      "details": "Customer registered successfully",
+      "timestamp": "2025-08-15T23:50:17.181919",
+      "response_data": null
+    },
+    {
+      "test": "Marketplace Professional Registration",
+      "success": true,
+      "details": "Professional registered successfully",
+      "timestamp": "2025-08-15T23:50:17.385024",
+      "response_data": null
+    },
+    {
+      "test": "Marketplace Customer Login",
+      "success": true,
+      "details": "Customer login successful",
+      "timestamp": "2025-08-15T23:50:17.589256",
+      "response_data": null
+    },
+    {
+      "test": "Marketplace Professional Login",
+      "success": true,
+      "details": "Professional login successful",
+      "timestamp": "2025-08-15T23:50:17.796879",
+      "response_data": null
+    },
+    {
+      "test": "POST /api/job-requests",
+      "success": true,
+      "details": "Job created with ID: 502319d1-13bb-4feb-ae45-d62205f1d8de",
+      "timestamp": "2025-08-15T23:50:17.856894",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/job-requests",
+      "success": false,
+      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://buildconnect.preview.emergentagent.com/api/job-requests/'",
+      "timestamp": "2025-08-15T23:50:17.871918",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/job-requests/{id}",
+      "success": false,
+      "details": "Failed to get job: 404",
+      "timestamp": "2025-08-15T23:50:17.880865",
+      "response_data": {
+        "detail": "Job request not found"
+      }
+    },
+    {
+      "test": "PUT /api/job-requests/{id}",
+      "success": false,
+      "details": "Update failed: 404",
+      "timestamp": "2025-08-15T23:50:17.890122",
+      "response_data": {
+        "detail": "Job request not found"
+      }
+    },
+    {
+      "test": "GET /api/job-requests (Category Filter)",
+      "success": false,
+      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://buildconnect.preview.emergentagent.com/api/job-requests/?category=plumbing'",
+      "timestamp": "2025-08-15T23:50:17.898015",
+      "response_data": null
+    },
+    {
+      "test": "POST /api/quotes",
+      "success": false,
+      "details": "Quote creation failed: 404",
+      "timestamp": "2025-08-15T23:50:17.908086",
+      "response_data": {
+        "detail": "Job request not found"
+      }
+    },
+    {
+      "test": "POST /api/messages",
+      "success": false,
+      "details": "Message send failed: 404",
+      "timestamp": "2025-08-15T23:50:17.966853",
+      "response_data": {
+        "detail": "Job request not found"
+      }
+    },
+    {
+      "test": "GET /api/messages/job/{id}",
+      "success": false,
+      "details": "Failed to get messages: 404",
+      "timestamp": "2025-08-15T23:50:18.015272",
+      "response_data": {
+        "detail": "Job request not found"
+      }
+    },
+    {
+      "test": "GET /api/messages/conversations",
+      "success": false,
+      "details": "Failed to get conversations: 500",
+      "timestamp": "2025-08-15T23:50:18.023868",
+      "response_data": {
+        "detail": "Failed to fetch conversations: 'id'"
+      }
+    },
+    {
+      "test": "GET /api/notifications",
+      "success": true,
+      "details": "Retrieved 0 notifications",
+      "timestamp": "2025-08-15T23:50:18.072828",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/notifications/stats",
+      "success": true,
+      "details": "Stats: 0 total, 0 unread",
+      "timestamp": "2025-08-15T23:50:18.081317",
+      "response_data": null
+    },
+    {
+      "test": "PUT /api/notifications/mark-all-read",
+      "success": true,
+      "details": "Marked notifications as read: Marked 0 notifications as read",
+      "timestamp": "2025-08-15T23:50:18.089063",
       "response_data": null
     },
     {
       "test": "Error Handling (404)",
       "success": true,
       "details": "Non-existent project returns 404",
-      "timestamp": "2025-08-15T23:26:32.144464",
+      "timestamp": "2025-08-15T23:50:18.136319",
       "response_data": null
     },
     {
       "test": "Error Handling (Language Fallback)",
       "success": true,
       "details": "Invalid language falls back to English",
-      "timestamp": "2025-08-15T23:26:32.156693",
+      "timestamp": "2025-08-15T23:50:18.149249",
       "response_data": null
     },
     {
       "test": "Error Handling (Duplicate Registration)",
       "success": true,
       "details": "Duplicate email registration correctly rejected",
-      "timestamp": "2025-08-15T23:26:32.206220",
+      "timestamp": "2025-08-15T23:50:18.199139",
       "response_data": null
     },
     {
       "test": "Error Handling (Invalid Login)",
       "success": true,
       "details": "Invalid credentials correctly rejected",
-      "timestamp": "2025-08-15T23:26:32.375847",
+      "timestamp": "2025-08-15T23:50:18.375498",
       "response_data": null
     }
   ],
-  "timestamp": "2025-08-15T23:26:32.376959"
+  "timestamp": "2025-08-15T23:50:18.376550"
 }
