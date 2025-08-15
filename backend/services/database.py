@@ -54,8 +54,14 @@ class DatabaseService:
     
     async def get_document(self, collection: str, document_id: str) -> Optional[dict]:
         """Get document by ID"""
-        document = await self.db[collection].find_one({"id": document_id})
+        # Try both _id and id fields for compatibility
+        document = await self.db[collection].find_one({"_id": document_id})
+        if not document:
+            document = await self.db[collection].find_one({"id": document_id})
         if document:
+            # Ensure we have an id field for API responses
+            if '_id' in document and 'id' not in document:
+                document['id'] = document['_id']
             document.pop('_id', None)
         return document
     
