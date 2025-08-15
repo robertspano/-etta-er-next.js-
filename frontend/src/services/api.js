@@ -237,22 +237,225 @@ class ApiService {
     }
   }
 
-  // Legacy endpoints (for backward compatibility)
-  async createStatusCheck(clientName) {
+  // Job Request endpoints
+  async getJobRequests(filters = {}) {
     try {
-      const response = await this.client.post('/status', { client_name: clientName });
+      const params = new URLSearchParams();
+      Object.entries(filters).forEach(([key, value]) => {
+        if (value) params.append(key, value);
+      });
+      
+      const response = await this.client.get(`/job-requests?${params}`);
       return response;
     } catch (error) {
-      throw new Error(error.response?.data?.detail || 'Failed to create status check');
+      throw new Error(error.response?.data?.detail || 'Failed to get job requests');
     }
   }
 
-  async getStatusChecks() {
+  async createJobRequest(jobData) {
     try {
-      const response = await this.client.get('/status');
+      const response = await this.client.post('/job-requests/', jobData);
       return response;
     } catch (error) {
-      throw new Error(error.response?.data?.detail || 'Failed to get status checks');
+      throw new Error(error.response?.data?.detail || 'Failed to create job request');
+    }
+  }
+
+  async getJobRequest(jobId) {
+    try {
+      const response = await this.client.get(`/job-requests/${jobId}`);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to get job request');
+    }
+  }
+
+  async updateJobRequest(jobId, updateData) {
+    try {
+      const response = await this.client.put(`/job-requests/${jobId}`, updateData);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to update job request');
+    }
+  }
+
+  async updateJobStatus(jobId, newStatus) {
+    try {
+      const response = await this.client.put(`/job-requests/${jobId}/status`, { new_status: newStatus });
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to update job status');
+    }
+  }
+
+  async uploadJobPhoto(jobId, file) {
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      
+      const response = await this.client.post(`/job-requests/${jobId}/photos`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to upload photo');
+    }
+  }
+
+  // Quote endpoints
+  async getQuotes(filters = {}) {
+    try {
+      const params = new URLSearchParams();
+      Object.entries(filters).forEach(([key, value]) => {
+        if (value) params.append(key, value);
+      });
+      
+      const response = await this.client.get(`/quotes?${params}`);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to get quotes');
+    }
+  }
+
+  async createQuote(quoteData) {
+    try {
+      const response = await this.client.post('/quotes/', quoteData);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to create quote');
+    }
+  }
+
+  async getQuote(quoteId) {
+    try {
+      const response = await this.client.get(`/quotes/${quoteId}`);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to get quote');
+    }
+  }
+
+  async updateQuote(quoteId, updateData) {
+    try {
+      const response = await this.client.put(`/quotes/${quoteId}`, updateData);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to update quote');
+    }
+  }
+
+  async acceptQuote(quoteId) {
+    try {
+      const response = await this.client.post(`/quotes/${quoteId}/accept`);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to accept quote');
+    }
+  }
+
+  async declineQuote(quoteId) {
+    try {
+      const response = await this.client.post(`/quotes/${quoteId}/decline`);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to decline quote');
+    }
+  }
+
+  async withdrawQuote(quoteId) {
+    try {
+      const response = await this.client.post(`/quotes/${quoteId}/withdraw`);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to withdraw quote');
+    }
+  }
+
+  // Messaging endpoints
+  async sendMessage(messageData) {
+    try {
+      const response = await this.client.post('/messages/', messageData);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to send message');
+    }
+  }
+
+  async getJobMessages(jobId, page = 1, limit = 50) {
+    try {
+      const response = await this.client.get(`/messages/job/${jobId}?page=${page}&limit=${limit}`);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to get messages');
+    }
+  }
+
+  async getConversations() {
+    try {
+      const response = await this.client.get('/messages/conversations');
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to get conversations');
+    }
+  }
+
+  async uploadMessageAttachment(file) {
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      
+      const response = await this.client.post('/messages/upload-attachment', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to upload attachment');
+    }
+  }
+
+  // Notification endpoints
+  async getNotifications(filters = {}) {
+    try {
+      const params = new URLSearchParams();
+      Object.entries(filters).forEach(([key, value]) => {
+        if (value !== undefined) params.append(key, value);
+      });
+      
+      const response = await this.client.get(`/notifications?${params}`);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to get notifications');
+    }
+  }
+
+  async markNotificationRead(notificationId) {
+    try {
+      const response = await this.client.put(`/notifications/${notificationId}/read`);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to mark notification as read');
+    }
+  }
+
+  async markAllNotificationsRead() {
+    try {
+      const response = await this.client.put('/notifications/mark-all-read');
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to mark all notifications as read');
+    }
+  }
+
+  async getNotificationStats() {
+    try {
+      const response = await this.client.get('/notifications/stats');
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to get notification stats');
     }
   }
 }
