@@ -1,4 +1,4 @@
-from beanie import Document, PydanticObjectId
+from beanie import Document
 from pydantic import BaseModel, Field, EmailStr
 from typing import Optional
 from datetime import datetime
@@ -28,7 +28,7 @@ class UserProfile(BaseModel):
 
 class User(Document):
     """User document for MongoDB with fastapi-users integration"""
-    id: str = Field(default_factory=lambda: str(uuid.uuid4()), alias="_id")
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     email: EmailStr = Field(unique=True, index=True)
     hashed_password: str
     role: UserRole = UserRole.CUSTOMER
@@ -43,11 +43,6 @@ class User(Document):
     
     class Settings:
         name = "users"
-        indexes = [
-            "email",
-            "role",
-            "is_active"
-        ]
 
 # FastAPI Users schemas
 class UserRead(schemas.BaseUser[str]):
