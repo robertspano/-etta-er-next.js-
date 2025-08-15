@@ -296,6 +296,265 @@ class BuildConnectAPITester:
         except Exception as e:
             self.log_test("GET /api/testimonials/featured", False, f"Request failed: {str(e)}")
     
+    async def test_authentication_system(self):
+        """Test comprehensive authentication system"""
+        print("\n=== Testing Authentication System ===")
+        
+        # Test data for different user types
+        customer_data = {
+            "email": "sarah.johnson@example.com",
+            "password": "SecurePass123!",
+            "role": "customer",
+            "first_name": "Sarah",
+            "last_name": "Johnson",
+            "phone": "+354-555-0123",
+            "language": "en"
+        }
+        
+        professional_data = {
+            "email": "erik.construction@example.com", 
+            "password": "BuildStrong456!",
+            "role": "professional",
+            "first_name": "Erik",
+            "last_name": "Magnusson",
+            "phone": "+354-555-0456",
+            "company_name": "Magnusson Construction Ltd",
+            "company_id": "KT-123456789",
+            "language": "is"
+        }
+        
+        # Test user registration - Customer
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/register",
+                json=customer_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 201:
+                    required_fields = ["id", "email", "role", "is_active"]
+                    has_fields = all(field in data for field in required_fields)
+                    if has_fields and data.get("email") == customer_data["email"]:
+                        self.log_test("POST /api/auth/register (Customer)", True, f"Customer registered: {data.get('email')}")
+                    else:
+                        self.log_test("POST /api/auth/register (Customer)", False, "Missing required fields", data)
+                else:
+                    self.log_test("POST /api/auth/register (Customer)", False, f"Registration failed: {response.status}", data)
+        except Exception as e:
+            self.log_test("POST /api/auth/register (Customer)", False, f"Request failed: {str(e)}")
+        
+        # Test user registration - Professional
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/register",
+                json=professional_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 201:
+                    if data.get("email") == professional_data["email"] and data.get("role") == "professional":
+                        self.log_test("POST /api/auth/register (Professional)", True, f"Professional registered: {data.get('email')}")
+                    else:
+                        self.log_test("POST /api/auth/register (Professional)", False, "Incorrect registration data", data)
+                else:
+                    self.log_test("POST /api/auth/register (Professional)", False, f"Registration failed: {response.status}", data)
+        except Exception as e:
+            self.log_test("POST /api/auth/register (Professional)", False, f"Request failed: {str(e)}")
+        
+        # Test customer login and session management
+        customer_session = None
+        try:
+            login_data = {
+                "username": customer_data["email"],
+                "password": customer_data["password"]
+            }
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/cookie/login",
+                data=login_data,
+                headers={"Content-Type": "application/x-www-form-urlencoded"}
+            ) as response:
+                if response.status == 204:  # No content on successful login
+                    # Check for authentication cookie
+                    cookies = response.cookies
+                    if "buildconnect_auth" in cookies:
+                        customer_session = cookies["buildconnect_auth"].value
+                        self.log_test("POST /api/auth/cookie/login (Customer)", True, "Customer login successful with cookie")
+                    else:
+                        self.log_test("POST /api/auth/cookie/login (Customer)", False, "Login successful but no auth cookie")
+                else:
+                    data = await response.json() if response.content_type == 'application/json' else await response.text()
+                    self.log_test("POST /api/auth/cookie/login (Customer)", False, f"Login failed: {response.status}", data)
+        except Exception as e:
+            self.log_test("POST /api/auth/cookie/login (Customer)", False, f"Request failed: {str(e)}")
+        
+        # Test professional login
+        professional_session = None
+        try:
+            login_data = {
+                "username": professional_data["email"],
+                "password": professional_data["password"]
+            }
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/cookie/login",
+                data=login_data,
+                headers={"Content-Type": "application/x-www-form-urlencoded"}
+            ) as response:
+                if response.status == 204:
+                    cookies = response.cookies
+                    if "buildconnect_auth" in cookies:
+                        professional_session = cookies["buildconnect_auth"].value
+                        self.log_test("POST /api/auth/cookie/login (Professional)", True, "Professional login successful with cookie")
+                    else:
+                        self.log_test("POST /api/auth/cookie/login (Professional)", False, "Login successful but no auth cookie")
+                else:
+                    data = await response.json() if response.content_type == 'application/json' else await response.text()
+                    self.log_test("POST /api/auth/cookie/login (Professional)", False, f"Login failed: {response.status}", data)
+        except Exception as e:
+            self.log_test("POST /api/auth/cookie/login (Professional)", False, f"Request failed: {str(e)}")
+        
+        # Test get current user info (with customer session)
+        if customer_session:
+            try:
+                cookies = {"buildconnect_auth": customer_session}
+                async with self.session.get(
+                    f"{BACKEND_URL}/auth/me",
+                    cookies=cookies
+                ) as response:
+                    data = await response.json()
+                    if response.status == 200:
+                        required_fields = ["id", "email", "role", "profile", "is_verified"]
+                        has_fields = all(field in data for field in required_fields)
+                        if has_fields and data.get("role") == "customer":
+                            self.log_test("GET /api/auth/me (Customer)", True, f"User info retrieved: {data.get('email')}")
+                        else:
+                            self.log_test("GET /api/auth/me (Customer)", False, "Missing fields or incorrect role", data)
+                    else:
+                        self.log_test("GET /api/auth/me (Customer)", False, f"Failed to get user info: {response.status}", data)
+            except Exception as e:
+                self.log_test("GET /api/auth/me (Customer)", False, f"Request failed: {str(e)}")
+        
+        # Test profile update (with customer session)
+        if customer_session:
+            try:
+                profile_update = {
+                    "first_name": "Sarah Updated",
+                    "location": "Reykjavik, Iceland",
+                    "phone": "+354-555-9999"
+                }
+                cookies = {"buildconnect_auth": customer_session}
+                async with self.session.put(
+                    f"{BACKEND_URL}/auth/profile",
+                    json=profile_update,
+                    cookies=cookies,
+                    headers={"Content-Type": "application/json"}
+                ) as response:
+                    data = await response.json()
+                    if response.status == 200 and data.get("message") == "Profile updated successfully":
+                        self.log_test("PUT /api/auth/profile", True, "Profile updated successfully")
+                    else:
+                        self.log_test("PUT /api/auth/profile", False, f"Profile update failed: {response.status}", data)
+            except Exception as e:
+                self.log_test("PUT /api/auth/profile", False, f"Request failed: {str(e)}")
+        
+        # Test role switching (customer to professional)
+        if customer_session:
+            try:
+                cookies = {"buildconnect_auth": customer_session}
+                async with self.session.post(
+                    f"{BACKEND_URL}/auth/switch-role",
+                    params={"new_role": "professional"},
+                    cookies=cookies
+                ) as response:
+                    data = await response.json()
+                    if response.status == 200 and "professional" in data.get("message", ""):
+                        self.log_test("POST /api/auth/switch-role", True, "Role switched to professional")
+                    else:
+                        self.log_test("POST /api/auth/switch-role", False, f"Role switch failed: {response.status}", data)
+            except Exception as e:
+                self.log_test("POST /api/auth/switch-role", False, f"Request failed: {str(e)}")
+        
+        # Test role-based access control
+        await self.test_role_based_access(customer_session, professional_session)
+        
+        # Test logout
+        if customer_session:
+            try:
+                cookies = {"buildconnect_auth": customer_session}
+                async with self.session.post(
+                    f"{BACKEND_URL}/auth/cookie/logout",
+                    cookies=cookies
+                ) as response:
+                    if response.status == 204:
+                        self.log_test("POST /api/auth/cookie/logout", True, "Logout successful")
+                    else:
+                        data = await response.json() if response.content_type == 'application/json' else await response.text()
+                        self.log_test("POST /api/auth/cookie/logout", False, f"Logout failed: {response.status}", data)
+            except Exception as e:
+                self.log_test("POST /api/auth/cookie/logout", False, f"Request failed: {str(e)}")
+    
+    async def test_role_based_access(self, customer_session, professional_session):
+        """Test role-based access control endpoints"""
+        print("\n=== Testing Role-Based Access Control ===")
+        
+        # Test customer-only endpoint with customer session
+        if customer_session:
+            try:
+                cookies = {"buildconnect_auth": customer_session}
+                async with self.session.get(
+                    f"{BACKEND_URL}/auth/customer-only",
+                    cookies=cookies
+                ) as response:
+                    data = await response.json()
+                    if response.status == 200 and "Customer access granted" in data.get("message", ""):
+                        self.log_test("GET /api/auth/customer-only (Customer)", True, "Customer access granted")
+                    else:
+                        self.log_test("GET /api/auth/customer-only (Customer)", False, f"Access denied: {response.status}", data)
+            except Exception as e:
+                self.log_test("GET /api/auth/customer-only (Customer)", False, f"Request failed: {str(e)}")
+        
+        # Test professional-only endpoint with professional session
+        if professional_session:
+            try:
+                cookies = {"buildconnect_auth": professional_session}
+                async with self.session.get(
+                    f"{BACKEND_URL}/auth/professional-only",
+                    cookies=cookies
+                ) as response:
+                    data = await response.json()
+                    if response.status == 200 and "Professional access granted" in data.get("message", ""):
+                        self.log_test("GET /api/auth/professional-only (Professional)", True, "Professional access granted")
+                    else:
+                        self.log_test("GET /api/auth/professional-only (Professional)", False, f"Access denied: {response.status}", data)
+            except Exception as e:
+                self.log_test("GET /api/auth/professional-only (Professional)", False, f"Request failed: {str(e)}")
+        
+        # Test admin-only endpoint (should fail for both customer and professional)
+        if customer_session:
+            try:
+                cookies = {"buildconnect_auth": customer_session}
+                async with self.session.get(
+                    f"{BACKEND_URL}/auth/admin-only",
+                    cookies=cookies
+                ) as response:
+                    if response.status == 403:
+                        self.log_test("GET /api/auth/admin-only (Customer Denied)", True, "Admin access correctly denied to customer")
+                    else:
+                        data = await response.json()
+                        self.log_test("GET /api/auth/admin-only (Customer Denied)", False, f"Expected 403, got: {response.status}", data)
+            except Exception as e:
+                self.log_test("GET /api/auth/admin-only (Customer Denied)", False, f"Request failed: {str(e)}")
+        
+        # Test protected endpoint without authentication
+        try:
+            async with self.session.get(f"{BACKEND_URL}/auth/me") as response:
+                if response.status == 401:
+                    self.log_test("GET /api/auth/me (Unauthenticated)", True, "Protected endpoint correctly requires authentication")
+                else:
+                    data = await response.json() if response.content_type == 'application/json' else await response.text()
+                    self.log_test("GET /api/auth/me (Unauthenticated)", False, f"Expected 401, got: {response.status}", data)
+        except Exception as e:
+            self.log_test("GET /api/auth/me (Unauthenticated)", False, f"Request failed: {str(e)}")
+
     async def test_error_handling(self):
         """Test error handling for various scenarios"""
         print("\n=== Testing Error Handling ===")
@@ -326,6 +585,47 @@ class BuildConnectAPITester:
                     self.log_test("Error Handling (Language Fallback)", False, f"Unexpected response: {response.status}", data)
         except Exception as e:
             self.log_test("Error Handling (Language Fallback)", False, f"Request failed: {str(e)}")
+        
+        # Test duplicate user registration
+        try:
+            duplicate_user = {
+                "email": "sarah.johnson@example.com",  # Same as registered customer
+                "password": "AnotherPass123!",
+                "role": "customer",
+                "first_name": "Another",
+                "last_name": "User"
+            }
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/register",
+                json=duplicate_user,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status == 400:
+                    self.log_test("Error Handling (Duplicate Registration)", True, "Duplicate email registration correctly rejected")
+                else:
+                    data = await response.json()
+                    self.log_test("Error Handling (Duplicate Registration)", False, f"Expected 400, got: {response.status}", data)
+        except Exception as e:
+            self.log_test("Error Handling (Duplicate Registration)", False, f"Request failed: {str(e)}")
+        
+        # Test invalid login credentials
+        try:
+            invalid_login = {
+                "username": "nonexistent@example.com",
+                "password": "wrongpassword"
+            }
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/cookie/login",
+                data=invalid_login,
+                headers={"Content-Type": "application/x-www-form-urlencoded"}
+            ) as response:
+                if response.status == 400:
+                    self.log_test("Error Handling (Invalid Login)", True, "Invalid credentials correctly rejected")
+                else:
+                    data = await response.json() if response.content_type == 'application/json' else await response.text()
+                    self.log_test("Error Handling (Invalid Login)", False, f"Expected 400, got: {response.status}", data)
+        except Exception as e:
+            self.log_test("Error Handling (Invalid Login)", False, f"Request failed: {str(e)}")
     
     async def run_all_tests(self):
         """Run all test suites"""
