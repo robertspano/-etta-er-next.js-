@@ -551,14 +551,16 @@ class BuildConnectAPITester:
             except Exception as e:
                 self.log_test("GET /api/auth/admin-only (Customer Denied)", False, f"Request failed: {str(e)}")
         
-        # Test protected endpoint without authentication
+        # Test protected endpoint without authentication (use fresh session)
         try:
-            async with self.session.get(f"{BACKEND_URL}/auth/me") as response:
-                if response.status == 401:
-                    self.log_test("GET /api/auth/me (Unauthenticated)", True, "Protected endpoint correctly requires authentication")
-                else:
-                    data = await response.json() if response.content_type == 'application/json' else await response.text()
-                    self.log_test("GET /api/auth/me (Unauthenticated)", False, f"Expected 401, got: {response.status}", data)
+            # Create a new session without cookies to test unauthenticated access
+            async with aiohttp.ClientSession() as fresh_session:
+                async with fresh_session.get(f"{BACKEND_URL}/auth/me") as response:
+                    if response.status == 401:
+                        self.log_test("GET /api/auth/me (Unauthenticated)", True, "Protected endpoint correctly requires authentication")
+                    else:
+                        data = await response.json() if response.content_type == 'application/json' else await response.text()
+                        self.log_test("GET /api/auth/me (Unauthenticated)", False, f"Expected 401, got: {response.status}", data)
         except Exception as e:
             self.log_test("GET /api/auth/me (Unauthenticated)", False, f"Request failed: {str(e)}")
 
