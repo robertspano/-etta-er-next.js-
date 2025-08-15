@@ -59,6 +59,10 @@ async def get_status_checks():
 
 # Include all route modules
 api_router.include_router(auth.router)
+api_router.include_router(job_requests.router)
+api_router.include_router(quotes.router)
+api_router.include_router(messages.router)
+api_router.include_router(notifications.router)
 api_router.include_router(projects.router)
 api_router.include_router(services.router)
 api_router.include_router(stats.router)
