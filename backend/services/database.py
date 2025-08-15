@@ -80,10 +80,16 @@ class DatabaseService:
     
     async def update_document(self, collection: str, document_id: str, update_dict: dict) -> bool:
         """Update document by ID"""
+        # Try both _id and id fields for compatibility
         result = await self.db[collection].update_one(
-            {"id": document_id}, 
+            {"_id": document_id}, 
             {"$set": update_dict}
         )
+        if result.modified_count == 0:
+            result = await self.db[collection].update_one(
+                {"id": document_id}, 
+                {"$set": update_dict}
+            )
         return result.modified_count > 0
     
     async def delete_document(self, collection: str, document_id: str) -> bool:
