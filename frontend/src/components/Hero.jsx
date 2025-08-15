@@ -5,16 +5,49 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Search, MapPin, Star, Users, CheckCircle } from 'lucide-react';
+import apiService from '../services/api';
 
 const Hero = ({ translations }) => {
   const [projectType, setProjectType] = useState('');
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Project submitted:', { projectType, location, description });
-    alert(translations.projectSubmitted);
+    
+    if (!projectType || !location || !description) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      const projectData = {
+        title: `${translations.services_[projectType]} Project`,
+        description: description,
+        serviceType: projectType,
+        location: location,
+        urgency: 'flexible'
+      };
+
+      const response = await apiService.submitProject(projectData);
+      
+      if (response.success) {
+        alert(`${translations.projectSubmitted}\n\nProject ID: ${response.projectId}\nExpected quotes: ${response.estimatedQuotes}\nResponse time: ${response.expectedResponseTime}`);
+        
+        // Reset form
+        setProjectType('');
+        setLocation('');
+        setDescription('');
+      }
+    } catch (error) {
+      console.error('Error submitting project:', error);
+      alert('Failed to submit project. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -76,9 +109,9 @@ const Hero = ({ translations }) => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {translations.projectType}
+                    {translations.projectType} *
                   </label>
-                  <Select value={projectType} onValueChange={setProjectType}>
+                  <Select value={projectType} onValueChange={setProjectType} required>
                     <SelectTrigger>
                       <SelectValue placeholder={translations.selectService} />
                     </SelectTrigger>
@@ -89,13 +122,16 @@ const Hero = ({ translations }) => {
                       <SelectItem value="painting">{translations.services_painting}</SelectItem>
                       <SelectItem value="roofing">{translations.services_roofing}</SelectItem>
                       <SelectItem value="heating">{translations.services_heating}</SelectItem>
+                      <SelectItem value="renovation">{translations.services_renovation}</SelectItem>
+                      <SelectItem value="landscaping">{translations.services_landscaping}</SelectItem>
+                      <SelectItem value="construction">{translations.services_construction}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {translations.location}
+                    {translations.location} *
                   </label>
                   <div className="relative">
                     <MapPin className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
@@ -105,27 +141,30 @@ const Hero = ({ translations }) => {
                       value={location}
                       onChange={(e) => setLocation(e.target.value)}
                       className="pl-10"
+                      required
                     />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {translations.projectDescription}
+                    {translations.projectDescription} *
                   </label>
                   <Textarea
                     placeholder={translations.describeProject}
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     rows={4}
+                    required
                   />
                 </div>
 
                 <Button 
                   type="submit" 
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-medium"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-medium disabled:opacity-50"
+                  disabled={isSubmitting}
                 >
-                  {translations.getQuotes}
+                  {isSubmitting ? 'Submitting...' : translations.getQuotes}
                 </Button>
               </form>
 
