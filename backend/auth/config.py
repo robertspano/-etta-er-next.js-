@@ -7,7 +7,7 @@ from fastapi_users.authentication import (
     CookieTransport,
     JWTStrategy,
 )
-from fastapi_users.db import BeanieUserDatabase
+from fastapi_users_db_beanie import BeanieUserDatabase
 from httpx_oauth.clients.google import GoogleOAuth2
 from models.user import User, UserCreate, UserUpdate
 
