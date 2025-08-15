@@ -1,4 +1,5 @@
 from motor.motor_asyncio import AsyncIOMotorClient
+from beanie import init_beanie
 import os
 from typing import List, Optional, Dict, Any
 import logging
