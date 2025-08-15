@@ -71,6 +71,9 @@ class DatabaseService:
         cursor = self.db[collection].find(filter_dict).skip(skip).limit(limit)
         documents = []
         async for document in cursor:
+            # Ensure we have an id field for API responses
+            if '_id' in document and 'id' not in document:
+                document['id'] = document['_id']
             document.pop('_id', None)
             documents.append(document)
         return documents
