@@ -212,7 +212,7 @@ const JobBrowsing = ({ translations, language }) => {
                 <SelectValue placeholder={translations.priority} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Priorities</SelectItem>
+                <SelectItem value="all">All Priorities</SelectItem>
                 <SelectItem value="urgent">{translations.urgent}</SelectItem>
                 <SelectItem value="high">{translations.high}</SelectItem>
                 <SelectItem value="medium">{translations.medium}</SelectItem>
