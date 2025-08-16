@@ -1049,6 +1049,370 @@ class BuildConnectAPITester:
         except Exception as e:
             self.log_test("PUT /api/notifications/mark-all-read", False, f"Request failed: {str(e)}")
 
+    async def test_public_job_posting_wizard(self):
+        """Test comprehensive public job posting wizard functionality"""
+        print("\n=== Testing Public Job Posting Wizard ===")
+        
+        # Test data for wizard flow
+        draft_data = {
+            "category": "plumbing",
+            "title": "Emergency Kitchen Sink Repair Needed",
+            "description": "My kitchen sink is leaking badly and needs immediate professional attention. The leak is coming from under the sink and water is pooling on the floor.",
+            "postcode": "101"
+        }
+        
+        contact_data = {
+            "email": "homeowner@example.com",
+            "phone": "+354-555-1234",
+            "firstName": "Anna",
+            "lastName": "Sigurdsdottir",
+            "address": "Laugavegur 25, Reykjavik",
+            "postcode": "101",
+            "contactPreference": "platform_and_phone"
+        }
+        
+        draft_id = None
+        guest_session = None
+        
+        # Test 1: Create draft job request as guest (no auth)
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/public/job-requests/draft",
+                json=draft_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 200 and data.get("id"):
+                    draft_id = data["id"]
+                    # Check for guest cookie
+                    cookies = response.cookies
+                    if "bc_guest_id" in cookies:
+                        guest_session = cookies["bc_guest_id"].value
+                        self.log_test("POST /api/public/job-requests/draft (Guest)", True, f"Draft created with ID: {draft_id}, Guest ID: {guest_session[:8]}...")
+                    else:
+                        self.log_test("POST /api/public/job-requests/draft (Guest)", False, "Draft created but no guest cookie set")
+                else:
+                    self.log_test("POST /api/public/job-requests/draft (Guest)", False, f"Draft creation failed: {response.status}", data)
+                    return
+        except Exception as e:
+            self.log_test("POST /api/public/job-requests/draft (Guest)", False, f"Request failed: {str(e)}")
+            return
+        
+        # Test 2: Update draft with contact information (using guest session)
+        if draft_id and guest_session:
+            try:
+                cookies = {"bc_guest_id": guest_session}
+                async with self.session.patch(
+                    f"{BACKEND_URL}/public/job-requests/{draft_id}",
+                    json=contact_data,
+                    cookies=cookies,
+                    headers={"Content-Type": "application/json"}
+                ) as response:
+                    data = await response.json()
+                    if response.status == 200:
+                        self.log_test("PATCH /api/public/job-requests/{id} (Guest Update)", True, "Draft updated with contact info")
+                    else:
+                        self.log_test("PATCH /api/public/job-requests/{id} (Guest Update)", False, f"Update failed: {response.status}", data)
+            except Exception as e:
+                self.log_test("PATCH /api/public/job-requests/{id} (Guest Update)", False, f"Request failed: {str(e)}")
+        
+        # Test 3: Submit draft to make it live
+        if draft_id and guest_session:
+            try:
+                cookies = {"bc_guest_id": guest_session}
+                async with self.session.post(
+                    f"{BACKEND_URL}/public/job-requests/{draft_id}/submit",
+                    cookies=cookies
+                ) as response:
+                    data = await response.json()
+                    if response.status == 200 and data.get("status") == "open":
+                        self.log_test("POST /api/public/job-requests/{id}/submit (Guest)", True, f"Draft submitted successfully, status: {data.get('status')}")
+                    else:
+                        self.log_test("POST /api/public/job-requests/{id}/submit (Guest)", False, f"Submit failed: {response.status}", data)
+            except Exception as e:
+                self.log_test("POST /api/public/job-requests/{id}/submit (Guest)", False, f"Request failed: {str(e)}")
+        
+        # Test 4: Test validation errors
+        await self.test_public_wizard_validation()
+        
+        # Test 5: Test authorization (guest A cannot modify guest B's drafts)
+        await self.test_public_wizard_authorization()
+        
+        # Test 6: Test rate limiting
+        await self.test_public_wizard_rate_limiting()
+        
+        # Test 7: Test authenticated user can also use public endpoints
+        await self.test_public_wizard_authenticated_user()
+        
+        # Test 8: Test all wizard categories
+        await self.test_public_wizard_categories()
+    
+    async def test_public_wizard_validation(self):
+        """Test validation errors for public wizard"""
+        print("\n--- Testing Public Wizard Validation ---")
+        
+        # Test short title (less than 10 chars)
+        short_title_data = {
+            "category": "plumbing",
+            "title": "Short",  # Only 5 characters
+            "description": "This description is long enough to pass validation requirements for the job posting wizard",
+            "postcode": "101"
+        }
+        
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/public/job-requests/draft",
+                json=short_title_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status == 422:  # Validation error
+                    self.log_test("Public Wizard Validation (Short Title)", True, "Short title correctly rejected")
+                else:
+                    data = await response.json()
+                    self.log_test("Public Wizard Validation (Short Title)", False, f"Expected 422, got: {response.status}", data)
+        except Exception as e:
+            self.log_test("Public Wizard Validation (Short Title)", False, f"Request failed: {str(e)}")
+        
+        # Test short description (less than 30 chars)
+        short_desc_data = {
+            "category": "electrical",
+            "title": "Electrical Work Needed Urgently",
+            "description": "Too short",  # Only 9 characters
+            "postcode": "101"
+        }
+        
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/public/job-requests/draft",
+                json=short_desc_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status == 422:  # Validation error
+                    self.log_test("Public Wizard Validation (Short Description)", True, "Short description correctly rejected")
+                else:
+                    data = await response.json()
+                    self.log_test("Public Wizard Validation (Short Description)", False, f"Expected 422, got: {response.status}", data)
+        except Exception as e:
+            self.log_test("Public Wizard Validation (Short Description)", False, f"Request failed: {str(e)}")
+    
+    async def test_public_wizard_authorization(self):
+        """Test authorization - guest A cannot modify guest B's drafts"""
+        print("\n--- Testing Public Wizard Authorization ---")
+        
+        # Create draft with first guest session
+        draft_data = {
+            "category": "renovation",
+            "title": "Bathroom Renovation Project",
+            "description": "Complete bathroom renovation including new tiles, fixtures, and plumbing work needed for modern upgrade",
+            "postcode": "105"
+        }
+        
+        draft_id = None
+        guest_a_session = None
+        
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/public/job-requests/draft",
+                json=draft_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 200:
+                    draft_id = data["id"]
+                    cookies = response.cookies
+                    if "bc_guest_id" in cookies:
+                        guest_a_session = cookies["bc_guest_id"].value
+                        self.log_test("Authorization Test Setup (Guest A)", True, f"Draft created by Guest A: {draft_id}")
+                    else:
+                        self.log_test("Authorization Test Setup (Guest A)", False, "No guest cookie set")
+                        return
+                else:
+                    self.log_test("Authorization Test Setup (Guest A)", False, f"Setup failed: {response.status}")
+                    return
+        except Exception as e:
+            self.log_test("Authorization Test Setup (Guest A)", False, f"Request failed: {str(e)}")
+            return
+        
+        # Try to update with different guest session (Guest B)
+        if draft_id:
+            try:
+                # Use a different session to simulate Guest B
+                async with aiohttp.ClientSession() as guest_b_session:
+                    update_data = {"title": "Unauthorized Update Attempt"}
+                    async with guest_b_session.patch(
+                        f"{BACKEND_URL}/public/job-requests/{draft_id}",
+                        json=update_data,
+                        headers={"Content-Type": "application/json"}
+                    ) as response:
+                        if response.status == 403:  # Forbidden
+                            self.log_test("Public Wizard Authorization (Guest B Denied)", True, "Guest B correctly denied access to Guest A's draft")
+                        else:
+                            data = await response.json()
+                            self.log_test("Public Wizard Authorization (Guest B Denied)", False, f"Expected 403, got: {response.status}", data)
+            except Exception as e:
+                self.log_test("Public Wizard Authorization (Guest B Denied)", False, f"Request failed: {str(e)}")
+    
+    async def test_public_wizard_rate_limiting(self):
+        """Test rate limiting for guest users (10 posts per hour)"""
+        print("\n--- Testing Public Wizard Rate Limiting ---")
+        
+        # Create multiple drafts quickly to test rate limiting
+        base_data = {
+            "category": "cleaning",
+            "title": "House Cleaning Service Required",
+            "description": "Professional house cleaning service needed for deep cleaning of entire home including all rooms",
+            "postcode": "107"
+        }
+        
+        successful_requests = 0
+        rate_limited = False
+        
+        # Try to create 12 drafts (should hit rate limit at 11th)
+        for i in range(12):
+            try:
+                test_data = base_data.copy()
+                test_data["title"] = f"House Cleaning Service Required #{i+1}"
+                
+                async with self.session.post(
+                    f"{BACKEND_URL}/public/job-requests/draft",
+                    json=test_data,
+                    headers={"Content-Type": "application/json"}
+                ) as response:
+                    if response.status == 200:
+                        successful_requests += 1
+                    elif response.status == 429:  # Too Many Requests
+                        rate_limited = True
+                        break
+                    else:
+                        # Other error, stop testing
+                        break
+            except Exception as e:
+                break
+        
+        if rate_limited and successful_requests >= 10:
+            self.log_test("Public Wizard Rate Limiting", True, f"Rate limiting working: {successful_requests} successful, then blocked")
+        elif successful_requests < 10:
+            self.log_test("Public Wizard Rate Limiting", False, f"Rate limit too strict: only {successful_requests} allowed")
+        else:
+            self.log_test("Public Wizard Rate Limiting", False, f"Rate limiting not working: {successful_requests} requests allowed")
+    
+    async def test_public_wizard_authenticated_user(self):
+        """Test that authenticated users can also use public endpoints"""
+        print("\n--- Testing Public Wizard with Authenticated User ---")
+        
+        # Create a test user first
+        import time
+        timestamp = str(int(time.time()))
+        
+        user_data = {
+            "email": f"wizard_user_{timestamp}@example.com",
+            "password": "WizardTest123!",
+            "role": "customer",
+            "first_name": "Test",
+            "last_name": "User",
+            "phone": "+354-555-9999",
+            "language": "en"
+        }
+        
+        # Register user
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/register",
+                json=user_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status != 201:
+                    self.log_test("Authenticated User Setup", False, f"User registration failed: {response.status}")
+                    return
+        except Exception as e:
+            self.log_test("Authenticated User Setup", False, f"Registration failed: {str(e)}")
+            return
+        
+        # Login user
+        user_session = None
+        try:
+            login_data = {"username": user_data["email"], "password": user_data["password"]}
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/cookie/login",
+                data=login_data,
+                headers={"Content-Type": "application/x-www-form-urlencoded"}
+            ) as response:
+                if response.status == 204:
+                    cookies = response.cookies
+                    if "buildconnect_auth" in cookies:
+                        user_session = cookies["buildconnect_auth"].value
+                        self.log_test("Authenticated User Login", True, "User logged in successfully")
+                    else:
+                        self.log_test("Authenticated User Login", False, "No auth cookie received")
+                        return
+                else:
+                    self.log_test("Authenticated User Login", False, f"Login failed: {response.status}")
+                    return
+        except Exception as e:
+            self.log_test("Authenticated User Login", False, f"Login failed: {str(e)}")
+            return
+        
+        # Test public endpoint with authenticated user
+        if user_session:
+            draft_data = {
+                "category": "automotive",
+                "title": "Car Repair Service Needed",
+                "description": "Professional car repair service needed for engine diagnostics and potential repair work on vehicle",
+                "postcode": "108"
+            }
+            
+            try:
+                cookies = {"buildconnect_auth": user_session}
+                async with self.session.post(
+                    f"{BACKEND_URL}/public/job-requests/draft",
+                    json=draft_data,
+                    cookies=cookies,
+                    headers={"Content-Type": "application/json"}
+                ) as response:
+                    data = await response.json()
+                    if response.status == 200 and data.get("id"):
+                        self.log_test("Public Wizard (Authenticated User)", True, f"Authenticated user can use public endpoint: {data.get('id')}")
+                    else:
+                        self.log_test("Public Wizard (Authenticated User)", False, f"Public endpoint failed for auth user: {response.status}", data)
+            except Exception as e:
+                self.log_test("Public Wizard (Authenticated User)", False, f"Request failed: {str(e)}")
+    
+    async def test_public_wizard_categories(self):
+        """Test all wizard categories work correctly"""
+        print("\n--- Testing Public Wizard Categories ---")
+        
+        categories = [
+            "handcraft",
+            "bathroom", 
+            "automotive",
+            "majorProjects",
+            "cleaning",
+            "housingAssociations",
+            "moving"
+        ]
+        
+        for category in categories:
+            try:
+                draft_data = {
+                    "category": category,
+                    "title": f"Professional {category.title()} Service Required",
+                    "description": f"Need professional {category} service for quality work and reliable completion of project requirements",
+                    "postcode": "101"
+                }
+                
+                async with self.session.post(
+                    f"{BACKEND_URL}/public/job-requests/draft",
+                    json=draft_data,
+                    headers={"Content-Type": "application/json"}
+                ) as response:
+                    data = await response.json()
+                    if response.status == 200 and data.get("category") == category:
+                        self.log_test(f"Public Wizard Category ({category})", True, f"Category {category} working correctly")
+                    else:
+                        self.log_test(f"Public Wizard Category ({category})", False, f"Category {category} failed: {response.status}", data)
+            except Exception as e:
+                self.log_test(f"Public Wizard Category ({category})", False, f"Request failed: {str(e)}")
+
     async def run_all_tests(self):
         """Run all test suites"""
         print("🚀 Starting BuildConnect Backend API Tests")
@@ -1065,6 +1429,7 @@ class BuildConnectAPITester:
             await self.test_testimonials_endpoints()
             await self.test_authentication_system()
             await self.test_marketplace_apis()
+            await self.test_public_job_posting_wizard()
             await self.test_error_handling()
         finally:
             await self.cleanup()
