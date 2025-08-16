@@ -34,6 +34,9 @@ const AutomotiveStep1 = ({
     return regex.test(plate);
   };
 
+  // Calculate if form is valid
+  const isValid = licensePlate && validateLicensePlate(licensePlate) && !validationError;
+
   const handlePlateChange = (e) => {
     const cleaned = cleanLicensePlate(e.target.value);
     
