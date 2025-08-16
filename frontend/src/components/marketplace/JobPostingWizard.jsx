@@ -183,7 +183,23 @@ const JobPostingWizard = ({ translations, language }) => {
       }
     } catch (err) {
       console.error('API call failed:', err);
-      setError('Failed to save progress. Please try again.');
+      console.error('Error details:', {
+        message: err.message,
+        response: err.response?.data,
+        status: err.response?.status,
+        url: err.config?.url
+      });
+      
+      // More specific error messages
+      if (err.message?.includes('Network Error')) {
+        setError('Network connection failed. Please check your internet connection and try again.');
+      } else if (err.response?.status === 422) {
+        setError('Please check that your title is at least 10 characters and description is at least 30 characters.');
+      } else if (err.response?.status >= 500) {
+        setError('Server error. Please try again in a moment.');
+      } else {
+        setError('Failed to save progress. Please try again.');
+      }
       console.error('Save error:', err);
     } finally {
       setLoading(false);
