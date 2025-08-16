@@ -159,9 +159,10 @@ const Hero = ({ translations }) => {
                       </div>
                     </div>
                     
-                    {/* Label */}
-                    <span className="text-sm md:text-base font-medium text-slate-800 group-hover:text-[#1B2B5B] text-center leading-tight transition-colors duration-200">
+                    {/* Label with underline on hover */}
+                    <span className="text-sm md:text-base font-medium text-slate-800 group-hover:text-[#1B2B5B] text-center leading-tight transition-all duration-200 relative">
                       {category.name}
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#1B2B5B] group-hover:w-full transition-all duration-200"></span>
                     </span>
                   </button>
                 );
