@@ -41,7 +41,7 @@ class DatabaseService:
             from models.pro_lead import ProLead
             
             await init_beanie(database=self.db, document_models=[
-                User, JobRequest, Quote, JobMessage, Notification, Review, XLLead
+                User, JobRequest, Quote, JobMessage, Notification, Review, XLLead, ProLead
             ])
             logger.info("Initialized Beanie with all marketplace models")
             
