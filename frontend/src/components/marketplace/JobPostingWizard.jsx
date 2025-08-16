@@ -547,7 +547,14 @@ const JobPostingWizard = ({ translations, language }) => {
             disabled={loading || (currentStep === 1 && (!formData.title.trim() || !formData.description.trim()))}
             className="px-8"
           >
-            {loading ? <LoadingSpinner size="sm" /> : translations.next}
+            {loading ? (
+              <div className="flex items-center gap-2">
+                <LoadingSpinner size="sm" />
+                <span>Saving...</span>
+              </div>
+            ) : (
+              translations.next
+            )}
           </Button>
         ) : (
           <Button
