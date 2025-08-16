@@ -435,9 +435,6 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Professional Dashboard Implementation"
-    - "Professional Job Browsing Interface"
-    - "Quote Submission Form"
     - "Professional Profile Management"
   stuck_tasks: []
   test_all: false
