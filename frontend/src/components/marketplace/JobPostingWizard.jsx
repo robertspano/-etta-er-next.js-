@@ -93,6 +93,21 @@ const JobPostingWizard = ({ translations, language }) => {
   };
 
   const validateStep1 = () => {
+    // For automotive category, validate license plate instead of title/description
+    if (formData.category === 'automotive') {
+      if (!formData.licensePlate || formData.licensePlate.length < 2 || formData.licensePlate.length > 8) {
+        setError('License plate must be 2-8 alphanumeric characters');
+        return false;
+      }
+      const plateRegex = /^[A-Z0-9]{2,8}$/;
+      if (!plateRegex.test(formData.licensePlate)) {
+        setError('License plate must contain only letters and numbers');
+        return false;
+      }
+      return true;
+    }
+    
+    // Regular validation for other categories
     if (!formData.title.trim() || formData.title.length < 10) {
       setError('Title must be at least 10 characters');
       return false;
