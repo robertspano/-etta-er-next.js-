@@ -158,22 +158,38 @@ const CustomerDashboard = ({ translations, language, user }) => {
   };
 
   const acceptQuote = async (quoteId) => {
+    if (!window.confirm(translations.confirmAcceptQuote || 'Are you sure you want to accept this quote?')) {
+      return;
+    }
+    
     try {
       await apiService.acceptQuote(quoteId);
+      setSuccess(translations.quoteAcceptedMsg || 'Quote accepted successfully!');
       // Refresh data
-      loadDashboardData();
+      loadDashboardData(currentPage);
+      setTimeout(() => setSuccess(''), 3000);
     } catch (error) {
       console.error('Failed to accept quote:', error);
+      setError(error.message || translations.acceptQuoteError || 'Failed to accept quote');
+      setTimeout(() => setError(''), 5000);
     }
   };
 
   const declineQuote = async (quoteId) => {
+    if (!window.confirm(translations.confirmDeclineQuote || 'Are you sure you want to decline this quote?')) {
+      return;
+    }
+    
     try {
       await apiService.declineQuote(quoteId);
+      setSuccess(translations.quoteDeclinedMsg || 'Quote declined successfully!');
       // Refresh data
-      loadDashboardData();
+      loadDashboardData(currentPage);
+      setTimeout(() => setSuccess(''), 3000);
     } catch (error) {
       console.error('Failed to decline quote:', error);
+      setError(error.message || translations.declineQuoteError || 'Failed to decline quote');
+      setTimeout(() => setError(''), 5000);
     }
   };
 
