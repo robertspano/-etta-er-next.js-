@@ -258,30 +258,33 @@ const Header = ({ language, setLanguage, translations }) => {
         )}
       </div>
       
-      {/* Right Drawer */}
+      {/* Right Drawer - Mittanbud Style */}
       {isDrawerOpen && (
         <>
           {/* Backdrop */}
           <div 
-            className="fixed inset-0 bg-black bg-opacity-20 z-40 transition-opacity duration-300"
+            className="fixed inset-0 bg-black bg-opacity-20 z-40 transition-opacity duration-250"
             onClick={closeDrawer}
           />
           
           {/* Drawer */}
           <div 
-            className={`fixed right-0 top-0 h-full w-96 bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-out ${
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
+            className={`fixed right-0 top-0 bottom-0 w-96 bg-white shadow-2xl z-50 transform transition-transform duration-250 ease-out ${
               isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
           >
             <div className="h-full overflow-y-auto">
-              {/* Drawer Header - Clean, X button only */}
+              {/* Clean Header - X button only */}
               <div className="flex items-center justify-end p-4">
                 <button
                   onClick={closeDrawer}
                   className="p-2 hover:bg-gray-100 rounded-full transition-colors"
                   aria-label="Close menu"
                 >
-                  <X className="h-5 w-5 text-gray-600" />
+                  <X className="h-6 w-6 text-gray-600" />
                 </button>
               </div>
               
@@ -322,27 +325,22 @@ const Header = ({ language, setLanguage, translations }) => {
                           </div>
                           <ChevronRight className="h-5 w-5 text-red-400 group-hover:text-red-600" />
                         </button>
-                        
-                        {/* Divider */}
-                        <div className="border-t border-gray-200 my-4"></div>
                       </>
                     ) : (
-                      <>
-                        <button
-                          onClick={handleLogin}
-                          className="w-full flex items-center justify-between py-4 text-left hover:bg-gray-50 rounded-lg transition-colors group"
-                        >
-                          <div className="flex items-center">
-                            <User className="h-6 w-6 text-gray-400 mr-3" />
-                            <span className="text-gray-800 font-medium">{translations.login}</span>
-                          </div>
-                          <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
-                        </button>
-                        
-                        {/* Divider */}
-                        <div className="border-t border-gray-200 my-4"></div>
-                      </>
+                      <button
+                        onClick={handleLogin}
+                        className="w-full flex items-center justify-between py-4 text-left hover:bg-gray-50 rounded-lg transition-colors group"
+                      >
+                        <div className="flex items-center">
+                          <User className="h-6 w-6 text-gray-400 mr-3" />
+                          <span className="text-gray-800 font-medium">{translations.login}</span>
+                        </div>
+                        <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
+                      </button>
                     )}
+                    
+                    {/* Divider */}
+                    <div className="border-t border-gray-200 my-4"></div>
                   </>
                 )}
                 
