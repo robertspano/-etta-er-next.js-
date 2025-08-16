@@ -291,8 +291,21 @@ export const translations = {
     receivedQuotes: "Received Quotes",
     
     // Hero Section
-    heroTitle: "Find Trusted Construction Professionals Near You",
-    heroSubtitle: "Connect with verified craftspeople, get competitive quotes, and complete your projects with confidence. From small repairs to major renovations.",
+    heroTitle: "Get the Job Done!",
+    heroSubtitle: "Describe your project and get quotes from trusted professionals. Free and without obligation.",
+    heroSearchPlaceholder: "What do you need help with?",
+    heroNewTitle: "Get the Job Done!",
+    heroNewSubtitle: "Describe your project and get quotes from trusted professionals. Free and without obligation.",
+    
+    // Service Categories
+    handcraft: "Handcraft",
+    bathroom: "Bathroom", 
+    automotive: "Automotive",
+    majorProjects: "Major Projects",
+    cleaning: "Cleaning",
+    housingAssociations: "Housing Associations",
+    moving: "Moving",
+    allCategories: "All Categories",
     professionals: "Professionals",
     completedProjects: "Completed Projects",
     rating: "Rating",
