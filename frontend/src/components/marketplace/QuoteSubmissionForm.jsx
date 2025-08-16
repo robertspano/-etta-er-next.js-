@@ -355,7 +355,7 @@ const QuoteSubmissionForm = ({ translations, language }) => {
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
-                    placeholder={translations.describeApproach || 'Describe your approach, experience, and what's included...'}
+                    placeholder={translations.describeApproach || 'Describe your approach, experience, and what is included...'}
                     rows={4}
                     required
                     className="mt-2"
