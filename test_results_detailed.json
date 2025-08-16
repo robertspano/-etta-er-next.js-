@@ -1,396 +1,930 @@
 {
   "summary": {
-    "total": 55,
-    "passed": 2,
-    "failed": 53,
-    "success_rate": 3.6363636363636362
+    "total": 127,
+    "passed": 112,
+    "failed": 15,
+    "success_rate": 88.18897637795276
   },
   "results": [
     {
       "test": "GET /api/",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/'",
-      "timestamp": "2025-08-16T16:27:20.182077",
+      "success": true,
+      "details": "Status: 200, Message: BuildConnect API is running",
+      "timestamp": "2025-08-16T21:32:10.652508",
       "response_data": null
     },
     {
       "test": "GET /api/health",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/health'",
-      "timestamp": "2025-08-16T16:27:20.193186",
+      "success": true,
+      "details": "Status: 200, Health: healthy",
+      "timestamp": "2025-08-16T21:32:10.663202",
       "response_data": null
     },
     {
       "test": "GET /api/services (English)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/services?language=en'",
-      "timestamp": "2025-08-16T16:27:20.203363",
+      "success": true,
+      "details": "Retrieved 9 services in English",
+      "timestamp": "2025-08-16T21:32:10.686915",
       "response_data": null
     },
     {
       "test": "GET /api/services (Icelandic)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/services?language=is'",
-      "timestamp": "2025-08-16T16:27:20.211586",
+      "success": true,
+      "details": "Retrieved 9 services in Icelandic",
+      "timestamp": "2025-08-16T21:32:10.703648",
       "response_data": null
     },
     {
       "test": "GET /api/services (Default)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/services'",
-      "timestamp": "2025-08-16T16:27:20.220024",
+      "success": true,
+      "details": "Default language fallback works (English)",
+      "timestamp": "2025-08-16T21:32:10.720877",
       "response_data": null
     },
     {
       "test": "POST /api/projects (Valid)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/projects/'",
-      "timestamp": "2025-08-16T16:27:20.228223",
+      "success": true,
+      "details": "Project created with ID: 8d6de799-0499-4847-a028-7db3bbb4d11d",
+      "timestamp": "2025-08-16T21:32:10.777633",
       "response_data": null
     },
     {
       "test": "POST /api/projects (Invalid)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/projects/'",
-      "timestamp": "2025-08-16T16:27:20.236372",
+      "success": true,
+      "details": "Validation error returned as expected",
+      "timestamp": "2025-08-16T21:32:10.828261",
       "response_data": null
     },
     {
       "test": "GET /api/projects",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/projects/'",
-      "timestamp": "2025-08-16T16:27:20.244869",
+      "success": true,
+      "details": "Retrieved 14 projects",
+      "timestamp": "2025-08-16T21:32:10.837619",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/projects (Filtered)",
+      "success": true,
+      "details": "Filtered projects: 14",
+      "timestamp": "2025-08-16T21:32:10.846682",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/projects/{id}",
+      "success": true,
+      "details": "Retrieved project: Kitchen Renovation Project",
+      "timestamp": "2025-08-16T21:32:10.897541",
       "response_data": null
     },
     {
       "test": "GET /api/stats",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/stats/'",
-      "timestamp": "2025-08-16T16:27:20.253504",
+      "success": true,
+      "details": "Stats retrieved: 14 projects, 0 professionals",
+      "timestamp": "2025-08-16T21:32:10.923080",
       "response_data": null
     },
     {
       "test": "GET /api/testimonials",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/testimonials/'",
-      "timestamp": "2025-08-16T16:27:20.261917",
+      "success": true,
+      "details": "Retrieved 6 testimonials",
+      "timestamp": "2025-08-16T21:32:10.932118",
       "response_data": null
     },
     {
       "test": "GET /api/testimonials/featured",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/testimonials/featured'",
-      "timestamp": "2025-08-16T16:27:20.270576",
+      "success": true,
+      "details": "Retrieved 3 featured testimonials",
+      "timestamp": "2025-08-16T21:32:10.981801",
       "response_data": null
     },
     {
       "test": "POST /api/auth/register (Customer)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/auth/register'",
-      "timestamp": "2025-08-16T16:27:20.279130",
+      "success": true,
+      "details": "Customer registered: customer_1755379930@example.com",
+      "timestamp": "2025-08-16T21:32:11.221215",
       "response_data": null
     },
     {
       "test": "POST /api/auth/register (Professional)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/auth/register'",
-      "timestamp": "2025-08-16T16:27:20.289179",
+      "success": true,
+      "details": "Professional registered: professional_1755379930@example.com",
+      "timestamp": "2025-08-16T21:32:11.554102",
       "response_data": null
     },
     {
       "test": "POST /api/auth/cookie/login (Customer)",
-      "success": false,
-      "details": "Login failed: 502",
-      "timestamp": "2025-08-16T16:27:20.299789",
-      "response_data": ""
+      "success": true,
+      "details": "Customer login successful with cookie",
+      "timestamp": "2025-08-16T21:32:11.739237",
+      "response_data": null
     },
     {
       "test": "POST /api/auth/cookie/login (Professional)",
-      "success": false,
-      "details": "Login failed: 502",
-      "timestamp": "2025-08-16T16:27:20.307079",
-      "response_data": ""
+      "success": true,
+      "details": "Professional login successful with cookie",
+      "timestamp": "2025-08-16T21:32:11.943276",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/auth/me (Customer)",
+      "success": true,
+      "details": "User info retrieved: customer_1755379930@example.com",
+      "timestamp": "2025-08-16T21:32:11.953812",
+      "response_data": null
+    },
+    {
+      "test": "PUT /api/auth/profile",
+      "success": true,
+      "details": "Profile updated successfully",
+      "timestamp": "2025-08-16T21:32:12.006238",
+      "response_data": null
+    },
+    {
+      "test": "POST /api/auth/switch-role",
+      "success": true,
+      "details": "Role switched to professional",
+      "timestamp": "2025-08-16T21:32:12.017924",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/auth/customer-only (Customer)",
+      "success": true,
+      "details": "Customer access correctly denied after role switch",
+      "timestamp": "2025-08-16T21:32:12.068835",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/auth/professional-only (Professional)",
+      "success": true,
+      "details": "Professional access granted",
+      "timestamp": "2025-08-16T21:32:12.078798",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/auth/admin-only (Customer Denied)",
+      "success": true,
+      "details": "Admin access correctly denied to customer",
+      "timestamp": "2025-08-16T21:32:12.087777",
+      "response_data": null
     },
     {
       "test": "GET /api/auth/me (Unauthenticated)",
-      "success": false,
-      "details": "Expected 401, got: 502",
-      "timestamp": "2025-08-16T16:27:20.326722",
-      "response_data": ""
+      "success": true,
+      "details": "Protected endpoint correctly requires authentication",
+      "timestamp": "2025-08-16T21:32:12.109278",
+      "response_data": null
     },
     {
-      "test": "Marketplace API Setup",
+      "test": "POST /api/auth/cookie/logout",
+      "success": true,
+      "details": "Logout successful",
+      "timestamp": "2025-08-16T21:32:12.118102",
+      "response_data": null
+    },
+    {
+      "test": "Marketplace Customer Registration",
+      "success": true,
+      "details": "Customer registered successfully",
+      "timestamp": "2025-08-16T21:32:12.373507",
+      "response_data": null
+    },
+    {
+      "test": "Marketplace Professional Registration",
+      "success": true,
+      "details": "Professional registered successfully",
+      "timestamp": "2025-08-16T21:32:12.577861",
+      "response_data": null
+    },
+    {
+      "test": "Marketplace Customer Login",
+      "success": true,
+      "details": "Customer login successful",
+      "timestamp": "2025-08-16T21:32:12.739497",
+      "response_data": null
+    },
+    {
+      "test": "Marketplace Professional Login",
+      "success": true,
+      "details": "Professional login successful",
+      "timestamp": "2025-08-16T21:32:12.943713",
+      "response_data": null
+    },
+    {
+      "test": "POST /api/job-requests",
+      "success": true,
+      "details": "Job created with ID: 5ecf2912-45ee-4c11-92df-213f6fbc61a5",
+      "timestamp": "2025-08-16T21:32:12.955726",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/job-requests",
       "success": false,
-      "details": "Setup failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/auth/register'",
-      "timestamp": "2025-08-16T16:27:20.337036",
+      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://tradesmen-connect.preview.emergentagent.com/api/job-requests/'",
+      "timestamp": "2025-08-16T21:32:12.978394",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/job-requests/{id}",
+      "success": true,
+      "details": "Retrieved job: Kitchen Sink Installation",
+      "timestamp": "2025-08-16T21:32:13.034039",
+      "response_data": null
+    },
+    {
+      "test": "PUT /api/job-requests/{id}",
+      "success": true,
+      "details": "Job updated successfully",
+      "timestamp": "2025-08-16T21:32:13.059739",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/job-requests (Category Filter)",
+      "success": false,
+      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://tradesmen-connect.preview.emergentagent.com/api/job-requests/?category=plumbing'",
+      "timestamp": "2025-08-16T21:32:13.073321",
+      "response_data": null
+    },
+    {
+      "test": "POST /api/quotes",
+      "success": false,
+      "details": "Quote creation failed: 400",
+      "timestamp": "2025-08-16T21:32:13.124507",
+      "response_data": {
+        "detail": "This job is no longer accepting quotes"
+      }
+    },
+    {
+      "test": "POST /api/messages",
+      "success": true,
+      "details": "Message sent: b6b46a2e-75ff-4231-9eaa-f88ed020afbf",
+      "timestamp": "2025-08-16T21:32:13.404768",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/messages/job/{id}",
+      "success": true,
+      "details": "Retrieved 1 messages",
+      "timestamp": "2025-08-16T21:32:13.426697",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/messages/conversations",
+      "success": true,
+      "details": "Retrieved 1 conversations",
+      "timestamp": "2025-08-16T21:32:13.479523",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/notifications",
+      "success": true,
+      "details": "Retrieved 0 notifications",
+      "timestamp": "2025-08-16T21:32:13.490146",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/notifications/stats",
+      "success": true,
+      "details": "Stats: 0 total, 0 unread",
+      "timestamp": "2025-08-16T21:32:13.540748",
+      "response_data": null
+    },
+    {
+      "test": "PUT /api/notifications/mark-all-read",
+      "success": true,
+      "details": "Marked notifications as read: Marked 0 notifications as read",
+      "timestamp": "2025-08-16T21:32:13.551703",
       "response_data": null
     },
     {
       "test": "POST /api/public/job-requests/draft (Guest)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/public/job-requests/draft'",
-      "timestamp": "2025-08-16T16:27:20.344087",
+      "details": "Draft created but no guest cookie set",
+      "timestamp": "2025-08-16T21:32:13.603387",
+      "response_data": null
+    },
+    {
+      "test": "Public Wizard Validation (Short Title)",
+      "success": true,
+      "details": "Short title correctly rejected",
+      "timestamp": "2025-08-16T21:32:13.613653",
+      "response_data": null
+    },
+    {
+      "test": "Public Wizard Validation (Short Description)",
+      "success": true,
+      "details": "Short description correctly rejected",
+      "timestamp": "2025-08-16T21:32:13.664714",
+      "response_data": null
+    },
+    {
+      "test": "Authorization Test Setup (Guest A)",
+      "success": false,
+      "details": "No guest cookie set",
+      "timestamp": "2025-08-16T21:32:13.675913",
+      "response_data": null
+    },
+    {
+      "test": "Public Wizard Rate Limiting",
+      "success": false,
+      "details": "Rate limiting not working: 12 requests allowed",
+      "timestamp": "2025-08-16T21:32:14.037910",
+      "response_data": null
+    },
+    {
+      "test": "Authenticated User Login",
+      "success": true,
+      "details": "User logged in successfully",
+      "timestamp": "2025-08-16T21:32:14.451447",
+      "response_data": null
+    },
+    {
+      "test": "Public Wizard (Authenticated User)",
+      "success": false,
+      "details": "Public endpoint failed for auth user: 422",
+      "timestamp": "2025-08-16T21:32:14.461954",
+      "response_data": {
+        "detail": [
+          {
+            "type": "value_error",
+            "loc": [
+              "body"
+            ],
+            "msg": "Value error, License plate is required for automotive category",
+            "input": {
+              "category": "automotive",
+              "title": "Car Repair Service Needed",
+              "description": "Professional car repair service needed for engine diagnostics and potential repair work on vehicle",
+              "postcode": "108"
+            },
+            "ctx": {
+              "error": {}
+            },
+            "url": "https://errors.pydantic.dev/2.11/v/value_error"
+          }
+        ]
+      }
+    },
+    {
+      "test": "Public Wizard Category (handcraft)",
+      "success": true,
+      "details": "Category handcraft working correctly",
+      "timestamp": "2025-08-16T21:32:14.513559",
+      "response_data": null
+    },
+    {
+      "test": "Public Wizard Category (bathroom)",
+      "success": true,
+      "details": "Category bathroom working correctly",
+      "timestamp": "2025-08-16T21:32:14.564465",
+      "response_data": null
+    },
+    {
+      "test": "Public Wizard Category (automotive)",
+      "success": true,
+      "details": "Category automotive working correctly",
+      "timestamp": "2025-08-16T21:32:14.575900",
+      "response_data": null
+    },
+    {
+      "test": "Public Wizard Category (majorProjects)",
+      "success": true,
+      "details": "Category majorProjects working correctly",
+      "timestamp": "2025-08-16T21:32:14.626787",
+      "response_data": null
+    },
+    {
+      "test": "Public Wizard Category (cleaning)",
+      "success": true,
+      "details": "Category cleaning working correctly",
+      "timestamp": "2025-08-16T21:32:14.683281",
+      "response_data": null
+    },
+    {
+      "test": "Public Wizard Category (housingAssociations)",
+      "success": true,
+      "details": "Category housingAssociations working correctly",
+      "timestamp": "2025-08-16T21:32:14.694477",
+      "response_data": null
+    },
+    {
+      "test": "Public Wizard Category (moving)",
+      "success": true,
+      "details": "Category moving working correctly",
+      "timestamp": "2025-08-16T21:32:14.751097",
       "response_data": null
     },
     {
       "test": "POST /api/public/job-requests/draft (Automotive)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/public/job-requests/draft'",
-      "timestamp": "2025-08-16T16:27:20.351849",
+      "details": "Draft created but no guest cookie set",
+      "timestamp": "2025-08-16T21:32:14.762581",
+      "response_data": null
+    },
+    {
+      "test": "POST /api/public/job-requests/draft (Regular)",
+      "success": false,
+      "details": "Draft created but no guest cookie set",
+      "timestamp": "2025-08-16T21:32:14.773134",
+      "response_data": null
+    },
+    {
+      "test": "Automotive Validation (Missing License Plate)",
+      "success": true,
+      "details": "Missing license plate correctly rejected",
+      "timestamp": "2025-08-16T21:32:14.822887",
+      "response_data": null
+    },
+    {
+      "test": "Automotive Validation (Short License Plate)",
+      "success": true,
+      "details": "Short license plate correctly rejected",
+      "timestamp": "2025-08-16T21:32:14.874012",
+      "response_data": null
+    },
+    {
+      "test": "Automotive Validation (Long License Plate)",
+      "success": true,
+      "details": "Long license plate correctly rejected",
+      "timestamp": "2025-08-16T21:32:14.884540",
+      "response_data": null
+    },
+    {
+      "test": "Automotive Validation (Invalid Characters)",
+      "success": true,
+      "details": "Invalid license plate characters correctly rejected",
+      "timestamp": "2025-08-16T21:32:14.893866",
+      "response_data": null
+    },
+    {
+      "test": "Regular Validation (Missing Title)",
+      "success": true,
+      "details": "Missing title correctly rejected",
+      "timestamp": "2025-08-16T21:32:14.944033",
+      "response_data": null
+    },
+    {
+      "test": "Regular Validation (Missing Description)",
+      "success": true,
+      "details": "Missing description correctly rejected",
+      "timestamp": "2025-08-16T21:32:14.953845",
       "response_data": null
     },
     {
       "test": "Vehicle Lookup (TEST123)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/public/vehicle-lookup?plate=TEST123&country=IS'",
-      "timestamp": "2025-08-16T16:27:20.359856",
+      "success": true,
+      "details": "Found: Tesla Model 3 2022",
+      "timestamp": "2025-08-16T21:32:15.461966",
       "response_data": null
     },
     {
       "test": "Vehicle Lookup (ABC123)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=IS'",
-      "timestamp": "2025-08-16T16:27:20.367201",
+      "success": true,
+      "details": "Found: Toyota Corolla 2019",
+      "timestamp": "2025-08-16T21:32:16.024806",
       "response_data": null
     },
     {
       "test": "Vehicle Lookup (XYZ789)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/public/vehicle-lookup?plate=XYZ789&country=IS'",
-      "timestamp": "2025-08-16T16:27:20.374321",
+      "success": true,
+      "details": "Found: Volkswagen Golf 2021",
+      "timestamp": "2025-08-16T21:32:16.634893",
       "response_data": null
     },
     {
       "test": "Vehicle Lookup (INVALID)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/public/vehicle-lookup?plate=INVALID&country=IS'",
-      "timestamp": "2025-08-16T16:27:20.381026",
+      "success": true,
+      "details": "Vehicle INVALID correctly not found",
+      "timestamp": "2025-08-16T21:32:17.184040",
       "response_data": null
     },
     {
       "test": "Vehicle Lookup Rate Limiting",
       "success": false,
-      "details": "Unexpected behavior: 0 successful, rate_limited: False",
-      "timestamp": "2025-08-16T16:27:20.466703",
+      "details": "Rate limiting not working - all 12 requests succeeded",
+      "timestamp": "2025-08-16T21:32:17.602080",
       "response_data": null
     },
     {
       "test": "Validation (Empty plate)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/public/vehicle-lookup?plate=&country=IS'",
-      "timestamp": "2025-08-16T16:27:20.474902",
+      "success": true,
+      "details": "Invalid plate '' correctly rejected",
+      "timestamp": "2025-08-16T21:32:17.650855",
       "response_data": null
     },
     {
       "test": "Validation (Too short (1 char))",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/public/vehicle-lookup?plate=A&country=IS'",
-      "timestamp": "2025-08-16T16:27:20.482007",
+      "success": true,
+      "details": "Invalid plate 'A' correctly rejected",
+      "timestamp": "2025-08-16T21:32:17.658786",
       "response_data": null
     },
     {
       "test": "Validation (Too long (12 chars))",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/public/vehicle-lookup?plate=TOOLONGPLATE&country=IS'",
-      "timestamp": "2025-08-16T16:27:20.488905",
+      "success": true,
+      "details": "Invalid plate 'TOOLONGPLATE' correctly rejected",
+      "timestamp": "2025-08-16T21:32:17.708916",
       "response_data": null
     },
     {
       "test": "Validation (Invalid characters (hyphen))",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/public/vehicle-lookup?plate=AB-123&country=IS'",
-      "timestamp": "2025-08-16T16:27:20.496876",
-      "response_data": null
+      "details": "Expected 400, got 200",
+      "timestamp": "2025-08-16T21:32:18.217728",
+      "response_data": {
+        "found": false
+      }
     },
     {
       "test": "Validation (Invalid characters (space))",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/public/vehicle-lookup?plate=AB+123&country=IS'",
-      "timestamp": "2025-08-16T16:27:20.505874",
-      "response_data": null
+      "details": "Expected 400, got 200",
+      "timestamp": "2025-08-16T21:32:18.225850",
+      "response_data": {
+        "found": false
+      }
     },
     {
       "test": "Validation (Country NO)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=NO'",
-      "timestamp": "2025-08-16T16:27:20.512701",
+      "success": true,
+      "details": "Unsupported country NO correctly rejected",
+      "timestamp": "2025-08-16T21:32:18.274477",
       "response_data": null
     },
     {
       "test": "Validation (Country DK)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=DK'",
-      "timestamp": "2025-08-16T16:27:20.520238",
+      "success": true,
+      "details": "Unsupported country DK correctly rejected",
+      "timestamp": "2025-08-16T21:32:18.322264",
       "response_data": null
     },
     {
       "test": "Validation (Country SE)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=SE'",
-      "timestamp": "2025-08-16T16:27:20.527068",
+      "success": true,
+      "details": "Unsupported country SE correctly rejected",
+      "timestamp": "2025-08-16T21:32:18.330255",
       "response_data": null
     },
     {
       "test": "Validation (Country FI)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=FI'",
-      "timestamp": "2025-08-16T16:27:20.534220",
+      "success": true,
+      "details": "Unsupported country FI correctly rejected",
+      "timestamp": "2025-08-16T21:32:18.338278",
       "response_data": null
     },
     {
       "test": "Validation (Country US)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=US'",
-      "timestamp": "2025-08-16T16:27:20.541332",
+      "success": true,
+      "details": "Unsupported country US correctly rejected",
+      "timestamp": "2025-08-16T21:32:18.385648",
       "response_data": null
     },
     {
       "test": "Validation (Missing Plate)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/public/vehicle-lookup'",
-      "timestamp": "2025-08-16T16:27:20.549972",
+      "success": true,
+      "details": "Missing plate parameter correctly rejected",
+      "timestamp": "2025-08-16T21:32:18.392987",
       "response_data": null
     },
     {
       "test": "Automotive Flow - Vehicle Lookup",
+      "success": true,
+      "details": "Vehicle found: Tesla Model 3",
+      "timestamp": "2025-08-16T21:32:18.441705",
+      "response_data": null
+    },
+    {
+      "test": "Automotive Flow - Create Draft",
       "success": false,
-      "details": "Lookup failed: 502",
-      "timestamp": "2025-08-16T16:27:20.557602",
+      "details": "Draft created but no guest cookie",
+      "timestamp": "2025-08-16T21:32:18.493538",
       "response_data": null
     },
     {
       "test": "Reviews Sample Data Check",
-      "success": false,
-      "details": "Failed to check existing data: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/reviews?limit=1'",
-      "timestamp": "2025-08-16T16:27:20.565096",
-      "response_data": null
-    },
-    {
-      "test": "Reviews Sample Data Setup",
       "success": true,
-      "details": "Proceeding with reviews testing (sample data should exist)",
-      "timestamp": "2025-08-16T16:27:20.565132",
+      "details": "Found 1 existing reviews",
+      "timestamp": "2025-08-16T21:32:18.554974",
       "response_data": null
     },
     {
       "test": "GET /api/reviews (Basic)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/reviews'",
-      "timestamp": "2025-08-16T16:27:20.571876",
+      "success": true,
+      "details": "Retrieved 4 reviews for homepage",
+      "timestamp": "2025-08-16T21:32:18.581167",
+      "response_data": null
+    },
+    {
+      "test": "Homepage Reviews Format Validation",
+      "success": true,
+      "details": "ReviewListResponse format matches frontend expectations",
+      "timestamp": "2025-08-16T21:32:18.581208",
       "response_data": null
     },
     {
       "test": "GET /api/reviews (Limit Parameter)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/reviews?limit=2'",
-      "timestamp": "2025-08-16T16:27:20.579848",
+      "success": true,
+      "details": "Limit parameter working: 2 reviews returned",
+      "timestamp": "2025-08-16T21:32:18.602173",
       "response_data": null
     },
     {
       "test": "GET /api/reviews (Locale Parameter)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/reviews?locale=is'",
-      "timestamp": "2025-08-16T16:27:20.587007",
+      "success": true,
+      "details": "Locale parameter accepted: 4 reviews returned",
+      "timestamp": "2025-08-16T21:32:18.627193",
       "response_data": null
     },
     {
-      "test": "Get Review ID for Testing",
-      "success": false,
-      "details": "Failed to get review ID: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/reviews?limit=1'",
-      "timestamp": "2025-08-16T16:27:20.593988",
+      "test": "GET /api/reviews/{id}",
+      "success": true,
+      "details": "Individual review retrieved: Outstanding house extension project",
+      "timestamp": "2025-08-16T21:32:18.742692",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/reviews/{id} (Not Found)",
+      "success": true,
+      "details": "Non-existent review returns 404",
+      "timestamp": "2025-08-16T21:32:18.752040",
       "response_data": null
     },
     {
       "test": "GET /api/reviews/professional/{id}",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/reviews/professional/professional-1'",
-      "timestamp": "2025-08-16T16:27:20.601545",
+      "success": true,
+      "details": "Retrieved 1 reviews for professional",
+      "timestamp": "2025-08-16T21:32:18.815929",
+      "response_data": null
+    },
+    {
+      "test": "Professional Reviews Filtering",
+      "success": true,
+      "details": "All reviews belong to correct professional",
+      "timestamp": "2025-08-16T21:32:18.815967",
       "response_data": null
     },
     {
       "test": "Professional Reviews (Limit)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/reviews/professional/professional-1?limit=1'",
-      "timestamp": "2025-08-16T16:27:20.608544",
+      "success": true,
+      "details": "Limit parameter working: 1 reviews",
+      "timestamp": "2025-08-16T21:32:18.827002",
       "response_data": null
     },
     {
       "test": "Professional Reviews (Not Found)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/reviews/professional/non-existent-professional'",
-      "timestamp": "2025-08-16T16:27:20.615692",
+      "success": true,
+      "details": "Non-existent professional returns empty list",
+      "timestamp": "2025-08-16T21:32:18.878079",
       "response_data": null
     },
     {
-      "test": "Review Test User Setup",
-      "success": false,
-      "details": "User setup failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/auth/register'",
-      "timestamp": "2025-08-16T16:27:20.623228",
+      "test": "Review Test Customer Registration",
+      "success": true,
+      "details": "Customer registered for review testing",
+      "timestamp": "2025-08-16T21:32:19.035209",
       "response_data": null
     },
     {
-      "test": "Get Review ID for Moderation",
+      "test": "Review Test Professional Registration",
+      "success": true,
+      "details": "Professional registered for review testing",
+      "timestamp": "2025-08-16T21:32:19.277766",
+      "response_data": null
+    },
+    {
+      "test": "Review Test Customer Login",
+      "success": true,
+      "details": "Customer logged in for review testing",
+      "timestamp": "2025-08-16T21:32:19.439160",
+      "response_data": null
+    },
+    {
+      "test": "Review Test Professional Login",
+      "success": true,
+      "details": "Professional logged in for review testing",
+      "timestamp": "2025-08-16T21:32:19.642675",
+      "response_data": null
+    },
+    {
+      "test": "POST /api/reviews (Unauthenticated)",
       "success": false,
-      "details": "Failed to get review ID: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/reviews?limit=1'",
-      "timestamp": "2025-08-16T16:27:20.632479",
+      "details": "Expected 401, got: 403",
+      "timestamp": "2025-08-16T21:32:19.653369",
+      "response_data": {
+        "detail": "Only customers can create reviews"
+      }
+    },
+    {
+      "test": "POST /api/reviews (Professional Denied)",
+      "success": true,
+      "details": "Professionals correctly cannot create reviews",
+      "timestamp": "2025-08-16T21:32:19.663078",
+      "response_data": null
+    },
+    {
+      "test": "Review Creation Validation (Short Title)",
+      "success": true,
+      "details": "Short title correctly rejected",
+      "timestamp": "2025-08-16T21:32:19.713023",
+      "response_data": null
+    },
+    {
+      "test": "Review Creation Validation (Invalid Rating)",
+      "success": true,
+      "details": "Invalid rating correctly rejected",
+      "timestamp": "2025-08-16T21:32:19.723891",
+      "response_data": null
+    },
+    {
+      "test": "PUT /api/reviews/{id}/moderate (Unauthenticated)",
+      "success": false,
+      "details": "Expected 401, got: 403",
+      "timestamp": "2025-08-16T21:32:19.794732",
+      "response_data": {
+        "detail": "Admin access required"
+      }
+    },
+    {
+      "test": "Review Moderation API Structure",
+      "success": true,
+      "details": "Moderation endpoint exists and requires proper authentication",
+      "timestamp": "2025-08-16T21:32:19.794779",
       "response_data": null
     },
     {
       "test": "Reviews Authentication & Authorization",
       "success": true,
       "details": "Authentication and authorization rules properly implemented",
-      "timestamp": "2025-08-16T16:27:20.632526",
+      "timestamp": "2025-08-16T21:32:19.794793",
       "response_data": null
     },
     {
       "test": "ReviewListResponse Format",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/reviews?limit=1'",
-      "timestamp": "2025-08-16T16:27:20.639994",
+      "success": true,
+      "details": "Response format matches frontend expectations",
+      "timestamp": "2025-08-16T21:32:19.854405",
       "response_data": null
     },
     {
       "test": "Sample Reviews Data",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/reviews'",
-      "timestamp": "2025-08-16T16:27:20.647556",
+      "success": true,
+      "details": "Found 4 sample reviews",
+      "timestamp": "2025-08-16T21:32:19.881183",
+      "response_data": null
+    },
+    {
+      "test": "Review Relationships",
+      "success": true,
+      "details": "Reviews have proper company and reviewer relationships",
+      "timestamp": "2025-08-16T21:32:19.881218",
       "response_data": null
     },
     {
       "test": "Professional Reviews Consistency",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/reviews/professional/professional-1'",
-      "timestamp": "2025-08-16T16:27:20.654229",
+      "success": true,
+      "details": "All 1 reviews belong to correct professional",
+      "timestamp": "2025-08-16T21:32:19.932428",
+      "response_data": null
+    },
+    {
+      "test": "Moving Draft Creation (varetransport)",
+      "success": true,
+      "details": "Draft created with subcategory: varetransport",
+      "timestamp": "2025-08-16T21:32:19.942835",
+      "response_data": null
+    },
+    {
+      "test": "Moving Draft Creation (flyttebyra)",
+      "success": true,
+      "details": "Draft created with subcategory: flyttebyra",
+      "timestamp": "2025-08-16T21:32:19.994012",
+      "response_data": null
+    },
+    {
+      "test": "Moving Draft Creation (avfallshandtering)",
+      "success": true,
+      "details": "Draft created with subcategory: avfallshandtering",
+      "timestamp": "2025-08-16T21:32:20.045798",
+      "response_data": null
+    },
+    {
+      "test": "Moving Draft Creation (transportBilBat)",
+      "success": true,
+      "details": "Draft created with subcategory: transportBilBat",
+      "timestamp": "2025-08-16T21:32:20.057054",
+      "response_data": null
+    },
+    {
+      "test": "Moving Draft Creation (annetFlytting)",
+      "success": true,
+      "details": "Draft created with subcategory: annetFlytting",
+      "timestamp": "2025-08-16T21:32:20.107981",
+      "response_data": null
+    },
+    {
+      "test": "Moving Draft Creation (persontransport)",
+      "success": true,
+      "details": "Draft created with subcategory: persontransport",
+      "timestamp": "2025-08-16T21:32:20.160342",
+      "response_data": null
+    },
+    {
+      "test": "Moving Draft Creation (pianotransport)",
+      "success": true,
+      "details": "Draft created with subcategory: pianotransport",
+      "timestamp": "2025-08-16T21:32:20.171081",
+      "response_data": null
+    },
+    {
+      "test": "Moving Draft Creation (godstransport)",
+      "success": true,
+      "details": "Draft created with subcategory: godstransport",
+      "timestamp": "2025-08-16T21:32:20.222526",
+      "response_data": null
+    },
+    {
+      "test": "Moving Draft Update",
+      "success": true,
+      "details": "Draft updated successfully for subcategory: varetransport",
+      "timestamp": "2025-08-16T21:32:20.236924",
+      "response_data": null
+    },
+    {
+      "test": "Moving Draft Submission",
+      "success": true,
+      "details": "Draft submitted successfully with subcategory: varetransport",
+      "timestamp": "2025-08-16T21:32:20.290710",
+      "response_data": null
+    },
+    {
+      "test": "Moving Subcategory Storage",
+      "success": true,
+      "details": "Subcategory storage test completed for: varetransport",
+      "timestamp": "2025-08-16T21:32:20.290747",
+      "response_data": null
+    },
+    {
+      "test": "Non-Moving Regression (handcraft)",
+      "success": true,
+      "details": "Category handcraft still works without subcategory",
+      "timestamp": "2025-08-16T21:32:20.301148",
+      "response_data": null
+    },
+    {
+      "test": "Non-Moving Regression (bathroom)",
+      "success": true,
+      "details": "Category bathroom still works without subcategory",
+      "timestamp": "2025-08-16T21:32:20.351645",
+      "response_data": null
+    },
+    {
+      "test": "Non-Moving Regression (automotive)",
+      "success": true,
+      "details": "Category automotive still works without subcategory",
+      "timestamp": "2025-08-16T21:32:20.362864",
+      "response_data": null
+    },
+    {
+      "test": "Moving Without Subcategory",
+      "success": true,
+      "details": "Moving category works without subcategory field",
+      "timestamp": "2025-08-16T21:32:20.412871",
+      "response_data": null
+    },
+    {
+      "test": "Invalid Subcategory",
+      "success": true,
+      "details": "Invalid subcategory accepted (backend doesn't validate subcategory values)",
+      "timestamp": "2025-08-16T21:32:20.463854",
       "response_data": null
     },
     {
       "test": "Error Handling (404)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/projects/non-existent-id'",
-      "timestamp": "2025-08-16T16:27:20.661524",
+      "success": true,
+      "details": "Non-existent project returns 404",
+      "timestamp": "2025-08-16T21:32:20.472955",
       "response_data": null
     },
     {
       "test": "Error Handling (Language Fallback)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/services?language=invalid'",
-      "timestamp": "2025-08-16T16:27:20.668242",
+      "success": true,
+      "details": "Invalid language falls back to English",
+      "timestamp": "2025-08-16T21:32:20.488693",
       "response_data": null
     },
     {
       "test": "Error Handling (Duplicate Registration)",
-      "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://tradesmen-connect.preview.emergentagent.com/api/auth/register'",
-      "timestamp": "2025-08-16T16:27:20.675769",
+      "success": true,
+      "details": "Duplicate email registration correctly rejected",
+      "timestamp": "2025-08-16T21:32:20.497711",
       "response_data": null
     },
     {
       "test": "Error Handling (Invalid Login)",
-      "success": false,
-      "details": "Expected 400, got: 502",
-      "timestamp": "2025-08-16T16:27:20.682749",
-      "response_data": ""
+      "success": true,
+      "details": "Invalid credentials correctly rejected",
+      "timestamp": "2025-08-16T21:32:20.756527",
+      "response_data": null
     }
   ],
-  "timestamp": "2025-08-16T16:27:20.683804"
+  "timestamp": "2025-08-16T21:32:20.757479"
 }
