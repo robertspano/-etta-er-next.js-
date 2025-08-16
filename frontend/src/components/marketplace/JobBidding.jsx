@@ -40,12 +40,12 @@ const JobBidding = ({ translations, language }) => {
 
   // Filters
   const [filters, setFilters] = useState({
-    category: '',
+    category: 'all',
     postcode: '',
-    radius: '',
+    radius: 'all',
     budget_min: '',
     budget_max: '',
-    priority: '',
+    priority: 'all',
     search: ''
   });
 
