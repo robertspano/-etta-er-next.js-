@@ -951,6 +951,11 @@ export const translations = {
     proCtaButton: "Komdu af stað — sjá verkefni",
     proTermsText: "Með því að halda áfram samþykkir þú skilmála okkar. Sjá nánar um vinnslu persónuupplýsinga í persónuverndarstefnu.",
     
+    // Moving subcategories - additional
+    massetransport: "Magnflutningar",
+    lager: "Geymsla/Vöruhús",
+    helikoptertransport: "Þyrluflutningar",
+
     // Moving Category Picker
     movingStepHeader: "Um verkefnið • Tengiliður • Klárt",
     movingCategoryTitle: "Hvers konar flutningaþjónustu þarftu?",
