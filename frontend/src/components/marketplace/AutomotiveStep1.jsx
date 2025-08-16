@@ -67,7 +67,7 @@ const AutomotiveStep1 = ({
     
     setLookupLoading(true);
     try {
-      const response = await fetch(`/api/public/vehicle-lookup?plate=${plate}&country=IS`);
+      const response = await fetch(`http://localhost:8001/api/public/vehicle-lookup?plate=${plate}&country=IS`);
       if (response.ok) {
         const data = await response.json();
         return data;
