@@ -277,6 +277,17 @@ async def update_draft_job_request(
         update_dict = update_data.model_dump(exclude_unset=True)
         update_dict["updated_at"] = datetime.utcnow()
         
+        # Handle vehicle info update
+        if 'vehicleInfo' in update_dict:
+            vehicle_info = update_dict.pop('vehicleInfo')
+            if isinstance(vehicle_info, dict) and vehicle_info.get('found'):
+                update_dict.update({
+                    "vehicle_make": vehicle_info.get("make"),
+                    "vehicle_model": vehicle_info.get("model"),
+                    "vehicle_year": vehicle_info.get("year"),
+                    "vehicle_color": vehicle_info.get("color")
+                })
+        
         # Update in database
         success = await db_service.update_document("job_requests", draft_id, update_dict)
         if not success:
