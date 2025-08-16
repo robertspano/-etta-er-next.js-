@@ -11,8 +11,10 @@ export const translations = {
     postProject: "Post Project",
     signIn: "Sign In",
     signUp: "Sign Up",
+    registerCompany: "Register Company",
     dashboard: "Dashboard",
     profile: "Profile",
+    settings: "Settings",
     logout: "Logout",
     
     // Authentication
