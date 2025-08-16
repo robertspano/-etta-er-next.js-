@@ -70,8 +70,8 @@ class PublicWizardTester:
                     
                     # Extract all cookies from response
                     guest_cookies = {}
-                    for cookie in response.cookies:
-                        guest_cookies[cookie.key] = cookie.value
+                    for cookie_name, cookie_obj in response.cookies.items():
+                        guest_cookies[cookie_name] = cookie_obj.value
                     
                     # Check if guest cookie was set
                     if "bc_guest_id" in guest_cookies:
