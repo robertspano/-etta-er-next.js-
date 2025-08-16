@@ -264,7 +264,7 @@ function App() {
 
             {/* Professional Only Routes */}
             <Route 
-              path="/job-requests" 
+              path="/professional/job/:jobId" 
               element={
                 <ProfessionalRoute>
                   <DashboardLayout 
@@ -272,10 +272,28 @@ function App() {
                     setLanguage={setLanguage} 
                     currentTranslations={currentTranslations}
                   >
-                    <div className="container mx-auto px-4 py-8">
-                      <h1 className="text-3xl font-bold">Job Requests</h1>
-                      <p className="text-gray-600 mt-2">Professional job requests view coming soon</p>
-                    </div>
+                    <ProfessionalJobDetail 
+                      translations={currentTranslations} 
+                      language={language} 
+                    />
+                  </DashboardLayout>
+                </ProfessionalRoute>
+              } 
+            />
+
+            <Route 
+              path="/professional/quote/:jobId" 
+              element={
+                <ProfessionalRoute>
+                  <DashboardLayout 
+                    language={language} 
+                    setLanguage={setLanguage} 
+                    currentTranslations={currentTranslations}
+                  >
+                    <QuoteSubmissionForm 
+                      translations={currentTranslations} 
+                      language={language} 
+                    />
                   </DashboardLayout>
                 </ProfessionalRoute>
               } 
