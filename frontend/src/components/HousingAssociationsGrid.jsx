@@ -33,7 +33,7 @@ const HousingAssociationsGrid = ({ translations, language }) => {
     },
     {
       key: 'masonry',
-      icon: <Brick className="w-8 h-8" />,
+      icon: <Package className="w-8 h-8" />,
       name: 'Murer',
       route: '/post/masonry'
     },
