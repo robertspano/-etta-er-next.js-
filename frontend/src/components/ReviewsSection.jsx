@@ -121,7 +121,7 @@ const ReviewCard = ({ review }) => {
   );
 };
 
-const ReviewsSection = ({ reviews = [], translations, language }) => {
+const ReviewsSection = ({ reviews = [], translations, language, loading = false, error = null }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(3);
 
