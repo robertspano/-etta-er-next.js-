@@ -75,6 +75,13 @@ const Header = ({ language, setLanguage, translations }) => {
     }
   };
 
+  const handlePillKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setIsDrawerOpen(true);
+    }
+  };
+
   const getUserDisplayName = () => {
     if (user?.profile?.first_name) {
       return user.profile.first_name;
