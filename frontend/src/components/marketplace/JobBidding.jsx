@@ -82,9 +82,9 @@ const JobBidding = ({ translations, language }) => {
         ...filters
       };
 
-      // Remove empty filters
+      // Remove empty filters and handle "all" values
       Object.keys(queryFilters).forEach(key => {
-        if (!queryFilters[key]) delete queryFilters[key];
+        if (!queryFilters[key] || queryFilters[key] === 'all') delete queryFilters[key];
       });
 
       const response = await apiService.getJobRequests(queryFilters);
