@@ -6,6 +6,7 @@ import { Textarea } from '../ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { Alert, AlertDescription } from '../ui/alert';
 import LoadingSpinner from '../LoadingSpinner';
+import AutomotiveStep1 from './AutomotiveStep1';
 import { useAuth } from '../../contexts/AuthContext';
 import api from '../../services/api';
 import { ArrowLeft, Check } from 'lucide-react';
