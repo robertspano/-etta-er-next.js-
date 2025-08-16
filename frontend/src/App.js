@@ -9,9 +9,7 @@ import Hero from './components/Hero';
 import HowItWorks from './components/HowItWorks';
 import PopularProjects from './components/PopularProjects';
 import FindCompanySection from './components/FindCompanySection';
-import Stats from './components/Stats';
-import Testimonials from './components/Testimonials';
-import CallToAction from './components/CallToAction';
+import ReviewsSection from './components/ReviewsSection';
 import Footer from './components/Footer';
 
 // Auth Components
