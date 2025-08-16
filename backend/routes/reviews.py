@@ -97,7 +97,7 @@ async def get_review(review_id: str):
         customer_location=customer.profile.location if customer else None
     )
 
-@router.post("/", response_model=ReviewResponse)
+@router.post("/create", response_model=ReviewResponse)
 async def create_review(
     review_data: ReviewCreate,
     current_user: User = Depends(current_active_user)
