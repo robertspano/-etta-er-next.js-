@@ -111,12 +111,12 @@ const JobBidding = ({ translations, language }) => {
 
   const resetFilters = () => {
     setFilters({
-      category: '',
+      category: 'all',
       postcode: '',
-      radius: '',
+      radius: 'all',
       budget_min: '',
       budget_max: '',
-      priority: '',
+      priority: 'all',
       search: ''
     });
     setPagination(prev => ({ ...prev, page: 1 }));
