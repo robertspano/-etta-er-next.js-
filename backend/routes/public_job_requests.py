@@ -45,16 +45,26 @@ class DraftJobRequestCreate(BaseModel):
     @field_validator('licensePlate', mode='before')
     @classmethod
     def validate_license_plate(cls, v: Optional[str], info: ValidationInfo) -> Optional[str]:
-        # Validate license plate for automotive category
-        category = info.data.get('category') if info.data else None
-        if category == 'automotive':
-            if not v:
-                raise ValueError('License plate is required for automotive category')
+        if v is not None:
             if not (2 <= len(v) <= 8):
                 raise ValueError('License plate must be 2-8 characters long')
             if not re.match(r'^[A-Z0-9]+$', v):
                 raise ValueError('License plate must contain only letters and numbers')
         return v
+    
+    @model_validator(mode='after')
+    def validate_automotive_requirements(self):
+        # Validate automotive category requirements
+        if self.category == 'automotive':
+            if not self.licensePlate:
+                raise ValueError('License plate is required for automotive category')
+        else:
+            # Validate non-automotive requirements
+            if not self.title or len(self.title.strip()) < 10:
+                raise ValueError('Title must be at least 10 characters long')
+            if not self.description or len(self.description.strip()) < 30:
+                raise ValueError('Description must be at least 30 characters long')
+        return self
 
 class DraftJobRequestUpdate(BaseModel):
     """Schema for updating a draft job request (public)"""
