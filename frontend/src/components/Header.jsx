@@ -265,162 +265,182 @@ const Header = ({ language, setLanguage, translations }) => {
         <>
           {/* Backdrop */}
           <div 
-            className="fixed inset-0 bg-black bg-opacity-50 z-40"
-            onClick={() => setIsDrawerOpen(false)}
+            className="fixed inset-0 bg-black bg-opacity-20 z-40 transition-opacity duration-300"
+            onClick={closeDrawer}
           />
           
           {/* Drawer */}
-          <div className="fixed right-0 top-0 h-full w-96 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out">
+          <div 
+            className={`fixed right-0 top-0 h-full w-96 bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-out ${
+              isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
+            }`}
+          >
             <div className="h-full overflow-y-auto">
-              {/* Drawer Header */}
-              <div className="flex items-center justify-between p-4 border-b">
-                <h2 className="text-lg font-semibold text-gray-900">Menu</h2>
-                <Button
-                  onClick={() => setIsDrawerOpen(false)}
-                  variant="ghost"
-                  size="sm"
-                  className="h-8 w-8 p-0"
+              {/* Drawer Header - Clean, X button only */}
+              <div className="flex items-center justify-end p-4">
+                <button
+                  onClick={closeDrawer}
+                  className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                  aria-label="Close menu"
                 >
-                  <X className="h-4 w-4" />
-                </Button>
+                  <X className="h-5 w-5 text-gray-600" />
+                </button>
               </div>
               
               {/* Drawer Content */}
-              <div className="p-4 space-y-2">
-                {/* Auth Section */}
+              <div className="px-4 pb-4">
+                {/* Login/Profile Section - First Row with Avatar Icon */}
                 {!loading && (
                   <>
                     {isAuthenticated() ? (
-                      <div className="space-y-1 pb-4 border-b">
+                      <>
                         <button
                           onClick={() => handleDrawerItemClick('/profile')}
-                          className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                          className="w-full flex items-center justify-between py-4 text-left hover:bg-gray-50 rounded-lg transition-colors group"
                         >
-                          <span className="text-gray-700">{translations.profile}</span>
-                          <ChevronRight className="h-4 w-4 text-gray-400" />
+                          <div className="flex items-center">
+                            <User className="h-6 w-6 text-gray-400 mr-3" />
+                            <span className="text-gray-800 font-medium">{translations.profile}</span>
+                          </div>
+                          <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
                         </button>
                         <button
                           onClick={() => handleDrawerItemClick('/settings')}
-                          className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                          className="w-full flex items-center justify-between py-4 text-left hover:bg-gray-50 rounded-lg transition-colors group"
                         >
-                          <span className="text-gray-700">{translations.settings}</span>
-                          <ChevronRight className="h-4 w-4 text-gray-400" />
+                          <div className="flex items-center">
+                            <Settings className="h-6 w-6 text-gray-400 mr-3" />
+                            <span className="text-gray-800 font-medium">{translations.settings}</span>
+                          </div>
+                          <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
                         </button>
                         <button
                           onClick={handleLogout}
-                          className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg text-red-600"
+                          className="w-full flex items-center justify-between py-4 text-left hover:bg-gray-50 rounded-lg transition-colors group"
                         >
-                          <span>{translations.logout}</span>
-                          <ChevronRight className="h-4 w-4 text-red-400" />
+                          <div className="flex items-center">
+                            <LogOut className="h-6 w-6 text-red-400 mr-3" />
+                            <span className="text-red-600 font-medium">{translations.logout}</span>
+                          </div>
+                          <ChevronRight className="h-5 w-5 text-red-400 group-hover:text-red-600" />
                         </button>
-                      </div>
+                        
+                        {/* Divider */}
+                        <div className="border-t border-gray-200 my-4"></div>
+                      </>
                     ) : (
-                      <div className="pb-4 border-b">
+                      <>
                         <button
                           onClick={handleLogin}
-                          className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                          className="w-full flex items-center justify-between py-4 text-left hover:bg-gray-50 rounded-lg transition-colors group"
                         >
-                          <span className="text-gray-700">{translations.login}</span>
-                          <ChevronRight className="h-4 w-4 text-gray-400" />
+                          <div className="flex items-center">
+                            <User className="h-6 w-6 text-gray-400 mr-3" />
+                            <span className="text-gray-800 font-medium">{translations.login}</span>
+                          </div>
+                          <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
                         </button>
-                      </div>
+                        
+                        {/* Divider */}
+                        <div className="border-t border-gray-200 my-4"></div>
+                      </>
                     )}
                   </>
                 )}
                 
                 {/* Action Buttons */}
-                <div className="space-y-1 pb-4 border-b">
-                  <button
-                    onClick={handlePostProject}
-                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
-                  >
-                    <span className="text-gray-700">{translations.postProject}</span>
-                    <ChevronRight className="h-4 w-4 text-gray-400" />
-                  </button>
-                  <button
-                    onClick={handleRegisterCompany}
-                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
-                  >
-                    <span className="text-gray-700">{translations.registerCompany}</span>
-                    <ChevronRight className="h-4 w-4 text-gray-400" />
-                  </button>
-                </div>
+                <button
+                  onClick={handlePostProject}
+                  className="w-full flex items-center justify-between py-4 text-left hover:bg-gray-50 rounded-lg transition-colors group"
+                >
+                  <span className="text-blue-600 font-semibold">{translations.postProject}</span>
+                  <ChevronRight className="h-5 w-5 text-blue-400 group-hover:text-blue-600" />
+                </button>
+                
+                <button
+                  onClick={handleRegisterCompany}
+                  className="w-full flex items-center justify-between py-4 text-left hover:bg-gray-50 rounded-lg transition-colors group"
+                >
+                  <span className="text-gray-600 font-medium">{translations.registerCompany}</span>
+                  <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
+                </button>
                 
                 {/* Categories Section */}
+                <div className="border-t border-gray-200 my-4"></div>
+                <div className="mb-3">
+                  <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider px-1">
+                    {translations.categories}
+                  </h3>
+                </div>
+                
                 <div className="space-y-1">
-                  <div className="px-3 py-2">
-                    <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
-                      {translations.categories}
-                    </h3>
-                  </div>
-                  
                   <button
                     onClick={() => handleDrawerItemClick('#')}
-                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
                   >
                     <span className="text-gray-700">{translations.handcraft}</span>
-                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
                   </button>
                   
                   <button
                     onClick={() => handleDrawerItemClick('#')}
-                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
                   >
                     <span className="text-gray-700">{translations.homeGarden}</span>
-                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
                   </button>
                   
                   <button
                     onClick={() => handleDrawerItemClick('#')}
-                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
                   >
                     <span className="text-gray-700">{translations.interiorRenovation}</span>
-                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
                   </button>
                   
                   <button
                     onClick={() => handleDrawerItemClick('#')}
-                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
                   >
                     <span className="text-gray-700">{translations.buildNew}</span>
-                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
                   </button>
                   
                   <button
                     onClick={() => handleDrawerItemClick('#')}
-                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
                   >
                     <span className="text-gray-700">{translations.services}</span>
-                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
                   </button>
                   
                   <button
                     onClick={() => handleDrawerItemClick('#')}
-                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
                   >
-                    <div className="flex items-center space-x-2">
+                    <div className="flex items-center">
                       <span className="text-gray-700">{translations.companySearch}</span>
-                      <span className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full">
+                      <span className="ml-2 px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full font-medium">
                         {translations.new}
                       </span>
                     </div>
-                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
                   </button>
                   
                   <button
                     onClick={() => handleDrawerItemClick('#')}
-                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
                   >
                     <span className="text-gray-700">{translations.majorProjects}</span>
-                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
                   </button>
                   
                   <button
                     onClick={() => handleDrawerItemClick('#')}
-                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
                   >
                     <span className="text-gray-700">{translations.housingAssociations}</span>
-                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
                   </button>
                 </div>
               </div>
