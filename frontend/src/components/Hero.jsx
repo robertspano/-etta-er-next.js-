@@ -65,11 +65,21 @@ const Hero = ({ translations }) => {
       key: 'cleaning', 
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
-          <path d="M16 4c0-1.11-.89-2-2-2s-2 .89-2 2c0 .55.22 1.05.59 1.41L14 6.83V12c0 .55.45 1 1 1s1-.45 1-1V6.83l1.41-1.42C17.78 5.05 18 4.55 18 4c0-1.11-.89-2-2-2zM12 8v8c0 2.21-1.79 4-4 4s-4-1.79-4-4V8h8zm-6 2v6c0 1.1.9 2 2 2s2-.9 2-2v-6H6z"/>
-          <circle cx="19" cy="16" r="1"/>
-          <circle cx="21" cy="18" r="1"/>
-          <circle cx="18" cy="19" r="1"/>
-          <circle cx="20" cy="21" r="1"/>
+          {/* Spray bottle body */}
+          <path d="M8 8h6v10c0 1.1-.9 2-2 2h-2c-1.1 0-2-.9-2-2V8z"/>
+          {/* Spray bottle neck */}
+          <rect x="10" y="6" width="2" height="2"/>
+          {/* Trigger */}
+          <path d="M6 10c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h2v-6H6z"/>
+          {/* Spray effect */}
+          <circle cx="18" cy="8" r="1"/>
+          <circle cx="20" cy="10" r="0.8"/>
+          <circle cx="19" cy="12" r="0.6"/>
+          <circle cx="21" cy="14" r="0.5"/>
+          {/* Sparkles */}
+          <path d="M17 6l1 1-1 1-1-1z"/>
+          <path d="M22 7l0.5 0.5-0.5 0.5-0.5-0.5z"/>
+          <path d="M20 4l0.8 0.8-0.8 0.8-0.8-0.8z"/>
         </svg>
       ), 
       name: translations.cleaning 
