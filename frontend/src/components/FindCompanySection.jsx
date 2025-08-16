@@ -49,37 +49,46 @@ const FindCompanySection = ({ translations, language }) => {
   };
 
   return (
-    <section className="py-16 px-4">
+    <section className="py-16 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto">
         {/* Main beige panel matching Mittanbud exactly */}
-        <div className="bg-yellow-50 rounded-2xl shadow-lg p-8 lg:p-12 relative overflow-hidden">
+        <div className="relative bg-gradient-to-br from-yellow-50 via-orange-50 to-yellow-100 rounded-3xl shadow-lg overflow-hidden">
           {/* Decorative curved arrow - top right */}
-          <div className="absolute top-6 right-8 hidden lg:block">
+          <div className="absolute top-8 right-8 hidden lg:block">
             <svg 
-              width="60" 
-              height="40" 
-              viewBox="0 0 60 40" 
-              className="text-blue-600 opacity-80"
-              fill="currentColor"
+              width="80" 
+              height="60" 
+              viewBox="0 0 80 60" 
+              className="text-orange-300 opacity-60"
             >
-              <path d="M10,30 Q30,10 50,20 L45,15 M50,20 L45,25" 
-                    stroke="currentColor" 
-                    strokeWidth="3" 
-                    fill="none" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round"/>
+              <path 
+                d="M15,45 Q35,15 65,25 L58,18 M65,25 L58,32" 
+                stroke="currentColor" 
+                strokeWidth="3" 
+                fill="none" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              />
+              <path 
+                d="M20,35 Q40,20 60,28" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                fill="none" 
+                strokeLinecap="round" 
+                opacity="0.6"
+              />
             </svg>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center p-8 lg:p-16">
             {/* Left side - Headlines */}
-            <div className="space-y-6">
-              <div className="space-y-4">
+            <div className="space-y-6 lg:pr-8">
+              <div className="space-y-6">
                 <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight">
-                  {translations.findCompanyHeadline || "Finn riktig bedrift til ditt prosjekt!"}
+                  {translations.findCompanyHeadline || "Find the right company for your project!"}
                 </h2>
                 <p className="text-lg lg:text-xl text-gray-700 leading-relaxed">
-                  {translations.findCompanySubtitle || "Søk etter bedrifter og håndverkere i ditt område, ta kontakt og få et tilbud."}
+                  {translations.findCompanySubtitle || "Search for businesses and craftsmen in your area, make contact and get a quote."}
                 </p>
               </div>
             </div>
@@ -87,55 +96,57 @@ const FindCompanySection = ({ translations, language }) => {
             {/* Right side - Search form */}
             <div className="w-full">
               <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Search inputs container */}
-                <div className="bg-white rounded-lg shadow-md p-2 space-y-2 lg:space-y-0 lg:flex lg:gap-2">
-                  {/* Category input */}
-                  <div className="flex-1 relative">
-                    <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                      <Wrench className="h-5 w-5" />
+                {/* Search inputs container - white rounded box */}
+                <div className="bg-white rounded-xl shadow-md p-3 lg:p-4">
+                  <div className="grid lg:grid-cols-2 gap-3 lg:gap-4">
+                    {/* Category input */}
+                    <div className="relative">
+                      <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+                        <Wrench className="h-5 w-5" />
+                      </div>
+                      <input
+                        type="text"
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        placeholder={translations.findCompanyWhatHelp || "What do you need help with?"}
+                        className="w-full pl-12 pr-4 py-4 text-gray-900 placeholder-gray-500 bg-gray-50 border-0 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
+                        list="categories-list"
+                      />
+                      {/* Datalist for category suggestions */}
+                      <datalist id="categories-list">
+                        {categories.map((cat) => (
+                          <option key={cat.key} value={cat.label} />
+                        ))}
+                      </datalist>
                     </div>
-                    <input
-                      type="text"
-                      value={category}
-                      onChange={(e) => setCategory(e.target.value)}
-                      placeholder={translations.findCompanyWhatHelp || "Hva trenger du hjelp med?"}
-                      className="w-full pl-10 pr-4 py-3 text-gray-900 placeholder-gray-500 bg-transparent border-0 focus:outline-none focus:ring-0 rounded-md"
-                      list="categories-list"
-                    />
-                    {/* Datalist for category suggestions */}
-                    <datalist id="categories-list">
-                      {categories.map((cat) => (
-                        <option key={cat.key} value={cat.label} />
-                      ))}
-                    </datalist>
-                  </div>
 
-                  {/* Separator line on desktop */}
-                  <div className="hidden lg:block w-px bg-gray-200 self-stretch my-2"></div>
-
-                  {/* Location input */}
-                  <div className="flex-1 relative">
-                    <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                      <MapPin className="h-5 w-5" />
+                    {/* Location input */}
+                    <div className="relative">
+                      <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+                        <MapPin className="h-5 w-5" />
+                      </div>
+                      <input
+                        type="text"
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
+                        placeholder={translations.findCompanyWhereJob || "Where should the job be done?"}
+                        className="w-full pl-12 pr-4 py-4 text-gray-900 placeholder-gray-500 bg-gray-50 border-0 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
+                      />
                     </div>
-                    <input
-                      type="text"
-                      value={location}
-                      onChange={(e) => setLocation(e.target.value)}
-                      placeholder={translations.findCompanyWhereJob || "Hvor skal jobben gjøres?"}
-                      className="w-full pl-10 pr-4 py-3 text-gray-900 placeholder-gray-500 bg-transparent border-0 focus:outline-none focus:ring-0 rounded-md"
-                    />
                   </div>
                 </div>
 
                 {/* Search button */}
-                <Button
-                  type="submit"
-                  className="w-full lg:w-auto px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
-                  size="lg"
-                >
-                  {translations.findCompanyButton || "Finn bedrift"}
-                </Button>
+                <div className="flex justify-center lg:justify-start">
+                  <Button
+                    type="submit"
+                    className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors duration-200 shadow-lg hover:shadow-xl text-lg"
+                    size="lg"
+                  >
+                    <Search className="h-5 w-5 mr-2" />
+                    {translations.findCompanyButton || "Find company"}
+                  </Button>
+                </div>
               </form>
             </div>
           </div>
