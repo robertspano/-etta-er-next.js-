@@ -3,6 +3,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
+import { Alert, AlertDescription } from '../ui/alert';
 import { 
   Briefcase, 
   FileText, 
@@ -11,9 +12,15 @@ import {
   Clock, 
   DollarSign,
   TrendingUp,
-  Users
+  Users,
+  User,
+  AlertCircle,
+  Eye,
+  Edit,
+  Trash2
 } from 'lucide-react';
 import apiService from '../../services/api';
+import JobBidding from '../marketplace/JobBidding';
 
 const ProfessionalDashboard = ({ translations, language, user }) => {
   const [loading, setLoading] = useState(true);
