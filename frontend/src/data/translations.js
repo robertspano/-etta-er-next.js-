@@ -848,6 +848,7 @@ export const translations = {
     mittanbudLicensePlateLabel: "Skráningarmerki",
     mittanbudWhyNeedPlate: "Hvers vegna þurfum við þetta?",
     mittanbudPlateHelpText: "Við notum skráningarmerki bílsins þíns til að finna upplýsingar um tegund og gerð og geta þannig tengt þig við viðeigandi verkstæði og fengið betri tilboð.",
+    automotivePlateValidationError: "Skráningarmerki verður að vera 2-8 stafir eða tölur",
     
     // Stats
     statsTitle: "Treyst af Þúsundum",
