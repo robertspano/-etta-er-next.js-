@@ -205,6 +205,10 @@ export const translations = {
     yes: "Yes",
     no: "No",
     
+    jobRequestSubmittedSuccess: "Job request submitted successfully! We'll connect you with qualified professionals soon.",
+    signUpAfterSubmission: "Want to track your request? Sign up for free!",
+    createAccount: "Create Free Account",
+    
     // Job Posting Wizard
     stepOneTitle: "About the Job",
     stepTwoTitle: "Contact Info",
