@@ -287,87 +287,157 @@ const CustomerDashboard = ({ translations, language, user }) => {
         <TabsContent value="requests" className="mt-6">
           <Card>
             <CardHeader>
-              <CardTitle>{translations.myRequests}</CardTitle>
+              <div className="flex justify-between items-center">
+                <CardTitle>{translations.myRequests}</CardTitle>
+                <div className="flex gap-2">
+                  <div className="flex items-center gap-2">
+                    <Search className="h-4 w-4 text-gray-400" />
+                    <Input
+                      placeholder={translations.search + '...'}
+                      value={filters.search}
+                      onChange={(e) => handleFilterChange('search', e.target.value)}
+                      className="w-48"
+                    />
+                  </div>
+                  <Select value={filters.status} onValueChange={(value) => handleFilterChange('status', value)}>
+                    <SelectTrigger className="w-40">
+                      <SelectValue placeholder={translations.filter + ' status'} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="">All Status</SelectItem>
+                      <SelectItem value="open">{translations.open}</SelectItem>
+                      <SelectItem value="quoted">{translations.quoted}</SelectItem>
+                      <SelectItem value="accepted">{translations.accepted}</SelectItem>
+                      <SelectItem value="in_progress">{translations.inProgress}</SelectItem>
+                      <SelectItem value="completed">{translations.completed}</SelectItem>
+                      <SelectItem value="cancelled">{translations.cancelled}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
             </CardHeader>
             <CardContent>
               {jobRequests.length === 0 ? (
                 <div className="text-center py-8">
                   <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-500">No job requests yet. Create your first job request to get started!</p>
-                  <Link to="/create-job">
-                    <Button className="mt-4">
-                      <PlusCircle className="h-4 w-4 mr-2" />
-                      {translations.createJobRequest}
-                    </Button>
-                  </Link>
+                  <p className="text-gray-500">
+                    {loading ? 'Loading your job requests...' : 'No job requests found. Create your first job request to get started!'}
+                  </p>
+                  {!loading && (
+                    <Link to="/create-job">
+                      <Button className="mt-4">
+                        <PlusCircle className="h-4 w-4 mr-2" />
+                        {translations.createJobRequest}
+                      </Button>
+                    </Link>
+                  )}
                 </div>
               ) : (
-                <div className="space-y-4">
-                  {jobRequests.map((job) => (
-                    <div
-                      key={job.id}
-                      className="border rounded-lg p-4 hover:bg-gray-50 transition-colors"
-                    >
-                      <div className="flex justify-between items-start mb-2">
-                        <div className="flex-1">
-                          <h3 className="font-semibold text-lg">{job.title}</h3>
-                          <p className="text-sm text-gray-600 capitalize">{job.category}</p>
+                <>
+                  <div className="space-y-4">
+                    {jobRequests.map((job) => (
+                      <div
+                        key={job.id}
+                        className="border rounded-lg p-4 hover:bg-gray-50 transition-colors"
+                      >
+                        <div className="flex justify-between items-start mb-2">
+                          <div className="flex-1">
+                            <h3 className="font-semibold text-lg">{job.title}</h3>
+                            <p className="text-sm text-gray-600 capitalize">{job.category}</p>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Badge variant={getStatusBadgeVariant(job.status)}>
+                              {translations[job.status] || job.status}
+                            </Badge>
+                            <span className="text-sm text-gray-500 flex items-center gap-1">
+                              <Eye className="h-3 w-3" />
+                              {job.views_count || 0}
+                            </span>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <Badge variant={getStatusBadgeVariant(job.status)}>
-                            {translations[job.status] || job.status}
-                          </Badge>
-                          <span className="text-sm text-gray-500 flex items-center gap-1">
-                            <Eye className="h-3 w-3" />
-                            {job.views_count || 0}
+                        <p className="text-gray-600 mb-3 line-clamp-2">{job.description}</p>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-500 mb-3">
+                          <span className="flex items-center gap-1">
+                            📍 {job.postcode}
                           </span>
+                          <span>{job.quotes_count || 0} quotes</span>
+                          <span className="flex items-center gap-1">
+                            <Calendar className="h-3 w-3" />
+                            {formatDate(job.posted_at)}
+                          </span>
+                          {(job.budget_min || job.budget_max) && (
+                            <span className="flex items-center gap-1">
+                              <DollarSign className="h-3 w-3" />
+                              {job.budget_min && job.budget_max ? 
+                                `${formatCurrency(job.budget_min)} - ${formatCurrency(job.budget_max)}` :
+                                formatCurrency(job.budget_min || job.budget_max)
+                              }
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex gap-2">
+                          <Link to={`/job/${job.id}`}>
+                            <Button size="sm" variant="outline">
+                              {translations.view}
+                            </Button>
+                          </Link>
+                          {['open', 'quoted'].includes(job.status) && (
+                            <Link to={`/job/${job.id}/edit`}>
+                              <Button size="sm" variant="outline">
+                                <Edit className="h-3 w-3 mr-1" />
+                                {translations.edit}
+                              </Button>
+                            </Link>
+                          )}
+                          {job.quotes_count > 0 && (
+                            <Link to={`/job/${job.id}#quotes`}>
+                              <Button size="sm" variant="secondary">
+                                View {job.quotes_count} Quote{job.quotes_count !== 1 ? 's' : ''}
+                              </Button>
+                            </Link>
+                          )}
+                          {job.status === 'accepted' || job.status === 'in_progress' && (
+                            <Link to={`/job/${job.id}/messages`}>
+                              <Button size="sm" variant="outline">
+                                <MessageCircle className="h-3 w-3 mr-1" />
+                                {translations.messages}
+                              </Button>
+                            </Link>
+                          )}
                         </div>
                       </div>
-                      <p className="text-gray-600 mb-3 line-clamp-2">{job.description}</p>
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-500 mb-3">
-                        <span className="flex items-center gap-1">
-                          📍 {job.postcode}
-                        </span>
-                        <span>{job.quotes_count || 0} quotes</span>
-                        <span className="flex items-center gap-1">
-                          <Calendar className="h-3 w-3" />
-                          {formatDate(job.posted_at)}
-                        </span>
-                        {(job.budget_min || job.budget_max) && (
-                          <span className="flex items-center gap-1">
-                            <DollarSign className="h-3 w-3" />
-                            {job.budget_min && job.budget_max ? 
-                              `${formatCurrency(job.budget_min)} - ${formatCurrency(job.budget_max)}` :
-                              formatCurrency(job.budget_min || job.budget_max)
-                            }
-                          </span>
-                        )}
+                    ))}
+                  </div>
+
+                  {/* Pagination */}
+                  {totalPages > 1 && (
+                    <div className="flex items-center justify-between mt-6">
+                      <div className="text-sm text-gray-500">
+                        Page {currentPage} of {totalPages}
                       </div>
                       <div className="flex gap-2">
-                        <Link to={`/job/${job.id}`}>
-                          <Button size="sm" variant="outline">
-                            {translations.view}
-                          </Button>
-                        </Link>
-                        {['open', 'quoted'].includes(job.status) && (
-                          <Link to={`/job/${job.id}/edit`}>
-                            <Button size="sm" variant="outline">
-                              <Edit className="h-3 w-3 mr-1" />
-                              {translations.edit}
-                            </Button>
-                          </Link>
-                        )}
-                        {job.quotes_count > 0 && (
-                          <Link to={`/job/${job.id}/quotes`}>
-                            <Button size="sm" variant="secondary">
-                              View {job.quotes_count} Quote{job.quotes_count !== 1 ? 's' : ''}
-                            </Button>
-                          </Link>
-                        )}
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handlePageChange(currentPage - 1)}
+                          disabled={currentPage === 1}
+                        >
+                          <ChevronLeft className="h-4 w-4 mr-1" />
+                          Previous
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handlePageChange(currentPage + 1)}
+                          disabled={currentPage === totalPages}
+                        >
+                          Next
+                          <ChevronRight className="h-4 w-4 ml-1" />
+                        </Button>
                       </div>
                     </div>
-                  ))}
-                </div>
+                  )}
+                </>
               )}
             </CardContent>
           </Card>
