@@ -842,6 +842,14 @@ export const translations = {
     popularProjectsTitle: "Populære prosjekter",
     popularProjectsSubtitle: "Skal du i gang med et stort prosjekt eller et lite oppdrag? Legg ut jobben på Mittanbud og få tilbud fra relevante bedrifter og håndverkere - eller bruk søkefunksjonen for å finne riktig bedrift for deg!",
     
+    // Automotive Step
+    automotiveStepTitle: "Fá tilbud frá fleiri verkstæði",
+    automotiveStepSubtitle: "Sláðu inn upplýsingar um ökutækið þitt til að fá tilboð frá sannreyndum bílaþjónustuaðilum",
+    automotiveLicensePlateLabel: "Skráningarmerki",
+    automotivePlateValidationError: "Skráningarmerki verður að vera 2-8 stafir eða tölur",
+    automotiveWhyLicensePlate: "Hvers vegna þurfum við þetta?",
+    automotiveHelpText: "Við notum skrárningarmerkið þitt til að auðkenna tegund, gerð og árgang ökutækisins þíns. Þetta hjálpar okkur að tengja þig við verkstæði sem sérhæfa sig í þinni gerð ökutækis og veita nákvæmari tilboð.",
+    
     // Stats
     statsTitle: "Treyst af Þúsundum",
     projectsCompleted: "Kláruð Verkefni",
