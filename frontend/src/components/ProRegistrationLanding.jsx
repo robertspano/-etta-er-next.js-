@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
+import { Globe, ChevronDown } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger } from './ui/select';
 import apiService from '../services/api';
 
-const ProRegistrationLanding = ({ translations }) => {
+const ProRegistrationLanding = ({ translations, language, setLanguage }) => {
   const [formData, setFormData] = useState({
     companyName: '',
     email: ''
