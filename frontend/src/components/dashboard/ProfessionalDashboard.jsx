@@ -50,21 +50,95 @@ const ProfessionalDashboard = ({ translations, language, user }) => {
 
   useEffect(() => {
     loadDashboardData();
+    loadMyQuotes();
+    loadConversations();
   }, []);
 
   const loadDashboardData = async () => {
     try {
-      // In a real app, these would be API calls to get professional-specific data
-      setStats({
-        totalRequests: jobRequests.length,
-        activeQuotes: activeQuotes.length,
-        completedProjects: 12,
-        monthlyEarnings: 2450000, // in ISK
+      setLoading(true);
+      setError('');
+      
+      // Load available jobs count
+      const jobsResponse = await apiService.getJobRequests({ 
+        status: 'open', 
+        limit: 1, 
+        page: 1 
       });
+      
+      // Load active quotes
+      const quotesResponse = await apiService.getQuotes({ 
+        professional_id: user.id,
+        status: 'submitted',
+        limit: 1,
+        page: 1
+      });
+      
+      setStats({
+        availableJobs: jobsResponse.total || 0,
+        activeQuotes: quotesResponse.total || 0,
+        completedProjects: 12, // TODO: Add API endpoint for completed projects
+        monthlyEarnings: 2450000, // TODO: Add API endpoint for earnings
+      });
+      
     } catch (error) {
       console.error('Failed to load dashboard data:', error);
+      setError(error.message || 'Failed to load dashboard data');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const loadMyQuotes = async () => {
+    try {
+      setQuotesLoading(true);
+      setQuotesError('');
+      
+      const response = await apiService.getQuotes({
+        professional_id: user.id,
+        page: quotesPagination.page,
+        limit: quotesPagination.limit
+      });
+      
+      setMyQuotes(response.quotes || []);
+      setQuotesPagination(prev => ({
+        ...prev,
+        total: response.total || 0,
+        totalPages: Math.ceil((response.total || 0) / prev.limit)
+      }));
+      
+    } catch (error) {
+      console.error('Failed to load quotes:', error);
+      setQuotesError(error.message || 'Failed to load quotes');
+    } finally {
+      setQuotesLoading(false);
+    }
+  };
+
+  const loadConversations = async () => {
+    try {
+      setMessagesLoading(true);
+      setMessagesError('');
+      
+      const response = await apiService.getConversations();
+      setConversations(response.conversations || []);
+      
+    } catch (error) {
+      console.error('Failed to load conversations:', error);
+      setMessagesError(error.message || 'Failed to load conversations');
+    } finally {
+      setMessagesLoading(false);
+    }
+  };
+
+  const handleWithdrawQuote = async (quoteId) => {
+    try {
+      await apiService.withdrawQuote(quoteId);
+      loadMyQuotes(); // Refresh quotes
+      loadDashboardData(); // Refresh stats
+    } catch (error) {
+      console.error('Failed to withdraw quote:', error);
+      setQuotesError(error.message || 'Failed to withdraw quote');
     }
   };
 
