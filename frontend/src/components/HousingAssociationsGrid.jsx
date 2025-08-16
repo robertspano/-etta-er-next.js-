@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, ArrowRight, Home, DoorOpen, Building, Banknote, Brick, Droplets, Bath, Zap, TreePine, Wrench, Plug, Paintbrush, Hammer, Sparkles, Truck, Grid3X3 } from 'lucide-react';
+import { Search, ArrowRight, Home, DoorOpen, Building, Square, Brick, Droplets, Bath, Zap, TreePine, Wrench, Plug, Paintbrush, Hammer, Sparkles, Truck, Grid3X3 } from 'lucide-react';
 
 const HousingAssociationsGrid = ({ translations, language }) => {
   const navigate = useNavigate();
