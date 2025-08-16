@@ -923,6 +923,16 @@ export const translations = {
     categorySelectionTitle: "Veldu flokk til að birta verkefnið þitt – ókeypis",
     categorySelectionSearchPlaceholder: "Hvað þarftu hjálp við?",
     
+    // Professional Registration Landing
+    proRegistrationTitle: "Fáðu nýja viðskiptavini og spennandi verkefni",
+    proRegistrationSubtitle: "Þúsundir nýrra verka á hverri viku. Skráðu þig til að sjá öll verkefni á þínu svæði.",
+    proCompanyNameLabel: "Heiti fyrirtækis",
+    proCompanyNamePlaceholder: "Heiti fyrirtækis",
+    proEmailLabel: "Netfang",
+    proEmailPlaceholder: "Netfang", 
+    proCtaButton: "Komdu af stað — sjá verkefni",
+    proTermsText: "Með því að halda áfram samþykkir þú skilmála okkar. Sjá nánar um vinnslu persónuupplýsinga í persónuverndarstefnu.",
+    
     // Popular Projects Section
     popularProjectsTitle: "Populære prosjekter",
     popularProjectsSubtitle: "Skal du i gang med et stort prosjekt eller et lite oppdrag? Legg ut jobben på Mittanbud og få tilbud fra relevante bedrifter og håndverkere - eller bruk søkefunksjonen for å finne riktig bedrift for deg!",
