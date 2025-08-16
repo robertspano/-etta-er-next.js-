@@ -26,6 +26,8 @@ const JobPostingWizard = ({ translations, language }) => {
     category: category || '',
     title: '',
     description: '',
+    licensePlate: '',  // For automotive category
+    plateCountry: 'IS',  // Default to Iceland
     email: user?.email || '',
     phone: '',
     firstName: user?.first_name || '',
