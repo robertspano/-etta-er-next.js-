@@ -27,7 +27,7 @@ const HousingAssociationsGrid = ({ translations, language }) => {
     },
     {
       key: 'balcony',
-      icon: <Banknote className="w-8 h-8" />,
+      icon: <Square className="w-8 h-8" />,
       name: 'Balkong',
       route: '/post/balcony'
     },
