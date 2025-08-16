@@ -953,6 +953,7 @@ export const translations = {
     movingStepHeader: "Um verkefnið • Tengiliður • Klárt",
     movingCategoryTitle: "Hvers konar flutningaþjónustu þarftu?",
     showMoreCategories: "Sýna fleiri flokka",
+    showFewerCategories: "Sýna færri flokka",
     
     // Moving Subcategories  
     varetransport: "Sendibílaþjónusta",
