@@ -150,9 +150,12 @@ const JobPostingWizard = ({ translations, language }) => {
         };
 
         if (draftJobId) {
+          console.log('Updating existing draft:', draftJobId, jobData);
           await api.updateDraftJobRequest(draftJobId, jobData);
         } else {
+          console.log('Creating new draft:', jobData);
           const response = await api.createDraftJobRequest(jobData);
+          console.log('Draft created successfully:', response);
           setDraftJobId(response.id);
         }
         
