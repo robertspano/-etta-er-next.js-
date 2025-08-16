@@ -172,7 +172,7 @@ const JobPostingWizard = ({ translations, language }) => {
     try {
       if (draftJobId) {
         // Finalize the job request
-        await api.put(`/api/job-requests/${draftJobId}`, {
+        await api.updateJobRequest(draftJobId, {
           status: 'open'
         });
         
