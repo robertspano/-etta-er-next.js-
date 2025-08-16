@@ -138,6 +138,22 @@ function App() {
               } 
             />
             
+            {/* All Categories Overview Route - Public */}
+            <Route 
+              path="/all-categories" 
+              element={
+                <AuthLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <AllCategoriesOverview 
+                    translations={currentTranslations} 
+                  />
+                </AuthLayout>
+              } 
+            />
+            
             {/* Auth Routes */}
             <Route 
               path="/login" 
