@@ -41,8 +41,35 @@ const TrustSection = ({ translations }) => {
   ];
 
   return (
-    <section className="py-16 bg-stone-50">
-      <div className="container mx-auto px-4 max-w-7xl">
+    <section className="py-16 bg-stone-50 relative overflow-hidden">
+      {/* Decorative Background Motif */}
+      <div 
+        className="absolute top-0 right-0 w-[clamp(240px,30vw,520px)] h-auto pointer-events-none opacity-[0.12] md:opacity-[0.10] lg:opacity-[0.08]"
+        style={{
+          background: `radial-gradient(ellipse 400px 600px at 70% 30%, 
+            rgba(16, 185, 129, 0.3) 0%, 
+            rgba(59, 130, 246, 0.2) 35%, 
+            rgba(168, 85, 247, 0.15) 65%, 
+            transparent 100%)`,
+          transform: 'rotate(-15deg) scale(1.2)',
+          mixBlendMode: 'multiply'
+        }}
+        aria-hidden="true"
+      >
+        <div 
+          className="w-full h-[400px] md:h-[500px] lg:h-[600px]"
+          style={{
+            background: `
+              radial-gradient(circle at 60% 40%, rgba(34, 197, 94, 0.4) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 20%, rgba(59, 130, 246, 0.3) 0%, transparent 60%),
+              radial-gradient(circle at 40% 80%, rgba(168, 85, 247, 0.25) 0%, transparent 45%)
+            `,
+            filter: 'blur(2px)'
+          }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 max-w-7xl relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -53,12 +80,12 @@ const TrustSection = ({ translations }) => {
           </p>
         </div>
 
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Cards Grid - Enhanced for equal heights */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {cards.map((card, index) => (
             <div 
               key={index}
-              className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
+              className="bg-white rounded-xl p-6 lg:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 flex flex-col h-full"
             >
               {/* Icon */}
               <div className="mb-6">
@@ -71,14 +98,14 @@ const TrustSection = ({ translations }) => {
               </h3>
 
               {/* Description */}
-              <p className="text-gray-600 leading-relaxed mb-6">
+              <p className="text-gray-600 leading-relaxed mb-6 flex-grow">
                 {card.description}
               </p>
 
               {/* Learn More Link */}
               <a 
                 href="#" 
-                className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200"
+                className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200 mt-auto"
               >
                 {translations.learnMore}
                 <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -90,6 +117,22 @@ const TrustSection = ({ translations }) => {
           ))}
         </div>
       </div>
+      
+      {/* Additional responsive motif adjustments via CSS */}
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .absolute.top-0.right-0 {
+            opacity: 0.04 !important;
+            transform: rotate(-15deg) scale(0.4) !important;
+          }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .absolute.top-0.right-0 {
+            opacity: 0.08 !important;
+            transform: rotate(-15deg) scale(0.75) !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };
