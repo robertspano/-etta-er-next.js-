@@ -145,7 +145,6 @@ const Hero = ({ translations }) => {
             {/* Service Categories Grid - 4 columns on desktop */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
               {serviceCategories.map((category, index) => {
-                const IconComponent = category.icon;
                 return (
                   <button
                     key={category.key}
@@ -154,7 +153,9 @@ const Hero = ({ translations }) => {
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <div className="p-3 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl mb-4 group-hover:from-blue-100 group-hover:to-indigo-200 transition-all duration-300">
-                      <IconComponent className="h-8 w-8 text-blue-600 group-hover:text-blue-700 group-hover:scale-110 transition-all duration-300" />
+                      <div className="h-8 w-8 text-blue-600 group-hover:text-blue-700 group-hover:scale-110 transition-all duration-300 flex items-center justify-center">
+                        {category.icon}
+                      </div>
                     </div>
                     <span className="text-sm font-semibold text-gray-800 text-center leading-tight group-hover:text-gray-900">
                       {category.name}
