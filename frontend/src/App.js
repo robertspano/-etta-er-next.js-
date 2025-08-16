@@ -121,6 +121,22 @@ function App() {
               } 
             />
             
+            {/* Category Selection Route - Public */}
+            <Route 
+              path="/categories" 
+              element={
+                <AuthLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <CategorySelection 
+                    translations={currentTranslations} 
+                  />
+                </AuthLayout>
+              } 
+            />
+            
             {/* Auth Routes */}
             <Route 
               path="/login" 
