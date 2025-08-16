@@ -664,7 +664,7 @@ const JobPostingWizard = ({ translations, language }) => {
               updateFormData={updateFormData}
               translations={translations}
               language={language}
-              onNext={handleNext}
+              onNext={handleAutomotiveNext}
               loading={loading}
               error={error}
             />
