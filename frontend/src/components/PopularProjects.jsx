@@ -118,7 +118,7 @@ const PopularProjects = ({ translations }) => {
               >
                 <div className="relative flex flex-col items-center text-center">
                   {/* Icon Container - even larger icon */}
-                  <div className="w-16 h-16 mb-3 rounded-xl bg-white flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                  <div className="w-20 h-20 mb-3 rounded-xl bg-white flex items-center justify-center group-hover:scale-110 transition-all duration-300">
                     <div className="text-[#1B2B5B]">
                       {category.icon}
                     </div>
