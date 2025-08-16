@@ -22,8 +22,16 @@ const Hero = ({ translations }) => {
       key: 'bathroom', 
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
-          <path d="M7 7h10v2H7V7zM7 11h10v8c0 1.1-.9 2-2 2H9c-1.1 0-2-.9-2-2v-8zm2 2v4h6v-4H9z"/>
-          <path d="M6 5V3c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v2h2v2H4V5h2z"/>
+          <path d="M9 17H7v-7H5v7c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2V7h2v10c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2v-3h-2v3h-2V7h-2v10H9z"/>
+          <circle cx="7" cy="4" r="2"/>
+          <circle cx="13" cy="4" r="2"/>
+          <circle cx="19" cy="4" r="2"/>
+          <circle cx="5" cy="11" r="1"/>
+          <circle cx="8" cy="13" r="1"/>
+          <circle cx="11" cy="11" r="1"/>
+          <circle cx="14" cy="13" r="1"/>
+          <circle cx="17" cy="11" r="1"/>
+          <circle cx="20" cy="13" r="1"/>
         </svg>
       ), 
       name: translations.bathroom 
