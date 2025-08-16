@@ -27,6 +27,7 @@ import JobRequestDetail from './components/marketplace/JobRequestDetail';
 import JobMessaging from './components/marketplace/JobMessaging';
 import ProfessionalJobDetail from './components/marketplace/ProfessionalJobDetail';
 import QuoteSubmissionForm from './components/marketplace/QuoteSubmissionForm';
+import JobPostingWizard from './components/marketplace/JobPostingWizard';
 
 // Utility Components
 import Unauthorized from './components/Unauthorized';
