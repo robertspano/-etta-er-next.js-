@@ -36,9 +36,10 @@ class DatabaseService:
             from models.quote import Quote
             from models.message import JobMessage
             from models.notification import Notification
+            from models.review import Review
             
             await init_beanie(database=self.db, document_models=[
-                User, JobRequest, Quote, JobMessage, Notification
+                User, JobRequest, Quote, JobMessage, Notification, Review
             ])
             logger.info("Initialized Beanie with all marketplace models")
             
