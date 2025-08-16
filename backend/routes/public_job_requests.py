@@ -194,6 +194,16 @@ async def create_draft_job_request(
             "is_featured": False
         }
         
+        # Add vehicle info if provided
+        if job_data.vehicleInfo and isinstance(job_data.vehicleInfo, dict) and job_data.vehicleInfo.get('found'):
+            vehicle_info = job_data.vehicleInfo
+            job_request_data.update({
+                "vehicle_make": vehicle_info.get("make"),
+                "vehicle_model": vehicle_info.get("model"),
+                "vehicle_year": vehicle_info.get("year"),
+                "vehicle_color": vehicle_info.get("color")
+            })
+        
         # Save to database
         success = await db_service.create_document("job_requests", job_request_data)
         if not success:
