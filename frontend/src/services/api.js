@@ -3,9 +3,9 @@ import axios from 'axios';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://tradesmen-connect.preview.emergentagent.com';
 // Ensure HTTPS is used
 const SECURE_BACKEND_URL = BACKEND_URL.replace(/^http:/, 'https:');
-const API_BASE = `${BACKEND_URL}/api`;
+const API_BASE = `${SECURE_BACKEND_URL}/api`;
 
-console.log('API Service initialized with:', { BACKEND_URL, API_BASE });
+console.log('API Service initialized with:', { BACKEND_URL, SECURE_BACKEND_URL, API_BASE });
 
 class ApiService {
   constructor() {
