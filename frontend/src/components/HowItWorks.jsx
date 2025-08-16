@@ -41,37 +41,30 @@ const HowItWorks = ({ translations }) => {
           </h2>
         </div>
 
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-16 mb-16">
+        {/* Steps Grid - No Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-20 mb-16">
           {steps.map((step, index) => {
             const IconComponent = step.icon;
             return (
-              <div 
-                key={step.id} 
-                className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 relative"
-              >
-                {/* Number Badge - top left */}
-                <div className="absolute -top-3 -left-3 w-8 h-8 bg-[#1B2B5B] text-white rounded-full flex items-center justify-center font-bold text-sm">
-                  {step.id}
+              <div key={step.id} className="text-center">
+                {/* Icon with Number Badge */}
+                <div className="relative inline-block mb-6">
+                  <IconComponent className="h-12 w-12 text-[#1B2B5B]" strokeWidth={1.5} />
+                  {/* Number badge positioned inside top-left of icon */}
+                  <div className="absolute -top-1 -left-1 w-6 h-6 bg-[#1B2B5B] text-white rounded-full flex items-center justify-center text-sm font-bold">
+                    {step.id}
+                  </div>
                 </div>
                 
-                {/* Content */}
-                <div className="pt-4">
-                  {/* Icon */}
-                  <div className="mb-6">
-                    <IconComponent className="h-8 w-8 text-[#1B2B5B]" strokeWidth={1.5} />
-                  </div>
-                  
-                  {/* Title */}
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    {step.title}
-                  </h3>
-                  
-                  {/* Description */}
-                  <p className="text-gray-600 leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
+                {/* Title */}
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  {step.title}
+                </h3>
+                
+                {/* Description */}
+                <p className="text-gray-600 leading-relaxed">
+                  {step.description}
+                </p>
               </div>
             );
           })}
