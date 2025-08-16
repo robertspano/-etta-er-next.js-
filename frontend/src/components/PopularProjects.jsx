@@ -106,26 +106,26 @@ const PopularProjects = ({ translations }) => {
           </p>
         </div>
 
-        {/* Enhanced Category Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
+        {/* Category Grid - 4x2 layout (4 per row, 2 rows) */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
           {projectCategories.map((category, index) => {
             return (
               <button
                 key={category.key}
                 onClick={() => handleCategoryClick(category.key)}
-                className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-transparent hover:scale-105 p-6 card-hover animate-fade-in-up"
+                className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-transparent hover:scale-105 p-4 card-hover animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="relative flex flex-col items-center text-center">
-                  {/* Icon Container */}
-                  <div className="w-16 h-16 mb-5 rounded-2xl bg-white border-2 border-[#1B2B5B] flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                    <div className="text-[#1B2B5B]">
+                  {/* Icon Container - smaller */}
+                  <div className="w-12 h-12 mb-3 rounded-xl bg-white border-2 border-[#1B2B5B] flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                    <div className="text-[#1B2B5B] text-sm">
                       {category.icon}
                     </div>
                   </div>
                   
-                  {/* Category Name */}
-                  <h3 className="font-bold text-base text-[#1B2B5B] mb-2">
+                  {/* Category Name - smaller */}
+                  <h3 className="font-bold text-sm text-[#1B2B5B]">
                     {category.name}
                   </h3>
                 </div>
