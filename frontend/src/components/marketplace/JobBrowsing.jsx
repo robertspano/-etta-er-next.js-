@@ -65,9 +65,9 @@ const JobBrowsing = ({ translations, language }) => {
         professional_view: true // This tells the API we want jobs visible to professionals
       };
       
-      // Add filters if they have values
+      // Add filters if they have values (excluding "all" values)
       Object.keys(filters).forEach(key => {
-        if (filters[key]) {
+        if (filters[key] && filters[key] !== 'all') {
           requestFilters[key] = filters[key];
         }
       });
