@@ -181,6 +181,15 @@ const JobPostingWizard = ({ translations, language }) => {
           };
         }
 
+        console.log('Form data before API call:', {
+          category: formData.category,
+          title: formData.title,
+          titleLength: formData.title?.length,
+          description: formData.description,
+          descriptionLength: formData.description?.length,
+          jobData
+        });
+
         if (draftJobId) {
           console.log('Updating existing draft:', draftJobId, jobData);
           await api.updateDraftJobRequest(draftJobId, jobData);
