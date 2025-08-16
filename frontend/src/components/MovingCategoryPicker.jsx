@@ -141,15 +141,46 @@ const MovingCategoryPicker = ({ translations }) => {
                 </span>
               </button>
             ))}
+            
+            {/* Additional Categories (Expandable) */}
+            <div className={`col-span-full grid grid-cols-1 md:grid-cols-2 gap-4 transition-all duration-200 ${
+              expanded 
+                ? 'opacity-100 max-h-96' 
+                : 'opacity-0 max-h-0 overflow-hidden'
+            }`}>
+              {additionalSubcategories.map((subcategory, index) => (
+                <button
+                  key={subcategory.key}
+                  onClick={() => handleSubcategorySelect(subcategory.key)}
+                  className="flex items-center p-4 bg-white border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-md transition-all duration-200 text-left group"
+                >
+                  {/* Icon */}
+                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gray-50 flex items-center justify-center mr-4 group-hover:bg-blue-50 transition-colors">
+                    <div className="text-[#1B2B5B] group-hover:text-blue-600 transition-colors">
+                      {subcategory.icon}
+                    </div>
+                  </div>
+                  
+                  {/* Name */}
+                  <span className="font-medium text-gray-900 group-hover:text-blue-700 transition-colors">
+                    {subcategory.name}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Show More Categories Link */}
+          {/* Toggle More Categories Button */}
           <div className="text-center">
             <button
-              onClick={handleShowMoreCategories}
+              onClick={handleToggleExpansion}
               className="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors"
+              aria-expanded={expanded}
             >
-              {translations.showMoreCategories}
+              {expanded 
+                ? (translations.showFewerCategories || 'Show fewer categories')
+                : (translations.showMoreCategories || 'Show more categories')
+              }
             </button>
           </div>
         </div>
