@@ -421,6 +421,13 @@ export const translations = {
     findCompanyWhereJob: "Where should the job be done?",
     findCompanyButton: "Find company",
     
+    // Reviews Section
+    latestReviewsTitle: "Latest Reviews",
+    latestReviewsSubtitle: "See what our customers say about the professionals they've worked with",
+    noReviewsYetTitle: "No reviews yet",
+    noReviewsYetMessage: "Customer reviews will appear here once projects are completed",
+    reviewsComingSoon: "Reviews coming soon",
+    
     // Stats
     statsTitle: "Trusted by Thousands",
     projectsCompleted: "Projects Completed",
