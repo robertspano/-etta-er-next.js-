@@ -412,6 +412,7 @@ export const translations = {
     mittanbudLicensePlateLabel: "License Plate",
     mittanbudWhyNeedPlate: "Why do we need this?",
     mittanbudPlateHelpText: "We use your vehicle's registration number to find information about the type and model and can thus connect you with appropriate workshops and get better quotes.",
+    automotivePlateValidationError: "License plate must be 2-8 alphanumeric characters",
     
     // Stats
     statsTitle: "Trusted by Thousands",
