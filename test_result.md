@@ -517,7 +517,6 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Reviews System Backend Implementation"
     - "Professional Profile Management"
   stuck_tasks: []
   test_all: false
