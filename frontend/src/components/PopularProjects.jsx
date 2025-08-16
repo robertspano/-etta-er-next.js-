@@ -98,11 +98,6 @@ const PopularProjects = ({ translations }) => {
       
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-100 to-purple-100 px-6 py-3 rounded-full mb-6 animate-fade-in-up">
-            <TrendingUp className="h-5 w-5 text-blue-600" />
-            <span className="text-blue-700 font-semibold text-sm uppercase tracking-wide">Most Popular</span>
-          </div>
-          
           <h2 className="heading-lg text-gray-900 mb-6 animate-fade-in-up text-shadow">
             {translations.popularProjectsTitle}
           </h2>
