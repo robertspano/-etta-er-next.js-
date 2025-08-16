@@ -477,6 +477,30 @@ export const translations = {
     filter: "Sía",
     search: "Leita",
     
+    // Job Detail Page
+    backToDashboard: "Til baka í Stjórnborð",
+    backToJob: "Til baka í Verkefni",
+    jobDetails: "Verkefnaupplýsingar",
+    posted: "Sent inn",
+    location: "Staðsetning",
+    confirmAcceptQuote: "Ertu viss um að þú viljir samþykkja þetta tilboð?",
+    confirmDeclineQuote: "Ertu viss um að þú viljir hafna þessu tilboði?",
+    confirmCancelJob: "Ertu viss um að þú viljir hætta við þessa verkbeiðni?",
+    jobCancelledMsg: "Verkbeiðni aflýst með góðum árangri",
+    accepting: "Samþykki...",
+    noQuotesYet: "Engin tilboð móttekin enn. Sérfræðingar munu senda tilboð fyrir verkbeiðnina þína.",
+    
+    // Messaging
+    jobConversation: "Verkefnasamtal",
+    messagingInterfaceComingSoon: "Skilaboðaviðmót verður útfært næst.",
+    openMessaging: "Opna Skilaboð",
+    noMessagesYet: "Engin skilaboð enn. Byrjaðu samtalið!",
+    attachments: "Viðhengi",
+    attachFile: "Festa við Skrá",
+    messageHint: "Ýttu á Ctrl+Enter til að senda. Hámarks skrárstærð: 10MB",
+    yes: "Já",
+    no: "Nei",
+    
     // Forms
     required: "Skylda",
     optional: "Valfrjálst",
