@@ -6,6 +6,7 @@ from enum import Enum
 import uuid
 
 class JobStatus(str, Enum):
+    DRAFT = "draft"
     OPEN = "open"
     QUOTED = "quoted"
     ACCEPTED = "accepted"
