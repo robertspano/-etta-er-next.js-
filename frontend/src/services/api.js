@@ -17,7 +17,17 @@ class ApiService {
       withCredentials: true, // Enable cookies for session-based auth
     });
 
-    // Add response interceptor for error handling
+    // Create separate client for public APIs (no credentials needed)
+    this.publicClient = axios.create({
+      baseURL: API_BASE,
+      timeout: 10000,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      withCredentials: false, // No credentials for public endpoints
+    });
+
+    // Add response interceptor for error handling (authenticated client)
     this.client.interceptors.response.use(
       (response) => response.data,
       (error) => {
@@ -29,6 +39,15 @@ class ApiService {
           window.dispatchEvent(new CustomEvent('auth-error', { detail: 'unauthorized' }));
         }
         
+        return Promise.reject(error);
+      }
+    );
+
+    // Add response interceptor for public client
+    this.publicClient.interceptors.response.use(
+      (response) => response.data,
+      (error) => {
+        console.error('Public API Error:', error.response?.data || error.message);
         return Promise.reject(error);
       }
     );
