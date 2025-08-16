@@ -426,9 +426,10 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Customer Dashboard Job Request List with Pagination"
-    - "Job Request Detail Page"
-    - "Job Messaging Interface"
+    - "Professional Dashboard Implementation"
+    - "Professional Job Browsing Interface"
+    - "Quote Submission Form"
+    - "Professional Profile Management"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
