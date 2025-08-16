@@ -26,8 +26,8 @@ const Hero = ({ translations }) => {
   };
 
   const handleCategoryClick = (categoryKey) => {
-    // Handle category selection
-    console.log('Category selected:', categoryKey);
+    // Navigate to job posting wizard with selected category
+    navigate(`/post?category=${categoryKey}`);
   };
 
   return (
