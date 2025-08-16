@@ -77,6 +77,15 @@ async def get_job_requests(
                 )
             query_filter["customer_id"] = current_user.id
         
+        # For professionals, filter by their service areas if not admin and exclude draft jobs
+        elif current_user and current_user.role == "professional":
+            # Professionals should not see draft jobs
+            query_filter["status"] = {"$ne": "draft"}
+            # Get professional's service areas (postcodes)
+            service_areas = current_user.profile.service_areas or []
+            if service_areas:
+                query_filter["postcode"] = {"$in": service_areas}
+        
         # If no specific user filters and not authenticated, show only open jobs (no drafts)
         elif not current_user:
             query_filter["status"] = {"$ne": "draft"}
