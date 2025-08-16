@@ -47,9 +47,7 @@ const HomePage = ({ language, setLanguage, currentTranslations }) => {
       <HowItWorks translations={currentTranslations} />
       <PopularProjects translations={currentTranslations} />
       <FindCompanySection translations={currentTranslations} language={language} />
-      <Stats translations={currentTranslations} />
-      <Testimonials translations={currentTranslations} />
-      <CallToAction translations={currentTranslations} />
+      <ReviewsSection reviews={[]} translations={currentTranslations} language={language} />
       <Footer translations={currentTranslations} />
     </div>
   );
