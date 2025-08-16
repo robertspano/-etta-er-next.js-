@@ -6,9 +6,9 @@ import ProtectedRoute, { CustomerRoute, ProfessionalRoute, AdminRoute } from './
 // Components
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Services from './components/Services';
 import HowItWorks from './components/HowItWorks';
 import PopularProjects from './components/PopularProjects';
+import FindCompanySection from './components/FindCompanySection';
 import Stats from './components/Stats';
 import Testimonials from './components/Testimonials';
 import CallToAction from './components/CallToAction';
