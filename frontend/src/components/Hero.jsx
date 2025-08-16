@@ -130,16 +130,16 @@ const Hero = ({ translations }) => {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 py-20 lg:py-28 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 py-16 lg:py-20 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-pattern opacity-40"></div>
       <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl -translate-y-32 translate-x-32"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-indigo-400/15 to-cyan-400/15 rounded-full blur-3xl translate-y-32 -translate-x-32"></div>
       
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-5 gap-16 items-start">
-          {/* Left Content - 65% */}
-          <div className="md:col-span-3 space-y-10 animate-fade-in-up">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-5 gap-12 lg:gap-16 items-center">
+          {/* Left Content - 60% */}
+          <div className="md:col-span-3 space-y-8 animate-fade-in-up">
             {/* Title */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight text-shadow">
               <span className="bg-gradient-to-r from-gray-900 via-blue-800 to-gray-900 bg-clip-text text-transparent whitespace-nowrap">
@@ -153,7 +153,7 @@ const Hero = ({ translations }) => {
             </p>
 
             {/* Search Input */}
-            <form onSubmit={handleSearch} className="mb-10">
+            <form onSubmit={handleSearch} className="mb-6">
               <div className="relative max-w-lg group">
                 <Input
                   type="text"
@@ -172,25 +172,25 @@ const Hero = ({ translations }) => {
               </div>
             </form>
 
-            {/* Service Categories Grid - Tighter horizontal spacing like Mittanbud */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-6 md:gap-x-5 md:gap-y-8 max-w-4xl">
+            {/* Service Categories Grid - 4x2 desktop, 3x3 tablet, 2x4 mobile */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-4 max-w-2xl">
               {serviceCategories.map((category, index) => {
                 return (
                   <button
                     key={category.key}
                     onClick={() => handleCategoryClick(category.key)}
-                    className="group inline-flex flex-col items-center gap-3 p-3 md:p-4 cursor-pointer select-none transition-all duration-200 animate-fade-in-up"
+                    className="group inline-flex flex-col items-center gap-2 p-2 cursor-pointer select-none transition-all duration-200 animate-fade-in-up"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    {/* Icon - larger and navy colored */}
+                    {/* Icon - increased size to 28-32px */}
                     <div className="text-[#1B2B5B] group-hover:scale-105 transition-transform duration-200">
-                      <div className="w-11 h-11 md:w-14 md:h-14 lg:w-16 lg:h-16 flex items-center justify-center">
+                      <div className="w-7 h-7 md:w-8 md:h-8 flex items-center justify-center">
                         {category.icon}
                       </div>
                     </div>
                     
                     {/* Label with underline on hover */}
-                    <span className="text-sm md:text-base font-medium text-slate-800 group-hover:text-[#1B2B5B] text-center leading-tight transition-all duration-200 relative">
+                    <span className="text-xs md:text-sm font-medium text-slate-800 group-hover:text-[#1B2B5B] text-center leading-tight transition-all duration-200 relative">
                       {category.name}
                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#1B2B5B] group-hover:w-full transition-all duration-200"></span>
                     </span>
@@ -200,34 +200,34 @@ const Hero = ({ translations }) => {
             </div>
           </div>
 
-          {/* Right Content - 35% - Polaroid Image positioned to the right of ALL left content */}
-          <div className="md:col-span-2 flex justify-center md:justify-start mt-12 md:mt-0">
-            <div className="relative animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+          {/* Right Content - 40% - Hero Image */}
+          <div className="md:col-span-2 flex justify-center items-center">
+            <div className="relative animate-fade-in-up w-full max-w-sm md:max-w-md lg:max-w-lg" style={{ animationDelay: '0.3s' }}>
               {/* Floating elements */}
-              <div className="absolute -top-6 -left-6 w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full shadow-lg animate-pulse"></div>
-              <div className="absolute -bottom-4 -right-4 w-8 h-8 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full shadow-md"></div>
+              <div className="absolute -top-4 -left-4 w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full shadow-lg animate-pulse"></div>
+              <div className="absolute -bottom-3 -right-3 w-6 h-6 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full shadow-md"></div>
               
-              {/* Enhanced Polaroid Card */}
-              <div className="bg-white p-7 rounded-2xl shadow-2xl transform rotate-2 hover:rotate-0 transition-all duration-500 hover:shadow-3xl border border-gray-100">
-                {/* Image placeholder */}
-                <div className="w-80 h-64 bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 rounded-xl mb-5 flex items-center justify-center relative overflow-hidden shadow-inner">
+              {/* Polaroid Card - responsive sizing */}
+              <div className="bg-white p-4 md:p-6 rounded-2xl shadow-2xl transform rotate-2 hover:rotate-0 transition-all duration-500 hover:shadow-3xl border border-gray-100 w-full">
+                {/* Image placeholder - responsive width */}
+                <div className="w-full aspect-[4/3] bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden shadow-inner">
                   <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent"></div>
                   <div className="text-center z-10">
-                    <div className="p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg">
-                      <Users className="h-20 w-20 text-blue-600 mx-auto mb-4" />
-                      <p className="text-xl font-bold text-gray-700">Trusted Professionals</p>
+                    <div className="p-3 md:p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg">
+                      <Users className="h-12 w-12 md:h-16 md:w-16 lg:h-20 lg:w-20 text-blue-600 mx-auto mb-3 md:mb-4" />
+                      <p className="text-sm md:text-lg lg:text-xl font-bold text-gray-700">Trusted Professionals</p>
                     </div>
                   </div>
                 </div>
                 
                 {/* Polaroid bottom text area */}
-                <div className="text-center py-3">
-                  <div className="flex justify-center items-center mb-3">
+                <div className="text-center py-2 md:py-3">
+                  <div className="flex justify-center items-center mb-2 md:mb-3">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400 hover:scale-110 transition-transform duration-200" />
+                      <Star key={i} className="h-4 w-4 md:h-5 md:w-5 lg:h-6 lg:w-6 fill-yellow-400 text-yellow-400 hover:scale-110 transition-transform duration-200" />
                     ))}
                   </div>
-                  <p className="text-lg text-gray-700 font-bold bg-gradient-to-r from-gray-700 to-gray-600 bg-clip-text">15,000+ Happy Customers</p>
+                  <p className="text-sm md:text-base lg:text-lg text-gray-700 font-bold bg-gradient-to-r from-gray-700 to-gray-600 bg-clip-text">15,000+ Happy Customers</p>
                 </div>
               </div>
             </div>
