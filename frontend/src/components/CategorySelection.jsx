@@ -120,9 +120,9 @@ const CategorySelection = ({ translations }) => {
   };
 
   const handleCategoryClick = (categoryKey) => {
-    // Special routing for Major Projects to category overview
+    // Special routing for Major Projects to XL landing
     if (categoryKey === 'majorProjects') {
-      navigate('/major-projects');
+      navigate('/xl');
     } else {
       // Navigate to job posting wizard with category in URL path
       navigate(`/post/${categoryKey}`);
