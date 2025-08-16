@@ -1,5 +1,7 @@
 import React from 'react';
 
+import React from 'react';
+
 const TrustSection = ({ translations }) => {
   const cards = [
     {
@@ -42,32 +44,42 @@ const TrustSection = ({ translations }) => {
 
   return (
     <section className="py-16 bg-stone-50 relative overflow-hidden">
-      {/* Decorative Background Motif */}
+      {/* Decorative Background Motif - CSS only approach */}
       <div 
-        className="absolute top-0 right-0 w-[clamp(240px,30vw,520px)] h-auto pointer-events-none opacity-[0.12] md:opacity-[0.10] lg:opacity-[0.08]"
+        className="absolute top-0 right-0 pointer-events-none opacity-10 hidden md:block"
         style={{
-          background: `radial-gradient(ellipse 400px 600px at 70% 30%, 
-            rgba(16, 185, 129, 0.3) 0%, 
-            rgba(59, 130, 246, 0.2) 35%, 
-            rgba(168, 85, 247, 0.15) 65%, 
-            transparent 100%)`,
+          width: 'clamp(240px, 30vw, 520px)',
+          height: '400px',
+          background: `
+            radial-gradient(ellipse 400px 600px at 70% 30%, 
+              rgba(16, 185, 129, 0.25) 0%, 
+              rgba(59, 130, 246, 0.20) 35%, 
+              rgba(168, 85, 247, 0.15) 65%, 
+              transparent 100%
+            )
+          `,
           transform: 'rotate(-15deg) scale(1.2)',
-          mixBlendMode: 'multiply'
+          mixBlendMode: 'multiply',
+          filter: 'blur(1px)'
         }}
         aria-hidden="true"
-      >
-        <div 
-          className="w-full h-[400px] md:h-[500px] lg:h-[600px]"
-          style={{
-            background: `
-              radial-gradient(circle at 60% 40%, rgba(34, 197, 94, 0.4) 0%, transparent 50%),
-              radial-gradient(ellipse at 80% 20%, rgba(59, 130, 246, 0.3) 0%, transparent 60%),
-              radial-gradient(circle at 40% 80%, rgba(168, 85, 247, 0.25) 0%, transparent 45%)
-            `,
-            filter: 'blur(2px)'
-          }}
-        />
-      </div>
+      />
+      
+      {/* Additional organic shapes */}
+      <div 
+        className="absolute top-8 right-16 pointer-events-none opacity-8 hidden lg:block"
+        style={{
+          width: '300px',
+          height: '200px',
+          background: `
+            radial-gradient(circle at 40% 60%, rgba(34, 197, 94, 0.15) 0%, transparent 70%),
+            radial-gradient(ellipse at 80% 20%, rgba(59, 130, 246, 0.12) 0%, transparent 60%)
+          `,
+          transform: 'rotate(25deg)',
+          filter: 'blur(2px)'
+        }}
+        aria-hidden="true"
+      />
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
         {/* Header */}
@@ -80,15 +92,15 @@ const TrustSection = ({ translations }) => {
           </p>
         </div>
 
-        {/* Cards Grid - Enhanced for equal heights */}
+        {/* Cards Grid - Equal heights and better spacing */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {cards.map((card, index) => (
             <div 
               key={index}
-              className="bg-white rounded-xl p-6 lg:p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 flex flex-col h-full"
+              className="bg-white rounded-xl p-6 lg:p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 flex flex-col h-full group"
             >
               {/* Icon */}
-              <div className="mb-6">
+              <div className="mb-6 group-hover:scale-105 transition-transform duration-300">
                 {card.icon}
               </div>
 
@@ -97,18 +109,18 @@ const TrustSection = ({ translations }) => {
                 {card.title}
               </h3>
 
-              {/* Description */}
+              {/* Description - flex-grow pushes the link to bottom */}
               <p className="text-gray-600 leading-relaxed mb-6 flex-grow">
                 {card.description}
               </p>
 
-              {/* Learn More Link */}
+              {/* Learn More Link - always at bottom */}
               <a 
                 href="#" 
-                className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200 mt-auto"
+                className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-all duration-200 group-hover:translate-x-1"
               >
                 {translations.learnMore}
-                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="ml-2 w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
                         d="M9 5l7 7-7 7" />
                 </svg>
@@ -117,22 +129,6 @@ const TrustSection = ({ translations }) => {
           ))}
         </div>
       </div>
-      
-      {/* Additional responsive motif adjustments via CSS */}
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .absolute.top-0.right-0 {
-            opacity: 0.04 !important;
-            transform: rotate(-15deg) scale(0.4) !important;
-          }
-        }
-        @media (min-width: 769px) and (max-width: 1024px) {
-          .absolute.top-0.right-0 {
-            opacity: 0.08 !important;
-            transform: rotate(-15deg) scale(0.75) !important;
-          }
-        }
-      `}</style>
     </section>
   );
 };
