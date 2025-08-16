@@ -244,7 +244,7 @@ const JobBidding = ({ translations, language }) => {
                   <SelectValue placeholder={translations.selectCategory || 'All Categories'} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Categories</SelectItem>
+                  <SelectItem value="all">All Categories</SelectItem>
                   {categories.map(category => (
                     <SelectItem key={category} value={category}>
                       {translations[`services_${category}`] || category}
