@@ -11,16 +11,15 @@ export const useReviews = (limit = 12, locale = 'en') => {
     const fetchReviews = async () => {
       try {
         setLoading(true);
+        setError(null);
         
-        // Future API call - currently returns empty array
-        // const response = await api.get(`/reviews?limit=${limit}&locale=${locale}`);
-        // setReviews(response.data);
-        
-        // For now, return empty array to show empty state
-        setReviews([]);
+        // Call the real backend API
+        const response = await api.get(`/reviews?limit=${limit}&locale=${locale}`);
+        setReviews(response.data);
         
       } catch (err) {
-        setError(err.message);
+        console.error('Error fetching reviews:', err);
+        setError(err.message || 'Failed to load reviews');
         setReviews([]);
       } finally {
         setLoading(false);
