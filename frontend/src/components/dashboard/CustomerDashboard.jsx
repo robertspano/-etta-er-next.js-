@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardTitle, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
-import { PlusCircle, FileText, MessageCircle, Clock, CheckCircle } from 'lucide-react';
+import { PlusCircle, FileText, MessageCircle, Clock, CheckCircle, Eye, Edit, Calendar, DollarSign } from 'lucide-react';
 import apiService from '../../services/api';
 
 const CustomerDashboard = ({ translations, language, user }) => {
-  const [projects, setProjects] = useState([]);
+  const [jobRequests, setJobRequests] = useState([]);
+  const [quotes, setQuotes] = useState([]);
+  const [conversations, setConversations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({
-    totalProjects: 0,
-    activeProjects: 0,
-    completedProjects: 0,
+    totalJobs: 0,
+    activeJobs: 0,
+    completedJobs: 0,
     pendingQuotes: 0,
   });
 
@@ -22,18 +25,28 @@ const CustomerDashboard = ({ translations, language, user }) => {
 
   const loadDashboardData = async () => {
     try {
-      const projectsData = await apiService.getProjects();
-      setProjects(projectsData || []);
+      // Load customer's job requests
+      const jobsData = await apiService.getJobRequests({ customer_only: true });
+      setJobRequests(jobsData || []);
+      
+      // Load quotes for customer's jobs
+      const quotesData = await apiService.getQuotes({ my_quotes: true });
+      setQuotes(quotesData || []);
+
+      // Load conversations
+      const conversationsData = await apiService.getConversations();
+      setConversations(conversationsData || []);
       
       // Calculate stats
-      const active = projectsData?.filter(p => p.status === 'active').length || 0;
-      const completed = projectsData?.filter(p => p.status === 'completed').length || 0;
+      const active = jobsData?.filter(j => ['open', 'quoted', 'accepted', 'in_progress'].includes(j.status)).length || 0;
+      const completed = jobsData?.filter(j => j.status === 'completed').length || 0;
+      const pending = quotesData?.filter(q => q.status === 'pending').length || 0;
       
       setStats({
-        totalProjects: projectsData?.length || 0,
-        activeProjects: active,
-        completedProjects: completed,
-        pendingQuotes: projectsData?.filter(p => p.status === 'pending').length || 0,
+        totalJobs: jobsData?.length || 0,
+        activeJobs: active,
+        completedJobs: completed,
+        pendingQuotes: pending,
       });
     } catch (error) {
       console.error('Failed to load dashboard data:', error);
@@ -45,8 +58,22 @@ const CustomerDashboard = ({ translations, language, user }) => {
   const getStatusBadgeVariant = (status) => {
     switch (status) {
       case 'completed': return 'default';
-      case 'active': return 'secondary';
-      case 'pending': return 'outline';
+      case 'accepted': 
+      case 'in_progress': return 'secondary';
+      case 'quoted': return 'outline';
+      case 'open': return 'outline';
+      case 'cancelled': return 'destructive';
+      default: return 'outline';
+    }
+  };
+
+  const getQuoteStatusBadgeVariant = (status) => {
+    switch (status) {
+      case 'accepted': return 'default';
+      case 'pending': return 'secondary';
+      case 'declined': return 'destructive';
+      case 'withdrawn': return 'outline';
+      case 'expired': return 'destructive';
       default: return 'outline';
     }
   };
@@ -54,6 +81,35 @@ const CustomerDashboard = ({ translations, language, user }) => {
   const formatDate = (dateString) => {
     if (!dateString) return 'N/A';
     return new Date(dateString).toLocaleDateString(language === 'is' ? 'is-IS' : 'en-US');
+  };
+
+  const formatCurrency = (amount) => {
+    if (!amount) return 'N/A';
+    return new Intl.NumberFormat(language === 'is' ? 'is-IS' : 'en-US', {
+      style: 'currency',
+      currency: 'ISK',
+      minimumFractionDigits: 0,
+    }).format(amount);
+  };
+
+  const acceptQuote = async (quoteId) => {
+    try {
+      await apiService.acceptQuote(quoteId);
+      // Refresh data
+      loadDashboardData();
+    } catch (error) {
+      console.error('Failed to accept quote:', error);
+    }
+  };
+
+  const declineQuote = async (quoteId) => {
+    try {
+      await apiService.declineQuote(quoteId);
+      // Refresh data
+      loadDashboardData();
+    } catch (error) {
+      console.error('Failed to decline quote:', error);
+    }
   };
 
   if (loading) {
@@ -75,10 +131,12 @@ const CustomerDashboard = ({ translations, language, user }) => {
             Welcome back, {user.profile?.first_name || user.email}!
           </p>
         </div>
-        <Button className="flex items-center gap-2">
-          <PlusCircle className="h-4 w-4" />
-          {translations.postProject}
-        </Button>
+        <Link to="/create-job">
+          <Button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700">
+            <PlusCircle className="h-4 w-4" />
+            {translations.createJobRequest}
+          </Button>
+        </Link>
       </div>
 
       {/* Stats Cards */}
@@ -87,8 +145,8 @@ const CustomerDashboard = ({ translations, language, user }) => {
           <CardContent className="flex items-center p-6">
             <FileText className="h-8 w-8 text-blue-600" />
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">{translations.myProjects}</p>
-              <p className="text-2xl font-bold">{stats.totalProjects}</p>
+              <p className="text-sm font-medium text-gray-600">{translations.myRequests}</p>
+              <p className="text-2xl font-bold">{stats.totalJobs}</p>
             </div>
           </CardContent>
         </Card>
@@ -97,8 +155,8 @@ const CustomerDashboard = ({ translations, language, user }) => {
           <CardContent className="flex items-center p-6">
             <Clock className="h-8 w-8 text-orange-600" />
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">Active</p>
-              <p className="text-2xl font-bold">{stats.activeProjects}</p>
+              <p className="text-sm font-medium text-gray-600">{translations.activeRequests}</p>
+              <p className="text-2xl font-bold">{stats.activeJobs}</p>
             </div>
           </CardContent>
         </Card>
@@ -107,8 +165,8 @@ const CustomerDashboard = ({ translations, language, user }) => {
           <CardContent className="flex items-center p-6">
             <CheckCircle className="h-8 w-8 text-green-600" />
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">{translations.completedProjects}</p>
-              <p className="text-2xl font-bold">{stats.completedProjects}</p>
+              <p className="text-sm font-medium text-gray-600">{translations.completedRequests}</p>
+              <p className="text-2xl font-bold">{stats.completedJobs}</p>
             </div>
           </CardContent>
         </Card>
@@ -117,7 +175,7 @@ const CustomerDashboard = ({ translations, language, user }) => {
           <CardContent className="flex items-center p-6">
             <MessageCircle className="h-8 w-8 text-purple-600" />
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">Pending Quotes</p>
+              <p className="text-sm font-medium text-gray-600">{translations.pendingQuotes}</p>
               <p className="text-2xl font-bold">{stats.pendingQuotes}</p>
             </div>
           </CardContent>
@@ -125,45 +183,93 @@ const CustomerDashboard = ({ translations, language, user }) => {
       </div>
 
       {/* Main Content Tabs */}
-      <Tabs defaultValue="projects" className="w-full">
+      <Tabs defaultValue="requests" className="w-full">
         <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="projects">{translations.myProjects}</TabsTrigger>
-          <TabsTrigger value="quotes">{translations.myQuotes}</TabsTrigger>
-          <TabsTrigger value="messages">{translations.myMessages}</TabsTrigger>
+          <TabsTrigger value="requests">{translations.myRequests}</TabsTrigger>
+          <TabsTrigger value="quotes">{translations.receivedQuotes}</TabsTrigger>
+          <TabsTrigger value="messages">{translations.messages}</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="projects" className="mt-6">
+        <TabsContent value="requests" className="mt-6">
           <Card>
             <CardHeader>
-              <CardTitle>{translations.myProjects}</CardTitle>
+              <CardTitle>{translations.myRequests}</CardTitle>
             </CardHeader>
             <CardContent>
-              {projects.length === 0 ? (
+              {jobRequests.length === 0 ? (
                 <div className="text-center py-8">
                   <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-500">No projects yet. Post your first project to get started!</p>
-                  <Button className="mt-4">
-                    <PlusCircle className="h-4 w-4 mr-2" />
-                    {translations.postProject}
-                  </Button>
+                  <p className="text-gray-500">No job requests yet. Create your first job request to get started!</p>
+                  <Link to="/create-job">
+                    <Button className="mt-4">
+                      <PlusCircle className="h-4 w-4 mr-2" />
+                      {translations.createJobRequest}
+                    </Button>
+                  </Link>
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {projects.map((project) => (
+                  {jobRequests.map((job) => (
                     <div
-                      key={project.id}
+                      key={job.id}
                       className="border rounded-lg p-4 hover:bg-gray-50 transition-colors"
                     >
                       <div className="flex justify-between items-start mb-2">
-                        <h3 className="font-semibold text-lg">{project.service || 'General Project'}</h3>
-                        <Badge variant={getStatusBadgeVariant(project.status)}>
-                          {project.status || 'pending'}
-                        </Badge>
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-lg">{job.title}</h3>
+                          <p className="text-sm text-gray-600 capitalize">{job.category}</p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Badge variant={getStatusBadgeVariant(job.status)}>
+                            {translations[job.status] || job.status}
+                          </Badge>
+                          <span className="text-sm text-gray-500 flex items-center gap-1">
+                            <Eye className="h-3 w-3" />
+                            {job.views_count || 0}
+                          </span>
+                        </div>
                       </div>
-                      <p className="text-gray-600 mb-2 line-clamp-2">{project.description}</p>
-                      <div className="flex justify-between items-center text-sm text-gray-500">
-                        <span>{project.location}</span>
-                        <span>{formatDate(project.createdAt)}</span>
+                      <p className="text-gray-600 mb-3 line-clamp-2">{job.description}</p>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-500 mb-3">
+                        <span className="flex items-center gap-1">
+                          📍 {job.postcode}
+                        </span>
+                        <span>{job.quotes_count || 0} quotes</span>
+                        <span className="flex items-center gap-1">
+                          <Calendar className="h-3 w-3" />
+                          {formatDate(job.posted_at)}
+                        </span>
+                        {(job.budget_min || job.budget_max) && (
+                          <span className="flex items-center gap-1">
+                            <DollarSign className="h-3 w-3" />
+                            {job.budget_min && job.budget_max ? 
+                              `${formatCurrency(job.budget_min)} - ${formatCurrency(job.budget_max)}` :
+                              formatCurrency(job.budget_min || job.budget_max)
+                            }
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex gap-2">
+                        <Link to={`/job/${job.id}`}>
+                          <Button size="sm" variant="outline">
+                            {translations.view}
+                          </Button>
+                        </Link>
+                        {['open', 'quoted'].includes(job.status) && (
+                          <Link to={`/job/${job.id}/edit`}>
+                            <Button size="sm" variant="outline">
+                              <Edit className="h-3 w-3 mr-1" />
+                              {translations.edit}
+                            </Button>
+                          </Link>
+                        )}
+                        {job.quotes_count > 0 && (
+                          <Link to={`/job/${job.id}/quotes`}>
+                            <Button size="sm" variant="secondary">
+                              View {job.quotes_count} Quote{job.quotes_count !== 1 ? 's' : ''}
+                            </Button>
+                          </Link>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -176,13 +282,70 @@ const CustomerDashboard = ({ translations, language, user }) => {
         <TabsContent value="quotes" className="mt-6">
           <Card>
             <CardHeader>
-              <CardTitle>{translations.myQuotes}</CardTitle>
+              <CardTitle>{translations.receivedQuotes}</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-center py-8">
-                <MessageCircle className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-500">No quotes received yet. Post a project to receive quotes from professionals!</p>
-              </div>
+              {quotes.length === 0 ? (
+                <div className="text-center py-8">
+                  <MessageCircle className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                  <p className="text-gray-500">No quotes received yet. Create job requests to receive quotes from professionals!</p>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {quotes.map((quote) => (
+                    <div
+                      key={quote.id}
+                      className="border rounded-lg p-4 hover:bg-gray-50 transition-colors"
+                    >
+                      <div className="flex justify-between items-start mb-2">
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-lg">
+                            {quote.professional_name}
+                            {quote.professional_company && (
+                              <span className="text-sm text-gray-600 font-normal"> - {quote.professional_company}</span>
+                            )}
+                          </h3>
+                          <p className="text-lg font-bold text-green-600">{formatCurrency(quote.amount)}</p>
+                        </div>
+                        <Badge variant={getQuoteStatusBadgeVariant(quote.status)}>
+                          {translations[`quote${quote.status.charAt(0).toUpperCase() + quote.status.slice(1)}`] || quote.status}
+                        </Badge>
+                      </div>
+                      <p className="text-gray-600 mb-3">{quote.message}</p>
+                      <div className="grid grid-cols-2 gap-4 text-sm text-gray-500 mb-3">
+                        <span>{translations.estimatedDuration}: {quote.estimated_duration || 'N/A'}</span>
+                        <span>{translations.expiresAt}: {formatDate(quote.expires_at)}</span>
+                        <span>{translations.materialsIncluded}: {quote.includes_materials ? translations.yes : translations.no}</span>
+                        <span>{translations.submitted}: {formatDate(quote.submitted_at)}</span>
+                      </div>
+                      {quote.status === 'pending' && new Date() < new Date(quote.expires_at) && (
+                        <div className="flex gap-2">
+                          <Button 
+                            size="sm" 
+                            onClick={() => acceptQuote(quote.id)}
+                            className="bg-green-600 hover:bg-green-700"
+                          >
+                            {translations.acceptQuote}
+                          </Button>
+                          <Button 
+                            size="sm" 
+                            variant="outline"
+                            onClick={() => declineQuote(quote.id)}
+                          >
+                            {translations.declineQuote}
+                          </Button>
+                          <Link to={`/job/${quote.job_request_id}/messages`}>
+                            <Button size="sm" variant="outline">
+                              <MessageCircle className="h-3 w-3 mr-1" />
+                              {translations.sendMessage}
+                            </Button>
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
             </CardContent>
           </Card>
         </TabsContent>
@@ -190,13 +353,47 @@ const CustomerDashboard = ({ translations, language, user }) => {
         <TabsContent value="messages" className="mt-6">
           <Card>
             <CardHeader>
-              <CardTitle>{translations.myMessages}</CardTitle>
+              <CardTitle>{translations.messages}</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-center py-8">
-                <MessageCircle className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-500">No messages yet. Messages will appear here when you start communicating with professionals.</p>
-              </div>
+              {conversations.length === 0 ? (
+                <div className="text-center py-8">
+                  <MessageCircle className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                  <p className="text-gray-500">No conversations yet. Messages will appear here when you start communicating with professionals.</p>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {conversations.map((conversation) => (
+                    <Link 
+                      key={conversation.job_id}
+                      to={`/job/${conversation.job_id}/messages`}
+                      className="block border rounded-lg p-4 hover:bg-gray-50 transition-colors"
+                    >
+                      <div className="flex justify-between items-start mb-2">
+                        <h3 className="font-semibold">{conversation.job_title}</h3>
+                        <div className="flex items-center gap-2">
+                          <Badge variant={getStatusBadgeVariant(conversation.job_status)}>
+                            {translations[conversation.job_status] || conversation.job_status}
+                          </Badge>
+                          {conversation.unread_count > 0 && (
+                            <Badge className="bg-red-500 text-white">
+                              {conversation.unread_count}
+                            </Badge>
+                          )}
+                        </div>
+                      </div>
+                      {conversation.latest_message && (
+                        <p className="text-sm text-gray-600 line-clamp-2">
+                          {conversation.latest_message.content}
+                        </p>
+                      )}
+                      <p className="text-xs text-gray-400 mt-2">
+                        {formatDate(conversation.updated_at)}
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </CardContent>
           </Card>
         </TabsContent>
