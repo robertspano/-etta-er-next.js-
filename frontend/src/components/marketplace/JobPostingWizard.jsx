@@ -168,7 +168,8 @@ const JobPostingWizard = ({ translations, language }) => {
             category: formData.category,
             licensePlate: formData.licensePlate,
             plateCountry: formData.plateCountry,
-            postcode: formData.postcode || '101' // Temporary placeholder
+            postcode: formData.postcode || '101', // Temporary placeholder
+            vehicleInfo: formData.vehicleInfo // Include vehicle info if available
           };
         } else {
           // For other categories, send title and description
@@ -232,6 +233,38 @@ const JobPostingWizard = ({ translations, language }) => {
         setError('Failed to save progress. Please try again.');
       }
       console.error('Save error:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Custom handler for automotive step
+  const handleAutomotiveNext = async () => {
+    setError('');
+    setLoading(true);
+
+    try {
+      // Perform vehicle lookup first
+      if (formData.licensePlate && !formData.vehicleInfo) {
+        try {
+          const response = await fetch(`http://localhost:8001/api/public/vehicle-lookup?plate=${formData.licensePlate}&country=IS`);
+          if (response.ok) {
+            const vehicleData = await response.json();
+            if (vehicleData.found) {
+              updateFormData('vehicleInfo', vehicleData);
+            }
+          }
+        } catch (lookupError) {
+          console.warn('Vehicle lookup failed:', lookupError);
+          // Continue without vehicle info
+        }
+      }
+
+      // Now proceed with regular next logic
+      await handleNext();
+    } catch (err) {
+      setError('Failed to save progress. Please try again.');
+      console.error('Automotive next error:', err);
     } finally {
       setLoading(false);
     }
