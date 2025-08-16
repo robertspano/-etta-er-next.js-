@@ -155,6 +155,22 @@ function App() {
               } 
             />
             
+            {/* Professional Registration Landing - Public */}
+            <Route 
+              path="/register-company" 
+              element={
+                <AuthLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <ProRegistrationLanding 
+                    translations={currentTranslations} 
+                  />
+                </AuthLayout>
+              } 
+            />
+            
             {/* Auth Routes */}
             <Route 
               path="/login" 
