@@ -488,6 +488,62 @@ class ApiService {
       throw new Error(error.response?.data?.detail || 'Failed to get notification stats');
     }
   }
+
+  // Reviews endpoints
+  async getReviews(filters = {}) {
+    try {
+      const params = new URLSearchParams();
+      Object.entries(filters).forEach(([key, value]) => {
+        if (value !== undefined) params.append(key, value);
+      });
+      
+      const response = await this.client.get(`/reviews?${params}`);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to get reviews');
+    }
+  }
+
+  async getReview(reviewId) {
+    try {
+      const response = await this.client.get(`/reviews/${reviewId}`);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to get review');
+    }
+  }
+
+  async createReview(reviewData) {
+    try {
+      const response = await this.client.post('/reviews/create', reviewData);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to create review');
+    }
+  }
+
+  async getProfessionalReviews(professionalId, filters = {}) {
+    try {
+      const params = new URLSearchParams();
+      Object.entries(filters).forEach(([key, value]) => {
+        if (value !== undefined) params.append(key, value);
+      });
+      
+      const response = await this.client.get(`/reviews/professional/${professionalId}?${params}`);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to get professional reviews');
+    }
+  }
+
+  async moderateReview(reviewId, status) {
+    try {
+      const response = await this.client.put(`/reviews/${reviewId}/moderate`, { status });
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to moderate review');
+    }
+  }
 }
 
 // Create and export a singleton instance
