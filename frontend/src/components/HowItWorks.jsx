@@ -88,14 +88,14 @@ const HowItWorks = ({ translations }) => {
           })}
         </div>
 
-        {/* Enhanced CTA Section */}
+        {/* CTA Section */}
         <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-          <div className="bg-gradient-to-br from-white/80 to-gray-50/80 backdrop-blur-sm p-10 rounded-3xl shadow-xl border border-white/50 max-w-lg mx-auto">
+          <div className="bg-white p-10 rounded-3xl border-2 border-gray-200 max-w-lg mx-auto">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to get started?</h3>
             <p className="text-gray-600 mb-8 text-lg">Post your project and connect with trusted professionals today.</p>
             <Button 
               onClick={handlePostProject}
-              className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-12 py-6 text-xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+              className="group bg-[#1B2B5B] hover:bg-white hover:text-[#1B2B5B] text-white border-2 border-[#1B2B5B] px-12 py-6 text-xl font-bold rounded-2xl transition-all duration-300 transform hover:scale-105"
             >
               {translations.postProject}
               <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-300" />
