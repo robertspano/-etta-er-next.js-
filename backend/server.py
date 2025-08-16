@@ -69,6 +69,7 @@ api_router.include_router(projects.router)
 api_router.include_router(services.router)
 api_router.include_router(stats.router)
 api_router.include_router(testimonials.router)
+api_router.include_router(reviews.router)
 
 # Include the main API router
 app.include_router(api_router)
