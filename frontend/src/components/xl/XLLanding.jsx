@@ -147,23 +147,23 @@ const XLLanding = ({ translations, language }) => {
       {/* Categories Grid Section */}
       <div className="bg-white py-16">
         <div className="container mx-auto px-4 max-w-7xl">
-          {/* Categories Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8 mb-12">
+          {/* Categories Grid - 3 rows x 4 columns */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 mb-12">
             {categories.map((category, index) => (
               <button
                 key={index}
                 onClick={() => handleCategoryClick(category)}
-                className="group bg-white border border-gray-200 rounded-xl p-6 lg:p-8 hover:border-blue-300 hover:shadow-lg transition-all duration-300 text-center"
+                className="group bg-white border border-gray-200 rounded-xl p-4 lg:p-6 hover:border-blue-300 hover:shadow-lg transition-all duration-300 text-center"
               >
                 {/* Icon */}
-                <div className="w-16 h-16 lg:w-20 lg:h-20 mx-auto mb-4 bg-white rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                  <div className="text-[#1B2B5B] w-10 h-10 lg:w-12 lg:h-12">
+                <div className="w-16 h-16 lg:w-20 lg:h-20 mx-auto mb-3 bg-white rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                  <div className="text-[#1B2B5B] w-12 h-12 lg:w-16 lg:h-16">
                     {category.icon}
                   </div>
                 </div>
 
                 {/* Label */}
-                <h3 className="text-sm lg:text-base font-semibold text-gray-900 leading-tight">
+                <h3 className="text-xs lg:text-sm font-semibold text-gray-900 leading-tight">
                   {category.translation}
                 </h3>
               </button>
