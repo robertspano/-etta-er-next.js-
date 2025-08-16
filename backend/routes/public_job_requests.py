@@ -313,7 +313,13 @@ async def submit_draft_job_request(
             )
         
         # Validate required fields for submission
-        required_fields = ['title', 'description', 'postcode']
+        if draft_job.get("category") == "automotive":
+            # For automotive, require license plate and plate country
+            required_fields = ['license_plate', 'plate_country', 'postcode']
+        else:
+            # For other categories, require title and description
+            required_fields = ['title', 'description', 'postcode']
+            
         for field in required_fields:
             if not draft_job.get(field):
                 raise HTTPException(
