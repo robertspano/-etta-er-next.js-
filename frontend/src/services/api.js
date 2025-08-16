@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://home-revamp-1.preview.emergentagent.com';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://craftlink-app.preview.emergentagent.com';
 const API_BASE = `${BACKEND_URL}/api`;
 
 console.log('API Service initialized with:', { BACKEND_URL, API_BASE });

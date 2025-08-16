@@ -9,91 +9,91 @@
     {
       "test": "GET /api/",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/'",
       "timestamp": "2025-08-16T16:27:20.182077",
       "response_data": null
     },
     {
       "test": "GET /api/health",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/health'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/health'",
       "timestamp": "2025-08-16T16:27:20.193186",
       "response_data": null
     },
     {
       "test": "GET /api/services (English)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/services?language=en'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/services?language=en'",
       "timestamp": "2025-08-16T16:27:20.203363",
       "response_data": null
     },
     {
       "test": "GET /api/services (Icelandic)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/services?language=is'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/services?language=is'",
       "timestamp": "2025-08-16T16:27:20.211586",
       "response_data": null
     },
     {
       "test": "GET /api/services (Default)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/services'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/services'",
       "timestamp": "2025-08-16T16:27:20.220024",
       "response_data": null
     },
     {
       "test": "POST /api/projects (Valid)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/projects/'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/projects/'",
       "timestamp": "2025-08-16T16:27:20.228223",
       "response_data": null
     },
     {
       "test": "POST /api/projects (Invalid)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/projects/'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/projects/'",
       "timestamp": "2025-08-16T16:27:20.236372",
       "response_data": null
     },
     {
       "test": "GET /api/projects",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/projects/'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/projects/'",
       "timestamp": "2025-08-16T16:27:20.244869",
       "response_data": null
     },
     {
       "test": "GET /api/stats",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/stats/'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/stats/'",
       "timestamp": "2025-08-16T16:27:20.253504",
       "response_data": null
     },
     {
       "test": "GET /api/testimonials",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/testimonials/'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/testimonials/'",
       "timestamp": "2025-08-16T16:27:20.261917",
       "response_data": null
     },
     {
       "test": "GET /api/testimonials/featured",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/testimonials/featured'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/testimonials/featured'",
       "timestamp": "2025-08-16T16:27:20.270576",
       "response_data": null
     },
     {
       "test": "POST /api/auth/register (Customer)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/auth/register'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/auth/register'",
       "timestamp": "2025-08-16T16:27:20.279130",
       "response_data": null
     },
     {
       "test": "POST /api/auth/register (Professional)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/auth/register'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/auth/register'",
       "timestamp": "2025-08-16T16:27:20.289179",
       "response_data": null
     },
@@ -121,49 +121,49 @@
     {
       "test": "Marketplace API Setup",
       "success": false,
-      "details": "Setup failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/auth/register'",
+      "details": "Setup failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/auth/register'",
       "timestamp": "2025-08-16T16:27:20.337036",
       "response_data": null
     },
     {
       "test": "POST /api/public/job-requests/draft (Guest)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/job-requests/draft'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/public/job-requests/draft'",
       "timestamp": "2025-08-16T16:27:20.344087",
       "response_data": null
     },
     {
       "test": "POST /api/public/job-requests/draft (Automotive)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/job-requests/draft'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/public/job-requests/draft'",
       "timestamp": "2025-08-16T16:27:20.351849",
       "response_data": null
     },
     {
       "test": "Vehicle Lookup (TEST123)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=TEST123&country=IS'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/public/vehicle-lookup?plate=TEST123&country=IS'",
       "timestamp": "2025-08-16T16:27:20.359856",
       "response_data": null
     },
     {
       "test": "Vehicle Lookup (ABC123)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=IS'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=IS'",
       "timestamp": "2025-08-16T16:27:20.367201",
       "response_data": null
     },
     {
       "test": "Vehicle Lookup (XYZ789)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=XYZ789&country=IS'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/public/vehicle-lookup?plate=XYZ789&country=IS'",
       "timestamp": "2025-08-16T16:27:20.374321",
       "response_data": null
     },
     {
       "test": "Vehicle Lookup (INVALID)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=INVALID&country=IS'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/public/vehicle-lookup?plate=INVALID&country=IS'",
       "timestamp": "2025-08-16T16:27:20.381026",
       "response_data": null
     },
@@ -177,77 +177,77 @@
     {
       "test": "Validation (Empty plate)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=&country=IS'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/public/vehicle-lookup?plate=&country=IS'",
       "timestamp": "2025-08-16T16:27:20.474902",
       "response_data": null
     },
     {
       "test": "Validation (Too short (1 char))",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=A&country=IS'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/public/vehicle-lookup?plate=A&country=IS'",
       "timestamp": "2025-08-16T16:27:20.482007",
       "response_data": null
     },
     {
       "test": "Validation (Too long (12 chars))",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=TOOLONGPLATE&country=IS'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/public/vehicle-lookup?plate=TOOLONGPLATE&country=IS'",
       "timestamp": "2025-08-16T16:27:20.488905",
       "response_data": null
     },
     {
       "test": "Validation (Invalid characters (hyphen))",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=AB-123&country=IS'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/public/vehicle-lookup?plate=AB-123&country=IS'",
       "timestamp": "2025-08-16T16:27:20.496876",
       "response_data": null
     },
     {
       "test": "Validation (Invalid characters (space))",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=AB+123&country=IS'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/public/vehicle-lookup?plate=AB+123&country=IS'",
       "timestamp": "2025-08-16T16:27:20.505874",
       "response_data": null
     },
     {
       "test": "Validation (Country NO)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=NO'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=NO'",
       "timestamp": "2025-08-16T16:27:20.512701",
       "response_data": null
     },
     {
       "test": "Validation (Country DK)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=DK'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=DK'",
       "timestamp": "2025-08-16T16:27:20.520238",
       "response_data": null
     },
     {
       "test": "Validation (Country SE)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=SE'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=SE'",
       "timestamp": "2025-08-16T16:27:20.527068",
       "response_data": null
     },
     {
       "test": "Validation (Country FI)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=FI'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=FI'",
       "timestamp": "2025-08-16T16:27:20.534220",
       "response_data": null
     },
     {
       "test": "Validation (Country US)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=US'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=US'",
       "timestamp": "2025-08-16T16:27:20.541332",
       "response_data": null
     },
     {
       "test": "Validation (Missing Plate)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/public/vehicle-lookup'",
       "timestamp": "2025-08-16T16:27:20.549972",
       "response_data": null
     },
@@ -261,7 +261,7 @@
     {
       "test": "Reviews Sample Data Check",
       "success": false,
-      "details": "Failed to check existing data: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews?limit=1'",
+      "details": "Failed to check existing data: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/reviews?limit=1'",
       "timestamp": "2025-08-16T16:27:20.565096",
       "response_data": null
     },
@@ -275,63 +275,63 @@
     {
       "test": "GET /api/reviews (Basic)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/reviews'",
       "timestamp": "2025-08-16T16:27:20.571876",
       "response_data": null
     },
     {
       "test": "GET /api/reviews (Limit Parameter)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews?limit=2'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/reviews?limit=2'",
       "timestamp": "2025-08-16T16:27:20.579848",
       "response_data": null
     },
     {
       "test": "GET /api/reviews (Locale Parameter)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews?locale=is'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/reviews?locale=is'",
       "timestamp": "2025-08-16T16:27:20.587007",
       "response_data": null
     },
     {
       "test": "Get Review ID for Testing",
       "success": false,
-      "details": "Failed to get review ID: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews?limit=1'",
+      "details": "Failed to get review ID: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/reviews?limit=1'",
       "timestamp": "2025-08-16T16:27:20.593988",
       "response_data": null
     },
     {
       "test": "GET /api/reviews/professional/{id}",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews/professional/professional-1'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/reviews/professional/professional-1'",
       "timestamp": "2025-08-16T16:27:20.601545",
       "response_data": null
     },
     {
       "test": "Professional Reviews (Limit)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews/professional/professional-1?limit=1'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/reviews/professional/professional-1?limit=1'",
       "timestamp": "2025-08-16T16:27:20.608544",
       "response_data": null
     },
     {
       "test": "Professional Reviews (Not Found)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews/professional/non-existent-professional'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/reviews/professional/non-existent-professional'",
       "timestamp": "2025-08-16T16:27:20.615692",
       "response_data": null
     },
     {
       "test": "Review Test User Setup",
       "success": false,
-      "details": "User setup failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/auth/register'",
+      "details": "User setup failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/auth/register'",
       "timestamp": "2025-08-16T16:27:20.623228",
       "response_data": null
     },
     {
       "test": "Get Review ID for Moderation",
       "success": false,
-      "details": "Failed to get review ID: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews?limit=1'",
+      "details": "Failed to get review ID: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/reviews?limit=1'",
       "timestamp": "2025-08-16T16:27:20.632479",
       "response_data": null
     },
@@ -345,42 +345,42 @@
     {
       "test": "ReviewListResponse Format",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews?limit=1'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/reviews?limit=1'",
       "timestamp": "2025-08-16T16:27:20.639994",
       "response_data": null
     },
     {
       "test": "Sample Reviews Data",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/reviews'",
       "timestamp": "2025-08-16T16:27:20.647556",
       "response_data": null
     },
     {
       "test": "Professional Reviews Consistency",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews/professional/professional-1'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/reviews/professional/professional-1'",
       "timestamp": "2025-08-16T16:27:20.654229",
       "response_data": null
     },
     {
       "test": "Error Handling (404)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/projects/non-existent-id'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/projects/non-existent-id'",
       "timestamp": "2025-08-16T16:27:20.661524",
       "response_data": null
     },
     {
       "test": "Error Handling (Language Fallback)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/services?language=invalid'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/services?language=invalid'",
       "timestamp": "2025-08-16T16:27:20.668242",
       "response_data": null
     },
     {
       "test": "Error Handling (Duplicate Registration)",
       "success": false,
-      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/auth/register'",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://craftlink-app.preview.emergentagent.com/api/auth/register'",
       "timestamp": "2025-08-16T16:27:20.675769",
       "response_data": null
     },
