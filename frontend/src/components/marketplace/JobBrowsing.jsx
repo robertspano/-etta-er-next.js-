@@ -184,7 +184,7 @@ const JobBrowsing = ({ translations, language }) => {
                 <SelectValue placeholder={translations.category} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Categories</SelectItem>
+                <SelectItem value="all">All Categories</SelectItem>
                 <SelectItem value="plumbing">{translations.services_plumbing || 'Plumbing'}</SelectItem>
                 <SelectItem value="electrical">{translations.services_electrical || 'Electrical'}</SelectItem>
                 <SelectItem value="carpentry">{translations.services_carpentry || 'Carpentry'}</SelectItem>
