@@ -406,6 +406,14 @@ export const translations = {
     popularProjectsTitle: "Popular Projects",
     popularProjectsSubtitle: "Get started with your next project or search to find the right professional for you.",
     
+    // Automotive Step
+    automotiveStepTitle: "Get offers from multiple workshops",
+    automotiveStepSubtitle: "Enter your vehicle details to get quotes from verified automotive professionals",
+    automotiveLicensePlateLabel: "License Plate",
+    automotivePlateValidationError: "License plate must be 2-8 alphanumeric characters",
+    automotiveWhyLicensePlate: "Why do we need this?",
+    automotiveHelpText: "We use your license plate to identify your vehicle's make, model, and year. This helps us connect you with workshops that specialize in your specific vehicle type and provide more accurate quotes.",
+    
     // Stats
     statsTitle: "Trusted by Thousands",
     projectsCompleted: "Projects Completed",
