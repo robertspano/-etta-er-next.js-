@@ -241,6 +241,39 @@ function App() {
               } 
             />
 
+            {/* Housing Associations Category Grid Routes */}
+            <Route 
+              path="/post/housing-associations" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <HousingAssociationsGrid 
+                    translations={currentTranslations} 
+                    language={language} 
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
+            <Route 
+              path="/setja-inn/husfelog" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <HousingAssociationsGrid 
+                    translations={currentTranslations} 
+                    language={language} 
+                  />
+                </DashboardLayout>
+              } 
+            />
+
             {/* Moving Category Picker Route - Must come before general post routes */}
             <Route 
               path="/post/moving" 
