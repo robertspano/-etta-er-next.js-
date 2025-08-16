@@ -251,7 +251,7 @@ class ApiService {
   // Public Job Request endpoints (no authentication required)
   async createDraftJobRequest(jobData) {
     try {
-      const response = await this.client.post('/public/job-requests/draft', jobData);
+      const response = await this.publicClient.post('/public/job-requests/draft', jobData);
       return response;
     } catch (error) {
       throw new Error(error.response?.data?.detail || 'Failed to create draft job request');
@@ -260,7 +260,7 @@ class ApiService {
 
   async updateDraftJobRequest(draftId, updateData) {
     try {
-      const response = await this.client.patch(`/public/job-requests/${draftId}`, updateData);
+      const response = await this.publicClient.patch(`/public/job-requests/${draftId}`, updateData);
       return response;
     } catch (error) {
       throw new Error(error.response?.data?.detail || 'Failed to update draft job request');
@@ -269,7 +269,7 @@ class ApiService {
 
   async submitDraftJobRequest(draftId) {
     try {
-      const response = await this.client.post(`/public/job-requests/${draftId}/submit`);
+      const response = await this.publicClient.post(`/public/job-requests/${draftId}/submit`);
       return response;
     } catch (error) {
       throw new Error(error.response?.data?.detail || 'Failed to submit job request');
