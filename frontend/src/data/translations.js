@@ -414,6 +414,13 @@ export const translations = {
     mittanbudPlateHelpText: "We use your vehicle's registration number to find information about the type and model and can thus connect you with appropriate workshops and get better quotes.",
     automotivePlateValidationError: "License plate must be 2-8 alphanumeric characters",
     
+    // Find Company Section
+    findCompanyHeadline: "Find the right company for your project!",
+    findCompanySubtitle: "Search for businesses and craftsmen in your area, make contact and get a quote.",
+    findCompanyWhatHelp: "What do you need help with?",
+    findCompanyWhereJob: "Where should the job be done?",
+    findCompanyButton: "Find company",
+    
     // Stats
     statsTitle: "Trusted by Thousands",
     projectsCompleted: "Projects Completed",
