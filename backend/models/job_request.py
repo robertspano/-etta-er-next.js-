@@ -1,9 +1,10 @@
 from beanie import Document
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator, ValidationInfo
 from typing import Optional, List
 from datetime import datetime
 from enum import Enum
 import uuid
+import re
 
 class JobStatus(str, Enum):
     DRAFT = "draft"
@@ -89,29 +90,34 @@ class JobRequestCreate(BaseModel):
     license_plate: Optional[str] = None  # For automotive category
     plate_country: Optional[str] = None  # For automotive category
     
-    @validator('title')
-    def validate_title_length(cls, v, values):
+    @field_validator('title')
+    @classmethod
+    def validate_title_length(cls, v: Optional[str], info: ValidationInfo) -> Optional[str]:
         # Only validate title if not automotive category or if title is provided
-        if values.get('category') != 'automotive' and (not v or len(v.strip()) < 10):
+        category = info.data.get('category') if info.data else None
+        if category != 'automotive' and (not v or len(v.strip()) < 10):
             raise ValueError('Title must be at least 10 characters long')
         return v.strip() if v else v
     
-    @validator('description') 
-    def validate_description_length(cls, v, values):
+    @field_validator('description')
+    @classmethod
+    def validate_description_length(cls, v: Optional[str], info: ValidationInfo) -> Optional[str]:
         # Only validate description if not automotive category or if description is provided
-        if values.get('category') != 'automotive' and (not v or len(v.strip()) < 30):
+        category = info.data.get('category') if info.data else None
+        if category != 'automotive' and (not v or len(v.strip()) < 30):
             raise ValueError('Description must be at least 30 characters long')
         return v.strip() if v else v
     
-    @validator('license_plate')
-    def validate_license_plate(cls, v, values):
+    @field_validator('license_plate')
+    @classmethod
+    def validate_license_plate(cls, v: Optional[str], info: ValidationInfo) -> Optional[str]:
         # Validate license plate for automotive category
-        if values.get('category') == 'automotive':
+        category = info.data.get('category') if info.data else None
+        if category == 'automotive':
             if not v:
                 raise ValueError('License plate is required for automotive category')
             if not (2 <= len(v) <= 8):
                 raise ValueError('License plate must be 2-8 characters long')
-            import re
             if not re.match(r'^[A-Z0-9]+$', v):
                 raise ValueError('License plate must contain only letters and numbers')
         return v
@@ -129,24 +135,26 @@ class JobRequestUpdate(BaseModel):
     license_plate: Optional[str] = None  # For automotive updates
     plate_country: Optional[str] = None  # For automotive updates
     
-    @validator('title')
-    def validate_title_length(cls, v):
+    @field_validator('title')
+    @classmethod
+    def validate_title_length(cls, v: Optional[str]) -> Optional[str]:
         if v is not None and len(v.strip()) < 10:
             raise ValueError('Title must be at least 10 characters long')
         return v.strip() if v else v
     
-    @validator('description')
-    def validate_description_length(cls, v):
+    @field_validator('description')
+    @classmethod
+    def validate_description_length(cls, v: Optional[str]) -> Optional[str]:
         if v is not None and len(v.strip()) < 30:
             raise ValueError('Description must be at least 30 characters long')
         return v.strip() if v else v
     
-    @validator('license_plate')
-    def validate_license_plate(cls, v):
+    @field_validator('license_plate')
+    @classmethod
+    def validate_license_plate(cls, v: Optional[str]) -> Optional[str]:
         if v is not None:
             if not (2 <= len(v) <= 8):
                 raise ValueError('License plate must be 2-8 characters long')
-            import re
             if not re.match(r'^[A-Z0-9]+$', v):
                 raise ValueError('License plate must contain only letters and numbers')
         return v
