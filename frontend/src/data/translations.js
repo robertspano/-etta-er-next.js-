@@ -841,13 +841,12 @@ export const translations = {
     popularProjectsTitle: "Populære prosjekter",
     popularProjectsSubtitle: "Skal du i gang med et stort prosjekt eller et lite oppdrag? Legg ut jobben på Mittanbud og få tilbud fra relevante bedrifter og håndverkere - eller bruk søkefunksjonen for å finne riktig bedrift for deg!",
     
-    // Automotive Step
-    automotiveStepTitle: "Fá tilbud frá fleiri verkstæði",
-    automotiveStepSubtitle: "Sláðu inn upplýsingar um ökutækið þitt til að fá tilboð frá sannreyndum bílaþjónustuaðilum",
-    automotiveLicensePlateLabel: "Skráningarmerki",
-    automotivePlateValidationError: "Skráningarmerki verður að vera 2-8 stafir eða tölur",
-    automotiveWhyLicensePlate: "Hvers vegna þurfum við þetta?",
-    automotiveHelpText: "Við notum skrárningarmerkið þitt til að auðkenna tegund, gerð og árgang ökutækisins þíns. Þetta hjálpar okkur að tengja þig við verkstæði sem sérhæfa sig í þinni gerð ökutækis og veita nákvæmari tilboð.",
+    // Automotive Step - Mittanbud Style
+    mittanbudAutomotiveTitle: "Fá tilbud frá fleiri bilverkstæði",
+    mittanbudAutomotiveSubtitle: "Leggðu inn bilnúmer svo við getum veitt þér viðeigandi tilboð",
+    mittanbudLicensePlateLabel: "Skráningarmerki",
+    mittanbudWhyNeedPlate: "Hvers vegna þurfum við þetta?",
+    mittanbudPlateHelpText: "Við notum skráningarmerki bílsins þíns til að finna upplýsingar um tegund og gerð og geta þannig tengt þig við viðeigandi verkstæði og fengið betri tilboð.",
     
     // Stats
     statsTitle: "Treyst af Þúsundum",
