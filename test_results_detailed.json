@@ -1,651 +1,396 @@
 {
   "summary": {
-    "total": 84,
-    "passed": 58,
-    "failed": 26,
-    "success_rate": 69.04761904761905
+    "total": 55,
+    "passed": 2,
+    "failed": 53,
+    "success_rate": 3.6363636363636362
   },
   "results": [
     {
       "test": "GET /api/",
-      "success": true,
-      "details": "Status: 200, Message: BuildConnect API is running",
-      "timestamp": "2025-08-16T14:06:54.917503",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/'",
+      "timestamp": "2025-08-16T16:27:20.182077",
       "response_data": null
     },
     {
       "test": "GET /api/health",
-      "success": true,
-      "details": "Status: 200, Health: healthy",
-      "timestamp": "2025-08-16T14:06:54.965971",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/health'",
+      "timestamp": "2025-08-16T16:27:20.193186",
       "response_data": null
     },
     {
       "test": "GET /api/services (English)",
-      "success": true,
-      "details": "Retrieved 9 services in English",
-      "timestamp": "2025-08-16T14:06:54.990596",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/services?language=en'",
+      "timestamp": "2025-08-16T16:27:20.203363",
       "response_data": null
     },
     {
       "test": "GET /api/services (Icelandic)",
-      "success": true,
-      "details": "Retrieved 9 services in Icelandic",
-      "timestamp": "2025-08-16T14:06:55.014770",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/services?language=is'",
+      "timestamp": "2025-08-16T16:27:20.211586",
       "response_data": null
     },
     {
       "test": "GET /api/services (Default)",
-      "success": true,
-      "details": "Default language fallback works (English)",
-      "timestamp": "2025-08-16T14:06:55.031461",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/services'",
+      "timestamp": "2025-08-16T16:27:20.220024",
       "response_data": null
     },
     {
       "test": "POST /api/projects (Valid)",
-      "success": true,
-      "details": "Project created with ID: fdf8123e-cec2-46d8-8c62-197608512563",
-      "timestamp": "2025-08-16T14:06:55.080906",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/projects/'",
+      "timestamp": "2025-08-16T16:27:20.228223",
       "response_data": null
     },
     {
       "test": "POST /api/projects (Invalid)",
-      "success": true,
-      "details": "Validation error returned as expected",
-      "timestamp": "2025-08-16T14:06:55.089021",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/projects/'",
+      "timestamp": "2025-08-16T16:27:20.236372",
       "response_data": null
     },
     {
       "test": "GET /api/projects",
-      "success": true,
-      "details": "Retrieved 13 projects",
-      "timestamp": "2025-08-16T14:06:55.097678",
-      "response_data": null
-    },
-    {
-      "test": "GET /api/projects (Filtered)",
-      "success": true,
-      "details": "Filtered projects: 13",
-      "timestamp": "2025-08-16T14:06:55.106748",
-      "response_data": null
-    },
-    {
-      "test": "GET /api/projects/{id}",
-      "success": true,
-      "details": "Retrieved project: Kitchen Renovation Project",
-      "timestamp": "2025-08-16T14:06:55.158537",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/projects/'",
+      "timestamp": "2025-08-16T16:27:20.244869",
       "response_data": null
     },
     {
       "test": "GET /api/stats",
-      "success": true,
-      "details": "Stats retrieved: 13 projects, 0 professionals",
-      "timestamp": "2025-08-16T14:06:55.170135",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/stats/'",
+      "timestamp": "2025-08-16T16:27:20.253504",
       "response_data": null
     },
     {
       "test": "GET /api/testimonials",
-      "success": true,
-      "details": "Retrieved 6 testimonials",
-      "timestamp": "2025-08-16T14:06:55.178599",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/testimonials/'",
+      "timestamp": "2025-08-16T16:27:20.261917",
       "response_data": null
     },
     {
       "test": "GET /api/testimonials/featured",
-      "success": true,
-      "details": "Retrieved 3 featured testimonials",
-      "timestamp": "2025-08-16T14:06:55.228566",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/testimonials/featured'",
+      "timestamp": "2025-08-16T16:27:20.270576",
       "response_data": null
     },
     {
       "test": "POST /api/auth/register (Customer)",
-      "success": true,
-      "details": "Customer registered: customer_1755353215@example.com",
-      "timestamp": "2025-08-16T14:06:55.419120",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/auth/register'",
+      "timestamp": "2025-08-16T16:27:20.279130",
       "response_data": null
     },
     {
       "test": "POST /api/auth/register (Professional)",
-      "success": true,
-      "details": "Professional registered: professional_1755353215@example.com",
-      "timestamp": "2025-08-16T14:06:55.622687",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/auth/register'",
+      "timestamp": "2025-08-16T16:27:20.289179",
       "response_data": null
     },
     {
       "test": "POST /api/auth/cookie/login (Customer)",
-      "success": true,
-      "details": "Customer login successful with cookie",
-      "timestamp": "2025-08-16T14:06:55.822176",
-      "response_data": null
+      "success": false,
+      "details": "Login failed: 502",
+      "timestamp": "2025-08-16T16:27:20.299789",
+      "response_data": ""
     },
     {
       "test": "POST /api/auth/cookie/login (Professional)",
-      "success": true,
-      "details": "Professional login successful with cookie",
-      "timestamp": "2025-08-16T14:06:56.028430",
-      "response_data": null
-    },
-    {
-      "test": "GET /api/auth/me (Customer)",
-      "success": true,
-      "details": "User info retrieved: customer_1755353215@example.com",
-      "timestamp": "2025-08-16T14:06:56.079313",
-      "response_data": null
-    },
-    {
-      "test": "PUT /api/auth/profile",
-      "success": true,
-      "details": "Profile updated successfully",
-      "timestamp": "2025-08-16T14:06:56.131193",
-      "response_data": null
-    },
-    {
-      "test": "POST /api/auth/switch-role",
-      "success": true,
-      "details": "Role switched to professional",
-      "timestamp": "2025-08-16T14:06:56.143134",
-      "response_data": null
-    },
-    {
-      "test": "GET /api/auth/customer-only (Customer)",
-      "success": true,
-      "details": "Customer access correctly denied after role switch",
-      "timestamp": "2025-08-16T14:06:56.193453",
-      "response_data": null
-    },
-    {
-      "test": "GET /api/auth/professional-only (Professional)",
-      "success": true,
-      "details": "Professional access granted",
-      "timestamp": "2025-08-16T14:06:56.203724",
-      "response_data": null
-    },
-    {
-      "test": "GET /api/auth/admin-only (Customer Denied)",
-      "success": true,
-      "details": "Admin access correctly denied to customer",
-      "timestamp": "2025-08-16T14:06:56.254054",
-      "response_data": null
+      "success": false,
+      "details": "Login failed: 502",
+      "timestamp": "2025-08-16T16:27:20.307079",
+      "response_data": ""
     },
     {
       "test": "GET /api/auth/me (Unauthenticated)",
-      "success": true,
-      "details": "Protected endpoint correctly requires authentication",
-      "timestamp": "2025-08-16T14:06:56.279766",
-      "response_data": null
-    },
-    {
-      "test": "POST /api/auth/cookie/logout",
-      "success": true,
-      "details": "Logout successful",
-      "timestamp": "2025-08-16T14:06:56.288929",
-      "response_data": null
-    },
-    {
-      "test": "Marketplace Customer Registration",
-      "success": true,
-      "details": "Customer registered successfully",
-      "timestamp": "2025-08-16T14:06:56.464269",
-      "response_data": null
-    },
-    {
-      "test": "Marketplace Professional Registration",
-      "success": true,
-      "details": "Professional registered successfully",
-      "timestamp": "2025-08-16T14:06:56.664666",
-      "response_data": null
-    },
-    {
-      "test": "Marketplace Customer Login",
-      "success": true,
-      "details": "Customer login successful",
-      "timestamp": "2025-08-16T14:06:56.869281",
-      "response_data": null
-    },
-    {
-      "test": "Marketplace Professional Login",
-      "success": true,
-      "details": "Professional login successful",
-      "timestamp": "2025-08-16T14:06:57.072125",
-      "response_data": null
-    },
-    {
-      "test": "POST /api/job-requests",
-      "success": true,
-      "details": "Job created with ID: d403964a-ad25-4de3-8b97-ce2dcfa38e60",
-      "timestamp": "2025-08-16T14:06:57.126108",
-      "response_data": null
-    },
-    {
-      "test": "GET /api/job-requests",
       "success": false,
-      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://home-revamp-1.preview.emergentagent.com/api/job-requests/'",
-      "timestamp": "2025-08-16T14:06:57.146621",
-      "response_data": null
+      "details": "Expected 401, got: 502",
+      "timestamp": "2025-08-16T16:27:20.326722",
+      "response_data": ""
     },
     {
-      "test": "GET /api/job-requests/{id}",
-      "success": true,
-      "details": "Retrieved job: Kitchen Sink Installation",
-      "timestamp": "2025-08-16T14:06:57.159443",
-      "response_data": null
-    },
-    {
-      "test": "PUT /api/job-requests/{id}",
-      "success": true,
-      "details": "Job updated successfully",
-      "timestamp": "2025-08-16T14:06:57.172194",
-      "response_data": null
-    },
-    {
-      "test": "GET /api/job-requests (Category Filter)",
+      "test": "Marketplace API Setup",
       "success": false,
-      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://home-revamp-1.preview.emergentagent.com/api/job-requests/?category=plumbing'",
-      "timestamp": "2025-08-16T14:06:57.188079",
-      "response_data": null
-    },
-    {
-      "test": "POST /api/quotes",
-      "success": false,
-      "details": "Quote creation failed: 400",
-      "timestamp": "2025-08-16T14:06:57.199217",
-      "response_data": {
-        "detail": "This job is no longer accepting quotes"
-      }
-    },
-    {
-      "test": "POST /api/messages",
-      "success": true,
-      "details": "Message sent: 1b0e9973-6197-4b77-833e-1861e18b6f71",
-      "timestamp": "2025-08-16T14:06:57.264924",
-      "response_data": null
-    },
-    {
-      "test": "GET /api/messages/job/{id}",
-      "success": true,
-      "details": "Retrieved 1 messages",
-      "timestamp": "2025-08-16T14:06:57.277825",
-      "response_data": null
-    },
-    {
-      "test": "GET /api/messages/conversations",
-      "success": true,
-      "details": "Retrieved 1 conversations",
-      "timestamp": "2025-08-16T14:06:57.331706",
-      "response_data": null
-    },
-    {
-      "test": "GET /api/notifications",
-      "success": true,
-      "details": "Retrieved 0 notifications",
-      "timestamp": "2025-08-16T14:06:57.384404",
-      "response_data": null
-    },
-    {
-      "test": "GET /api/notifications/stats",
-      "success": true,
-      "details": "Stats: 0 total, 0 unread",
-      "timestamp": "2025-08-16T14:06:57.437072",
-      "response_data": null
-    },
-    {
-      "test": "PUT /api/notifications/mark-all-read",
-      "success": true,
-      "details": "Marked notifications as read: Marked 0 notifications as read",
-      "timestamp": "2025-08-16T14:06:57.447918",
+      "details": "Setup failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/auth/register'",
+      "timestamp": "2025-08-16T16:27:20.337036",
       "response_data": null
     },
     {
       "test": "POST /api/public/job-requests/draft (Guest)",
       "success": false,
-      "details": "Draft created but no guest cookie set",
-      "timestamp": "2025-08-16T14:06:57.500163",
-      "response_data": null
-    },
-    {
-      "test": "Public Wizard Validation (Short Title)",
-      "success": true,
-      "details": "Short title correctly rejected",
-      "timestamp": "2025-08-16T14:06:57.510124",
-      "response_data": null
-    },
-    {
-      "test": "Public Wizard Validation (Short Description)",
-      "success": true,
-      "details": "Short description correctly rejected",
-      "timestamp": "2025-08-16T14:06:57.519370",
-      "response_data": null
-    },
-    {
-      "test": "Authorization Test Setup (Guest A)",
-      "success": false,
-      "details": "No guest cookie set",
-      "timestamp": "2025-08-16T14:06:57.569312",
-      "response_data": null
-    },
-    {
-      "test": "Public Wizard Rate Limiting",
-      "success": false,
-      "details": "Rate limiting not working: 12 requests allowed",
-      "timestamp": "2025-08-16T14:06:57.860251",
-      "response_data": null
-    },
-    {
-      "test": "Authenticated User Login",
-      "success": true,
-      "details": "User logged in successfully",
-      "timestamp": "2025-08-16T14:06:58.312996",
-      "response_data": null
-    },
-    {
-      "test": "Public Wizard (Authenticated User)",
-      "success": false,
-      "details": "Public endpoint failed for auth user: 422",
-      "timestamp": "2025-08-16T14:06:58.362746",
-      "response_data": {
-        "detail": [
-          {
-            "type": "value_error",
-            "loc": [
-              "body"
-            ],
-            "msg": "Value error, License plate is required for automotive category",
-            "input": {
-              "category": "automotive",
-              "title": "Car Repair Service Needed",
-              "description": "Professional car repair service needed for engine diagnostics and potential repair work on vehicle",
-              "postcode": "108"
-            },
-            "ctx": {
-              "error": {}
-            },
-            "url": "https://errors.pydantic.dev/2.11/v/value_error"
-          }
-        ]
-      }
-    },
-    {
-      "test": "Public Wizard Category (handcraft)",
-      "success": true,
-      "details": "Category handcraft working correctly",
-      "timestamp": "2025-08-16T14:06:58.376207",
-      "response_data": null
-    },
-    {
-      "test": "Public Wizard Category (bathroom)",
-      "success": true,
-      "details": "Category bathroom working correctly",
-      "timestamp": "2025-08-16T14:06:58.386401",
-      "response_data": null
-    },
-    {
-      "test": "Public Wizard Category (automotive)",
-      "success": true,
-      "details": "Category automotive working correctly",
-      "timestamp": "2025-08-16T14:06:58.438915",
-      "response_data": null
-    },
-    {
-      "test": "Public Wizard Category (majorProjects)",
-      "success": true,
-      "details": "Category majorProjects working correctly",
-      "timestamp": "2025-08-16T14:06:58.450432",
-      "response_data": null
-    },
-    {
-      "test": "Public Wizard Category (cleaning)",
-      "success": true,
-      "details": "Category cleaning working correctly",
-      "timestamp": "2025-08-16T14:06:58.460972",
-      "response_data": null
-    },
-    {
-      "test": "Public Wizard Category (housingAssociations)",
-      "success": true,
-      "details": "Category housingAssociations working correctly",
-      "timestamp": "2025-08-16T14:06:58.512581",
-      "response_data": null
-    },
-    {
-      "test": "Public Wizard Category (moving)",
-      "success": true,
-      "details": "Category moving working correctly",
-      "timestamp": "2025-08-16T14:06:58.566380",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/job-requests/draft'",
+      "timestamp": "2025-08-16T16:27:20.344087",
       "response_data": null
     },
     {
       "test": "POST /api/public/job-requests/draft (Automotive)",
       "success": false,
-      "details": "Draft created but no guest cookie set",
-      "timestamp": "2025-08-16T14:06:58.577102",
-      "response_data": null
-    },
-    {
-      "test": "POST /api/public/job-requests/draft (Regular)",
-      "success": false,
-      "details": "Draft created but no guest cookie set",
-      "timestamp": "2025-08-16T14:06:58.589639",
-      "response_data": null
-    },
-    {
-      "test": "Automotive Validation (Missing License Plate)",
-      "success": true,
-      "details": "Missing license plate correctly rejected",
-      "timestamp": "2025-08-16T14:06:58.641031",
-      "response_data": null
-    },
-    {
-      "test": "Automotive Validation (Short License Plate)",
-      "success": true,
-      "details": "Short license plate correctly rejected",
-      "timestamp": "2025-08-16T14:06:58.694067",
-      "response_data": null
-    },
-    {
-      "test": "Automotive Validation (Long License Plate)",
-      "success": true,
-      "details": "Long license plate correctly rejected",
-      "timestamp": "2025-08-16T14:06:58.745137",
-      "response_data": null
-    },
-    {
-      "test": "Automotive Validation (Invalid Characters)",
-      "success": true,
-      "details": "Invalid license plate characters correctly rejected",
-      "timestamp": "2025-08-16T14:06:58.755294",
-      "response_data": null
-    },
-    {
-      "test": "Regular Validation (Missing Title)",
-      "success": true,
-      "details": "Missing title correctly rejected",
-      "timestamp": "2025-08-16T14:06:58.764324",
-      "response_data": null
-    },
-    {
-      "test": "Regular Validation (Missing Description)",
-      "success": true,
-      "details": "Missing description correctly rejected",
-      "timestamp": "2025-08-16T14:06:58.814076",
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/job-requests/draft'",
+      "timestamp": "2025-08-16T16:27:20.351849",
       "response_data": null
     },
     {
       "test": "Vehicle Lookup (TEST123)",
       "success": false,
-      "details": "Request failed: 404",
-      "timestamp": "2025-08-16T14:06:58.821810",
-      "response_data": {
-        "detail": "Not Found"
-      }
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=TEST123&country=IS'",
+      "timestamp": "2025-08-16T16:27:20.359856",
+      "response_data": null
     },
     {
       "test": "Vehicle Lookup (ABC123)",
       "success": false,
-      "details": "Request failed: 404",
-      "timestamp": "2025-08-16T14:06:58.829630",
-      "response_data": {
-        "detail": "Not Found"
-      }
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=IS'",
+      "timestamp": "2025-08-16T16:27:20.367201",
+      "response_data": null
     },
     {
       "test": "Vehicle Lookup (XYZ789)",
       "success": false,
-      "details": "Request failed: 404",
-      "timestamp": "2025-08-16T14:06:58.878707",
-      "response_data": {
-        "detail": "Not Found"
-      }
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=XYZ789&country=IS'",
+      "timestamp": "2025-08-16T16:27:20.374321",
+      "response_data": null
     },
     {
       "test": "Vehicle Lookup (INVALID)",
       "success": false,
-      "details": "Request failed: 404",
-      "timestamp": "2025-08-16T14:06:58.927301",
-      "response_data": {
-        "detail": "Not Found"
-      }
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=INVALID&country=IS'",
+      "timestamp": "2025-08-16T16:27:20.381026",
+      "response_data": null
     },
     {
       "test": "Vehicle Lookup Rate Limiting",
       "success": false,
       "details": "Unexpected behavior: 0 successful, rate_limited: False",
-      "timestamp": "2025-08-16T14:06:59.322934",
+      "timestamp": "2025-08-16T16:27:20.466703",
       "response_data": null
     },
     {
       "test": "Validation (Empty plate)",
       "success": false,
-      "details": "Expected 400, got 404",
-      "timestamp": "2025-08-16T14:06:59.331135",
-      "response_data": {
-        "detail": "Not Found"
-      }
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=&country=IS'",
+      "timestamp": "2025-08-16T16:27:20.474902",
+      "response_data": null
     },
     {
       "test": "Validation (Too short (1 char))",
       "success": false,
-      "details": "Expected 400, got 404",
-      "timestamp": "2025-08-16T14:06:59.387396",
-      "response_data": {
-        "detail": "Not Found"
-      }
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=A&country=IS'",
+      "timestamp": "2025-08-16T16:27:20.482007",
+      "response_data": null
     },
     {
       "test": "Validation (Too long (12 chars))",
       "success": false,
-      "details": "Expected 400, got 404",
-      "timestamp": "2025-08-16T14:06:59.394805",
-      "response_data": {
-        "detail": "Not Found"
-      }
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=TOOLONGPLATE&country=IS'",
+      "timestamp": "2025-08-16T16:27:20.488905",
+      "response_data": null
     },
     {
       "test": "Validation (Invalid characters (hyphen))",
       "success": false,
-      "details": "Expected 400, got 404",
-      "timestamp": "2025-08-16T14:06:59.443313",
-      "response_data": {
-        "detail": "Not Found"
-      }
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=AB-123&country=IS'",
+      "timestamp": "2025-08-16T16:27:20.496876",
+      "response_data": null
     },
     {
       "test": "Validation (Invalid characters (space))",
       "success": false,
-      "details": "Expected 400, got 404",
-      "timestamp": "2025-08-16T14:06:59.451091",
-      "response_data": {
-        "detail": "Not Found"
-      }
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=AB+123&country=IS'",
+      "timestamp": "2025-08-16T16:27:20.505874",
+      "response_data": null
     },
     {
       "test": "Validation (Country NO)",
       "success": false,
-      "details": "Expected 400, got 404",
-      "timestamp": "2025-08-16T14:06:59.499360",
-      "response_data": {
-        "detail": "Not Found"
-      }
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=NO'",
+      "timestamp": "2025-08-16T16:27:20.512701",
+      "response_data": null
     },
     {
       "test": "Validation (Country DK)",
       "success": false,
-      "details": "Expected 400, got 404",
-      "timestamp": "2025-08-16T14:06:59.507026",
-      "response_data": {
-        "detail": "Not Found"
-      }
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=DK'",
+      "timestamp": "2025-08-16T16:27:20.520238",
+      "response_data": null
     },
     {
       "test": "Validation (Country SE)",
       "success": false,
-      "details": "Expected 400, got 404",
-      "timestamp": "2025-08-16T14:06:59.560613",
-      "response_data": {
-        "detail": "Not Found"
-      }
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=SE'",
+      "timestamp": "2025-08-16T16:27:20.527068",
+      "response_data": null
     },
     {
       "test": "Validation (Country FI)",
       "success": false,
-      "details": "Expected 400, got 404",
-      "timestamp": "2025-08-16T14:06:59.609197",
-      "response_data": {
-        "detail": "Not Found"
-      }
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=FI'",
+      "timestamp": "2025-08-16T16:27:20.534220",
+      "response_data": null
     },
     {
       "test": "Validation (Country US)",
       "success": false,
-      "details": "Expected 400, got 404",
-      "timestamp": "2025-08-16T14:06:59.616594",
-      "response_data": {
-        "detail": "Not Found"
-      }
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup?plate=ABC123&country=US'",
+      "timestamp": "2025-08-16T16:27:20.541332",
+      "response_data": null
     },
     {
       "test": "Validation (Missing Plate)",
       "success": false,
-      "details": "Expected 422, got 404",
-      "timestamp": "2025-08-16T14:06:59.663625",
-      "response_data": {
-        "detail": "Not Found"
-      }
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/public/vehicle-lookup'",
+      "timestamp": "2025-08-16T16:27:20.549972",
+      "response_data": null
     },
     {
       "test": "Automotive Flow - Vehicle Lookup",
       "success": false,
-      "details": "Lookup failed: 404",
-      "timestamp": "2025-08-16T14:06:59.713750",
+      "details": "Lookup failed: 502",
+      "timestamp": "2025-08-16T16:27:20.557602",
+      "response_data": null
+    },
+    {
+      "test": "Reviews Sample Data Check",
+      "success": false,
+      "details": "Failed to check existing data: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews?limit=1'",
+      "timestamp": "2025-08-16T16:27:20.565096",
+      "response_data": null
+    },
+    {
+      "test": "Reviews Sample Data Setup",
+      "success": true,
+      "details": "Proceeding with reviews testing (sample data should exist)",
+      "timestamp": "2025-08-16T16:27:20.565132",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/reviews (Basic)",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews'",
+      "timestamp": "2025-08-16T16:27:20.571876",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/reviews (Limit Parameter)",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews?limit=2'",
+      "timestamp": "2025-08-16T16:27:20.579848",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/reviews (Locale Parameter)",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews?locale=is'",
+      "timestamp": "2025-08-16T16:27:20.587007",
+      "response_data": null
+    },
+    {
+      "test": "Get Review ID for Testing",
+      "success": false,
+      "details": "Failed to get review ID: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews?limit=1'",
+      "timestamp": "2025-08-16T16:27:20.593988",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/reviews/professional/{id}",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews/professional/professional-1'",
+      "timestamp": "2025-08-16T16:27:20.601545",
+      "response_data": null
+    },
+    {
+      "test": "Professional Reviews (Limit)",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews/professional/professional-1?limit=1'",
+      "timestamp": "2025-08-16T16:27:20.608544",
+      "response_data": null
+    },
+    {
+      "test": "Professional Reviews (Not Found)",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews/professional/non-existent-professional'",
+      "timestamp": "2025-08-16T16:27:20.615692",
+      "response_data": null
+    },
+    {
+      "test": "Review Test User Setup",
+      "success": false,
+      "details": "User setup failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/auth/register'",
+      "timestamp": "2025-08-16T16:27:20.623228",
+      "response_data": null
+    },
+    {
+      "test": "Get Review ID for Moderation",
+      "success": false,
+      "details": "Failed to get review ID: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews?limit=1'",
+      "timestamp": "2025-08-16T16:27:20.632479",
+      "response_data": null
+    },
+    {
+      "test": "Reviews Authentication & Authorization",
+      "success": true,
+      "details": "Authentication and authorization rules properly implemented",
+      "timestamp": "2025-08-16T16:27:20.632526",
+      "response_data": null
+    },
+    {
+      "test": "ReviewListResponse Format",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews?limit=1'",
+      "timestamp": "2025-08-16T16:27:20.639994",
+      "response_data": null
+    },
+    {
+      "test": "Sample Reviews Data",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews'",
+      "timestamp": "2025-08-16T16:27:20.647556",
+      "response_data": null
+    },
+    {
+      "test": "Professional Reviews Consistency",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/reviews/professional/professional-1'",
+      "timestamp": "2025-08-16T16:27:20.654229",
       "response_data": null
     },
     {
       "test": "Error Handling (404)",
-      "success": true,
-      "details": "Non-existent project returns 404",
-      "timestamp": "2025-08-16T14:06:59.724710",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/projects/non-existent-id'",
+      "timestamp": "2025-08-16T16:27:20.661524",
       "response_data": null
     },
     {
       "test": "Error Handling (Language Fallback)",
-      "success": true,
-      "details": "Invalid language falls back to English",
-      "timestamp": "2025-08-16T14:06:59.742229",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/services?language=invalid'",
+      "timestamp": "2025-08-16T16:27:20.668242",
       "response_data": null
     },
     {
       "test": "Error Handling (Duplicate Registration)",
-      "success": true,
-      "details": "Duplicate email registration correctly rejected",
-      "timestamp": "2025-08-16T14:06:59.751922",
+      "success": false,
+      "details": "Request failed: 502, message='Attempt to decode JSON with unexpected mimetype: ', url='https://home-revamp-1.preview.emergentagent.com/api/auth/register'",
+      "timestamp": "2025-08-16T16:27:20.675769",
       "response_data": null
     },
     {
       "test": "Error Handling (Invalid Login)",
-      "success": true,
-      "details": "Invalid credentials correctly rejected",
-      "timestamp": "2025-08-16T14:07:00.006881",
-      "response_data": null
+      "success": false,
+      "details": "Expected 400, got: 502",
+      "timestamp": "2025-08-16T16:27:20.682749",
+      "response_data": ""
     }
   ],
-  "timestamp": "2025-08-16T14:07:00.007872"
+  "timestamp": "2025-08-16T16:27:20.683804"
 }
