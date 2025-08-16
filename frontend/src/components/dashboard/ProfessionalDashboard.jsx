@@ -241,86 +241,116 @@ const ProfessionalDashboard = ({ translations, language, user }) => {
         </Card>
       </div>
 
+      {/* Error Message */}
+      {error && (
+        <Alert variant="destructive" className="mb-6">
+          <AlertCircle className="h-4 w-4" />
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
+      )}
+
       {/* Main Content Tabs */}
-      <Tabs defaultValue="requests" className="w-full">
-        <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="requests">{translations.jobRequestsTitle}</TabsTrigger>
-          <TabsTrigger value="quotes">{translations.quotesTitle}</TabsTrigger>
-          <TabsTrigger value="calendar">{translations.calendarTitle}</TabsTrigger>
+      <Tabs defaultValue="open-jobs" className="w-full">
+        <TabsList className="grid w-full grid-cols-4">
+          <TabsTrigger value="open-jobs">{translations.availableJobs || 'Open Jobs'}</TabsTrigger>
+          <TabsTrigger value="my-quotes">{translations.myQuotes}</TabsTrigger>
+          <TabsTrigger value="messages">{translations.messages}</TabsTrigger>
+          <TabsTrigger value="profile">{translations.profile}</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="requests" className="mt-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>{translations.jobRequestsTitle}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {jobRequests.length === 0 ? (
-                <div className="text-center py-8">
-                  <Briefcase className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-500">{translations.noJobRequests}</p>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  {jobRequests.map((request) => (
-                    <div
-                      key={request.id}
-                      className="border rounded-lg p-4 hover:bg-gray-50 transition-colors"
-                    >
-                      <div className="flex justify-between items-start mb-2">
-                        <h3 className="font-semibold text-lg">{request.title}</h3>
-                        <div className="flex items-center gap-2">
-                          <Badge variant={getStatusBadgeVariant(request.status)}>
-                            {request.status}
-                          </Badge>
-                          <Button size="sm">Submit Quote</Button>
-                        </div>
-                      </div>
-                      <p className="text-gray-600 mb-3 line-clamp-2">{request.description}</p>
-                      <div className="grid grid-cols-3 gap-4 text-sm text-gray-500">
-                        <span><strong>Location:</strong> {request.location}</span>
-                        <span><strong>Budget:</strong> {request.budget}</span>
-                        <span><strong>Posted:</strong> {formatDate(request.postedDate)}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </CardContent>
-          </Card>
+        <TabsContent value="open-jobs" className="mt-6">
+          <JobBidding 
+            translations={translations} 
+            language={language} 
+            user={user} 
+          />
         </TabsContent>
 
-        <TabsContent value="quotes" className="mt-6">
+        <TabsContent value="my-quotes" className="mt-6">
           <Card>
             <CardHeader>
-              <CardTitle>{translations.quotesTitle}</CardTitle>
+              <CardTitle className="flex items-center justify-between">
+                <span>{translations.myQuotes}</span>
+                <Badge variant="outline">
+                  {myQuotes.length} {translations.quotes || 'quotes'}
+                </Badge>
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              {activeQuotes.length === 0 ? (
+              {quotesError && (
+                <Alert variant="destructive" className="mb-4">
+                  <AlertCircle className="h-4 w-4" />
+                  <AlertDescription>{quotesError}</AlertDescription>
+                </Alert>
+              )}
+              
+              {quotesLoading ? (
+                <div className="flex items-center justify-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                </div>
+              ) : myQuotes.length === 0 ? (
                 <div className="text-center py-8">
                   <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
                   <p className="text-gray-500">{translations.noActiveQuotes}</p>
+                  <p className="text-sm text-gray-400 mt-2">
+                    {translations.noQuotesDesc || 'Submit quotes on available jobs to see them here.'}
+                  </p>
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {activeQuotes.map((quote) => (
+                  {myQuotes.map((quote) => (
                     <div
                       key={quote.id}
                       className="border rounded-lg p-4 hover:bg-gray-50 transition-colors"
                     >
                       <div className="flex justify-between items-start mb-2">
-                        <h3 className="font-semibold text-lg">{quote.projectTitle}</h3>
-                        <Badge variant={getStatusBadgeVariant(quote.status)}>
-                          {quote.status}
-                        </Badge>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h3 className="font-semibold text-lg">
+                              {quote.job_request?.title || 'Job Request'}
+                            </h3>
+                            <Badge variant={getStatusBadgeVariant(quote.status)}>
+                              {translations[quote.status] || quote.status}
+                            </Badge>
+                          </div>
+                          <p className="text-sm text-gray-600 mb-2">
+                            {quote.message?.substring(0, 100)}...
+                          </p>
+                        </div>
+                        <div className="flex flex-col items-end gap-2 ml-4">
+                          <span className="text-lg font-bold text-blue-600">
+                            {formatCurrency(quote.amount)}
+                          </span>
+                          <div className="flex gap-1">
+                            <Button size="sm" variant="outline">
+                              <Eye className="h-4 w-4 mr-1" />
+                              {translations.view}
+                            </Button>
+                            {quote.status === 'submitted' && (
+                              <>
+                                <Button size="sm" variant="outline">
+                                  <Edit className="h-4 w-4 mr-1" />
+                                  {translations.edit}
+                                </Button>
+                                <Button 
+                                  size="sm" 
+                                  variant="outline"
+                                  onClick={() => handleWithdrawQuote(quote.id)}
+                                >
+                                  <Trash2 className="h-4 w-4 mr-1" />
+                                  {translations.withdraw}
+                                </Button>
+                              </>
+                            )}
+                          </div>
+                        </div>
                       </div>
-                      <div className="grid grid-cols-2 gap-4 text-sm text-gray-500">
-                        <span><strong>Quote Amount:</strong> {quote.quotedAmount}</span>
-                        <span><strong>Submitted:</strong> {formatDate(quote.submittedDate)}</span>
-                      </div>
-                      <div className="mt-3 flex gap-2">
-                        <Button size="sm" variant="outline">View Details</Button>
-                        <Button size="sm" variant="outline">Edit Quote</Button>
+                      
+                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm text-gray-500">
+                        <span><strong>{translations.amount}:</strong> {formatCurrency(quote.amount)}</span>
+                        <span><strong>{translations.submitted}:</strong> {formatDate(quote.created_at)}</span>
+                        <span><strong>{translations.expires}:</strong> {formatDate(quote.expires_at)}</span>
+                        <span><strong>{translations.duration}:</strong> {quote.estimated_duration || 'N/A'}</span>
                       </div>
                     </div>
                   ))}
@@ -330,50 +360,102 @@ const ProfessionalDashboard = ({ translations, language, user }) => {
           </Card>
         </TabsContent>
 
-        <TabsContent value="calendar" className="mt-6">
+        <TabsContent value="messages" className="mt-6">
           <Card>
             <CardHeader>
-              <CardTitle>{translations.calendarTitle}</CardTitle>
+              <CardTitle className="flex items-center gap-2">
+                <MessageCircle className="h-5 w-5" />
+                {translations.messages}
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="mb-6">
-                <h3 className="font-semibold text-lg mb-4">{translations.upcomingAppointments}</h3>
-                {upcomingAppointments.length === 0 ? (
-                  <div className="text-center py-8">
-                    <Calendar className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                    <p className="text-gray-500">{translations.noUpcomingAppointments}</p>
-                  </div>
-                ) : (
-                  <div className="space-y-3">
-                    {upcomingAppointments.map((appointment) => (
-                      <div
-                        key={appointment.id}
-                        className="border rounded-lg p-4 hover:bg-gray-50 transition-colors"
-                      >
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <h4 className="font-semibold">{appointment.title}</h4>
-                            <p className="text-gray-600">{appointment.client}</p>
-                          </div>
-                          <div className="text-right text-sm text-gray-500">
-                            <div className="flex items-center gap-2">
-                              <Clock className="h-4 w-4" />
-                              {formatDate(appointment.date)} at {appointment.time}
-                            </div>
-                            <div className="mt-1">{appointment.location}</div>
-                          </div>
+              {messagesError && (
+                <Alert variant="destructive" className="mb-4">
+                  <AlertCircle className="h-4 w-4" />
+                  <AlertDescription>{messagesError}</AlertDescription>
+                </Alert>
+              )}
+              
+              {messagesLoading ? (
+                <div className="flex items-center justify-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                </div>
+              ) : conversations.length === 0 ? (
+                <div className="text-center py-8">
+                  <MessageCircle className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                  <p className="text-gray-500">{translations.noConversations || 'No conversations yet'}</p>
+                  <p className="text-sm text-gray-400 mt-2">
+                    {translations.noConversationsDesc || 'Start submitting quotes to begin conversations with customers.'}
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {conversations.map((conversation) => (
+                    <div
+                      key={conversation.id}
+                      className="border rounded-lg p-4 hover:bg-gray-50 transition-colors cursor-pointer"
+                    >
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h4 className="font-semibold">{conversation.job_request?.title}</h4>
+                          <p className="text-gray-600 text-sm">
+                            {conversation.last_message?.content || 'No messages yet'}
+                          </p>
+                        </div>
+                        <div className="text-right text-sm text-gray-500">
+                          <div>{formatDate(conversation.updated_at)}</div>
+                          {conversation.unread_count > 0 && (
+                            <Badge variant="default" className="mt-1">
+                              {conversation.unread_count}
+                            </Badge>
+                          )}
                         </div>
                       </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </TabsContent>
 
-              <div className="pt-6 border-t">
-                <Button className="w-full">
-                  <Calendar className="h-4 w-4 mr-2" />
-                  View Full Calendar
-                </Button>
+        <TabsContent value="profile" className="mt-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <User className="h-5 w-5" />
+                {translations.profile}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-semibold mb-3">{translations.personalInfo}</h4>
+                    <div className="space-y-2 text-sm">
+                      <div><strong>{translations.firstName}:</strong> {user.profile?.first_name || 'N/A'}</div>
+                      <div><strong>{translations.lastName}:</strong> {user.profile?.last_name || 'N/A'}</div>
+                      <div><strong>{translations.email}:</strong> {user.email}</div>
+                      <div><strong>{translations.phone}:</strong> {user.profile?.phone || 'N/A'}</div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold mb-3">{translations.companyInfo}</h4>
+                    <div className="space-y-2 text-sm">
+                      <div><strong>{translations.companyName}:</strong> {user.profile?.company_name || 'N/A'}</div>
+                      <div><strong>{translations.companyId}:</strong> {user.profile?.company_id || 'N/A'}</div>
+                      <div><strong>{translations.serviceAreas}:</strong> {user.profile?.service_areas || 'N/A'}</div>
+                      <div><strong>{translations.tradeCertifications}:</strong> {user.profile?.trade_certifications || 'N/A'}</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="pt-4 border-t">
+                  <Button>
+                    {translations.updateProfile}
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>
