@@ -17,21 +17,38 @@ rate_limit_storage = {}
 class DraftJobRequestCreate(BaseModel):
     """Schema for creating a draft job request (public)"""
     category: str
-    title: str
-    description: str
+    title: Optional[str] = None  # Optional for automotive
+    description: Optional[str] = None  # Optional for automotive
     postcode: str = "101"  # Default Iceland postcode
+    licensePlate: Optional[str] = None  # For automotive category
+    plateCountry: Optional[str] = None  # For automotive category
     
     @validator('title')
-    def validate_title_length(cls, v):
-        if len(v.strip()) < 10:
+    def validate_title_length(cls, v, values):
+        # Only validate title if not automotive category or if title is provided
+        if values.get('category') != 'automotive' and (not v or len(v.strip()) < 10):
             raise ValueError('Title must be at least 10 characters long')
-        return v.strip()
+        return v.strip() if v else v
     
     @validator('description')
-    def validate_description_length(cls, v):
-        if len(v.strip()) < 30:
+    def validate_description_length(cls, v, values):
+        # Only validate description if not automotive category or if description is provided
+        if values.get('category') != 'automotive' and (not v or len(v.strip()) < 30):
             raise ValueError('Description must be at least 30 characters long')
-        return v.strip()
+        return v.strip() if v else v
+    
+    @validator('licensePlate')
+    def validate_license_plate(cls, v, values):
+        # Validate license plate for automotive category
+        if values.get('category') == 'automotive':
+            if not v:
+                raise ValueError('License plate is required for automotive category')
+            if not (2 <= len(v) <= 8):
+                raise ValueError('License plate must be 2-8 characters long')
+            import re
+            if not re.match(r'^[A-Z0-9]+$', v):
+                raise ValueError('License plate must contain only letters and numbers')
+        return v
 
 class DraftJobRequestUpdate(BaseModel):
     """Schema for updating a draft job request (public)"""
