@@ -24,6 +24,7 @@ class DraftJobRequestCreate(BaseModel):
     postcode: str = "101"  # Default Iceland postcode
     licensePlate: Optional[str] = None  # For automotive category
     plateCountry: Optional[str] = None  # For automotive category
+    vehicleInfo: Optional[dict] = None  # Vehicle lookup results
     
     @field_validator('title', mode='before')
     @classmethod
