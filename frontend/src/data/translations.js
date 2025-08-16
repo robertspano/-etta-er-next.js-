@@ -905,6 +905,11 @@ export const translations = {
     trustCard3Description: "Evalueringer kan kun gis for jobber som legges ut på BuildConnect. For å evaluere en jobb må de som legger ut jobben også ha BankID-verifisere hvem de er.",
     learnMore: "Lesa meira",
     
+    // Pro Signup Section
+    proSignupTitle: "Viltu fá fleiri viðskiptavini?",
+    proSignupSubtitle: "Skráðu fyrirtækið á BuildConnect og fáðu aðgang að nýjum verkum í hverri viku.",
+    proSignupCta: "Byrja hér",
+    
     // Stats
     statsTitle: "Treyst af Þúsundum",
     projectsCompleted: "Kláruð Verkefni",
