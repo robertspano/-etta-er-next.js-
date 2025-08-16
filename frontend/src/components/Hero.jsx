@@ -2,12 +2,6 @@ import React, { useState } from 'react';
 import { Input } from './ui/input';
 import { Search, Star, Users, Hammer, Droplets, Car, Building, Sparkles, Home, Truck, Grid3X3 } from 'lucide-react';
 
-import React, { useState } from 'react';
-import { Button } from './ui/button';
-import { Card } from './ui/card';
-import { Input } from './ui/input';
-import { Search, Star, Users, CheckCircle, Hammer, Droplets, Car, Building, Sparkles, Home, Truck, Grid3X3 } from 'lucide-react';
-
 const Hero = ({ translations }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -109,6 +103,16 @@ const Hero = ({ translations }) => {
             </div>
           </div>
         </div>
+
+        {/* Mobile Layout Adjustments */}
+        <style jsx>{`
+          @media (max-width: 768px) {
+            .md\\:col-span-3,
+            .md\\:col-span-2 {
+              grid-column: span 1;
+            }
+          }
+        `}</style>
       </div>
     </section>
   );
