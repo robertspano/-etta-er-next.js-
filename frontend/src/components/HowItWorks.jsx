@@ -74,7 +74,7 @@ const HowItWorks = ({ translations }) => {
         <div className="text-center">
           <Button 
             onClick={handlePostProject}
-            className="bg-[#1B2B5B] hover:bg-white hover:text-[#1B2B5B] text-white border-2 border-[#1B2B5B] px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300"
+            className="bg-[#1B2B5B] hover:bg-white hover:text-[#1B2B5B] text-white border-2 border-[#1B2B5B] px-12 py-5 text-xl font-semibold rounded-lg transition-all duration-300"
           >
             {translations.postProject}
           </Button>
