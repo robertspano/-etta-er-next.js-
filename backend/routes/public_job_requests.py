@@ -5,9 +5,10 @@ from models.job_request import JobRequest, JobStatus, JobPriority
 from models.user import User
 from auth.config import current_active_user_optional
 from services.database import db_service
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, field_validator, ValidationInfo
 import uuid
 import time
+import re
 
 router = APIRouter(prefix="/public/job-requests", tags=["public-job-requests"])
 
@@ -23,29 +24,34 @@ class DraftJobRequestCreate(BaseModel):
     licensePlate: Optional[str] = None  # For automotive category
     plateCountry: Optional[str] = None  # For automotive category
     
-    @validator('title')
-    def validate_title_length(cls, v, values):
+    @field_validator('title')
+    @classmethod
+    def validate_title_length(cls, v: Optional[str], info: ValidationInfo) -> Optional[str]:
         # Only validate title if not automotive category or if title is provided
-        if values.get('category') != 'automotive' and (not v or len(v.strip()) < 10):
+        category = info.data.get('category') if info.data else None
+        if category != 'automotive' and (not v or len(v.strip()) < 10):
             raise ValueError('Title must be at least 10 characters long')
         return v.strip() if v else v
     
-    @validator('description')
-    def validate_description_length(cls, v, values):
+    @field_validator('description')
+    @classmethod
+    def validate_description_length(cls, v: Optional[str], info: ValidationInfo) -> Optional[str]:
         # Only validate description if not automotive category or if description is provided
-        if values.get('category') != 'automotive' and (not v or len(v.strip()) < 30):
+        category = info.data.get('category') if info.data else None
+        if category != 'automotive' and (not v or len(v.strip()) < 30):
             raise ValueError('Description must be at least 30 characters long')
         return v.strip() if v else v
     
-    @validator('licensePlate')
-    def validate_license_plate(cls, v, values):
+    @field_validator('licensePlate')
+    @classmethod
+    def validate_license_plate(cls, v: Optional[str], info: ValidationInfo) -> Optional[str]:
         # Validate license plate for automotive category
-        if values.get('category') == 'automotive':
+        category = info.data.get('category') if info.data else None
+        if category == 'automotive':
             if not v:
                 raise ValueError('License plate is required for automotive category')
             if not (2 <= len(v) <= 8):
                 raise ValueError('License plate must be 2-8 characters long')
-            import re
             if not re.match(r'^[A-Z0-9]+$', v):
                 raise ValueError('License plate must contain only letters and numbers')
         return v
@@ -64,24 +70,26 @@ class DraftJobRequestUpdate(BaseModel):
     licensePlate: Optional[str] = None  # For automotive updates
     plateCountry: Optional[str] = None  # For automotive updates
     
-    @validator('title')
-    def validate_title_length(cls, v):
+    @field_validator('title')
+    @classmethod
+    def validate_title_length(cls, v: Optional[str]) -> Optional[str]:
         if v is not None and len(v.strip()) < 10:
             raise ValueError('Title must be at least 10 characters long')
         return v.strip() if v else v
     
-    @validator('description')
-    def validate_description_length(cls, v):
+    @field_validator('description')
+    @classmethod
+    def validate_description_length(cls, v: Optional[str]) -> Optional[str]:
         if v is not None and len(v.strip()) < 30:
             raise ValueError('Description must be at least 30 characters long')
         return v.strip() if v else v
     
-    @validator('licensePlate')
-    def validate_license_plate(cls, v):
+    @field_validator('licensePlate')
+    @classmethod
+    def validate_license_plate(cls, v: Optional[str]) -> Optional[str]:
         if v is not None:
             if not (2 <= len(v) <= 8):
                 raise ValueError('License plate must be 2-8 characters long')
-            import re
             if not re.match(r'^[A-Z0-9]+$', v):
                 raise ValueError('License plate must contain only letters and numbers')
         return v
@@ -251,7 +259,7 @@ async def update_draft_job_request(
             )
         
         # Prepare update data
-        update_dict = update_data.dict(exclude_unset=True)
+        update_dict = update_data.model_dump(exclude_unset=True)
         update_dict["updated_at"] = datetime.utcnow()
         
         # Update in database
