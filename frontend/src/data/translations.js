@@ -871,6 +871,13 @@ export const translations = {
     findCompanyWhereJob: "Hvor skal jobben gjøres?",
     findCompanyButton: "Finn bedrift",
     
+    // Reviews Section
+    latestReviewsTitle: "Síðustu umsagnir",
+    latestReviewsSubtitle: "Sjáðu hvað viðskiptavinir okkar segja um sérfræðingana sem þeir hafa unnið með",
+    noReviewsYetTitle: "Engar umsagnir enn",
+    noReviewsYetMessage: "Umsagnir viðskiptavina munu birtast hér þegar verkefnum er lokið",
+    reviewsComingSoon: "Umsagnir koma fljótlega",
+    
     // Stats
     statsTitle: "Treyst af Þúsundum",
     projectsCompleted: "Kláruð Verkefni",
