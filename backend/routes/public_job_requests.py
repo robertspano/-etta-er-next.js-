@@ -5,7 +5,7 @@ from models.job_request import JobRequest, JobStatus, JobPriority
 from models.user import User
 from auth.config import current_active_user_optional
 from services.database import db_service
-from pydantic import BaseModel, field_validator, ValidationInfo
+from pydantic import BaseModel, field_validator, model_validator, ValidationInfo
 import uuid
 import time
 import re
