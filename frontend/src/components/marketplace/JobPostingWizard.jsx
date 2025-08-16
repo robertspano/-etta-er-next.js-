@@ -586,7 +586,7 @@ const JobPostingWizard = ({ translations, language }) => {
         {currentStep < 3 ? (
           <Button
             onClick={handleNext}
-            disabled={loading || (currentStep === 1 && (!formData.title.trim() || !formData.description.trim()))}
+            disabled={loading || (currentStep === 1 && formData.category === 'automotive' && (!formData.licensePlate || formData.licensePlate.length < 2)) || (currentStep === 1 && formData.category !== 'automotive' && (!formData.title.trim() || !formData.description.trim()))}
             className="px-8"
           >
             {loading ? (
