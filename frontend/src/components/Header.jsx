@@ -241,6 +241,175 @@ const Header = ({ language, setLanguage, translations }) => {
           </div>
         )}
       </div>
+      
+      {/* Right Drawer */}
+      {isDrawerOpen && (
+        <>
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 z-40"
+            onClick={() => setIsDrawerOpen(false)}
+          />
+          
+          {/* Drawer */}
+          <div className="fixed right-0 top-0 h-full w-96 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out">
+            <div className="h-full overflow-y-auto">
+              {/* Drawer Header */}
+              <div className="flex items-center justify-between p-4 border-b">
+                <h2 className="text-lg font-semibold text-gray-900">Menu</h2>
+                <Button
+                  onClick={() => setIsDrawerOpen(false)}
+                  variant="ghost"
+                  size="sm"
+                  className="h-8 w-8 p-0"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+              
+              {/* Drawer Content */}
+              <div className="p-4 space-y-2">
+                {/* Auth Section */}
+                {!loading && (
+                  <>
+                    {isAuthenticated() ? (
+                      <div className="space-y-1 pb-4 border-b">
+                        <button
+                          onClick={() => handleDrawerItemClick('/profile')}
+                          className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                        >
+                          <span className="text-gray-700">{translations.profile}</span>
+                          <ChevronRight className="h-4 w-4 text-gray-400" />
+                        </button>
+                        <button
+                          onClick={() => handleDrawerItemClick('/settings')}
+                          className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                        >
+                          <span className="text-gray-700">{translations.settings}</span>
+                          <ChevronRight className="h-4 w-4 text-gray-400" />
+                        </button>
+                        <button
+                          onClick={handleLogout}
+                          className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg text-red-600"
+                        >
+                          <span>{translations.logout}</span>
+                          <ChevronRight className="h-4 w-4 text-red-400" />
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="pb-4 border-b">
+                        <button
+                          onClick={handleLogin}
+                          className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                        >
+                          <span className="text-gray-700">{translations.login}</span>
+                          <ChevronRight className="h-4 w-4 text-gray-400" />
+                        </button>
+                      </div>
+                    )}
+                  </>
+                )}
+                
+                {/* Action Buttons */}
+                <div className="space-y-1 pb-4 border-b">
+                  <button
+                    onClick={handlePostProject}
+                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                  >
+                    <span className="text-gray-700">{translations.postProject}</span>
+                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                  </button>
+                  <button
+                    onClick={handleRegisterCompany}
+                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                  >
+                    <span className="text-gray-700">{translations.registerCompany}</span>
+                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                  </button>
+                </div>
+                
+                {/* Categories Section */}
+                <div className="space-y-1">
+                  <div className="px-3 py-2">
+                    <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
+                      {translations.categories}
+                    </h3>
+                  </div>
+                  
+                  <button
+                    onClick={() => handleDrawerItemClick('#')}
+                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                  >
+                    <span className="text-gray-700">{translations.handcraft}</span>
+                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                  </button>
+                  
+                  <button
+                    onClick={() => handleDrawerItemClick('#')}
+                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                  >
+                    <span className="text-gray-700">{translations.homeGarden}</span>
+                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                  </button>
+                  
+                  <button
+                    onClick={() => handleDrawerItemClick('#')}
+                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                  >
+                    <span className="text-gray-700">{translations.interiorRenovation}</span>
+                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                  </button>
+                  
+                  <button
+                    onClick={() => handleDrawerItemClick('#')}
+                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                  >
+                    <span className="text-gray-700">{translations.buildNew}</span>
+                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                  </button>
+                  
+                  <button
+                    onClick={() => handleDrawerItemClick('#')}
+                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                  >
+                    <span className="text-gray-700">{translations.services}</span>
+                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                  </button>
+                  
+                  <button
+                    onClick={() => handleDrawerItemClick('#')}
+                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                  >
+                    <div className="flex items-center space-x-2">
+                      <span className="text-gray-700">{translations.companySearch}</span>
+                      <span className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full">
+                        {translations.new}
+                      </span>
+                    </div>
+                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                  </button>
+                  
+                  <button
+                    onClick={() => handleDrawerItemClick('#')}
+                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                  >
+                    <span className="text-gray-700">{translations.majorProjects}</span>
+                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                  </button>
+                  
+                  <button
+                    onClick={() => handleDrawerItemClick('#')}
+                    className="w-full flex items-center justify-between p-3 text-left hover:bg-gray-50 rounded-lg"
+                  >
+                    <span className="text-gray-700">{translations.housingAssociations}</span>
+                    <ChevronRight className="h-4 w-4 text-gray-400" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </header>
   );
 };
