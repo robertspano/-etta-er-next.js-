@@ -127,10 +127,10 @@ const JobPostingWizard = ({ translations, language }) => {
         };
 
         if (draftJobId) {
-          await api.put(`/api/job-requests/${draftJobId}`, jobData);
+          await api.updateJobRequest(draftJobId, jobData);
         } else {
-          const response = await api.post('/api/job-requests', jobData);
-          setDraftJobId(response.data.id);
+          const response = await api.createJobRequest(jobData);
+          setDraftJobId(response.id);
         }
         
         setCurrentStep(2);
