@@ -304,7 +304,7 @@ const CustomerDashboard = ({ translations, language, user }) => {
                       <SelectValue placeholder={translations.filter + ' status'} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">All Status</SelectItem>
+                      <SelectItem value="all">All Status</SelectItem>
                       <SelectItem value="open">{translations.open}</SelectItem>
                       <SelectItem value="quoted">{translations.quoted}</SelectItem>
                       <SelectItem value="accepted">{translations.accepted}</SelectItem>
