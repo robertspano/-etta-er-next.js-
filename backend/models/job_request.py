@@ -171,6 +171,7 @@ class JobRequestResponse(BaseModel):
     id: str
     customer_id: str
     category: str
+    subcategory: Optional[str] = None  # Service subcategory
     title: Optional[str]  # Optional for automotive
     description: Optional[str]  # Optional for automotive
     postcode: str
