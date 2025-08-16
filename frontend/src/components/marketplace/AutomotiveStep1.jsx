@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { Alert, AlertDescription } from '../ui/alert';
 import { HelpCircle } from 'lucide-react';
 
@@ -15,17 +14,19 @@ const AutomotiveStep1 = ({
   error 
 }) => {
   const [licensePlate, setLicensePlate] = useState(formData.licensePlate || '');
-  const [countryCode, setCountryCode] = useState(formData.plateCountry || 'IS');
+  const [countryCode] = useState('IS'); // Fixed to Iceland
   const [showHelp, setShowHelp] = useState(false);
   const [validationError, setValidationError] = useState('');
+  const [lookupLoading, setLookupLoading] = useState(false);
+  const [vehicleInfo, setVehicleInfo] = useState(null);
 
-  // Format license plate input
-  const formatLicensePlate = (input) => {
-    // Remove spaces, dashes, and convert to uppercase
-    return input.replace(/[\s-]/g, '').toUpperCase();
+  // Clean and format license plate input - only allow A-Z and 0-9
+  const cleanLicensePlate = (input) => {
+    // Remove all non-alphanumeric characters and convert to uppercase
+    return input.replace(/[^A-Z0-9]/gi, '').toUpperCase();
   };
 
-  // Validate license plate
+  // Validate license plate - Iceland format
   const validateLicensePlate = (plate) => {
     if (!plate) return false;
     // Must be 2-8 alphanumeric characters
@@ -34,29 +35,66 @@ const AutomotiveStep1 = ({
   };
 
   const handlePlateChange = (e) => {
-    const formatted = formatLicensePlate(e.target.value);
-    setLicensePlate(formatted);
+    const cleaned = cleanLicensePlate(e.target.value);
     
-    if (formatted && !validateLicensePlate(formatted)) {
-      setValidationError(translations.automotivePlateValidationError || 'License plate must be 2-8 alphanumeric characters');
+    // Limit to 8 characters max
+    const limited = cleaned.slice(0, 8);
+    setLicensePlate(limited);
+    
+    if (limited && !validateLicensePlate(limited)) {
+      setValidationError(translations.automotivePlateValidationError || 'Skráningarmerki verður að vera 2-8 stafir eða tölur');
     } else {
       setValidationError('');
     }
 
     // Update form data
-    updateFormData('licensePlate', formatted);
+    updateFormData('licensePlate', limited);
+    updateFormData('plateCountry', 'IS');
   };
 
-  const handleCountryChange = (value) => {
-    setCountryCode(value);
-    updateFormData('plateCountry', value);
+  // Handle paste events to clean input
+  const handlePaste = (e) => {
+    e.preventDefault();
+    const paste = (e.clipboardData || window.clipboardData).getData('text');
+    const cleaned = cleanLicensePlate(paste).slice(0, 8);
+    setLicensePlate(cleaned);
+    updateFormData('licensePlate', cleaned);
   };
 
-  const handleNext = () => {
+  // Vehicle lookup function
+  const lookupVehicle = async (plate) => {
+    if (!plate || !validateLicensePlate(plate)) return null;
+    
+    setLookupLoading(true);
+    try {
+      const response = await fetch(`/api/public/vehicle-lookup?plate=${plate}&country=IS`);
+      if (response.ok) {
+        const data = await response.json();
+        return data;
+      }
+      return { found: false };
+    } catch (error) {
+      console.warn('Vehicle lookup failed:', error);
+      return { found: false };
+    } finally {
+      setLookupLoading(false);
+    }
+  };
+
+  const handleNext = async () => {
     if (!validateLicensePlate(licensePlate)) {
-      setValidationError(translations.automotivePlateValidationError || 'License plate must be 2-8 alphanumeric characters');
+      setValidationError(translations.automotivePlateValidationError || 'Skráningarmerki verður að vera 2-8 stafir eða tölur');
       return;
     }
+
+    // Perform vehicle lookup
+    const lookup = await lookupVehicle(licensePlate);
+    if (lookup && lookup.found) {
+      setVehicleInfo(lookup);
+      // Store vehicle info in form data for later steps
+      updateFormData('vehicleInfo', lookup);
+    }
+
     onNext();
   };
 
@@ -64,13 +102,17 @@ const AutomotiveStep1 = ({
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-center text-gray-900 mb-2">
-        {translations.automotiveStepTitle || "Get offers from multiple workshops"}
-      </h2>
-      <p className="text-center text-gray-600 mb-8">
-        {translations.automotiveStepSubtitle || "Enter your vehicle details to get quotes from verified automotive professionals"}
-      </p>
+      {/* Heading matching Mittanbud exactly */}
+      <div className="text-center mb-8">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+          {translations.mittanbudAutomotiveTitle || "Fá tilbud frá fleiri bilverkstæði"}
+        </h2>
+        <p className="text-gray-600 text-base">
+          {translations.mittanbudAutomotiveSubtitle || "Leggðu inn bilnúmer svo við getum veitt þér viðeigandi tilboð"}
+        </p>
+      </div>
       
+      {/* Category badge */}
       {formData.category && (
         <div className="mb-6">
           <p className="text-sm text-gray-600 mb-2">{translations.category}</p>
@@ -82,91 +124,80 @@ const AutomotiveStep1 = ({
         </div>
       )}
 
-      <div className="space-y-4">
-        <label className="block text-sm font-medium text-gray-700">
-          {translations.automotiveLicensePlateLabel || "License Plate"} <span className="text-red-500">*</span>
-        </label>
-        
-        <div className="flex gap-3">
-          {/* Country Selector */}
-          <div className="flex-shrink-0">
-            <Select value={countryCode} onValueChange={handleCountryChange}>
-              <SelectTrigger className="w-20 h-12 bg-gray-50">
-                <SelectValue>
-                  <div className="flex items-center gap-1">
-                    <span className="text-xs font-medium">{countryCode}</span>
-                  </div>
-                </SelectValue>
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="IS">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs">🇮🇸</span>
-                    <span>IS</span>
-                  </div>
-                </SelectItem>
-                <SelectItem value="NO">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs">🇳🇴</span>
-                    <span>NO</span>
-                  </div>
-                </SelectItem>
-                <SelectItem value="DK">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs">🇩🇰</span>
-                    <span>DK</span>
-                  </div>
-                </SelectItem>
-                <SelectItem value="SE">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs">🇸🇪</span>
-                    <span>SE</span>
-                  </div>
-                </SelectItem>
-              </SelectContent>
-            </Select>
+      <div className="space-y-6">
+        {/* License plate input section */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-3">
+            {translations.mittanbudLicensePlateLabel || "Skráningarmerki"} <span className="text-red-500">*</span>
+          </label>
+          
+          {/* License plate component matching Mittanbud layout */}
+          <div className="flex items-center justify-center mb-4">
+            <div className="flex items-center bg-white border-2 border-gray-300 rounded-lg overflow-hidden shadow-sm" style={{width: '280px', height: '60px'}}>
+              {/* IS flag section - left side */}
+              <div className="flex items-center bg-blue-600 text-white px-3 h-full" style={{width: '60px'}}>
+                <div className="text-center">
+                  <div className="text-white text-xs font-bold">🇮🇸</div>
+                  <div className="text-white text-xs font-bold mt-1">IS</div>
+                </div>
+              </div>
+              
+              {/* License plate input - right side */}
+              <div className="flex-1 h-full">
+                <input
+                  type="text"
+                  value={licensePlate}
+                  onChange={handlePlateChange}
+                  onPaste={handlePaste}
+                  placeholder="AB12345"
+                  className="w-full h-full px-4 text-2xl font-mono font-bold text-gray-900 bg-white border-0 focus:outline-none focus:ring-0 text-center tracking-wider"
+                  maxLength={8}
+                  style={{ 
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em'
+                  }}
+                />
+              </div>
+            </div>
           </div>
 
-          {/* License Plate Input */}
-          <div className="flex-1">
-            <Input
-              value={licensePlate}
-              onChange={handlePlateChange}
-              placeholder="AB12345"
-              className={`h-12 text-lg font-mono tracking-wide ${validationError ? 'border-red-500' : ''}`}
-              maxLength={8}
-              style={{ textTransform: 'uppercase' }}
-            />
+          {/* Validation error */}
+          {validationError && (
+            <p className="text-sm text-red-600 text-center mt-2">{validationError}</p>
+          )}
+
+          {/* Vehicle info display if lookup successful */}
+          {vehicleInfo && vehicleInfo.found && (
+            <div className="bg-green-50 border border-green-200 rounded-lg p-3 mt-3">
+              <p className="text-green-800 text-sm font-medium">
+                ✓ Ökutæki fundið: {vehicleInfo.make} {vehicleInfo.model} ({vehicleInfo.year})
+              </p>
+            </div>
+          )}
+
+          {/* Help link */}
+          <div className="flex items-center justify-center mt-4">
+            <button
+              type="button"
+              onClick={() => setShowHelp(!showHelp)}
+              className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-800 transition-colors underline"
+            >
+              <HelpCircle className="h-4 w-4" />
+              {translations.mittanbudWhyNeedPlate || "Hvers vegna þurfum við þetta?"}
+            </button>
           </div>
+
+          {/* Help text */}
+          {showHelp && (
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-3 text-sm text-blue-800">
+              <p>
+                {translations.mittanbudPlateHelpText || 
+                  "Við notum skráningarmerki bílsins þíns til að finna upplýsingar um tegund og gerð og geta þannig tengt þig við viðeigandi verkstæði og fengið betri tilboð."
+                }
+              </p>
+            </div>
+          )}
         </div>
-
-        {/* Validation Error */}
-        {validationError && (
-          <p className="text-sm text-red-600 mt-1">{validationError}</p>
-        )}
-
-        {/* Help Link */}
-        <div className="flex items-center justify-center">
-          <button
-            type="button"
-            onClick={() => setShowHelp(!showHelp)}
-            className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-800 transition-colors"
-          >
-            <HelpCircle className="h-4 w-4" />
-            {translations.automotiveWhyLicensePlate || "Why do we need this?"}
-          </button>
-        </div>
-
-        {/* Help Modal/Tooltip */}
-        {showHelp && (
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-800">
-            <p>
-              {translations.automotiveHelpText || 
-                "We use your license plate to identify your vehicle's make, model, and year. This helps us connect you with workshops that specialize in your specific vehicle type and provide more accurate quotes."
-              }
-            </p>
-          </div>
-        )}
       </div>
 
       {/* Global Error */}
@@ -177,6 +208,25 @@ const AutomotiveStep1 = ({
           </AlertDescription>
         </Alert>
       )}
+
+      {/* Next button */}
+      <div className="flex justify-center pt-4">
+        <Button
+          onClick={handleNext}
+          disabled={!isValid || loading || lookupLoading}
+          className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+          size="lg"
+        >
+          {loading || lookupLoading ? (
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              <span>{lookupLoading ? 'Leita...' : 'Vista...'}</span>
+            </div>
+          ) : (
+            translations.next || "Áfram"
+          )}
+        </Button>
+      </div>
     </div>
   );
 };
