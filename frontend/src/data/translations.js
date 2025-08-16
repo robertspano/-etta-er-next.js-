@@ -393,7 +393,7 @@ export const translations = {
     viewAllServices: "View All Services",
     
     // How It Works
-    howItWorksTitle: "How It Works",
+    howItWorksTitle: "How BuildConnect Works",
     howItWorksDescription: "Get your project done in three simple steps",
     step1Title: "Describe Your Project",
     step1Description: "Tell us what you need done and where you're located.",
@@ -401,6 +401,10 @@ export const translations = {
     step2Description: "We connect you with qualified professionals in your area.",
     step3Title: "Choose & Hire",
     step3Description: "Compare quotes and hire the best professional for your project.",
+    
+    // Popular Projects Section
+    popularProjectsTitle: "Popular Projects",
+    popularProjectsSubtitle: "Get started with your next project or search to find the right professional for you.",
     
     // Stats
     statsTitle: "Trusted by Thousands",
