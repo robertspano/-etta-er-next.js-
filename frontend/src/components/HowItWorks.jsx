@@ -32,37 +32,37 @@ const HowItWorks = ({ translations }) => {
   };
 
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-12 lg:py-20 bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+        <div className="text-center mb-12 lg:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
             {translations.howItWorksTitle}
           </h2>
         </div>
 
-        {/* Steps Grid - No Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-20 mb-16">
+        {/* Steps Grid - Force side-by-side on larger screens */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12 mb-12 lg:mb-16">
           {steps.map((step, index) => {
             const IconComponent = step.icon;
             return (
-              <div key={step.id} className="text-center">
-                {/* Icon with Number Badge */}
-                <div className="relative inline-block mb-6">
-                  <IconComponent className="h-12 w-12 text-[#1B2B5B]" strokeWidth={1.5} />
+              <div key={step.id} className="text-center max-w-sm mx-auto md:max-w-none">
+                {/* Icon with Number Badge - Smaller size */}
+                <div className="relative inline-block mb-4">
+                  <IconComponent className="h-8 w-8 md:h-10 md:w-10 text-[#1B2B5B]" strokeWidth={1.5} />
                   {/* Number badge positioned inside top-left of icon */}
-                  <div className="absolute -top-1 -left-1 w-6 h-6 bg-[#1B2B5B] text-white rounded-full flex items-center justify-center text-sm font-bold">
+                  <div className="absolute -top-1 -left-1 w-5 h-5 md:w-6 md:h-6 bg-[#1B2B5B] text-white rounded-full flex items-center justify-center text-xs md:text-sm font-bold">
                     {step.id}
                   </div>
                 </div>
                 
-                {/* Title */}
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                {/* Title - More compact */}
+                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 leading-tight">
                   {step.title}
                 </h3>
                 
-                {/* Description */}
-                <p className="text-gray-600 leading-relaxed">
+                {/* Description - More compact */}
+                <p className="text-sm md:text-base text-gray-600 leading-relaxed">
                   {step.description}
                 </p>
               </div>
