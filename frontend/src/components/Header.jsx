@@ -22,6 +22,16 @@ const Header = ({ language, setLanguage, translations }) => {
     navigate('/');
   };
 
+  const handleRegisterCompany = () => {
+    if (isAuthenticated()) {
+      // For authenticated users, navigate to professional registration/onboarding
+      navigate('/register-professional');
+    } else {
+      // For non-authenticated users, redirect to register with role pre-selected
+      navigate('/register?role=professional');
+    }
+  };
+
   const handlePostProject = () => {
     if (isAuthenticated()) {
       // Redirect to project creation page
