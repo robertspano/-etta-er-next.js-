@@ -58,21 +58,21 @@ const HowItWorks = ({ translations }) => {
                 )}
                 
                 <div className="text-center relative z-10 animate-fade-in-up" style={{ animationDelay: `${index * 0.2}s` }}>
-                  {/* Enhanced Step Number Badge */}
+                  {/* Step Number Badge */}
                   <div className="flex justify-center mb-8">
-                    <div className={`w-20 h-20 bg-gradient-to-br ${step.badgeColor} text-white rounded-2xl flex items-center justify-center font-black text-2xl shadow-2xl hover:scale-110 transition-all duration-300`}>
+                    <div className="w-20 h-20 bg-[#1B2B5B] text-white rounded-2xl flex items-center justify-center font-black text-2xl hover:scale-110 transition-all duration-300">
                       {step.id}
                     </div>
                   </div>
 
-                  {/* Enhanced Icon Container */}
+                  {/* Icon Container */}
                   <div className="flex justify-center mb-8">
-                    <div className={`w-24 h-24 rounded-3xl ${step.color} border-2 border-white shadow-xl flex items-center justify-center hover:scale-105 transition-all duration-300`}>
-                      <IconComponent className="h-12 w-12" />
+                    <div className="w-24 h-24 rounded-3xl bg-white border-2 border-[#1B2B5B] flex items-center justify-center hover:scale-105 transition-all duration-300">
+                      <IconComponent className="h-12 w-12 text-[#1B2B5B]" />
                     </div>
                   </div>
 
-                  {/* Enhanced Content */}
+                  {/* Content */}
                   <div className="max-w-sm mx-auto">
                     <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-5 leading-tight">
                       {step.title}
