@@ -62,6 +62,7 @@ class DraftJobRequestCreate(BaseModel):
 
 class DraftJobRequestUpdate(BaseModel):
     """Schema for updating a draft job request (public)"""
+    subcategory: Optional[str] = None  # Service subcategory
     title: Optional[str] = None
     description: Optional[str] = None
     postcode: Optional[str] = None
