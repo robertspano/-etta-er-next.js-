@@ -99,8 +99,6 @@ const AutomotiveStep1 = ({
     }
   }, [isValid, licensePlate]);
 
-  const isValid = licensePlate && validateLicensePlate(licensePlate) && !validationError;
-
   return (
     <div className="space-y-6">
       {/* Heading matching Mittanbud exactly */}
