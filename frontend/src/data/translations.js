@@ -889,6 +889,17 @@ export const translations = {
     noReviewsYetMessage: "Umsagnir viðskiptavina munu birtast hér þegar verkefnum er lokið",
     reviewsComingSoon: "Umsagnir koma fljótlega",
     
+    // Trust/Quality Section
+    trustSectionTitle: "En rask og trygg måte å finne håndverker på",
+    trustSectionSubtitle: "På BuildConnect gjennomgår vi bedriftene på tjenesten jevnlig. Vi har også gjort det lettere for deg å sikre at du har valgt den beste bedriften for ditt prosjekt:",
+    trustCard1Title: "Finn dyktige håndverkere",
+    trustCard1Description: "BuildConnect gjør det enkelt å finne håndverkere, uansett om jobben er stor eller liten. Du kan kontakte bedrifter direkte, eller la oss finne den rette!",
+    trustCard2Title: "Trygge og pålitelige bedrifter",
+    trustCard2Description: "BuildConnect kvalitetssikrer at bedrifter kan utføre din type jobb. Evalueringene forteller deg hvilke erfaringer andre har hatt med bedriften.",
+    trustCard3Title: "Evalueringer du kan stole på",
+    trustCard3Description: "Evalueringer kan kun gis for jobber som legges ut på BuildConnect. For å evaluere en jobb må de som legger ut jobben også ha BankID-verifisere hvem de er.",
+    learnMore: "Lesa meira",
+    
     // Stats
     statsTitle: "Treyst af Þúsundum",
     projectsCompleted: "Kláruð Verkefni",
