@@ -28,10 +28,14 @@ class JobRequest(Document):
     
     # Job Details
     category: str  # Service category (plumbing, electrical, etc.)
-    title: str
-    description: str
+    title: Optional[str] = None  # Made optional for automotive category
+    description: Optional[str] = None  # Made optional for automotive category
     postcode: str
     address: Optional[str] = None
+    
+    # Automotive-specific fields
+    license_plate: Optional[str] = None  # License plate for automotive category
+    plate_country: Optional[str] = None  # Country code for license plate
     
     # Budget and Priority
     budget_min: Optional[float] = None
