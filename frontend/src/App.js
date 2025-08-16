@@ -30,6 +30,10 @@ import ProfessionalJobDetail from './components/marketplace/ProfessionalJobDetai
 import QuoteSubmissionForm from './components/marketplace/QuoteSubmissionForm';
 import JobPostingWizard from './components/marketplace/JobPostingWizard';
 
+// XL Components
+import XLLanding from './components/xl/XLLanding';
+import XLStart from './components/xl/XLStart';
+
 // Utility Components
 import Unauthorized from './components/Unauthorized';
 import LoadingSpinner from './components/LoadingSpinner';
