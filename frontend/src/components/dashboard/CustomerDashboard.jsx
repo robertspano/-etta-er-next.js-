@@ -77,7 +77,7 @@ const CustomerDashboard = ({ translations, language, user }) => {
         limit: itemsPerPage
       };
       
-      if (filters.status) requestFilters.status = filters.status;
+      if (filters.status && filters.status !== 'all') requestFilters.status = filters.status;
       if (filters.category) requestFilters.category = filters.category;
       if (filters.search) requestFilters.search = filters.search;
       
