@@ -909,6 +909,10 @@ export const translations = {
     step3Title: "Hefstu handa!",
     step3Description: "Farðu yfir tilboðin og veldu rétt fyrirtæki. Eftir verkið geturðu skilið eftir umsögn.",
     
+    // Category Selection Page
+    categorySelectionTitle: "Veldu flokk til að birta verkefnið þitt – ókeypis",
+    categorySelectionSearchPlaceholder: "Leita að flokki...",
+    
     // Popular Projects Section
     popularProjectsTitle: "Populære prosjekter",
     popularProjectsSubtitle: "Skal du i gang med et stort prosjekt eller et lite oppdrag? Legg ut jobben på Mittanbud og få tilbud fra relevante bedrifter og håndverkere - eller bruk søkefunksjonen for å finne riktig bedrift for deg!",
