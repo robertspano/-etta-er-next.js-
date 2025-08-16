@@ -46,8 +46,9 @@ const HomePage = ({ language, setLanguage, currentTranslations }) => {
         translations={currentTranslations} 
       />
       <Hero translations={currentTranslations} />
-      <Services translations={currentTranslations} />
       <HowItWorks translations={currentTranslations} />
+      <PopularProjects translations={currentTranslations} />
+      <Services translations={currentTranslations} />
       <Stats translations={currentTranslations} />
       <Testimonials translations={currentTranslations} />
       <CallToAction translations={currentTranslations} />
