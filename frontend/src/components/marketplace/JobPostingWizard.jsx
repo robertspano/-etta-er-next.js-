@@ -614,9 +614,23 @@ const JobPostingWizard = ({ translations, language }) => {
             </Alert>
           )}
 
-          {currentStep === 1 && renderStep1()}
-          {currentStep === 2 && renderStep2()}
-          {currentStep === 3 && renderStep3()}
+          {currentStep === 1 && formData.category === 'automotive' ? (
+            <AutomotiveStep1
+              formData={formData}
+              updateFormData={updateFormData}
+              translations={translations}
+              language={language}
+              onNext={handleNext}
+              loading={loading}
+              error={error}
+            />
+          ) : currentStep === 1 ? (
+            renderStep1()
+          ) : currentStep === 2 ? (
+            renderStep2()
+          ) : (
+            renderStep3()
+          )}
 
           {renderButtons()}
         </div>
