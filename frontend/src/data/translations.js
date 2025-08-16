@@ -400,8 +400,10 @@ export const translations = {
     postProject: "Birta Verkefni",
     signIn: "Skrá Inn",
     signUp: "Skrá Sig",
+    registerCompany: "Skrá Fyrirtæki",
     dashboard: "Stjórnborð",
     profile: "Prófíll",
+    settings: "Stillingar",
     logout: "Útskráning",
     
     // Authentication
