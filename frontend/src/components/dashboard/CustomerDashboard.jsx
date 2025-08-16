@@ -51,8 +51,19 @@ const CustomerDashboard = ({ translations, language, user }) => {
   });
 
   useEffect(() => {
-    loadDashboardData();
-  }, []);
+    loadDashboardData(currentPage);
+  }, [currentPage, filters]);
+
+  const handleFilterChange = (key, value) => {
+    setFilters(prev => ({ ...prev, [key]: value }));
+    setCurrentPage(1); // Reset to first page when filters change
+  };
+
+  const handlePageChange = (newPage) => {
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurrentPage(newPage);
+    }
+  };
 
   const loadDashboardData = async (page = 1) => {
     try {
