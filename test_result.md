@@ -538,9 +538,8 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Moving Category Subcategory Picker Implementation"
-  stuck_tasks:
-    - "Moving Category Subcategory Picker Implementation"
+    - "Reviews System Backend Implementation"
+  stuck_tasks: []
   test_all: false
   test_priority: "high_first"
 
