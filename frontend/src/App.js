@@ -170,22 +170,6 @@ function App() {
               } 
             />
 
-            {/* Category Selection Route */}
-            <Route 
-              path="/categories" 
-              element={
-                <AuthLayout 
-                  language={language} 
-                  setLanguage={setLanguage} 
-                  currentTranslations={currentTranslations}
-                >
-                  <CategorySelection 
-                    translations={currentTranslations} 
-                  />
-                </AuthLayout>
-              } 
-            />
-
             {/* Protected Routes */}
             <Route 
               path="/dashboard" 
