@@ -218,6 +218,7 @@ async def create_draft_job_request(
         return DraftJobResponse(
             id=job_request_data["id"],
             category=job_request_data["category"],
+            subcategory=job_request_data["subcategory"],
             title=job_request_data["title"],
             description=job_request_data["description"],
             postcode=job_request_data["postcode"],
