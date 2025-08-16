@@ -542,10 +542,6 @@ const JobPostingWizard = ({ translations, language }) => {
     </div>
   );
 
-  if (!user) {
-    return <LoadingSpinner />;
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-orange-50 py-8">
       <div className="max-w-2xl mx-auto px-4">
