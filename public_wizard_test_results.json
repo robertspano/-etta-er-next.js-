@@ -1,109 +1,130 @@
 {
   "summary": {
-    "total": 14,
-    "passed": 12,
-    "failed": 2,
-    "success_rate": 85.71428571428571
+    "total": 17,
+    "passed": 17,
+    "failed": 0,
+    "success_rate": 100.0
   },
   "results": [
     {
       "test": "Create Draft (Guest)",
-      "success": false,
-      "details": "Request failed: 'str' object has no attribute 'value'",
-      "timestamp": "2025-08-16T12:40:11.324628",
+      "success": true,
+      "details": "Draft created: 8830ecb4-e8c7-4a36-ba8e-4ee26fae347d, Guest ID: b66c41b0...",
+      "timestamp": "2025-08-16T12:40:29.985688",
+      "response_data": null
+    },
+    {
+      "test": "Update Draft (Guest)",
+      "success": true,
+      "details": "Draft updated with contact info",
+      "timestamp": "2025-08-16T12:40:30.002686",
+      "response_data": null
+    },
+    {
+      "test": "Submit Draft (Guest)",
+      "success": true,
+      "details": "Draft submitted successfully, status: open",
+      "timestamp": "2025-08-16T12:40:30.057487",
       "response_data": null
     },
     {
       "test": "Validation (Short Title)",
       "success": true,
       "details": "Short title correctly rejected",
-      "timestamp": "2025-08-16T12:40:11.337623",
+      "timestamp": "2025-08-16T12:40:30.070045",
       "response_data": null
     },
     {
       "test": "Validation (Short Description)",
       "success": true,
       "details": "Short description correctly rejected",
-      "timestamp": "2025-08-16T12:40:11.349299",
+      "timestamp": "2025-08-16T12:40:30.121388",
       "response_data": null
     },
     {
       "test": "Authorization Setup",
       "success": true,
-      "details": "Draft created: 0207c5fe-40d8-411f-af19-1643b414444a",
-      "timestamp": "2025-08-16T12:40:11.399511",
+      "details": "Draft created: 2ce73532-9b8c-4553-816d-3bd7d7402aff",
+      "timestamp": "2025-08-16T12:40:30.133192",
       "response_data": null
     },
     {
       "test": "Authorization (Different Guest)",
       "success": true,
       "details": "Different guest correctly denied access",
-      "timestamp": "2025-08-16T12:40:11.427381",
+      "timestamp": "2025-08-16T12:40:30.156061",
       "response_data": null
     },
     {
       "test": "Rate Limiting",
       "success": true,
       "details": "Rate limiting working: 10 successful, then blocked",
-      "timestamp": "2025-08-16T12:40:11.791548",
+      "timestamp": "2025-08-16T12:40:30.483958",
       "response_data": null
     },
     {
       "test": "Auth User Login",
-      "success": false,
-      "details": "Login failed: 'str' object has no attribute 'value'",
-      "timestamp": "2025-08-16T12:40:12.218520",
+      "success": true,
+      "details": "User logged in successfully",
+      "timestamp": "2025-08-16T12:40:30.911741",
+      "response_data": null
+    },
+    {
+      "test": "Public Endpoint (Auth User)",
+      "success": true,
+      "details": "Authenticated user can use public endpoint: 2882c42d-7c52-4764-a2c9-aff15d39f177",
+      "timestamp": "2025-08-16T12:40:30.925036",
       "response_data": null
     },
     {
       "test": "Category (handcraft)",
       "success": true,
       "details": "Category handcraft working correctly",
-      "timestamp": "2025-08-16T12:40:12.269819",
+      "timestamp": "2025-08-16T12:40:30.978861",
       "response_data": null
     },
     {
       "test": "Category (bathroom)",
       "success": true,
       "details": "Category bathroom working correctly",
-      "timestamp": "2025-08-16T12:40:12.281397",
+      "timestamp": "2025-08-16T12:40:30.991944",
       "response_data": null
     },
     {
       "test": "Category (automotive)",
       "success": true,
       "details": "Category automotive working correctly",
-      "timestamp": "2025-08-16T12:40:12.333233",
+      "timestamp": "2025-08-16T12:40:31.003988",
       "response_data": null
     },
     {
       "test": "Category (majorProjects)",
       "success": true,
       "details": "Category majorProjects working correctly",
-      "timestamp": "2025-08-16T12:40:12.384199",
+      "timestamp": "2025-08-16T12:40:31.060030",
       "response_data": null
     },
     {
       "test": "Category (cleaning)",
       "success": true,
       "details": "Category cleaning working correctly",
-      "timestamp": "2025-08-16T12:40:12.395802",
+      "timestamp": "2025-08-16T12:40:31.114112",
       "response_data": null
     },
     {
       "test": "Category (housingAssociations)",
       "success": true,
       "details": "Category housingAssociations working correctly",
-      "timestamp": "2025-08-16T12:40:12.406907",
+      "timestamp": "2025-08-16T12:40:31.167013",
       "response_data": null
     },
     {
       "test": "Category (moving)",
       "success": true,
       "details": "Category moving working correctly",
-      "timestamp": "2025-08-16T12:40:12.459439",
+      "timestamp": "2025-08-16T12:40:31.179680",
       "response_data": null
     }
   ],
-  "timestamp": "2025-08-16T12:40:12.460315"
+  "timestamp": "2025-08-16T12:40:31.180565"
 }
