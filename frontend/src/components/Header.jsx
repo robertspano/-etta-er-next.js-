@@ -56,11 +56,7 @@ const Header = ({ language, setLanguage, translations }) => {
 
   const handleRegisterCompany = () => {
     closeDrawer();
-    if (isAuthenticated()) {
-      navigate('/register-professional');
-    } else {
-      navigate('/register?role=professional');
-    }
+    navigate('/register-company');
   };
 
   const handlePostProject = () => {
