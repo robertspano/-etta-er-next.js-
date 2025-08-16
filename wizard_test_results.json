@@ -1,0 +1,195 @@
+{
+  "summary": {
+    "total": 26,
+    "passed": 25,
+    "failed": 1,
+    "success_rate": 96.15384615384616
+  },
+  "results": [
+    {
+      "test": "Customer Registration",
+      "success": true,
+      "details": "Customer registered successfully",
+      "timestamp": "2025-08-16T12:09:30.310959",
+      "response_data": null
+    },
+    {
+      "test": "Professional Registration",
+      "success": true,
+      "details": "Professional registered successfully",
+      "timestamp": "2025-08-16T12:09:30.508546",
+      "response_data": null
+    },
+    {
+      "test": "Customer Login",
+      "success": true,
+      "details": "Customer login successful",
+      "timestamp": "2025-08-16T12:09:30.708107",
+      "response_data": null
+    },
+    {
+      "test": "Professional Login",
+      "success": true,
+      "details": "Professional login successful",
+      "timestamp": "2025-08-16T12:09:30.907783",
+      "response_data": null
+    },
+    {
+      "test": "Wizard Step 1 - Create Draft Job",
+      "success": true,
+      "details": "Draft job created with ID: 1b5ab19d-6d60-464b-803c-f9b2e22562dc",
+      "timestamp": "2025-08-16T12:09:30.925695",
+      "response_data": null
+    },
+    {
+      "test": "Wizard Step 2 - Update Contact Info",
+      "success": true,
+      "details": "Contact information updated, job still in draft",
+      "timestamp": "2025-08-16T12:09:30.978485",
+      "response_data": null
+    },
+    {
+      "test": "Wizard Step 3 - Finalize Job",
+      "success": true,
+      "details": "Job successfully finalized and set to 'open' status",
+      "timestamp": "2025-08-16T12:09:30.989736",
+      "response_data": null
+    },
+    {
+      "test": "Category Filter - handcraft",
+      "success": true,
+      "details": "Retrieved 1 jobs for category 'handcraft'",
+      "timestamp": "2025-08-16T12:09:31.002795",
+      "response_data": null
+    },
+    {
+      "test": "Category Filter - bathroom",
+      "success": true,
+      "details": "Retrieved 0 jobs for category 'bathroom'",
+      "timestamp": "2025-08-16T12:09:31.054391",
+      "response_data": null
+    },
+    {
+      "test": "Category Filter - automotive",
+      "success": true,
+      "details": "Retrieved 0 jobs for category 'automotive'",
+      "timestamp": "2025-08-16T12:09:31.106507",
+      "response_data": null
+    },
+    {
+      "test": "Category Filter - majorProjects",
+      "success": true,
+      "details": "Retrieved 0 jobs for category 'majorProjects'",
+      "timestamp": "2025-08-16T12:09:31.119322",
+      "response_data": null
+    },
+    {
+      "test": "Category Filter - cleaning",
+      "success": true,
+      "details": "Retrieved 0 jobs for category 'cleaning'",
+      "timestamp": "2025-08-16T12:09:31.169582",
+      "response_data": null
+    },
+    {
+      "test": "Category Filter - housingAssociations",
+      "success": true,
+      "details": "Retrieved 0 jobs for category 'housingAssociations'",
+      "timestamp": "2025-08-16T12:09:31.221893",
+      "response_data": null
+    },
+    {
+      "test": "Category Filter - moving",
+      "success": true,
+      "details": "Retrieved 0 jobs for category 'moving'",
+      "timestamp": "2025-08-16T12:09:31.232286",
+      "response_data": null
+    },
+    {
+      "test": "Validation - Short Title",
+      "success": true,
+      "details": "Short title correctly rejected with validation error",
+      "timestamp": "2025-08-16T12:09:31.282144",
+      "response_data": null
+    },
+    {
+      "test": "Validation - Short Description",
+      "success": true,
+      "details": "Short description correctly rejected with validation error",
+      "timestamp": "2025-08-16T12:09:31.333051",
+      "response_data": null
+    },
+    {
+      "test": "Validation - Valid Data",
+      "success": true,
+      "details": "Valid job created successfully: 2d97e4ba-3fe8-4913-82d3-ccc58e2e1f22",
+      "timestamp": "2025-08-16T12:09:31.344527",
+      "response_data": null
+    },
+    {
+      "test": "Auth - Unauthenticated Access",
+      "success": false,
+      "details": "Expected 401, got: 403",
+      "timestamp": "2025-08-16T12:09:31.395433",
+      "response_data": {
+        "detail": "Access denied. Customer role required."
+      }
+    },
+    {
+      "test": "Auth - Professional Access Denied",
+      "success": true,
+      "details": "Professional access to customer-only endpoint correctly denied",
+      "timestamp": "2025-08-16T12:09:31.404120",
+      "response_data": null
+    },
+    {
+      "test": "Auth - Customer Access Granted",
+      "success": true,
+      "details": "Customer access granted, job created: 3c24d931-e8c3-4641-9625-a99d6f46fbfc",
+      "timestamp": "2025-08-16T12:09:31.414506",
+      "response_data": null
+    },
+    {
+      "test": "Persistence - Initial Creation",
+      "success": true,
+      "details": "Initial job created: c1877f84-0e0c-4417-82fe-86526b04d760",
+      "timestamp": "2025-08-16T12:09:31.465303",
+      "response_data": null
+    },
+    {
+      "test": "Persistence - Update Step",
+      "success": true,
+      "details": "Job updated with additional information",
+      "timestamp": "2025-08-16T12:09:31.518388",
+      "response_data": null
+    },
+    {
+      "test": "Persistence - Data Verification",
+      "success": true,
+      "details": "All data persisted correctly between wizard steps",
+      "timestamp": "2025-08-16T12:09:31.529555",
+      "response_data": null
+    },
+    {
+      "test": "Draft Status - Creation",
+      "success": true,
+      "details": "Job created in draft status: bc6069d8-9cc5-463b-8df6-bbd2eedb5582",
+      "timestamp": "2025-08-16T12:09:31.580401",
+      "response_data": null
+    },
+    {
+      "test": "Draft Status - Professional Visibility",
+      "success": true,
+      "details": "Draft jobs correctly hidden from professionals",
+      "timestamp": "2025-08-16T12:09:31.594335",
+      "response_data": null
+    },
+    {
+      "test": "Draft Status - Change to Open",
+      "success": true,
+      "details": "Job status successfully changed from draft to open",
+      "timestamp": "2025-08-16T12:09:31.647829",
+      "response_data": null
+    }
+  ],
+  "timestamp": "2025-08-16T12:09:31.648594"
+}
