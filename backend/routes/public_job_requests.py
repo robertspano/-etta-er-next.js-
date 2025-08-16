@@ -73,6 +73,7 @@ class DraftJobRequestUpdate(BaseModel):
     contactPreference: Optional[str] = None
     licensePlate: Optional[str] = None  # For automotive updates
     plateCountry: Optional[str] = None  # For automotive updates
+    vehicleInfo: Optional[dict] = None  # Vehicle lookup results
     
     @field_validator('title')
     @classmethod
