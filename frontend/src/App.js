@@ -61,6 +61,7 @@ const HomePage = ({ language, setLanguage, currentTranslations }) => {
         loading={reviewsLoading}
         error={reviewsError}
       />
+      <TrustSection translations={currentTranslations} />
       <Footer translations={currentTranslations} />
     </div>
   );
