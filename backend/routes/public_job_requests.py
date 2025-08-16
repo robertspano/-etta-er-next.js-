@@ -196,7 +196,9 @@ async def create_draft_job_request(
             description=job_request_data["description"],
             postcode=job_request_data["postcode"],
             status=job_request_data["status"],
-            created_at=job_request_data["posted_at"]
+            created_at=job_request_data["posted_at"],
+            licensePlate=job_request_data["license_plate"],
+            plateCountry=job_request_data["plate_country"]
         )
         
     except HTTPException:
