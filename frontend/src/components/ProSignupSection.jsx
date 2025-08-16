@@ -4,44 +4,38 @@ const ProSignupSection = ({ translations }) => {
   return (
     <section className="bg-slate-800 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px] lg:min-h-[600px] items-center gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px] lg:min-h-[600px] items-center gap-8 lg:gap-12">
           
-          {/* Left side - Professional Photo */}
-          <div className="relative order-2 lg:order-1 flex justify-center lg:justify-start">
-            <div className="relative">
-              {/* Professional photo */}
-              <img 
-                src="https://images.unsplash.com/photo-1672748341520-6a839e6c05bb?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxjb25zdHJ1Y3Rpb24lMjB3b3JrZXJ8ZW58MHx8fHwxNzU1MzY1Mzg3fDA&ixlib=rb-4.1.0&q=85&w=500&h=600"
-                alt="Professional contractor"
-                className="w-80 h-96 lg:w-96 lg:h-[480px] object-cover object-center rounded-lg shadow-2xl"
-                loading="lazy"
-              />
-              
-              {/* Subtle overlay with decorative elements */}
-              <div className="absolute top-4 right-4 opacity-30">
-                <div className="grid grid-cols-4 gap-1">
-                  {[...Array(12)].map((_, i) => (
-                    <div key={i} className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse" 
-                         style={{ animationDelay: `${i * 0.2}s` }} />
-                  ))}
-                </div>
+          {/* Left side - Professional Photo (Desktop: always left, Mobile: bottom) */}
+          <div className="relative order-2 lg:order-1 flex justify-center lg:justify-end lg:pr-8">
+            {/* Professional photo */}
+            <img 
+              src="https://images.unsplash.com/photo-1672748341520-6a839e6c05bb?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxjb25zdHJ1Y3Rpb24lMjB3b3JrZXJ8ZW58MHx8fHwxNzU1MzY1Mzg3fDA&ixlib=rb-4.1.0&q=85&w=500&h=600"
+              alt="Professional contractor"
+              className="w-72 h-80 lg:w-80 lg:h-96 xl:w-96 xl:h-[450px] object-cover object-center rounded-lg shadow-2xl"
+              loading="lazy"
+            />
+            
+            {/* Subtle decorative overlay */}
+            <div className="absolute top-4 right-4 opacity-30">
+              <div className="grid grid-cols-3 gap-1">
+                {[...Array(9)].map((_, i) => (
+                  <div key={i} className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse" 
+                       style={{ animationDelay: `${i * 0.2}s` }} />
+                ))}
               </div>
-              
-              {/* Additional subtle decorative shapes */}
-              <div className="absolute bottom-8 left-4 w-12 h-12 bg-blue-500 opacity-20 rounded-full blur-xl" />
-              <div className="absolute top-12 right-8 w-8 h-8 bg-green-500 opacity-20 rounded-full blur-lg" />
             </div>
           </div>
 
-          {/* Right side - Content */}
-          <div className="order-1 lg:order-2 py-16 lg:py-20">
+          {/* Right side - Content (Desktop: right, Mobile: top) */}
+          <div className="order-1 lg:order-2 py-12 lg:py-16 lg:pl-8">
             {/* Logo */}
-            <div className="mb-8">
+            <div className="mb-6 lg:mb-8">
               <div className="flex items-center text-white">
-                <svg className="w-8 h-8 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-7 h-7 lg:w-8 lg:h-8 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                 </svg>
-                <span className="text-xl font-bold">BuildConnect</span>
+                <span className="text-lg lg:text-xl font-bold">BuildConnect</span>
                 <span className="ml-2 px-2 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full">
                   PROFF
                 </span>
@@ -49,22 +43,22 @@ const ProSignupSection = ({ translations }) => {
             </div>
 
             {/* Title */}
-            <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-6 leading-tight">
+            <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-4 lg:mb-6 leading-tight">
               {translations.proSignupTitle}
             </h2>
 
             {/* Subtitle */}
-            <p className="text-lg lg:text-xl text-slate-300 mb-8 leading-relaxed max-w-lg">
+            <p className="text-base lg:text-lg xl:text-xl text-slate-300 mb-6 lg:mb-8 leading-relaxed max-w-lg">
               {translations.proSignupSubtitle}
             </p>
 
             {/* CTA Button */}
             <a 
               href="/register" 
-              className="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+              className="inline-flex items-center px-6 lg:px-8 py-3 lg:py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
             >
               {translations.proSignupCta}
-              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="ml-2 w-4 h-4 lg:w-5 lg:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
                       d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
