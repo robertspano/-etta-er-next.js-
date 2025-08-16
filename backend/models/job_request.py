@@ -126,6 +126,8 @@ class JobRequestUpdate(BaseModel):
     priority: Optional[JobPriority] = None
     deadline: Optional[datetime] = None
     status: Optional[JobStatus] = None
+    license_plate: Optional[str] = None  # For automotive updates
+    plate_country: Optional[str] = None  # For automotive updates
     
     @validator('title')
     def validate_title_length(cls, v):
@@ -138,6 +140,16 @@ class JobRequestUpdate(BaseModel):
         if v is not None and len(v.strip()) < 30:
             raise ValueError('Description must be at least 30 characters long')
         return v.strip() if v else v
+    
+    @validator('license_plate')
+    def validate_license_plate(cls, v):
+        if v is not None:
+            if not (2 <= len(v) <= 8):
+                raise ValueError('License plate must be 2-8 characters long')
+            import re
+            if not re.match(r'^[A-Z0-9]+$', v):
+                raise ValueError('License plate must contain only letters and numbers')
+        return v
 
 class JobRequestResponse(BaseModel):
     """Schema for job request responses"""
