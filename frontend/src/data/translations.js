@@ -420,6 +420,7 @@ export const translations = {
     movingStepHeader: "About the job • Contact info • Complete",
     movingCategoryTitle: "What kind of moving service do you need?",
     showMoreCategories: "Show more categories",
+    showFewerCategories: "Show fewer categories",
     
     // Moving Subcategories
     varetransport: "Van Transport",
