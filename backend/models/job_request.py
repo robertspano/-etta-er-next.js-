@@ -81,6 +81,18 @@ class JobRequestCreate(BaseModel):
     priority: JobPriority = JobPriority.MEDIUM
     deadline: Optional[datetime] = None
     quote_deadline: Optional[datetime] = None
+    
+    @validator('title')
+    def validate_title_length(cls, v):
+        if len(v.strip()) < 10:
+            raise ValueError('Title must be at least 10 characters long')
+        return v.strip()
+    
+    @validator('description')
+    def validate_description_length(cls, v):
+        if len(v.strip()) < 30:
+            raise ValueError('Description must be at least 30 characters long')
+        return v.strip()
 
 class JobRequestUpdate(BaseModel):
     """Schema for updating a job request"""
