@@ -262,6 +262,18 @@ backend:
           agent: "testing"
           comment: "✅ GET /api/testimonials endpoints working correctly."
 
+  - task: "3-Step Job Posting Wizard Implementation"
+    implemented: true
+    working: false
+    file: "/app/frontend/src/components/marketplace/JobPostingWizard.jsx, /app/frontend/src/components/Hero.jsx, /app/frontend/src/App.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+        - working: false
+          agent: "main"
+          comment: "✅ PHASE 3: JOB POSTING WIZARD IMPLEMENTED! Created comprehensive 3-step wizard matching Mittanbud's flow: 1) JobPostingWizard component with 3 steps (About Job, Contact Info, Complete), 2) Progress bar with 3 dots/segments showing current step, 3) Step 1: Job title (min 10 chars) and description (min 30 chars) with validation, 4) Step 2: Contact info form with email, phone (+354 country code), first/last name, address, postcode, contact preference segmented control, 5) Step 3: Summary view with all entered data and submit button, 6) API integration: creates draft JobRequest on step 1, updates on step 2, finalizes with status 'open' on submit, 7) UI: Centered card (~680px), beige gradient background, proper button placement, validation, error/success alerts, 8) Hero component updated to navigate to /post?category=<slug> on category tile clicks, 9) Added new /post route in App.js, 10) Extended i18n translations for all wizard text (EN/IS), 11) Mobile responsive design, accessibility features. Ready for backend testing."
+
 frontend:
   - task: "Authentication Integration Complete"
     implemented: true
