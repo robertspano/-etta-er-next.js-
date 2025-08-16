@@ -889,7 +889,7 @@ class BuildConnectAPITester:
         
         try:
             async with self.session.post(
-                f"{BACKEND_URL}/reviews",
+                f"{BACKEND_URL}/reviews/create",
                 json=review_data,
                 headers={"Content-Type": "application/json"}
             ) as response:
@@ -906,7 +906,7 @@ class BuildConnectAPITester:
             try:
                 cookies = {"buildconnect_auth": professional_session}
                 async with self.session.post(
-                    f"{BACKEND_URL}/reviews",
+                    f"{BACKEND_URL}/reviews/create",
                     json=review_data,
                     cookies=cookies,
                     headers={"Content-Type": "application/json"}
@@ -931,7 +931,7 @@ class BuildConnectAPITester:
                 }
                 cookies = {"buildconnect_auth": customer_session}
                 async with self.session.post(
-                    f"{BACKEND_URL}/reviews",
+                    f"{BACKEND_URL}/reviews/create",
                     json=invalid_review,
                     cookies=cookies,
                     headers={"Content-Type": "application/json"}
@@ -956,7 +956,7 @@ class BuildConnectAPITester:
                 }
                 cookies = {"buildconnect_auth": customer_session}
                 async with self.session.post(
-                    f"{BACKEND_URL}/reviews",
+                    f"{BACKEND_URL}/reviews/create",
                     json=invalid_review,
                     cookies=cookies,
                     headers={"Content-Type": "application/json"}
