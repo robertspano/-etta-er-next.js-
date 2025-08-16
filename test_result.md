@@ -277,6 +277,18 @@ backend:
           agent: "testing"
           comment: "✅ 3-STEP JOB POSTING WIZARD BACKEND FULLY TESTED AND WORKING! Comprehensive wizard backend testing completed with 25/26 tests passed (96.2% success rate). All priority testing areas verified: 1) Job Request Creation API: POST /api/job-requests creates draft jobs successfully with wizard flow data structure, 2) Job Request Update API: PUT /api/job-requests/{id} updates draft jobs during wizard steps while maintaining draft status, 3) Draft Status Management: Jobs created with 'draft' status, successfully updated to 'open' status on finalization, draft jobs correctly hidden from professionals, 4) Category Filtering: All wizard categories tested (handcraft, bathroom, automotive, majorProjects, cleaning, housingAssociations, moving) working correctly, 5) Validation: Title minimum 10 characters and description minimum 30 characters validation working perfectly with proper error responses, 6) User Authentication: Customer-only access enforced, professional access correctly denied, unauthenticated access properly blocked, 7) Data Persistence: All job request data persists correctly between wizard steps (create → update → finalize). Added DRAFT status to JobStatus enum and implemented proper validation. Backend APIs ready for 3-step wizard frontend integration."
 
+  - task: "Moving Category Inline Expansion Implementation"  
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/MovingCategoryPicker.jsx, /app/frontend/src/data/translations.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "main"
+          comment: "✅ MOVING INLINE EXPANSION COMPLETED! Successfully implemented inline expand/collapse functionality for 'Show more categories' button exactly like Mittanbud: 1) Changed button behavior - no longer navigates to /all-categories page, instead toggles inline expansion, 2) Added 3 additional categories: Massetransport, Lager/Oppbevaring, Helikoptertransport with proper navy icons (Warehouse, Archive, Plane), 3) Implemented expand/collapse state with useState hook - default collapsed (expanded=false), 4) Button text toggles correctly: 'Show more categories' ↔ 'Show fewer categories' in English, 'Sýna fleiri flokka' ↔ 'Sýna færri flokka' in Icelandic, 5) Added smooth CSS transitions (150-200ms) for height/opacity animation, 6) Maintained same card styling for additional categories - white buttons with navy icons, hover effects, same grid layout, 7) Accessibility: added aria-expanded attribute bound to state, 8) Full responsive design - 2 columns on desktop, 1 column on mobile for additional categories, 9) All 11 categories (8 original + 3 additional) work correctly for subcategory selection → contact form → job submission, 10) Event.preventDefault() used - no route changes, focus stays on button. Feature works exactly as requested with smooth animation and proper Mittanbud-style behavior."
+
   - task: "Moving Category Subcategory Picker Implementation"
     implemented: true
     working: true
