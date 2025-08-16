@@ -147,7 +147,6 @@ const PopularProjects = ({ translations }) => {
         {/* Enhanced Category Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
           {projectCategories.map((category, index) => {
-            const IconComponent = category.icon;
             return (
               <button
                 key={category.key}
@@ -168,7 +167,9 @@ const PopularProjects = ({ translations }) => {
                 <div className="relative flex flex-col items-center text-center">
                   {/* Enhanced Icon Container */}
                   <div className={`w-16 h-16 mb-5 rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300`}>
-                    <IconComponent className="h-8 w-8 text-white" />
+                    <div className="text-white">
+                      {category.icon}
+                    </div>
                   </div>
                   
                   {/* Category Name */}
