@@ -416,6 +416,21 @@ export const translations = {
     proCtaButton: "Get started — see jobs",
     proTermsText: "By continuing you accept our Terms of Use. Learn how we process personal data in our Privacy Policy.",
     
+    // Moving Category Picker
+    movingStepHeader: "About the job • Contact info • Complete",
+    movingCategoryTitle: "What kind of moving service do you need?",
+    showMoreCategories: "Show more categories",
+    
+    // Moving Subcategories
+    varetransport: "Van Transport",
+    flyttebyra: "Moving Company", 
+    avfallshandtering: "Waste Management",
+    transportBilBat: "Vehicle/Boat Transport",
+    annetFlytting: "Other Moving/Transport",
+    persontransport: "Personal Transport",
+    pianotransport: "Piano Moving",
+    godstransport: "Freight Transport",
+    
     // Popular Projects Section
     popularProjectsTitle: "Popular Projects",
     popularProjectsSubtitle: "Get started with your next project or search to find the right professional for you.",
