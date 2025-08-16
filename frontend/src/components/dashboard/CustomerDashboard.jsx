@@ -263,6 +263,19 @@ const CustomerDashboard = ({ translations, language, user }) => {
         </Card>
       </div>
 
+      {/* Messages */}
+      {error && (
+        <Alert variant="destructive" className="mb-6">
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
+      )}
+      
+      {success && (
+        <Alert className="border-green-200 bg-green-50 mb-6">
+          <AlertDescription className="text-green-800">{success}</AlertDescription>
+        </Alert>
+      )}
+
       {/* Main Content Tabs */}
       <Tabs defaultValue="requests" className="w-full">
         <TabsList className="grid w-full grid-cols-3">
