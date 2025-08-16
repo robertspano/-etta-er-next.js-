@@ -98,6 +98,16 @@ const AutomotiveStep1 = ({
     onNext();
   };
 
+  // Auto-trigger onNext when valid plate is entered (so parent can handle the next logic)
+  useEffect(() => {
+    if (isValid) {
+      // Set a flag that the automotive step is ready
+      updateFormData('automotiveStepReady', true);
+    } else {
+      updateFormData('automotiveStepReady', false);
+    }
+  }, [isValid, updateFormData]);
+
   const isValid = licensePlate && validateLicensePlate(licensePlate) && !validationError;
 
   return (
