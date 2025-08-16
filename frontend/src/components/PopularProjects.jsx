@@ -117,9 +117,9 @@ const PopularProjects = ({ translations }) => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="relative flex flex-col items-center text-center">
-                  {/* Icon Container - even larger icon */}
-                  <div className="w-20 h-20 mb-3 rounded-xl bg-white flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                    <div className="text-[#1B2B5B]">
+                  {/* Icon Container - smaller gap, larger actual icons */}
+                  <div className="w-20 h-20 mb-1 rounded-xl bg-white flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                    <div className="text-[#1B2B5B] w-12 h-12">
                       {category.icon}
                     </div>
                   </div>
