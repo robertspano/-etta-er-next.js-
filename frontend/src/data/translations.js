@@ -306,6 +306,14 @@ export const translations = {
     housingAssociations: "Housing Associations",
     moving: "Moving",
     allCategories: "All Categories",
+    
+    // CTA Section
+    ctaTitle: "Ready to Get Started?",
+    ctaSubtitle: "Join thousands of satisfied customers and trusted professionals on our platform",
+    customerCta: "Need Work Done?",
+    customerCtaDesc: "Post your project and get quotes from verified professionals in your area",
+    professionalCta: "Are You a Professional?",
+    professionalCtaDesc: "Join our network and connect with customers looking for your services",
     professionals: "Professionals",
     completedProjects: "Completed Projects",
     rating: "Rating",
