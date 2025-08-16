@@ -18,11 +18,11 @@ const Header = ({ language, setLanguage, translations }) => {
   const { user, logout, isAuthenticated, loading } = useAuth();
   const navigate = useNavigate();
 
-  // Handle drawer close with ESC key
+  // Handle drawer close with ESC key and focus management
   useEffect(() => {
     const handleEsc = (e) => {
-      if (e.key === 'Escape') {
-        setIsDrawerOpen(false);
+      if (e.key === 'Escape' && isDrawerOpen) {
+        closeDrawer();
       }
     };
 
@@ -39,14 +39,23 @@ const Header = ({ language, setLanguage, translations }) => {
     };
   }, [isDrawerOpen]);
 
-  const handleLogout = async () => {
+  const closeDrawer = () => {
     setIsDrawerOpen(false);
+    // Restore focus to the pill button
+    setTimeout(() => {
+      const pill = document.querySelector('button[aria-label="Open menu"]');
+      if (pill) pill.focus();
+    }, 100);
+  };
+
+  const handleLogout = async () => {
+    closeDrawer();
     await logout();
     navigate('/');
   };
 
   const handleRegisterCompany = () => {
-    setIsDrawerOpen(false);
+    closeDrawer();
     if (isAuthenticated()) {
       navigate('/register-professional');
     } else {
@@ -55,7 +64,7 @@ const Header = ({ language, setLanguage, translations }) => {
   };
 
   const handlePostProject = () => {
-    setIsDrawerOpen(false);
+    closeDrawer();
     if (isAuthenticated()) {
       navigate('/create-project');
     } else {
@@ -64,12 +73,12 @@ const Header = ({ language, setLanguage, translations }) => {
   };
 
   const handleLogin = () => {
-    setIsDrawerOpen(false);
+    closeDrawer();
     navigate('/login');
   };
 
   const handleDrawerItemClick = (path) => {
-    setIsDrawerOpen(false);
+    closeDrawer();
     if (path !== '#') {
       navigate(path);
     }
