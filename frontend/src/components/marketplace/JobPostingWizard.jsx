@@ -160,12 +160,25 @@ const JobPostingWizard = ({ translations, language }) => {
         }
         
         // Create or update draft job request using public API
-        const jobData = {
-          category: formData.category,
-          title: formData.title,
-          description: formData.description,
-          postcode: formData.postcode || '101' // Temporary placeholder
-        };
+        let jobData;
+        
+        if (formData.category === 'automotive') {
+          // For automotive, send license plate data
+          jobData = {
+            category: formData.category,
+            licensePlate: formData.licensePlate,
+            plateCountry: formData.plateCountry,
+            postcode: formData.postcode || '101' // Temporary placeholder
+          };
+        } else {
+          // For other categories, send title and description
+          jobData = {
+            category: formData.category,
+            title: formData.title,
+            description: formData.description,
+            postcode: formData.postcode || '101' // Temporary placeholder
+          };
+        }
 
         if (draftJobId) {
           console.log('Updating existing draft:', draftJobId, jobData);
