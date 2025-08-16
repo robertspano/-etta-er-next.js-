@@ -102,7 +102,17 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Implement comprehensive job requests & quotes marketplace functionality including: Job request form with category/title/description/postcode/photos/budget, professional listings filtered by service areas, quote system with amount/message/expiry, accept/decline flow with auto-notifications, in-app messaging with file uploads, notifications system, status management, and admin tools."
+user_problem_statement: "Implement comprehensive job requests & quotes marketplace functionality including: Job request form with category/title/description/postcode/photos/budget, professional listings filtered by service areas, quote system with amount/message/expiry, accept/decline flow with auto-notifications, in-app messaging with file uploads, notifications system, status management, and admin tools.
+
+NEW FEATURE: Implement 3-step job posting wizard matching Mittanbud's flow exactly:
+- Trigger: When user clicks any service category tile, navigate to the 3-step posting wizard
+- Route: /post?category=<slug> with prefilled category  
+- Wizard 3 steps with progress bar:
+  1. Um verkið / About the Job - Title (min 10 chars), Description (min 30 chars)
+  2. Samskiptaupplýsingar / Contact Info - Email, Phone with country code, Name, Address, Postcode, Contact preference (platform+phone vs platform only)
+  3. Staðfest / Complete - Show summary, submit button
+- UI: Centered card (~680px), beige background, progress bar with 3 dots, specific button placement
+- Technical: Create/update draft JobRequest via API, persist between steps, set status 'open' on final submit, redirect to dashboard"
 
 backend:
   - task: "Job Request API System"
