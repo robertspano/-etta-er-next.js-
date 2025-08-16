@@ -167,6 +167,30 @@ export const translations = {
     filter: "Filter",
     search: "Search",
     
+    // Job Detail Page
+    backToDashboard: "Back to Dashboard",
+    backToJob: "Back to Job",
+    jobDetails: "Job Details",
+    posted: "Posted",
+    location: "Location",
+    confirmAcceptQuote: "Are you sure you want to accept this quote?",
+    confirmDeclineQuote: "Are you sure you want to decline this quote?",
+    confirmCancelJob: "Are you sure you want to cancel this job request?",
+    jobCancelledMsg: "Job request cancelled successfully",
+    accepting: "Accepting...",
+    noQuotesYet: "No quotes received yet. Professionals will send quotes for your job request.",
+    
+    // Messaging
+    jobConversation: "Job Conversation",
+    messagingInterfaceComingSoon: "Messaging interface will be implemented next.",
+    openMessaging: "Open Messaging",
+    noMessagesYet: "No messages yet. Start the conversation!",
+    attachments: "Attachments",
+    attachFile: "Attach File",
+    messageHint: "Press Ctrl+Enter to send. Max file size: 10MB",
+    yes: "Yes",
+    no: "No",
+    
     // Forms
     required: "Required",
     optional: "Optional",
