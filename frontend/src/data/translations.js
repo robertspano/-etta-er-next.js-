@@ -439,6 +439,11 @@ export const translations = {
     trustCard3Description: "Reviews can only be given for jobs that are posted on BuildConnect. To review a job, those who post the job must also have BankID verification of who they are.",
     learnMore: "Learn more",
     
+    // Pro Signup Section
+    proSignupTitle: "Want more customers?",
+    proSignupSubtitle: "Register your company on BuildConnect and get access to new jobs every week.",
+    proSignupCta: "Start here",
+    
     // Stats
     statsTitle: "Trusted by Thousands",
     projectsCompleted: "Projects Completed",
