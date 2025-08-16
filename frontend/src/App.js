@@ -30,7 +30,6 @@ import ProfessionalJobDetail from './components/marketplace/ProfessionalJobDetai
 import QuoteSubmissionForm from './components/marketplace/QuoteSubmissionForm';
 import JobPostingWizard from './components/marketplace/JobPostingWizard';
 import CategorySelection from './components/CategorySelection';
-import MajorProjectsOverview from './components/MajorProjectsOverview';
 
 // XL Components
 import XLLanding from './components/xl/XLLanding';
