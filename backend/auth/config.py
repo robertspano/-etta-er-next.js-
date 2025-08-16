@@ -100,6 +100,9 @@ fastapi_users = FastAPIUsers[User, str](get_user_manager, [auth_backend])
 current_active_user = fastapi_users.current_user(active=True)
 current_superuser = fastapi_users.current_user(active=True, superuser=True)
 
+# Optional user dependencies (for public endpoints)
+current_active_user_optional = fastapi_users.current_user(active=True, optional=True)
+
 # Role-based dependencies
 async def get_current_customer(user: User = Depends(current_active_user)):
     """Dependency to get current customer user"""
