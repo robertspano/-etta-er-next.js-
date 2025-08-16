@@ -4,7 +4,24 @@ import { Card, CardHeader, CardTitle, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
-import { PlusCircle, FileText, MessageCircle, Clock, CheckCircle, Eye, Edit, Calendar, DollarSign } from 'lucide-react';
+import { Alert, AlertDescription } from '../ui/alert';
+import { 
+  PlusCircle, 
+  FileText, 
+  MessageCircle, 
+  Clock, 
+  CheckCircle, 
+  Eye, 
+  Edit, 
+  Calendar, 
+  DollarSign,
+  ChevronLeft,
+  ChevronRight,
+  Filter,
+  Search
+} from 'lucide-react';
+import { Input } from '../ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import apiService from '../../services/api';
 
 const CustomerDashboard = ({ translations, language, user }) => {
