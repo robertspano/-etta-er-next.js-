@@ -62,7 +62,7 @@ const Hero = ({ translations }) => {
       key: 'housingAssociations', 
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
-          <path d="M1 11h6V9H1v2zm0 4h6v-2H1v2zm0 4h6v-2H1v2zm8-8h14V9H9v2zm0 4h14v-2H9v2zm0 4h14v-2H9v2zM1 3v4h20V3H1z"/>
+          <path d="M17 15V9H15V15H17M21 7V21H3V7L12 3L21 7ZM19 9H17V7H15V9H13V7H11V9H9V7H7V9H5V19H7V11H9V19H11V11H13V19H15V11H17V19H19V9Z"/>
         </svg>
       ), 
       name: translations.housingAssociations 
