@@ -3,7 +3,7 @@ from typing import List, Optional
 from datetime import datetime
 import uuid
 
-from auth.config import get_current_active_user
+from auth.config import current_active_user
 from models.user import User, UserRole
 from models.review import Review, ReviewCreate, ReviewResponse, ReviewListResponse, ReviewStatus
 from models.job_request import JobRequest
@@ -100,7 +100,7 @@ async def get_review(review_id: str):
 @router.post("/", response_model=ReviewResponse)
 async def create_review(
     review_data: ReviewCreate,
-    current_user: User = Depends(get_current_active_user)
+    current_user: User = Depends(current_active_user)
 ):
     """Create a new review (customer only)"""
     # Verify user is a customer
@@ -227,7 +227,7 @@ async def get_professional_reviews(
 async def moderate_review(
     review_id: str,
     status: ReviewStatus,
-    current_user: User = Depends(get_current_active_user)
+    current_user: User = Depends(current_active_user)
 ):
     """Moderate a review (admin only)"""
     if current_user.role != UserRole.ADMIN:
