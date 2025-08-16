@@ -927,6 +927,20 @@ export const translations = {
     categorySelectionTitle: "Veldu flokk til að birta verkefnið þitt – ókeypis",
     categorySelectionSearchPlaceholder: "Hvað þarftu hjálp við?",
     
+    // Major Projects Category Overview  
+    majorProjectsTitle: "Stór Verkefni - Allir Flokkar",
+    majorProjectsSubtitle: "Finndu rétta fagmanninn fyrir stóra verkefnið þitt",
+    majorProjectsSearchPlaceholder: "Leita að flokki...",
+    
+    // Category Groups
+    houseAndGarden: "Hús og Garður",
+    services: "Þjónustur",
+    indoorRenovations: "Innandyra Endurbætur", 
+    buildNew: "Byggja Nýtt",
+    housingAssociations: "Húsfélög",
+    trades: "Handverk",
+    majorProjectsXL: "Stór Verkefni XL",
+    
     // Popular Projects Section
     popularProjectsTitle: "Populære prosjekter",
     popularProjectsSubtitle: "Skal du i gang med et stort prosjekt eller et lite oppdrag? Legg ut jobben på Mittanbud og få tilbud fra relevante bedrifter og håndverkere - eller bruk søkefunksjonen for å finne riktig bedrift for deg!",
