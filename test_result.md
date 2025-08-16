@@ -279,15 +279,18 @@ backend:
 
   - task: "Moving Category Subcategory Picker Implementation"
     implemented: true
-    working: true
-    file: "/app/frontend/src/components/MovingCategoryPicker.jsx, /app/frontend/src/components/MovingContactForm.jsx, /app/frontend/src/App.js"
-    stuck_count: 0
+    working: false
+    file: "/app/frontend/src/components/MovingCategoryPicker.jsx, /app/frontend/src/components/MovingContactForm.jsx, /app/frontend/src/App.js, /app/backend/routes/public_job_requests.py, /app/backend/models/job_request.py"
+    stuck_count: 1
     priority: "high"
     needs_retesting: false
     status_history:
         - working: true
           agent: "main"
           comment: "✅ MOVING CATEGORY PICKER IMPLEMENTATION COMPLETED! Successfully implemented specialized Moving category flow bypassing traditional 3-step wizard: 1) Modified Hero.jsx routing - Moving category now routes to /post/moving instead of generic wizard, 2) Created MovingCategoryPicker component with Mittanbud-style layout: centered card (max-w ~760px), beige background, step header with progress bar showing 'About the job • Contact info • Complete', 2x4 grid layout with 8 subcategories (Van Transport, Moving Company, Waste Management, Vehicle/Boat Transport, Other Moving/Transport, Personal Transport, Piano Moving, Freight Transport), 3) Created MovingContactForm component for simplified contact step after subcategory selection, 4) Added proper routing in App.js for both /post/moving and /post/moving/contact routes, 5) All subcategory translations working in both English and Icelandic, 6) Implemented localStorage persistence for selected subcategory and draft job creation, 7) Contact form uses public API endpoints for guest users, handles draft creation/update/submission cycle, 8) Verified no regressions - other categories (Handcraft, Bathroom, etc.) still use traditional 3-step wizard correctly, 9) Full responsive design matching Mittanbud specifications, 10) Navy icons with white buttons, hover effects, proper spacing and layout. Moving category flow now works exactly as requested - bypasses traditional wizard and provides streamlined subcategory selection → contact form → submission flow."
+        - working: false
+          agent: "testing"
+          comment: "❌ CRITICAL ISSUE: Moving Category Subcategory Integration Backend Missing! Comprehensive testing completed with 112/127 tests passed (88.2% success rate). MOVING CATEGORY SUBCATEGORY FLOW TESTING RESULTS: 1) ✅ Moving Category Public Draft Creation API: All 8 subcategories (varetransport, flyttebyra, avfallshandtering, transportBilBat, annetFlytting, persontransport, pianotransport, godstransport) successfully create drafts, but SUBCATEGORY FIELD IS IGNORED by backend, 2) ✅ Moving Draft Update API: Draft updates work correctly for moving jobs, 3) ✅ Moving Draft Submission API: Draft submission works and transitions status from 'draft' to 'open', 4) ❌ CRITICAL: Data Storage Verification FAILED - Backend models (JobRequest, DraftJobRequestCreate, DraftJobRequestUpdate) DO NOT have 'subcategory' field defined, so subcategory data sent by frontend is being silently ignored and not stored in database, 5) ✅ Non-Moving Flow Regression: Other categories (handcraft, bathroom, automotive) work correctly without subcategory field, 6) ✅ Moving Subcategory Validation: Backend accepts moving category with/without subcategory field but doesn't validate subcategory values. ROOT CAUSE: Frontend MovingContactForm.jsx sends subcategory field (line 75) but backend models lack this field definition. IMMEDIATE FIX REQUIRED: Add 'subcategory' field to JobRequest model, DraftJobRequestCreate schema, DraftJobRequestUpdate schema, and DraftJobResponse schema in backend to properly handle moving subcategory data."
 
 frontend:
   - task: "Authentication Integration Complete"
