@@ -28,7 +28,7 @@ const HowItWorks = ({ translations }) => {
   ];
 
   const handlePostProject = () => {
-    navigate('/post');
+    navigate('/categories');
   };
 
   return (
