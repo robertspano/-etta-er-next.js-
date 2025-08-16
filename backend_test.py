@@ -1709,6 +1709,313 @@ class BuildConnectAPITester:
         except Exception as e:
             self.log_test("Regular Validation (Missing Description)", False, f"Request failed: {str(e)}")
 
+    async def test_iceland_vehicle_lookup_system(self):
+        """Test comprehensive Iceland vehicle lookup system"""
+        print("\n=== Testing Iceland Vehicle Lookup System ===")
+        
+        # Test 1: Vehicle Lookup API Testing - Demo vehicles
+        await self.test_vehicle_lookup_demo_vehicles()
+        
+        # Test 2: Rate Limiting
+        await self.test_vehicle_lookup_rate_limiting()
+        
+        # Test 3: Validation
+        await self.test_vehicle_lookup_validation()
+        
+        # Test 4: Automotive Job Flow
+        await self.test_automotive_job_flow()
+    
+    async def test_vehicle_lookup_demo_vehicles(self):
+        """Test vehicle lookup API with demo vehicles"""
+        print("\n--- Testing Vehicle Lookup Demo Vehicles ---")
+        
+        # Expected demo vehicles from the implementation
+        demo_vehicles = [
+            {
+                "plate": "TEST123",
+                "expected": {
+                    "found": True,
+                    "make": "Tesla",
+                    "model": "Model 3",
+                    "year": 2022,
+                    "color": "Svartur"
+                }
+            },
+            {
+                "plate": "ABC123", 
+                "expected": {
+                    "found": True,
+                    "make": "Toyota",
+                    "model": "Corolla",
+                    "year": 2019,
+                    "color": "Hvítur"
+                }
+            },
+            {
+                "plate": "XYZ789",
+                "expected": {
+                    "found": True,
+                    "make": "Volkswagen",
+                    "model": "Golf", 
+                    "year": 2021,
+                    "color": "Blár"
+                }
+            },
+            {
+                "plate": "INVALID",
+                "expected": {
+                    "found": False
+                }
+            }
+        ]
+        
+        for vehicle in demo_vehicles:
+            plate = vehicle["plate"]
+            expected = vehicle["expected"]
+            
+            try:
+                async with self.session.get(
+                    f"{BACKEND_URL}/public/vehicle-lookup?plate={plate}&country=IS"
+                ) as response:
+                    data = await response.json()
+                    
+                    if response.status == 200:
+                        if expected["found"]:
+                            # Check all expected fields for found vehicles
+                            success = (
+                                data.get("found") == True and
+                                data.get("make") == expected["make"] and
+                                data.get("model") == expected["model"] and
+                                data.get("year") == expected["year"] and
+                                data.get("color") == expected["color"]
+                            )
+                            if success:
+                                self.log_test(f"Vehicle Lookup ({plate})", True, f"Found: {expected['make']} {expected['model']} {expected['year']}")
+                            else:
+                                self.log_test(f"Vehicle Lookup ({plate})", False, f"Data mismatch for {plate}", data)
+                        else:
+                            # Check not found vehicles
+                            if data.get("found") == False:
+                                self.log_test(f"Vehicle Lookup ({plate})", True, f"Vehicle {plate} correctly not found")
+                            else:
+                                self.log_test(f"Vehicle Lookup ({plate})", False, f"Expected not found, got found", data)
+                    else:
+                        self.log_test(f"Vehicle Lookup ({plate})", False, f"Request failed: {response.status}", data)
+                        
+            except Exception as e:
+                self.log_test(f"Vehicle Lookup ({plate})", False, f"Request failed: {str(e)}")
+    
+    async def test_vehicle_lookup_rate_limiting(self):
+        """Test vehicle lookup rate limiting (10 per minute)"""
+        print("\n--- Testing Vehicle Lookup Rate Limiting ---")
+        
+        # Make 11 rapid requests to test rate limiting
+        success_count = 0
+        rate_limited = False
+        
+        for i in range(12):  # Try 12 requests to exceed the limit of 10
+            try:
+                async with self.session.get(
+                    f"{BACKEND_URL}/public/vehicle-lookup?plate=TEST123&country=IS"
+                ) as response:
+                    if response.status == 200:
+                        success_count += 1
+                    elif response.status == 429:  # Too Many Requests
+                        rate_limited = True
+                        break
+                    
+            except Exception as e:
+                self.log_test("Rate Limiting Test", False, f"Request {i+1} failed: {str(e)}")
+                return
+        
+        if rate_limited and success_count >= 10:
+            self.log_test("Vehicle Lookup Rate Limiting", True, f"Rate limiting working: {success_count} successful requests before limit")
+        elif success_count == 12:
+            self.log_test("Vehicle Lookup Rate Limiting", False, "Rate limiting not working - all 12 requests succeeded")
+        else:
+            self.log_test("Vehicle Lookup Rate Limiting", False, f"Unexpected behavior: {success_count} successful, rate_limited: {rate_limited}")
+    
+    async def test_vehicle_lookup_validation(self):
+        """Test vehicle lookup validation"""
+        print("\n--- Testing Vehicle Lookup Validation ---")
+        
+        # Test invalid plate formats
+        invalid_plates = [
+            ("", "Empty plate"),
+            ("A", "Too short (1 char)"),
+            ("TOOLONGPLATE", "Too long (12 chars)"),
+            ("AB-123", "Invalid characters (hyphen)"),
+            ("AB 123", "Invalid characters (space)")
+        ]
+        
+        for plate, description in invalid_plates:
+            try:
+                async with self.session.get(
+                    f"{BACKEND_URL}/public/vehicle-lookup?plate={plate}&country=IS"
+                ) as response:
+                    if response.status == 400:  # Bad Request expected
+                        self.log_test(f"Validation ({description})", True, f"Invalid plate '{plate}' correctly rejected")
+                    else:
+                        data = await response.json()
+                        self.log_test(f"Validation ({description})", False, f"Expected 400, got {response.status}", data)
+            except Exception as e:
+                self.log_test(f"Validation ({description})", False, f"Request failed: {str(e)}")
+        
+        # Test unsupported country codes
+        unsupported_countries = ["NO", "DK", "SE", "FI", "US"]
+        
+        for country in unsupported_countries:
+            try:
+                async with self.session.get(
+                    f"{BACKEND_URL}/public/vehicle-lookup?plate=ABC123&country={country}"
+                ) as response:
+                    if response.status == 400:  # Bad Request expected
+                        self.log_test(f"Validation (Country {country})", True, f"Unsupported country {country} correctly rejected")
+                    else:
+                        data = await response.json()
+                        self.log_test(f"Validation (Country {country})", False, f"Expected 400, got {response.status}", data)
+            except Exception as e:
+                self.log_test(f"Validation (Country {country})", False, f"Request failed: {str(e)}")
+        
+        # Test missing parameters
+        try:
+            async with self.session.get(f"{BACKEND_URL}/public/vehicle-lookup") as response:
+                if response.status == 422:  # Unprocessable Entity expected
+                    self.log_test("Validation (Missing Plate)", True, "Missing plate parameter correctly rejected")
+                else:
+                    data = await response.json()
+                    self.log_test("Validation (Missing Plate)", False, f"Expected 422, got {response.status}", data)
+        except Exception as e:
+            self.log_test("Validation (Missing Plate)", False, f"Request failed: {str(e)}")
+    
+    async def test_automotive_job_flow(self):
+        """Test automotive job flow with vehicle lookup integration"""
+        print("\n--- Testing Automotive Job Flow ---")
+        
+        # Step 1: Look up vehicle information
+        vehicle_info = None
+        try:
+            async with self.session.get(
+                f"{BACKEND_URL}/public/vehicle-lookup?plate=TEST123&country=IS"
+            ) as response:
+                if response.status == 200:
+                    vehicle_info = await response.json()
+                    if vehicle_info.get("found"):
+                        self.log_test("Automotive Flow - Vehicle Lookup", True, f"Vehicle found: {vehicle_info.get('make')} {vehicle_info.get('model')}")
+                    else:
+                        self.log_test("Automotive Flow - Vehicle Lookup", False, "Vehicle not found")
+                        return
+                else:
+                    self.log_test("Automotive Flow - Vehicle Lookup", False, f"Lookup failed: {response.status}")
+                    return
+        except Exception as e:
+            self.log_test("Automotive Flow - Vehicle Lookup", False, f"Request failed: {str(e)}")
+            return
+        
+        # Step 2: Create automotive draft with license plate and vehicle info
+        draft_data = {
+            "category": "automotive",
+            "licensePlate": "TEST123",
+            "plateCountry": "IS",
+            "postcode": "101",
+            "vehicleInfo": vehicle_info
+        }
+        
+        draft_id = None
+        guest_session = None
+        
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/public/job-requests/draft",
+                json=draft_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 200 and data.get("id"):
+                    draft_id = data["id"]
+                    # Get guest session cookie
+                    cookies = response.cookies
+                    if "bc_guest_id" in cookies:
+                        guest_session = cookies["bc_guest_id"].value
+                        self.log_test("Automotive Flow - Create Draft", True, f"Automotive draft created: {draft_id}")
+                    else:
+                        self.log_test("Automotive Flow - Create Draft", False, "Draft created but no guest cookie")
+                        return
+                else:
+                    self.log_test("Automotive Flow - Create Draft", False, f"Draft creation failed: {response.status}", data)
+                    return
+        except Exception as e:
+            self.log_test("Automotive Flow - Create Draft", False, f"Request failed: {str(e)}")
+            return
+        
+        # Step 3: Update draft with contact information
+        if draft_id and guest_session:
+            contact_data = {
+                "email": "car.owner@example.com",
+                "phone": "+354-555-9876",
+                "firstName": "Magnus",
+                "lastName": "Eriksson",
+                "address": "Borgartún 21, Reykjavik",
+                "postcode": "105",
+                "contactPreference": "platform_and_phone"
+            }
+            
+            try:
+                cookies = {"bc_guest_id": guest_session}
+                async with self.session.patch(
+                    f"{BACKEND_URL}/public/job-requests/{draft_id}",
+                    json=contact_data,
+                    cookies=cookies,
+                    headers={"Content-Type": "application/json"}
+                ) as response:
+                    if response.status == 200:
+                        self.log_test("Automotive Flow - Update Contact", True, "Contact information added to automotive draft")
+                    else:
+                        data = await response.json()
+                        self.log_test("Automotive Flow - Update Contact", False, f"Update failed: {response.status}", data)
+            except Exception as e:
+                self.log_test("Automotive Flow - Update Contact", False, f"Request failed: {str(e)}")
+        
+        # Step 4: Submit automotive job
+        if draft_id and guest_session:
+            try:
+                cookies = {"bc_guest_id": guest_session}
+                async with self.session.post(
+                    f"{BACKEND_URL}/public/job-requests/{draft_id}/submit",
+                    cookies=cookies
+                ) as response:
+                    data = await response.json()
+                    if response.status == 200 and data.get("status") == "open":
+                        self.log_test("Automotive Flow - Submit Job", True, f"Automotive job submitted successfully: {data.get('job_id')}")
+                    else:
+                        self.log_test("Automotive Flow - Submit Job", False, f"Submit failed: {response.status}", data)
+            except Exception as e:
+                self.log_test("Automotive Flow - Submit Job", False, f"Request failed: {str(e)}")
+        
+        # Step 5: Verify vehicle data is stored correctly in database
+        if draft_id:
+            try:
+                async with self.session.get(f"{BACKEND_URL}/job-requests/{draft_id}") as response:
+                    if response.status == 200:
+                        data = await response.json()
+                        # Check if vehicle data is stored correctly
+                        vehicle_data_correct = (
+                            data.get("license_plate") == "TEST123" and
+                            data.get("plate_country") == "IS" and
+                            data.get("vehicle_make") == "Tesla" and
+                            data.get("vehicle_model") == "Model 3" and
+                            data.get("vehicle_year") == 2022
+                        )
+                        
+                        if vehicle_data_correct:
+                            self.log_test("Automotive Flow - Data Verification", True, "Vehicle data correctly stored in database")
+                        else:
+                            self.log_test("Automotive Flow - Data Verification", False, "Vehicle data not stored correctly", data)
+                    else:
+                        self.log_test("Automotive Flow - Data Verification", False, f"Failed to retrieve job: {response.status}")
+            except Exception as e:
+                self.log_test("Automotive Flow - Data Verification", False, f"Request failed: {str(e)}")
+
     async def run_all_tests(self):
         """Run all test suites"""
         print("🚀 Starting BuildConnect Backend API Tests")
