@@ -393,14 +393,14 @@ export const translations = {
     viewAllServices: "View All Services",
     
     // How It Works
-    howItWorksTitle: "How BuildConnect Works",
+    howItWorksTitle: "How BuildConnect works",
     howItWorksDescription: "Get your project done in three simple steps",
-    step1Title: "Describe Your Project",
-    step1Description: "Tell us what you need done and where you're located.",
-    step2Title: "Get Matched",
-    step2Description: "We connect you with qualified professionals in your area.",
-    step3Title: "Choose & Hire",
-    step3Description: "Compare quotes and hire the best professional for your project.",
+    step1Title: "Describe the project",
+    step1Description: "Tell us what you need help with and we'll send it to relevant businesses.",
+    step2Title: "Receive offers",
+    step2Description: "You'll quickly get non-binding quotes from pros who want to help.",
+    step3Title: "Get started!",
+    step3Description: "Review the offers and choose the right company. After the job, you can leave a review.",
     
     // Popular Projects Section
     popularProjectsTitle: "Popular Projects",
