@@ -23,7 +23,8 @@ class JobPriority(str, Enum):
 class JobRequest(Document):
     """Job request document for customers posting construction jobs"""
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    customer_id: str  # User ID of the customer who posted the job
+    customer_id: Optional[str] = None  # User ID of the customer who posted the job (null for guests)
+    guest_id: Optional[str] = None  # Guest ID for unauthenticated users
     
     # Job Details
     category: str  # Service category (plumbing, electrical, etc.)
