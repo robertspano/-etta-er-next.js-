@@ -403,8 +403,22 @@ export const translations = {
     step3Description: "Review the offers and choose the right company. After the job, you can leave a review.",
     
     // Category Selection Page
-    categorySelectionTitle: "Choose a category to post your job – free",
+    categorySelectionTitle: "Choose a category to post your job – free", 
     categorySelectionSearchPlaceholder: "What do you need help with?",
+    
+    // Major Projects Category Overview
+    majorProjectsTitle: "Major Projects - All Categories",
+    majorProjectsSubtitle: "Find the right professional for your major project",
+    majorProjectsSearchPlaceholder: "Search for a category...",
+    
+    // Category Groups
+    houseAndGarden: "House & Garden",
+    services: "Services", 
+    indoorRenovations: "Indoor Renovations",
+    buildNew: "Build New",
+    housingAssociations: "Housing Associations",
+    trades: "Trades",
+    majorProjectsXL: "Major Projects XL",
     
     // Popular Projects Section
     popularProjectsTitle: "Popular Projects",
