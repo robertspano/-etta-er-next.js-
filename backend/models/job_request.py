@@ -98,11 +98,24 @@ class JobRequestUpdate(BaseModel):
     """Schema for updating a job request"""
     title: Optional[str] = None
     description: Optional[str] = None
+    address: Optional[str] = None
     budget_min: Optional[float] = None
     budget_max: Optional[float] = None
     priority: Optional[JobPriority] = None
     deadline: Optional[datetime] = None
     status: Optional[JobStatus] = None
+    
+    @validator('title')
+    def validate_title_length(cls, v):
+        if v is not None and len(v.strip()) < 10:
+            raise ValueError('Title must be at least 10 characters long')
+        return v.strip() if v else v
+    
+    @validator('description')
+    def validate_description_length(cls, v):
+        if v is not None and len(v.strip()) < 30:
+            raise ValueError('Description must be at least 30 characters long')
+        return v.strip() if v else v
 
 class JobRequestResponse(BaseModel):
     """Schema for job request responses"""
