@@ -141,19 +141,18 @@ const JobPostingWizard = ({ translations, language }) => {
           return;
         }
         
-        // Create or update draft job request
+        // Create or update draft job request using public API
         const jobData = {
           category: formData.category,
           title: formData.title,
           description: formData.description,
-          postcode: formData.postcode || '101', // Placeholder
-          status: 'draft'
+          postcode: formData.postcode || '101' // Temporary placeholder
         };
 
         if (draftJobId) {
-          await api.updateJobRequest(draftJobId, jobData);
+          await api.updateDraftJobRequest(draftJobId, jobData);
         } else {
-          const response = await api.createJobRequest(jobData);
+          const response = await api.createDraftJobRequest(jobData);
           setDraftJobId(response.id);
         }
         
@@ -164,11 +163,16 @@ const JobPostingWizard = ({ translations, language }) => {
           return;
         }
         
-        // Update draft with contact info
+        // Update draft with contact info using public API
         if (draftJobId) {
-          await api.updateJobRequest(draftJobId, {
+          await api.updateDraftJobRequest(draftJobId, {
             postcode: formData.postcode,
-            address: formData.address
+            address: formData.address,
+            email: formData.email,
+            phone: formData.phone,
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            contactPreference: formData.contactPreference
           });
         }
         
