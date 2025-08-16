@@ -117,15 +117,15 @@ const PopularProjects = ({ translations }) => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="relative flex flex-col items-center text-center">
-                  {/* Icon Container - removed border, larger icon */}
-                  <div className="w-14 h-14 mb-3 rounded-xl bg-white flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                  {/* Icon Container - even larger icon */}
+                  <div className="w-16 h-16 mb-3 rounded-xl bg-white flex items-center justify-center group-hover:scale-110 transition-all duration-300">
                     <div className="text-[#1B2B5B]">
                       {category.icon}
                     </div>
                   </div>
                   
-                  {/* Category Name - smaller */}
-                  <h3 className="font-bold text-sm text-[#1B2B5B]">
+                  {/* Category Name - single line */}
+                  <h3 className="font-bold text-xs text-[#1B2B5B] whitespace-nowrap">
                     {category.name}
                   </h3>
                 </div>
