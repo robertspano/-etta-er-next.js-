@@ -141,8 +141,8 @@ const Hero = ({ translations }) => {
           {/* Left Content - 65% */}
           <div className="md:col-span-3 space-y-10 animate-fade-in-up">
             {/* Title */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 leading-tight text-shadow">
-              <span className="bg-gradient-to-r from-gray-900 via-blue-800 to-gray-900 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight text-shadow">
+              <span className="bg-gradient-to-r from-gray-900 via-blue-800 to-gray-900 bg-clip-text text-transparent whitespace-nowrap">
                 {translations.heroNewTitle}
               </span>
             </h1>
