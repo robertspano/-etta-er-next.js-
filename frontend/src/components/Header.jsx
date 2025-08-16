@@ -258,12 +258,17 @@ const Header = ({ language, setLanguage, translations }) => {
         )}
       </div>
       
-      {/* Right Drawer - Mittanbud Style */}
+      {/* Right Drawer - Mittanbud Video Match */}
       {isDrawerOpen && (
         <>
           {/* Backdrop */}
           <div 
-            className="fixed inset-0 bg-black bg-opacity-20 z-40 transition-opacity duration-250"
+            className="fixed inset-0 bg-black z-40 transition-opacity"
+            style={{
+              opacity: isDrawerOpen ? 0.2 : 0,
+              transitionDuration: '300ms',
+              transitionTimingFunction: 'cubic-bezier(0.22, 0.61, 0.36, 1)'
+            }}
             onClick={closeDrawer}
           />
           
@@ -272,9 +277,13 @@ const Header = ({ language, setLanguage, translations }) => {
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
-            className={`fixed right-0 top-0 bottom-0 w-96 bg-white shadow-2xl z-50 transform transition-transform duration-250 ease-out ${
-              isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
-            }`}
+            className="fixed right-0 top-0 bottom-0 w-96 bg-white shadow-2xl z-50"
+            style={{
+              transform: isDrawerOpen ? 'translateX(0)' : 'translateX(100%)',
+              transitionProperty: 'transform',
+              transitionDuration: '300ms',
+              transitionTimingFunction: 'cubic-bezier(0.22, 0.61, 0.36, 1)'
+            }}
           >
             <div className="h-full overflow-y-auto">
               {/* Clean Header - X button only */}
