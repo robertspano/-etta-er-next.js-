@@ -38,6 +38,12 @@ class JobRequest(Document):
     license_plate: Optional[str] = None  # License plate for automotive category
     plate_country: Optional[str] = None  # Country code for license plate
     
+    # Vehicle metadata (populated from lookup)
+    vehicle_make: Optional[str] = None
+    vehicle_model: Optional[str] = None
+    vehicle_year: Optional[int] = None
+    vehicle_color: Optional[str] = None
+    
     # Budget and Priority
     budget_min: Optional[float] = None
     budget_max: Optional[float] = None
