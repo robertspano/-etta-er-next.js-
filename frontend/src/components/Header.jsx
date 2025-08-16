@@ -152,15 +152,30 @@ const Header = ({ language, setLanguage, translations }) => {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Same Pill Design */}
           <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
+            <div className="inline-flex items-center gap-2.5 h-10 px-3 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition-colors focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-1">
+              {/* Hamburger Icon */}
+              <button
+                onClick={() => setIsDrawerOpen(true)}
+                aria-label="Open menu"
+                className="p-0 hover:opacity-70 transition-opacity focus:outline-none focus:opacity-70"
+              >
+                <Menu className="h-5 w-5 text-gray-600" />
+              </button>
+              
+              {/* Vertical Divider */}
+              <div className="w-px h-5 bg-gray-200"></div>
+              
+              {/* Profile Avatar */}
+              <button
+                onClick={() => setIsDrawerOpen(true)}
+                aria-label="Open profile menu"
+                className="p-0 hover:opacity-70 transition-opacity focus:outline-none focus:opacity-70"
+              >
+                <User className="h-5 w-5 text-gray-600" />
+              </button>
+            </div>
           </div>
         </div>
 
