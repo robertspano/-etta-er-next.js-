@@ -314,8 +314,8 @@ class PublicWizardTester:
             ) as response:
                 if response.status == 204:
                     user_cookies = {}
-                    for cookie in response.cookies:
-                        user_cookies[cookie.key] = cookie.value
+                    for cookie_name, cookie_obj in response.cookies.items():
+                        user_cookies[cookie_name] = cookie_obj.value
                     self.log_test("Auth User Login", True, "User logged in successfully")
                 else:
                     self.log_test("Auth User Login", False, f"Login failed: {response.status}")
