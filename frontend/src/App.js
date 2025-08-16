@@ -20,6 +20,11 @@ import Profile from './components/auth/Profile';
 // Dashboard Components
 import Dashboard from './components/dashboard/Dashboard';
 
+// Marketplace Components
+import JobRequestForm from './components/marketplace/JobRequestForm';
+import JobRequestDetail from './components/marketplace/JobRequestDetail';
+import JobMessaging from './components/marketplace/JobMessaging';
+
 // Utility Components
 import Unauthorized from './components/Unauthorized';
 import LoadingSpinner from './components/LoadingSpinner';
