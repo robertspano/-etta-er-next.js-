@@ -1,0 +1,109 @@
+{
+  "summary": {
+    "total": 14,
+    "passed": 12,
+    "failed": 2,
+    "success_rate": 85.71428571428571
+  },
+  "results": [
+    {
+      "test": "Create Draft (Guest)",
+      "success": false,
+      "details": "Request failed: 'str' object has no attribute 'value'",
+      "timestamp": "2025-08-16T12:40:11.324628",
+      "response_data": null
+    },
+    {
+      "test": "Validation (Short Title)",
+      "success": true,
+      "details": "Short title correctly rejected",
+      "timestamp": "2025-08-16T12:40:11.337623",
+      "response_data": null
+    },
+    {
+      "test": "Validation (Short Description)",
+      "success": true,
+      "details": "Short description correctly rejected",
+      "timestamp": "2025-08-16T12:40:11.349299",
+      "response_data": null
+    },
+    {
+      "test": "Authorization Setup",
+      "success": true,
+      "details": "Draft created: 0207c5fe-40d8-411f-af19-1643b414444a",
+      "timestamp": "2025-08-16T12:40:11.399511",
+      "response_data": null
+    },
+    {
+      "test": "Authorization (Different Guest)",
+      "success": true,
+      "details": "Different guest correctly denied access",
+      "timestamp": "2025-08-16T12:40:11.427381",
+      "response_data": null
+    },
+    {
+      "test": "Rate Limiting",
+      "success": true,
+      "details": "Rate limiting working: 10 successful, then blocked",
+      "timestamp": "2025-08-16T12:40:11.791548",
+      "response_data": null
+    },
+    {
+      "test": "Auth User Login",
+      "success": false,
+      "details": "Login failed: 'str' object has no attribute 'value'",
+      "timestamp": "2025-08-16T12:40:12.218520",
+      "response_data": null
+    },
+    {
+      "test": "Category (handcraft)",
+      "success": true,
+      "details": "Category handcraft working correctly",
+      "timestamp": "2025-08-16T12:40:12.269819",
+      "response_data": null
+    },
+    {
+      "test": "Category (bathroom)",
+      "success": true,
+      "details": "Category bathroom working correctly",
+      "timestamp": "2025-08-16T12:40:12.281397",
+      "response_data": null
+    },
+    {
+      "test": "Category (automotive)",
+      "success": true,
+      "details": "Category automotive working correctly",
+      "timestamp": "2025-08-16T12:40:12.333233",
+      "response_data": null
+    },
+    {
+      "test": "Category (majorProjects)",
+      "success": true,
+      "details": "Category majorProjects working correctly",
+      "timestamp": "2025-08-16T12:40:12.384199",
+      "response_data": null
+    },
+    {
+      "test": "Category (cleaning)",
+      "success": true,
+      "details": "Category cleaning working correctly",
+      "timestamp": "2025-08-16T12:40:12.395802",
+      "response_data": null
+    },
+    {
+      "test": "Category (housingAssociations)",
+      "success": true,
+      "details": "Category housingAssociations working correctly",
+      "timestamp": "2025-08-16T12:40:12.406907",
+      "response_data": null
+    },
+    {
+      "test": "Category (moving)",
+      "success": true,
+      "details": "Category moving working correctly",
+      "timestamp": "2025-08-16T12:40:12.459439",
+      "response_data": null
+    }
+  ],
+  "timestamp": "2025-08-16T12:40:12.460315"
+}
