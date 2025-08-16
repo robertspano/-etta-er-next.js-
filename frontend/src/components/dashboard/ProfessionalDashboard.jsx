@@ -24,57 +24,29 @@ import JobBidding from '../marketplace/JobBidding';
 
 const ProfessionalDashboard = ({ translations, language, user }) => {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   const [stats, setStats] = useState({
-    totalRequests: 0,
+    availableJobs: 0,
     activeQuotes: 0,
     completedProjects: 0,
     monthlyEarnings: 0,
   });
 
-  const [jobRequests] = useState([
-    // Mock data for demonstration
-    {
-      id: '1',
-      title: 'Bathroom Renovation',
-      description: 'Complete bathroom renovation including new fixtures, tiling, and plumbing.',
-      location: 'Reykjavik',
-      budget: '500,000 - 800,000 ISK',
-      postedDate: '2025-01-10',
-      status: 'new'
-    },
-    {
-      id: '2',
-      title: 'Kitchen Plumbing Repair',
-      description: 'Fix leaking pipes under kitchen sink and install new faucet.',
-      location: 'Hafnarfjörður',
-      budget: '50,000 - 100,000 ISK',
-      postedDate: '2025-01-08',
-      status: 'new'
-    }
-  ]);
+  // My Quotes state
+  const [myQuotes, setMyQuotes] = useState([]);
+  const [quotesLoading, setQuotesLoading] = useState(false);
+  const [quotesError, setQuotesError] = useState('');
+  const [quotesPagination, setQuotesPagination] = useState({
+    page: 1,
+    limit: 10,
+    total: 0,
+    totalPages: 0
+  });
 
-  const [activeQuotes] = useState([
-    // Mock data for demonstration
-    {
-      id: '1',
-      projectTitle: 'Living Room Electrical Work',
-      quotedAmount: '150,000 ISK',
-      status: 'pending',
-      submittedDate: '2025-01-09'
-    }
-  ]);
-
-  const [upcomingAppointments] = useState([
-    // Mock data for demonstration
-    {
-      id: '1',
-      title: 'Site Visit - Kitchen Renovation',
-      date: '2025-01-16',
-      time: '10:00',
-      location: 'Kópavogur',
-      client: 'Sarah Johnson'
-    }
-  ]);
+  // Messages state
+  const [conversations, setConversations] = useState([]);
+  const [messagesLoading, setMessagesLoading] = useState(false);
+  const [messagesError, setMessagesError] = useState('');
 
   useEffect(() => {
     loadDashboardData();
