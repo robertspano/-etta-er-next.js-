@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
-import { Button } from './ui/button';
-import { Card } from './ui/card';
 import { Input } from './ui/input';
-import { Textarea } from './ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { Search, MapPin, Star, Users, CheckCircle } from 'lucide-react';
-import apiService from '../services/api';
+import { Search, Star, Users, Hammer, Droplets, Car, Building, Sparkles, Home, Truck, Grid3X3 } from 'lucide-react';
 
 import React, { useState } from 'react';
 import { Button } from './ui/button';
