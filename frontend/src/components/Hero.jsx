@@ -120,11 +120,14 @@ const Hero = ({ translations }) => {
   };
 
   const handleCategoryClick = (categoryKey) => {
-    // Special routing for All Categories to full category overview
+    // Special routing for specific categories
     if (categoryKey === 'allCategories') {
       navigate('/all-categories');
     } else if (categoryKey === 'majorProjects') {
       navigate('/xl');
+    } else if (categoryKey === 'housingAssociations') {
+      // Route to housing associations category grid
+      navigate('/post/housing-associations');
     } else {
       // Navigate to job posting wizard with category in URL path
       navigate(`/post/${categoryKey}`);
