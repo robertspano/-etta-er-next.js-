@@ -173,6 +173,25 @@ function App() {
               } 
             />
 
+            {/* Job Posting Wizard Route */}
+            <Route 
+              path="/post" 
+              element={
+                <ProtectedRoute>
+                  <DashboardLayout 
+                    language={language} 
+                    setLanguage={setLanguage} 
+                    currentTranslations={currentTranslations}
+                  >
+                    <JobPostingWizard 
+                      translations={currentTranslations} 
+                      language={language} 
+                    />
+                  </DashboardLayout>
+                </ProtectedRoute>
+              } 
+            />
+
             {/* Customer Only Routes */}
             <Route 
               path="/create-job" 
