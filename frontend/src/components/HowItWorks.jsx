@@ -43,7 +43,6 @@ const HowItWorks = ({ translations }) => {
           <h2 className="heading-lg text-gray-900 mb-6 animate-fade-in-up text-shadow">
             {translations.howItWorksTitle}
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-16">
