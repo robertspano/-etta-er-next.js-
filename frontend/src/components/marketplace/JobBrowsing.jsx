@@ -36,12 +36,12 @@ const JobBrowsing = ({ translations, language }) => {
   
   // Filter state
   const [filters, setFilters] = useState({
-    category: '',
+    category: 'all',
     postcode: '',
     search: '',
     budget_min: '',
     budget_max: '',
-    priority: '',
+    priority: 'all',
     status: 'open' // Default to open jobs only
   });
 
