@@ -204,8 +204,8 @@ const ProfessionalDashboard = ({ translations, language, user }) => {
           <CardContent className="flex items-center p-6">
             <Briefcase className="h-8 w-8 text-blue-600" />
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">{translations.jobRequests}</p>
-              <p className="text-2xl font-bold">{stats.totalRequests}</p>
+              <p className="text-sm font-medium text-gray-600">{translations.availableJobs || 'Available Jobs'}</p>
+              <p className="text-2xl font-bold">{stats.availableJobs}</p>
             </div>
           </CardContent>
         </Card>
