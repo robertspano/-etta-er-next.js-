@@ -670,8 +670,21 @@ export const translations = {
     receivedQuotes: "Móttekin Tilboð",
     
     // Hero Section
-    heroTitle: "Finndu Trausta Byggingasérfræðinga Nálægt Þér",
-    heroSubtitle: "Tengstu við sannreynda iðnaðarmenn, fáðu samkeppnishæf tilboð og kláraðu verkefnin þín með sjálfstrausti. Frá smáviðgerðum til stórra endurbóta.",
+    heroTitle: "Fáðu verkið gert!",
+    heroSubtitle: "Lýstu verkinu og fáðu tilboð frá traustum fagmönnum. Ókeypis og án skuldbindinga.",
+    heroSearchPlaceholder: "Hvað þarftu hjálp með?",
+    heroNewTitle: "Fáðu verkið gert!",
+    heroNewSubtitle: "Lýstu verkinu og fáðu tilboð frá traustum fagmönnum. Ókeypis og án skuldbindinga.",
+    
+    // Service Categories
+    handcraft: "Handverk",
+    bathroom: "Baðherbergi", 
+    automotive: "Bifreiðaþjónusta",
+    majorProjects: "Stór verkefni",
+    cleaning: "Þrif",
+    housingAssociations: "Húsfélög",
+    moving: "Flutningar",
+    allCategories: "Allir flokkar",
     professionals: "Sérfræðingar",
     completedProjects: "Kláruð Verkefni",
     rating: "Einkunn",
