@@ -6,6 +6,7 @@ import { Search, Star, Users, ArrowRight, Hammer, Droplets, Car, Building, Spark
 
 const Hero = ({ translations }) => {
   const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
 
   const serviceCategories = [
     { key: 'handcraft', icon: Hammer, name: translations.handcraft },
