@@ -170,7 +170,7 @@
     {
       "test": "Role-Based Access (Professional Customer Jobs)",
       "success": false,
-      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://buildmatch-3.preview.emergentagent.com/api/job-requests/?customer_only=true'",
+      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://tradesmen-connect.preview.emergentagent.com/api/job-requests/?customer_only=true'",
       "timestamp": "2025-08-16T00:16:22.112747",
       "response_data": null
     },
