@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
-import { Menu, X, Globe, User, Settings, LogOut, LayoutDashboard } from 'lucide-react';
+import { Menu, X, Globe, User, Settings, LogOut, LayoutDashboard, ChevronDown } from 'lucide-react';
 
 const Header = ({ language, setLanguage, translations }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
