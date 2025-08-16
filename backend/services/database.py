@@ -38,6 +38,7 @@ class DatabaseService:
             from models.notification import Notification
             from models.review import Review
             from models.xl_lead import XLLead
+            from models.pro_lead import ProLead
             
             await init_beanie(database=self.db, document_models=[
                 User, JobRequest, Quote, JobMessage, Notification, Review, XLLead
