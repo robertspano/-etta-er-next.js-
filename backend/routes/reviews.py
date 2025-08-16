@@ -183,14 +183,19 @@ async def get_professional_reviews(
     status: Optional[ReviewStatus] = None
 ):
     """Get all reviews for a specific professional"""
-    query = Review.professional_id == professional_id
+    # Build query conditions
+    conditions = [Review.professional_id == professional_id]
     
     # Filter by status if provided
     if status:
-        query = query & (Review.status == status)
+        conditions.append(Review.status == status)
     else:
         # Default to approved reviews only for public access
-        query = query & (Review.status == ReviewStatus.APPROVED)
+        conditions.append(Review.status == ReviewStatus.APPROVED)
+    
+    # Combine conditions using And
+    from beanie.operators import And
+    query = And(*conditions)
     
     reviews = await Review.find(query).sort(-Review.created_at).limit(limit).to_list()
     
