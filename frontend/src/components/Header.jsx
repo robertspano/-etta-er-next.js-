@@ -21,16 +21,12 @@ const Header = ({ language, setLanguage, translations }) => {
   // Handle drawer close with ESC key and focus management
   useEffect(() => {
     const handleEsc = (e) => {
-      if (e.key === 'Escape') {
-        if (isDrawerOpen) {
-          closeDrawer();
-        } else if (isLoginPageOpen) {
-          closeLoginPage();
-        }
+      if (e.key === 'Escape' && isDrawerOpen) {
+        closeDrawer();
       }
     };
 
-    if (isDrawerOpen || isLoginPageOpen) {
+    if (isDrawerOpen) {
       document.addEventListener('keydown', handleEsc);
       document.body.style.overflow = 'hidden'; // Body scroll lock
     } else {
@@ -41,7 +37,7 @@ const Header = ({ language, setLanguage, translations }) => {
       document.removeEventListener('keydown', handleEsc);
       document.body.style.overflow = 'unset';
     };
-  }, [isDrawerOpen, isLoginPageOpen]);
+  }, [isDrawerOpen]);
 
   const closeDrawer = () => {
     setIsDrawerOpen(false);
@@ -50,31 +46,6 @@ const Header = ({ language, setLanguage, translations }) => {
       const pill = document.querySelector('button[aria-label="Open menu"]');
       if (pill) pill.focus();
     }, 100);
-  };
-
-  const closeLoginPage = () => {
-    setIsLoginPageOpen(false);
-    // Restore focus to the avatar part of the pill
-    setTimeout(() => {
-      const pill = document.querySelector('button[aria-label="Open menu"]');
-      if (pill) pill.focus();
-    }, 100);
-  };
-
-  const handleMenuClick = (e) => {
-    e.stopPropagation();
-    setIsDrawerOpen(true);
-  };
-
-  const handleAvatarClick = (e) => {
-    e.stopPropagation();
-    if (isAuthenticated()) {
-      // For authenticated users, show profile options in drawer
-      setIsDrawerOpen(true);
-    } else {
-      // For non-authenticated users, show login page
-      setIsLoginPageOpen(true);
-    }
   };
 
   const handleLogout = async () => {
