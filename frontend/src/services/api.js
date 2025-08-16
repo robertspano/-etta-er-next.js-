@@ -276,6 +276,16 @@ class ApiService {
     }
   }
 
+  // Professional Lead endpoints
+  async createProLead(leadData) {
+    try {
+      const response = await this.publicClient.post('/public/pro/leads', leadData);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to create professional lead');
+    }
+  }
+
   // Health check
   async healthCheck() {
     try {
