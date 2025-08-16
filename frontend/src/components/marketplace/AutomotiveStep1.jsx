@@ -208,25 +208,6 @@ const AutomotiveStep1 = ({
           </AlertDescription>
         </Alert>
       )}
-
-      {/* Next button */}
-      <div className="flex justify-center pt-4">
-        <Button
-          onClick={handleNext}
-          disabled={!isValid || loading || lookupLoading}
-          className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
-          size="lg"
-        >
-          {loading || lookupLoading ? (
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-              <span>{lookupLoading ? 'Leita...' : 'Vista...'}</span>
-            </div>
-          ) : (
-            translations.next || "Áfram"
-          )}
-        </Button>
-      </div>
     </div>
   );
 };
