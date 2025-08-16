@@ -910,7 +910,7 @@ export const translations = {
     step3Description: "Farðu yfir tilboðin og veldu rétt fyrirtæki. Eftir verkið geturðu skilið eftir umsögn.",
     
     // Category Selection Page
-    categorySelectionTitle: "Veldu flokk til að birta verkefnið þitt – ókeypis",
+    categorySelectionTitle: "Hvað þarftu hjálp við?",
     categorySelectionSearchPlaceholder: "Leita að flokki...",
     
     // Popular Projects Section
