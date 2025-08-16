@@ -12,25 +12,19 @@ const HowItWorks = ({ translations }) => {
       id: 1,
       icon: FileText,
       title: translations.step1Title,
-      description: translations.step1Description,
-      color: 'text-indigo-600 bg-gradient-to-br from-indigo-50 to-purple-50',
-      badgeColor: 'from-indigo-500 to-purple-600'
+      description: translations.step1Description
     },
     {
       id: 2,
       icon: Users,
       title: translations.step2Title,
-      description: translations.step2Description,
-      color: 'text-blue-600 bg-gradient-to-br from-blue-50 to-cyan-50',
-      badgeColor: 'from-blue-500 to-cyan-600'
+      description: translations.step2Description
     },
     {
       id: 3,
       icon: CheckCircle,
       title: translations.step3Title,
-      description: translations.step3Description,
-      color: 'text-emerald-600 bg-gradient-to-br from-emerald-50 to-green-50',
-      badgeColor: 'from-emerald-500 to-green-600'
+      description: translations.step3Description
     }
   ];
 
