@@ -1,8 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
-import { FileText, Users, CheckCircle, ArrowRight } from 'lucide-react';
+import { MessageSquare, FileText, CheckCircle2 } from 'lucide-react';
 
 const HowItWorks = ({ translations }) => {
   const navigate = useNavigate();
@@ -10,19 +9,19 @@ const HowItWorks = ({ translations }) => {
   const steps = [
     {
       id: 1,
-      icon: FileText,
+      icon: MessageSquare,
       title: translations.step1Title,
       description: translations.step1Description
     },
     {
       id: 2,
-      icon: Users,
+      icon: FileText,
       title: translations.step2Title,
       description: translations.step2Description
     },
     {
       id: 3,
-      icon: CheckCircle,
+      icon: CheckCircle2,
       title: translations.step3Title,
       description: translations.step3Description
     }
@@ -33,74 +32,59 @@ const HowItWorks = ({ translations }) => {
   };
 
   return (
-    <section id="how-it-works" className="section-padding-lg bg-gradient-to-b from-white to-gray-50/50 relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute top-0 left-1/4 w-64 h-64 bg-gradient-to-br from-blue-200/20 to-purple-200/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-gradient-to-br from-indigo-200/15 to-pink-200/15 rounded-full blur-3xl"></div>
-      
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <h2 className="heading-lg text-gray-900 mb-6 animate-fade-in-up text-shadow">
+    <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
             {translations.howItWorksTitle}
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-16">
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-16 mb-16">
           {steps.map((step, index) => {
             const IconComponent = step.icon;
             return (
-              <div key={step.id} className="relative">
-                {/* Connection line (hidden on mobile) */}
-                {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-gray-300 to-transparent z-0" 
-                       style={{ width: 'calc(100% - 4rem)' }}>
-                  </div>
-                )}
+              <div 
+                key={step.id} 
+                className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 relative"
+              >
+                {/* Number Badge - top left */}
+                <div className="absolute -top-3 -left-3 w-8 h-8 bg-[#1B2B5B] text-white rounded-full flex items-center justify-center font-bold text-sm">
+                  {step.id}
+                </div>
                 
-                <div className="text-center relative z-10 animate-fade-in-up" style={{ animationDelay: `${index * 0.2}s` }}>
-                  {/* Step Number Badge */}
-                  <div className="flex justify-center mb-8">
-                    <div className="w-20 h-20 bg-[#1B2B5B] text-white rounded-2xl flex items-center justify-center font-black text-2xl hover:scale-110 transition-all duration-300">
-                      {step.id}
-                    </div>
+                {/* Content */}
+                <div className="pt-4">
+                  {/* Icon */}
+                  <div className="mb-6">
+                    <IconComponent className="h-8 w-8 text-[#1B2B5B]" strokeWidth={1.5} />
                   </div>
-
-                  {/* Icon Container */}
-                  <div className="flex justify-center mb-8">
-                    <div className="w-24 h-24 rounded-3xl bg-white border-2 border-[#1B2B5B] flex items-center justify-center hover:scale-105 transition-all duration-300">
-                      <IconComponent className="h-12 w-12 text-[#1B2B5B]" />
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="max-w-sm mx-auto">
-                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-5 leading-tight">
-                      {step.title}
-                    </h3>
-                    
-                    <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                      {step.description}
-                    </p>
-                  </div>
+                  
+                  {/* Title */}
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                    {step.title}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-gray-600 leading-relaxed">
+                    {step.description}
+                  </p>
                 </div>
               </div>
             );
           })}
         </div>
 
-        {/* CTA Section */}
-        <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-          <div className="bg-white p-10 rounded-3xl border-2 border-gray-200 max-w-lg mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to get started?</h3>
-            <p className="text-gray-600 mb-8 text-lg">Post your project and connect with trusted professionals today.</p>
-            <Button 
-              onClick={handlePostProject}
-              className="group bg-[#1B2B5B] hover:bg-white hover:text-[#1B2B5B] text-white border-2 border-[#1B2B5B] px-12 py-6 text-xl font-bold rounded-2xl transition-all duration-300 transform hover:scale-105"
-            >
-              {translations.postProject}
-              <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-300" />
-            </Button>
-          </div>
+        {/* CTA Button */}
+        <div className="text-center">
+          <Button 
+            onClick={handlePostProject}
+            className="bg-[#1B2B5B] hover:bg-white hover:text-[#1B2B5B] text-white border-2 border-[#1B2B5B] px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300"
+          >
+            {translations.postProject}
+          </Button>
         </div>
       </div>
     </section>
