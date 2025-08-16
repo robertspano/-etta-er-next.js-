@@ -54,11 +54,32 @@ const CustomerDashboard = ({ translations, language, user }) => {
     loadDashboardData();
   }, []);
 
-  const loadDashboardData = async () => {
+  const loadDashboardData = async (page = 1) => {
     try {
-      // Load customer's job requests
-      const jobsData = await apiService.getJobRequests({ customer_only: true });
-      setJobRequests(jobsData || []);
+      setLoading(true);
+      setError('');
+      
+      // Prepare filters
+      const requestFilters = { 
+        customer_only: true,
+        page: page,
+        limit: itemsPerPage
+      };
+      
+      if (filters.status) requestFilters.status = filters.status;
+      if (filters.category) requestFilters.category = filters.category;
+      if (filters.search) requestFilters.search = filters.search;
+      
+      // Load customer's job requests with pagination
+      const jobsResponse = await apiService.getJobRequests(requestFilters);
+      setJobRequests(jobsResponse?.items || jobsResponse || []);
+      
+      // Update pagination info
+      if (jobsResponse?.total) {
+        setTotalPages(Math.ceil(jobsResponse.total / itemsPerPage));
+      } else {
+        setTotalPages(1);
+      }
       
       // Load quotes for customer's jobs
       const quotesData = await apiService.getQuotes({ my_quotes: true });
@@ -69,18 +90,20 @@ const CustomerDashboard = ({ translations, language, user }) => {
       setConversations(conversationsData || []);
       
       // Calculate stats
-      const active = jobsData?.filter(j => ['open', 'quoted', 'accepted', 'in_progress'].includes(j.status)).length || 0;
-      const completed = jobsData?.filter(j => j.status === 'completed').length || 0;
+      const jobsData = jobsResponse?.items || jobsResponse || [];
+      const active = jobsData.filter(j => ['open', 'quoted', 'accepted', 'in_progress'].includes(j.status)).length;
+      const completed = jobsData.filter(j => j.status === 'completed').length;
       const pending = quotesData?.filter(q => q.status === 'pending').length || 0;
       
       setStats({
-        totalJobs: jobsData?.length || 0,
+        totalJobs: jobsData.length,
         activeJobs: active,
         completedJobs: completed,
         pendingQuotes: pending,
       });
     } catch (error) {
       console.error('Failed to load dashboard data:', error);
+      setError(error.message || 'Failed to load dashboard data');
     } finally {
       setLoading(false);
     }
