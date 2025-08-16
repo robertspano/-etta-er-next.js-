@@ -45,8 +45,8 @@ const CustomerDashboard = ({ translations, language, user }) => {
   
   // Filter state
   const [filters, setFilters] = useState({
-    status: '',
-    category: '',
+    status: 'all',
+    category: 'all',
     search: ''
   });
 
