@@ -26,8 +26,13 @@ const Hero = ({ translations }) => {
   };
 
   const handleCategoryClick = (categoryKey) => {
-    // Navigate to job posting wizard with category in URL path
-    navigate(`/post/${categoryKey}`);
+    // Special routing for Major Projects to XL landing
+    if (categoryKey === 'majorProjects') {
+      navigate('/xl');
+    } else {
+      // Navigate to job posting wizard with category in URL path
+      navigate(`/post/${categoryKey}`);
+    }
   };
 
   return (
