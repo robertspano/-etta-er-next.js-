@@ -15,7 +15,7 @@ export const useReviews = (limit = 12, locale = 'en') => {
         
         // Call the real backend API
         const response = await api.getReviews({ limit, locale });
-        setReviews(response.data);
+        setReviews(response);
         
       } catch (err) {
         console.error('Error fetching reviews:', err);
