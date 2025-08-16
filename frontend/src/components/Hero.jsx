@@ -142,22 +142,25 @@ const Hero = ({ translations }) => {
               </div>
             </form>
 
-            {/* Service Categories Grid - 4 columns on desktop */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+            {/* Service Categories Grid - Clean icon-only style like Mittanbud */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               {serviceCategories.map((category, index) => {
                 return (
                   <button
                     key={category.key}
                     onClick={() => handleCategoryClick(category.key)}
-                    className="group flex flex-col items-center p-5 bg-white/80 backdrop-blur-sm rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 hover:scale-105 hover:bg-white animate-fade-in-up"
+                    className="group inline-flex flex-col items-center gap-3 p-4 md:p-6 cursor-pointer select-none transition-all duration-200 animate-fade-in-up"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <div className="p-3 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl mb-4 group-hover:from-blue-100 group-hover:to-indigo-200 transition-all duration-300">
-                      <div className="h-8 w-8 text-blue-600 group-hover:text-blue-700 group-hover:scale-110 transition-all duration-300 flex items-center justify-center">
+                    {/* Icon - larger and navy colored */}
+                    <div className="text-[#1B2B5B] group-hover:scale-105 transition-transform duration-200">
+                      <div className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 flex items-center justify-center">
                         {category.icon}
                       </div>
                     </div>
-                    <span className="text-sm font-semibold text-gray-800 text-center leading-tight group-hover:text-gray-900">
+                    
+                    {/* Label */}
+                    <span className="text-sm md:text-base font-medium text-slate-800 group-hover:text-[#1B2B5B] text-center leading-tight transition-colors duration-200">
                       {category.name}
                     </span>
                   </button>
