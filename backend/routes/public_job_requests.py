@@ -61,6 +61,8 @@ class DraftJobRequestUpdate(BaseModel):
     firstName: Optional[str] = None
     lastName: Optional[str] = None
     contactPreference: Optional[str] = None
+    licensePlate: Optional[str] = None  # For automotive updates
+    plateCountry: Optional[str] = None  # For automotive updates
     
     @validator('title')
     def validate_title_length(cls, v):
@@ -73,6 +75,16 @@ class DraftJobRequestUpdate(BaseModel):
         if v is not None and len(v.strip()) < 30:
             raise ValueError('Description must be at least 30 characters long')
         return v.strip() if v else v
+    
+    @validator('licensePlate')
+    def validate_license_plate(cls, v):
+        if v is not None:
+            if not (2 <= len(v) <= 8):
+                raise ValueError('License plate must be 2-8 characters long')
+            import re
+            if not re.match(r'^[A-Z0-9]+$', v):
+                raise ValueError('License plate must contain only letters and numbers')
+        return v
 
 class DraftJobResponse(BaseModel):
     """Response schema for draft job requests"""
