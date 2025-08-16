@@ -1,0 +1,186 @@
+{
+  "summary": {
+    "total": 25,
+    "passed": 24,
+    "failed": 1,
+    "success_rate": 96.0
+  },
+  "results": [
+    {
+      "test": "Customer Registration",
+      "success": true,
+      "details": "Customer registered successfully",
+      "timestamp": "2025-08-16T00:16:20.701367",
+      "response_data": null
+    },
+    {
+      "test": "Professional Registration",
+      "success": true,
+      "details": "Professional registered successfully",
+      "timestamp": "2025-08-16T00:16:20.917503",
+      "response_data": null
+    },
+    {
+      "test": "Customer Login",
+      "success": true,
+      "details": "Customer login successful",
+      "timestamp": "2025-08-16T00:16:21.082358",
+      "response_data": null
+    },
+    {
+      "test": "Professional Login",
+      "success": true,
+      "details": "Professional login successful",
+      "timestamp": "2025-08-16T00:16:21.344840",
+      "response_data": null
+    },
+    {
+      "test": "POST /api/job-requests (Customer)",
+      "success": true,
+      "details": "Job created: f7901efe-dfc6-41cf-b24e-5d7548c87fa5",
+      "timestamp": "2025-08-16T00:16:21.403523",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/job-requests (customer_only=true)",
+      "success": true,
+      "details": "Retrieved 1 customer jobs",
+      "timestamp": "2025-08-16T00:16:21.456839",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/job-requests (Pagination)",
+      "success": true,
+      "details": "Retrieved 1 jobs with pagination",
+      "timestamp": "2025-08-16T00:16:21.472848",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/job-requests/{id}",
+      "success": true,
+      "details": "Job details retrieved: Bathroom Light Installation",
+      "timestamp": "2025-08-16T00:16:21.526013",
+      "response_data": null
+    },
+    {
+      "test": "PUT /api/job-requests/{id}/status",
+      "success": true,
+      "details": "Job status updated to cancelled",
+      "timestamp": "2025-08-16T00:16:21.538277",
+      "response_data": null
+    },
+    {
+      "test": "Create Job for Quote Testing",
+      "success": true,
+      "details": "Job created: 04820073-0542-48ff-88dc-840ab3a2f8d2",
+      "timestamp": "2025-08-16T00:16:21.591179",
+      "response_data": null
+    },
+    {
+      "test": "Professional Creates Quote",
+      "success": true,
+      "details": "Quote created: 7306b735-e173-4d37-80e4-d8cf2b338ea1",
+      "timestamp": "2025-08-16T00:16:21.652137",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/quotes (my_quotes=true)",
+      "success": true,
+      "details": "Retrieved 1 customer quotes",
+      "timestamp": "2025-08-16T00:16:21.663987",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/quotes/{id}",
+      "success": true,
+      "details": "Quote details: 35000.0 ISK from  ",
+      "timestamp": "2025-08-16T00:16:21.716058",
+      "response_data": null
+    },
+    {
+      "test": "POST /api/quotes/{id}/accept",
+      "success": true,
+      "details": "Quote accepted successfully",
+      "timestamp": "2025-08-16T00:16:21.769006",
+      "response_data": null
+    },
+    {
+      "test": "POST /api/quotes/{id}/decline (Already Accepted)",
+      "success": true,
+      "details": "Correctly prevented declining accepted quote",
+      "timestamp": "2025-08-16T00:16:21.822027",
+      "response_data": null
+    },
+    {
+      "test": "Get Professional ID",
+      "success": true,
+      "details": "Professional ID: 2c9a9059-a2e3-4396-bd86-3578fa17a844",
+      "timestamp": "2025-08-16T00:16:21.832722",
+      "response_data": null
+    },
+    {
+      "test": "POST /api/messages (Customer to Professional)",
+      "success": true,
+      "details": "Message sent: 0217ab10-107a-4cc3-b547-21c22c499902",
+      "timestamp": "2025-08-16T00:16:21.849458",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/messages/job/{id}",
+      "success": true,
+      "details": "Retrieved 1 job messages",
+      "timestamp": "2025-08-16T00:16:21.903192",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/messages/conversations",
+      "success": true,
+      "details": "Retrieved 2 conversations",
+      "timestamp": "2025-08-16T00:16:21.917886",
+      "response_data": null
+    },
+    {
+      "test": "POST /api/messages (Professional Reply)",
+      "success": true,
+      "details": "Reply sent: 338d12aa-2f3c-416a-8f60-660fd0f91032",
+      "timestamp": "2025-08-16T00:16:21.981383",
+      "response_data": null
+    },
+    {
+      "test": "POST /api/messages/upload-attachment",
+      "success": true,
+      "details": "File uploaded: test_document.txt",
+      "timestamp": "2025-08-16T00:16:22.031946",
+      "response_data": null
+    },
+    {
+      "test": "Protected Endpoint (Unauthenticated)",
+      "success": true,
+      "details": "Correctly requires authentication",
+      "timestamp": "2025-08-16T00:16:22.091259",
+      "response_data": null
+    },
+    {
+      "test": "Role-Based Access (Customer Create Quote)",
+      "success": true,
+      "details": "Correctly denied customer quote creation",
+      "timestamp": "2025-08-16T00:16:22.102374",
+      "response_data": null
+    },
+    {
+      "test": "Role-Based Access (Professional Customer Jobs)",
+      "success": false,
+      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://bcon-marketplace.preview.emergentagent.com/api/job-requests/?customer_only=true'",
+      "timestamp": "2025-08-16T00:16:22.112747",
+      "response_data": null
+    },
+    {
+      "test": "Customer Access Own Job",
+      "success": true,
+      "details": "Customer can access their own job details",
+      "timestamp": "2025-08-16T00:16:22.163225",
+      "response_data": null
+    }
+  ],
+  "timestamp": "2025-08-16T00:16:22.164057"
+}
