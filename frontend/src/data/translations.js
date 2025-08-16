@@ -205,6 +205,25 @@ export const translations = {
     yes: "Yes",
     no: "No",
     
+    // Job Posting Wizard
+    stepOneTitle: "About the Job",
+    stepTwoTitle: "Contact Info",
+    stepThreeTitle: "Complete",
+    jobTitleLabel: "Title",
+    jobTitlePlaceholder: "Short description of the job",
+    jobDescriptionLabel: "Description", 
+    jobDescriptionPlaceholder: "Tell us what needs to be done...",
+    contactInfoTitle: "Contact Information",
+    phoneWithCountryCode: "Phone with country code",
+    contactPreference: "Contact preference",
+    throughPlatformAndPhone: "Through platform & phone",
+    platformOnly: "Platform only",
+    back: "Back",
+    next: "Next",
+    finish: "Finish",
+    confirmAndSubmit: "Confirm and Submit",
+    summary: "Summary",
+    
     // Forms
     required: "Required",
     optional: "Optional",
