@@ -495,15 +495,26 @@ const JobPostingWizard = ({ translations, language }) => {
             <p className="text-gray-900">{categoryNames[formData.category] || formData.category}</p>
           </div>
 
-          <div>
-            <span className="text-sm font-medium text-gray-600">{translations.jobTitleLabel}:</span>
-            <p className="text-gray-900">{formData.title}</p>
-          </div>
+          {formData.category === 'automotive' ? (
+            <>
+              <div>
+                <span className="text-sm font-medium text-gray-600">{translations.automotiveLicensePlateLabel}:</span>
+                <p className="text-gray-900">{formData.plateCountry} {formData.licensePlate}</p>
+              </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <span className="text-sm font-medium text-gray-600">{translations.jobTitleLabel}:</span>
+                <p className="text-gray-900">{formData.title}</p>
+              </div>
 
-          <div>
-            <span className="text-sm font-medium text-gray-600">{translations.jobDescriptionLabel}:</span>
-            <p className="text-gray-900">{formData.description}</p>
-          </div>
+              <div>
+                <span className="text-sm font-medium text-gray-600">{translations.jobDescriptionLabel}:</span>
+                <p className="text-gray-900">{formData.description}</p>
+              </div>
+            </>
+          )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
