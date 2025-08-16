@@ -63,6 +63,7 @@ const HomePage = ({ language, setLanguage, currentTranslations }) => {
         error={reviewsError}
       />
       <TrustSection translations={currentTranslations} />
+      <ProSignupSection translations={currentTranslations} />
       <Footer translations={currentTranslations} />
     </div>
   );
