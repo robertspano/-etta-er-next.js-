@@ -157,9 +157,9 @@ const XLLanding = ({ translations, language }) => {
               >
                 {/* Icon */}
                 <div className="w-16 h-16 lg:w-20 lg:h-20 mx-auto mb-4 bg-slate-800 rounded-full flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
-                  <span className="text-2xl lg:text-3xl text-white">
+                  <div className="text-white">
                     {category.icon}
-                  </span>
+                  </div>
                 </div>
 
                 {/* Label */}
