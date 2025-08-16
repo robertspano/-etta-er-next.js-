@@ -10,6 +10,7 @@ import HowItWorks from './components/HowItWorks';
 import PopularProjects from './components/PopularProjects';
 import FindCompanySection from './components/FindCompanySection';
 import ReviewsSection from './components/ReviewsSection';
+import TrustSection from './components/TrustSection';
 import Footer from './components/Footer';
 
 // Auth Components
