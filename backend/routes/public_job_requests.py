@@ -33,7 +33,7 @@ class DraftJobRequestCreate(BaseModel):
             raise ValueError('Title must be at least 10 characters long')
         return v.strip() if v else v
     
-    @field_validator('description')
+    @field_validator('description', mode='before')
     @classmethod
     def validate_description_length(cls, v: Optional[str], info: ValidationInfo) -> Optional[str]:
         # Only validate description if not automotive category or if description is provided
