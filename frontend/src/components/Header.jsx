@@ -177,81 +177,83 @@ const Header = ({ language, setLanguage, translations }) => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden border-t bg-white py-4">
-            <div className="flex flex-col space-y-4">
-              <a href="#services" className="text-gray-700 hover:text-blue-600 transition-colors px-4">
-                {translations.services}
-              </a>
-              <a href="#how-it-works" className="text-gray-700 hover:text-blue-600 transition-colors px-4">
-                {translations.howItWorks}
-              </a>
-              <a href="#about" className="text-gray-700 hover:text-blue-600 transition-colors px-4">
-                {translations.about}
-              </a>
-              <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors px-4">
-                {translations.contact}
-              </a>
-              <div className="px-4 pt-4 border-t">
-                <Select value={language} onValueChange={setLanguage}>
-                  <SelectTrigger className="w-full mb-3">
-                    <Globe className="h-4 w-4 mr-2" />
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="is">Íslenska</SelectItem>
-                    <SelectItem value="en">English</SelectItem>
-                  </SelectContent>
-                </Select>
-                <div className="space-y-2">
-                  <Button 
-                    onClick={handlePostProject}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-                  >
-                    {translations.postProject}
-                  </Button>
-                  
-                  {!loading && (
-                    <>
-                      {isAuthenticated() ? (
-                        <div className="space-y-2">
-                          <Link to="/dashboard" className="block">
-                            <Button variant="outline" className="w-full">
-                              <LayoutDashboard className="h-4 w-4 mr-2" />
-                              {translations.dashboard}
-                            </Button>
-                          </Link>
-                          <Link to="/profile" className="block">
-                            <Button variant="outline" className="w-full">
-                              <Settings className="h-4 w-4 mr-2" />
-                              {translations.profile}
-                            </Button>
-                          </Link>
-                          <Button 
-                            onClick={handleLogout}
-                            variant="outline" 
-                            className="w-full text-red-600 border-red-200 hover:bg-red-50"
-                          >
-                            <LogOut className="h-4 w-4 mr-2" />
-                            {translations.logout}
-                          </Button>
-                        </div>
-                      ) : (
-                        <div className="space-y-2">
-                          <Link to="/login" className="block">
-                            <Button variant="outline" className="w-full border-gray-300 text-gray-700 hover:bg-gray-50">
-                              {translations.signIn}
-                            </Button>
-                          </Link>
-                          <Link to="/register" className="block">
-                            <Button variant="ghost" className="w-full text-blue-600 hover:text-blue-700 hover:bg-blue-50">
-                              {translations.signUp}
-                            </Button>
-                          </Link>
-                        </div>
-                      )}
-                    </>
+            <div className="flex flex-col space-y-4 px-4">
+              {/* Primary Post Project Button */}
+              <Button 
+                onClick={handlePostProject}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium"
+              >
+                {translations.postProject}
+              </Button>
+              
+              {/* Language Switcher */}
+              <Select value={language} onValueChange={setLanguage}>
+                <SelectTrigger className="w-full">
+                  <Globe className="h-4 w-4 mr-2" />
+                  <span>{language.toUpperCase()}</span>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="is">IS</SelectItem>
+                  <SelectItem value="en">EN</SelectItem>
+                </SelectContent>
+              </Select>
+              
+              {/* Register Company Button */}
+              <Button 
+                onClick={handleRegisterCompany}
+                variant="outline"
+                className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 rounded-xl"
+              >
+                {translations.registerCompany}
+              </Button>
+              
+              {!loading && (
+                <>
+                  {isAuthenticated() ? (
+                    <div className="space-y-2 pt-2 border-t">
+                      <Link to="/dashboard" className="block">
+                        <Button variant="ghost" className="w-full justify-start">
+                          <LayoutDashboard className="h-4 w-4 mr-2" />
+                          {translations.dashboard}
+                        </Button>
+                      </Link>
+                      <Link to="/profile" className="block">
+                        <Button variant="ghost" className="w-full justify-start">
+                          <User className="h-4 w-4 mr-2" />
+                          {translations.profile}
+                        </Button>
+                      </Link>
+                      <Link to="/settings" className="block">
+                        <Button variant="ghost" className="w-full justify-start">
+                          <Settings className="h-4 w-4 mr-2" />
+                          {translations.settings}
+                        </Button>
+                      </Link>
+                      <Button 
+                        onClick={handleLogout}
+                        variant="ghost" 
+                        className="w-full justify-start text-red-600 hover:bg-red-50"
+                      >
+                        <LogOut className="h-4 w-4 mr-2" />
+                        {translations.logout}
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className="space-y-2 pt-2 border-t">
+                      <Link to="/login" className="block">
+                        <Button variant="ghost" className="w-full justify-start">
+                          {translations.signIn}
+                        </Button>
+                      </Link>
+                      <Link to="/register" className="block">
+                        <Button variant="ghost" className="w-full justify-start">
+                          {translations.signUp}
+                        </Button>
+                      </Link>
+                    </div>
                   )}
-                </div>
-              </div>
+                </>
+              )}
             </div>
           </div>
         )}
