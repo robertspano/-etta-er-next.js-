@@ -4,49 +4,37 @@ const ProSignupSection = ({ translations }) => {
   return (
     <section className="bg-slate-800 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px] lg:min-h-[600px] items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px] lg:min-h-[600px] items-center gap-8">
           
-          {/* Left side - Professional Image */}
+          {/* Left side - Professional Photo */}
           <div className="relative order-2 lg:order-1 flex justify-center lg:justify-start">
             <div className="relative">
-              {/* Professional figure placeholder - using CSS to create a professional silhouette */}
-              <div className="relative w-80 h-96 lg:w-96 lg:h-[480px]">
-                {/* Base figure shape */}
-                <div 
-                  className="absolute inset-0 bg-gradient-to-br from-slate-600 to-slate-700 opacity-80"
-                  style={{
-                    clipPath: 'polygon(30% 0%, 70% 0%, 85% 25%, 85% 75%, 70% 100%, 30% 100%, 15% 75%, 15% 25%)'
-                  }}
-                />
-                
-                {/* Professional icon overlay */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-24 h-24 bg-blue-500 rounded-full flex items-center justify-center opacity-90">
-                    <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-                    </svg>
-                  </div>
+              {/* Professional photo */}
+              <img 
+                src="https://images.unsplash.com/photo-1672748341520-6a839e6c05bb?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxjb25zdHJ1Y3Rpb24lMjB3b3JrZXJ8ZW58MHx8fHwxNzU1MzY1Mzg3fDA&ixlib=rb-4.1.0&q=85&w=500&h=600"
+                alt="Professional contractor"
+                className="w-80 h-96 lg:w-96 lg:h-[480px] object-cover object-center rounded-lg shadow-2xl"
+                loading="lazy"
+              />
+              
+              {/* Subtle overlay with decorative elements */}
+              <div className="absolute top-4 right-4 opacity-30">
+                <div className="grid grid-cols-4 gap-1">
+                  {[...Array(12)].map((_, i) => (
+                    <div key={i} className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse" 
+                         style={{ animationDelay: `${i * 0.2}s` }} />
+                  ))}
                 </div>
-                
-                {/* Decorative dotted pattern overlay */}
-                <div className="absolute top-4 right-4 opacity-30">
-                  <div className="grid grid-cols-4 gap-2">
-                    {[...Array(16)].map((_, i) => (
-                      <div key={i} className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" 
-                           style={{ animationDelay: `${i * 0.1}s` }} />
-                    ))}
-                  </div>
-                </div>
-                
-                {/* Additional decorative shapes */}
-                <div className="absolute bottom-8 left-4 w-16 h-16 bg-blue-500 opacity-20 rounded-full blur-xl" />
-                <div className="absolute top-12 right-8 w-12 h-12 bg-green-500 opacity-20 rounded-full blur-lg" />
               </div>
+              
+              {/* Additional subtle decorative shapes */}
+              <div className="absolute bottom-8 left-4 w-12 h-12 bg-blue-500 opacity-20 rounded-full blur-xl" />
+              <div className="absolute top-12 right-8 w-8 h-8 bg-green-500 opacity-20 rounded-full blur-lg" />
             </div>
           </div>
 
           {/* Right side - Content */}
-          <div className="order-1 lg:order-2 py-16 lg:py-20 lg:pl-16">
+          <div className="order-1 lg:order-2 py-16 lg:py-20">
             {/* Logo */}
             <div className="mb-8">
               <div className="flex items-center text-white">
@@ -66,7 +54,7 @@ const ProSignupSection = ({ translations }) => {
             </h2>
 
             {/* Subtitle */}
-            <p className="text-lg lg:text-xl text-slate-300 mb-8 leading-relaxed max-w-md">
+            <p className="text-lg lg:text-xl text-slate-300 mb-8 leading-relaxed max-w-lg">
               {translations.proSignupSubtitle}
             </p>
 
