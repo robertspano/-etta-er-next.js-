@@ -120,8 +120,10 @@ const Hero = ({ translations }) => {
   };
 
   const handleCategoryClick = (categoryKey) => {
-    // Special routing for Major Projects to XL landing
-    if (categoryKey === 'majorProjects') {
+    // Special routing for All Categories to full category overview
+    if (categoryKey === 'allCategories') {
+      navigate('/all-categories');
+    } else if (categoryKey === 'majorProjects') {
       navigate('/xl');
     } else {
       // Navigate to job posting wizard with category in URL path
