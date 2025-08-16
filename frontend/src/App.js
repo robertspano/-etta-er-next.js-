@@ -170,6 +170,79 @@ function App() {
 
             {/* Customer Only Routes */}
             <Route 
+              path="/create-job" 
+              element={
+                <CustomerRoute>
+                  <DashboardLayout 
+                    language={language} 
+                    setLanguage={setLanguage} 
+                    currentTranslations={currentTranslations}
+                  >
+                    <JobRequestForm 
+                      translations={currentTranslations} 
+                      language={language} 
+                    />
+                  </DashboardLayout>
+                </CustomerRoute>
+              } 
+            />
+
+            <Route 
+              path="/job/:jobId" 
+              element={
+                <CustomerRoute>
+                  <DashboardLayout 
+                    language={language} 
+                    setLanguage={setLanguage} 
+                    currentTranslations={currentTranslations}
+                  >
+                    <JobRequestDetail 
+                      translations={currentTranslations} 
+                      language={language} 
+                    />
+                  </DashboardLayout>
+                </CustomerRoute>
+              } 
+            />
+
+            <Route 
+              path="/job/:jobId/edit" 
+              element={
+                <CustomerRoute>
+                  <DashboardLayout 
+                    language={language} 
+                    setLanguage={setLanguage} 
+                    currentTranslations={currentTranslations}
+                  >
+                    <JobRequestForm 
+                      translations={currentTranslations} 
+                      language={language} 
+                      editMode={true}
+                    />
+                  </DashboardLayout>
+                </CustomerRoute>
+              } 
+            />
+
+            <Route 
+              path="/job/:jobId/messages" 
+              element={
+                <ProtectedRoute>
+                  <DashboardLayout 
+                    language={language} 
+                    setLanguage={setLanguage} 
+                    currentTranslations={currentTranslations}
+                  >
+                    <JobMessaging 
+                      translations={currentTranslations} 
+                      language={language} 
+                    />
+                  </DashboardLayout>
+                </ProtectedRoute>
+              } 
+            />
+
+            <Route 
               path="/my-projects" 
               element={
                 <CustomerRoute>
