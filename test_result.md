@@ -535,8 +535,9 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Professional Profile Management"
-  stuck_tasks: []
+    - "Moving Category Subcategory Picker Implementation"
+  stuck_tasks:
+    - "Moving Category Subcategory Picker Implementation"
   test_all: false
   test_priority: "high_first"
 
