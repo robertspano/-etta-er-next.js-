@@ -235,7 +235,13 @@ const JobPostingWizard = ({ translations, language }) => {
       if (err.message?.includes('Network Error')) {
         setError('Network connection failed. Please check your internet connection and try again.');
       } else if (err.response?.status === 422) {
-        setError('Please check that your title is at least 10 characters and description is at least 30 characters.');
+        const errorDetail = err.response?.data?.detail;
+        if (errorDetail && Array.isArray(errorDetail)) {
+          const validationErrors = errorDetail.map(e => e.msg).join('. ');
+          setError(`Validation error: ${validationErrors}`);
+        } else {
+          setError('Please check that your title is at least 10 characters and description is at least 30 characters.');
+        }
       } else if (err.response?.status >= 500) {
         setError('Server error. Please try again in a moment.');
       } else {
