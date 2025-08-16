@@ -90,11 +90,13 @@ class DraftJobResponse(BaseModel):
     """Response schema for draft job requests"""
     id: str
     category: str
-    title: str
-    description: str
+    title: Optional[str] = None  # Optional for automotive
+    description: Optional[str] = None  # Optional for automotive
     postcode: str
     status: str
     created_at: datetime
+    licensePlate: Optional[str] = None  # For automotive
+    plateCountry: Optional[str] = None  # For automotive
 
 def get_or_create_guest_id(request: Request, response: Response) -> str:
     """Get existing guest ID from cookie or create new one"""
