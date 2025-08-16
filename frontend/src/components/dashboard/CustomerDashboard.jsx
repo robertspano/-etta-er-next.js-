@@ -29,11 +29,25 @@ const CustomerDashboard = ({ translations, language, user }) => {
   const [quotes, setQuotes] = useState([]);
   const [conversations, setConversations] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const [stats, setStats] = useState({
     totalJobs: 0,
     activeJobs: 0,
     completedJobs: 0,
     pendingQuotes: 0,
+  });
+
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
+  const [totalPages, setTotalPages] = useState(1);
+  
+  // Filter state
+  const [filters, setFilters] = useState({
+    status: '',
+    category: '',
+    search: ''
   });
 
   useEffect(() => {
