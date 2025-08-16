@@ -378,7 +378,10 @@ const JobPostingWizard = ({ translations, language }) => {
           minLength={10}
           required
         />
-        <p className="text-xs text-gray-500 mt-1">Minimum 10 characters</p>
+        <p className="text-xs text-gray-500 mt-1">
+          Minimum 10 characters ({formData.title?.length || 0}/10)
+          {formData.title?.length >= 10 && <span className="text-green-600"> ✓</span>}
+        </p>
       </div>
 
       <div>
