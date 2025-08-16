@@ -3,7 +3,7 @@ from typing import Optional
 from datetime import datetime, timedelta
 from models.job_request import JobRequest, JobStatus, JobPriority
 from models.user import User
-from auth.config import current_active_user
+from auth.config import current_active_user_optional
 from services.database import db_service
 from pydantic import BaseModel, validator
 import uuid
@@ -112,7 +112,7 @@ async def create_draft_job_request(
     job_data: DraftJobRequestCreate,
     request: Request,
     response: Response,
-    current_user: Optional[User] = Depends(current_active_user)
+    current_user: Optional[User] = Depends(current_active_user_optional)
 ):
     """Create a draft job request (public endpoint)"""
     try:
@@ -179,7 +179,7 @@ async def update_draft_job_request(
     draft_id: str,
     update_data: DraftJobRequestUpdate,
     request: Request,
-    current_user: Optional[User] = Depends(current_active_user)
+    current_user: Optional[User] = Depends(current_active_user_optional)
 ):
     """Update a draft job request (public endpoint)"""
     try:
@@ -241,7 +241,7 @@ async def update_draft_job_request(
 async def submit_draft_job_request(
     draft_id: str,
     request: Request,
-    current_user: Optional[User] = Depends(current_active_user)
+    current_user: Optional[User] = Depends(current_active_user_optional)
 ):
     """Submit a draft job request to make it public (public endpoint)"""
     try:
