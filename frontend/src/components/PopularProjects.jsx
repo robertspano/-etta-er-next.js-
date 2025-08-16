@@ -116,36 +116,18 @@ const PopularProjects = ({ translations }) => {
                 className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-transparent hover:scale-105 p-6 card-hover animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Popularity indicator */}
-                {category.popularity === 'High' && (
-                  <div className="absolute -top-2 -right-2 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-                    🔥 Hot
-                  </div>
-                )}
-                
-                {/* Gradient background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${category.bgColor} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
-                
                 <div className="relative flex flex-col items-center text-center">
-                  {/* Enhanced Icon Container */}
-                  <div className={`w-16 h-16 mb-5 rounded-2xl bg-gradient-to-br ${category.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-300`}>
-                    <div className="text-white">
+                  {/* Icon Container */}
+                  <div className="w-16 h-16 mb-5 rounded-2xl bg-white border-2 border-[#1B2B5B] flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                    <div className="text-[#1B2B5B]">
                       {category.icon}
                     </div>
                   </div>
                   
                   {/* Category Name */}
-                  <h3 className={`font-bold text-base ${category.textColor} group-hover:text-gray-900 mb-2 transition-colors duration-300`}>
+                  <h3 className="font-bold text-base text-[#1B2B5B] mb-2">
                     {category.name}
                   </h3>
-                  
-                  {/* Call to action hint */}
-                  <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                    <div className="flex items-center gap-2 text-xs text-gray-500 bg-white/80 px-3 py-1 rounded-full">
-                      <Clock className="h-3 w-3" />
-                      <span>Start now</span>
-                    </div>
-                  </div>
                 </div>
               </button>
             );
