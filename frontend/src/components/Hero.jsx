@@ -26,8 +26,8 @@ const Hero = ({ translations }) => {
   };
 
   const handleCategoryClick = (categoryKey) => {
-    // Navigate to job posting wizard with selected category
-    navigate(`/post?category=${categoryKey}`);
+    // Navigate to job posting wizard with category in URL path
+    navigate(`/post/${categoryKey}`);
   };
 
   return (
