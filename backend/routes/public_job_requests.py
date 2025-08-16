@@ -178,6 +178,7 @@ async def create_draft_job_request(
             "customer_id": current_user.id if current_user else None,
             "guest_id": guest_id,
             "category": job_data.category,
+            "subcategory": job_data.subcategory,
             "title": job_data.title,
             "description": job_data.description,
             "postcode": job_data.postcode,
