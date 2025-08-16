@@ -1393,12 +1393,22 @@ class BuildConnectAPITester:
         
         for category in categories:
             try:
-                draft_data = {
-                    "category": category,
-                    "title": f"Professional {category.title()} Service Required",
-                    "description": f"Need professional {category} service for quality work and reliable completion of project requirements",
-                    "postcode": "101"
-                }
+                if category == "automotive":
+                    # Test automotive category with license plate
+                    draft_data = {
+                        "category": category,
+                        "licensePlate": "AB123XY",
+                        "plateCountry": "IS",
+                        "postcode": "101"
+                    }
+                else:
+                    # Test regular categories with title/description
+                    draft_data = {
+                        "category": category,
+                        "title": f"Professional {category.title()} Service Required",
+                        "description": f"Need professional {category} service for quality work and reliable completion of project requirements",
+                        "postcode": "101"
+                    }
                 
                 async with self.session.post(
                     f"{BACKEND_URL}/public/job-requests/draft",
