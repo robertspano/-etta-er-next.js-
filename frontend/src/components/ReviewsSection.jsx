@@ -175,7 +175,28 @@ const ReviewsSection = ({ reviews = [], translations, language, loading = false,
 
         {/* Reviews Container */}
         <div className="relative">
-          {reviews.length === 0 ? (
+          {loading ? (
+            /* Loading State */
+            <div className="text-center py-16">
+              <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+              <p className="text-gray-600">
+                {translations.loadingReviews || "Loading reviews..."}
+              </p>
+            </div>
+          ) : error ? (
+            /* Error State */
+            <div className="text-center py-16">
+              <div className="w-16 h-16 mx-auto mb-6 bg-red-100 rounded-full flex items-center justify-center">
+                <Star className="h-8 w-8 text-red-400" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                {translations.reviewsErrorTitle || "Unable to load reviews"}
+              </h3>
+              <p className="text-gray-600">
+                {translations.reviewsErrorMessage || "Please try again later"}
+              </p>
+            </div>
+          ) : reviews.length === 0 ? (
             /* Empty State */
             <div className="text-center py-16">
               <div className="max-w-md mx-auto">
