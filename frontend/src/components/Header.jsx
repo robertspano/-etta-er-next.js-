@@ -15,7 +15,6 @@ import { Menu, X, Globe, User, Settings, LogOut, LayoutDashboard, ChevronDown, C
 const Header = ({ language, setLanguage, translations }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isLoginPageOpen, setIsLoginPageOpen] = useState(false);
   const { user, logout, isAuthenticated, loading } = useAuth();
   const navigate = useNavigate();
 
