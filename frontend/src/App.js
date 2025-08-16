@@ -239,6 +239,22 @@ function App() {
               } 
             />
 
+            {/* Moving Category Picker Route - Must come before general post routes */}
+            <Route 
+              path="/post/moving" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <MovingCategoryPicker 
+                    translations={currentTranslations} 
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
             {/* Public Job Posting Wizard Routes */}
             <Route 
               path="/post/:category" 
