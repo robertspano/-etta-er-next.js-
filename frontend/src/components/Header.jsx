@@ -127,21 +127,28 @@ const Header = ({ language, setLanguage, translations }) => {
               {translations.postProject}
             </Button>
             
-            {/* Hamburger Menu */}
-            <Button
-              onClick={() => setIsDrawerOpen(true)}
-              variant="ghost"
-              className="h-10 w-10 p-0 hover:bg-gray-100"
-            >
-              <Menu className="h-5 w-5" />
-            </Button>
-            
-            {/* Profile Avatar */}
-            <div 
-              onClick={() => setIsDrawerOpen(true)}
-              className="h-10 w-10 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer flex items-center justify-center"
-            >
-              <User className="h-5 w-5 text-gray-600" />
+            {/* Menu Pill - Hamburger | Divider | Avatar */}
+            <div className="inline-flex items-center gap-2.5 h-11 px-3 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition-colors focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-1">
+              {/* Hamburger Icon */}
+              <button
+                onClick={() => setIsDrawerOpen(true)}
+                aria-label="Open menu"
+                className="p-0 hover:opacity-70 transition-opacity focus:outline-none focus:opacity-70"
+              >
+                <Menu className="h-6 w-6 text-gray-600" />
+              </button>
+              
+              {/* Vertical Divider */}
+              <div className="w-px h-6 bg-gray-200"></div>
+              
+              {/* Profile Avatar */}
+              <button
+                onClick={() => setIsDrawerOpen(true)}
+                aria-label="Open profile menu"
+                className="p-0 hover:opacity-70 transition-opacity focus:outline-none focus:opacity-70"
+              >
+                <User className="h-6 w-6 text-gray-600" />
+              </button>
             </div>
           </div>
 
