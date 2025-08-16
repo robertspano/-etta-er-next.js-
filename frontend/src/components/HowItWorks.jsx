@@ -56,8 +56,8 @@ const HowItWorks = ({ translations }) => {
                   </div>
                 </div>
                 
-                {/* Title - More compact */}
-                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3 leading-tight">
+                {/* Title - More compact and single line */}
+                <h3 className="text-base md:text-lg font-bold text-gray-900 mb-2 md:mb-3 leading-tight whitespace-nowrap">
                   {step.title}
                 </h3>
                 
