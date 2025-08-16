@@ -12,8 +12,8 @@ import { ArrowLeft, Check } from 'lucide-react';
 
 const JobPostingWizard = ({ translations, language }) => {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const { user, requireAuth } = useAuth();
+  const { category } = useParams();
+  const { user } = useAuth(); // Optional - user may be null for guests
   
   const [currentStep, setCurrentStep] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -22,7 +22,7 @@ const JobPostingWizard = ({ translations, language }) => {
   
   // Form data
   const [formData, setFormData] = useState({
-    category: searchParams.get('category') || '',
+    category: category || '',
     title: '',
     description: '',
     email: user?.email || '',
@@ -34,15 +34,37 @@ const JobPostingWizard = ({ translations, language }) => {
     contactPreference: 'platform_and_phone'
   });
 
-  // Draft job request ID for persistence
-  const [draftJobId, setDraftJobId] = useState(null);
+  // Draft job request ID for persistence (stored in localStorage for guests)
+  const [draftJobId, setDraftJobId] = useState(() => {
+    return localStorage.getItem('bc_draft_job_id') || null;
+  });
 
+  // Save draft ID to localStorage whenever it changes
   useEffect(() => {
-    if (!requireAuth()) {
-      navigate('/login');
-      return;
+    if (draftJobId) {
+      localStorage.setItem('bc_draft_job_id', draftJobId);
     }
-  }, [user, navigate, requireAuth]);
+  }, [draftJobId]);
+
+  // Load saved form data from localStorage for guests
+  useEffect(() => {
+    const savedFormData = localStorage.getItem('bc_draft_form_data');
+    if (savedFormData && !user) {
+      try {
+        const parsed = JSON.parse(savedFormData);
+        setFormData(prev => ({ ...prev, ...parsed, category: category || prev.category }));
+      } catch (e) {
+        console.warn('Failed to parse saved form data:', e);
+      }
+    }
+  }, [category, user]);
+
+  // Save form data to localStorage for guests
+  const saveFormDataToLocalStorage = (data) => {
+    if (!user) {
+      localStorage.setItem('bc_draft_form_data', JSON.stringify(data));
+    }
+  };
 
   const categoryNames = {
     handcraft: translations.handcraft,
