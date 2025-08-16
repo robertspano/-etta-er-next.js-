@@ -83,7 +83,9 @@ const JobPostingWizard = ({ translations, language }) => {
   ];
 
   const updateFormData = (field, value) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    const newFormData = { ...formData, [field]: value };
+    setFormData(newFormData);
+    saveFormDataToLocalStorage(newFormData);
     setError('');
   };
 
