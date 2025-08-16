@@ -1,0 +1,200 @@
+{
+  "summary": {
+    "total": 27,
+    "passed": 25,
+    "failed": 2,
+    "success_rate": 92.5925925925926
+  },
+  "results": [
+    {
+      "test": "Professional User Registration",
+      "success": true,
+      "details": "Professional registered successfully",
+      "timestamp": "2025-08-16T00:52:40.804419",
+      "response_data": null
+    },
+    {
+      "test": "Customer User Registration",
+      "success": true,
+      "details": "Customer registered successfully",
+      "timestamp": "2025-08-16T00:52:41.011104",
+      "response_data": null
+    },
+    {
+      "test": "Professional Login",
+      "success": true,
+      "details": "Professional login successful",
+      "timestamp": "2025-08-16T00:52:41.421134",
+      "response_data": null
+    },
+    {
+      "test": "Customer Login",
+      "success": true,
+      "details": "Customer login successful",
+      "timestamp": "2025-08-16T00:52:41.601426",
+      "response_data": null
+    },
+    {
+      "test": "Test Job Creation",
+      "success": true,
+      "details": "Job created: c6fb69d0-908a-4f01-9d7d-c92ab5b9ba2a",
+      "timestamp": "2025-08-16T00:52:41.618857",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/job-requests (Open Jobs)",
+      "success": true,
+      "details": "Retrieved 1 open jobs",
+      "timestamp": "2025-08-16T00:52:41.673418",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/job-requests (Category Filter)",
+      "success": true,
+      "details": "Retrieved 1 renovation jobs",
+      "timestamp": "2025-08-16T00:52:41.687880",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/job-requests (Postcode Filter)",
+      "success": true,
+      "details": "Retrieved 1 jobs in postcode 101",
+      "timestamp": "2025-08-16T00:52:41.706291",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/job-requests (Budget Range)",
+      "success": true,
+      "details": "Retrieved 1 jobs in budget range",
+      "timestamp": "2025-08-16T00:52:41.760638",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/job-requests (Pagination)",
+      "success": true,
+      "details": "Retrieved 1 jobs with pagination (limit=5)",
+      "timestamp": "2025-08-16T00:52:41.814961",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/job-requests (Priority Filter)",
+      "success": true,
+      "details": "Retrieved 1 medium priority jobs",
+      "timestamp": "2025-08-16T00:52:41.827548",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/job-requests/{id} (Professional Access)",
+      "success": true,
+      "details": "Professional can view job details: Kitchen Renovation - Professional Workflow Test",
+      "timestamp": "2025-08-16T00:52:41.881097",
+      "response_data": null
+    },
+    {
+      "test": "Job Detail Competition Data",
+      "success": true,
+      "details": "Quote count available: 0",
+      "timestamp": "2025-08-16T00:52:41.881137",
+      "response_data": null
+    },
+    {
+      "test": "Job Edit Permission Check",
+      "success": true,
+      "details": "Professional correctly denied job edit access",
+      "timestamp": "2025-08-16T00:52:41.892411",
+      "response_data": null
+    },
+    {
+      "test": "POST /api/quotes (Submit Quote)",
+      "success": true,
+      "details": "Quote submitted: 1e346258-7911-4a81-8cee-ffc211d4aff9",
+      "timestamp": "2025-08-16T00:52:41.955162",
+      "response_data": null
+    },
+    {
+      "test": "Quote Data Validation",
+      "success": true,
+      "details": "Quote data correctly saved",
+      "timestamp": "2025-08-16T00:52:41.955201",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/quotes (Professional Quotes)",
+      "success": true,
+      "details": "Retrieved 1 professional quotes",
+      "timestamp": "2025-08-16T00:52:41.967826",
+      "response_data": null
+    },
+    {
+      "test": "Quote Business Rule (One Per Job)",
+      "success": true,
+      "details": "Duplicate quote correctly rejected",
+      "timestamp": "2025-08-16T00:52:41.980769",
+      "response_data": null
+    },
+    {
+      "test": "POST /api/quotes/{id}/withdraw",
+      "success": true,
+      "details": "Quote withdrawn successfully",
+      "timestamp": "2025-08-16T00:52:41.993011",
+      "response_data": null
+    },
+    {
+      "test": "Quote Withdrawal Verification",
+      "success": true,
+      "details": "Quote status correctly updated to withdrawn",
+      "timestamp": "2025-08-16T00:52:42.054201",
+      "response_data": null
+    },
+    {
+      "test": "Quote Expiry Handling",
+      "success": true,
+      "details": "Quote with past expiry date handled correctly",
+      "timestamp": "2025-08-16T00:52:42.110214",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/messages/conversations (Professional)",
+      "success": true,
+      "details": "Retrieved 0 conversations (test job may not have messages yet)",
+      "timestamp": "2025-08-16T00:52:42.163349",
+      "response_data": null
+    },
+    {
+      "test": "Quote for Messaging Test",
+      "success": false,
+      "details": "Failed to create quote: 400",
+      "timestamp": "2025-08-16T00:52:42.217262",
+      "response_data": null
+    },
+    {
+      "test": "Professional Conversation Filtering",
+      "success": true,
+      "details": "Conversations properly filtered for professional",
+      "timestamp": "2025-08-16T00:52:42.229546",
+      "response_data": null
+    },
+    {
+      "test": "Professional Customer-Only Access Denied",
+      "success": false,
+      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://constructnexus.preview.emergentagent.com/api/job-requests/?customer_only=true'",
+      "timestamp": "2025-08-16T00:52:42.240130",
+      "response_data": null
+    },
+    {
+      "test": "Customer Quote Submission Denied",
+      "success": true,
+      "details": "Customer correctly denied quote submission",
+      "timestamp": "2025-08-16T00:52:42.292070",
+      "response_data": null
+    },
+    {
+      "test": "Quote Ownership Validation",
+      "success": true,
+      "details": "Customer correctly denied quote withdrawal",
+      "timestamp": "2025-08-16T00:52:42.302276",
+      "response_data": null
+    }
+  ],
+  "timestamp": "2025-08-16T00:52:42.303146"
+}
