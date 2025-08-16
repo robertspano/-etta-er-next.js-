@@ -1,0 +1,86 @@
+[
+  {
+    "test": "Moving Draft Creation (varetransport)",
+    "success": true,
+    "details": "Draft created with subcategory in response: varetransport",
+    "timestamp": "2025-08-16T21:39:58.962571",
+    "response_data": null
+  },
+  {
+    "test": "Moving Draft Creation (pianotransport)",
+    "success": true,
+    "details": "Draft created with subcategory in response: pianotransport",
+    "timestamp": "2025-08-16T21:39:58.975620",
+    "response_data": null
+  },
+  {
+    "test": "Moving Draft Update with Contact Info",
+    "success": true,
+    "details": "Draft updated successfully",
+    "timestamp": "2025-08-16T21:39:58.991528",
+    "response_data": null
+  },
+  {
+    "test": "Moving Draft Submission",
+    "success": true,
+    "details": "Draft submitted successfully, status: open",
+    "timestamp": "2025-08-16T21:39:59.009682",
+    "response_data": null
+  },
+  {
+    "test": "Database Storage (Job Requests API)",
+    "success": false,
+    "details": "Failed to retrieve job: 401",
+    "timestamp": "2025-08-16T21:39:59.018469",
+    "response_data": null
+  },
+  {
+    "test": "Database Storage (Jobs List)",
+    "success": false,
+    "details": "Failed to get jobs list: 401",
+    "timestamp": "2025-08-16T21:39:59.067933",
+    "response_data": null
+  },
+  {
+    "test": "Response Schema (DraftJobResponse)",
+    "success": true,
+    "details": "All required fields present, subcategory: flyttebyra",
+    "timestamp": "2025-08-16T21:39:59.077137",
+    "response_data": null
+  },
+  {
+    "test": "Response Schema (Non-Moving Subcategory)",
+    "success": true,
+    "details": "Subcategory correctly null for non-moving category",
+    "timestamp": "2025-08-16T21:39:59.129253",
+    "response_data": null
+  },
+  {
+    "test": "Backward Compatibility (Moving without Subcategory)",
+    "success": true,
+    "details": "Moving job created without subcategory: d1c50269-e9e5-412f-91aa-d6cf8cc44f44",
+    "timestamp": "2025-08-16T21:39:59.139251",
+    "response_data": null
+  },
+  {
+    "test": "Backward Compatibility (handcraft)",
+    "success": true,
+    "details": "Category handcraft works without subcategory",
+    "timestamp": "2025-08-16T21:39:59.189873",
+    "response_data": null
+  },
+  {
+    "test": "Backward Compatibility (bathroom)",
+    "success": true,
+    "details": "Category bathroom works without subcategory",
+    "timestamp": "2025-08-16T21:39:59.199807",
+    "response_data": null
+  },
+  {
+    "test": "Backward Compatibility (cleaning)",
+    "success": true,
+    "details": "Category cleaning works without subcategory",
+    "timestamp": "2025-08-16T21:39:59.249654",
+    "response_data": null
+  }
+]
