@@ -166,6 +166,8 @@ async def create_draft_job_request(
             "title": job_data.title,
             "description": job_data.description,
             "postcode": job_data.postcode,
+            "license_plate": job_data.licensePlate,
+            "plate_country": job_data.plateCountry,
             "status": JobStatus.DRAFT,
             "posted_at": datetime.utcnow(),
             "updated_at": datetime.utcnow(),
