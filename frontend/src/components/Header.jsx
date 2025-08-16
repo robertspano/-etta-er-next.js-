@@ -127,72 +127,22 @@ const Header = ({ language, setLanguage, translations }) => {
               {translations.postProject}
             </Button>
             
-            {/* Profile Avatar/Auth */}
-            {!loading && (
-              <>
-                {isAuthenticated() ? (
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <div className="h-10 w-10 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer flex items-center justify-center">
-                        <User className="h-5 w-5 text-gray-600" />
-                      </div>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end" className="w-56">
-                      <div className="px-2 py-1.5 text-sm font-medium text-gray-700">
-                        {user?.email}
-                      </div>
-                      <div className="px-2 py-1.5 text-xs text-gray-500 capitalize">
-                        {user?.role}
-                      </div>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem asChild>
-                        <Link to="/dashboard" className="flex items-center">
-                          <LayoutDashboard className="h-4 w-4 mr-2" />
-                          {translations.dashboard}
-                        </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild>
-                        <Link to="/profile" className="flex items-center">
-                          <User className="h-4 w-4 mr-2" />
-                          {translations.profile}
-                        </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild>
-                        <Link to="/settings" className="flex items-center">
-                          <Settings className="h-4 w-4 mr-2" />
-                          {translations.settings}
-                        </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem onClick={handleLogout} className="text-red-600">
-                        <LogOut className="h-4 w-4 mr-2" />
-                        {translations.logout}
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                ) : (
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <div className="h-10 w-10 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer flex items-center justify-center">
-                        <User className="h-5 w-5 text-gray-600" />
-                      </div>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end" className="w-48">
-                      <DropdownMenuItem asChild>
-                        <Link to="/login" className="flex items-center">
-                          {translations.signIn}
-                        </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild>
-                        <Link to="/register" className="flex items-center">
-                          {translations.signUp}
-                        </Link>
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                )}
-              </>
-            )}
+            {/* Hamburger Menu */}
+            <Button
+              onClick={() => setIsDrawerOpen(true)}
+              variant="ghost"
+              className="h-10 w-10 p-0 hover:bg-gray-100"
+            >
+              <Menu className="h-5 w-5" />
+            </Button>
+            
+            {/* Profile Avatar */}
+            <div 
+              onClick={() => setIsDrawerOpen(true)}
+              className="h-10 w-10 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer flex items-center justify-center"
+            >
+              <User className="h-5 w-5 text-gray-600" />
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
