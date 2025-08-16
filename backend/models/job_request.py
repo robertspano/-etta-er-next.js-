@@ -29,6 +29,7 @@ class JobRequest(Document):
     
     # Job Details
     category: str  # Service category (plumbing, electrical, etc.)
+    subcategory: Optional[str] = None  # Service subcategory (e.g., for moving: varetransport, flyttebyra, etc.)
     title: Optional[str] = None  # Made optional for automotive category
     description: Optional[str] = None  # Made optional for automotive category
     postcode: str
