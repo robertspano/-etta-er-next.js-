@@ -31,6 +31,7 @@ import QuoteSubmissionForm from './components/marketplace/QuoteSubmissionForm';
 import JobPostingWizard from './components/marketplace/JobPostingWizard';
 import CategorySelection from './components/CategorySelection';
 import AllCategoriesOverview from './components/AllCategoriesOverview';
+import ProRegistrationLanding from './components/ProRegistrationLanding';
 
 // XL Components
 import XLLanding from './components/xl/XLLanding';
