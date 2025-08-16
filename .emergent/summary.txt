@@ -1,24 +1,20 @@
 <analysis>
-The previous AI engineer successfully brought the BuildConnect application from MVP to a feature-rich product. This included completing the Customer Dashboard and implementing the Professional Dashboard, addressing critical frontend issues like  values. A major effort involved a comprehensive homepage redesign to match the Mittanbud layout, refining existing components and adding new ones like .
+The previous AI engineer brought the BuildConnect application from an MVP to a feature-rich product. This included completing customer and professional dashboards, fixing frontend issues, and redesigning the homepage to match Mittanbud. A significant effort was spent on refining the header and implementing a precise, animated right-side drawer.
 
-The most recent work focused intensely on the header and right-side drawer. Initially, the header was restructured with specific elements and styling. This evolved into integrating a sliding side drawer. A temporary deviation saw the avatar opening a separate login page, which was immediately reverted by the user to ensure the *entire* header pill (hamburger and avatar combined) triggered *only* the single right-side drawer. The final phase involved fine-tuning the drawer's animation to precisely match a user-provided video, achieving a 300ms slide-in with a custom cubic-bezier easing. The current state is a fully functional, highly polished, and Mittanbud-accurate header and drawer system with complete bilingual support.
+The most recent and current work focused on a 3-step job posting wizard. Initially, it was developed with authentication, but the user explicitly requested it to be publicly accessible without login. The AI engineer implemented this by making frontend routes public, updating the  component, creating new public backend API endpoints, and adjusting authentication dependencies. A persistent Failed to save progress error emerged during testing. Debugging revealed initial issues with frontend environment variable access ( vs ) and critically, the  pointing to an incorrect external URL instead of the local backend. Although the AI engineer believes this core API connectivity issue is resolved and the wizard progresses locally, the user continues to report the error, suggesting a caching or specific browser state problem. The AI engineer has added further debugging and is awaiting user feedback.
 </analysis>
 
 <product_requirements>
-The BuildConnect application is a construction services marketplace inspired by , supporting both Icelandic and English. It features a React frontend and a FastAPI/MongoDB backend. Key functionalities include:
-1.  **User Authentication:** A robust system with , HTTP-only cookies, Google OAuth, email verification, and role-based access for customers, professionals, and admins.
-2.  **Professional Dashboard:** A Mittanbud style interface for professionals to manage job requests, bids, quotes, in-app messaging, profiles, ratings, and reviews, with bilingual UI. Invoicing and payouts are deferred.
-3.  **Core Marketplace Flow:** Users submit job requests (category, title, description, postcode, photos, budget), professionals view listings and submit quotes. Jobs progress through statuses:  →  →  →  →  | . Admin tools and notifications are also in scope, but payments are deferred.
-4.  **Homepage Redesign (Mittanbud Style):** A complete visual overhaul of the homepage to match provided  screenshots, including a specific Hero section layout (left text/search, right image), followed by Services, How It Works, Trust Stats, Testimonials, a Call to Action banner, and Footer. Styling emphasizes max-width, generous padding, large typography, specific component sizing, subtle shadows, and alternating section backgrounds.
+The BuildConnect application is a construction services marketplace inspired by , designed for both Icelandic and English users. It uses a React frontend and a FastAPI/MongoDB backend. Its core functionalities include robust user authentication (roles, Google OAuth, email verification), a Mittanbud style Professional Dashboard for managing jobs and profiles, and a core marketplace flow for job requests, bidding, and status tracking (payments deferred). The application features a comprehensive homepage redesign matching  visuals, including a distinct Hero section, Services, How It Works, Trust Stats, Testimonials, a Call to Action, and Footer. The current work extended this by implementing a 3-step job posting wizard that allows public users to post job requests without logging in, mirroring the  user experience for layout, validation, and step progression.
 </product_requirements>
 
 <key_technical_concepts>
--   **Frontend**: React.js, Tailwind CSS, Shadcn/UI, Axios, React Context API, React Router DOM, i18n.
--   **Backend**: FastAPI, Pydantic, MongoDB (Motor, Beanie ODM), .
--   **Development Workflow**: Iterative development,  for testing, backend                          RUNNING   pid 27, uptime 0:00:07
-code-server                      RUNNING   pid 29, uptime 0:00:07
-frontend                         STOPPING  
-mongodb                          RUNNING   pid 33, uptime 0:00:07
+- **Frontend**: React.js, Tailwind CSS, Shadcn/UI (for UI components like SelectItem, Textarea), Axios (for API calls), React Context API (AuthContext), React Router DOM (for navigation and protected routes), i18n (for bilingual support).
+- **Backend**: FastAPI, Pydantic (for data validation), MongoDB (Motor, Beanie ODM),  (for authentication).
+- **Development Workflow**: Iterative development,  for testing protocols, backend                          RUNNING   pid 33, uptime 0:00:07
+code-server                      RUNNING   pid 34, uptime 0:00:07
+frontend                         RUNNING   pid 35, uptime 0:00:07
+mongodb                          RUNNING   pid 36, uptime 0:00:07
 supervisor>  for service management,  for issue resolution.
 </key_technical_concepts>
 
@@ -26,64 +22,82 @@ supervisor>  for service management,  for issue resolution.
 
 
 -   ****:
-    -   Importance: Defines the main navigation bar, including branding, language switcher, action buttons, and user profile.
-    -   Changes: Extensively modified to match Mittanbud's layout. Initial changes removed old navigation links, reordered right-side elements (language switcher, Register Company, Post Project, profile avatar). Later, a hamburger menu was added alongside the avatar. Most recently, both hamburger and avatar were encapsulated into a *single, interactive pill-shaped button* that triggers a full-height right-side drawer. Drawer states, focus management, and animation properties (, ) were implemented here.
+    -   Importance: Defines the main navigation bar, branding, language switcher, and user profile.
+    -   Changes: Extensively modified for Mittanbud layout, combining hamburger and avatar into a single pill-shaped button triggering a full-height right-side drawer. Drawer states, focus management, and custom cubic-bezier animations were implemented for smooth slide-in/out.
 -   ****:
     -   Importance: Centralizes all UI text for bilingual support (Icelandic/English).
-    -   Changes: Extended to include new translation keys for Register Company (), Post Project (), and various drawer category items (, , , , , , , ) for both English and Icelandic.
+    -   Changes: Extended to include new translation keys for header elements (, ), various drawer category items, and new keys for the public job posting wizard flow (, , , , , , , , , , , , , , , , , , , , , ).
 -   ****:
-    -   Importance: Main React application file, responsible for setting up global contexts, routing, and arranging main page sections.
-    -   Changes: Updated to include new routes for the professional dashboard and to reorder homepage sections (, , , , , , ) to match the Mittanbud visual flow.
+    -   Importance: Main React application file, sets up global contexts, routing, and arranges main page sections.
+    -   Changes: Updated to include new routes for the professional dashboard and to reorder homepage sections (, , , , , , ). Most recently, the  route was added for the job posting wizard, and its  was removed to allow public access.
 -   ****:
     -   Importance: The prominent top section of the landing page, designed to capture user attention and guide them.
-    -   Changes: Significantly refactored for the Mittanbud layout, creating a 60-65% left column for text/search and a 35-40% right column for an image on desktop, with vertical stacking on mobile. Categories grid was adjusted for 4 columns on desktop and 2 on mobile.
+    -   Changes: Refactored for the Mittanbud layout with left text/search and right image. Categories grid adjusted. Most recently, category tiles were updated to navigate directly to  instead of using query parameters, triggering the public job posting wizard.
 -   ****, ****, ****, ****:
     -   Importance: Core sections explaining the app's offerings, process, trust factors, and social proof.
-    -   Changes: All were restyled to align with Mittanbud's card proportions, shadows, and overall visual rhythm and layout.
+    -   Changes: Restyled to align with Mittanbud's visual rhythm, card proportions, and shadows.
 -   ****:
     -   Importance: A new component designed to prompt user engagement.
     -   Changes: Newly created and integrated into the homepage section order as per the Mittanbud layout.
 -   ****, ****, ****, ****, ****:
     -   Importance: Key components for professional and customer marketplace interaction and dashboards.
-    -   Changes: Modified to fix a critical  component issue by standardizing empty string values to all for filter logic, ensuring proper functionality.  was also updated for a tabbed interface and integration of new components.
+    -   Changes: Modified to fix a critical  component issue by standardizing empty string values to all for filter logic.  was also updated for a tabbed interface.
+-   ****:
+    -   Importance: **Newly created component** implementing the 3-step job posting flow.
+    -   Changes: Implements the UI, form validation, step transitions, and API calls for creating, updating, and submitting draft job requests. It manages local state for form data and  (stored in localStorage) to persist progress for guest users. Includes  for API call status.
+-   ****:
+    -   Importance: Centralized service for all frontend API interactions.
+    -   Changes: Modified to include new , , and  methods for the public wizard. An import fix was applied for  not being a default export initially. The  was extensively debugged, eventually pointing to  for local testing.
+-   ****:
+    -   Importance: Contains environment variables for the frontend, notably the backend URL.
+    -   Changes:  was initially , but was changed to  during debugging to resolve API connectivity issues between frontend and backend.
+-   ****:
+    -   Importance: Defines backend routes for authenticated job request management.
+    -   Changes: Updated to filter draft jobs from professional view and to allow for creation/update of draft jobs, in conjunction with the public endpoints.
+-   ****:
+    -   Importance: **Newly created file** defining public-facing API endpoints for the job posting wizard.
+    -   Changes: Implements  (returns ),  (updates draft), and  (sets status to ). These endpoints are designed to work without mandatory authentication, leveraging an optional user dependency.
+-   ****:
+    -   Importance: Main FastAPI application entry point, registers routes and middleware.
+    -   Changes: Modified to include the  router. CORS middleware () configuration was confirmed.
+-   ****:
+    -   Importance: Configures authentication dependencies for FastAPI.
+    -   Changes: A new  dependency was added to allow routes to be accessed by both authenticated and unauthenticated users (with user object being optional).
+-   ****:
+    -   Importance: Defines the Pydantic and Beanie ODM models for job requests.
+    -   Changes: Modified to include a  field (UUID) to track unauthenticated draft job requests. The  enum was updated to include a  status. Validation rules for title (min 10 chars) and description (min 30 chars) were added.
 </code_architecture>
 
 <pending_tasks>
--   Integrate payment processing (SaltPay/Valitor/Rapyd or bank transfer).
--   Implement advanced file uploads and deeper messaging functionalities.
--   Add actual logo and company name.
--   Implement postcode-based service areas and filtering.
--   Develop in-app and email notifications.
--   Implement simple role switching.
--   Complete Professional onboarding (company KT, insurance, trade category, service areas).
--   Add ratings and reviews after job completion.
--   Address accessibility and performance (responsive, keyboard nav, lazy image uploads).
--   Set defaults for Iceland (ISK, date/time, phone formats, Icelandic copy keys).
--   Plan the implementation of Phase 3: the complete request → quote → acceptance flow with refined notifications, starting with polishing the Professional Dashboard.
+- Integrate payment processing (SaltPay/Valitor/Rapyd or bank transfer).
+- Implement advanced file uploads and deeper messaging functionalities.
+- Add actual logo and company name.
+- Implement postcode-based service areas and filtering.
+- Develop in-app and email notifications.
+- Implement simple role switching.
+- Complete Professional onboarding (company KT, insurance, trade category, service areas).
+- Add ratings and reviews after job completion.
+- Address accessibility and performance (responsive, keyboard nav, lazy image uploads).
+- Set defaults for Iceland (ISK, date/time, phone formats, Icelandic copy keys).
+- Plan the implementation of Phase 3: the complete request → quote → acceptance flow with refined notifications, starting with polishing the Professional Dashboard.
 </pending_tasks>
 
 <current_work>
-The BuildConnect application is a functional MVP with a complete authentication system and foundational marketplace APIs. Phase 1 (Customer Dashboard) and Phase 2 (Professional Dashboard) implementations are complete. The Professional Dashboard includes  and , a tabbed interface, and essential translations. A  component issue was resolved across several frontend components, standardizing empty string values to all for filter logic.
+The BuildConnect application has a complete authentication system and foundational marketplace APIs. The Customer and Professional Dashboards are implemented. The most recent work focused on a comprehensive homepage redesign and a refined header with an integrated, animated right-side drawer.
 
-The most recent and significant work involved a comprehensive **homepage redesign** to match the Mittanbud layout. This included:
--   **Hero Section**:  was refactored for a 60-65% left column (title, search, categories) and a 35-40% right image on desktop, with vertical stacking on mobile.
--   **Section Reordering**:  was updated to arrange homepage sections in the Mittanbud order: , , , , , , .
--   **Component Restyling**: , , , and  were modified for consistent visual rhythm.
--   **New Component**:  was created.
+Currently, the primary task revolved around implementing a **3-step public job posting wizard**, matching the Mittanbud flow:
+-   **Trigger**: Clicking any service category tile on the homepage.
+-   **Routing**: Navigates to , prefilling the chosen category. This route's  was removed to allow public access.
+-   **Wizard Steps**:
+    1.  **About the Job**: Collects  (min 10 chars) and  (min 30 chars).
+    2.  **Contact Info**: Collects ,  (with country code select), , , , , and .
+    3.  **Complete**: Shows a summary and a Finish/Submit button.
+-   **Backend Integration**: New public API endpoints (, , ) were created and integrated. These endpoints optionally use an authenticated user but allow unauthenticated access via a  cookie. Draft job requests are saved and updated between steps using  for .
+-   **UI/UX**: Matches Mittanbud with a centered card layout, beige background, a 3-dot progress bar, specific button placement (Back, Next/Finish), and full i18n support. A  and improved error messages have been added.
 
-The current focus concluded with extensive work on the **Header** and its integrated **right-side drawer**:
--   The header was initially redesigned to remove old navigation links and reorder action elements: Language switcher, Register Company, Post Project, and Profile avatar.
--   The hamburger menu icon was introduced.
--   Crucially, the **hamburger and profile avatar** were combined into a **single, interactive, rounded pill-shaped button**. This pill now serves as the *sole trigger* for the right-side drawer.
--   The drawer itself is a **full-height panel** sliding in from the right with a width of ~384px. It has a clean header (only an 'X' close button, no Menu title).
--   The drawer content is precisely ordered: A Login row (with an avatar icon on the left and a chevron on the right), Post Project (primary link style), Register Company (secondary link style), a divider, a Categories heading, and a list of category items with chevrons.
--   All header and drawer texts are driven by existing i18n keys for full bilingual support.
--   **Animation and UX**: The drawer slides in smoothly with a 300ms duration and  easing, mimicking the Mittanbud video. It includes a subtle backdrop fade, focus trapping, body scroll lock, and can be closed via ESC, 'X' button, or backdrop click.
--   **Accessibility**: The pill uses proper button semantics, keyboard support (Enter/Space), and .
-
-The application's header and drawer system now perfectly match the Mittanbud design in terms of layout, visual rhythm, content, behavior, and animation, and fully supports bilingual functionality.
+**Current Problem**: Although internal testing (both backend and frontend) shows the wizard successfully progresses through steps and API calls succeed (with ), the user is still intermittently reporting a Failed to save progress error and has provided a screenshot of it. The AI engineer has verified backend logs showing 200 OK responses and confirmed that the frontend is now correctly targeting the local backend URL. The working hypothesis is a client-side caching issue or a race condition.
 </current_work>
 
 <optional_next_step>
-Start planning the implementation of Phase 3: the complete request → quote → acceptance flow.
+The next step is to await the user's re-test results with cache cleared and new debugging information from the browser console.
 </optional_next_step>

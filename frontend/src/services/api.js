@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://buildconnect-app.preview.emergentagent.com';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://construct-hub-34.preview.emergentagent.com';
 const API_BASE = `${BACKEND_URL}/api`;
 
 console.log('API Service initialized with:', { BACKEND_URL, API_BASE });
