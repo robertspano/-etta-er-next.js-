@@ -54,17 +54,17 @@ const MovingCategoryPicker = ({ translations }) => {
     {
       key: 'massetransport',
       icon: <Warehouse className="w-6 h-6" />,
-      name: 'Massetransport'
+      name: translations.massetransport
     },
     {
       key: 'lager',
       icon: <Archive className="w-6 h-6" />,
-      name: 'Lager/Oppbevaring'
+      name: translations.lager
     },
     {
       key: 'helikoptertransport',
       icon: <Plane className="w-6 h-6" />,
-      name: 'Helikoptertransport'
+      name: translations.helikoptertransport
     }
   ];
 
