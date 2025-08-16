@@ -156,8 +156,8 @@ class JobRequestResponse(BaseModel):
     id: str
     customer_id: str
     category: str
-    title: str
-    description: str
+    title: Optional[str]  # Optional for automotive
+    description: Optional[str]  # Optional for automotive
     postcode: str
     address: Optional[str]
     budget_min: Optional[float]
@@ -171,3 +171,5 @@ class JobRequestResponse(BaseModel):
     photos: List[str]
     is_featured: bool
     views_count: int
+    license_plate: Optional[str] = None  # For automotive
+    plate_country: Optional[str] = None  # For automotive
