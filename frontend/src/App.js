@@ -11,6 +11,7 @@ import PopularProjects from './components/PopularProjects';
 import FindCompanySection from './components/FindCompanySection';
 import ReviewsSection from './components/ReviewsSection';
 import TrustSection from './components/TrustSection';
+import ProSignupSection from './components/ProSignupSection';
 import Footer from './components/Footer';
 
 // Auth Components
