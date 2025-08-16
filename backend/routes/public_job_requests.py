@@ -104,6 +104,7 @@ class DraftJobResponse(BaseModel):
     """Response schema for draft job requests"""
     id: str
     category: str
+    subcategory: Optional[str] = None  # Service subcategory
     title: Optional[str] = None  # Optional for automotive
     description: Optional[str] = None  # Optional for automotive
     postcode: str
