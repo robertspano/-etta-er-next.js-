@@ -444,6 +444,43 @@ export const translations = {
     proSignupSubtitle: "Register your company on BuildConnect and get access to new jobs every week.",
     proSignupCta: "Start here",
     
+    // XL Major Projects Section
+    xlHeadline: "Big project?",
+    xlHeadlineEmphasis: "XL helps you",
+    xlSubtitle: "XL is tailored for large projects (homeowners, housing associations, businesses). We'll match your project with qualified companies — free and without obligation.",
+    xlNote: "XL is an extra service from BuildConnect. We'll contact you to discuss your project and find the right companies for you —",
+    xlLearnMore: "learn more about XL",
+    
+    // XL Categories
+    xlFullRenovation: "Full Renovation",
+    xlWindowsDoors: "Windows & Doors", 
+    xlFacade: "Facade",
+    xlExtensions: "Extensions & Add-ons",
+    xlBathroom: "Bathroom",
+    xlLoft: "Loft",
+    xlPartialRenovation: "Partial Renovation",
+    xlRoof: "Roof",
+    xlHousingAssociations: "Housing Associations",
+    xlBasement: "Basement",
+    xlGarage: "Garage",
+    xlOtherCategories: "Other categories",
+    
+    // XL Lead Form
+    xlLeadFormTitle: "Tell us about your project",
+    xlProjectTitle: "Project title",
+    xlProjectTitlePlaceholder: "Brief description of your project",
+    xlProjectDescription: "Project description",
+    xlProjectDescriptionPlaceholder: "Tell us more about what needs to be done...",
+    xlLocation: "Location/Postcode",
+    xlLocationPlaceholder: "Enter your location",
+    xlContactName: "Full name",
+    xlContactEmail: "Email address",
+    xlContactPhone: "Phone number",
+    xlSubmitLead: "Submit project",
+    xlSuccessTitle: "Thank you!",
+    xlSuccessMessage: "We'll match your project with up to 3 qualified companies and they'll contact you soon.",
+    xlBackToXL: "Back to XL",
+    
     // Stats
     statsTitle: "Trusted by Thousands",
     projectsCompleted: "Projects Completed",
