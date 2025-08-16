@@ -146,19 +146,19 @@ const Hero = ({ translations }) => {
               </div>
             </form>
 
-            {/* Service Categories Grid - Clean icon-only style like Mittanbud */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            {/* Service Categories Grid - Tighter horizontal spacing like Mittanbud */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-6 md:gap-x-5 md:gap-y-8 max-w-4xl">
               {serviceCategories.map((category, index) => {
                 return (
                   <button
                     key={category.key}
                     onClick={() => handleCategoryClick(category.key)}
-                    className="group inline-flex flex-col items-center gap-3 p-4 md:p-6 cursor-pointer select-none transition-all duration-200 animate-fade-in-up"
+                    className="group inline-flex flex-col items-center gap-3 p-3 md:p-4 cursor-pointer select-none transition-all duration-200 animate-fade-in-up"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     {/* Icon - larger and navy colored */}
                     <div className="text-[#1B2B5B] group-hover:scale-105 transition-transform duration-200">
-                      <div className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 flex items-center justify-center">
+                      <div className="w-11 h-11 md:w-14 md:h-14 lg:w-16 lg:h-16 flex items-center justify-center">
                         {category.icon}
                       </div>
                     </div>
