@@ -227,6 +227,34 @@ class ApiService {
     }
   }
 
+  // Public Job Request endpoints (no authentication required)
+  async createDraftJobRequest(jobData) {
+    try {
+      const response = await this.client.post('/public/job-requests/draft', jobData);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to create draft job request');
+    }
+  }
+
+  async updateDraftJobRequest(draftId, updateData) {
+    try {
+      const response = await this.client.patch(`/public/job-requests/${draftId}`, updateData);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to update draft job request');
+    }
+  }
+
+  async submitDraftJobRequest(draftId) {
+    try {
+      const response = await this.client.post(`/public/job-requests/${draftId}/submit`);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to submit job request');
+    }
+  }
+
   // Health check
   async healthCheck() {
     try {
