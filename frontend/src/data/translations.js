@@ -17,6 +17,18 @@ export const translations = {
     settings: "Settings",
     logout: "Logout",
     
+    // Drawer Categories
+    categories: "Categories",
+    handcraft: "Handcraft",
+    homeGarden: "Home & Garden", 
+    interiorRenovation: "Interior Renovation",
+    buildNew: "Build New",
+    services: "Services",
+    companySearch: "Company Search",
+    new: "New",
+    majorProjects: "Major Projects",
+    housingAssociations: "Housing Associations",
+    
     // Authentication
     login: "Login",
     register: "Register",
