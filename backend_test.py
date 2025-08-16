@@ -2589,6 +2589,7 @@ class BuildConnectAPITester:
             await self.test_public_job_posting_wizard()
             await self.test_automotive_job_posting_flow()
             await self.test_iceland_vehicle_lookup_system()
+            await self.test_reviews_system_apis()
             await self.test_error_handling()
         finally:
             await self.cleanup()
