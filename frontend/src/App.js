@@ -24,6 +24,8 @@ import Dashboard from './components/dashboard/Dashboard';
 import JobRequestForm from './components/marketplace/JobRequestForm';
 import JobRequestDetail from './components/marketplace/JobRequestDetail';
 import JobMessaging from './components/marketplace/JobMessaging';
+import ProfessionalJobDetail from './components/marketplace/ProfessionalJobDetail';
+import QuoteSubmissionForm from './components/marketplace/QuoteSubmissionForm';
 
 // Utility Components
 import Unauthorized from './components/Unauthorized';
