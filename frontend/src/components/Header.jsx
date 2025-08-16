@@ -143,26 +143,18 @@ const Header = ({ language, setLanguage, translations }) => {
               {translations.postProject}
             </Button>
             
-            {/* Menu Pill - Separate Click Areas */}
-            <div className="inline-flex items-center gap-3 h-11 px-3 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition-colors">
-              {/* Hamburger Icon - Opens Menu Drawer */}
-              <button
-                onClick={handleMenuClick}
-                aria-label="Open menu"
-                className="p-0 hover:opacity-70 transition-opacity focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded"
-              >
-                <Menu className="h-6 w-6 text-gray-600" />
-              </button>
+            {/* Menu Pill - Single Interactive Element */}
+            <button
+              onClick={() => setIsDrawerOpen(true)}
+              aria-label="Open menu"
+              className="inline-flex items-center gap-3 h-11 px-3 bg-white border border-gray-200 rounded-full hover:bg-gray-50 focus:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 cursor-pointer transition-colors"
+            >
+              {/* Hamburger Icon */}
+              <Menu className="h-6 w-6 text-gray-600 pointer-events-none" />
               
-              {/* Profile Avatar - Opens Login Page */}
-              <button
-                onClick={handleAvatarClick}
-                aria-label={isAuthenticated() ? "Open profile" : "Login"}
-                className="p-0 hover:opacity-70 transition-opacity focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded"
-              >
-                <User className="h-6 w-6 text-gray-600" />
-              </button>
-            </div>
+              {/* Profile Avatar */}
+              <User className="h-6 w-6 text-gray-600 pointer-events-none" />
+            </button>
           </div>
 
           {/* Mobile Menu Button - Separate Click Areas */}
