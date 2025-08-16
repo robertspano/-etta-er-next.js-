@@ -43,7 +43,7 @@ class JobRequest(Document):
     documents: List[str] = []  # URLs to uploaded documents
     
     # Status and Timing
-    status: JobStatus = JobStatus.OPEN
+    status: JobStatus = JobStatus.DRAFT
     posted_at: datetime = Field(default_factory=datetime.utcnow)
     deadline: Optional[datetime] = None
     
