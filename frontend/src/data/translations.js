@@ -821,7 +821,7 @@ export const translations = {
     viewAllServices: "Skoða Alla Þjónustu",
     
     // How It Works
-    howItWorksTitle: "Hvernig Þetta Virkar",
+    howItWorksTitle: "Slik fungerer Mittanbud",
     howItWorksDescription: "Kláraðu verkefnið þitt í þremur einföldum skrefum",
     step1Title: "Lýstu Verkefninu Þínu",
     step1Description: "Segðu okkur hvað þarf að gera og hvar þú ert staðsett.",
@@ -829,6 +829,10 @@ export const translations = {
     step2Description: "Við tengjum þig við hæfa sérfræðinga á þínu svæði.",
     step3Title: "Veldu og Ráðu",
     step3Description: "Berðu saman tilboð og ráðu besta sérfræðinginn fyrir verkefnið þitt.",
+    
+    // Popular Projects Section
+    popularProjectsTitle: "Populære prosjekter",
+    popularProjectsSubtitle: "Skal du i gang med et stort prosjekt eller et lite oppdrag? Legg ut jobben på Mittanbud og få tilbud fra relevante bedrifter og håndverkere - eller bruk søkefunksjonen for å finne riktig bedrift for deg!",
     
     // Stats
     statsTitle: "Treyst af Þúsundum",
