@@ -32,10 +32,16 @@ import JobPostingWizard from './components/marketplace/JobPostingWizard';
 import Unauthorized from './components/Unauthorized';
 import LoadingSpinner from './components/LoadingSpinner';
 
+// Hooks
+import { useReviews } from './hooks/useReviews';
+
 import { translations } from './data/translations';
 import "./App.css";
 
 const HomePage = ({ language, setLanguage, currentTranslations }) => {
+  // Get reviews data (currently empty, ready for real data)
+  const { reviews, loading: reviewsLoading, error: reviewsError } = useReviews(12, language);
+  
   return (
     <div className="min-h-screen bg-white">
       <Header 
@@ -47,7 +53,13 @@ const HomePage = ({ language, setLanguage, currentTranslations }) => {
       <HowItWorks translations={currentTranslations} />
       <PopularProjects translations={currentTranslations} />
       <FindCompanySection translations={currentTranslations} language={language} />
-      <ReviewsSection reviews={[]} translations={currentTranslations} language={language} />
+      <ReviewsSection 
+        reviews={reviews} 
+        translations={currentTranslations} 
+        language={language} 
+        loading={reviewsLoading}
+        error={reviewsError}
+      />
       <Footer translations={currentTranslations} />
     </div>
   );
