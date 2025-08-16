@@ -428,6 +428,17 @@ export const translations = {
     noReviewsYetMessage: "Customer reviews will appear here once projects are completed",
     reviewsComingSoon: "Reviews coming soon",
     
+    // Trust/Quality Section
+    trustSectionTitle: "A fast and secure way to find professionals",
+    trustSectionSubtitle: "On BuildConnect, we go through the businesses in the service evenly. We have also made it easier for you to ensure that you have chosen the best business for your project:",
+    trustCard1Title: "Find skilled professionals",
+    trustCard1Description: "BuildConnect makes it easy to find professionals, whether the job is big or small. You can contact businesses directly, or let us find the right one!",
+    trustCard2Title: "Safe and reliable businesses",
+    trustCard2Description: "BuildConnect quality ensures that businesses can perform your type of job. The reviews tell you what experiences others have had with the business.",
+    trustCard3Title: "Reviews you can trust",
+    trustCard3Description: "Reviews can only be given for jobs that are posted on BuildConnect. To review a job, those who post the job must also have BankID verification of who they are.",
+    learnMore: "Learn more",
+    
     // Stats
     statsTitle: "Trusted by Thousands",
     projectsCompleted: "Projects Completed",
