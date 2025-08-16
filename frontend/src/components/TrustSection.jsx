@@ -1,8 +1,6 @@
 import React from 'react';
 
 import React from 'react';
-
-const TrustSection = ({ translations }) => {
   const cards = [
     {
       icon: (
