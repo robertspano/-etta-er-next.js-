@@ -693,6 +693,14 @@ export const translations = {
     housingAssociations: "Húsfélög",
     moving: "Flutningar",
     allCategories: "Allir flokkar",
+    
+    // CTA Section
+    ctaTitle: "Tilbúin að byrja?",
+    ctaSubtitle: "Taktu þátt með þúsundum ánægðra viðskiptavina og traustum fagmönnum á okkar vettvangi",
+    customerCta: "Þarftu að fá verk gert?",
+    customerCtaDesc: "Leggðu inn verkefnið þitt og fáðu tilboð frá sannreyndum fagmönnum á þínu svæði",
+    professionalCta: "Ert þú fagmaður?",
+    professionalCtaDesc: "Taktu þátt í neti okkar og tengstu við viðskiptavini sem leita að þinni þjónustu",
     professionals: "Sérfræðingar",
     completedProjects: "Kláruð Verkefni",
     rating: "Einkunn",
