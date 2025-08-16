@@ -91,13 +91,7 @@ const TrustSection = ({ translations }) => {
         </div>
 
         {/* Cards Grid - CSS Grid with exact Mittanbud layout */}
-        <div 
-          className="grid gap-6 items-stretch"
-          style={{
-            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
-            gap: '24px'
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {cards.map((card, index) => (
             <div 
               key={index}
@@ -132,20 +126,6 @@ const TrustSection = ({ translations }) => {
             </div>
           ))}
         </div>
-        
-        {/* Responsive Grid CSS */}
-        <style jsx>{`
-          @media (max-width: 1023px) {
-            .grid {
-              grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-            }
-          }
-          @media (max-width: 767px) {
-            .grid {
-              grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-            }
-          }
-        `}</style>
       </div>
     </section>
   );
