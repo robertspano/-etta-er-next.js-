@@ -173,22 +173,36 @@ function App() {
               } 
             />
 
-            {/* Job Posting Wizard Route */}
+            {/* Public Job Posting Wizard Routes */}
+            <Route 
+              path="/post/:category" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <JobPostingWizard 
+                    translations={currentTranslations} 
+                    language={language} 
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
             <Route 
               path="/post" 
               element={
-                <ProtectedRoute>
-                  <DashboardLayout 
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <JobPostingWizard 
+                    translations={currentTranslations} 
                     language={language} 
-                    setLanguage={setLanguage} 
-                    currentTranslations={currentTranslations}
-                  >
-                    <JobPostingWizard 
-                      translations={currentTranslations} 
-                      language={language} 
-                    />
-                  </DashboardLayout>
-                </ProtectedRoute>
+                  />
+                </DashboardLayout>
               } 
             />
 
