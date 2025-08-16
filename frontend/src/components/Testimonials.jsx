@@ -52,16 +52,16 @@ const Testimonials = ({ translations }) => {
 
   if (loading) {
     return (
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 lg:py-24 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
               {translations.testimonialsTitle}
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[1, 2, 3].map((i) => (
-              <Card key={i} className="shadow-sm">
+              <Card key={i} className="rounded-2xl shadow-sm">
                 <CardContent className="p-8">
                   <div className="animate-pulse">
                     <div className="flex mb-4">
@@ -92,36 +92,38 @@ const Testimonials = ({ translations }) => {
   }
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 lg:py-24 bg-slate-50">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             {translations.testimonialsTitle}
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.id} className="shadow-sm hover:shadow-md transition-shadow duration-300">
+            <Card key={testimonial.id} className="rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300 border-gray-200">
               <CardContent className="p-8">
-                <div className="flex mb-4">
+                <div className="flex mb-6">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
                 
-                <p className="text-gray-600 mb-6 leading-relaxed italic">
+                <p className="text-gray-700 mb-8 leading-relaxed text-base font-medium">
                   "{testimonial.text}"
                 </p>
                 
                 <div className="flex items-center">
-                  <Avatar className="h-12 w-12 mr-4">
+                  <Avatar className="h-14 w-14 mr-4">
                     <AvatarImage src={testimonial.avatar} alt={testimonial.clientName} />
-                    <AvatarFallback>{testimonial.clientName.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                    <AvatarFallback className="bg-blue-100 text-blue-600 font-semibold">
+                      {testimonial.clientName.split(' ').map(n => n[0]).join('')}
+                    </AvatarFallback>
                   </Avatar>
                   <div>
-                    <div className="font-semibold text-gray-900">{testimonial.clientName}</div>
-                    <div className="text-sm text-gray-500">{testimonial.role}</div>
+                    <div className="font-bold text-gray-900 text-base">{testimonial.clientName}</div>
+                    <div className="text-sm text-gray-500 font-medium">{testimonial.role}</div>
                   </div>
                 </div>
               </CardContent>
