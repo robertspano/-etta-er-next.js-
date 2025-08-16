@@ -961,6 +961,11 @@ export const translations = {
     lager: "Geymsla/Vöruhús",
     helikoptertransport: "Þyrluflutningar",
 
+    // Housing Associations Grid
+    housingAssociationsTitle: "Veldu flokk til að setja inn verkið — alveg ókeypis",
+    housingAssociationsSearchPlaceholder: "Við hvað þarftu aðstoð?",
+    noResultsFound: "Engir flokkar fundust sem passa við leitina þína.",
+
     // Moving Category Picker
     movingStepHeader: "Um verkefnið • Tengiliður • Klárt",
     movingCategoryTitle: "Hvers konar flutningaþjónustu þarftu?",
