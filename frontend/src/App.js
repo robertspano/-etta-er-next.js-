@@ -223,6 +223,39 @@ function App() {
                 </DashboardLayout>
               } 
             />
+            
+            {/* XL Major Projects Routes */}
+            <Route 
+              path="/xl" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <XLLanding 
+                    translations={currentTranslations} 
+                    language={language} 
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
+            <Route 
+              path="/xl/start" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <XLStart 
+                    translations={currentTranslations} 
+                    language={language} 
+                  />
+                </DashboardLayout>
+              } 
+            />
 
             {/* Customer Only Routes */}
             <Route 
