@@ -50,9 +50,9 @@ const Header = ({ language, setLanguage, translations }) => {
   };
 
   return (
-    <header className="bg-white shadow-sm border-b">
+    <header className="bg-white sticky top-0 z-50 border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-18">
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors">
@@ -60,51 +60,49 @@ const Header = ({ language, setLanguage, translations }) => {
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#services" className="text-gray-700 hover:text-blue-600 transition-colors">
-              {translations.services}
-            </a>
-            <a href="#how-it-works" className="text-gray-700 hover:text-blue-600 transition-colors">
-              {translations.howItWorks}
-            </a>
-            <a href="#about" className="text-gray-700 hover:text-blue-600 transition-colors">
-              {translations.about}
-            </a>
-            <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors">
-              {translations.contact}
-            </a>
-          </nav>
-
-          {/* Language Switcher & CTA */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Select value={language} onValueChange={setLanguage}>
-              <SelectTrigger className="w-32">
-                <Globe className="h-4 w-4 mr-2" />
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="is">Íslenska</SelectItem>
-                <SelectItem value="en">English</SelectItem>
-              </SelectContent>
-            </Select>
+          {/* Desktop Right Side Actions */}
+          <div className="hidden md:flex items-center space-x-3">
+            {/* Language Switcher - Pill Style */}
+            <div className="relative">
+              <Select value={language} onValueChange={setLanguage}>
+                <SelectTrigger className="h-10 px-3 bg-gray-100 hover:bg-gray-200 border-0 rounded-full text-sm font-medium">
+                  <Globe className="h-4 w-4 mr-2" />
+                  <span>{language.toUpperCase()}</span>
+                  <ChevronDown className="h-3 w-3 ml-1" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="is">IS</SelectItem>
+                  <SelectItem value="en">EN</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
             
+            {/* Register Company Button - Outline */}
+            <Button 
+              onClick={handleRegisterCompany}
+              variant="outline"
+              className="h-10 px-4 border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 rounded-xl font-medium"
+            >
+              {translations.registerCompany}
+            </Button>
+            
+            {/* Post Project Button - Primary */}
             <Button 
               onClick={handlePostProject}
-              className="bg-blue-600 hover:bg-blue-700 text-white"
+              className="h-10 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium"
             >
               {translations.postProject}
             </Button>
             
+            {/* Profile Avatar/Auth */}
             {!loading && (
               <>
                 {isAuthenticated() ? (
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
-                        <User className="h-4 w-4 mr-2" />
-                        {getUserDisplayName()}
-                      </Button>
+                      <div className="h-10 w-10 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer flex items-center justify-center">
+                        <User className="h-5 w-5 text-gray-600" />
+                      </div>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="w-56">
                       <div className="px-2 py-1.5 text-sm font-medium text-gray-700">
@@ -122,8 +120,14 @@ const Header = ({ language, setLanguage, translations }) => {
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
                         <Link to="/profile" className="flex items-center">
-                          <Settings className="h-4 w-4 mr-2" />
+                          <User className="h-4 w-4 mr-2" />
                           {translations.profile}
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link to="/settings" className="flex items-center">
+                          <Settings className="h-4 w-4 mr-2" />
+                          {translations.settings}
                         </Link>
                       </DropdownMenuItem>
                       <DropdownMenuSeparator />
@@ -134,18 +138,25 @@ const Header = ({ language, setLanguage, translations }) => {
                     </DropdownMenuContent>
                   </DropdownMenu>
                 ) : (
-                  <div className="flex items-center space-x-2">
-                    <Link to="/login">
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
-                        {translations.signIn}
-                      </Button>
-                    </Link>
-                    <Link to="/register">
-                      <Button variant="ghost" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50">
-                        {translations.signUp}
-                      </Button>
-                    </Link>
-                  </div>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <div className="h-10 w-10 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer flex items-center justify-center">
+                        <User className="h-5 w-5 text-gray-600" />
+                      </div>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" className="w-48">
+                      <DropdownMenuItem asChild>
+                        <Link to="/login" className="flex items-center">
+                          {translations.signIn}
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link to="/register" className="flex items-center">
+                          {translations.signUp}
+                        </Link>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 )}
               </>
             )}
