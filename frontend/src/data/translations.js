@@ -420,6 +420,11 @@ export const translations = {
     massetransport: "Bulk Transport",
     lager: "Storage/Warehousing", 
     helikoptertransport: "Helicopter Transport",
+
+    // Housing Associations Grid
+    housingAssociationsTitle: "Choose a category to post your job — completely free",
+    housingAssociationsSearchPlaceholder: "What do you need help with?",
+    noResultsFound: "No categories found matching your search.",
     movingCategoryTitle: "What kind of moving service do you need?",
     showMoreCategories: "Show more categories",
     showFewerCategories: "Show fewer categories",
