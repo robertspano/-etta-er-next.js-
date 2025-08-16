@@ -142,7 +142,7 @@ const JobPostingWizard = ({ translations, language }) => {
         
         // Update draft with contact info
         if (draftJobId) {
-          await api.put(`/api/job-requests/${draftJobId}`, {
+          await api.updateJobRequest(draftJobId, {
             postcode: formData.postcode,
             address: formData.address
           });
