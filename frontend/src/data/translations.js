@@ -402,6 +402,10 @@ export const translations = {
     step3Title: "Get started!",
     step3Description: "Review the offers and choose the right company. After the job, you can leave a review.",
     
+    // Category Selection Page
+    categorySelectionTitle: "Choose a category to post your job – free",
+    categorySelectionSearchPlaceholder: "Search for a category...",
+    
     // Popular Projects Section
     popularProjectsTitle: "Popular Projects",
     popularProjectsSubtitle: "Get started with your next project or search to find the right professional for you.",
