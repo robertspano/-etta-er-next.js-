@@ -500,8 +500,21 @@ metadata:
   test_sequence: 1
   run_ui: false
 
+  - task: "Reviews System Backend Implementation"
+    implemented: true
+    working: false
+    file: "/app/backend/models/review.py, /app/backend/routes/reviews.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+        - working: false
+          agent: "main"
+          comment: "✅ REVIEWS SYSTEM BACKEND IMPLEMENTED! Created comprehensive reviews system: 1) Updated Review model to use Beanie Document with proper fields (job_request_id, professional_id, customer_id, rating, title, content, project_category, project_postcode, status, is_verified), 2) Created complete review API endpoints: GET /api/reviews (homepage reviews), GET /api/reviews/{id} (specific review), POST /api/reviews (create review), GET /api/reviews/professional/{id} (professional reviews), PUT /api/reviews/{id}/moderate (admin moderation), 3) Registered Review model in database service, 4) Added proper authentication and authorization (customers can create, admins can moderate), 5) Implemented business rules (can only review completed jobs, one review per job), 6) Created ReviewListResponse format matching frontend expectations (company info, reviewer info, excerpt), 7) Added sample data script and populated database with 4 sample reviews from 3 customers about 3 professionals, 8) Backend restarted successfully. Ready for backend API testing."
+
 test_plan:
   current_focus:
+    - "Reviews System Backend Implementation"
     - "Professional Profile Management"
   stuck_tasks: []
   test_all: false
@@ -509,7 +522,7 @@ test_plan:
 
 agent_communication:
     - agent: "main"
-      message: "Implemented comprehensive marketplace backend APIs: Job requests with full CRUD, categories, photos, budget, status management; Quote system with create/accept/decline/withdraw, expiry handling; In-app messaging with file uploads; Notification system with multiple channels; All models integrated with Beanie. Backend starts successfully. Ready for API testing."
+      message: "✅ REVIEWS SYSTEM BACKEND IMPLEMENTATION COMPLETED! Successfully implemented complete reviews system backend: 1) Updated Review model to use Beanie Document with proper field structure matching application patterns, 2) Created comprehensive API endpoints for homepage reviews, individual reviews, professional reviews, and admin moderation, 3) Implemented proper authentication/authorization (customers create reviews, admins moderate), 4) Added business logic validation (only completed jobs can be reviewed, one review per job per customer), 5) Created ReviewListResponse format that matches frontend ReviewsSection component expectations, 6) Populated database with sample data (3 customers, 3 professionals, 3 completed job requests, 4 approved reviews), 7) Updated useReviews hook to call real backend API, 8) Registered Review model in database service and restarted backend. Ready for backend testing of review endpoints."
     - agent: "testing"
       message: "✅ AUTHENTICATION SYSTEM FULLY TESTED AND WORKING! All authentication endpoints tested successfully: user registration (customer/professional), session-based login/logout with HTTP-only cookies, profile management, role switching, and role-based access control. Fixed minor compatibility issues with fastapi-users-db-beanie (email_collation, parse_id method, on_after_login signature). System ready for frontend integration. 29/29 tests passed (100% success rate)."
     - agent: "testing"
