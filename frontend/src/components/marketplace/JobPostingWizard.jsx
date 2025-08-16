@@ -199,16 +199,22 @@ const JobPostingWizard = ({ translations, language }) => {
 
     try {
       if (draftJobId) {
-        // Finalize the job request
-        await api.updateJobRequest(draftJobId, {
-          status: 'open'
-        });
+        // Submit the draft job request using public API
+        await api.submitDraftJobRequest(draftJobId);
         
         setSuccess('Job request submitted successfully!');
         
-        // Navigate to dashboard after short delay
+        // Clean up localStorage
+        localStorage.removeItem('bc_draft_job_id');
+        localStorage.removeItem('bc_draft_form_data');
+        
+        // Navigate to success page or homepage after short delay
         setTimeout(() => {
-          navigate('/dashboard');
+          if (user) {
+            navigate('/dashboard');
+          } else {
+            navigate('/', { state: { jobSubmitted: true } });
+          }
         }, 2000);
       }
     } catch (err) {
