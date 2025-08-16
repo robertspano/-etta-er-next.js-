@@ -26,20 +26,12 @@ class DraftJobRequestCreate(BaseModel):
     
     @field_validator('title', mode='before')
     @classmethod
-    def validate_title_length(cls, v: Optional[str], info: ValidationInfo) -> Optional[str]:
-        # Only validate title if not automotive category or if title is provided
-        category = info.data.get('category') if info.data else None
-        if category != 'automotive' and (not v or len(v.strip()) < 10):
-            raise ValueError('Title must be at least 10 characters long')
+    def validate_title_length(cls, v: Optional[str]) -> Optional[str]:
         return v.strip() if v else v
     
     @field_validator('description', mode='before')
     @classmethod
-    def validate_description_length(cls, v: Optional[str], info: ValidationInfo) -> Optional[str]:
-        # Only validate description if not automotive category or if description is provided
-        category = info.data.get('category') if info.data else None
-        if category != 'automotive' and (not v or len(v.strip()) < 30):
-            raise ValueError('Description must be at least 30 characters long')
+    def validate_description_length(cls, v: Optional[str]) -> Optional[str]:
         return v.strip() if v else v
     
     @field_validator('licensePlate', mode='before')
