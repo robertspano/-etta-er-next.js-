@@ -288,7 +288,7 @@ const JobBidding = ({ translations, language }) => {
                   <SelectValue placeholder={translations.allPriorities || 'All Priorities'} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Priorities</SelectItem>
+                  <SelectItem value="all">All Priorities</SelectItem>
                   {priorities.map(priority => (
                     <SelectItem key={priority} value={priority}>
                       {translations[priority] || priority}
