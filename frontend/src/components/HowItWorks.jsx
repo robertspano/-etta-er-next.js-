@@ -1,8 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent } from './ui/card';
+import { Button } from './ui/button';
 import { FileText, Users, CheckCircle } from 'lucide-react';
 
 const HowItWorks = ({ translations }) => {
+  const navigate = useNavigate();
+
   const steps = [
     {
       id: 1,
@@ -27,24 +31,25 @@ const HowItWorks = ({ translations }) => {
     }
   ];
 
+  const handlePostProject = () => {
+    navigate('/post');
+  };
+
   return (
-    <section id="how-it-works" className="py-16 lg:py-24 bg-slate-50">
+    <section id="how-it-works" className="py-20 lg:py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             {translations.howItWorksTitle}
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            {translations.howItWorksDescription}
-          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-12">
           {steps.map((step, index) => {
             const IconComponent = step.icon;
             return (
-              <div key={step.id} className="relative text-center">
-                {/* Step Number Circle */}
+              <div key={step.id} className="text-center">
+                {/* Step Number Badge */}
                 <div className="flex justify-center mb-6">
                   <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-2xl shadow-lg">
                     {step.id}
@@ -66,18 +71,19 @@ const HowItWorks = ({ translations }) => {
                 <p className="text-gray-600 leading-relaxed text-base md:text-lg max-w-sm mx-auto">
                   {step.description}
                 </p>
-
-                {/* Connection Arrow */}
-                {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-8 -right-6 lg:-right-12">
-                    <svg className="w-12 h-6 text-blue-300" fill="currentColor" viewBox="0 0 24 12">
-                      <path d="M18 6L14 2v3H2v2h12v3l4-4z"/>
-                    </svg>
-                  </div>
-                )}
               </div>
             );
           })}
+        </div>
+
+        {/* Centered CTA Button */}
+        <div className="text-center">
+          <Button 
+            onClick={handlePostProject}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            {translations.postProject}
+          </Button>
         </div>
       </div>
     </section>
