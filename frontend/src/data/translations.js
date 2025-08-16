@@ -418,6 +418,18 @@ export const translations = {
     settings: "Stillingar",
     logout: "Útskráning",
     
+    // Drawer Categories
+    categories: "Flokkar",
+    handcraft: "Handverk",
+    homeGarden: "Hús og garður",
+    interiorRenovation: "Innanhúss endurbætur", 
+    buildNew: "Byggja nýtt",
+    services: "Þjónustur",
+    companySearch: "Fyrirtækjaleit",
+    new: "Nýtt",
+    majorProjects: "Stór verkefni",
+    housingAssociations: "Húsfélög og sameignir",
+    
     // Authentication
     login: "Innskráning",
     register: "Nýskráning",
