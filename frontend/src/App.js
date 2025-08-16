@@ -33,6 +33,7 @@ import CategorySelection from './components/CategorySelection';
 import AllCategoriesOverview from './components/AllCategoriesOverview';
 import ProRegistrationLanding from './components/ProRegistrationLanding';
 import MovingCategoryPicker from './components/MovingCategoryPicker';
+import MovingContactForm from './components/MovingContactForm';
 
 // XL Components
 import XLLanding from './components/xl/XLLanding';
