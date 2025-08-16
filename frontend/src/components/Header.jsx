@@ -195,20 +195,27 @@ const Header = ({ language, setLanguage, translations }) => {
             </div>
           </div>
 
-          {/* Mobile Menu Button - Same Single Pill Design */}
+          {/* Mobile Menu Button - Separate Click Areas */}
           <div className="md:hidden">
-            <button
-              onClick={() => setIsDrawerOpen(true)}
-              onKeyDown={handlePillKeyDown}
-              aria-label="Open menu"
-              className="inline-flex items-center gap-3 h-10 px-3 bg-white border border-gray-200 rounded-full hover:bg-gray-50 focus:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 cursor-pointer transition-colors"
-            >
-              {/* Hamburger Icon */}
-              <Menu className="h-5 w-5 text-gray-600 pointer-events-none" />
+            <div className="inline-flex items-center gap-3 h-10 px-3 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition-colors">
+              {/* Hamburger Icon - Opens Menu Drawer */}
+              <button
+                onClick={handleMenuClick}
+                aria-label="Open menu"
+                className="p-0 hover:opacity-70 transition-opacity focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded"
+              >
+                <Menu className="h-5 w-5 text-gray-600" />
+              </button>
               
-              {/* Profile Avatar */}
-              <User className="h-5 w-5 text-gray-600 pointer-events-none" />
-            </button>
+              {/* Profile Avatar - Opens Login Page */}
+              <button
+                onClick={handleAvatarClick}
+                aria-label={isAuthenticated() ? "Open profile" : "Login"}
+                className="p-0 hover:opacity-70 transition-opacity focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 rounded"
+              >
+                <User className="h-5 w-5 text-gray-600" />
+              </button>
+            </div>
           </div>
         </div>
 
