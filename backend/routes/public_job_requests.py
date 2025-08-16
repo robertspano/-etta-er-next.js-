@@ -18,6 +18,7 @@ rate_limit_storage = {}
 class DraftJobRequestCreate(BaseModel):
     """Schema for creating a draft job request (public)"""
     category: str
+    subcategory: Optional[str] = None  # Service subcategory (e.g., for moving: varetransport, flyttebyra, etc.)
     title: Optional[str] = None  # Optional for automotive
     description: Optional[str] = None  # Optional for automotive
     postcode: str = "101"  # Default Iceland postcode
