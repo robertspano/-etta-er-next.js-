@@ -1422,6 +1422,292 @@ class BuildConnectAPITester:
                         self.log_test(f"Public Wizard Category ({category})", False, f"Category {category} failed: {response.status}", data)
             except Exception as e:
                 self.log_test(f"Public Wizard Category ({category})", False, f"Request failed: {str(e)}")
+    
+    async def test_automotive_job_posting_flow(self):
+        """Test comprehensive automotive job posting flow as requested in review"""
+        print("\n=== Testing Automotive Job Posting Flow ===")
+        
+        # Test 1: Create automotive draft with license plate data
+        automotive_data = {
+            "category": "automotive",
+            "licensePlate": "AB123XY", 
+            "plateCountry": "IS",
+            "postcode": "101"
+        }
+        
+        draft_id = None
+        guest_session = None
+        
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/public/job-requests/draft",
+                json=automotive_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 200 and data.get("id"):
+                    draft_id = data["id"]
+                    # Check for guest cookie
+                    cookies = response.cookies
+                    if "bc_guest_id" in cookies:
+                        guest_session = cookies["bc_guest_id"].value
+                        self.log_test("POST /api/public/job-requests/draft (Automotive)", True, f"Automotive draft created with license plate: {data.get('licensePlate')}")
+                    else:
+                        self.log_test("POST /api/public/job-requests/draft (Automotive)", False, "Draft created but no guest cookie set")
+                else:
+                    self.log_test("POST /api/public/job-requests/draft (Automotive)", False, f"Automotive draft creation failed: {response.status}", data)
+                    return
+        except Exception as e:
+            self.log_test("POST /api/public/job-requests/draft (Automotive)", False, f"Request failed: {str(e)}")
+            return
+        
+        # Test 2: Update automotive draft with new license plate
+        if draft_id and guest_session:
+            try:
+                update_data = {
+                    "licensePlate": "XY789AB",
+                    "plateCountry": "NO"
+                }
+                cookies = {"bc_guest_id": guest_session}
+                async with self.session.patch(
+                    f"{BACKEND_URL}/public/job-requests/{draft_id}",
+                    json=update_data,
+                    cookies=cookies,
+                    headers={"Content-Type": "application/json"}
+                ) as response:
+                    if response.status == 200:
+                        self.log_test("PATCH /api/public/job-requests/{id} (Automotive Update)", True, "License plate updated successfully")
+                    else:
+                        data = await response.json()
+                        self.log_test("PATCH /api/public/job-requests/{id} (Automotive Update)", False, f"Update failed: {response.status}", data)
+            except Exception as e:
+                self.log_test("PATCH /api/public/job-requests/{id} (Automotive Update)", False, f"Request failed: {str(e)}")
+        
+        # Test 3: Submit automotive job
+        if draft_id and guest_session:
+            try:
+                cookies = {"bc_guest_id": guest_session}
+                async with self.session.post(
+                    f"{BACKEND_URL}/public/job-requests/{draft_id}/submit",
+                    cookies=cookies
+                ) as response:
+                    data = await response.json()
+                    if response.status == 200 and data.get("status") == "open":
+                        self.log_test("POST /api/public/job-requests/{id}/submit (Automotive)", True, f"Automotive job submitted successfully")
+                    else:
+                        self.log_test("POST /api/public/job-requests/{id}/submit (Automotive)", False, f"Submit failed: {response.status}", data)
+            except Exception as e:
+                self.log_test("POST /api/public/job-requests/{id}/submit (Automotive)", False, f"Request failed: {str(e)}")
+        
+        # Test 4: Test non-automotive category with regular data
+        regular_data = {
+            "category": "handcraft",
+            "title": "Need handcraft services for my project",
+            "description": "I need help with custom woodworking for my kitchen cabinets. The project involves creating new cabinet doors and drawer fronts.",
+            "postcode": "101"
+        }
+        
+        regular_draft_id = None
+        regular_guest_session = None
+        
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/public/job-requests/draft",
+                json=regular_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 200 and data.get("id"):
+                    regular_draft_id = data["id"]
+                    cookies = response.cookies
+                    if "bc_guest_id" in cookies:
+                        regular_guest_session = cookies["bc_guest_id"].value
+                        self.log_test("POST /api/public/job-requests/draft (Regular)", True, f"Regular draft created with title: {data.get('title')}")
+                    else:
+                        self.log_test("POST /api/public/job-requests/draft (Regular)", False, "Draft created but no guest cookie set")
+                else:
+                    self.log_test("POST /api/public/job-requests/draft (Regular)", False, f"Regular draft creation failed: {response.status}", data)
+        except Exception as e:
+            self.log_test("POST /api/public/job-requests/draft (Regular)", False, f"Request failed: {str(e)}")
+        
+        # Test 5: Mixed updates - automotive draft with contact info
+        if draft_id and guest_session:
+            try:
+                contact_data = {
+                    "email": "customer@example.com",
+                    "phone": "+354-555-1234",
+                    "firstName": "John",
+                    "lastName": "Doe"
+                }
+                cookies = {"bc_guest_id": guest_session}
+                async with self.session.patch(
+                    f"{BACKEND_URL}/public/job-requests/{draft_id}",
+                    json=contact_data,
+                    cookies=cookies,
+                    headers={"Content-Type": "application/json"}
+                ) as response:
+                    if response.status == 200:
+                        self.log_test("Mixed Update (Automotive + Contact)", True, "Automotive draft updated with contact info")
+                    else:
+                        data = await response.json()
+                        self.log_test("Mixed Update (Automotive + Contact)", False, f"Mixed update failed: {response.status}", data)
+            except Exception as e:
+                self.log_test("Mixed Update (Automotive + Contact)", False, f"Request failed: {str(e)}")
+        
+        # Test 6: Regular draft with license plate fields (should be ignored)
+        if regular_draft_id and regular_guest_session:
+            try:
+                mixed_data = {
+                    "title": "Updated handcraft project title",
+                    "licensePlate": "IGNORED123",  # Should be ignored for non-automotive
+                    "plateCountry": "IGNORED"
+                }
+                cookies = {"bc_guest_id": regular_guest_session}
+                async with self.session.patch(
+                    f"{BACKEND_URL}/public/job-requests/{regular_draft_id}",
+                    json=mixed_data,
+                    cookies=cookies,
+                    headers={"Content-Type": "application/json"}
+                ) as response:
+                    if response.status == 200:
+                        self.log_test("Mixed Update (Regular + License Plate)", True, "Regular draft updated, license plate fields ignored")
+                    else:
+                        data = await response.json()
+                        self.log_test("Mixed Update (Regular + License Plate)", False, f"Mixed update failed: {response.status}", data)
+            except Exception as e:
+                self.log_test("Mixed Update (Regular + License Plate)", False, f"Request failed: {str(e)}")
+        
+        # Test validation scenarios
+        await self.test_automotive_validation()
+    
+    async def test_automotive_validation(self):
+        """Test validation for automotive job posting"""
+        print("\n--- Testing Automotive Validation ---")
+        
+        # Test 1: Automotive category without license plate should fail
+        try:
+            invalid_automotive = {
+                "category": "automotive",
+                "postcode": "101"
+                # Missing licensePlate
+            }
+            async with self.session.post(
+                f"{BACKEND_URL}/public/job-requests/draft",
+                json=invalid_automotive,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status == 422:  # Validation error
+                    self.log_test("Automotive Validation (Missing License Plate)", True, "Missing license plate correctly rejected")
+                else:
+                    data = await response.json()
+                    self.log_test("Automotive Validation (Missing License Plate)", False, f"Expected 422, got: {response.status}", data)
+        except Exception as e:
+            self.log_test("Automotive Validation (Missing License Plate)", False, f"Request failed: {str(e)}")
+        
+        # Test 2: License plate too short (less than 2 chars)
+        try:
+            short_plate = {
+                "category": "automotive",
+                "licensePlate": "A",  # Only 1 character
+                "plateCountry": "IS",
+                "postcode": "101"
+            }
+            async with self.session.post(
+                f"{BACKEND_URL}/public/job-requests/draft",
+                json=short_plate,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status == 422:
+                    self.log_test("Automotive Validation (Short License Plate)", True, "Short license plate correctly rejected")
+                else:
+                    data = await response.json()
+                    self.log_test("Automotive Validation (Short License Plate)", False, f"Expected 422, got: {response.status}", data)
+        except Exception as e:
+            self.log_test("Automotive Validation (Short License Plate)", False, f"Request failed: {str(e)}")
+        
+        # Test 3: License plate too long (more than 8 chars)
+        try:
+            long_plate = {
+                "category": "automotive",
+                "licensePlate": "TOOLONGPLATE",  # 12 characters
+                "plateCountry": "IS",
+                "postcode": "101"
+            }
+            async with self.session.post(
+                f"{BACKEND_URL}/public/job-requests/draft",
+                json=long_plate,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status == 422:
+                    self.log_test("Automotive Validation (Long License Plate)", True, "Long license plate correctly rejected")
+                else:
+                    data = await response.json()
+                    self.log_test("Automotive Validation (Long License Plate)", False, f"Expected 422, got: {response.status}", data)
+        except Exception as e:
+            self.log_test("Automotive Validation (Long License Plate)", False, f"Request failed: {str(e)}")
+        
+        # Test 4: License plate with invalid characters
+        try:
+            invalid_chars = {
+                "category": "automotive",
+                "licensePlate": "AB-123",  # Contains hyphen
+                "plateCountry": "IS",
+                "postcode": "101"
+            }
+            async with self.session.post(
+                f"{BACKEND_URL}/public/job-requests/draft",
+                json=invalid_chars,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status == 422:
+                    self.log_test("Automotive Validation (Invalid Characters)", True, "Invalid license plate characters correctly rejected")
+                else:
+                    data = await response.json()
+                    self.log_test("Automotive Validation (Invalid Characters)", False, f"Expected 422, got: {response.status}", data)
+        except Exception as e:
+            self.log_test("Automotive Validation (Invalid Characters)", False, f"Request failed: {str(e)}")
+        
+        # Test 5: Regular category without title should fail
+        try:
+            no_title = {
+                "category": "handcraft",
+                "description": "This is a valid description that meets the minimum length requirement",
+                "postcode": "101"
+                # Missing title
+            }
+            async with self.session.post(
+                f"{BACKEND_URL}/public/job-requests/draft",
+                json=no_title,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status == 422:
+                    self.log_test("Regular Validation (Missing Title)", True, "Missing title correctly rejected")
+                else:
+                    data = await response.json()
+                    self.log_test("Regular Validation (Missing Title)", False, f"Expected 422, got: {response.status}", data)
+        except Exception as e:
+            self.log_test("Regular Validation (Missing Title)", False, f"Request failed: {str(e)}")
+        
+        # Test 6: Regular category without description should fail
+        try:
+            no_description = {
+                "category": "handcraft",
+                "title": "Valid title with enough characters",
+                "postcode": "101"
+                # Missing description
+            }
+            async with self.session.post(
+                f"{BACKEND_URL}/public/job-requests/draft",
+                json=no_description,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status == 422:
+                    self.log_test("Regular Validation (Missing Description)", True, "Missing description correctly rejected")
+                else:
+                    data = await response.json()
+                    self.log_test("Regular Validation (Missing Description)", False, f"Expected 422, got: {response.status}", data)
+        except Exception as e:
+            self.log_test("Regular Validation (Missing Description)", False, f"Request failed: {str(e)}")
 
     async def run_all_tests(self):
         """Run all test suites"""
