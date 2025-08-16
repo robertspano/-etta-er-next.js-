@@ -172,8 +172,8 @@ const Hero = ({ translations }) => {
               </div>
             </form>
 
-            {/* Service Categories Grid - 4x2 desktop, 3x3 tablet, 2x4 mobile */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-4 max-w-2xl">
+            {/* Service Categories Grid - 4x2 on desktop (4 per row), 2x4 mobile */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-3 max-w-2xl">
               {serviceCategories.map((category, index) => {
                 return (
                   <button
@@ -182,15 +182,15 @@ const Hero = ({ translations }) => {
                     className="group inline-flex flex-col items-center gap-2 p-2 cursor-pointer select-none transition-all duration-200 animate-fade-in-up"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    {/* Icon - increased size to 28-32px */}
+                    {/* Icon - slightly smaller for better fit */}
                     <div className="text-[#1B2B5B] group-hover:scale-105 transition-transform duration-200">
-                      <div className="w-7 h-7 md:w-8 md:h-8 flex items-center justify-center">
+                      <div className="w-6 h-6 md:w-7 md:h-7 flex items-center justify-center">
                         {category.icon}
                       </div>
                     </div>
                     
-                    {/* Label with underline on hover */}
-                    <span className="text-xs md:text-sm font-medium text-slate-800 group-hover:text-[#1B2B5B] text-center leading-tight transition-all duration-200 relative">
+                    {/* Label with underline on hover - smaller text */}
+                    <span className="text-xs font-medium text-slate-800 group-hover:text-[#1B2B5B] text-center leading-tight transition-all duration-200 relative">
                       {category.name}
                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#1B2B5B] group-hover:w-full transition-all duration-200"></span>
                     </span>
