@@ -371,16 +371,16 @@ frontend:
           comment: "✅ JobBidding component fully implemented with comprehensive features: filtering by category/postcode/radius/budget/priority, sorting by newest/budget/priority, pagination (10 items per page), job detail navigation, direct quote submission, real API integration, proper error handling and loading states. Includes business logic for professional-only open jobs viewing."
 
   - task: "Quote Submission Form"
-    implemented: false
+    implemented: true
     working: "NA"
-    file: "TBD"
+    file: "/app/frontend/src/components/marketplace/QuoteSubmissionForm.jsx"
     stuck_count: 0
     priority: "high"
     needs_retesting: true
     status_history:
         - working: "NA"
           agent: "main"
-          comment: "Need to create quote submission form for professionals to bid on job requests. Include amount, message, estimated duration, materials cost, and expiry date fields."
+          comment: "✅ QuoteSubmissionForm fully enhanced with professional features: ISK amount input with currency formatting, message/description, estimated duration, optional start date, materials/labor cost breakdown calculator, expiry date (7-day default), materials inclusion checkbox, comprehensive validation, job details sidebar with photos, professional tips card, proper error handling and success states."
 
   - task: "Professional Profile Management"
     implemented: false
