@@ -544,6 +544,16 @@ class ApiService {
       throw new Error(error.response?.data?.detail || 'Failed to moderate review');
     }
   }
+
+  // Generic post method for custom endpoints
+  async post(endpoint, data) {
+    try {
+      const response = await this.client.post(endpoint, data);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'API request failed');
+    }
+  }
 }
 
 // Create and export a singleton instance
