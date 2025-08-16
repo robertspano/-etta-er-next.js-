@@ -182,6 +182,7 @@ const JobPostingWizard = ({ translations, language }) => {
         setCurrentStep(3);
       }
     } catch (err) {
+      console.error('API call failed:', err);
       setError('Failed to save progress. Please try again.');
       console.error('Save error:', err);
     } finally {
