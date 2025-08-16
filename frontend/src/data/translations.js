@@ -403,7 +403,7 @@ export const translations = {
     step3Description: "Review the offers and choose the right company. After the job, you can leave a review.",
     
     // Category Selection Page
-    categorySelectionTitle: "Choose a category to post your job – free",
+    categorySelectionTitle: "What do you need help with?",
     categorySelectionSearchPlaceholder: "Search for a category...",
     
     // Popular Projects Section
