@@ -896,14 +896,14 @@ export const translations = {
     viewAllServices: "Skoða Alla Þjónustu",
     
     // How It Works
-    howItWorksTitle: "Slik fungerer Mittanbud",
-    howItWorksDescription: "Kláraðu verkefnið þitt í þremur einföldum skrefum",
-    step1Title: "Lýstu Verkefninu Þínu",
-    step1Description: "Segðu okkur hvað þarf að gera og hvar þú ert staðsett.",
-    step2Title: "Fáðu Tengingu",
-    step2Description: "Við tengjum þig við hæfa sérfræðinga á þínu svæði.",
-    step3Title: "Veldu og Ráðu",
-    step3Description: "Berðu saman tilboð og ráðu besta sérfræðinginn fyrir verkefnið þitt.",
+    howItWorksTitle: "Svona virkar BuildConnect",
+    
+    step1Title: "Lýstu verkefninu",
+    step1Description: "Segðu okkur hvað þú þarft hjálp með og við sendum það til réttra fyrirtækja.",
+    step2Title: "Fáðu tilboð",
+    step2Description: "Þú færð fljótt óbindandi tilboð frá fagfólki sem vill aðstoða.",
+    step3Title: "Hefstu handa!",
+    step3Description: "Farðu yfir tilboðin og veldu rétt fyrirtæki. Eftir verkið geturðu skilið eftir umsögn.",
     
     // Popular Projects Section
     popularProjectsTitle: "Populære prosjekter",
