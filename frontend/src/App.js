@@ -138,22 +138,6 @@ function App() {
               } 
             />
             
-            {/* Major Projects Overview Route - Public */}
-            <Route 
-              path="/major-projects" 
-              element={
-                <AuthLayout 
-                  language={language} 
-                  setLanguage={setLanguage} 
-                  currentTranslations={currentTranslations}
-                >
-                  <MajorProjectsOverview 
-                    translations={currentTranslations} 
-                  />
-                </AuthLayout>
-              } 
-            />
-            
             {/* Auth Routes */}
             <Route 
               path="/login" 
