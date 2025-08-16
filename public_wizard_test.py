@@ -10,7 +10,7 @@ import json
 from datetime import datetime
 
 # Get backend URL from environment
-BACKEND_URL = "https://craftlink-app.preview.emergentagent.com/api"
+BACKEND_URL = "https://buildmatch-3.preview.emergentagent.com/api"
 
 class PublicWizardTester:
     def __init__(self):
