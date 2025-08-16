@@ -31,9 +31,9 @@ const Hero = ({ translations }) => {
   return (
     <section className="bg-gradient-to-br from-slate-50 to-slate-100 py-16 lg:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-5 gap-12 items-start">
-          {/* Left Content - 60% */}
-          <div className="lg:col-span-3 space-y-8">
+        <div className="grid md:grid-cols-5 gap-16 items-start">
+          {/* Left Content - 65% */}
+          <div className="md:col-span-3 space-y-8">
             {/* Title */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
               {translations.heroNewTitle}
@@ -64,8 +64,8 @@ const Hero = ({ translations }) => {
               </div>
             </form>
 
-            {/* Service Categories Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+            {/* Service Categories Grid - 4 columns on desktop */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {serviceCategories.map((category) => {
                 const IconComponent = category.icon;
                 return (
@@ -84,8 +84,8 @@ const Hero = ({ translations }) => {
             </div>
           </div>
 
-          {/* Right Content - 40% - Polaroid Image */}
-          <div className="lg:col-span-2 flex justify-center lg:justify-end mt-8 lg:mt-0">
+          {/* Right Content - 35% - Polaroid Image positioned to the right of ALL left content */}
+          <div className="md:col-span-2 flex justify-center md:justify-start mt-8 md:mt-0">
             <div className="relative">
               {/* Polaroid Card */}
               <div className="bg-white p-6 rounded-xl shadow-xl transform rotate-2 hover:rotate-0 transition-transform duration-300">
