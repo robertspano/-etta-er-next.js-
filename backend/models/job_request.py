@@ -90,7 +90,7 @@ class JobRequestCreate(BaseModel):
     license_plate: Optional[str] = None  # For automotive category
     plate_country: Optional[str] = None  # For automotive category
     
-    @field_validator('title')
+    @field_validator('title', mode='before')
     @classmethod
     def validate_title_length(cls, v: Optional[str], info: ValidationInfo) -> Optional[str]:
         # Only validate title if not automotive category or if title is provided
