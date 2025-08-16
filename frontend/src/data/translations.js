@@ -8,7 +8,7 @@ export const translations = {
     howItWorks: "How It Works",
     about: "About",
     contact: "Contact",
-    postProject: "Post Project",
+    postProject: "Post a Job",
     signIn: "Sign In",
     signUp: "Sign Up",
     registerCompany: "Register Company",
