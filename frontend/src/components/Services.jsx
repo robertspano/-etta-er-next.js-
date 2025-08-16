@@ -84,38 +84,38 @@ const Services = ({ translations }) => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-16 lg:py-24 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             {translations.ourServices}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             {translations.servicesDescription}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {services.map((service) => {
             const IconComponent = service.icon;
             return (
-              <Card key={service.id} className="group hover:shadow-lg transition-all duration-300 cursor-pointer border-gray-200 hover:border-blue-200">
-                <CardHeader className="pb-4">
-                  <div className={`w-12 h-12 rounded-lg ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <IconComponent className="h-6 w-6" />
+              <Card key={service.id} className="group hover:shadow-xl transition-all duration-300 cursor-pointer border-gray-200 hover:border-blue-200 rounded-2xl h-full">
+                <CardHeader className="pb-4 pt-8 px-8">
+                  <div className={`w-14 h-14 rounded-xl ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <IconComponent className="h-7 w-7" />
                   </div>
-                  <CardTitle className="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                  <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
                     {service.name}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
+                <CardContent className="px-8 pb-8">
+                  <p className="text-gray-600 mb-6 leading-relaxed text-base">
                     {service.description}
                   </p>
                   <Button 
                     variant="outline" 
                     size="sm" 
-                    className="group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300"
+                    className="group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300 rounded-xl font-medium"
                   >
                     {translations.getQuotes}
                   </Button>
@@ -126,7 +126,7 @@ const Services = ({ translations }) => {
         </div>
 
         <div className="text-center mt-12">
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg">
+          <Button className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
             {translations.viewAllServices}
           </Button>
         </div>
