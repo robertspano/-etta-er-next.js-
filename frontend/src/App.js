@@ -256,6 +256,23 @@ function App() {
               } 
             />
             
+            {/* Moving Contact Form Route */}
+            <Route 
+              path="/post/moving/contact" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <MovingContactForm 
+                    translations={currentTranslations} 
+                    language={language} 
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
             {/* Public Job Posting Wizard Routes */}
             <Route 
               path="/post/:category" 
