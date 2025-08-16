@@ -948,6 +948,21 @@ export const translations = {
     proCtaButton: "Komdu af stað — sjá verkefni",
     proTermsText: "Með því að halda áfram samþykkir þú skilmála okkar. Sjá nánar um vinnslu persónuupplýsinga í persónuverndarstefnu.",
     
+    // Moving Category Picker
+    movingStepHeader: "Um verkefnið • Tengiliður • Klárt",
+    movingCategoryTitle: "Hvers konar flutningaþjónustu þarftu?",
+    showMoreCategories: "Sýna fleiri flokka",
+    
+    // Moving Subcategories  
+    varetransport: "Sendibílaþjónusta",
+    flyttebyra: "Flutningafyrirtæki",
+    avfallshandtering: "Ruslaflutningar", 
+    transportBilBat: "Bíla/Báta Flutningar",
+    annetFlytting: "Annað Flutningar",
+    persontransport: "Persónuflutningar",
+    pianotransport: "Píanóflutningar",
+    godstransport: "Vöruflutningar",
+    
     // Popular Projects Section
     popularProjectsTitle: "Populære prosjekter",
     popularProjectsSubtitle: "Skal du i gang med et stort prosjekt eller et lite oppdrag? Legg ut jobben på Mittanbud og få tilbud fra relevante bedrifter og håndverkere - eller bruk søkefunksjonen for å finne riktig bedrift for deg!",
