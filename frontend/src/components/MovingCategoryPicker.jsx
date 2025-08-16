@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Truck, Package, Trash2, Car, MoreHorizontal, Users, Music, Box } from 'lucide-react';
+import { ArrowLeft, Truck, Package, Trash2, Car, MoreHorizontal, Users, Music, Box, Warehouse, Archive, Plane } from 'lucide-react';
 
 const MovingCategoryPicker = ({ translations }) => {
   const navigate = useNavigate();
+  const [expanded, setExpanded] = useState(false);
 
   const movingSubcategories = [
     {
@@ -48,6 +49,25 @@ const MovingCategoryPicker = ({ translations }) => {
     }
   ];
 
+  // Additional categories shown when expanded
+  const additionalSubcategories = [
+    {
+      key: 'massetransport',
+      icon: <Warehouse className="w-6 h-6" />,
+      name: 'Massetransport'
+    },
+    {
+      key: 'lager',
+      icon: <Archive className="w-6 h-6" />,
+      name: 'Lager/Oppbevaring'
+    },
+    {
+      key: 'helikoptertransport',
+      icon: <Plane className="w-6 h-6" />,
+      name: 'Helikoptertransport'
+    }
+  ];
+
   const handleSubcategorySelect = (subcategoryKey) => {
     // Store moving subcategory in localStorage for the wizard
     localStorage.setItem('bc_selected_category', 'moving');
@@ -61,8 +81,9 @@ const MovingCategoryPicker = ({ translations }) => {
     navigate(-1);
   };
 
-  const handleShowMoreCategories = () => {
-    navigate('/all-categories');
+  const handleToggleExpansion = (e) => {
+    e.preventDefault();
+    setExpanded(!expanded);
   };
 
   return (
