@@ -108,7 +108,7 @@ class JobRequestCreate(BaseModel):
             raise ValueError('Description must be at least 30 characters long')
         return v.strip() if v else v
     
-    @field_validator('license_plate')
+    @field_validator('license_plate', mode='before')
     @classmethod
     def validate_license_plate(cls, v: Optional[str], info: ValidationInfo) -> Optional[str]:
         # Validate license plate for automotive category
