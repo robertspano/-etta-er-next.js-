@@ -22,15 +22,20 @@ const Hero = ({ translations }) => {
       key: 'bathroom', 
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
-          <path d="M12 2C10.9 2 10 2.9 10 4S10.9 6 12 6 14 5.1 14 4 13.1 2 12 2M8 7V9H6V7H8M10 7H14V9H10V7M16 7V9H18V7H16M12 10C10.9 10 10 10.9 10 12V22H14V12C14 10.9 13.1 10 12 10Z"/>
-          <circle cx="7" cy="11" r="1"/>
-          <circle cx="12" cy="11" r="1"/>
-          <circle cx="17" cy="11" r="1"/>
-          <circle cx="6" cy="13" r="0.5"/>
-          <circle cx="9" cy="13" r="0.5"/>
-          <circle cx="12" cy="13" r="0.5"/>
-          <circle cx="15" cy="13" r="0.5"/>
-          <circle cx="18" cy="13" r="0.5"/>
+          <rect x="10" y="2" width="4" height="8" rx="2"/>
+          <circle cx="8" cy="12" r="1"/>
+          <circle cx="12" cy="12" r="1"/>
+          <circle cx="16" cy="12" r="1"/>
+          <circle cx="7" cy="15" r="0.5"/>
+          <circle cx="10" cy="15" r="0.5"/>
+          <circle cx="12" cy="15" r="0.5"/>
+          <circle cx="14" cy="15" r="0.5"/>
+          <circle cx="17" cy="15" r="0.5"/>
+          <circle cx="6" cy="18" r="0.5"/>
+          <circle cx="9" cy="18" r="0.5"/>
+          <circle cx="12" cy="18" r="0.5"/>
+          <circle cx="15" cy="18" r="0.5"/>
+          <circle cx="18" cy="18" r="0.5"/>
         </svg>
       ), 
       name: translations.bathroom 
