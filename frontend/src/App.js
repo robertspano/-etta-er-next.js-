@@ -29,6 +29,7 @@ import JobMessaging from './components/marketplace/JobMessaging';
 import ProfessionalJobDetail from './components/marketplace/ProfessionalJobDetail';
 import QuoteSubmissionForm from './components/marketplace/QuoteSubmissionForm';
 import JobPostingWizard from './components/marketplace/JobPostingWizard';
+import CategorySelection from './components/CategorySelection';
 
 // XL Components
 import XLLanding from './components/xl/XLLanding';
