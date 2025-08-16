@@ -1,40 +1,50 @@
 <analysis>
-The previous AI engineer successfully transformed the BuildConnect application from an MVP to a feature-rich product. This included completing customer and professional dashboards, refining the header, and integrating an animated right-side drawer. The immediate prior focus was on implementing a 3-step public job posting wizard, which involved making frontend routes public and creating new public backend API endpoints. Debugging this wizard revealed critical issues with  and environment variable access, which were addressed, but a Failed to save progress error persisted, awaiting user re-test. Crucially, the user then *shifted focus* to a homepage redesign, explicitly requesting to keep the Hero section as-is, while revamping How it works and introducing a Popular Projects section. The AI engineer successfully completed this new homepage task, updating translations, modifying , creating , and adjusting  component ordering. Visual and functional tests confirmed the precise layout, responsiveness, and navigation from the new sections. The language switch functionality was noted as a minor issue but was not the primary focus of this task.
+The AI engineer successfully evolved the BuildConnect application from MVP, focusing on homepage enhancements and a critical automotive job posting flow. Initially, the engineer tackled a persistent Failed to save progress error in the public job posting wizard, identifying and resolving a  misconfiguration. Concurrently, a major homepage redesign was executed, implementing a revamped How it works and a new Popular Projects section, aligning with user-provided screenshots. The Hero section remained untouched.
+
+A significant new requirement was the Automotive category's special job posting flow, featuring a license plate input and backend vehicle lookup. This involved creating a dedicated frontend component (), updating translations, modifying the  for conditional rendering, and extending backend models and public API endpoints to support vehicle data and lookup. Debugging this phase involved fixing frontend rendering issues and ensuring correct API calls.
+
+Finally, the engineer integrated a Find the right company for your project search section and a Latest Reviews section (with an empty state) onto the homepage, removing the Our Services section and adjusting the component order. The work consistently involved precise UI/UX matching, i18n support, and rigorous testing, demonstrating a methodical approach to feature development and bug resolution.
 </analysis>
 
 <product_requirements>
-The BuildConnect application is a construction services marketplace, inspired by , supporting Icelandic and English. It features a React frontend and FastAPI/MongoDB backend with robust authentication (roles, Google OAuth, email verification). Core functionalities include a Mittanbud style Professional Dashboard, and a marketplace flow for job requests, bidding, and status tracking. The application underwent a comprehensive homepage redesign mirroring , including distinct Hero, Services, How It Works, Trust Stats, Testimonials, Call to Action, and Footer sections. Recent development integrated a 3-step job posting wizard allowing public users to post requests without login, matching 's flow, layout, validation, and step progression. This wizard saves draft progress using local storage and newly created public backend API endpoints. The latest work successfully redesigned the homepage to feature an updated How it works section and a new Popular Projects section, while keeping the Hero component unchanged.
+The BuildConnect application is a construction services marketplace, inspired by , supporting Icelandic and English. It features a React frontend and FastAPI/MongoDB backend with robust authentication, role-based dashboards, and a marketplace for job requests, bidding, and status tracking.
+
+Current implementation includes:
+- A comprehensive homepage redesigned to mirror , featuring distinct Hero, How It Works, Popular Projects, and newly added Find the right company for your project and Latest Reviews sections. The Our Services section was explicitly removed.
+- A 3-step public job posting wizard, allowing unauthenticated users to submit job requests. This wizard supports draft saving via local storage and uses new public backend API endpoints.
+- A specialized Automotive category flow within the job posting wizard. This flow, triggered when the Automotive tile is clicked, presents a unique Step 1 with a license plate input field (Icelandic format) and includes backend integration for vehicle lookups, prefilling details if found. Other categories continue to use the generic title/description Step 1.
+- All new UI elements and functionalities are fully responsive and support both Icelandic and English languages via .
 </product_requirements>
 
 <key_technical_concepts>
--   **Frontend**: React.js, Tailwind CSS, Shadcn/UI, Axios, React Context API, React Router DOM, i18n.
--   **Backend**: FastAPI, Pydantic, MongoDB (Motor, Beanie ODM), .
--   **Development Workflow**: Iterative development, , backend                          RUNNING   pid 33, uptime 0:00:08
-code-server                      RUNNING   pid 34, uptime 0:00:08
-frontend                         STOPPED   Aug 16 01:28 PM
-mongodb                          RUNNING   pid 36, uptime 0:00:08
-supervisor> , .
+-   **Frontend**: React.js, Tailwind CSS, Shadcn/UI for components, Axios for API calls, React Context API for state, React Router DOM for routing,  for internationalization.
+-   **Backend**: FastAPI for API, Pydantic for data validation, MongoDB (Motor, Beanie ODM) for database,  for authentication.
+-   **Development Workflow**: Iterative, backend                          RUNNING   pid 27, uptime 0:00:06
+code-server                      RUNNING   pid 28, uptime 0:00:06
+frontend                         STOPPING  
+mongodb                          RUNNING   pid 32, uptime 0:00:06
+supervisor>  for service management,  for testing protocols.
 </key_technical_concepts>
 
 <code_architecture>
-The application structure is divided into  and  directories, each with its own  and configuration files.
+The application is structured into  and  directories, each containing  and configuration files.
 
 
 
--   ****: Defines the main navigation and branding. Modified for the Mittanbud layout with a right-side drawer and animations.
--   ****: Centralizes UI text for bilingual support. **Changes:** Extended for new header elements, drawer categories, and public job posting wizard keys. Most recently, updated with  data and / for the new homepage sections.
--   ****: Main React application file managing global contexts and routing. **Changes:** Updated routes and reordered homepage sections. The  route was made public. Most recently, the component order was adjusted to , , .
--   ****: Prominent top section of the landing page. **Changes:** Refactored for Mittanbud layout, category tiles navigate to . **Remained untouched in the latest iteration as per user request.**
--   ****: Core section explaining the app's process. **Changes:** Restyled to align with Mittanbud's visual rhythm. Specifically updated to a centered 3-step layout with numbered badges, icons, title, description, and a centered Post Project / Legg ut jobb CTA.
--   ****: **Newly created component**. Implements the Popular Projects section, displaying existing category tiles in a responsive grid (4 columns desktop, 3 tablet, 2 mobile).
--   ****: **Newly created component**. Implements the 3-step job posting flow, managing UI, form validation, and API calls for draft job requests. It uses  for  to persist progress.
--   ****: Centralized service for frontend API interactions. **Changes:** Added methods (, , ) for the public wizard.  was extensively debugged to .
--   ****: Contains environment variables for the frontend. **Changes:**  was modified to  for local debugging purposes.
--   ****: Defines backend routes for authenticated job request management. **Changes:** Updated to filter draft jobs and allow creation/update in conjunction with public endpoints.
--   ****: **Newly created file**. Defines public-facing API endpoints for the job posting wizard: , , and . These endpoints are designed for optional authentication.
--   ****: Main FastAPI application entry point. **Changes:** Modified to include the  router and confirmed CORS middleware.
--   ****: Configures authentication dependencies. **Changes:** A new  dependency was added to allow routes for both authenticated and unauthenticated users.
--   ****: Defines Pydantic/Beanie ODM models for job requests. **Changes:** Added a  field (UUID) and  status to the  enum. Validation rules for title and description were added.
+-   ****: Manages global contexts and routing. It was updated to reorder homepage sections to , , , , , and remove , , , .
+-   ****: Centralizes UI text. Extended to include keys for automotive flow (headings, labels, help text), Find Company section, and Latest Reviews section (titles, empty state messages).
+-   ****: Explains the app's process. Restyled to a centered 3-step layout with numbered badges and a Post Project CTA.
+-   ****: A newly created component displaying category tiles in a responsive grid.
+-   ****: **Newly created component**. Implements a full-width beige panel with headline, subtitle, two search inputs (category/keywords and location), and a Find company button, matching Mittanbud's design. It handles navigation to a professionals search page with filters.
+-   ****: **Newly created component**. Implements the Latest Reviews section, matching Mittanbud's carousel UI, but initially displays an elegant empty state. It's prepared to accept review data.
+-   ****: Manages the 3-step job posting flow. Modified to conditionally render  for the 'automotive' category slug and to handle its custom  logic for vehicle lookup. Updated summary step to display license plate data.
+-   ****: **Newly created component**. Implements the specialized first step for the 'automotive' category, featuring a license plate input with validation, country badge, and a help link. Its  logic includes calling a backend vehicle lookup.
+-   ****: Centralized API service.  was corrected to  to resolve frontend API call issues. Methods for draft job requests were updated to implicitly handle new automotive data.
+-   ****: Contains frontend environment variables.  was crucial; it was explicitly changed from an external preview URL to  to fix API connectivity.
+-   ****: **Newly created hook**. A placeholder hook () was created to abstract fetching reviews data, supporting loading and error states for the .
+-   ****: Defines Pydantic/Beanie ODM models for job requests. Modified to include  (string),  (string), and  (nested Pydantic model for make, model, year, etc.) fields to support automotive data.
+-   ****: Defines public-facing API endpoints for the job posting wizard. Updated to handle  and  in draft creation and update. A new public endpoint  was added for vehicle registry lookups.
+-   ****: **Newly created file**. Implements the  interface and a  stub for vehicle lookups, returning mock data for now.
 </code_architecture>
 
 <pending_tasks>
@@ -45,18 +55,34 @@ The application structure is divided into  and  directories, each with its own  
 -   Develop in-app and email notifications.
 -   Implement simple role switching.
 -   Complete Professional onboarding.
--   Add ratings and reviews after job completion.
+-   Add ratings and reviews after job completion (currently only UI is built).
 -   Address accessibility and performance.
 -   Set defaults for Iceland.
 -   Plan Phase 3: complete request → quote → acceptance flow with notifications.
+-   Await user's re-test results for the Failed to save progress error in the job posting wizard (though this issue was later resolved by the AI engineer).
 </pending_tasks>
 
 <current_work>
-The BuildConnect application currently features a complete authentication system, foundational marketplace APIs, and implemented Customer/Professional Dashboards. The AI engineer's immediate prior focus was on developing a **3-step public job posting wizard**, intended to mirror the Mittanbud user experience and allow unauthenticated users to submit job requests. This involved making frontend routes public (e.g., ) and creating new public API endpoints in the backend (, , ). Progress for guest users is persisted using  for . During this implementation, a persistent Failed to save progress error emerged, despite backend logs showing 200 OK responses and the  issue being believed resolved locally. This issue was pending user re-test with cache cleared and new debugging info.
+The BuildConnect application has a complete authentication system and marketplace APIs. The AI engineer recently focused on a series of significant frontend and backend enhancements.
 
-Subsequently, the user introduced a new, high-priority task: a **comprehensive homepage redesign**. The Hero section was explicitly to remain untouched. The How it works section () was refactored to a centered 3-step layout with numbered badges, icons, titles, short descriptions, and a prominent Post Project / Legg ut jobb call-to-action button. A new Popular Projects section () was created, designed to display existing category tiles in a responsive grid (4 columns on desktop, 3 on tablet, 2 on mobile), matching the styling of the Hero section's tiles. These new sections were integrated into , adjusting the component order. The AI engineer successfully implemented and verified these homepage changes through multiple screenshots and functional tests (including navigation from the new Popular Projects section to the job posting wizard). A minor issue with language switching was observed but deferred as out of the scope of this specific task.
+Firstly, the **3-step public job posting wizard** was refined. A critical Failed to save progress error, which previously persisted despite backend 200 OK responses, was thoroughly debugged. The root cause was identified as an incorrect  in , which was pointing to a preview URL instead of . This was rectified, and the wizard now functions correctly.
+
+A major feature added was the **specialized Automotive job posting flow**. When a user selects the 'Automotive' category, the first step of the wizard () is replaced with a license plate input form, mirroring the Mittanbud layout. This involved:
+-   Creating  with a centered card, IS flag badge, large license plate input (auto-uppercase, stripped spaces/dashes, 2-8 alphanumeric validation), and a Why do we need this? link.
+-   Updating  with new automotive-specific texts.
+-   Modifying  to conditionally render , handle its  logic, and update the final summary.
+-   Extending  model (, , ).
+-   Updating  to accept and store these new fields, and creating a new  endpoint (with a stubbed  service).
+This entire flow, including frontend UI, validation, and backend data persistence/lookup, has been successfully implemented and verified.
+
+Following this, the homepage underwent a **structural and design update**:
+-   The Hero, How It Works, and Popular Projects sections were kept, with How It Works updated to a 3-step centered layout and Popular Projects displaying category tiles.
+-   A new **Find the right company for your project section** () was added. This full-width beige panel features a headline, subtitle, and a search bar with category and location inputs, matching Mittanbud's design. It allows filtering professionals.
+-   The existing Our Services section was completely removed.
+-   A **Latest Reviews section** () was introduced immediately after Find the right company. This component was built to perfectly match Mittanbud's carousel UI but currently displays an elegant empty state, along with a  hook placeholder for future data integration.
+All these homepage changes were verified for layout, responsiveness, and correct component ordering in .
 </current_work>
 
 <optional_next_step>
-The next step is to await the user's re-test results for the Failed to save progress error in the job posting wizard.
+The next logical step is to implement the backend API for fetching actual reviews and integrate it into the  hook.
 </optional_next_step>
