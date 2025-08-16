@@ -947,6 +947,43 @@ export const translations = {
     proSignupSubtitle: "Skráðu fyrirtækið á BuildConnect og fáðu aðgang að nýjum verkum í hverri viku.",
     proSignupCta: "Byrja hér",
     
+    // XL Major Projects Section
+    xlHeadline: "Stórt verkefni?",
+    xlHeadlineEmphasis: "XL hjálpar þér",
+    xlSubtitle: "XL er sérsniðið fyrir stór verkefni (heimili, húsfélög, fyrirtæki). Við pöruðum verkefnið við hæfa verktaka — ókeypis og án skuldbindinga.",
+    xlNote: "XL er aukaaðgerð frá BuildConnect. Við höfum samband til að ræða verkefnið og finna réttu verktakana —",
+    xlLearnMore: "lesa meira um XL",
+    
+    // XL Categories
+    xlFullRenovation: "Heildarendurbætur",
+    xlWindowsDoors: "Gluggar & hurðir",
+    xlFacade: "Framkvæmdir á framhlið", 
+    xlExtensions: "Viðbyggingar",
+    xlBathroom: "Baðherbergi",
+    xlLoft: "Risi",
+    xlPartialRenovation: "Deildarendurbætur",
+    xlRoof: "Þak",
+    xlHousingAssociations: "Húsfélög",
+    xlBasement: "Kjallari",
+    xlGarage: "Bílskúr",
+    xlOtherCategories: "Aðrar flokkanir",
+    
+    // XL Lead Form
+    xlLeadFormTitle: "Segðu okkur frá verkefninu þínu",
+    xlProjectTitle: "Titill verkefnis",
+    xlProjectTitlePlaceholder: "Stutt lýsing á verkefninu þínu",
+    xlProjectDescription: "Verkefnalýsing",
+    xlProjectDescriptionPlaceholder: "Segðu okkur meira um hvað þarf að gera...",
+    xlLocation: "Staðsetning/Póstnúmer",
+    xlLocationPlaceholder: "Sláðu inn staðsetninguna þína",
+    xlContactName: "Fullt nafn",
+    xlContactEmail: "Netfang",
+    xlContactPhone: "Símanúmer",
+    xlSubmitLead: "Senda verkefni",
+    xlSuccessTitle: "Takk fyrir!",
+    xlSuccessMessage: "Við munum para verkefnið þitt við allt að 3 hæfa verktaka og þeir munu hafa samband við þig fljótlega.",
+    xlBackToXL: "Til baka í XL",
+    
     // Stats
     statsTitle: "Treyst af Þúsundum",
     projectsCompleted: "Kláruð Verkefni",
