@@ -14,31 +14,64 @@ import { Menu, X, Globe, User, Settings, LogOut, LayoutDashboard, ChevronDown, C
 
 const Header = ({ language, setLanguage, translations }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { user, logout, isAuthenticated, loading } = useAuth();
   const navigate = useNavigate();
 
+  // Handle drawer close with ESC key
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') {
+        setIsDrawerOpen(false);
+      }
+    };
+
+    if (isDrawerOpen) {
+      document.addEventListener('keydown', handleEsc);
+      document.body.style.overflow = 'hidden'; // Body scroll lock
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEsc);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isDrawerOpen]);
+
   const handleLogout = async () => {
+    setIsDrawerOpen(false);
     await logout();
     navigate('/');
   };
 
   const handleRegisterCompany = () => {
+    setIsDrawerOpen(false);
     if (isAuthenticated()) {
-      // For authenticated users, navigate to professional registration/onboarding
       navigate('/register-professional');
     } else {
-      // For non-authenticated users, redirect to register with role pre-selected
       navigate('/register?role=professional');
     }
   };
 
   const handlePostProject = () => {
+    setIsDrawerOpen(false);
     if (isAuthenticated()) {
-      // Redirect to project creation page
       navigate('/create-project');
     } else {
-      // Redirect to login with return URL
       navigate('/login?returnUrl=/create-project');
+    }
+  };
+
+  const handleLogin = () => {
+    setIsDrawerOpen(false);
+    navigate('/login');
+  };
+
+  const handleDrawerItemClick = (path) => {
+    setIsDrawerOpen(false);
+    if (path !== '#') {
+      navigate(path);
     }
   };
 
