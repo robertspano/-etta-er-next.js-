@@ -7,171 +7,111 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Search, MapPin, Star, Users, CheckCircle } from 'lucide-react';
 import apiService from '../services/api';
 
+import React, { useState } from 'react';
+import { Button } from './ui/button';
+import { Card } from './ui/card';
+import { Input } from './ui/input';
+import { Search, Star, Users, CheckCircle, Hammer, Droplets, Car, Building, Sparkles, Home, Truck, Grid3X3 } from 'lucide-react';
+
 const Hero = ({ translations }) => {
-  const [projectType, setProjectType] = useState('');
-  const [location, setLocation] = useState('');
-  const [description, setDescription] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const handleSubmit = async (e) => {
+  const serviceCategories = [
+    { key: 'handcraft', icon: Hammer, name: translations.handcraft },
+    { key: 'bathroom', icon: Droplets, name: translations.bathroom },
+    { key: 'automotive', icon: Car, name: translations.automotive },
+    { key: 'majorProjects', icon: Building, name: translations.majorProjects },
+    { key: 'cleaning', icon: Sparkles, name: translations.cleaning },
+    { key: 'housingAssociations', icon: Home, name: translations.housingAssociations },
+    { key: 'moving', icon: Truck, name: translations.moving },
+    { key: 'allCategories', icon: Grid3X3, name: translations.allCategories }
+  ];
+
+  const handleSearch = (e) => {
     e.preventDefault();
-    
-    if (!projectType || !location || !description) {
-      alert('Please fill in all required fields');
-      return;
-    }
+    // Handle search logic here
+    console.log('Search query:', searchQuery);
+  };
 
-    setIsSubmitting(true);
-    
-    try {
-      const projectData = {
-        title: `${translations.services_[projectType]} Project`,
-        description: description,
-        serviceType: projectType,
-        location: location,
-        urgency: 'flexible'
-      };
-
-      const response = await apiService.submitProject(projectData);
-      
-      if (response.success) {
-        alert(`${translations.projectSubmitted}\n\nProject ID: ${response.projectId}\nExpected quotes: ${response.estimatedQuotes}\nResponse time: ${response.expectedResponseTime}`);
-        
-        // Reset form
-        setProjectType('');
-        setLocation('');
-        setDescription('');
-      }
-    } catch (error) {
-      console.error('Error submitting project:', error);
-      alert('Failed to submit project. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
+  const handleCategoryClick = (categoryKey) => {
+    // Handle category selection
+    console.log('Category selected:', categoryKey);
   };
 
   return (
     <section className="bg-gradient-to-br from-blue-50 to-indigo-100 pt-16 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div>
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              {translations.heroTitle}
+        <div className="grid md:grid-cols-5 gap-8 lg:gap-12 items-start">
+          {/* Left Content - 60% */}
+          <div className="md:col-span-3 space-y-6">
+            {/* Title */}
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              {translations.heroNewTitle}
             </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              {translations.heroSubtitle}
+            
+            {/* Subtitle */}
+            <p className="text-lg lg:text-xl text-gray-600 leading-relaxed">
+              {translations.heroNewSubtitle}
             </p>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 mb-8">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600 mb-1">15,000+</div>
-                <div className="text-sm text-gray-600">{translations.professionals}</div>
+            {/* Search Input */}
+            <form onSubmit={handleSearch} className="mb-6">
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Input
+                  type="text"
+                  placeholder={translations.heroSearchPlaceholder}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-12 pr-4 py-4 text-lg border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                />
               </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-green-600 mb-1">50,000+</div>
-                <div className="text-sm text-gray-600">{translations.completedProjects}</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-purple-600 mb-1">4.8</div>
-                <div className="text-sm text-gray-600 flex items-center justify-center">
-                  <Star className="h-3 w-3 fill-yellow-400 text-yellow-400 mr-1" />
-                  {translations.rating}
-                </div>
-              </div>
-            </div>
+            </form>
 
-            {/* Trust Indicators */}
-            <div className="flex items-center space-x-6 text-sm text-gray-600">
-              <div className="flex items-center">
-                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                {translations.verified}
-              </div>
-              <div className="flex items-center">
-                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                {translations.insured}
-              </div>
-              <div className="flex items-center">
-                <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
-                {translations.guaranteed}
-              </div>
+            {/* Service Categories Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+              {serviceCategories.map((category) => {
+                const IconComponent = category.icon;
+                return (
+                  <button
+                    key={category.key}
+                    onClick={() => handleCategoryClick(category.key)}
+                    className="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-100 hover:border-blue-200"
+                  >
+                    <IconComponent className="h-6 w-6 text-blue-600 mb-2" />
+                    <span className="text-sm font-medium text-gray-700 text-center leading-tight">
+                      {category.name}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          {/* Right Content - Project Form */}
-          <div>
-            <Card className="p-8 shadow-xl bg-white">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">
-                {translations.getQuotes}
-              </h3>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {translations.projectType} *
-                  </label>
-                  <Select value={projectType} onValueChange={setProjectType} required>
-                    <SelectTrigger>
-                      <SelectValue placeholder={translations.selectService} />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="plumbing">{translations.services_plumbing}</SelectItem>
-                      <SelectItem value="electrical">{translations.services_electrical}</SelectItem>
-                      <SelectItem value="carpentry">{translations.services_carpentry}</SelectItem>
-                      <SelectItem value="painting">{translations.services_painting}</SelectItem>
-                      <SelectItem value="roofing">{translations.services_roofing}</SelectItem>
-                      <SelectItem value="heating">{translations.services_heating}</SelectItem>
-                      <SelectItem value="renovation">{translations.services_renovation}</SelectItem>
-                      <SelectItem value="landscaping">{translations.services_landscaping}</SelectItem>
-                      <SelectItem value="construction">{translations.services_construction}</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {translations.location} *
-                  </label>
-                  <div className="relative">
-                    <MapPin className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
-                    <Input
-                      type="text"
-                      placeholder={translations.enterLocation}
-                      value={location}
-                      onChange={(e) => setLocation(e.target.value)}
-                      className="pl-10"
-                      required
-                    />
+          {/* Right Content - 40% - Polaroid Image */}
+          <div className="md:col-span-2 flex justify-center md:justify-end">
+            <div className="relative">
+              {/* Polaroid Card */}
+              <div className="bg-white p-4 rounded-lg shadow-xl transform rotate-2 hover:rotate-0 transition-transform duration-300">
+                {/* Image placeholder */}
+                <div className="w-64 h-48 bg-gradient-to-br from-blue-100 to-indigo-200 rounded mb-4 flex items-center justify-center">
+                  <div className="text-center">
+                    <Users className="h-12 w-12 text-blue-600 mx-auto mb-2" />
+                    <p className="text-sm font-medium text-gray-700">Trusted Professionals</p>
                   </div>
                 </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {translations.projectDescription} *
-                  </label>
-                  <Textarea
-                    placeholder={translations.describeProject}
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    rows={4}
-                    required
-                  />
+                
+                {/* Polaroid bottom text area */}
+                <div className="text-center">
+                  <div className="flex justify-center items-center mb-2">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-sm text-gray-600 font-medium">15,000+ Happy Customers</p>
                 </div>
-
-                <Button 
-                  type="submit" 
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-medium disabled:opacity-50"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? 'Submitting...' : translations.getQuotes}
-                </Button>
-              </form>
-
-              <p className="text-xs text-gray-500 mt-4 text-center">
-                {translations.freeService}
-              </p>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </div>
