@@ -406,6 +406,16 @@ export const translations = {
     categorySelectionTitle: "Choose a category to post your job – free",
     categorySelectionSearchPlaceholder: "What do you need help with?",
     
+    // Professional Registration Landing
+    proRegistrationTitle: "Get new customers and attractive jobs",
+    proRegistrationSubtitle: "Thousands of new jobs every week. Register to see all jobs in your area.",
+    proCompanyNameLabel: "Company name",
+    proCompanyNamePlaceholder: "Company name",
+    proEmailLabel: "Email", 
+    proEmailPlaceholder: "Email",
+    proCtaButton: "Get started — see jobs",
+    proTermsText: "By continuing you accept our Terms of Use. Learn how we process personal data in our Privacy Policy.",
+    
     // Popular Projects Section
     popularProjectsTitle: "Popular Projects",
     popularProjectsSubtitle: "Get started with your next project or search to find the right professional for you.",
