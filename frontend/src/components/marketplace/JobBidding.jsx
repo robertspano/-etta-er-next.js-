@@ -270,7 +270,7 @@ const JobBidding = ({ translations, language }) => {
                     <SelectValue placeholder="Km" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All</SelectItem>
+                    <SelectItem value="all">All</SelectItem>
                     <SelectItem value="5">5km</SelectItem>
                     <SelectItem value="10">10km</SelectItem>
                     <SelectItem value="25">25km</SelectItem>
