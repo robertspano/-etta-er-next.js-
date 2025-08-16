@@ -3,6 +3,8 @@ import axios from 'axios';
 const BACKEND_URL = import.meta.env.REACT_APP_BACKEND_URL || process.env.REACT_APP_BACKEND_URL || 'https://buildconnect-app.preview.emergentagent.com';
 const API_BASE = `${BACKEND_URL}/api`;
 
+console.log('API Service initialized with:', { BACKEND_URL, API_BASE });
+
 class ApiService {
   constructor() {
     // Create axios instance with default config for session-based auth
