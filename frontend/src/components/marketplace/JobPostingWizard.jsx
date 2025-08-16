@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Alert, AlertDescription } from '../ui/alert';
 import LoadingSpinner from '../LoadingSpinner';
 import { useAuth } from '../../contexts/AuthContext';
-import { api } from '../../services/api';
+import api from '../../services/api';
 import { ArrowLeft, Check } from 'lucide-react';
 
 const JobPostingWizard = ({ translations, language }) => {
