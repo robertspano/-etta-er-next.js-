@@ -32,6 +32,7 @@ import JobPostingWizard from './components/marketplace/JobPostingWizard';
 import CategorySelection from './components/CategorySelection';
 import AllCategoriesOverview from './components/AllCategoriesOverview';
 import ProRegistrationLanding from './components/ProRegistrationLanding';
+import MovingCategoryPicker from './components/MovingCategoryPicker';
 
 // XL Components
 import XLLanding from './components/xl/XLLanding';
