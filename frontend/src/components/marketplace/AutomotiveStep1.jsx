@@ -81,32 +81,20 @@ const AutomotiveStep1 = ({
     }
   };
 
-  const handleNext = async () => {
-    if (!validateLicensePlate(licensePlate)) {
-      setValidationError(translations.automotivePlateValidationError || 'Skráningarmerki verður að vera 2-8 stafir eða tölur');
-      return;
-    }
-
-    // Perform vehicle lookup
-    const lookup = await lookupVehicle(licensePlate);
-    if (lookup && lookup.found) {
-      setVehicleInfo(lookup);
-      // Store vehicle info in form data for later steps
-      updateFormData('vehicleInfo', lookup);
-    }
-
-    onNext();
-  };
-
-  // Auto-trigger onNext when valid plate is entered (so parent can handle the next logic)
+  // Auto-trigger form data updates when valid plate is entered
   useEffect(() => {
     if (isValid) {
-      // Set a flag that the automotive step is ready
-      updateFormData('automotiveStepReady', true);
-    } else {
-      updateFormData('automotiveStepReady', false);
+      // Perform vehicle lookup when plate becomes valid
+      const performLookup = async () => {
+        const lookup = await lookupVehicle(licensePlate);
+        if (lookup && lookup.found) {
+          setVehicleInfo(lookup);
+          updateFormData('vehicleInfo', lookup);
+        }
+      };
+      performLookup();
     }
-  }, [isValid, updateFormData]);
+  }, [isValid, licensePlate]);
 
   const isValid = licensePlate && validateLicensePlate(licensePlate) && !validationError;
 
