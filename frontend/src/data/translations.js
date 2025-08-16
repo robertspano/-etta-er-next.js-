@@ -629,6 +629,10 @@ export const translations = {
     yes: "Já",
     no: "Nei",
     
+    jobRequestSubmittedSuccess: "Verkbeiðni send inn með góðum árangri! Við tengjum þig við hæfa sérfræðinga fljótlega.",
+    signUpAfterSubmission: "Viltu fylgjast með beiðninni þinni? Skráðu þig ókeypis!",
+    createAccount: "Búa til ókeypis reikning",
+    
     // Job Posting Wizard
     stepOneTitle: "Um verkið",
     stepTwoTitle: "Samskiptaupplýsingar", 
