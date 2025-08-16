@@ -137,6 +137,7 @@ const Header = ({ language, setLanguage, translations }) => {
             {/* Menu Pill - Single Interactive Element */}
             <button
               onClick={() => setIsDrawerOpen(true)}
+              onKeyDown={handlePillKeyDown}
               aria-label="Open menu"
               className="inline-flex items-center gap-3 h-11 px-3 bg-white border border-gray-200 rounded-full hover:bg-gray-50 focus:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 cursor-pointer transition-colors"
             >
