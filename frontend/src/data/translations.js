@@ -1031,11 +1031,11 @@ export const translations = {
     automotivePlateValidationError: "Skráningarmerki verður að vera 2-8 stafir eða tölur",
     
     // Find Company Section
-    findCompanyHeadline: "Finn riktig bedrift til ditt prosjekt!",
-    findCompanySubtitle: "Søk etter bedrifter og håndverkere i ditt område, ta kontakt og få et tilbud.",
-    findCompanyWhatHelp: "Hva trenger du hjelp med?",
-    findCompanyWhereJob: "Hvor skal jobben gjøres?",
-    findCompanyButton: "Finn bedrift",
+    findCompanyHeadline: "Finndu rétta fyrirtækið fyrir verkefnið þitt!",
+    findCompanySubtitle: "Leitaðu að fyrirtækjum og iðnaðarmönnum á þínu svæði, hafðu samband og fáðu tilboð.",
+    findCompanyWhatHelp: "Við hvað þarftu hjálp?",
+    findCompanyWhereJob: "Hvar á verkið að fara fram?",
+    findCompanyButton: "Finna fyrirtæki",
     
     // Reviews Section
     latestReviewsTitle: "Síðustu umsagnir",
