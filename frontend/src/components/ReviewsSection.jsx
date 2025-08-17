@@ -130,9 +130,6 @@ const ReviewCard = ({ review, language }) => {
 };
 
 const ReviewsSection = ({ reviews = [], translations, language, loading = false, error = null }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(3);
-
   // Sample fake reviews data - always 3 reviews with 5 stars
   const sampleReviews = [
     {
@@ -196,41 +193,6 @@ const ReviewsSection = ({ reviews = [], translations, language, loading = false,
 
   // Use sample reviews instead of passed reviews
   const displayReviews = sampleReviews;
-
-  // Update items per page based on screen size
-  useEffect(() => {
-    const updateItemsPerPage = () => {
-      if (window.innerWidth < 768) {
-        setItemsPerPage(1); // Mobile
-      } else if (window.innerWidth < 1024) {
-        setItemsPerPage(2); // Tablet
-      } else {
-        setItemsPerPage(3); // Desktop
-      }
-    };
-
-    updateItemsPerPage();
-    window.addEventListener('resize', updateItemsPerPage);
-    return () => window.removeEventListener('resize', updateItemsPerPage);
-  }, []);
-
-  // Calculate total slides
-  const totalSlides = Math.ceil(displayReviews.length / itemsPerPage);
-  
-  // Navigation handlers
-  const goToPrevious = () => {
-    setCurrentSlide((prev) => (prev > 0 ? prev - 1 : totalSlides - 1));
-  };
-
-  const goToNext = () => {
-    setCurrentSlide((prev) => (prev < totalSlides - 1 ? prev + 1 : 0));
-  };
-
-  // Get current items to display
-  const getCurrentItems = () => {
-    const startIndex = currentSlide * itemsPerPage;
-    return displayReviews.slice(startIndex, startIndex + itemsPerPage);
-  };
 
   return (
     <section className="py-16 px-4 bg-white">
