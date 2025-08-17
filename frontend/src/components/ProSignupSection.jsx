@@ -4,7 +4,7 @@ const ProSignupSection = ({ translations }) => {
   return (
     <section className="bg-slate-800 relative overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="flex flex-col lg:flex-row min-h-[500px] lg:min-h-[600px] items-center gap-8 lg:gap-12">
+        <div className="flex flex-col md:flex-row min-h-[500px] md:min-h-[600px] items-center gap-8 md:gap-12">
           
           {/* Left side - Professional Photo */}
           <div className="relative flex-1 flex justify-center lg:justify-start">
