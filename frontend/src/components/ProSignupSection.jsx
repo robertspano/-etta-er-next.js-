@@ -12,7 +12,7 @@ const ProSignupSection = ({ translations }) => {
             <img 
               src="https://customer-assets.emergentagent.com/job_1ed60891-9b59-4a8c-bbcc-e71dbc87ceb4/artifacts/ttnvo8m4_image.png"
               alt="Professional contractor"
-              className="w-72 h-80 lg:w-80 lg:h-96 xl:w-96 xl:h-[450px] object-cover object-center rounded-lg shadow-2xl"
+              className="w-80 h-96 lg:w-96 lg:h-[500px] xl:w-[400px] xl:h-[520px] object-contain object-bottom"
               loading="lazy"
             />
             
