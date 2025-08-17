@@ -152,8 +152,8 @@ const HousingAssociationsGrid = ({ translations, language }) => {
           </form>
         </div>
 
-        {/* Categories Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
+        {/* Categories Grid - Perfect 4x4 Layout */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 lg:gap-6 max-w-5xl mx-auto">
           {filteredCategories.map((category, index) => (
             <button
               key={category.key}
