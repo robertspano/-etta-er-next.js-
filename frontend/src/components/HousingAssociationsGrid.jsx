@@ -158,7 +158,7 @@ const HousingAssociationsGrid = ({ translations, language }) => {
             <button
               key={category.key}
               onClick={() => handleCategoryClick(category)}
-              className="bg-white p-6 lg:p-8 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-200 text-center group"
+              className="bg-white aspect-square p-4 lg:p-6 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-200 text-center group flex flex-col justify-center items-center min-h-[140px] lg:min-h-[160px]"
             >
               {/* Icon */}
               <div className="mb-4 flex justify-center">
