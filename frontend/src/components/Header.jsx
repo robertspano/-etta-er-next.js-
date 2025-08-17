@@ -182,23 +182,22 @@ const Header = ({ language, setLanguage, translations }) => {
               {/* Language Switcher */}
               <Select value={language} onValueChange={setLanguage}>
                 <SelectTrigger className="w-full">
-                  <Globe className="h-4 w-4 mr-2" />
-                  <span>{language.toUpperCase()}</span>
+                  <span>{language === 'is' ? 'Icelandic' : 'English'}</span>
+                  <ChevronDown className="h-4 w-4 ml-2" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="is">IS</SelectItem>
-                  <SelectItem value="en">EN</SelectItem>
+                  <SelectItem value="is">Icelandic</SelectItem>
+                  <SelectItem value="en">English</SelectItem>
                 </SelectContent>
               </Select>
               
-              {/* Register Company Button */}
-              <Button 
+              {/* Register Company - Text Style */}
+              <button 
                 onClick={handleRegisterCompany}
-                variant="outline"
-                className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 rounded-xl"
+                className="w-full text-left text-gray-700 hover:text-blue-700 font-medium transition-colors py-2 border-b-2 border-transparent hover:border-blue-700"
               >
                 {translations.registerCompany}
-              </Button>
+              </button>
               
               {!loading && (
                 <>
