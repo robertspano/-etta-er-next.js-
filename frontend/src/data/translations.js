@@ -439,6 +439,24 @@ export const translations = {
     pianotransport: "Piano Moving",
     godstransport: "Freight Transport",
     
+    // Housing Associations Categories
+    roof: "Roof",
+    windowsDoors: "Windows & Doors",
+    facade: "Facade",
+    balcony: "Balcony",
+    masonry: "Masonry",
+    drainageInsulation: "Drainage & Insulation",
+    bathroomRenovation: "Bathroom Renovation",
+    evCharger: "EV Charger",
+    landscaper: "Landscaper",
+    plumber: "Plumber",
+    electrician: "Electrician",
+    painter: "Painter",
+    carpenter: "Carpenter",
+    cleaning: "Cleaning",
+    movingTransport: "Moving & Transport",
+    allCategories: "Other Categories",
+    
     // Popular Projects Section
     popularProjectsTitle: "Popular Projects",
     popularProjectsSubtitle: "Get started with your next project or search to find the right professional for you.",
