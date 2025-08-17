@@ -45,11 +45,11 @@ const ReviewCard = ({ review, language }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow p-6 h-full flex flex-col">
-      {/* Company Header */}
-      <div className="flex items-center gap-3 mb-4">
-        {/* Company Logo - More prominent like Mittanbud */}
-        <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 flex-shrink-0 flex items-center justify-center overflow-hidden">
+    <div className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow p-4 h-full flex flex-col max-h-80">
+      {/* Company Header - Smaller and more compact */}
+      <div className="flex items-center gap-2 mb-3">
+        {/* Company Logo - Smaller like Mittanbud */}
+        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 flex-shrink-0 flex items-center justify-center overflow-hidden">
           {review.company.logoUrl ? (
             <img
               src={review.company.logoUrl}
@@ -57,30 +57,30 @@ const ReviewCard = ({ review, language }) => {
               className="w-full h-full object-cover"
             />
           ) : (
-            <div className="text-white text-xl font-bold">
+            <div className="text-white text-lg font-bold">
               {review.company.name.charAt(0).toUpperCase()}
             </div>
           )}
         </div>
         
-        {/* Company Name - Larger font */}
+        {/* Company Name - Smaller font */}
         <div className="flex-1 min-w-0">
-          <h3 className="font-bold text-lg text-blue-600 hover:text-blue-700 transition-colors block truncate">
+          <h3 className="font-bold text-base text-blue-600 hover:text-blue-700 transition-colors block truncate">
             {review.company.name}
           </h3>
         </div>
       </div>
 
-      {/* Star Rating - Always 5 stars */}
-      <div className="flex items-center gap-1 mb-4">
+      {/* Star Rating - Smaller stars */}
+      <div className="flex items-center gap-0.5 mb-3">
         {Array.from({ length: 5 }, (_, i) => (
-          <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+          <Star key={i} className="h-4 w-4 text-yellow-400 fill-current" />
         ))}
       </div>
 
-      {/* Project Type - Fake project description */}
-      <div className="mb-3">
-        <p className="text-gray-900 font-semibold text-sm">
+      {/* Project Type - Smaller font */}
+      <div className="mb-2">
+        <p className="text-gray-900 font-semibold text-xs">
           {language === 'is' 
             ? ['Baðherbergi endurnýjun', 'Eldhús endurbætur', 'Þak viðgerðir'][Math.floor(Math.random() * 3)]
             : ['Bathroom Renovation', 'Kitchen Upgrade', 'Roof Repairs'][Math.floor(Math.random() * 3)]
@@ -88,35 +88,35 @@ const ReviewCard = ({ review, language }) => {
         </p>
       </div>
 
-      {/* Review Excerpt */}
-      <div className="flex-1 mb-4">
-        <p className="text-gray-700 text-sm leading-relaxed">
+      {/* Review Excerpt - Smaller and limited lines */}
+      <div className="flex-1 mb-3 overflow-hidden">
+        <p className="text-gray-700 text-xs leading-relaxed line-clamp-3">
           {review.excerpt}
         </p>
       </div>
 
-      {/* Read More Link */}
-      <div className="mb-4">
+      {/* Read More Link - Smaller */}
+      <div className="mb-3">
         <a
           href={review.url}
-          className="text-blue-600 hover:text-blue-700 text-sm font-medium"
+          className="text-blue-600 hover:text-blue-700 text-xs font-medium"
         >
           {language === 'is' ? 'Les meira' : 'Read more'}
         </a>
       </div>
 
-      {/* Reviewer Info */}
-      <div className="flex items-center gap-3 pt-3 border-t border-gray-100">
-        {/* Reviewer Avatar - Colored background like Mittanbud */}
-        <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-          <span className="text-blue-600 font-bold text-sm">
+      {/* Reviewer Info - Smaller and more compact */}
+      <div className="flex items-center gap-2 pt-2 border-t border-gray-100">
+        {/* Reviewer Avatar - Smaller */}
+        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+          <span className="text-blue-600 font-bold text-xs">
             {review.reviewer.initial}
           </span>
         </div>
         
-        {/* Reviewer Details */}
+        {/* Reviewer Details - Smaller font */}
         <div className="flex-1 min-w-0">
-          <p className="font-semibold text-gray-900 text-sm truncate">
+          <p className="font-semibold text-gray-900 text-xs truncate">
             {review.reviewer.name}
           </p>
           <p className="text-gray-500 text-xs">
