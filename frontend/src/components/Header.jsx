@@ -107,29 +107,27 @@ const Header = ({ language, setLanguage, translations }) => {
 
           {/* Desktop Right Side Actions */}
           <div className="hidden md:flex items-center space-x-3">
-            {/* Language Switcher - Pill Style */}
+            {/* Language Switcher - Text Style */}
             <div className="relative">
               <Select value={language} onValueChange={setLanguage}>
-                <SelectTrigger className="h-10 px-3 bg-gray-100 hover:bg-gray-200 border-0 rounded-full text-sm font-medium">
-                  <Globe className="h-4 w-4 mr-2" />
-                  <span>{language.toUpperCase()}</span>
-                  <ChevronDown className="h-3 w-3 ml-1" />
+                <SelectTrigger className="h-10 px-3 bg-transparent hover:bg-gray-50 border-0 text-sm font-medium">
+                  <span>{language === 'is' ? 'Icelandic' : 'English'}</span>
+                  <ChevronDown className="h-4 w-4 ml-2" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="is">IS</SelectItem>
-                  <SelectItem value="en">EN</SelectItem>
+                  <SelectItem value="is">Icelandic</SelectItem>
+                  <SelectItem value="en">English</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             
-            {/* Register Company Button - Outline */}
-            <Button 
+            {/* Register Company - Text with Hover Underline */}
+            <button 
               onClick={handleRegisterCompany}
-              variant="outline"
-              className="h-10 px-4 border-gray-300 text-gray-700 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 rounded-xl font-medium"
+              className="text-gray-700 hover:text-blue-700 font-medium transition-colors border-b-2 border-transparent hover:border-blue-700"
             >
               {translations.registerCompany}
-            </Button>
+            </button>
             
             {/* Post Project Button - Primary */}
             <Button 
