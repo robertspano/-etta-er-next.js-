@@ -161,14 +161,14 @@ const HousingAssociationsGrid = ({ translations, language }) => {
               className="bg-white aspect-square p-4 lg:p-6 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-200 text-center group flex flex-col justify-center items-center min-h-[140px] lg:min-h-[160px]"
             >
               {/* Icon */}
-              <div className="mb-4 flex justify-center">
+              <div className="mb-2 lg:mb-3 flex justify-center">
                 <div className="text-[#1B2B5B] group-hover:text-blue-600 transition-colors">
                   {category.icon}
                 </div>
               </div>
               
               {/* Category Name */}
-              <h3 className="font-medium text-gray-900 group-hover:text-blue-700 transition-colors text-sm lg:text-base">
+              <h3 className="font-medium text-gray-900 group-hover:text-blue-700 transition-colors text-xs lg:text-sm leading-tight">
                 {category.name}
               </h3>
             </button>
