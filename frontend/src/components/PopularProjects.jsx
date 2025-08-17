@@ -122,6 +122,10 @@ const PopularProjects = ({ translations }) => {
       navigate('/all-categories');
     } else if (categoryKey === 'majorProjects') {
       navigate('/xl');
+    } else if (categoryKey === 'housingAssociations') {
+      navigate('/post/housing-associations');
+    } else if (categoryKey === 'moving') {
+      navigate('/post/moving');
     } else {
       // Navigate to job posting wizard with category in URL path
       navigate(`/post/${categoryKey}`);
