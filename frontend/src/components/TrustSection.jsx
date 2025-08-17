@@ -95,7 +95,7 @@ const TrustSection = ({ translations }) => {
           {cards.map((card, index) => (
             <div 
               key={index}
-              className="bg-white rounded-lg p-3 lg:p-4 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 flex flex-col h-full group"
+              className="bg-white rounded-xl p-6 lg:p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 flex flex-col h-full group min-h-[280px]"
             >
               {/* Icon - Smaller and simpler */}
               <div className="mb-2 lg:mb-3 group-hover:scale-105 transition-transform duration-300 flex justify-center lg:justify-start">
