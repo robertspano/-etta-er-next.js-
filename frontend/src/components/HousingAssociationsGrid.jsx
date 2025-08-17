@@ -10,97 +10,97 @@ const HousingAssociationsGrid = ({ translations, language }) => {
     {
       key: 'roof',
       icon: <Home className="w-8 h-8" />,
-      name: 'Tak',
+      name: translations.roof || 'Roof',
       route: '/post/roof'
     },
     {
       key: 'windowsDoors',
       icon: <DoorOpen className="w-8 h-8" />,
-      name: 'Vindu og dør', 
+      name: translations.windowsDoors || 'Windows & Doors', 
       route: '/post/windows-doors'
     },
     {
       key: 'facade',
       icon: <Building className="w-8 h-8" />,
-      name: 'Fasade',
+      name: translations.facade || 'Facade',
       route: '/post/facade'
     },
     {
       key: 'balcony',
       icon: <Square className="w-8 h-8" />,
-      name: 'Balkong',
+      name: translations.balcony || 'Balcony',
       route: '/post/balcony'
     },
     {
       key: 'masonry',
       icon: <Package className="w-8 h-8" />,
-      name: 'Murer',
+      name: translations.masonry || 'Masonry',
       route: '/post/masonry'
     },
     {
       key: 'drainageInsulation',
       icon: <Droplets className="w-8 h-8" />,
-      name: 'Drenering og isolering',
+      name: translations.drainageInsulation || 'Drainage & Insulation',
       route: '/post/drainage-insulation'
     },
     {
       key: 'bathroomRenovation',
       icon: <Bath className="w-8 h-8" />,
-      name: 'Pusse opp bad',
+      name: translations.bathroomRenovation || 'Bathroom Renovation',
       route: '/post/bathroom'
     },
     {
       key: 'evCharger',
       icon: <Zap className="w-8 h-8" />,
-      name: 'Elbillader',
+      name: translations.evCharger || 'EV Charger',
       route: '/post/ev-charger'
     },
     {
       key: 'landscaper',
       icon: <TreePine className="w-8 h-8" />,
-      name: 'Anleggsgartner',
+      name: translations.landscaper || 'Landscaper',
       route: '/post/landscaping'
     },
     {
       key: 'plumber',
       icon: <Wrench className="w-8 h-8" />,
-      name: 'Rørlegger',
+      name: translations.plumber || 'Plumber',
       route: '/post/plumbing'
     },
     {
       key: 'electrician',
       icon: <Plug className="w-8 h-8" />,
-      name: 'Elektriker',
+      name: translations.electrician || 'Electrician',
       route: '/post/electrical'
     },
     {
       key: 'painter',
       icon: <Paintbrush className="w-8 h-8" />,
-      name: 'Maler',
+      name: translations.painter || 'Painter',
       route: '/post/painting'
     },
     {
       key: 'carpenter',
       icon: <Hammer className="w-8 h-8" />,
-      name: 'Snekker',
+      name: translations.carpenter || 'Carpenter',
       route: '/post/carpentry'
     },
     {
       key: 'cleaning',
       icon: <Sparkles className="w-8 h-8" />,
-      name: 'Rengjøring',
+      name: translations.cleaning || 'Cleaning',
       route: '/post/cleaning'
     },
     {
       key: 'movingTransport',
       icon: <Truck className="w-8 h-8" />,
-      name: 'Flytting og transport',
+      name: translations.movingTransport || 'Moving & Transport',
       route: '/post/moving'
     },
     {
       key: 'allCategories',
       icon: <Grid3X3 className="w-8 h-8" />,
-      name: 'Andre kategorier',
+      name: translations.allCategories || 'Other Categories',
       route: '/all-categories'
     }
   ];
