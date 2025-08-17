@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Star, ExternalLink } from 'lucide-react';
+import React, { useState } from 'react';
+import { Star } from 'lucide-react';
 import { Button } from './ui/button';
 
 // Review data type definition
