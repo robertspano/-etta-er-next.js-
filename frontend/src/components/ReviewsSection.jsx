@@ -45,11 +45,11 @@ const ReviewCard = ({ review }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow p-6 h-full flex flex-col">
+    <div className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow p-6 h-full flex flex-col">
       {/* Company Header */}
       <div className="flex items-center gap-3 mb-4">
-        {/* Company Logo */}
-        <div className="w-12 h-12 rounded-lg bg-gray-100 flex-shrink-0 flex items-center justify-center overflow-hidden">
+        {/* Company Logo - More prominent like Mittanbud */}
+        <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 flex-shrink-0 flex items-center justify-center overflow-hidden">
           {review.company.logoUrl ? (
             <img
               src={review.company.logoUrl}
@@ -57,31 +57,40 @@ const ReviewCard = ({ review }) => {
               className="w-full h-full object-cover"
             />
           ) : (
-            <div className="w-8 h-8 bg-blue-600 rounded text-white text-sm font-bold flex items-center justify-center">
+            <div className="text-white text-xl font-bold">
               {review.company.name.charAt(0).toUpperCase()}
             </div>
           )}
         </div>
         
-        {/* Company Name */}
+        {/* Company Name - Larger font */}
         <div className="flex-1 min-w-0">
-          <a
-            href={`/company/${review.company.id}`}
-            className="font-semibold text-gray-900 hover:text-blue-600 transition-colors block truncate"
-          >
+          <h3 className="font-bold text-lg text-blue-600 hover:text-blue-700 transition-colors block truncate">
             {review.company.name}
-          </a>
+          </h3>
         </div>
       </div>
 
-      {/* Star Rating */}
-      <div className="flex items-center gap-1 mb-3">
-        {renderStars(review.rating)}
+      {/* Star Rating - Always 5 stars */}
+      <div className="flex items-center gap-1 mb-4">
+        {Array.from({ length: 5 }, (_, i) => (
+          <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+        ))}
+      </div>
+
+      {/* Project Type - Fake project description */}
+      <div className="mb-3">
+        <p className="text-gray-900 font-semibold text-sm">
+          {language === 'is' 
+            ? ['Baðherbergi endurnýjun', 'Eldhús endurbætur', 'Þak viðgerðir'][Math.floor(Math.random() * 3)]
+            : ['Bathroom Renovation', 'Kitchen Upgrade', 'Roof Repairs'][Math.floor(Math.random() * 3)]
+          }
+        </p>
       </div>
 
       {/* Review Excerpt */}
       <div className="flex-1 mb-4">
-        <p className="text-gray-700 text-sm leading-relaxed line-clamp-4">
+        <p className="text-gray-700 text-sm leading-relaxed">
           {review.excerpt}
         </p>
       </div>
@@ -90,25 +99,24 @@ const ReviewCard = ({ review }) => {
       <div className="mb-4">
         <a
           href={review.url}
-          className="text-blue-600 hover:text-blue-700 text-sm font-medium inline-flex items-center gap-1"
+          className="text-blue-600 hover:text-blue-700 text-sm font-medium"
         >
-          Les mer
-          <ExternalLink className="h-3 w-3" />
+          {language === 'is' ? 'Les meira' : 'Read more'}
         </a>
       </div>
 
       {/* Reviewer Info */}
       <div className="flex items-center gap-3 pt-3 border-t border-gray-100">
-        {/* Reviewer Avatar */}
-        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-          <span className="text-blue-600 font-semibold text-sm">
+        {/* Reviewer Avatar - Colored background like Mittanbud */}
+        <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+          <span className="text-blue-600 font-bold text-sm">
             {review.reviewer.initial}
           </span>
         </div>
         
         {/* Reviewer Details */}
         <div className="flex-1 min-w-0">
-          <p className="font-medium text-gray-900 text-sm truncate">
+          <p className="font-semibold text-gray-900 text-sm truncate">
             {review.reviewer.name}
           </p>
           <p className="text-gray-500 text-xs">
