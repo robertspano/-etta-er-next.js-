@@ -1000,6 +1000,24 @@ export const translations = {
     pianotransport: "Píanóflutningar",
     godstransport: "Vöruflutningar",
     
+    // Housing Associations Categories
+    roof: "Þak",
+    windowsDoors: "Gluggar og hurðir",
+    facade: "Fasade",
+    balcony: "Svalir",
+    masonry: "Múrarar",
+    drainageInsulation: "Drenun og einangrun",
+    bathroomRenovation: "Endurnýjun baðherbergis",
+    evCharger: "Rafbílahleðsla",
+    landscaper: "Garðyrkjumaður",
+    plumber: "Pípulagningamaður",
+    electrician: "Rafvirkjar",
+    painter: "Málari",
+    carpenter: "Trésmíðamaður",
+    cleaning: "Þrif",
+    movingTransport: "Flutningar og Flutningsmenn",
+    allCategories: "Aðrir flokkar",
+    
     // Popular Projects Section
     popularProjectsTitle: "Populære prosjekter",
     popularProjectsSubtitle: "Skal du i gang med et stort prosjekt eller et lite oppdrag? Legg ut jobben på Mittanbud og få tilbud fra relevante bedrifter og håndverkere - eller bruk søkefunksjonen for å finne riktig bedrift for deg!",
