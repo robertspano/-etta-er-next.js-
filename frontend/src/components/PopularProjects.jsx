@@ -175,23 +175,6 @@ const PopularProjects = ({ translations }) => {
             );
           })}
         </div>
-
-        {/* Additional CTA section */}
-        <div className="text-center mt-16 animate-fade-in-up" style={{ animationDelay: '1s' }}>
-          <div className="bg-white rounded-3xl p-8 border border-gray-200">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Don't see your project type?</h3>
-            <p className="text-gray-600 mb-6">We work with professionals across all categories. Post your project and find the right expert!</p>
-            <button 
-              onClick={() => handleCategoryClick('allCategories')}
-              className="inline-flex items-center gap-2 bg-[#1B2B5B] text-white px-8 py-4 rounded-2xl font-semibold border-2 border-[#1B2B5B] hover:bg-white hover:text-[#1B2B5B] transition-all duration-300"
-            >
-              <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                <path d="M3 3v8h8V3H3zm6 6H5V5h4v4zm-6 4v8h8v-8H3zm6 6H5v-4h4v4zm4-16v8h8V3h-8zm6 6h-4V5h4v4zm-6 4v8h8v-8h-8zm6 6h-4v-4h4v4z"/>
-              </svg>
-              View All Categories
-            </button>
-          </div>
-        </div>
       </div>
     </section>
   );
