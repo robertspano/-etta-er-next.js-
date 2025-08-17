@@ -90,8 +90,8 @@ const TrustSection = ({ translations }) => {
           </p>
         </div>
 
-        {/* Cards Grid - CSS Grid with exact Mittanbud layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+        {/* Cards Grid - Always 3 columns side by side on desktop like Mittanbud */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 items-stretch">
           {cards.map((card, index) => (
             <div 
               key={index}
