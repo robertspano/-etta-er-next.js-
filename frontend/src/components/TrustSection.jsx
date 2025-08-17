@@ -97,25 +97,25 @@ const TrustSection = ({ translations }) => {
               key={index}
               className="bg-white rounded-xl p-6 lg:p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 flex flex-col h-full group min-h-[280px]"
             >
-              {/* Icon - Smaller and simpler */}
-              <div className="mb-2 lg:mb-3 group-hover:scale-105 transition-transform duration-300 flex justify-center lg:justify-start">
-                <div className={`w-8 h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center ${
+              {/* Icon - Bigger and more visible */}
+              <div className="mb-4 lg:mb-6 group-hover:scale-105 transition-transform duration-300 flex justify-center lg:justify-start">
+                <div className={`w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center ${
                   index === 0 ? 'bg-blue-100' : index === 1 ? 'bg-green-100' : 'bg-purple-100'
                 }`}>
                   {index === 0 && (
-                    <svg className="w-4 h-4 lg:w-5 lg:h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 lg:w-8 lg:h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
                             d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                     </svg>
                   )}
                   {index === 1 && (
-                    <svg className="w-4 h-4 lg:w-5 lg:h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 lg:w-8 lg:h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
                             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   )}
                   {index === 2 && (
-                    <svg className="w-4 h-4 lg:w-5 lg:h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 lg:w-8 lg:h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
                             d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
@@ -123,13 +123,13 @@ const TrustSection = ({ translations }) => {
                 </div>
               </div>
 
-              {/* Title - Smaller font */}
-              <h3 className="text-sm lg:text-base font-semibold text-gray-900 mb-2 lg:mb-3">
+              {/* Title - Bigger and more readable */}
+              <h3 className="text-lg lg:text-xl font-semibold text-gray-900 mb-4 lg:mb-6 text-center lg:text-left">
                 {card.title}
               </h3>
 
-              {/* Description - Smaller text and limited lines */}
-              <p className="text-gray-600 text-xs lg:text-sm leading-relaxed mb-2 lg:mb-3 flex-grow line-clamp-3">
+              {/* Description - Bigger text and proper line height */}
+              <p className="text-gray-600 text-sm lg:text-base leading-relaxed mb-6 lg:mb-8 flex-grow text-center lg:text-left">
                 {card.description}
               </p>
 
