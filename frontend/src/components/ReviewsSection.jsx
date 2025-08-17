@@ -21,7 +21,7 @@ export const ReviewType = {
   url: '' // link to full review or company page
 };
 
-const ReviewCard = ({ review }) => {
+const ReviewCard = ({ review, language }) => {
   // Render stars based on rating
   const renderStars = (rating) => {
     return Array.from({ length: 5 }, (_, i) => (
