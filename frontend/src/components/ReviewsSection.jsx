@@ -250,7 +250,7 @@ const ReviewsSection = ({ reviews = [], translations, language, loading = false,
           {/* Reviews Grid - Always show all 3 reviews horizontally */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {displayReviews.map((review) => (
-              <ReviewCard key={review.id} review={review} />
+              <ReviewCard key={review.id} review={review} language={language} />
             ))}
           </div>
         </div>
