@@ -1003,7 +1003,7 @@ export const translations = {
     // Housing Associations Categories
     roof: "Þak",
     windowsDoors: "Gluggar og hurðir",
-    facade: "Fasade",
+    facade: "Framhlið",
     balcony: "Svalir",
     masonry: "Múrarar",
     drainageInsulation: "Drenun og einangrun",
