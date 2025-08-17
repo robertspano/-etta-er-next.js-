@@ -6,8 +6,8 @@ const ProSignupSection = ({ translations }) => {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px] lg:min-h-[600px] items-center gap-8 lg:gap-12">
           
-          {/* Left side - Professional Photo (Desktop: always left, Mobile: bottom) */}
-          <div className="relative order-2 lg:order-1 flex justify-center lg:justify-end lg:pr-8">
+          {/* Left side - Professional Photo (Desktop: always left, Mobile: top) */}
+          <div className="relative order-1 lg:order-1 flex justify-center lg:justify-start lg:pl-8">
             {/* Professional photo */}
             <img 
               src="https://images.unsplash.com/photo-1672748341520-6a839e6c05bb?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxjb25zdHJ1Y3Rpb24lMjB3b3JrZXJ8ZW58MHx8fHwxNzU1MzY1Mzg3fDA&ixlib=rb-4.1.0&q=85&w=500&h=600"
@@ -27,8 +27,8 @@ const ProSignupSection = ({ translations }) => {
             </div>
           </div>
 
-          {/* Right side - Content (Desktop: right, Mobile: top) */}
-          <div className="order-1 lg:order-2 py-12 lg:py-16 lg:pl-8">
+          {/* Right side - Content (Desktop: right, Mobile: bottom) */}
+          <div className="order-2 lg:order-2 py-12 lg:py-16 lg:pl-8 flex flex-col justify-center">
             {/* Logo */}
             <div className="mb-6 lg:mb-8">
               <div className="flex items-center text-white">
