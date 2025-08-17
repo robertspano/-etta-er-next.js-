@@ -125,6 +125,70 @@ const ReviewsSection = ({ reviews = [], translations, language, loading = false,
   const [currentSlide, setCurrentSlide] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(3);
 
+  // Sample fake reviews data - always 3 reviews with 5 stars
+  const sampleReviews = [
+    {
+      id: '1',
+      company: {
+        id: 'byggmeistari-reykjavik',
+        name: language === 'is' ? 'Byggmeistari Reykjavík' : 'Reykjavik Construction',
+        logoUrl: null
+      },
+      rating: 5,
+      excerpt: language === 'is' 
+        ? 'Frábær þjónusta og fagleg vinnubrögð. Verkið var klárað á réttum tíma og innan fjárhagsramma. Mæli eindregið með þessu fyrirtæki.'
+        : 'Excellent service and professional workmanship. The project was completed on time and within budget. Highly recommend this company.',
+      reviewer: {
+        name: language === 'is' ? 'Sigurdur Einarsson' : 'John Peterson',
+        initial: language === 'is' ? 'S' : 'J',
+        location: language === 'is' ? 'Reykjavík' : 'Reykjavik'
+      },
+      date: '2025-01-10T00:00:00.000Z',
+      url: '#'
+    },
+    {
+      id: '2', 
+      company: {
+        id: 'husasmidi-og-vidgerdir',
+        name: language === 'is' ? 'Húsasmíði & Viðgerðir' : 'Home Building & Repairs',
+        logoUrl: null
+      },
+      rating: 5,
+      excerpt: language === 'is'
+        ? 'Mjög áhugasamir og hjálplegir starfsmenn. Góð samskipti í gegnum allt ferlið og útkoman var betri en ég bjóst við.'
+        : 'Very dedicated and helpful staff. Great communication throughout the process and the outcome was better than expected.',
+      reviewer: {
+        name: language === 'is' ? 'Anna Kristjánsdóttir' : 'Sarah Mitchell',
+        initial: language === 'is' ? 'A' : 'S',
+        location: language === 'is' ? 'Kópavogur' : 'Kopavogur'
+      },
+      date: '2025-01-05T00:00:00.000Z',
+      url: '#'
+    },
+    {
+      id: '3',
+      company: {
+        id: 'handverksfyrirtaeki-islands',
+        name: language === 'is' ? 'Handverksfyrirtæki Íslands' : 'Iceland Craftsmanship Co.',
+        logoUrl: null
+      },
+      rating: 5,
+      excerpt: language === 'is'
+        ? 'Ótrúlega vandvirkir og nákvæmir í sinni vinnu. Verkið var gert hratt og vel. Mun nota þetta fyrirtæki aftur.'
+        : 'Incredibly meticulous and precise in their work. The job was done quickly and well. Will use this company again.',
+      reviewer: {
+        name: language === 'is' ? 'Gunnar Þórsson' : 'Michael Thompson',
+        initial: language === 'is' ? 'G' : 'M', 
+        location: language === 'is' ? 'Hafnarfjörður' : 'Hafnarfjordur'
+      },
+      date: '2024-12-28T00:00:00.000Z',
+      url: '#'
+    }
+  ];
+
+  // Use sample reviews instead of passed reviews
+  const displayReviews = sampleReviews;
+
   // Update items per page based on screen size
   useEffect(() => {
     const updateItemsPerPage = () => {
