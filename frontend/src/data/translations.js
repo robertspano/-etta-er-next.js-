@@ -1019,8 +1019,8 @@ export const translations = {
     allCategories: "Aðrir flokkar",
     
     // Popular Projects Section
-    popularProjectsTitle: "Populære prosjekter",
-    popularProjectsSubtitle: "Skal du i gang med et stort prosjekt eller et lite oppdrag? Legg ut jobben på Mittanbud og få tilbud fra relevante bedrifter og håndverkere - eller bruk søkefunksjonen for å finne riktig bedrift for deg!",
+    popularProjectsTitle: "Vinsæl Verkefni",
+    popularProjectsSubtitle: "Byrjaðu á næsta verkefninu þínu eða leitaðu til að finna rétta fagmanninn fyrir þig.",
     
     // Automotive Step - Mittanbud Style
     mittanbudAutomotiveTitle: "Fá tilbud frá fleiri bilverkstæði",
