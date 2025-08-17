@@ -12,7 +12,7 @@ from datetime import datetime
 from typing import Dict, Any, List
 
 # Get backend URL from environment
-BACKEND_URL = "https://buildconnect-ui.preview.emergentagent.com/api"
+BACKEND_URL = "https://renovate-hub-2.preview.emergentagent.com/api"
 
 class BuildConnectAPITester:
     def __init__(self):
