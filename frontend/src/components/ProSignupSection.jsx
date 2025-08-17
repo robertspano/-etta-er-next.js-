@@ -10,7 +10,7 @@ const ProSignupSection = ({ translations }) => {
           <div className="relative flex-1 flex justify-center lg:justify-start">
             {/* Professional photo */}
             <img 
-              src="https://customer-assets.emergentagent.com/job_1ed60891-9b59-4a8c-bbcc-e71dbc87ceb4/artifacts/tjhup0so_image.png"
+              src="https://customer-assets.emergentagent.com/job_1ed60891-9b59-4a8c-bbcc-e71dbc87ceb4/artifacts/ttnvo8m4_image.png"
               alt="Professional contractor"
               className="w-72 h-80 lg:w-80 lg:h-96 xl:w-96 xl:h-[450px] object-cover object-center rounded-lg shadow-2xl"
               loading="lazy"
