@@ -53,16 +53,17 @@ const FindCompanySection = ({ translations, language }) => {
       <div className="max-w-7xl mx-auto">
         {/* Main beige panel matching Mittanbud exactly */}
         <div className="relative bg-gradient-to-br from-yellow-50 via-orange-50 to-yellow-100 rounded-3xl shadow-lg overflow-hidden">
-          {/* Decorative curved arrow - top right */}
-          <div className="absolute top-8 right-8 hidden lg:block">
+          {/* Enhanced decorative elements matching Mittanbud */}
+          <div className="absolute top-6 right-6 hidden lg:block">
+            {/* Curved arrow decoration */}
             <svg 
-              width="80" 
-              height="60" 
-              viewBox="0 0 80 60" 
-              className="text-orange-300 opacity-60"
+              width="100" 
+              height="80" 
+              viewBox="0 0 100 80" 
+              className="text-orange-300 opacity-40"
             >
               <path 
-                d="M15,45 Q35,15 65,25 L58,18 M65,25 L58,32" 
+                d="M20,55 Q45,25 80,35 L72,28 M80,35 L72,42" 
                 stroke="currentColor" 
                 strokeWidth="3" 
                 fill="none" 
@@ -70,7 +71,7 @@ const FindCompanySection = ({ translations, language }) => {
                 strokeLinejoin="round"
               />
               <path 
-                d="M20,35 Q40,20 60,28" 
+                d="M25,45 Q50,30 75,38" 
                 stroke="currentColor" 
                 strokeWidth="2" 
                 fill="none" 
@@ -78,6 +79,24 @@ const FindCompanySection = ({ translations, language }) => {
                 opacity="0.6"
               />
             </svg>
+          </div>
+
+          {/* Abstract background pattern */}
+          <div className="absolute bottom-0 right-0 opacity-20">
+            <svg width="200" height="120" viewBox="0 0 200 120" className="text-green-400">
+              <path d="M0,120 Q50,80 100,90 Q150,100 200,75 L200,120 Z" fill="currentColor" />
+            </svg>
+          </div>
+          
+          {/* Small decorative dots */}
+          <div className="absolute top-12 left-12 opacity-30">
+            <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+          </div>
+          <div className="absolute top-20 left-20 opacity-20">
+            <div className="w-1 h-1 bg-orange-400 rounded-full"></div>
+          </div>
+          <div className="absolute bottom-12 left-16 opacity-25">
+            <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center p-8 lg:p-16">
