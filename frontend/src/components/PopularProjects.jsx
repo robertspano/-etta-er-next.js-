@@ -144,7 +144,7 @@ const PopularProjects = ({ translations }) => {
           </p>
         </div>
 
-        {/* Category Grid - 4x2 layout (4 per row, 2 rows) */}
+        {/* Category Grid - 4x3 layout (4 per row, 3 rows) to match Mittanbud */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
           {projectCategories.map((category, index) => {
             return (
