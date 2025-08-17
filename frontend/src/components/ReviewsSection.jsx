@@ -207,7 +207,7 @@ const ReviewsSection = ({ reviews = [], translations, language, loading = false,
   }, []);
 
   // Calculate total slides
-  const totalSlides = Math.ceil(reviews.length / itemsPerPage);
+  const totalSlides = Math.ceil(displayReviews.length / itemsPerPage);
   
   // Navigation handlers
   const goToPrevious = () => {
@@ -221,7 +221,7 @@ const ReviewsSection = ({ reviews = [], translations, language, loading = false,
   // Get current items to display
   const getCurrentItems = () => {
     const startIndex = currentSlide * itemsPerPage;
-    return reviews.slice(startIndex, startIndex + itemsPerPage);
+    return displayReviews.slice(startIndex, startIndex + itemsPerPage);
   };
 
   return (
