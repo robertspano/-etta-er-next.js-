@@ -1045,14 +1045,14 @@ export const translations = {
     reviewsComingSoon: "Umsagnir koma fljótlega",
     
     // Trust/Quality Section
-    trustSectionTitle: "En rask og trygg måte å finne håndverker på",
-    trustSectionSubtitle: "På BuildConnect gjennomgår vi bedriftene på tjenesten jevnlig. Vi har også gjort det lettere for deg å sikre at du har valgt den beste bedriften for ditt prosjekt:",
-    trustCard1Title: "Finn dyktige håndverkere",
-    trustCard1Description: "BuildConnect gjør det enkelt å finne håndverkere, uansett om jobben er stor eller liten. Du kan kontakte bedrifter direkte, eller la oss finne den rette!",
-    trustCard2Title: "Trygge og pålitelige bedrifter",
-    trustCard2Description: "BuildConnect kvalitetssikrer at bedrifter kan utføre din type jobb. Evalueringene forteller deg hvilke erfaringer andre har hatt med bedriften.",
-    trustCard3Title: "Evalueringer du kan stole på",
-    trustCard3Description: "Evalueringer kan kun gis for jobber som legges ut på BuildConnect. For å evaluere en jobb må de som legger ut jobben også ha BankID-verifisere hvem de er.",
+    trustSectionTitle: "Fljótleg og örugg leið til að finna fagmenn",
+    trustSectionSubtitle: "Á BuildConnect förum við reglulega yfir fyrirtækin á þjónustunni. Við höfum einnig gert það auðveldara fyrir þig að tryggja að þú hafir valið besta fyrirtækið fyrir verkefnið þitt:",
+    trustCard1Title: "Finndu hæfa fagmenn",
+    trustCard1Description: "BuildConnect gerir það auðvelt að finna fagmenn, hvort sem verkið er stórt eða lítið. Þú getur haft samband við fyrirtæki beint, eða látið okkur finna þann rétta!",
+    trustCard2Title: "Örugg og áreiðanleg fyrirtæki",
+    trustCard2Description: "BuildConnect tryggir að fyrirtæki geti framkvæmt þína tegund vinnu. Umsagnirnar segja þér hvaða reynslu aðrir hafa haft af fyrirtækinu.",
+    trustCard3Title: "Umsagnir sem þú getur treyst",
+    trustCard3Description: "Aðeins er hægt að gefa umsagnir fyrir störf sem eru birt á BuildConnect. Til að meta verk verða þeir sem birta verkið einnig að vera BankID staðfestir fyrir hverjir þeir eru.",
     learnMore: "Lesa meira",
     
     // Pro Signup Section
