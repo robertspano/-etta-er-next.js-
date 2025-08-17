@@ -98,17 +98,17 @@ const TrustSection = ({ translations }) => {
               className="bg-white rounded-xl p-4 lg:p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 flex flex-col h-full group"
             >
               {/* Icon */}
-              <div className="mb-6 group-hover:scale-105 transition-transform duration-300">
+              <div className="mb-4 group-hover:scale-105 transition-transform duration-300">
                 {card.icon}
               </div>
 
               {/* Title */}
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              <h3 className="text-lg lg:text-xl font-semibold text-gray-900 mb-3">
                 {card.title}
               </h3>
 
               {/* Description - flex-grow pushes the link to bottom */}
-              <p className="text-gray-600 leading-relaxed mb-6 flex-grow">
+              <p className="text-gray-600 text-sm lg:text-base leading-relaxed mb-4 flex-grow">
                 {card.description}
               </p>
 
