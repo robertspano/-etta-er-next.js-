@@ -106,7 +106,7 @@ const DashboardLayout = ({ children, language, setLanguage, currentTranslations 
 };
 
 function App() {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState('is');
   const currentTranslations = translations[language];
 
   return (
