@@ -116,11 +116,11 @@ const FindCompanySection = ({ translations, language }) => {
             <div className="w-full">
               <form onSubmit={handleSubmit}>
                 {/* Single row with inputs and button - Mittanbud style */}
-                <div className="bg-white rounded-xl shadow-md p-2 lg:p-3">
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 lg:gap-3 items-center">
-                    {/* Category input - takes 4 columns */}
-                    <div className="relative lg:col-span-4">
-                      <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+                <div className="bg-white rounded-xl shadow-md p-2">
+                  <div className="flex flex-col md:flex-row gap-2 items-stretch">
+                    {/* Category input - flex-grow */}
+                    <div className="relative flex-1">
+                      <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
                         <Wrench className="h-4 w-4" />
                       </div>
                       <input
@@ -128,7 +128,7 @@ const FindCompanySection = ({ translations, language }) => {
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
                         placeholder={translations.findCompanyWhatHelp || "What do you need help with?"}
-                        className="w-full pl-10 pr-3 py-3 lg:py-4 text-gray-900 placeholder-gray-500 bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 rounded-lg text-sm lg:text-base"
+                        className="w-full pl-9 pr-3 py-3 text-gray-900 placeholder-gray-500 bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 rounded-lg text-sm"
                         list="categories-list"
                       />
                       {/* Datalist for category suggestions */}
@@ -139,9 +139,9 @@ const FindCompanySection = ({ translations, language }) => {
                       </datalist>
                     </div>
 
-                    {/* Location input - takes 4 columns */}
-                    <div className="relative lg:col-span-4">
-                      <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
+                    {/* Location input - flex-grow */}
+                    <div className="relative flex-1">
+                      <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
                         <MapPin className="h-4 w-4" />
                       </div>
                       <input
@@ -149,15 +149,15 @@ const FindCompanySection = ({ translations, language }) => {
                         value={location}
                         onChange={(e) => setLocation(e.target.value)}
                         placeholder={translations.findCompanyWhereJob || "Where should the job be done?"}
-                        className="w-full pl-10 pr-3 py-3 lg:py-4 text-gray-900 placeholder-gray-500 bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 rounded-lg text-sm lg:text-base"
+                        className="w-full pl-9 pr-3 py-3 text-gray-900 placeholder-gray-500 bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 rounded-lg text-sm"
                       />
                     </div>
 
-                    {/* Search button - takes 4 columns */}
-                    <div className="lg:col-span-4">
+                    {/* Search button - fixed width */}
+                    <div className="flex-shrink-0">
                       <Button
                         type="submit"
-                        className="w-full px-4 lg:px-6 py-3 lg:py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg text-sm lg:text-base"
+                        className="w-full md:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg text-sm whitespace-nowrap"
                         size="lg"
                       >
                         <Search className="h-4 w-4 mr-2" />
