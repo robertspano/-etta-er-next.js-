@@ -95,21 +95,21 @@ const FindCompanySection = ({ translations, language }) => {
 
             {/* Right side - Search form */}
             <div className="w-full">
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Search inputs container - white rounded box */}
-                <div className="bg-white rounded-xl shadow-md p-3 lg:p-4">
-                  <div className="grid lg:grid-cols-2 gap-3 lg:gap-4">
-                    {/* Category input */}
-                    <div className="relative">
+              <form onSubmit={handleSubmit}>
+                {/* Single row with inputs and button - Mittanbud style */}
+                <div className="bg-white rounded-xl shadow-md p-2 lg:p-3">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 lg:gap-3 items-center">
+                    {/* Category input - takes 4 columns */}
+                    <div className="relative lg:col-span-4">
                       <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                        <Wrench className="h-5 w-5" />
+                        <Wrench className="h-4 w-4" />
                       </div>
                       <input
                         type="text"
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
                         placeholder={translations.findCompanyWhatHelp || "What do you need help with?"}
-                        className="w-full pl-12 pr-4 py-4 text-gray-900 placeholder-gray-500 bg-gray-50 border-0 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
+                        className="w-full pl-10 pr-3 py-3 lg:py-4 text-gray-900 placeholder-gray-500 bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 rounded-lg text-sm lg:text-base"
                         list="categories-list"
                       />
                       {/* Datalist for category suggestions */}
@@ -120,32 +120,32 @@ const FindCompanySection = ({ translations, language }) => {
                       </datalist>
                     </div>
 
-                    {/* Location input */}
-                    <div className="relative">
+                    {/* Location input - takes 4 columns */}
+                    <div className="relative lg:col-span-4">
                       <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                        <MapPin className="h-5 w-5" />
+                        <MapPin className="h-4 w-4" />
                       </div>
                       <input
                         type="text"
                         value={location}
                         onChange={(e) => setLocation(e.target.value)}
                         placeholder={translations.findCompanyWhereJob || "Where should the job be done?"}
-                        className="w-full pl-12 pr-4 py-4 text-gray-900 placeholder-gray-500 bg-gray-50 border-0 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
+                        className="w-full pl-10 pr-3 py-3 lg:py-4 text-gray-900 placeholder-gray-500 bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 rounded-lg text-sm lg:text-base"
                       />
                     </div>
-                  </div>
-                </div>
 
-                {/* Search button */}
-                <div className="flex justify-center lg:justify-start">
-                  <Button
-                    type="submit"
-                    className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors duration-200 shadow-lg hover:shadow-xl text-lg"
-                    size="lg"
-                  >
-                    <Search className="h-5 w-5 mr-2" />
-                    {translations.findCompanyButton || "Find company"}
-                  </Button>
+                    {/* Search button - takes 4 columns */}
+                    <div className="lg:col-span-4">
+                      <Button
+                        type="submit"
+                        className="w-full px-4 lg:px-6 py-3 lg:py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg text-sm lg:text-base"
+                        size="lg"
+                      >
+                        <Search className="h-4 w-4 mr-2" />
+                        {translations.findCompanyButton || "Find company"}
+                      </Button>
+                    </div>
+                  </div>
                 </div>
               </form>
             </div>
