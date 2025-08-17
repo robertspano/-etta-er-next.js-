@@ -237,128 +237,14 @@ const ReviewsSection = ({ reviews = [], translations, language, loading = false,
           </p>
         </div>
 
-        {/* Reviews Container */}
+        {/* Reviews Container - Show all 3 reviews side by side */}
         <div className="relative">
-          {loading ? (
-            /* Loading State */
-            <div className="text-center py-16">
-              <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-              <p className="text-gray-600">
-                {translations.loadingReviews || "Loading reviews..."}
-              </p>
-            </div>
-          ) : error ? (
-            /* Error State */
-            <div className="text-center py-16">
-              <div className="w-16 h-16 mx-auto mb-6 bg-red-100 rounded-full flex items-center justify-center">
-                <Star className="h-8 w-8 text-red-400" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                {translations.reviewsErrorTitle || "Unable to load reviews"}
-              </h3>
-              <p className="text-gray-600">
-                {translations.reviewsErrorMessage || "Please try again later"}
-              </p>
-            </div>
-          ) : reviews.length === 0 ? (
-            /* Empty State */
-            <div className="text-center py-16">
-              <div className="max-w-md mx-auto">
-                {/* Empty State Icon */}
-                <div className="w-16 h-16 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
-                  <Star className="h-8 w-8 text-gray-400" />
-                </div>
-                
-                {/* Empty State Message */}
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {translations.noReviewsYetTitle || "No reviews yet"}
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  {translations.noReviewsYetMessage || "Customer reviews will appear here once projects are completed"}
-                </p>
-                
-                {/* Placeholder for future CTA */}
-                <div className="text-sm text-gray-500">
-                  {translations.reviewsComingSoon || "Reviews coming soon"}
-                </div>
-              </div>
-
-              {/* Show disabled carousel controls for layout completeness */}
-              <div className="flex justify-center items-center gap-4 mt-12">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  disabled
-                  className="rounded-full w-10 h-10 p-0 bg-gray-100 border-gray-200 cursor-not-allowed opacity-50"
-                >
-                  <ChevronLeft className="h-4 w-4 text-gray-400" />
-                </Button>
-                
-                <div className="flex gap-2">
-                  {[0, 1, 2].map((_, index) => (
-                    <div
-                      key={index}
-                      className="w-2 h-2 rounded-full bg-gray-200"
-                    />
-                  ))}
-                </div>
-                
-                <Button
-                  variant="outline"
-                  size="sm"
-                  disabled
-                  className="rounded-full w-10 h-10 p-0 bg-gray-100 border-gray-200 cursor-not-allowed opacity-50"
-                >
-                  <ChevronRight className="h-4 w-4 text-gray-400" />
-                </Button>
-              </div>
-            </div>
-          ) : (
-            <>
-              {/* Reviews Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                {getCurrentItems().map((review) => (
-                  <ReviewCard key={review.id} review={review} />
-                ))}
-              </div>
-
-              {/* Carousel Controls */}
-              {totalSlides > 1 && (
-                <div className="flex justify-center items-center gap-4">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={goToPrevious}
-                    className="rounded-full w-10 h-10 p-0 hover:bg-blue-50 hover:border-blue-200"
-                  >
-                    <ChevronLeft className="h-4 w-4" />
-                  </Button>
-                  
-                  {/* Slide Indicators */}
-                  <div className="flex gap-2">
-                    {Array.from({ length: totalSlides }, (_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentSlide(index)}
-                        className={`w-2 h-2 rounded-full transition-colors ${
-                          currentSlide === index ? 'bg-blue-600' : 'bg-gray-300'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                  
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={goToNext}
-                    className="rounded-full w-10 h-10 p-0 hover:bg-blue-50 hover:border-blue-200"
-                  >
-                    <ChevronRight className="h-4 w-4" />
-                  </Button>
-                </div>
-              )}
-            </>
-          )}
+          {/* Reviews Grid - Always show all 3 reviews horizontally */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {displayReviews.map((review) => (
+              <ReviewCard key={review.id} review={review} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
