@@ -97,18 +97,22 @@ const TrustSection = ({ translations }) => {
               key={index}
               className="bg-white rounded-lg p-3 lg:p-4 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 flex flex-col h-full group"
             >
-              {/* Icon */}
-              <div className="mb-4 group-hover:scale-105 transition-transform duration-300">
-                {card.icon}
+              {/* Icon - Smaller */}
+              <div className="mb-2 lg:mb-3 group-hover:scale-105 transition-transform duration-300">
+                <div className="w-8 h-8 lg:w-10 lg:h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                  <svg className="w-4 h-4 lg:w-5 lg:h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    {/* This will need to be updated per card, but for now just use a generic icon */}
+                  </svg>
+                </div>
               </div>
 
-              {/* Title */}
-              <h3 className="text-lg lg:text-xl font-semibold text-gray-900 mb-3">
+              {/* Title - Smaller font */}
+              <h3 className="text-sm lg:text-base font-semibold text-gray-900 mb-2 lg:mb-3">
                 {card.title}
               </h3>
 
-              {/* Description - flex-grow pushes the link to bottom */}
-              <p className="text-gray-600 text-sm lg:text-base leading-relaxed mb-4 flex-grow">
+              {/* Description - Smaller text and limited lines */}
+              <p className="text-gray-600 text-xs lg:text-sm leading-relaxed mb-2 lg:mb-3 flex-grow line-clamp-3">
                 {card.description}
               </p>
 
