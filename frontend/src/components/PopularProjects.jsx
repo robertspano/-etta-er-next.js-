@@ -43,6 +43,42 @@ const PopularProjects = ({ translations }) => {
       name: translations.majorProjects
     },
     { 
+      key: 'plumbing', 
+      icon: (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+          <path d="M18.5 3c-1.79 0-3.43.73-4.61 1.91L12.97 5.83 11.14 4 9.73 5.41l1.83 1.83-.92.92C9.43 6.96 7.79 6.23 6 6.23c-3.04 0-5.5 2.46-5.5 5.5s2.46 5.5 5.5 5.5c1.79 0 3.43-.73 4.61-1.91l.92-.92 1.83 1.83L15.77 15l-1.83-1.83.92-.92c1.21-1.18 1.94-2.82 1.94-4.61C16.8 4.6 17.84 3.5 19.2 3.5c1.36 0 2.4 1.1 2.4 2.64 0 1.79-.73 3.43-1.91 4.61l-.92.92 1.83 1.83 1.41-1.41-1.83-1.83.92-.92C22.27 7.93 23 6.29 23 4.5 23 1.46 20.54-.5 17.5-.5z"/>
+        </svg>
+      ), 
+      name: translations.services_plumbing || 'Plumbing'
+    },
+    { 
+      key: 'electrical', 
+      icon: (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+          <path d="M14.69 2.21L4.33 11.49c-.64.58-.28 1.65.58 1.73L13 14l-3.64 7.21c-.34.65.2 1.44.92 1.44.28 0 .58-.14.78-.43l10.36-9.28c.64-.58.28-1.65-.58-1.73L11 10l3.64-7.21c.34-.65-.2-1.44-.92-1.44-.28 0-.58.14-.78.43z"/>
+        </svg>
+      ), 
+      name: translations.services_electrical || 'Electrical'
+    },
+    { 
+      key: 'painting', 
+      icon: (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+          <path d="M18.85 10.39l1.06-1.06c.78-.78.78-2.05 0-2.83L18.5 5.09c-.78-.78-2.05-.78-2.83 0L14.61 6.15l4.24 4.24zM2.81 21.19c-.78.78-.78 2.05 0 2.83.39.39.9.58 1.41.58s1.02-.19 1.41-.58L8.1 21.54 2.46 15.9l-2.65 2.65-.65-2.83zM5.44 14.83l7.07-7.07 4.24 4.24-7.07 7.07z"/>
+        </svg>
+      ), 
+      name: translations.services_painting || 'Painting'
+    },
+    { 
+      key: 'carpentry', 
+      icon: (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+          <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
+        </svg>
+      ), 
+      name: translations.services_carpentry || 'Carpentry'
+    },
+    { 
       key: 'cleaning', 
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
