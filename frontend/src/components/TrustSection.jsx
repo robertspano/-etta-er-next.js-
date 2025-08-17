@@ -90,8 +90,8 @@ const TrustSection = ({ translations }) => {
           </p>
         </div>
 
-        {/* Cards Grid - Force horizontal layout on all screen sizes */}
-        <div className="grid grid-cols-3 gap-3 lg:gap-6 items-stretch">
+        {/* Cards Grid - Force horizontal layout on all screen sizes with bigger gaps */}
+        <div className="grid grid-cols-3 gap-4 lg:gap-8 items-stretch">
           {cards.map((card, index) => (
             <div 
               key={index}
