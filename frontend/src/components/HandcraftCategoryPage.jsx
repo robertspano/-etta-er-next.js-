@@ -150,7 +150,7 @@ const HandcraftCategoryPage = ({ translations, language }) => {
           <div className="bg-green-50 rounded-lg p-6">
             <div className="text-3xl font-bold text-green-600 mb-2">32,000+</div>
             <div className="text-gray-600">
-              {language === 'is' ? 'Lokið verkefni' : 'Fullførte prosjekter'}
+              {language === 'is' ? 'Lokið verkefni' : 'Completed projects'}
             </div>
           </div>
           <div className="bg-purple-50 rounded-lg p-6">
