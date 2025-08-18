@@ -293,12 +293,12 @@ const HandcraftCategoryPage = ({ translations, language }) => {
       <div className="bg-blue-600 text-white py-16">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            {language === 'is' ? 'Tilbúinn að byrja?' : 'Klar til å starte?'}
+            {language === 'is' ? 'Tilbúinn að byrja?' : 'Ready to start?'}
           </h2>
           <p className="text-xl mb-8 opacity-90">
             {language === 'is'
-              ? 'Leggðu inn verkefnið þitt og fáðu tilboð frá hæfum handverksmönnum á þínu svæði.'
-              : 'Legg ut prosjektet ditt og få tilbud fra kvalifiserte håndverkere i ditt område.'
+              ? 'Leggðu inn verkefnið þitt og fáðu tilboð frá hæfum iðnaðarmönnum á þínu svæði.'
+              : 'Post your project and get quotes from qualified craftsmen in your area.'
             }
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
