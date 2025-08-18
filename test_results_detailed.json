@@ -219,7 +219,7 @@
     {
       "test": "GET /api/job-requests",
       "success": false,
-      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://buildconnect-ui-1.preview.emergentagent.com/api/job-requests/'",
+      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://mittanbud-clone.preview.emergentagent.com/api/job-requests/'",
       "timestamp": "2025-08-18T16:59:37.787432",
       "response_data": null
     },
@@ -240,7 +240,7 @@
     {
       "test": "GET /api/job-requests (Category Filter)",
       "success": false,
-      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://buildconnect-ui-1.preview.emergentagent.com/api/job-requests/?category=plumbing'",
+      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://mittanbud-clone.preview.emergentagent.com/api/job-requests/?category=plumbing'",
       "timestamp": "2025-08-18T16:59:37.832299",
       "response_data": null
     },
