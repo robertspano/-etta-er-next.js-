@@ -36,24 +36,12 @@ const CleaningContactForm = ({ translations, language }) => {
   // Draft job request ID for persistence (stored in localStorage for guests)
   const [draftJobId, setDraftJobId] = useState(null);
 
-  // Cleaning subcategory name mapping
+  // Cleaning subcategory name mapping - Updated for Mittanbud's 4 categories
   const subcategoryNames = {
-    houseCleaning: translations.houseCleaning || 'House Cleaning',
-    officeCleaning: translations.officeCleaning || 'Office Cleaning',
-    deepCleaning: translations.deepCleaning || 'Deep Cleaning',
-    carCleaning: translations.carCleaning || 'Car Cleaning',
-    postConstruction: translations.postConstruction || 'Post-Construction Cleaning',
-    wasteRemoval: translations.wasteRemoval || 'Waste Removal',
-    eventCleaning: translations.eventCleaning || 'Event Cleaning',
-    industrialCleaning: translations.industrialCleaning || 'Industrial Cleaning',
-    windowCleaning: translations.windowCleaning || 'Window Cleaning',
-    gardenCleaning: translations.gardenCleaning || 'Garden Cleaning',
-    carpetCleaning: translations.carpetCleaning || 'Carpet & Upholstery',
-    movingCleaning: translations.movingCleaning || 'Moving Cleaning',
-    pressureWashing: translations.pressureWashing || 'Pressure Washing',
-    storageCleaning: translations.storageCleaning || 'Storage Cleaning',
-    specialized: translations.specializedCleaning || 'Specialized Cleaning',
-    otherCleaning: translations.otherCleaning || 'Other Cleaning'
+    facadeCleaning: translations.facadeCleaning || 'Facade Cleaning',
+    cleaningServices: translations.cleaningServices || 'Cleaning Services',
+    moveOutCleaning: translations.moveOutCleaning || 'Move-out Cleaning',
+    otherCleaning: translations.otherCleaning || 'Other (Cleaning)'
   };
 
   // If no subcategory selected, redirect back
