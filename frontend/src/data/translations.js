@@ -439,6 +439,30 @@ export const translations = {
     pianotransport: "Piano Moving",
     godstransport: "Freight Transport",
     
+    // Cleaning Category Picker
+    cleaningStepHeader: "About the job • Contact info • Complete",
+    cleaningCategoryTitle: "Choose a category to post your job — completely free",
+    cleaningSearchPlaceholder: "What kind of cleaning do you need?",
+    submitCleaningRequest: "Submit Cleaning Request",
+    
+    // Cleaning Subcategories
+    houseCleaning: "House Cleaning",
+    officeCleaning: "Office Cleaning",
+    deepCleaning: "Deep Cleaning",
+    carCleaning: "Car Cleaning",
+    postConstruction: "Post-Construction Cleaning",
+    wasteRemoval: "Waste Removal",
+    eventCleaning: "Event Cleaning",
+    industrialCleaning: "Industrial Cleaning",
+    windowCleaning: "Window Cleaning",
+    gardenCleaning: "Garden Cleaning",
+    carpetCleaning: "Carpet & Upholstery",
+    movingCleaning: "Moving Cleaning",
+    pressureWashing: "Pressure Washing",
+    storageCleaning: "Storage Cleaning",
+    specializedCleaning: "Specialized Cleaning",
+    otherCleaning: "Other Cleaning",
+    
     // Housing Associations Categories
     roof: "Roof",
     windowsDoors: "Windows & Doors",
