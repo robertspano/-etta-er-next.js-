@@ -1,203 +1,337 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Input } from './ui/input';
-import { Button } from './ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowLeft, Home, Wrench, Building, Construction, Users, Hammer, Square } from 'lucide-react';
 
 const AllCategoriesOverview = ({ translations }) => {
-  const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
-  // Category groups exactly like Mittanbud
-  const categoryGroups = [
-    {
-      title: "House & Garden",
-      titleIS: "Hús og Garður",
-      items: [
-        { name: 'Garden Maintenance', nameIS: 'Garðviðhald', slug: 'garden-maintenance' },
-        { name: 'Landscaping', nameIS: 'Landslagsarkitektúr', slug: 'landscaping' },
-        { name: 'Exterior Painting', nameIS: 'Utanmálun', slug: 'exterior-painting' },  
-        { name: 'Roofing', nameIS: 'Þakvinnu', slug: 'roofing' },
-        { name: 'Windows & Doors', nameIS: 'Gluggar og Hurðir', slug: 'windows-doors' },
-        { name: 'Driveway & Paving', nameIS: 'Innkeyrsla og Hellulagnir', slug: 'driveway-paving' },
-        { name: 'Fencing', nameIS: 'Girðingavinna', slug: 'fencing' },
-        { name: 'Outdoor Structures', nameIS: 'Utanhúsmannvirki', slug: 'outdoor-structures' }
-      ]
-    },
-    {
-      title: "Services",
-      titleIS: "Þjónustur", 
-      items: [
-        { name: translations.cleaning, nameIS: translations.cleaning, slug: 'cleaning' },
-        { name: translations.moving, nameIS: translations.moving, slug: 'moving' },
-        { name: 'Security Systems', nameIS: 'Öryggiskerfi', slug: 'security-systems' },
-        { name: 'Solar Installation', nameIS: 'Sólarkerfi', slug: 'solar-installation' },
-        { name: 'Pool Maintenance', nameIS: 'Sundlaugaviðhald', slug: 'pool-maintenance' },
-        { name: 'Waste Removal', nameIS: 'Ruslaflutningur', slug: 'waste-removal' },
-        { name: 'Event Planning', nameIS: 'Viðburðaskipulag', slug: 'event-planning' },
-        { name: 'Pet Services', nameIS: 'Gæludýraþjónusta', slug: 'pet-services' }
-      ]
-    },
-    {
-      title: "Indoor Renovations",
-      titleIS: "Innandyra Endurbætur",
-      items: [
-        { name: translations.bathroom, nameIS: translations.bathroom, slug: 'bathroom' },
-        { name: 'Kitchen Renovation', nameIS: 'Eldhúsuppgerð', slug: 'kitchen-renovation' },
-        { name: 'Flooring', nameIS: 'Gólfefni', slug: 'flooring' },
-        { name: 'Interior Painting', nameIS: 'Innimálun', slug: 'interior-painting' },
-        { name: 'Electrical Work', nameIS: 'Rafmagnsvinnu', slug: 'electrical' },
-        { name: 'Plumbing', nameIS: 'Pípulagningar', slug: 'plumbing' },
-        { name: 'Tile Work', nameIS: 'Flísavinnu', slug: 'tile-work' },
-        { name: 'Ceiling Work', nameIS: 'Loftavinnu', slug: 'ceiling-work' }
-      ]
-    },
-    {
-      title: "Build New",
-      titleIS: "Byggja Nýtt",
-      items: [
-        { name: 'New Construction', nameIS: 'Nýbygging', slug: 'new-construction' },
-        { name: 'Extensions', nameIS: 'Viðbyggingar', slug: 'extensions' },
-        { name: 'Garage Construction', nameIS: 'Bílskúrsbygging', slug: 'garage-construction' },
-        { name: 'Deck Building', nameIS: 'Verandubygging', slug: 'deck-building' },
-        { name: 'Shed Construction', nameIS: 'Geymsluhúsabygging', slug: 'shed-construction' },
-        { name: 'Basement Finishing', nameIS: 'Kjallararvinnu', slug: 'basement-finishing' },
-        { name: 'Attic Conversion', nameIS: 'Risuppgerð', slug: 'attic-conversion' },
-        { name: 'Custom Carpentry', nameIS: 'Sérhannað Trésmíði', slug: 'custom-carpentry' }
-      ]
-    },
-    {
-      title: translations.housingAssociations,
-      titleIS: translations.housingAssociations,
-      items: [
-        { name: 'Building Management', nameIS: 'Hússtjórnun', slug: 'building-management' },
-        { name: 'Common Area Maintenance', nameIS: 'Sameignarviðhald', slug: 'common-area-maintenance' },
-        { name: 'Structural Repairs', nameIS: 'Burðarvirki Viðgerðir', slug: 'structural-repairs' },
-        { name: 'HVAC Systems', nameIS: 'Loftræstikerfi', slug: 'hvac-systems' },
-        { name: 'Fire Safety', nameIS: 'Brunarvarnir', slug: 'fire-safety' },
-        { name: 'Energy Efficiency', nameIS: 'Orkunýtni', slug: 'energy-efficiency' },
-        { name: 'Elevator Maintenance', nameIS: 'Lyftuviðhald', slug: 'elevator-maintenance' },
-        { name: 'Snow Removal', nameIS: 'Snjómokstri', slug: 'snow-removal' }
-      ]
-    },
-    {
-      title: "Trades",
-      titleIS: "Handverk",
-      items: [
-        { name: translations.handcraft, nameIS: translations.handcraft, slug: 'handcraft' },
-        { name: translations.automotive, nameIS: translations.automotive, slug: 'automotive' },
-        { name: 'Carpentry', nameIS: 'Trésmíði', slug: 'carpentry' },
-        { name: 'Masonry', nameIS: 'Múrvinnu', slug: 'masonry' },
-        { name: 'Welding', nameIS: 'Suðuvinnu', slug: 'welding' },
-        { name: 'HVAC', nameIS: 'Loftræsting', slug: 'hvac' },
-        { name: 'Locksmith', nameIS: 'Lásmíði', slug: 'locksmith' },
-        { name: 'Glazing', nameIS: 'Glervinnu', slug: 'glazing' }
-      ]
-    }
-  ];
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    // Handle search logic here
-    console.log('Search query:', searchQuery);
+  const handleBack = () => {
+    navigate(-1);
   };
 
-  const handleCategoryClick = (slug) => {
-    // Special routing for automotive
-    if (slug === 'automotive') {
-      navigate('/post/automotive');
+  const handleSubcategoryClick = (categoryKey, subcategoryKey = null) => {
+    if (categoryKey === 'cleaning') {
+      navigate('/post/cleaning');
+    } else if (categoryKey === 'housingAssociations') {
+      navigate('/post/housing-associations');
+    } else if (categoryKey === 'moving') {
+      navigate('/post/moving');
+    } else if (categoryKey === 'xl') {
+      navigate('/xl');
     } else {
-      // Navigate to job posting wizard with category
-      navigate(`/post/${slug}`);
+      navigate(`/post/${categoryKey}`);
     }
   };
 
-  const handleMajorProjectsXL = () => {
-    // Go to the XL landing page
-    navigate('/xl');
-  };
-
-  // Filter categories based on search
-  const filteredGroups = categoryGroups.map(group => ({
-    ...group,
-    items: group.items.filter(item => 
-      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.nameIS.toLowerCase().includes(searchQuery.toLowerCase())
-    )
-  })).filter(group => group.items.length > 0);
+  // Mittanbud-style category structure with 2-column subcategory layout
+  const categoryGroups = [
+    // Row 1
+    [
+      {
+        key: 'housegarden',
+        title: 'Hus og hage',
+        titleEnglish: 'House and Garden',
+        icon: <Home className="w-6 h-6" />,
+        subcategories: [
+          // Left column
+          [
+            'Grunnarbeid',
+            'Vinterhage', 
+            'Tak',
+            'Platting og terrasse',
+            'Mur og betong',
+            'Drenering',
+            'Fasade',
+            'Vindu og dør',
+            'Asfaltering',
+            'Trefelling og stubbefres',
+            'Gjerde og port',
+            'Pipe og skorstein',
+            'Betongaging',
+            'Glassarbeid',
+            'Veranda og balkong'
+          ],
+          // Right column
+          [
+            'Kledning',
+            'Belegningsstein',
+            'Isolering',
+            'Riving',
+            'Male hus',
+            'Fasadevask',
+            'Vann og avløp',
+            'Hagearbeid',
+            'Drivhus, pergola og hagestue',
+            'Varmepumpe',
+            'Landskapsarkitekt',
+            'Kjøkkenrenovering',
+            'Rive murvegg',
+            'Sprengning',
+            'Avfallshåndtering'
+          ]
+        ]
+      },
+      {
+        key: 'services',
+        title: 'Tjenester',
+        titleEnglish: 'Services',
+        icon: <Wrench className="w-6 h-6" />,
+        subcategories: [
+          // Left column
+          [
+            'Takst',
+            'Elektrikertjenester',
+            'Installasjon og montering',
+            'Utleie',
+            'Solcellepanel',
+            'Transport',
+            'EU-kontroll',
+            'Flyttevask',
+            'Avfallshåndtering',
+            'Bilpleie',
+            'Alarm og lås',
+            'Vaskehjelp',
+            'Persontransport',
+            'Malermester',
+            'Eksoservice'
+          ],
+          // Right column
+          [
+            'Mekanisk verksted',
+            'Bil og bilverksted',
+            'Rengjøring',
+            'Solskjerming',
+            'Skadedyrkontroll',
+            'Alarm og sikkerhet',
+            'Elbillader',
+            'Flyttebyrå',
+            'Godstransport',
+            'Pianotransport',
+            'Solskjerming, persiener og markiser',
+            'Rustbehandling',
+            'Energirådgiver',
+            'Massetransport',
+            'Klimaservice (A/C)'
+          ]
+        ]
+      }
+    ],
+    // Row 2  
+    [
+      {
+        key: 'interior',
+        title: 'Innvendig oppussing',
+        titleEnglish: 'Interior Renovation',
+        icon: <Building className="w-6 h-6" />,
+        subcategories: [
+          // Left column
+          [
+            'Gulvbelegg',
+            'Hybel og utleieenhet',
+            'Pusse opp loft',
+            'Pusse opp vaskerom',
+            'Paging av gulv',
+            'Trapp',
+            'Pusse opp bad',
+            'Membran',
+            'Ventilasjon',
+            'Sparkling',
+            'Vedovn',
+            'Mikrosement',
+            'Montering av kjøkken',
+            'Vannbåren varme',
+            'VVS og kjøling'
+          ],
+          // Right column
+          [
+            'Gulv',
+            'Pusse opp kjøkken',
+            'Flislegging',
+            'Pusse opp leilighet',
+            'Interiørarkitekt',
+            'Pusse opp kjeller',
+            'Måling, tapetsering, overflater',
+            'Gulvslipping',
+            'Varmekabler',
+            'Peis og peisovn',
+            'Varmtvannsberefer',
+            'Gulvvaraffing'
+          ]
+        ]
+      },
+      {
+        key: 'construction',
+        title: 'Bygge nytt',
+        titleEnglish: 'New Construction',
+        icon: <Construction className="w-6 h-6" />,
+        subcategories: [
+          // Left column
+          [
+            'Byggefirma',
+            'Prosjektleder',
+            'Byggessknad',
+            'Arkitekt',
+            'Bygge hus',
+            'Bygge garasje',
+            'Ansvarlig kontrollerende',
+            'Fergighus og fertigbytte',
+            'Byggingeniør'
+          ],
+          // Right column
+          [
+            'Totalrenovering av bolig',
+            'Bygge påbygg',
+            'Entreprenør',
+            'Bygge hytte',
+            'Bygge tilbygg',
+            'Ansvarlig utførende',
+            'Garasjeport'
+          ]
+        ]
+      }
+    ],
+    // Row 3
+    [
+      {
+        key: 'housing',
+        title: 'Borettslag og sameier',
+        titleEnglish: 'Housing Associations',
+        icon: <Users className="w-6 h-6" />,
+        subcategories: [
+          // Single column (fewer items)
+          [
+            'Borettslag og sameier'
+          ],
+          []
+        ]
+      },
+      {
+        key: 'craftsmen',
+        title: 'Håndverker',
+        titleEnglish: 'Craftsmen',
+        icon: <Hammer className="w-6 h-6" />,
+        subcategories: [
+          // Left column
+          [
+            'Murer',
+            'Maler',
+            'Flislegger',
+            'Elektriker',
+            'Anleggsgarntner',
+            'Taktekker',
+            'Møbelsnekker'
+          ],
+          // Right column
+          [
+            'Låsesmed',
+            'Maskinentreprenør',
+            'Rørlegger',
+            'Blikkenslager',
+            'Snekker',
+            'Tømrer',
+            'Prosjektledelse og byggekontroll'
+          ]
+        ]
+      }
+    ]
+  ];
 
   return (
     <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
-            {translations.allCategories}
-          </h1>
-          <p className="text-xl text-gray-600 mb-8">
-            Find the right professional for any project
-          </p>
-          
-          {/* Search Input */}
-          <form onSubmit={handleSearch}>
-            <div className="relative max-w-lg mx-auto group">
-              <Input
-                type="text"
-                placeholder="Search for a category..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="h-16 pl-7 pr-20 text-lg border-3 border-gray-200 rounded-2xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100/50 shadow-lg backdrop-blur-sm bg-white/90 group-hover:shadow-xl transition-all duration-300"
-              />
-              <Button 
-                type="submit" 
-                size="sm" 
-                className="absolute right-2 top-2 h-12 w-12 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 p-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-              >
-                <ArrowRight className="h-6 w-6" />
-              </Button>
-            </div>
-          </form>
+        
+        {/* Header with Back Button */}
+        <div className="flex items-center mb-12">
+          <button 
+            onClick={handleBack}
+            className="mr-4 p-2 rounded-lg hover:bg-white/80 transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5 text-gray-600" />
+          </button>
+          <div className="flex-1">
+            <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">
+              Alle kategorier
+            </h1>
+          </div>
         </div>
 
-        {/* Category Groups */}
-        <div className="space-y-12">
-          {filteredGroups.map((group, groupIndex) => (
-            <div key={groupIndex} className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center md:text-left">
-                {group.titleIS}
-              </h2>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {group.items.map((item, itemIndex) => (
-                  <button
-                    key={itemIndex}
-                    onClick={() => handleCategoryClick(item.slug)}
-                    className="text-left p-4 rounded-xl hover:bg-blue-50 transition-all duration-200 border border-transparent hover:border-blue-200 group"
-                  >
-                    <span className="text-gray-700 group-hover:text-blue-700 font-medium">
-                      {item.nameIS}
-                    </span>
-                  </button>
-                ))}
-              </div>
+        {/* Category Groups - Mittanbud 2-column layout */}
+        <div className="space-y-8">
+          {categoryGroups.map((row, rowIndex) => (
+            <div key={rowIndex} className={`grid gap-8 ${row.length === 1 ? 'grid-cols-1 max-w-2xl mx-auto' : 'grid-cols-1 lg:grid-cols-2'}`}>
+              {row.map((category) => (
+                <div key={category.key} className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+                  
+                  {/* Category Header */}
+                  <div className="flex items-center mb-6 pb-4 border-b border-gray-100">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center mr-3">
+                      <div className="text-blue-600">
+                        {category.icon}
+                      </div>
+                    </div>
+                    <h2 className="text-xl font-bold text-gray-900">
+                      {category.title}
+                    </h2>
+                  </div>
+
+                  {/* Subcategories in 2-column layout */}
+                  <div className="grid grid-cols-2 gap-x-8 gap-y-2">
+                    {/* Left column */}
+                    <div className="space-y-2">
+                      {category.subcategories[0].map((subcategory, index) => (
+                        <button
+                          key={index}
+                          onClick={() => handleSubcategoryClick(category.key, subcategory)}
+                          className="block w-full text-left text-sm text-gray-700 hover:text-blue-600 hover:underline transition-colors py-1"
+                        >
+                          {subcategory}
+                        </button>
+                      ))}
+                    </div>
+                    
+                    {/* Right column */}
+                    <div className="space-y-2">
+                      {category.subcategories[1].map((subcategory, index) => (
+                        <button
+                          key={index}
+                          onClick={() => handleSubcategoryClick(category.key, subcategory)}
+                          className="block w-full text-left text-sm text-gray-700 hover:text-blue-600 hover:underline transition-colors py-1"
+                        >
+                          {subcategory}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           ))}
 
-          {/* Major Projects XL Section */}
-          <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 shadow-lg border border-indigo-100">
-            <div className="text-center">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                {translations.majorProjects}
-              </h2>
-              <p className="text-gray-600 mb-6">
-                Fyrir stærstu byggingarverkefnin og endurbætur
-              </p>
-              <Button
-                onClick={handleMajorProjectsXL}
-                className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300"
-              >
-                Skoða XL Verkefni
-              </Button>
+          {/* Mittanbud XL - Single centered box */}
+          <div className="grid grid-cols-1 max-w-2xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+              
+              {/* XL Header */}
+              <div className="flex items-center mb-6 pb-4 border-b border-gray-100">
+                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center mr-3">
+                  <div className="text-blue-600">
+                    <Square className="w-6 h-6" />
+                  </div>
+                </div>
+                <h2 className="text-xl font-bold text-gray-900">
+                  Mittanbud XL
+                </h2>
+              </div>
+
+              {/* XL Content */}
+              <div className="text-center">
+                <button
+                  onClick={() => handleSubcategoryClick('xl')}
+                  className="text-sm text-gray-700 hover:text-blue-600 hover:underline transition-colors"
+                >
+                  Mittanbud XL
+                </button>
+              </div>
             </div>
           </div>
         </div>
