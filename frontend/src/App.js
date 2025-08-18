@@ -336,6 +336,70 @@ function App() {
               } 
             />
             
+            <Route 
+              path="/bygge-nytt" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <BuildNewCategoryPage 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
+            <Route 
+              path="/build-new" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <BuildNewCategoryPage 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
+            <Route 
+              path="/tjenester" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <ServicesCategoryPage 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
+            <Route 
+              path="/services" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <ServicesCategoryPage 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
             {/* Individual Professional Pages */}
             <Route 
               path="/haandverker/elektriker" 
