@@ -3533,6 +3533,9 @@ class BuildConnectAPITester:
             await self.test_iceland_vehicle_lookup_system()
             await self.test_reviews_system_apis()
             
+            # Test Company Registration System (Priority Testing)
+            await self.test_company_registration_system()
+            
             # Test Moving Category Subcategory Flow (Priority Testing)
             await self.test_moving_category_subcategory_flow()
             
