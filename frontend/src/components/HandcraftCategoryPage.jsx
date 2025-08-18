@@ -21,34 +21,19 @@ const HandcraftCategoryPage = ({ translations, language }) => {
         : ['Tømrerarbeid', 'Innredning', 'Møbler', 'Vedlikehold']
     },
     {
-      id: 'murer',
-      name: language === 'is' ? 'Múrari' : 'Murer',
-      nameNorwegian: 'Murer',
+      id: 'roerlegger',
+      name: language === 'is' ? 'Pípulagningamaður' : 'Rørlegger',
+      nameNorwegian: 'Rørlegger',
       description: language === 'is'
-        ? 'Faglegur múrari fyrir steinsteypuvinnu og byggingarefni.'
-        : 'Profesjonell murarbeid for mur, betong og byggematerialer.',
+        ? 'Faglegir pípulagningamenn fyrir vatn, hita og frárennsliskerfi.'
+        : 'Profesjonelle rørleggere for vann-, varme- og avløpssystemer.',
       professionals: 1800,
-      averagePrice: language === 'is' ? '35.000-80.000 kr' : '450-700 kr/time',
+      averagePrice: language === 'is' ? '45.000-90.000 kr' : '600-900 kr/time',
       completedJobs: 6500,
       image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=250&fit=crop',
       specialties: language === 'is'
-        ? ['Múrverk', 'Steinsteypa', 'Viðgerðir', 'Byggingar']
-        : ['Murverk', 'Betongarbeid', 'Reparasjoner', 'Byggarbeider']
-    },
-    {
-      id: 'taktekker',
-      name: language === 'is' ? 'Þaksmíði' : 'Taktekker',
-      nameNorwegian: 'Taktekker',
-      description: language === 'is'
-        ? 'Þakviðgerðir, uppsetningar og viðhald af reyndum þaksérfræðingum.'
-        : 'Takreparasjoner, installasjoner og vedlikehold av erfarne takspesialister.',
-      professionals: 1200,
-      averagePrice: language === 'is' ? '65.000-250.000 kr' : '600-900 kr/time',
-      completedJobs: 4500,
-      image: 'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=400&h=250&fit=crop',
-      specialties: language === 'is'
-        ? ['Þakviðgerðir', 'Þaksteypa', 'Einangrun', 'Viðhald']
-        : ['Takreparasjoner', 'Taklegging', 'Isolering', 'Vedlikehold']
+        ? ['Vatnslagnir', 'Hitunarkerfi', 'Baðherbergi', 'Viðgerðir']
+        : ['Vannrør', 'Oppvarmingssystem', 'Baderom', 'Reparasjoner']
     },
     {
       id: 'maler',
@@ -62,8 +47,38 @@ const HandcraftCategoryPage = ({ translations, language }) => {
       completedJobs: 7800,
       image: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=250&fit=crop',
       specialties: language === 'is'
-        ? ['Húsmálun', 'Innri málun', 'Veggsparkl', 'Beatles']
+        ? ['Húsmálun', 'Innri málun', 'Veggsparkl', 'Tapetsetning']
         : ['Husmaling', 'Innvendig maling', 'Sparkling', 'Tapetsering']
+    },
+    {
+      id: 'elektriker',
+      name: language === 'is' ? 'Rafvirkjar' : 'Elektriker',
+      nameNorwegian: 'Elektriker',
+      description: language === 'is'
+        ? 'Örugg og áreiðanleg rafvirkjun af löggiltum rafvirkjum fyrir heimili og fyrirtæki.'
+        : 'Sikker og pålitelig elektrikerarbeid av autoriserte elektrikere for hjem og bedrifter.',
+      professionals: 1600,
+      averagePrice: language === 'is' ? '50.000-120.000 kr' : '700-1000 kr/time',
+      completedJobs: 5400,
+      image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Rafvirkjun', 'Ljósauppsetning', 'Varmadælukerfi', 'Viðgerðir']
+        : ['Elektrikerarbeid', 'Belysning', 'Varmepumper', 'Reparasjoner']
+    },
+    {
+      id: 'murer',
+      name: language === 'is' ? 'Múrari' : 'Murer',
+      nameNorwegian: 'Murer',
+      description: language === 'is'
+        ? 'Faglegur múrari fyrir steinsteypuvinnu og byggingarefni.'
+        : 'Profesjonell murarbeid for mur, betong og byggematerialer.',
+      professionals: 1200,
+      averagePrice: language === 'is' ? '35.000-80.000 kr' : '450-700 kr/time',
+      completedJobs: 4500,
+      image: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Múrverk', 'Steinsteypa', 'Viðgerðir', 'Byggingar']
+        : ['Murverk', 'Betongarbeid', 'Reparasjoner', 'Byggarbeider']
     },
     {
       id: 'flislegger',
@@ -74,11 +89,56 @@ const HandcraftCategoryPage = ({ translations, language }) => {
         : 'Profesjonell flislegging for bad, kjøkken og andre rom.',
       professionals: 1400,
       averagePrice: language === 'is' ? '30.000-90.000 kr' : '500-750 kr/time',
-      completedJobs: 5600,
+      completedJobs: 3600,
       image: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=400&h=250&fit=crop',
       specialties: language === 'is'
         ? ['Baðherbergisflísar', 'Eldhúsflísar', 'Gólfflísar', 'Veggflísar']
         : ['Badromsflis', 'Kjøkkenflis', 'Gulvflis', 'Veggflis']
+    },
+    {
+      id: 'taktekker',
+      name: language === 'is' ? 'Þaksmíði' : 'Taktekker',
+      nameNorwegian: 'Taktekker',
+      description: language === 'is'
+        ? 'Þakviðgerðir, uppsetningar og viðhald af reyndum þaksérfræðingum.'
+        : 'Takreparasjoner, installasjoner og vedlikehold av erfarne takspesialister.',
+      professionals: 900,
+      averagePrice: language === 'is' ? '65.000-250.000 kr' : '600-900 kr/time',
+      completedJobs: 2800,
+      image: 'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Þakviðgerðir', 'Þaksteypa', 'Einangrun', 'Viðhald']
+        : ['Takreparasjoner', 'Taklegging', 'Isolering', 'Vedlikehold']
+    },
+    {
+      id: 'tomrer',
+      name: language === 'is' ? 'Tímamaður' : 'Tømrer',
+      nameNorwegian: 'Tømrer',
+      description: language === 'is'
+        ? 'Burðarvirki, rammasmíði og byggingarvinna af reyndum tímurum.'
+        : 'Bærekonstruksjoner, rammeverk og byggearbeider av erfarne tømrere.',
+      professionals: 1100,
+      averagePrice: language === 'is' ? '40.000-100.000 kr' : '500-800 kr/time',
+      completedJobs: 3200,
+      image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Rammasmíði', 'Burðarvirki', 'Viðbygging', 'Þaksmíði']
+        : ['Rammeverk', 'Bærekonstruksjoner', 'Påbygg', 'Takarbeid']
+    },
+    {
+      id: 'maskinentreprenoer',
+      name: language === 'is' ? 'Vélaverktaki' : 'Maskinentreprenør',
+      nameNorwegian: 'Maskinentreprenør',
+      description: language === 'is'
+        ? 'Jarðvégsvinna, útgröftur og vélavinnu með þyngri vélar.'
+        : 'Gravearbeider, utgravning og maskinarbeid med tunge maskiner.',
+      professionals: 650,
+      averagePrice: language === 'is' ? '80.000-200.000 kr' : '800-1200 kr/time',
+      completedJobs: 1800,
+      image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Jarðvinna', 'Útgröftur', 'Landmótun', 'Vélavinnu']
+        : ['Gravearbeid', 'Utgravning', 'Terrengjustering', 'Maskinarbeid']
     },
     {
       id: 'blikkenslager',
@@ -89,11 +149,41 @@ const HandcraftCategoryPage = ({ translations, language }) => {
         : 'Spesialister på metallarbeid, takarbeid og rør.',
       professionals: 800,
       averagePrice: language === 'is' ? '45.000-120.000 kr' : '600-850 kr/time',
-      completedJobs: 3200,
+      completedJobs: 2400,
       image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&h=250&fit=crop',
       specialties: language === 'is'
         ? ['Þakvinna', 'Málmvinna', 'Lagnavinnu', 'Viðgerðir']
         : ['Takarbeid', 'Metallarbeid', 'Rørarbeid', 'Reparasjoner']
+    },
+    {
+      id: 'anleggsgartnere',
+      name: language === 'is' ? 'Garðyrkjumenn' : 'Anleggsgartner',
+      nameNorwegian: 'Anleggsgartner',
+      description: language === 'is'
+        ? 'Garðhönnun, grasflötuviðhald og þjónusta fyrir útirými.'
+        : 'Hagedesign, gresspleie og service for utendørsområder.',
+      professionals: 750,
+      averagePrice: language === 'is' ? '25.000-70.000 kr' : '350-600 kr/time',
+      completedJobs: 3400,
+      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Garðhönnun', 'Grasflötur', 'Plöntusetning', 'Viðhald']
+        : ['Hagedesign', 'Plen', 'Planting', 'Vedlikehold']
+    },
+    {
+      id: 'losemed',
+      name: language === 'is' ? 'Lausnir' : 'Løsemed',
+      nameNorwegian: 'Løsemed',
+      description: language === 'is'
+        ? 'Almennar viðgerðir og smærri verkefni á heimilum.'
+        : 'Generelle reparasjoner og mindre prosjekter i hjemmet.',
+      professionals: 1200,
+      averagePrice: language === 'is' ? '15.000-50.000 kr' : '300-500 kr/time',
+      completedJobs: 4800,
+      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Smáviðgerðir', 'Heimilisverk', 'Viðhald', 'Uppsetningar']
+        : ['Småfiks', 'Hjemmearbeid', 'Vedlikehold', 'Installasjoner']
     }
   ];
 
