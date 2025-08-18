@@ -32,6 +32,7 @@ import CategorySelection from './components/CategorySelection';
 import AllCategoriesOverview from './components/AllCategoriesOverview';
 import JobCategorySelection from './components/JobCategorySelection';
 import ProRegistrationLanding from './components/ProRegistrationLanding';
+import CompanyRegistration from './components/CompanyRegistration';
 import MovingCategoryPicker from './components/MovingCategoryPicker';
 import MovingContactForm from './components/MovingContactForm';
 import CleaningCategoryPicker from './components/CleaningCategoryPicker';
