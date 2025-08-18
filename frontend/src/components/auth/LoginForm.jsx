@@ -17,6 +17,11 @@ const LoginForm = ({ translations, language }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Clear any existing errors when component mounts
+  React.useEffect(() => {
+    clearError();
+  }, [clearError]);
+
   // Get return URL from query params
   const searchParams = new URLSearchParams(location.search);
   const returnUrl = searchParams.get('returnUrl') || '/dashboard';
