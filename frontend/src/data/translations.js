@@ -1188,5 +1188,55 @@ export const translations = {
     terms: "Þjónustuskilmálar",
     privacy: "Persónuverndarstefna",
     allRightsReserved: "Öll réttindi áskilin.",
+    
+    // Company Search Page
+    companySearchTitle: "Finndu rétta fyrirtækið fyrir verkefnið þitt!",
+    companySearchSubtitle: "Leitaðu að fyrirtækjum og iðnaðarmönnum á þínu svæði, hafðu samband og fáðu tilboð.",
+    whatDoYouNeedHelp: "Við hvað þarftu hjálp?",
+    whereJobDone: "Hvar á verkið að fara fram?",
+    findCompany: "Finna fyrirtæki",
+    companiesFound: "fyrirtæki fundust",
+    searchingForCompanies: "Leita að fyrirtækjum...",
+    noCompaniesFound: "Engin fyrirtæki fundust",
+    noCompaniesFoundDesc: "Reyndu að breyta leitarskilyrðunum þínum eða stækka leitarsvæðið.",
+    verified: "Staðfest",
+    insured: "Tryggður",
+    reviews: "umsagnir",
+    completedJobs: "lokið verkefni",
+    employees: "starfsmenn",
+    contactUs: "Hafa samband",
+    viewProfile: "Skoða prófil",
+    
+    // Category Pages
+    registeredProfessionals: "Skráðir sérfræðingar",
+    completedProjects: "Lokið verkefni", 
+    averageRating: "Meðaleinkunn",
+    selectService: "Veldu þjónustu",
+    findProfessional: "Finn sérfræðing",
+    postJob: "Setja inn verk",
+    specialties: "Sérhæfingar:",
+    professionals: "sérfræðingar",
+    projects: "verkefni",
+    howItWorksTitle: "Svona virkar það",
+    step1: "Lýstu verkefninu",
+    step1Desc: "Segðu okkur hvað þú þarft hjálp við og við sendum það til réttra fyrirtækja.",
+    step2: "Fáðu tilboð",
+    step2Desc: "Þú færð fljótt óbindandi tilboð frá fagfólki sem vilt aðstoða.",
+    step3: "Hefstu handa!",
+    step3Desc: "Farðu yfir tilboðin og veldu rétt fyrirtæki. Eftir verkið geturðu skilið eftir umsögn.",
+    readyToStart: "Tilbúinn að byrja?",
+    postProject: "Setja inn verkefni",
+    findProfessionals: "Finn sérfræðinga",
+    
+    // Handcraft Category
+    handcraftTitle: "Handverk",
+    handcraftSubtitle: "Finndu hæfa handverksmenn fyrir verkefnið þitt. Frá smíðum til málningarvinnu - við höfum fagmennina sem þú þarft.",
+    
+    // House & Garden Category
+    houseGardenTitle: "Hús og garður", 
+    houseGardenSubtitle: "Allt fyrir heimilið þitt og garðinn. Frá þaki til grunns - við höfum sérfræðinga fyrir öll útiverkefni.",
+    makeHomeBetter: "Gera heimilið þitt enn betra",
+    fromGardenToRoof: "Frá garðyrkju til þakviðgerða",
+    mostPopularServices: "Vinsælustu þjónusturnar",
   }
 };
