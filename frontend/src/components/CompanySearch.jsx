@@ -9,61 +9,73 @@ const CompanySearch = ({ translations, language }) => {
   const [loading, setLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
 
-  // Sample professional data matching mittanbud.no structure
+  // Sample professional data matching BuildConnect structure
   const sampleProfessionals = [
     {
       id: '1',
-      name: 'Nordic Construction AS',
-      category: 'Snekker',
-      location: 'Oslo',
+      name: 'Reykjavik Construction Ltd',
+      category: language === 'is' ? 'Trésmíðamaður' : 'Carpenter',
+      location: 'Reykjavik',
       rating: 4.8,
       reviewCount: 127,
       completedJobs: 89,
       isVerified: true,
       isInsured: true,
-      description: 'Erfarne snekkere med spesialkompetanse innen byggetømmer og interiørsnekring.',
-      services: ['Tømrerarbeid', 'Innredning', 'Snekkerarbeid', 'Byggetømmer'],
-      priceRange: '500-800 kr/time',
-      phoneNumber: '+47 123 45 678',
-      website: 'www.nordic-construction.no',
+      description: language === 'is' 
+        ? 'Reyndir trésmíðamenn með sérhæfingu í byggingatimbri og innanhússsmíði.'
+        : 'Experienced carpenters with specialization in construction timber and interior carpentry.',
+      services: language === 'is' 
+        ? ['Trésmíði', 'Innanhússmíði', 'Húsgögn', 'Viðhald']
+        : ['Carpentry', 'Interior work', 'Furniture', 'Maintenance'],
+      priceRange: language === 'is' ? '8.000-12.000 kr/klst' : '£40-60/hour',
+      phoneNumber: '+354 123 4567',
+      website: 'www.reykjavik-construction.is',
       established: 2015,
       employees: '5-10',
       image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=300&h=200&fit=crop'
     },
     {
       id: '2', 
-      name: 'ElektroMester Bergen',
-      category: 'Elektriker',
-      location: 'Bergen',
+      name: 'ElectroMaster Reykjavik',
+      category: language === 'is' ? 'Rafvirki' : 'Electrician',
+      location: 'Reykjavik',
       rating: 4.9,
       reviewCount: 89,
       completedJobs: 156,
       isVerified: true,
       isInsured: true,
-      description: 'Autorisert elektroinstallasjonsfirma med over 20 års erfaring.',
-      services: ['Elektroinstallasjon', 'Vedlikehold', 'Fiberinstallasjon', 'Smarthouse'],
-      priceRange: '650-950 kr/time',
-      phoneNumber: '+47 987 65 432',
-      website: 'www.elektromester-bergen.no',
+      description: language === 'is'
+        ? 'Löggilt rafvirkjafyrirtæki með yfir 20 ára reynslu.'
+        : 'Authorized electrical installation company with over 20 years of experience.',
+      services: language === 'is'
+        ? ['Raflagnasetning', 'Viðhald', 'Ljósleiðari', 'Snjallheimili']
+        : ['Electrical Installation', 'Maintenance', 'Fiber Installation', 'Smart Home'],
+      priceRange: language === 'is' ? '10.000-15.000 kr/klst' : '£50-75/hour',
+      phoneNumber: '+354 987 6543',
+      website: 'www.electromaster-reykjavik.is',
       established: 2003,
       employees: '10-20',
       image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=300&h=200&fit=crop'
     },
     {
       id: '3',
-      name: 'Rørlegger Trondheim',
-      category: 'Rørlegger', 
-      location: 'Trondheim',
+      name: 'Akureyri Plumbing Services',
+      category: language === 'is' ? 'Pípulagningamaður' : 'Plumber', 
+      location: 'Akureyri',
       rating: 4.7,
       reviewCount: 203,
       completedJobs: 234,
       isVerified: true,
       isInsured: true,
-      description: 'Komplett rørleggertjenester for private og bedrifter. Døgnvakt tilgjengelig.',
-      services: ['Rørleggerarbeid', 'Oppvarming', 'Sanitær', 'Lekkasjesøking'],
-      priceRange: '580-780 kr/time',
-      phoneNumber: '+47 555 44 333',
-      website: 'www.rorlegger-trondheim.no',
+      description: language === 'is'
+        ? 'Heildar pípulagnaþjónusta fyrir einstaklinga og fyrirtæki. Sólarhringsþjónusta í boði.'
+        : 'Complete plumbing services for individuals and businesses. 24-hour service available.',
+      services: language === 'is'
+        ? ['Pípulagnir', 'Hitakerfi', 'Hreinlætisstofnanir', 'Lekaleitar']
+        : ['Plumbing', 'Heating', 'Sanitary', 'Leak Detection'],
+      priceRange: language === 'is' ? '9.000-12.000 kr/klst' : '£45-60/hour',
+      phoneNumber: '+354 555 4433',
+      website: 'www.akureyri-plumbing.is',
       established: 2010,
       employees: '3-5',
       image: 'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=300&h=200&fit=crop'
