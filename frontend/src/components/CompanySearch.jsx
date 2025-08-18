@@ -284,11 +284,11 @@ const CompanySearch = ({ translations, language }) => {
                         <div className="flex items-center">
                           {renderStars(professional.rating)}
                           <span className="ml-1 text-sm text-gray-600">
-                            {professional.rating} ({professional.reviewCount} {language === 'is' ? 'anmeldelser' : 'anmeldelser'})
+                            {professional.rating} ({professional.reviewCount} {language === 'is' ? 'umsagnir' : 'reviews'})
                           </span>
                         </div>
                         <span className="text-sm text-gray-500">
-                          {professional.completedJobs} {language === 'is' ? 'fullførte jobber' : 'fullførte jobber'}
+                          {professional.completedJobs} {language === 'is' ? 'lokið verkefni' : 'completed jobs'}
                         </span>
                       </div>
                       
