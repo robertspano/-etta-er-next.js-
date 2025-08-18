@@ -42,9 +42,12 @@ const LoginForm = ({ translations, language }) => {
       ...prev,
       [name]: value
     }));
-    // Clear errors when user starts typing
+    // Clear errors and success message when user starts typing
     if (error) {
       clearError();
+    }
+    if (successMessage) {
+      setSuccessMessage('');
     }
   };
 
