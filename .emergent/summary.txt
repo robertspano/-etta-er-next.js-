@@ -1,13 +1,13 @@
 <analysis>
-The previous AI engineer successfully continued the development of the BuildConnect application, focusing on direct user feedback for UI/UX enhancements. Initially, the engineer had refined several homepage sections (Housing Associations Grid, Find Company Section, Popular Projects, Reviews Section, Pro Signup Section) and performed comprehensive Norwegian-to-Icelandic/English translations. The recent work, as detailed in the trajectory, centered on immediate user requests related to the application's header and Hero section. This involved modifying the Register Company link to be plain text with a hover underline, overhauling the language selector to display full language names with a single dropdown arrow, and integrating a new professional image into the Hero section while meticulously removing all surrounding decorative elements (white box, stars, text, shadows). Finally, the Find Company Section was completely removed as per user instruction. The engineer consistently used  to verify changes, ensuring pixel-perfect alignment with user's visual expectations.
+The AI engineer effectively continued BuildConnect development, primarily focusing on UI/UX enhancements to align the application's appearance and flow with . This involved a multi-phase effort: initially, refining header elements and the Hero section, and removing the Find Company section. Subsequently, the engineer extensively revamped the Cleaning job posting flow, transitioning it from a generic wizard to a specific 4-card, 2x2 Mittanbud-style subcategory selection. This was followed by overhauling the Post a Job button to direct users to a comprehensive 8-card job category selection page, also mirroring , complete with an integrated search bar. Finally, the All Categories overview page was entirely redesigned from a single-column list to a detailed 2-column grid featuring nested 2-column subcategory layouts, achieving pixel-perfect replication. Throughout these tasks,  was heavily utilized for visual verification and iterative refinement.
 </analysis>
 
 <product_requirements>
-BuildConnect is a construction services marketplace that mirrors , designed to connect users with construction professionals, supporting both Icelandic and English languages. The application, built with React frontend and FastAPI/MongoDB backend, aims for feature expansion and refinement. Existing features include a redesigned homepage with Hero, How It Works, Popular Projects, Find the right company, and Latest Reviews sections, alongside a 3-step job posting wizard. Specialized flows for Automotive (with vehicle lookup) and Major Projects (routing to ) are also implemented. The UI is responsive and localized via . Recent work included overhauling the Moving category flow and implementing a Housing Associations grid. The primary focus of the most recent interaction was precise replication of  design elements, specifically by refining header components (modifying Register Company display and language selector) and customizing the Hero section's image presentation, and removing the Find Company section from the homepage.
+BuildConnect is a construction services marketplace, mirroring , designed to connect users with professionals. It supports both Icelandic and English languages, featuring a React frontend and FastAPI/MongoDB backend. The application previously had a redesigned homepage (Hero, How It Works, Popular Projects, Latest Reviews), a 3-step job posting wizard, and specialized flows for Automotive and Major Projects, along with a Housing Associations grid. Recent efforts focused on precise  design replication: the header's Register Company link became plain text with hover underline, the language selector shows full language names, the Hero section's professional image replaced decorative elements, and the Find Company section was removed. Subsequent tasks included transforming the Cleaning job flow into a 4-card subcategory selection, making the Post a Job button direct to an 8-card job category selection with a search bar, and redesigning the All Categories page to a 2-column grid with nested 2-column subcategories, all mimicking .
 </product_requirements>
 
 <key_technical_concepts>
-- **Frontend**: React.js, Tailwind CSS (for styling and responsiveness), Axios, React Context API, React Router DOM,  (multilingual support).
+- **Frontend**: React.js, Tailwind CSS (styling, responsiveness), Axios, React Context API, React Router DOM,  (multilingual support).
 - **Backend**: FastAPI, Pydantic, MongoDB, Motor, Beanie ODM.
 </key_technical_concepts>
 
@@ -18,22 +18,34 @@ The application is structured into  and  services within the  directory.
 
 -   ****:
     -   **Summary**: Central for routing and global language state. It defines the main application structure and imports/renders various components based on routes.
-    -   **Changes Made**: The  component import and its rendering within the  component were completely removed to eliminate the section from the frontend.
+    -   **Changes Made**: The  component import and its rendering within the  component were completely removed. New routes for  (using  and ) and  (using ) were added.
 -   ****:
     -   **Summary**: Stores all multilingual UI texts, enabling  support throughout the application.
-    -   **Changes Made**: This file was extensively updated in previous phases for various sections and languages. While read during the recent interaction to find Register Company translations, no new modifications were explicitly mentioned in the provided trajectory.
+    -   **Changes Made**: Extensive updates were made to include specific cleaning subcategory translations (4 Mittanbud-style categories) and general job category translations (8 categories for ), along with search bar placeholders.
 -   ****:
     -   **Summary**: Renders the main navigation header, including company registration and language selection.
-    -   **Changes Made**:
-        -   The Register Company button was transformed from a bordered button into plain text with a hover underline effect.
-        -   The language selector was changed from a compact EN/IS pill-style to display full language names (English, Icelandic) with a single dropdown arrow. This involved removing a redundant  icon.
-        -   These style changes were applied to both desktop and mobile versions of the header.
+    -   **Changes Made**: The Register Company button was transformed into plain text with a hover underline. The language selector displays full language names (English, Icelandic) with a single dropdown arrow. The Post a Job button was updated to navigate to  (the  page) instead of the login page.
 -   ****:
-    -   **Summary**: The main hero section of the homepage, typically featuring a call to action and visual elements.
-    -   **Changes Made**: The Trusted Professionals block (lines 216-238) was replaced with a new professional image. All surrounding elements, including the white box/polaroid card, yellow/green circles, 5-star rating, 15,000+ Happy Customers text, and any associated shadow/border effects, were removed to leave only the clean image.
+    -   **Summary**: The main hero section of the homepage, featuring a call to action and visual elements.
+    -   **Changes Made**: The Trusted Professionals block was replaced with a clean professional image, removing all surrounding decorative elements. The routing logic for the 'cleaning' category was updated to point to the new  route (CleaningCategoryPicker).
 -   ****:
     -   **Summary**: A component designed for users to find companies based on project types and postcodes.
-    -   **Changes Made**: This entire component was logically removed from the  rendering to eliminate its presence on the homepage, as explicitly requested by the user.
+    -   **Changes Made**: This entire component was removed from  rendering.
+-   ****:
+    -   **Summary**: *New Component*. Created to provide a specific 4-card subcategory selection for Cleaning jobs, mimicking 's design.
+    -   **Changes Made**: Initial creation with 16 subcategories, then refined to contain only 4 specific cleaning categories (Facade Cleaning, Cleaning Services, Move-out Cleaning, Other (Cleaning)) in a 2x2 grid, with a 3-step progress bar and search box.
+-   ****:
+    -   **Summary**: *New Component*. Created to handle contact information submission for Cleaning job requests, integrated with the new cleaning flow.
+    -   **Changes Made**: Based on , adapted for cleaning-specific context and to work with the 4 cleaning subcategories.
+-   ****:
+    -   **Summary**: *New Component*. Created to serve as the initial category selection page after clicking Post a Job, presenting 8 main categories in a 2x4 grid, matching .
+    -   **Changes Made**: Initial creation with 8 categories, and later integrated a prominent search bar and blue arrow button, aligning perfectly with 's design.
+-   ****:
+    -   **Summary**: Displays a comprehensive list of all available service categories and their subcategories.
+    -   **Changes Made**: Completely restructured from a single-column list to a 2-column grid layout, where each main category box further contained its subcategories arranged in 2 vertical columns, precisely replicating 's detailed category overview.
+-   ****:
+    -   **Summary**: A general component for category selection, potentially used across different job posting flows.
+    -   **Changes Made**: The routing logic for the 'cleaning' category was updated to point to the new  route (CleaningCategoryPicker).
 </code_architecture>
 
 <pending_tasks>
@@ -50,21 +62,35 @@ The application is structured into  and  services within the  directory.
 </pending_tasks>
 
 <current_work>
-The immediate work focused on specific UI/UX refinements within the BuildConnect application's frontend, driven by explicit user requests.
+The immediate work focused on extensively replicating 's user flows and UI for job posting and category browsing.
 
-1.  **Header Modifications**:
-    *   **Register Company Link**: The user requested to remove the outer line/border around the Register Company text and add an underline effect on hover. The AI engineer located  and modified the styling to transform the bordered button into plain text, incorporating a  class.
-    *   **Language Selector**: The user desired a change from the existing pill-style EN/IS language selector to one showing full language names (English, Icelandic) with a single dropdown arrow, matching a provided screenshot. The engineer updated  to achieve this, addressing an issue where a redundant  icon was causing a double arrow appearance by removing it. These changes were applied consistently to both desktop and mobile views to ensure responsive design.
+1.  **Cleaning Category Flow**:
+    *   **Initial Problem**: The Cleaning category, when clicked, led to a generic 3-step job posting wizard, which did not match the user's desired  experience.
+    *   **Implementation**: A dedicated  component was created. Initially, it displayed 16 subcategories. Upon user feedback, it was refined to show only 4 specific categories (, , , ) in a 2x2 grid layout, along with a 3-step progress bar and search box, precisely mirroring . A corresponding  was also created.
+    *   **Files Modified/Created**:  (created, then modified),  (created),  (updated routes),  (added and updated translations),  (updated routing),  (updated routing).
+    *   **Status**: Fully implemented and visually confirmed to match 's cleaning flow.
 
-2.  **Hero Section Image Refinement**:
-    *   **Image Replacement and Simplification**: The user initially requested to replace the Trusted Professionals block in the Hero section with a new image. After the image was placed, the user explicitly asked to remove all surrounding elements – the white box, yellow/green circles, 5-star rating, 15,000+ Happy Customers text, and any shadows or borders – leaving only the clean image. The AI engineer iteratively modified , removing multiple  wrappers, Tailwind CSS classes related to backgrounds, shadows, borders, and rounded corners, and the hardcoded content that created the decorative elements. The goal was to make the image blend seamlessly with the background.
+2.  **Post a Job Button and Main Category Selection**:
+    *   **Initial Problem**: Clicking the Post a Job button redirected users to the login page, which was not the desired  flow that takes users directly to category selection.
+    *   **Implementation**: A new  component was created. This component displays 8 main job categories in a 2x4 grid layout, with Icelandic titles and English subtitles, mimicking . The Post a Job button in  was updated to navigate directly to this new page ().
+    *   **Files Modified/Created**:  (created),  (added new route),  (updated button navigation).
+    *   **Status**: Fully implemented and confirmed to redirect correctly and display the 8-category grid.
 
-3.  **Removal of Find Company Section**:
-    *   **Section Elimination**: The user explicitly requested to remove the section titled Finndu rétta fyrirtækið fyrir verkefnið þitt!. The AI engineer identified that this corresponded to the  component. To remove it, the component's rendering call and its corresponding import statement were deleted from .
+3.  **Search Bar on Job Category Selection Page**:
+    *   **Initial Problem**: The newly implemented  page was missing a search bar, a prominent feature on 's category selection.
+    *   **Implementation**: A search bar with a What do you need help with? placeholder and a blue arrow button was integrated into , matching 's design and functionality (including bilingual support for the placeholder text).
+    *   **Files Modified**:  (modified).
+    *   **Status**: Fully implemented, visually confirmed for both English and Icelandic languages.
 
-Throughout these tasks, the AI engineer consistently used the  to verify visual changes and ensure compliance with the user's detailed design requests, demonstrating an iterative refinement process until pixel-perfect results were achieved.
+4.  **All Categories Overview Page Redesign**:
+    *   **Initial Problem**: The existing All Categories page was a single-column list, not matching 's structured 2-column grid with nested 2-column subcategories.
+    *   **Implementation**: The  component was completely restructured to render main categories in a 2-column grid, with each category box further containing its subcategories organized into two vertical columns. This involved extensive content and styling changes to achieve pixel-perfect replication.
+    *   **Files Modified**:  (extensively modified).
+    *   **Status**: Fully implemented, confirmed to match 's complex 2-column grid and internal 2-column subcategory layout.
+
+Throughout these tasks, the AI engineer used  extensively to verify visual changes and ensure compliance with the user's detailed design requests, demonstrating an iterative refinement process until pixel-perfect results were achieved.
 </current_work>
 
 <optional_next_step>
-The current explicit work is concluded. The next step is to await new explicit instructions from the user, or propose starting on the pending tasks, beginning with Integrate payment processing.
+The current explicit work is concluded. I will await new explicit instructions from you, or propose starting on the pending tasks, beginning with Integrate payment processing.
 </optional_next_step>
