@@ -368,16 +368,62 @@ const Header = ({ language, setLanguage, translations }) => {
                 
                 <div className="space-y-1">
                   <button
-                    onClick={() => handleDrawerItemClick('#')}
+                    onClick={() => handleDrawerItemClick('/haandverker')}
                     className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
                   >
-                    <span className="text-gray-700">{translations.handcraft}</span>
+                    <span className="text-gray-700">{language === 'is' ? 'Handverk' : 'Håndverker'}</span>
                     <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
                   </button>
                   
                   <button
-                    onClick={() => handleDrawerItemClick('#')}
+                    onClick={() => handleDrawerItemClick('/hus-og-hage')}
                     className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
+                  >
+                    <span className="text-gray-700">{language === 'is' ? 'Hús og garður' : 'Hus og hage'}</span>
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
+                  </button>
+                  
+                  <button
+                    onClick={() => handleDrawerItemClick('/bedriftsok')}
+                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
+                  >
+                    <span className="text-gray-700">{language === 'is' ? 'Finn fyrirtæki' : 'Finn bedrift'}</span>
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
+                  </button>
+                  
+                  <button
+                    onClick={() => handleDrawerItemClick('/alle-kategorier')}
+                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
+                  >
+                    <span className="text-gray-700">{language === 'is' ? 'Allir flokkar' : 'Alle kategorier'}</span>
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
+                  </button>
+                </div>
+                
+                {/* Support Links */}
+                <div className="border-t border-gray-200 my-4"></div>
+                <div className="mb-3">
+                  <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider px-1">
+                    {language === 'is' ? 'Upplýsingar' : 'Informasjon'}
+                  </h3>
+                </div>
+                
+                <div className="space-y-1">
+                  <button
+                    onClick={() => handleDrawerItemClick('/vilkar')}
+                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
+                  >
+                    <span className="text-gray-700">{language === 'is' ? 'Þjónustuskilmálar' : 'Vilkår for bruk'}</span>
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
+                  </button>
+                  
+                  <button
+                    onClick={() => handleDrawerItemClick('/personvern')}
+                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
+                  >
+                    <span className="text-gray-700">{language === 'is' ? 'Persónuverndarstefna' : 'Personvernerklæring'}</span>
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
+                  </button>
                   >
                     <span className="text-gray-700">{translations.homeGarden}</span>
                     <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
