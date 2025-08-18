@@ -53,6 +53,91 @@ if google_oauth_client:
     )
     router.include_router(oauth_router, prefix="/auth/google", tags=["oauth"])
 
+# Custom company registration endpoint
+@router.post("/auth/register-company", response_model=CompanyRegistrationResponse)
+async def register_company(
+    company_data: CompanyRegistrationRequest,
+    user_manager = Depends(get_user_manager)
+):
+    """Register a new company/professional account"""
+    
+    # Validate Icelandic company ID (kennitala) - 10 digits
+    company_id_clean = company_data.company_id.replace('-', '').replace(' ', '')
+    if not company_id_clean.isdigit() or len(company_id_clean) != 10:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Company ID must be 10 digits (Icelandic kennitala format)"
+        )
+    
+    # Validate phone number (7-8 digits for Iceland)
+    electronic_id_clean = company_data.electronic_id.replace('-', '').replace(' ', '')
+    if not electronic_id_clean.isdigit() or len(electronic_id_clean) < 7 or len(electronic_id_clean) > 8:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Phone number must be 7-8 digits"
+        )
+    
+    # Check if email already exists
+    try:
+        existing_user = await user_manager.get_by_email(company_data.email)
+        if existing_user:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Email already registered"
+            )
+    except:
+        # User doesn't exist, which is what we want
+        pass
+    
+    # Create user with professional role
+    try:
+        # Parse name into first and last name
+        name_parts = company_data.name.strip().split(' ', 1)
+        first_name = name_parts[0]
+        last_name = name_parts[1] if len(name_parts) > 1 else ""
+        
+        # Create user data
+        user_create = UserCreate(
+            email=company_data.email,
+            password=company_data.password,
+            role=UserRole.PROFESSIONAL,
+            first_name=first_name,
+            last_name=last_name,
+            phone=company_data.electronic_id,
+            company_id=company_id_clean
+        )
+        
+        # Create the user
+        user = await user_manager.create(user_create)
+        
+        # Update profile with company information
+        user.profile.company_id = company_id_clean
+        user.profile.phone = company_data.electronic_id
+        user.profile.first_name = first_name
+        user.profile.last_name = last_name
+        
+        from datetime import datetime
+        user.updated_at = datetime.utcnow()
+        await user.save()
+        
+        return CompanyRegistrationResponse(
+            message="Company registered successfully",
+            user_id=user.id,
+            email=user.email
+        )
+        
+    except Exception as e:
+        if "email" in str(e).lower():
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Email already registered"
+            )
+        else:
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=f"Registration failed: {str(e)}"
+            )
+
 # Custom authentication endpoints
 @router.post("/auth/magic-link")
 async def request_magic_link(email: str):
