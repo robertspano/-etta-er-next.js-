@@ -8,7 +8,6 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import HowItWorks from './components/HowItWorks';
 import PopularProjects from './components/PopularProjects';
-import FindCompanySection from './components/FindCompanySection';
 import ReviewsSection from './components/ReviewsSection';
 import TrustSection from './components/TrustSection';
 import ProSignupSection from './components/ProSignupSection';
