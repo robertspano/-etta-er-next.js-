@@ -1014,6 +1014,7 @@ export const translations = {
     // Cleaning Category Picker
     cleaningStepHeader: "Um verkefnið • Tengiliður • Klárt",
     cleaningCategoryTitle: "Hvers konar þrifaþjónustu þarftu?",
+    submitCleaningRequest: "Senda Þrifsbeiðni",
     
     // Cleaning Subcategories - Mittanbud's 4 categories only
     facadeCleaning: "Fasadevask",
