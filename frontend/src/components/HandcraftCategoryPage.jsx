@@ -184,6 +184,111 @@ const HandcraftCategoryPage = ({ translations, language }) => {
       specialties: language === 'is'
         ? ['Smáviðgerðir', 'Heimilisverk', 'Viðhald', 'Uppsetningar']
         : ['Småfiks', 'Hjemmearbeid', 'Vedlikehold', 'Installasjoner']
+    },
+    {
+      id: 'stein-og-betong',
+      name: language === 'is' ? 'Stein og steinsteypu' : 'Stein og betong',
+      nameNorwegian: 'Stein og betong',
+      description: language === 'is'
+        ? 'Steinn og steinsteypu vinnu fyrir innri og ytri fleti.'
+        : 'Stein- og betongarbeid for innvendige og utvendige flater.',
+      professionals: 650,
+      averagePrice: language === 'is' ? '50.000-150.000 kr' : '600-900 kr/time',
+      completedJobs: 1900,
+      image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Steinsteypuvinna', 'Steinkleifun', 'Betónvörur', 'Viðgerðir']
+        : ['Betongarbeid', 'Steinlegging', 'Betongprodukter', 'Reparasjoner']
+    },
+    {
+      id: 'glass-og-vinduer',
+      name: language === 'is' ? 'Gler og gluggar' : 'Glass og vinduer',
+      nameNorwegian: 'Glass og vinduer',
+      description: language === 'is'
+        ? 'Gluggauppsetning, glerviðgerðir og glerflötuvinna.'
+        : 'Vindusinstallasjon, glassreparasjoner og glassflatearbeid.',
+      professionals: 450,
+      averagePrice: language === 'is' ? '30.000-80.000 kr' : '500-800 kr/time',
+      completedJobs: 1400,
+      image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Gluggauppsetning', 'Glerviðgerðir', 'Speglasetning', 'Einangrun']
+        : ['Vindusmontering', 'Glassreparasjoner', 'Speilmontering', 'Isolering']
+    },
+    {
+      id: 'innredning',
+      name: language === 'is' ? 'Innréttingar' : 'Innredning',
+      nameNorwegian: 'Innredning',
+      description: language === 'is'
+        ? 'Sérsmíðaðar innréttingar fyrir eldhús, baðherbergi og geymslu.'
+        : 'Skreddersydde innredninger for kjøkken, bad og oppbevaring.',
+      professionals: 850,
+      averagePrice: language === 'is' ? '60.000-200.000 kr' : '700-1200 kr/time',
+      completedJobs: 2100,
+      image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Eldhúsinnréttingar', 'Skápar', 'Hillur', 'Sérhönnun']
+        : ['Kjøkkeninnredning', 'Skap', 'Hyller', 'Spesialdesign']
+    },
+    {
+      id: 'varme-kulde-luft',
+      name: language === 'is' ? 'Hiti, kælir og loftræsting' : 'Varme, kulde og luft',
+      nameNorwegian: 'Varme, kulde og luft',
+      description: language === 'is'
+        ? 'Hitunar-, kæli- og loftræstingarkerfi fyrir heimili og fyrirtæki.'
+        : 'Varme-, kjøle- og ventilasjonsanlegg for hjem og bedrifter.',
+      professionals: 550,
+      averagePrice: language === 'is' ? '70.000-180.000 kr' : '800-1200 kr/time',
+      completedJobs: 1600,
+      image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Varmadælur', 'Loftræsting', 'Kælikerfi', 'Viðhald']
+        : ['Varmepumper', 'Ventilasjon', 'Kjøleanlegg', 'Vedlikehold']
+    },
+    {
+      id: 'sikkerhet',
+      name: language === 'is' ? 'Öryggi' : 'Sikkerhet',
+      nameNorwegian: 'Sikkerhet',
+      description: language === 'is'
+        ? 'Öryggiskerfi, vaktir og varnarúrræði fyrir heimili og fyrirtæki.'
+        : 'Sikkerhetssystemer, alarmer og beskyttelsestiltak for hjem og bedrifter.',
+      professionals: 300,
+      averagePrice: language === 'is' ? '40.000-100.000 kr' : '600-900 kr/time',
+      completedJobs: 800,
+      image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Öryggiskerfi', 'Vaktir', 'Læsasmíði', 'Myndavélar']
+        : ['Alarmanlegg', 'Overvåking', 'Låsesmed', 'Kameraer']
+    },
+    {
+      id: 'isolering',
+      name: language === 'is' ? 'Einangrun' : 'Isolering',
+      nameNorwegian: 'Isolering',
+      description: language === 'is'
+        ? 'Hitaeinangrun og hljóðeinangrun fyrir heimili og byggingar.'
+        : 'Varmeisolering og lydisolering for hjem og bygninger.',
+      professionals: 400,
+      averagePrice: language === 'is' ? '35.000-90.000 kr' : '450-700 kr/time',
+      completedJobs: 1200,
+      image: 'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Hitaeinangrun', 'Hljóðeinangrun', 'Þakeinangrun', 'Veggeinangrun']
+        : ['Varmeisolering', 'Lydisolering', 'Takisolering', 'Veggisolering']
+    },
+    {
+      id: 'golvlegging',
+      name: language === 'is' ? 'Gólflagning' : 'Gulvlegging',
+      nameNorwegian: 'Gulvlegging',
+      description: language === 'is'
+        ? 'Parkettlagning, flísalagning og annars konar gólfefni.'
+        : 'Parkettlegging, flislegging og andre gulvtyper.',
+      professionals: 750,
+      averagePrice: language === 'is' ? '40.000-120.000 kr' : '500-800 kr/time',
+      completedJobs: 2800,
+      image: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Parkett', 'Vínilgólf', 'Teppalagning', 'Gólfviðgerðir']
+        : ['Parkett', 'Vinylgulv', 'Teppelegging', 'Gulvreparasjoner']
     }
   ];
 
