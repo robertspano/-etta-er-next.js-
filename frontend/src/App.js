@@ -30,6 +30,7 @@ import QuoteSubmissionForm from './components/marketplace/QuoteSubmissionForm';
 import JobPostingWizard from './components/marketplace/JobPostingWizard';
 import CategorySelection from './components/CategorySelection';
 import AllCategoriesOverview from './components/AllCategoriesOverview';
+import JobCategorySelection from './components/JobCategorySelection';
 import ProRegistrationLanding from './components/ProRegistrationLanding';
 import MovingCategoryPicker from './components/MovingCategoryPicker';
 import MovingContactForm from './components/MovingContactForm';
