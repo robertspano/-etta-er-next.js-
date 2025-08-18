@@ -32,12 +32,12 @@ const TermsOfService = ({ translations, language }) => {
       {/* Header */}
       <div className="max-w-4xl mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          {language === 'is' ? 'Þjónustuskilmálar' : 'Vilkår for bruk'}
+          {language === 'is' ? 'Þjónustuskilmálar' : 'Terms of Service'}
         </h1>
         <p className="text-lg text-gray-600 mb-8">
           {language === 'is'
             ? 'Síðast uppfært: 18. ágúst 2025'
-            : 'Sist oppdatert: 18. august 2025'
+            : 'Last updated: August 18, 2025'
           }
         </p>
       </div>
