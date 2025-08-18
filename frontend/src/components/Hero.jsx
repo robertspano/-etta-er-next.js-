@@ -128,6 +128,9 @@ const Hero = ({ translations }) => {
     } else if (categoryKey === 'housingAssociations') {
       // Route to housing associations category grid
       navigate('/post/housing-associations');
+    } else if (categoryKey === 'cleaning') {
+      // Route to cleaning subcategory picker
+      navigate('/post/cleaning');
     } else {
       // Navigate to job posting wizard with category in URL path
       navigate(`/post/${categoryKey}`);
