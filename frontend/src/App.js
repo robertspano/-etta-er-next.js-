@@ -33,6 +33,8 @@ import AllCategoriesOverview from './components/AllCategoriesOverview';
 import ProRegistrationLanding from './components/ProRegistrationLanding';
 import MovingCategoryPicker from './components/MovingCategoryPicker';
 import MovingContactForm from './components/MovingContactForm';
+import CleaningCategoryPicker from './components/CleaningCategoryPicker';
+import CleaningContactForm from './components/CleaningContactForm';
 import HousingAssociationsGrid from './components/HousingAssociationsGrid';
 
 // XL Components
