@@ -1012,27 +1012,13 @@ export const translations = {
     
     // Cleaning Category Picker
     cleaningStepHeader: "Um verkefnið • Tengiliður • Klárt",
-    cleaningCategoryTitle: "Veldu flokk til að setja inn verkið — alveg ókeypis",
-    cleaningSearchPlaceholder: "Hvers konar þrif þarftu?",
-    submitCleaningRequest: "Senda Þrifsbeiðni",
+    cleaningCategoryTitle: "Hvers konar þrifaþjónustu þarftu?",
     
-    // Cleaning Subcategories
-    houseCleaning: "Heimaþrif",
-    officeCleaning: "Skrifstofuþrif",
-    deepCleaning: "Djúpþrif",
-    carCleaning: "Bílaþrif", 
-    postConstruction: "Byggingarþrif",
-    wasteRemoval: "Ruslaflutningar",
-    eventCleaning: "Viðburðaþrif",
-    industrialCleaning: "Iðnaðarþrif",
-    windowCleaning: "Gluggaþvottur",
-    gardenCleaning: "Garðaþrif",
-    carpetCleaning: "Teppa- og Húsgagnaþrif",
-    movingCleaning: "Flutningaþrif",
-    pressureWashing: "Háþrýstiþvottur",
-    storageCleaning: "Geymsluplássþrif",
-    specializedCleaning: "Sérhæft Þrif",
-    otherCleaning: "Annað Þrif",
+    // Cleaning Subcategories - Mittanbud's 4 categories only
+    facadeCleaning: "Fasadevask",
+    cleaningServices: "Rengjøringstjenester",
+    moveOutCleaning: "Flyttevask", 
+    otherCleaning: "Annet (rengjøring)",
     
     // Housing Associations Categories
     roof: "Þak",
