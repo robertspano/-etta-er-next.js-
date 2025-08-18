@@ -1109,6 +1109,521 @@ class BuildConnectAPITester:
         except Exception as e:
             self.log_test("Professional Reviews Consistency", False, f"Request failed: {str(e)}")
 
+    async def test_company_registration_system(self):
+        """Test comprehensive Company Registration System backend API endpoint"""
+        print("\n=== Testing Company Registration System ===")
+        
+        # Test 1: Company Registration API Testing with valid Icelandic company data
+        await self.test_company_registration_api()
+        
+        # Test 2: Validation Testing for all validation rules
+        await self.test_company_registration_validation()
+        
+        # Test 3: Error Handling Testing
+        await self.test_company_registration_error_handling()
+        
+        # Test 4: User Creation Verification
+        await self.test_company_registration_user_creation()
+        
+        # Test 5: Integration Testing with fastapi-users system
+        await self.test_company_registration_integration()
+    
+    async def test_company_registration_api(self):
+        """Test POST /api/auth/register-company with valid Icelandic company data"""
+        print("\n--- Testing Company Registration API ---")
+        
+        import time
+        timestamp = str(int(time.time()))
+        
+        # Valid Icelandic company data as specified in review request
+        valid_company_data = {
+            "company_id": "1234567890",  # 10-digit Icelandic kennitala
+            "electronic_id": "5812345",  # 7-digit phone
+            "name": "Jón Jónsson",
+            "email": f"test.company.{timestamp}@example.is",
+            "password": "securepass123"
+        }
+        
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/register-company",
+                json=valid_company_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 200:
+                    # Check response format matches CompanyRegistrationResponse schema
+                    required_fields = ["message", "user_id", "email"]
+                    has_all_fields = all(field in data for field in required_fields)
+                    
+                    if (has_all_fields and 
+                        data.get("email") == valid_company_data["email"] and
+                        "successfully" in data.get("message", "").lower()):
+                        self.log_test("POST /api/auth/register-company (Valid Data)", True, f"Company registered: {data.get('email')}")
+                        
+                        # Store user_id for later tests
+                        self.company_user_id = data.get("user_id")
+                    else:
+                        self.log_test("POST /api/auth/register-company (Valid Data)", False, "Invalid response format", data)
+                else:
+                    self.log_test("POST /api/auth/register-company (Valid Data)", False, f"Registration failed: {response.status}", data)
+        except Exception as e:
+            self.log_test("POST /api/auth/register-company (Valid Data)", False, f"Request failed: {str(e)}")
+        
+        # Test with 8-digit phone number (valid range)
+        valid_company_data_8digit = {
+            "company_id": "9876543210",
+            "electronic_id": "58123456",  # 8-digit phone
+            "name": "Sigríður Sigurðardóttir",
+            "email": f"test.company.8digit.{timestamp}@example.is",
+            "password": "securepass456"
+        }
+        
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/register-company",
+                json=valid_company_data_8digit,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 200:
+                    self.log_test("Company Registration (8-digit phone)", True, f"8-digit phone accepted: {data.get('email')}")
+                else:
+                    self.log_test("Company Registration (8-digit phone)", False, f"8-digit phone rejected: {response.status}", data)
+        except Exception as e:
+            self.log_test("Company Registration (8-digit phone)", False, f"Request failed: {str(e)}")
+    
+    async def test_company_registration_validation(self):
+        """Test all validation rules for company registration"""
+        print("\n--- Testing Company Registration Validation ---")
+        
+        import time
+        timestamp = str(int(time.time()))
+        
+        # Test 1: Company ID validation (must be exactly 10 digits)
+        invalid_company_id_cases = [
+            ("123456789", "9 digits - too short"),
+            ("12345678901", "11 digits - too long"),
+            ("123456789a", "contains letter"),
+            ("123-456-789", "9 digits with dashes"),
+            ("", "empty company ID")
+        ]
+        
+        for invalid_id, description in invalid_company_id_cases:
+            try:
+                invalid_data = {
+                    "company_id": invalid_id,
+                    "electronic_id": "5812345",
+                    "name": "Test User",
+                    "email": f"test.invalid.{timestamp}.{len(invalid_id)}@example.is",
+                    "password": "securepass123"
+                }
+                
+                async with self.session.post(
+                    f"{BACKEND_URL}/auth/register-company",
+                    json=invalid_data,
+                    headers={"Content-Type": "application/json"}
+                ) as response:
+                    if response.status == 400:
+                        self.log_test(f"Company ID Validation ({description})", True, "Invalid company ID correctly rejected")
+                    else:
+                        data = await response.json()
+                        self.log_test(f"Company ID Validation ({description})", False, f"Expected 400, got: {response.status}", data)
+            except Exception as e:
+                self.log_test(f"Company ID Validation ({description})", False, f"Request failed: {str(e)}")
+        
+        # Test 2: Phone validation (7-8 digits)
+        invalid_phone_cases = [
+            ("123456", "6 digits - too short"),
+            ("123456789", "9 digits - too long"),
+            ("12345a7", "contains letter"),
+            ("", "empty phone")
+        ]
+        
+        for invalid_phone, description in invalid_phone_cases:
+            try:
+                invalid_data = {
+                    "company_id": "1234567890",
+                    "electronic_id": invalid_phone,
+                    "name": "Test User",
+                    "email": f"test.phone.{timestamp}.{len(invalid_phone)}@example.is",
+                    "password": "securepass123"
+                }
+                
+                async with self.session.post(
+                    f"{BACKEND_URL}/auth/register-company",
+                    json=invalid_data,
+                    headers={"Content-Type": "application/json"}
+                ) as response:
+                    if response.status == 400:
+                        self.log_test(f"Phone Validation ({description})", True, "Invalid phone correctly rejected")
+                    else:
+                        data = await response.json()
+                        self.log_test(f"Phone Validation ({description})", False, f"Expected 400, got: {response.status}", data)
+            except Exception as e:
+                self.log_test(f"Phone Validation ({description})", False, f"Request failed: {str(e)}")
+        
+        # Test 3: Email validation (proper format)
+        invalid_email_cases = [
+            ("invalid-email", "missing @ symbol"),
+            ("test@", "missing domain"),
+            ("@example.com", "missing local part"),
+            ("", "empty email")
+        ]
+        
+        for invalid_email, description in invalid_email_cases:
+            try:
+                invalid_data = {
+                    "company_id": "1234567890",
+                    "electronic_id": "5812345",
+                    "name": "Test User",
+                    "email": invalid_email,
+                    "password": "securepass123"
+                }
+                
+                async with self.session.post(
+                    f"{BACKEND_URL}/auth/register-company",
+                    json=invalid_data,
+                    headers={"Content-Type": "application/json"}
+                ) as response:
+                    if response.status in [400, 422]:  # 422 for validation errors
+                        self.log_test(f"Email Validation ({description})", True, "Invalid email correctly rejected")
+                    else:
+                        data = await response.json()
+                        self.log_test(f"Email Validation ({description})", False, f"Expected 400/422, got: {response.status}", data)
+            except Exception as e:
+                self.log_test(f"Email Validation ({description})", False, f"Request failed: {str(e)}")
+        
+        # Test 4: Password validation (minimum 8 characters)
+        invalid_password_cases = [
+            ("short", "too short - 5 chars"),
+            ("1234567", "too short - 7 chars"),
+            ("", "empty password")
+        ]
+        
+        for invalid_password, description in invalid_password_cases:
+            try:
+                invalid_data = {
+                    "company_id": "1234567890",
+                    "electronic_id": "5812345",
+                    "name": "Test User",
+                    "email": f"test.pwd.{timestamp}.{len(invalid_password)}@example.is",
+                    "password": invalid_password
+                }
+                
+                async with self.session.post(
+                    f"{BACKEND_URL}/auth/register-company",
+                    json=invalid_data,
+                    headers={"Content-Type": "application/json"}
+                ) as response:
+                    if response.status in [400, 422]:
+                        self.log_test(f"Password Validation ({description})", True, "Invalid password correctly rejected")
+                    else:
+                        data = await response.json()
+                        self.log_test(f"Password Validation ({description})", False, f"Expected 400/422, got: {response.status}", data)
+            except Exception as e:
+                self.log_test(f"Password Validation ({description})", False, f"Request failed: {str(e)}")
+        
+        # Test 5: Name validation (minimum 2 characters)
+        invalid_name_cases = [
+            ("A", "too short - 1 char"),
+            ("", "empty name")
+        ]
+        
+        for invalid_name, description in invalid_name_cases:
+            try:
+                invalid_data = {
+                    "company_id": "1234567890",
+                    "electronic_id": "5812345",
+                    "name": invalid_name,
+                    "email": f"test.name.{timestamp}.{len(invalid_name)}@example.is",
+                    "password": "securepass123"
+                }
+                
+                async with self.session.post(
+                    f"{BACKEND_URL}/auth/register-company",
+                    json=invalid_data,
+                    headers={"Content-Type": "application/json"}
+                ) as response:
+                    if response.status in [400, 422]:
+                        self.log_test(f"Name Validation ({description})", True, "Invalid name correctly rejected")
+                    else:
+                        data = await response.json()
+                        self.log_test(f"Name Validation ({description})", False, f"Expected 400/422, got: {response.status}", data)
+            except Exception as e:
+                self.log_test(f"Name Validation ({description})", False, f"Request failed: {str(e)}")
+    
+    async def test_company_registration_error_handling(self):
+        """Test error handling for company registration"""
+        print("\n--- Testing Company Registration Error Handling ---")
+        
+        import time
+        timestamp = str(int(time.time()))
+        
+        # Test 1: Duplicate email registration attempts
+        duplicate_email = f"duplicate.test.{timestamp}@example.is"
+        
+        # First registration
+        first_registration = {
+            "company_id": "1111111111",
+            "electronic_id": "5811111",
+            "name": "First Company",
+            "email": duplicate_email,
+            "password": "firstpass123"
+        }
+        
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/register-company",
+                json=first_registration,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status == 200:
+                    self.log_test("First Registration (Duplicate Test)", True, "First registration successful")
+                else:
+                    data = await response.json()
+                    self.log_test("First Registration (Duplicate Test)", False, f"First registration failed: {response.status}", data)
+        except Exception as e:
+            self.log_test("First Registration (Duplicate Test)", False, f"Request failed: {str(e)}")
+        
+        # Second registration with same email (should fail)
+        second_registration = {
+            "company_id": "2222222222",
+            "electronic_id": "5822222",
+            "name": "Second Company",
+            "email": duplicate_email,  # Same email
+            "password": "secondpass123"
+        }
+        
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/register-company",
+                json=second_registration,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status == 400:
+                    data = await response.json()
+                    if "email" in data.get("detail", "").lower():
+                        self.log_test("Duplicate Email Registration", True, "Duplicate email correctly rejected")
+                    else:
+                        self.log_test("Duplicate Email Registration", False, "Wrong error message for duplicate email", data)
+                else:
+                    data = await response.json()
+                    self.log_test("Duplicate Email Registration", False, f"Expected 400, got: {response.status}", data)
+        except Exception as e:
+            self.log_test("Duplicate Email Registration", False, f"Request failed: {str(e)}")
+        
+        # Test 2: Missing required fields
+        missing_field_cases = [
+            ({}, "all fields missing"),
+            ({"company_id": "1234567890"}, "missing electronic_id, name, email, password"),
+            ({"company_id": "1234567890", "electronic_id": "5812345"}, "missing name, email, password"),
+            ({"company_id": "1234567890", "electronic_id": "5812345", "name": "Test"}, "missing email, password"),
+            ({"company_id": "1234567890", "electronic_id": "5812345", "name": "Test", "email": f"test.missing.{timestamp}@example.is"}, "missing password")
+        ]
+        
+        for incomplete_data, description in missing_field_cases:
+            try:
+                async with self.session.post(
+                    f"{BACKEND_URL}/auth/register-company",
+                    json=incomplete_data,
+                    headers={"Content-Type": "application/json"}
+                ) as response:
+                    if response.status in [400, 422]:
+                        self.log_test(f"Missing Fields ({description})", True, "Missing fields correctly rejected")
+                    else:
+                        data = await response.json()
+                        self.log_test(f"Missing Fields ({description})", False, f"Expected 400/422, got: {response.status}", data)
+            except Exception as e:
+                self.log_test(f"Missing Fields ({description})", False, f"Request failed: {str(e)}")
+    
+    async def test_company_registration_user_creation(self):
+        """Test user creation verification for company registration"""
+        print("\n--- Testing Company Registration User Creation ---")
+        
+        import time
+        timestamp = str(int(time.time()))
+        
+        # Create a company user for verification testing
+        test_company_data = {
+            "company_id": "5555555555",
+            "electronic_id": "5855555",
+            "name": "Verification Test Company",
+            "email": f"verification.test.{timestamp}@example.is",
+            "password": "verifypass123"
+        }
+        
+        user_id = None
+        
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/register-company",
+                json=test_company_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 200:
+                    user_id = data.get("user_id")
+                    self.log_test("User Creation Test Setup", True, f"Test user created: {user_id}")
+                else:
+                    self.log_test("User Creation Test Setup", False, f"Failed to create test user: {response.status}", data)
+                    return
+        except Exception as e:
+            self.log_test("User Creation Test Setup", False, f"Request failed: {str(e)}")
+            return
+        
+        # Test login to verify user was created correctly
+        try:
+            login_data = {
+                "username": test_company_data["email"],
+                "password": test_company_data["password"]
+            }
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/cookie/login",
+                data=login_data,
+                headers={"Content-Type": "application/x-www-form-urlencoded"}
+            ) as response:
+                if response.status == 204:
+                    cookies = response.cookies
+                    if "buildconnect_auth" in cookies:
+                        auth_cookie = cookies["buildconnect_auth"].value
+                        self.log_test("Professional User Login", True, "Company user can login successfully")
+                        
+                        # Test getting user info to verify role and profile
+                        try:
+                            cookies_dict = {"buildconnect_auth": auth_cookie}
+                            async with self.session.get(
+                                f"{BACKEND_URL}/auth/me",
+                                cookies=cookies_dict
+                            ) as me_response:
+                                user_data = await me_response.json()
+                                if me_response.status == 200:
+                                    # Verify professional user is created with role="professional"
+                                    if user_data.get("role") == "professional":
+                                        self.log_test("Professional Role Verification", True, "User created with role='professional'")
+                                    else:
+                                        self.log_test("Professional Role Verification", False, f"Expected role='professional', got: {user_data.get('role')}")
+                                    
+                                    # Verify company_id is stored in user profile
+                                    profile = user_data.get("profile", {})
+                                    if profile.get("company_id") == test_company_data["company_id"]:
+                                        self.log_test("Company ID Storage", True, "Company ID correctly stored in user profile")
+                                    else:
+                                        self.log_test("Company ID Storage", False, f"Expected company_id={test_company_data['company_id']}, got: {profile.get('company_id')}")
+                                    
+                                    # Verify phone is stored correctly
+                                    if profile.get("phone") == test_company_data["electronic_id"]:
+                                        self.log_test("Phone Storage", True, "Phone correctly stored in user profile")
+                                    else:
+                                        self.log_test("Phone Storage", False, f"Expected phone={test_company_data['electronic_id']}, got: {profile.get('phone')}")
+                                    
+                                    # Verify name is parsed into first_name/last_name
+                                    expected_first_name = "Verification"
+                                    expected_last_name = "Test Company"
+                                    if (profile.get("first_name") == expected_first_name and 
+                                        profile.get("last_name") == expected_last_name):
+                                        self.log_test("Name Parsing", True, "Name correctly parsed into first_name/last_name")
+                                    else:
+                                        self.log_test("Name Parsing", False, f"Expected '{expected_first_name}' / '{expected_last_name}', got: '{profile.get('first_name')}' / '{profile.get('last_name')}'")
+                                else:
+                                    self.log_test("User Info Retrieval", False, f"Failed to get user info: {me_response.status}")
+                        except Exception as e:
+                            self.log_test("User Info Retrieval", False, f"Request failed: {str(e)}")
+                    else:
+                        self.log_test("Professional User Login", False, "Login successful but no auth cookie")
+                else:
+                    data = await response.json() if response.content_type == 'application/json' else await response.text()
+                    self.log_test("Professional User Login", False, f"Login failed: {response.status}", data)
+        except Exception as e:
+            self.log_test("Professional User Login", False, f"Request failed: {str(e)}")
+    
+    async def test_company_registration_integration(self):
+        """Test integration with existing fastapi-users system"""
+        print("\n--- Testing Company Registration Integration ---")
+        
+        import time
+        timestamp = str(int(time.time()))
+        
+        # Test that company registration integrates properly with fastapi-users
+        integration_test_data = {
+            "company_id": "7777777777",
+            "electronic_id": "5877777",
+            "name": "Integration Test AS",
+            "email": f"integration.test.{timestamp}@example.is",
+            "password": "integrationpass123"
+        }
+        
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/register-company",
+                json=integration_test_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 200:
+                    self.log_test("FastAPI-Users Integration", True, "Company registration integrates with fastapi-users system")
+                    
+                    # Test that the response format matches CompanyRegistrationResponse schema
+                    required_fields = ["message", "user_id", "email"]
+                    has_all_fields = all(field in data for field in required_fields)
+                    
+                    if has_all_fields:
+                        self.log_test("Response Schema Validation", True, "Response matches CompanyRegistrationResponse schema")
+                    else:
+                        self.log_test("Response Schema Validation", False, "Response doesn't match expected schema", data)
+                    
+                    # Test database persistence of company information
+                    # Login and check if all company data persists
+                    try:
+                        login_data = {
+                            "username": integration_test_data["email"],
+                            "password": integration_test_data["password"]
+                        }
+                        async with self.session.post(
+                            f"{BACKEND_URL}/auth/cookie/login",
+                            data=login_data,
+                            headers={"Content-Type": "application/x-www-form-urlencoded"}
+                        ) as login_response:
+                            if login_response.status == 204:
+                                cookies = login_response.cookies
+                                if "buildconnect_auth" in cookies:
+                                    auth_cookie = cookies["buildconnect_auth"].value
+                                    
+                                    # Get user profile to verify persistence
+                                    cookies_dict = {"buildconnect_auth": auth_cookie}
+                                    async with self.session.get(
+                                        f"{BACKEND_URL}/auth/me",
+                                        cookies=cookies_dict
+                                    ) as profile_response:
+                                        profile_data = await profile_response.json()
+                                        if profile_response.status == 200:
+                                            profile = profile_data.get("profile", {})
+                                            
+                                            # Check all company information persists
+                                            persistence_checks = [
+                                                (profile.get("company_id") == integration_test_data["company_id"], "Company ID"),
+                                                (profile.get("phone") == integration_test_data["electronic_id"], "Phone"),
+                                                (profile.get("first_name") == "Integration", "First Name"),
+                                                (profile.get("last_name") == "Test AS", "Last Name"),
+                                                (profile_data.get("email") == integration_test_data["email"], "Email"),
+                                                (profile_data.get("role") == "professional", "Role")
+                                            ]
+                                            
+                                            all_persisted = all(check[0] for check in persistence_checks)
+                                            if all_persisted:
+                                                self.log_test("Database Persistence", True, "All company information persisted correctly")
+                                            else:
+                                                failed_checks = [check[1] for check in persistence_checks if not check[0]]
+                                                self.log_test("Database Persistence", False, f"Failed to persist: {', '.join(failed_checks)}")
+                                        else:
+                                            self.log_test("Database Persistence", False, f"Failed to retrieve profile: {profile_response.status}")
+                    except Exception as e:
+                        self.log_test("Database Persistence", False, f"Persistence test failed: {str(e)}")
+                else:
+                    self.log_test("FastAPI-Users Integration", False, f"Integration test failed: {response.status}", data)
+        except Exception as e:
+            self.log_test("FastAPI-Users Integration", False, f"Request failed: {str(e)}")
+
     async def test_moving_category_subcategory_flow(self):
         """Test Moving Category Job Posting Flow with Subcategory Integration"""
         print("\n=== Testing Moving Category Subcategory Flow ===")
