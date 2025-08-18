@@ -1024,6 +1024,30 @@ export const translations = {
     pianotransport: "Píanóflutningar",
     godstransport: "Vöruflutningar",
     
+    // Cleaning Category Picker
+    cleaningStepHeader: "Um verkefnið • Tengiliður • Klárt",
+    cleaningCategoryTitle: "Veldu flokk til að setja inn verkið — alveg ókeypis",
+    cleaningSearchPlaceholder: "Hvers konar þrif þarftu?",
+    submitCleaningRequest: "Senda Þrifsbeiðni",
+    
+    // Cleaning Subcategories
+    houseCleaning: "Heimaþrif",
+    officeCleaning: "Skrifstofuþrif",
+    deepCleaning: "Djúpþrif",
+    carCleaning: "Bílaþrif", 
+    postConstruction: "Byggingarþrif",
+    wasteRemoval: "Ruslaflutningar",
+    eventCleaning: "Viðburðaþrif",
+    industrialCleaning: "Iðnaðarþrif",
+    windowCleaning: "Gluggaþvottur",
+    gardenCleaning: "Garðaþrif",
+    carpetCleaning: "Teppa- og Húsgagnaþrif",
+    movingCleaning: "Flutningaþrif",
+    pressureWashing: "Háþrýstiþvottur",
+    storageCleaning: "Geymsluplássþrif",
+    specializedCleaning: "Sérhæft Þrif",
+    otherCleaning: "Annað Þrif",
+    
     // Housing Associations Categories
     roof: "Þak",
     windowsDoors: "Gluggar og hurðir",
