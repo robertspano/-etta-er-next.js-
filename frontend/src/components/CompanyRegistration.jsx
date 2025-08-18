@@ -87,19 +87,22 @@ const CompanyRegistration = ({ translations, language, setLanguage }) => {
     setLoading(true);
     
     try {
-      // TODO: Implement company registration API call
-      console.log('Company registration data:', formData);
+      // Call the company registration API
+      const response = await apiService.registerCompany({
+        company_id: formData.companyId,
+        electronic_id: formData.electronicId,
+        name: formData.name,
+        email: formData.email,
+        password: formData.password
+      });
       
-      // For now, simulate successful registration
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Navigate to success page or dashboard
+      // Navigate to dashboard on success
       navigate('/dashboard');
       
     } catch (error) {
       console.error('Failed to register company:', error);
       setErrors({ 
-        submit: language === 'is' ? 'Villa kom upp við skráningu. Vinsamlegast reyndu aftur.' : 'Registration failed. Please try again.'
+        submit: error.message || (language === 'is' ? 'Villa kom upp við skráningu. Vinsamlegast reyndu aftur.' : 'Registration failed. Please try again.')
       });
     } finally {
       setLoading(false);
