@@ -61,11 +61,8 @@ const Header = ({ language, setLanguage, translations }) => {
 
   const handlePostProject = () => {
     closeDrawer();
-    if (isAuthenticated()) {
-      navigate('/create-project');
-    } else {
-      navigate('/login?returnUrl=/create-project');
-    }
+    // Always go to job category selection page, no login required
+    navigate('/job-categories');
   };
 
   const handleLogin = () => {
