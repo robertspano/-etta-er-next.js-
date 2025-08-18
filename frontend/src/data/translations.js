@@ -566,6 +566,56 @@ export const translations = {
     terms: "Terms of Service",
     privacy: "Privacy Policy",
     allRightsReserved: "All rights reserved.",
+    
+    // Company Search Page
+    companySearchTitle: "Find the right company for your project!",
+    companySearchSubtitle: "Search for companies and craftsmen in your area, contact them and get a quote.",
+    whatDoYouNeedHelp: "What do you need help with?",
+    whereJobDone: "Where should the job be done?",
+    findCompany: "Find company",
+    companiesFound: "companies found",
+    searchingForCompanies: "Searching for companies...",
+    noCompaniesFound: "No companies found",
+    noCompaniesFoundDesc: "Try changing your search criteria or expanding the search area.",
+    verified: "Verified",
+    insured: "Insured",
+    reviews: "reviews",
+    completedJobs: "completed jobs", 
+    employees: "employees",
+    contactUs: "Contact us",
+    viewProfile: "View profile",
+    
+    // Category Pages
+    registeredProfessionals: "Registered professionals",
+    completedProjects: "Completed projects",
+    averageRating: "Average rating",
+    selectService: "Select service",
+    findProfessional: "Find professional",
+    postJob: "Post job",
+    specialties: "Specialties:",
+    professionals: "professionals",
+    projects: "projects",
+    howItWorksTitle: "How it works",
+    step1: "Describe the project",
+    step1Desc: "Tell us what you need help with and we'll send it to the right companies.",
+    step2: "Get quotes", 
+    step2Desc: "You'll quickly get non-binding quotes from professionals who want to help.",
+    step3: "Get started!",
+    step3Desc: "Review the quotes and choose the right company. After the job, you can leave a review.",
+    readyToStart: "Ready to start?",
+    postProject: "Post project",
+    findProfessionals: "Find professionals",
+    
+    // Handcraft Category
+    handcraftTitle: "Handcraft",
+    handcraftSubtitle: "Find skilled craftsmen for your project. From carpentry to painting - we have the professionals you need.",
+    
+    // House & Garden Category  
+    houseGardenTitle: "House & Garden",
+    houseGardenSubtitle: "Everything for your home and garden. From roof to foundation - we have specialists for all outdoor projects.",
+    makeHomeBetter: "Make your home even better",
+    fromGardenToRoof: "From gardening to roof repairs",
+    mostPopularServices: "Most popular services",
   },
   
   is: {
