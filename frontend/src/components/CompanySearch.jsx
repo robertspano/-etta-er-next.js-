@@ -172,13 +172,13 @@ const CompanySearch = ({ translations, language }) => {
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {language === 'is' ? 'Hvor skal jobben gjøres?' : 'Hvor skal jobben gjøres?'}
+                  {language === 'is' ? 'Hvar á verkið að fara fram?' : 'Where should the job be done?'}
                 </label>
                 <input
                   type="text"
                   value={locationQuery}
                   onChange={(e) => setLocationQuery(e.target.value)}
-                  placeholder={language === 'is' ? 'f.eks. Oslo, Bergen...' : 'f.eks. Oslo, Bergen...'}
+                  placeholder={language === 'is' ? 't.d. Reykjavík, Akureyri...' : 'e.g. Reykjavik, London...'}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
               </div>
