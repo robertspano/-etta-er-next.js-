@@ -270,12 +270,12 @@ const CompanySearch = ({ translations, language }) => {
                         <h3 className="text-xl font-semibold text-gray-900">{professional.name}</h3>
                         {professional.isVerified && (
                           <span className="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full">
-                            {language === 'is' ? 'Verifisert' : 'Verifisert'}
+                            {language === 'is' ? 'Staðfest' : 'Verified'}
                           </span>
                         )}
                         {professional.isInsured && (
                           <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded-full">
-                            {language === 'is' ? 'Forsikret' : 'Forsikret'}
+                            {language === 'is' ? 'Tryggður' : 'Insured'}
                           </span>
                         )}
                       </div>
