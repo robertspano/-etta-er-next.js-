@@ -46,57 +46,75 @@ const ElectricianPage = ({ translations, language }) => {
   const topElectricians = [
     {
       id: '1',
-      name: 'ElektroMester Bergen',
-      location: 'Bergen',
+      name: 'ElectroMaster Reykjavik',
+      location: 'Reykjavik',
       rating: 4.9,
       reviewCount: 89,
       completedJobs: 156,
       isVerified: true,
       isInsured: true,
-      description: 'Autorisert elektroinstallasjonsfirma med over 20 års erfaring.',
-      services: ['Elektroinstallasjon', 'Vedlikehold', 'Fiberinstallasjon', 'Smarthouse'],
-      priceRange: '650-950 kr/time',
-      phoneNumber: '+47 987 65 432',
+      description: language === 'is' 
+        ? 'Löggilt rafvirkjafyrirtæki með yfir 20 ára reynslu.'
+        : 'Authorized electrical installation company with over 20 years of experience.',
+      services: language === 'is'
+        ? ['Raflagnasetning', 'Viðhald', 'Ljósleiðari', 'Snjallheimili']
+        : ['Electrical Installation', 'Maintenance', 'Fiber Installation', 'Smart Home'],
+      priceRange: language === 'is' ? '10.000-15.000 kr/klst' : '£50-75/hour',
+      phoneNumber: '+354 987 6543',
       established: 2003,
       employees: '10-20',
       image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=300&h=200&fit=crop',
-      specializations: ['Residential', 'Commercial', 'Industrial']
+      specializations: language === 'is' 
+        ? ['Íbúðarhúsnæði', 'Atvinnuhúsnæði', 'Iðnaður']
+        : ['Residential', 'Commercial', 'Industrial']
     },
     {
       id: '2',
-      name: 'Oslo Elektro AS',
-      location: 'Oslo',
+      name: 'Reykjavik Electric Ltd',
+      location: 'Reykjavik',
       rating: 4.8,
       reviewCount: 134,
       completedJobs: 289,
       isVerified: true,
       isInsured: true,
-      description: 'Komplett elektrikertjenester for Oslo-området. Døgnvakt tilgjengelig.',
-      services: ['Elektroinstallasjon', 'Nødservice', 'LED-belysning', 'Varmepumper'],
-      priceRange: '600-900 kr/time',
-      phoneNumber: '+47 456 78 901',
+      description: language === 'is'
+        ? 'Heildar rafvirkjaþjónusta fyrir höfuðborgarsvæðið. Sólarhringsþjónusta í boði.'
+        : 'Complete electrical services for the capital area. 24-hour service available.',
+      services: language === 'is'
+        ? ['Raflagnasetning', 'Neyðarþjónusta', 'LED-lýsing', 'Hitapúmpur']
+        : ['Electrical Installation', 'Emergency Service', 'LED Lighting', 'Heat Pumps'],
+      priceRange: language === 'is' ? '9.000-14.000 kr/klst' : '£45-70/hour',
+      phoneNumber: '+354 456 7890',
       established: 2010,
       employees: '5-10',
       image: 'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=300&h=200&fit=crop',
-      specializations: ['Emergency Services', 'LED Systems', 'Heat Pumps']
+      specializations: language === 'is'
+        ? ['Neyðarþjónusta', 'LED kerfi', 'Hitapúmpur']
+        : ['Emergency Services', 'LED Systems', 'Heat Pumps']
     },
     {
       id: '3',
-      name: 'Trondheim Elektro',
-      location: 'Trondheim',
+      name: 'Northern Electric Iceland',
+      location: 'Akureyri',
       rating: 4.7,
       reviewCount: 76,
       completedJobs: 123,
       isVerified: true,
       isInsured: true,
-      description: 'Erfarne elektrikere med fokus på miljøvennlige løsninger.',
-      services: ['Solcellepanel', 'Elbillader', 'Energioptimalisering', 'Automasjon'],
-      priceRange: '580-850 kr/time',
-      phoneNumber: '+47 234 56 789',
+      description: language === 'is'
+        ? 'Reyndir rafvirkjar með áherslu á umhverfisvænar lausnir.'
+        : 'Experienced electricians with focus on environmentally friendly solutions.',
+      services: language === 'is'
+        ? ['Sólarsellur', 'Rafbílahleðslur', 'Orkunýtni', 'Sjálfvirkni']
+        : ['Solar Panels', 'EV Charging', 'Energy Optimization', 'Automation'],
+      priceRange: language === 'is' ? '9.500-13.000 kr/klst' : '£48-65/hour',
+      phoneNumber: '+354 234 5678',
       established: 2015,
       employees: '3-5',
       image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop',
-      specializations: ['Solar Panels', 'EV Charging', 'Energy Optimization']
+      specializations: language === 'is'
+        ? ['Sólarsellur', 'Rafbílahleðslur', 'Orkunýtni']
+        : ['Solar Panels', 'EV Charging', 'Energy Optimization']
     }
   ];
 
