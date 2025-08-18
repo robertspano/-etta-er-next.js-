@@ -379,7 +379,7 @@ const Header = ({ language, setLanguage, translations }) => {
                     onClick={() => handleDrawerItemClick('/hus-og-hage')}
                     className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
                   >
-                    <span className="text-gray-700">{language === 'is' ? 'Hús og garður' : 'Hus og hage'}</span>
+                    <span className="text-gray-700">{language === 'is' ? 'Hús og garður' : 'House & Garden'}</span>
                     <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
                   </button>
                   
