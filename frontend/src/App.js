@@ -297,6 +297,104 @@ function App() {
                 </DashboardLayout>
               } 
             />
+            
+            {/* Individual Professional Pages */}
+            <Route 
+              path="/haandverker/elektriker" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <ElectricianPage 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
+            <Route 
+              path="/professionals/electrician" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <ElectricianPage 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
+            {/* Support Pages */}
+            <Route 
+              path="/vilkar" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <TermsOfService 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
+            <Route 
+              path="/terms" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <TermsOfService 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
+            <Route 
+              path="/personvern" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <PrivacyPolicy 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
+            <Route 
+              path="/privacy-policy" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <PrivacyPolicy 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
 
             {/* Auth Routes */}
             <Route 
