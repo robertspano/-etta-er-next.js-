@@ -133,8 +133,8 @@ const HandcraftCategoryPage = ({ translations, language }) => {
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {language === 'is'
-              ? 'Finndu hæfa handverksmenn fyrir verkefnið þitt. Frá smíðum til málningarvinnu - við höfum fagmennina sem þú þarft.'
-              : 'Finn dyktige håndverkere til ditt prosjekt. Fra snekkerarbeid til malerarbeid - vi har fagfolkene du trenger.'
+              ? 'Finndu hæfa iðnaðarmenn fyrir verkefnið þitt. Frá trésmíði til málningarvinnu - við höfum fagmennina sem þú þarft.'
+              : 'Find skilled craftsmen for your project. From carpentry to painting work - we have the professionals you need.'
             }
           </p>
         </div>
