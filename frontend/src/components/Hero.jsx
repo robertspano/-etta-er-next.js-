@@ -212,17 +212,15 @@ const Hero = ({ translations }) => {
               <div className="absolute -top-4 -left-4 w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full shadow-lg animate-pulse"></div>
               <div className="absolute -bottom-3 -right-3 w-6 h-6 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full shadow-md"></div>
               
-              {/* Polaroid Card - responsive sizing */}
+              {/* Professional Image Card - responsive sizing */}
               <div className="bg-white p-4 md:p-6 rounded-2xl shadow-2xl transform rotate-2 hover:rotate-0 transition-all duration-500 hover:shadow-3xl border border-gray-100 w-full">
-                {/* Image placeholder - responsive width */}
-                <div className="w-full aspect-[4/3] bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden shadow-inner">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent"></div>
-                  <div className="text-center z-10">
-                    <div className="p-3 md:p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg">
-                      <Users className="h-12 w-12 md:h-16 md:w-16 lg:h-20 lg:w-20 text-blue-600 mx-auto mb-3 md:mb-4" />
-                      <p className="text-sm md:text-lg lg:text-xl font-bold text-gray-700">Trusted Professionals</p>
-                    </div>
-                  </div>
+                {/* Professional Image - responsive width */}
+                <div className="w-full aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden shadow-inner">
+                  <img 
+                    src="https://customer-assets.emergentagent.com/job_renovate-hub-2/artifacts/zcg02po8_image.png" 
+                    alt="Professional Craftsman" 
+                    className="w-full h-full object-cover rounded-xl"
+                  />
                 </div>
                 
                 {/* Polaroid bottom text area */}
