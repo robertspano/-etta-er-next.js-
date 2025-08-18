@@ -65,6 +65,16 @@ class ApiService {
     }
   }
 
+  // Company registration endpoint
+  async registerCompany(companyData) {
+    try {
+      const response = await this.client.post('/auth/register-company', companyData);
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to register company');
+    }
+  }
+
   async login(email, password) {
     try {
       const formData = new FormData();
