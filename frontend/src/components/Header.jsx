@@ -112,7 +112,6 @@ const Header = ({ language, setLanguage, translations }) => {
               <Select value={language} onValueChange={setLanguage}>
                 <SelectTrigger className="h-10 px-3 bg-transparent hover:bg-gray-50 border-0 text-sm font-medium">
                   <span>{language === 'is' ? 'Icelandic' : 'English'}</span>
-                  <ChevronDown className="h-4 w-4 ml-2" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="is">Icelandic</SelectItem>
