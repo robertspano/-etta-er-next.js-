@@ -208,11 +208,11 @@ const Hero = ({ translations }) => {
           {/* Right Content - 40% - Hero Image */}
           <div className="md:col-span-2 flex justify-center items-center">
             <div className="relative animate-fade-in-up w-full max-w-sm md:max-w-md lg:max-w-lg" style={{ animationDelay: '0.3s' }}>
-              {/* Just the Professional Image - no decorations */}
+              {/* Just the Professional Image - completely clean */}
               <img 
                 src="https://customer-assets.emergentagent.com/job_renovate-hub-2/artifacts/zcg02po8_image.png" 
                 alt="Professional Craftsman" 
-                className="w-full h-auto object-cover rounded-2xl shadow-2xl"
+                className="w-full h-auto object-cover"
               />
             </div>
           </div>
