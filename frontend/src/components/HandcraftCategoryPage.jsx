@@ -246,12 +246,12 @@ const HandcraftCategoryPage = ({ translations, language }) => {
                 <span className="text-2xl font-bold text-blue-600">1</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                {language === 'is' ? 'Lýstu verkefninu' : 'Beskriv prosjektet'}
+                {language === 'is' ? 'Lýstu verkefninu' : 'Describe the project'}
               </h3>
               <p className="text-gray-600">
                 {language === 'is'
                   ? 'Segðu okkur hvað þú þarft hjálp við og við sendum það til réttra fyrirtækja.'
-                  : 'Fortell oss hva du trenger hjelp til, og vi sender ut prosjektet til relevante bedrifter.'
+                  : 'Tell us what you need help with and we\'ll send it to the right companies.'
                 }
               </p>
             </div>
