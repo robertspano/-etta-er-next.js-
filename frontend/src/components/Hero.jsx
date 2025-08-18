@@ -208,31 +208,12 @@ const Hero = ({ translations }) => {
           {/* Right Content - 40% - Hero Image */}
           <div className="md:col-span-2 flex justify-center items-center">
             <div className="relative animate-fade-in-up w-full max-w-sm md:max-w-md lg:max-w-lg" style={{ animationDelay: '0.3s' }}>
-              {/* Floating elements */}
-              <div className="absolute -top-4 -left-4 w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full shadow-lg animate-pulse"></div>
-              <div className="absolute -bottom-3 -right-3 w-6 h-6 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full shadow-md"></div>
-              
-              {/* Professional Image Card - responsive sizing */}
-              <div className="bg-white p-4 md:p-6 rounded-2xl shadow-2xl transform rotate-2 hover:rotate-0 transition-all duration-500 hover:shadow-3xl border border-gray-100 w-full">
-                {/* Professional Image - responsive width */}
-                <div className="w-full aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden shadow-inner">
-                  <img 
-                    src="https://customer-assets.emergentagent.com/job_renovate-hub-2/artifacts/zcg02po8_image.png" 
-                    alt="Professional Craftsman" 
-                    className="w-full h-full object-cover rounded-xl"
-                  />
-                </div>
-                
-                {/* Polaroid bottom text area */}
-                <div className="text-center py-2 md:py-3">
-                  <div className="flex justify-center items-center mb-2 md:mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 md:h-5 md:w-5 lg:h-6 lg:w-6 fill-yellow-400 text-yellow-400 hover:scale-110 transition-transform duration-200" />
-                    ))}
-                  </div>
-                  <p className="text-sm md:text-base lg:text-lg text-gray-700 font-bold bg-gradient-to-r from-gray-700 to-gray-600 bg-clip-text">15,000+ Happy Customers</p>
-                </div>
-              </div>
+              {/* Just the Professional Image - no decorations */}
+              <img 
+                src="https://customer-assets.emergentagent.com/job_renovate-hub-2/artifacts/zcg02po8_image.png" 
+                alt="Professional Craftsman" 
+                className="w-full h-auto object-cover rounded-2xl shadow-2xl"
+              />
             </div>
           </div>
         </div>
