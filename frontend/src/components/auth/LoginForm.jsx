@@ -121,6 +121,12 @@ const LoginForm = ({ translations, language }) => {
             </div>
           </div>
 
+          {successMessage && (
+            <Alert className="border-green-200 bg-green-50">
+              <AlertDescription className="text-green-800">{successMessage}</AlertDescription>
+            </Alert>
+          )}
+
           {error && (
             <Alert variant="destructive">
               <AlertDescription>{error}</AlertDescription>
