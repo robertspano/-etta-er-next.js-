@@ -1204,6 +1204,21 @@ export const translations = {
     privacy: "Persónuverndarstefna",
     allRightsReserved: "Öll réttindi áskilin.",
     
+    // Company Registration
+    companyRegistrationTitle: "Nýskráning fyrirtækis",
+    companyIdLabel: "Kennitala fyrirtækis",
+    companyIdPlaceholder: "Sláðu inn kennitölu fyrirtækis",
+    electronicIdLabel: "Rafræn auðkenning / Símí prókúruhafa",
+    electronicIdPlaceholder: "Símanúmer fyrir rafræna auðkenningu",
+    nameLabel: "Nafn",
+    namePlaceholder: "Fullt nafn (þessi sem skrár fyrirtækið inn",
+    emailLabel: "Netfang",
+    emailPlaceholder: "glaesithreinsunn@gmail.com",
+    passwordLabel: "Lykilorð",
+    passwordPlaceholder: "••••••••••••••",
+    registerButton: "Nýskráning",
+    companyRegistrationAgreement: "Ég hef lesið og samþykki skilmála AlfredÞinn um nýskráningu fyrirtækis.",
+    
     // Company Search Page
     companySearchTitle: "Finndu rétta fyrirtækið fyrir verkefnið þitt!",
     companySearchSubtitle: "Leitaðu að fyrirtækjum og iðnaðarmönnum á þínu svæði, hafðu samband og fáðu tilboð.",
