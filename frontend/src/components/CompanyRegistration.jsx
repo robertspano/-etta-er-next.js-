@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Eye, EyeOff, Building2 } from 'lucide-react';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
+import apiService from '../services/api';
 
 const CompanyRegistration = ({ translations, language, setLanguage }) => {
   const [formData, setFormData] = useState({
