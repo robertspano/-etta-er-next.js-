@@ -404,7 +404,7 @@ const Header = ({ language, setLanguage, translations }) => {
                 <div className="border-t border-gray-200 my-4"></div>
                 <div className="mb-3">
                   <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider px-1">
-                    {language === 'is' ? 'Upplýsingar' : 'Informasjon'}
+                    {language === 'is' ? 'Upplýsingar' : 'Information'}
                   </h3>
                 </div>
                 
