@@ -96,8 +96,15 @@ const CompanyRegistration = ({ translations, language, setLanguage }) => {
         password: formData.password
       });
       
-      // Navigate to dashboard on success
-      navigate('/dashboard');
+      // Navigate to login page with success message
+      navigate('/login', { 
+        state: { 
+          message: language === 'is' 
+            ? 'Fyrirtæki skráð með góðum árangri! Vinsamlegast skráðu þig inn.' 
+            : 'Company registered successfully! Please log in.',
+          email: formData.email
+        }
+      });
       
     } catch (error) {
       console.error('Failed to register company:', error);
