@@ -51,6 +51,7 @@ import ElectricianPage from './components/ElectricianPage';
 import PlumberPage from './components/PlumberPage';
 import PainterPage from './components/PainterPage';
 import CarpenterPage from './components/CarpenterPage';
+import MasonPage from './components/MasonPage';
 
 // Support Pages
 import TermsOfService from './components/TermsOfService';
