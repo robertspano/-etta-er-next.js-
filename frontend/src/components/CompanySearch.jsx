@@ -143,14 +143,14 @@ const CompanySearch = ({ translations, language }) => {
         <div className="max-w-4xl mx-auto px-4 py-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             {language === 'is' 
-              ? 'Finn rett bedrift til prosjektet ditt!' 
-              : 'Finn riktig bedrift til ditt prosjekt!'
+              ? 'Finndu rétta fyrirtækið fyrir verkefnið þitt!' 
+              : 'Find the right company for your project!'
             }
           </h1>
           <p className="text-gray-600 mb-8">
             {language === 'is'
-              ? 'Søk etter bedrifter og håndverkere i ditt område, ta kontakt og få et tilbud.'
-              : 'Søk etter bedrifter og håndverkere i ditt område, ta kontakt og få et tilbud.'
+              ? 'Leitaðu að fyrirtækjum og iðnaðarmönnum á þínu svæði, hafðu samband og fáðu tilboð.'
+              : 'Search for companies and craftsmen in your area, contact them and get a quote.'
             }
           </p>
 
