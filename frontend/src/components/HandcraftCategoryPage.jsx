@@ -156,7 +156,7 @@ const HandcraftCategoryPage = ({ translations, language }) => {
           <div className="bg-purple-50 rounded-lg p-6">
             <div className="text-3xl font-bold text-purple-600 mb-2">4.8</div>
             <div className="text-gray-600">
-              {language === 'is' ? 'Meðaleinkunn' : 'Gjennomsnittlig vurdering'}
+              {language === 'is' ? 'Meðaleinkunn' : 'Average rating'}
             </div>
           </div>
         </div>
