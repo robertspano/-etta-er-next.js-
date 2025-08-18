@@ -567,6 +567,21 @@ export const translations = {
     privacy: "Privacy Policy",
     allRightsReserved: "All rights reserved.",
     
+    // Company Registration
+    companyRegistrationTitle: "Company Registration",
+    companyIdLabel: "Company ID Number",
+    companyIdPlaceholder: "Enter your company ID number",
+    electronicIdLabel: "Electronic ID/Phone",
+    electronicIdPlaceholder: "Phone number for electronic identification",
+    nameLabel: "Name",
+    namePlaceholder: "Full name (must match company ID)",
+    emailLabel: "Email",
+    emailPlaceholder: "your.email@company.com",
+    passwordLabel: "Password",
+    passwordPlaceholder: "••••••••••••••",
+    registerButton: "Register",
+    companyRegistrationAgreement: "I have read and accept the terms of use for AlfredÞinn regarding company registration.",
+    
     // Company Search Page
     companySearchTitle: "Find the right company for your project!",
     companySearchSubtitle: "Search for companies and craftsmen in your area, contact them and get a quote.",
