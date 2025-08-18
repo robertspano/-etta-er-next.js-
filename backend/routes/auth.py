@@ -17,6 +17,19 @@ from pydantic import BaseModel, EmailStr
 
 router = APIRouter()
 
+# Company Registration Schema
+class CompanyRegistrationRequest(BaseModel):
+    company_id: str  # Icelandic kennitala
+    electronic_id: str  # Phone number for electronic identification
+    name: str
+    email: EmailStr
+    password: str
+
+class CompanyRegistrationResponse(BaseModel):
+    message: str
+    user_id: str
+    email: str
+
 # Include auth routes from fastapi-users
 auth_router = fastapi_users.get_auth_router(auth_backend)
 register_router = fastapi_users.get_register_router(UserRead, UserCreate)
