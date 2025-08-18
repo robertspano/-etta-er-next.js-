@@ -332,12 +332,12 @@ const CompanySearch = ({ translations, language }) => {
           <div className="text-center py-12">
             <div className="text-gray-400 text-6xl mb-4">🔍</div>
             <h3 className="text-lg font-medium text-gray-900 mb-2">
-              {language === 'is' ? 'Ingen bedrifter funnet' : 'Ingen bedrifter funnet'}
+              {language === 'is' ? 'Engin fyrirtæki fundust' : 'No companies found'}
             </h3>
             <p className="text-gray-600">
               {language === 'is' 
-                ? 'Prøv å endre søkekriteriene dine eller utvidde søkeområdet.'
-                : 'Prøv å endre søkekriteriene dine eller utvidde søkeområdet.'
+                ? 'Reyndu að breyta leitarskilyrðunum þínum eða víkka leitarsvæðið.'
+                : 'Try changing your search criteria or expanding the search area.'
               }
             </p>
           </div>
