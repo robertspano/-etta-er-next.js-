@@ -306,13 +306,13 @@ const HandcraftCategoryPage = ({ translations, language }) => {
               to="/job-categories"
               className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
-              {language === 'is' ? 'Legg inn verkefni' : 'Legg ut prosjekt'}
+              {language === 'is' ? 'Legg inn verkefni' : 'Post project'}
             </Link>
             <Link 
               to="/bedriftsok"
               className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
             >
-              {language === 'is' ? 'Finn handverksmenn' : 'Finn håndverkere'}
+              {language === 'is' ? 'Finn iðnaðarmenn' : 'Find craftsmen'}
             </Link>
           </div>
         </div>
