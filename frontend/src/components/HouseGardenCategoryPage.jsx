@@ -6,8 +6,8 @@ const HouseGardenCategoryPage = ({ translations, language }) => {
 
   const houseGardenServices = [
     {
-      id: 'landscaping',
-      name: language === 'is' ? 'Garðyrkja' : 'Anleggsgartner',
+      id: 'anleggsgartner',
+      name: language === 'is' ? 'Garðyrkjumenn' : 'Anleggsgartner',
       nameNorwegian: 'Anleggsgartner',
       description: language === 'is' 
         ? 'Garðhönnun, grasflötuviðhald og þjónusta fyrir útirými.'
@@ -21,7 +21,67 @@ const HouseGardenCategoryPage = ({ translations, language }) => {
         : ['Hagedesign', 'Trefelling', 'Plen', 'Uteplanting']
     },
     {
-      id: 'roofing',
+      id: 'trefelling',
+      name: language === 'is' ? 'Trjáfelling' : 'Trefelling',
+      nameNorwegian: 'Trefelling',
+      description: language === 'is'
+        ? 'Fagleg trjáfelling, klipping og viðhald á trjám og runnum.'
+        : 'Profesjonell trefelling, beskjæring og vedlikehold av trær og busker.',
+      professionals: 850,
+      averagePrice: language === 'is' ? '25.000-150.000 kr' : '500-1000 kr/time',
+      completedJobs: 2400,
+      image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Trjáfelling', 'Klipping', 'Stubbfræsing', 'Öryggisfelling']
+        : ['Trefelling', 'Beskjæring', 'Stubbfresing', 'Sikkerhetsfelling']
+    },
+    {
+      id: 'plen',
+      name: language === 'is' ? 'Grassláttur og viðhald' : 'Plen',
+      nameNorwegian: 'Plen',
+      description: language === 'is'
+        ? 'Grasflötuviðhald, sláttur og umhirða grasflatna.'
+        : 'Plenvedlikehold, klipping og pleie av gressplener.',
+      professionals: 1200,
+      averagePrice: language === 'is' ? '15.000-80.000 kr' : '300-600 kr/time',
+      completedJobs: 4200,
+      image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Grassláttur', 'Fræsowing', 'Áburðargjöf', 'Viðhald']
+        : ['Plenklipping', 'Såing', 'Gjødsling', 'Vedlikehold']
+    },
+    {
+      id: 'uteplanter',
+      name: language === 'is' ? 'Útiplöntur' : 'Uteplanter',
+      nameNorwegian: 'Uteplanter',
+      description: language === 'is'
+        ? 'Plöntun, umhirða og hönnun útirýma með blómum og plöntum.'
+        : 'Planting, stell og design av uteområder med blomster og planter.',
+      professionals: 950,
+      averagePrice: language === 'is' ? '20.000-120.000 kr' : '400-700 kr/time',
+      completedJobs: 3100,
+      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Blómaplöntun', 'Kjartagarðar', 'Útihönnun', 'Viðhald']
+        : ['Blomsterplanting', 'Urter', 'Utedesign', 'Vedlikehold']
+    },
+    {
+      id: 'uteterrasse',
+      name: language === 'is' ? 'Verandir og þil' : 'Uteterrasse',
+      nameNorwegian: 'Uteterrasse',
+      description: language === 'is'
+        ? 'Bygging og viðhald á verönd, þilum og útisvæðum.'
+        : 'Bygging og vedlikehold av terrasser, dekk og uteområder.',
+      professionals: 750,
+      averagePrice: language === 'is' ? '80.000-400.000 kr' : '600-1200 kr/time',
+      completedJobs: 1800,
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Viðarþil', 'Steinverandir', 'Hellulagnir', 'Afgirðingar']
+        : ['Tredekk', 'Steinterrasser', 'Flislegging', 'Rekkverk']
+    },
+    {
+      id: 'tak',
       name: language === 'is' ? 'Þak' : 'Tak',
       nameNorwegian: 'Tak',
       description: language === 'is'
@@ -36,8 +96,8 @@ const HouseGardenCategoryPage = ({ translations, language }) => {
         : ['Takreparasjoner', 'Taklegging', 'Isolering', 'Takrenner']
     },
     {
-      id: 'exterior-walls',
-      name: language === 'is' ? 'Fasade' : 'Fasade',
+      id: 'fasade',
+      name: language === 'is' ? 'Útveggir og fasade' : 'Fasade',
       nameNorwegian: 'Fasade',
       description: language === 'is'
         ? 'Fasadeviðgerðir, málun og endurnýjun húsveggja.'
@@ -51,9 +111,9 @@ const HouseGardenCategoryPage = ({ translations, language }) => {
         : ['Fasademaling', 'Kledning', 'Isolering', 'Vedlikehold']
     },
     {
-      id: 'windows-doors',
-      name: language === 'is' ? 'Gluggar og hurðir' : 'Vindu og dør',
-      nameNorwegian: 'Vindu og dør',
+      id: 'vinduer-dorer',
+      name: language === 'is' ? 'Gluggar og hurðir' : 'Vinduer og dører',
+      nameNorwegian: 'Vinduer og dører',
       description: language === 'is'
         ? 'Uppsetning, viðgerðir og skipti á gluggum og hurðum.'
         : 'Installasjon, reparasjoner og utskifting av vinduer og dører.',
@@ -66,8 +126,8 @@ const HouseGardenCategoryPage = ({ translations, language }) => {
         : ['Vindusbytte', 'Dørreparasjoner', 'Isolering', 'Installasjon']
     },
     {
-      id: 'drainage',
-      name: language === 'is' ? 'Drenering' : 'Drenering',
+      id: 'drenering',
+      name: language === 'is' ? 'Drenering og vatnskerfi' : 'Drenering',
       nameNorwegian: 'Drenering',
       description: language === 'is'
         ? 'Vatnskerfi, drenering og vatnsleiðslur fyrir garða og hús.'
@@ -81,8 +141,8 @@ const HouseGardenCategoryPage = ({ translations, language }) => {
         : ['Vannledninger', 'Dreneringssystem', 'Pumper', 'Vedlikehold']
     },
     {
-      id: 'excavation',
-      name: language === 'is' ? 'Grunnvinna' : 'Grunnarbeid',
+      id: 'grunnarbeid',
+      name: language === 'is' ? 'Grunnvinna og jarðvinna' : 'Grunnarbeid',
       nameNorwegian: 'Grunnarbeid',
       description: language === 'is'
         ? 'Jarðvinna, uppgröftur og undirbúningur fyrir byggingarverkefni.'
@@ -96,8 +156,81 @@ const HouseGardenCategoryPage = ({ translations, language }) => {
         : ['Utgravning', 'Grunnleggende', 'Jordtransport', 'Forberedelser']
     },
     {
-      id: 'fencing',
+      id: 'gjerde-port',
       name: language === 'is' ? 'Girðingar og hlið' : 'Gjerde og port',
+      nameNorwegian: 'Gjerde og port',
+      description: language === 'is'
+        ? 'Girðingar, hlið og afgirðingar fyrir garða og eignir.'
+        : 'Gjerder, porter og inngjerding for hager og eiendommer.',
+      professionals: 650,
+      averagePrice: language === 'is' ? '30.000-120.000 kr' : '400-700 kr/time',
+      completedJobs: 2200,
+      image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Viðargirðingar', 'Málmgirðingar', 'Hlið', 'Uppsetning']
+        : ['Tregjerder', 'Metallgjerder', 'Porter', 'Installasjon']
+    },
+    {
+      id: 'utlys',
+      name: language === 'is' ? 'Útiljós' : 'Utelys',
+      nameNorwegian: 'Utelys',
+      description: language === 'is'
+        ? 'Uppsetning og viðhald á útiljósum og garðlýsingu.'
+        : 'Installasjon og vedlikehold av utelys og hagelys.',
+      professionals: 450,
+      averagePrice: language === 'is' ? '25.000-80.000 kr' : '500-800 kr/time',
+      completedJobs: 1600,
+      image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['LED ljós', 'Garðlýsing', 'Öryggisljós', 'Jólabirta']
+        : ['LED-lys', 'Hagelys', 'Sikkerhetslys', 'Julelys']
+    },
+    {
+      id: 'utebad',
+      name: language === 'is' ? 'Heitir pottar og sundlaugar' : 'Utebad',
+      nameNorwegian: 'Utebad',
+      description: language === 'is'
+        ? 'Uppsetning og viðhald á heitum pottum, sundlaugum og vellíðunartækjum.'
+        : 'Installasjon og vedlikehold av boblebad, basseng og spa-utstyr.',
+      professionals: 350,
+      averagePrice: language === 'is' ? '100.000-500.000 kr' : '800-1500 kr/time',
+      completedJobs: 800,
+      image: 'https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Heitir pottar', 'Sundlaugar', 'Spa tækni', 'Viðhald']
+        : ['Boblebad', 'Svømmebasseng', 'Spa-teknikk', 'Vedlikehold']
+    },
+    {
+      id: 'snorydding',
+      name: language === 'is' ? 'Snjómokstur' : 'Snørydding',
+      nameNorwegian: 'Snørydding',
+      description: language === 'is'
+        ? 'Snjómokstur og vetrarverk fyrir heimili og fyrirtæki.'
+        : 'Snørydding og vinterarbeid for hjem og bedrifter.',
+      professionals: 800,
+      averagePrice: language === 'is' ? '10.000-50.000 kr' : '300-600 kr/time',
+      completedJobs: 3500,
+      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Snjómokstur', 'Strá', 'Vetrartilbúnaður', 'Bráðaþjónusta']
+        : ['Snøfjerning', 'Strøing', 'Vinterutstyr', 'Akuttservice']
+    },
+    {
+      id: 'uteopprydding',
+      name: language === 'is' ? 'Garðþrif og þrifþjónusta' : 'Uteopprydding',
+      nameNorwegian: 'Uteopprydding',
+      description: language === 'is'
+        ? 'Þrif og umhirða útirýma, fjarlæging rusl og viðhald.'
+        : 'Rengjøring og vedlikehold av uteområder, søppelfjerning og stell.',
+      professionals: 600,
+      averagePrice: language === 'is' ? '15.000-60.000 kr' : '250-500 kr/time',
+      completedJobs: 2800,
+      image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Þrif', 'Ruslflutningar', 'Þvottur', 'Viðhald']
+        : ['Rengjøring', 'Søppelhenting', 'Vask', 'Vedlikehold']
+    }
+  ];
       nameNorwegian: 'Gjerde og port',
       description: language === 'is'
         ? 'Uppsetning og viðhald girðinga, hlíða og öryggisbúnaðar.'
