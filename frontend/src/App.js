@@ -143,11 +143,28 @@ function App() {
               } 
             />
             
-            {/* All Categories Overview Route - Public */}
+            {/* Job Category Selection Route - Post a Job entry point */}
+            <Route 
+              path="/job-categories" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <JobCategorySelection 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
+            {/* All Categories Overview Route */}
             <Route 
               path="/all-categories" 
               element={
-                <AuthLayout 
+                <DashboardLayout 
                   language={language} 
                   setLanguage={setLanguage} 
                   currentTranslations={currentTranslations}
@@ -155,7 +172,7 @@ function App() {
                   <AllCategoriesOverview 
                     translations={currentTranslations} 
                   />
-                </AuthLayout>
+                </DashboardLayout>
               } 
             />
             
