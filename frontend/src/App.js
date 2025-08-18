@@ -45,6 +45,9 @@ import HouseGardenCategoryPage from './components/HouseGardenCategoryPage';
 
 // Individual Professional Pages
 import ElectricianPage from './components/ElectricianPage';
+import PlumberPage from './components/PlumberPage';
+import PainterPage from './components/PainterPage';
+import CarpenterPage from './components/CarpenterPage';
 
 // Support Pages
 import TermsOfService from './components/TermsOfService';
