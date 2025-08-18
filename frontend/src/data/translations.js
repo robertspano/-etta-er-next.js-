@@ -442,6 +442,7 @@ export const translations = {
     // Cleaning Category Picker
     cleaningStepHeader: "About the job • Contact info • Complete",
     cleaningCategoryTitle: "What kind of cleaning service do you need?",
+    submitCleaningRequest: "Submit Cleaning Request",
     
     // Cleaning Subcategories - Mittanbud's 4 categories only
     facadeCleaning: "Facade Cleaning",
