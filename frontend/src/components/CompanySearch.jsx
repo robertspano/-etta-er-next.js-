@@ -313,10 +313,10 @@ const CompanySearch = ({ translations, language }) => {
                     <div className="flex-shrink-0 mt-4 md:mt-0">
                       <div className="flex flex-col sm:flex-row md:flex-col gap-2">
                         <button className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-                          {language === 'is' ? 'Ta kontakt' : 'Ta kontakt'}
+                          {language === 'is' ? 'Hafa samband' : 'Contact us'}
                         </button>
                         <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors">
-                          {language === 'is' ? 'Se profil' : 'Se profil'}
+                          {language === 'is' ? 'Skoða prófíl' : 'View profile'}
                         </button>
                       </div>
                     </div>
