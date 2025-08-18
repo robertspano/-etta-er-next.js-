@@ -164,7 +164,7 @@ const HouseGardenCategoryPage = ({ translations, language }) => {
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {language === 'is'
               ? 'Allt fyrir heimilið þitt og garðinn. Frá þaki til grunns - við höfum sérfræðinga fyrir öll útiverkefni.'
-              : 'Alt for hjemmet ditt og hagen. Fra tak til grunn - vi har spesialister for alle utendørsprosjekter.'
+              : 'Everything for your home and garden. From roof to foundation - we have specialists for all outdoor projects.'
             }
           </p>
         </div>
