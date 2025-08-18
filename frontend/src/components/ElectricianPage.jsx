@@ -343,7 +343,7 @@ const ElectricianPage = ({ translations, language }) => {
               to="/bedriftsok?category=elektriker"
               className="bg-yellow-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors"
             >
-              {language === 'is' ? 'Sjá alla rafvirkja' : 'Se alle elektrikere'}
+              {language === 'is' ? 'Sjá alla rafvirkja' : 'See all electricians'}
             </Link>
           </div>
         </div>
