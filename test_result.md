@@ -600,7 +600,7 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Cleaning Category Subcategory Picker Implementation"
+    - "Company Registration System Implementation"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
