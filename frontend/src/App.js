@@ -334,6 +334,102 @@ function App() {
               } 
             />
             
+            <Route 
+              path="/haandverker/roerlegger" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <PlumberPage 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
+            <Route 
+              path="/professionals/plumber" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <PlumberPage 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
+            <Route 
+              path="/haandverker/maler" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <PainterPage 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
+            <Route 
+              path="/professionals/painter" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <PainterPage 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
+            <Route 
+              path="/haandverker/snekker" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <CarpenterPage 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
+            <Route 
+              path="/professionals/carpenter" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <CarpenterPage 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
             {/* Support Pages */}
             <Route 
               path="/vilkar" 
