@@ -159,13 +159,13 @@ const CompanySearch = ({ translations, language }) => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {language === 'is' ? 'Hva trenger du hjelp til?' : 'Hva trenger du hjelp til?'}
+                  {language === 'is' ? 'Við hvað þarftu hjálp?' : 'What do you need help with?'}
                 </label>
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder={language === 'is' ? 'f.eks. Snekker, Elektriker...' : 'f.eks. Snekker, Elektriker...'}
+                  placeholder={language === 'is' ? 't.d. Trésmíðamaður, Rafvirki...' : 'e.g. Carpenter, Electrician...'}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
               </div>
