@@ -307,6 +307,39 @@ function App() {
               } 
             />
             
+            {/* Cleaning Category Picker Route - Must come before general post routes */}
+            <Route 
+              path="/post/cleaning" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <CleaningCategoryPicker 
+                    translations={currentTranslations} 
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
+            {/* Cleaning Contact Form Route */}
+            <Route 
+              path="/post/cleaning/contact" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <CleaningContactForm 
+                    translations={currentTranslations} 
+                    language={language} 
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
             {/* Public Job Posting Wizard Routes */}
             <Route 
               path="/post/:category" 
