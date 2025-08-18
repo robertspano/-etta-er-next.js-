@@ -182,7 +182,6 @@ const Header = ({ language, setLanguage, translations }) => {
               <Select value={language} onValueChange={setLanguage}>
                 <SelectTrigger className="w-full">
                   <span>{language === 'is' ? 'Icelandic' : 'English'}</span>
-                  <ChevronDown className="h-4 w-4 ml-2" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="is">Icelandic</SelectItem>
