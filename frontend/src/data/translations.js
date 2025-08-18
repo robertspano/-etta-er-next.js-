@@ -441,27 +441,13 @@ export const translations = {
     
     // Cleaning Category Picker
     cleaningStepHeader: "About the job • Contact info • Complete",
-    cleaningCategoryTitle: "Choose a category to post your job — completely free",
-    cleaningSearchPlaceholder: "What kind of cleaning do you need?",
-    submitCleaningRequest: "Submit Cleaning Request",
+    cleaningCategoryTitle: "What kind of cleaning service do you need?",
     
-    // Cleaning Subcategories
-    houseCleaning: "House Cleaning",
-    officeCleaning: "Office Cleaning",
-    deepCleaning: "Deep Cleaning",
-    carCleaning: "Car Cleaning",
-    postConstruction: "Post-Construction Cleaning",
-    wasteRemoval: "Waste Removal",
-    eventCleaning: "Event Cleaning",
-    industrialCleaning: "Industrial Cleaning",
-    windowCleaning: "Window Cleaning",
-    gardenCleaning: "Garden Cleaning",
-    carpetCleaning: "Carpet & Upholstery",
-    movingCleaning: "Moving Cleaning",
-    pressureWashing: "Pressure Washing",
-    storageCleaning: "Storage Cleaning",
-    specializedCleaning: "Specialized Cleaning",
-    otherCleaning: "Other Cleaning",
+    // Cleaning Subcategories - Mittanbud's 4 categories only
+    facadeCleaning: "Facade Cleaning",
+    cleaningServices: "Cleaning Services", 
+    moveOutCleaning: "Move-out Cleaning",
+    otherCleaning: "Other (Cleaning)",
     
     // Housing Associations Categories
     roof: "Roof",
