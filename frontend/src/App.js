@@ -302,6 +302,38 @@ function App() {
               } 
             />
             
+            <Route 
+              path="/innvendig-oppussing" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <InteriorRenovationCategoryPage 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
+            <Route 
+              path="/interior-renovation" 
+              element={
+                <DashboardLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <InteriorRenovationCategoryPage 
+                    translations={currentTranslations}
+                    language={language}
+                  />
+                </DashboardLayout>
+              } 
+            />
+            
             {/* Individual Professional Pages */}
             <Route 
               path="/haandverker/elektriker" 
