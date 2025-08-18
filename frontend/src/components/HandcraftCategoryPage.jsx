@@ -144,7 +144,7 @@ const HandcraftCategoryPage = ({ translations, language }) => {
           <div className="bg-blue-50 rounded-lg p-6">
             <div className="text-3xl font-bold text-blue-600 mb-2">9,500+</div>
             <div className="text-gray-600">
-              {language === 'is' ? 'Skráðir handverksmenn' : 'Registrerte håndverkere'}
+              {language === 'is' ? 'Skráðir iðnaðarmenn' : 'Registered craftsmen'}
             </div>
           </div>
           <div className="bg-green-50 rounded-lg p-6">
