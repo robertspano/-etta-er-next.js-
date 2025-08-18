@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Request, HTTPException, status
 from fastapi.responses import RedirectResponse
 from fastapi_users import FastAPIUsers
-from models.user import User, UserCreate, UserRead, UserUpdate
+from models.user import User, UserCreate, UserRead, UserUpdate, UserRole, UserProfile
 from auth.config import (
     auth_backend,
     fastapi_users,
@@ -10,8 +10,10 @@ from auth.config import (
     get_current_customer,
     get_current_professional,
     get_current_admin,
+    get_user_manager,
 )
 from typing import Optional
+from pydantic import BaseModel, EmailStr
 
 router = APIRouter()
 
