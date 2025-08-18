@@ -305,7 +305,7 @@ const CompanySearch = ({ translations, language }) => {
                       <div className="flex items-center gap-4 text-sm text-gray-600">
                         <span>📍 {professional.location}</span>
                         <span>💰 {professional.priceRange}</span>
-                        <span>🏢 {professional.employees} {language === 'is' ? 'ansatte' : 'ansatte'}</span>
+                        <span>🏢 {professional.employees} {language === 'is' ? 'starfsmenn' : 'employees'}</span>
                       </div>
                     </div>
                     
