@@ -160,7 +160,7 @@ const ElectricianPage = ({ translations, language }) => {
               <p className="text-xl text-gray-600 mb-8">
                 {language === 'is'
                   ? 'Finndu hæfa rafvirkja fyrir öll rafmagnsverkefni. Frá einföldum viðgerðum til flókinna uppsetningar.'
-                  : 'Finn kvalifiserte elektrikere for alle elektriske prosjekter. Fra enkle reparasjoner til komplekse installasjoner.'
+                  : 'Find qualified electricians for all electrical projects. From simple repairs to complex installations.'
                 }
               </p>
               
