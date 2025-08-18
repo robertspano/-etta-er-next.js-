@@ -241,8 +241,8 @@ const CompanySearch = ({ translations, language }) => {
           <div className="mb-6">
             <h2 className="text-xl font-semibold text-gray-900">
               {loading 
-                ? (language === 'is' ? 'Søker etter bedrifter...' : 'Søker etter bedrifter...')
-                : `${professionals.length} ${language === 'is' ? 'bedrifter funnet' : 'bedrifter funnet'}`
+                ? (language === 'is' ? 'Leita að fyrirtækjum...' : 'Searching for companies...')
+                : `${professionals.length} ${language === 'is' ? 'fyrirtæki fundust' : 'companies found'}`
               }
             </h2>
           </div>
