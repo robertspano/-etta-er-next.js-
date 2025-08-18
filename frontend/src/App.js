@@ -38,6 +38,11 @@ import CleaningCategoryPicker from './components/CleaningCategoryPicker';
 import CleaningContactForm from './components/CleaningContactForm';
 import HousingAssociationsGrid from './components/HousingAssociationsGrid';
 
+// New Company Search and Category Pages
+import CompanySearch from './components/CompanySearch';
+import HandcraftCategoryPage from './components/HandcraftCategoryPage';
+import HouseGardenCategoryPage from './components/HouseGardenCategoryPage';
+
 // XL Components
 import XLLanding from './components/xl/XLLanding';
 import XLStart from './components/xl/XLStart';
