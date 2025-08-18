@@ -395,7 +395,7 @@ const Header = ({ language, setLanguage, translations }) => {
                     onClick={() => handleDrawerItemClick('/alle-kategorier')}
                     className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
                   >
-                    <span className="text-gray-700">{language === 'is' ? 'Allir flokkar' : 'Alle kategorier'}</span>
+                    <span className="text-gray-700">{language === 'is' ? 'Allir flokkar' : 'All categories'}</span>
                     <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
                   </button>
                 </div>
