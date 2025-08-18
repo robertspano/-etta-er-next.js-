@@ -296,11 +296,11 @@ const ElectricianPage = ({ translations, language }) => {
                           <div className="flex items-center">
                             {renderStars(electrician.rating)}
                             <span className="ml-1 text-sm text-gray-600">
-                              {electrician.rating} ({electrician.reviewCount} {language === 'is' ? 'umsagnir' : 'anmeldelser'})
+                              {electrician.rating} ({electrician.reviewCount} {language === 'is' ? 'umsagnir' : 'reviews'})
                             </span>
                           </div>
                           <span className="text-sm text-gray-500">
-                            {electrician.completedJobs} {language === 'is' ? 'lokið verkefni' : 'fullførte jobber'}
+                            {electrician.completedJobs} {language === 'is' ? 'lokið verkefni' : 'completed jobs'}
                           </span>
                         </div>
                         
