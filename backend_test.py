@@ -2796,6 +2796,9 @@ class BuildConnectAPITester:
             # Test Moving Category Subcategory Flow (Priority Testing)
             await self.test_moving_category_subcategory_flow()
             
+            # Test Cleaning Category Subcategory Flow (Priority Testing)
+            await self.test_cleaning_category_subcategory_flow()
+            
             await self.test_error_handling()
         finally:
             await self.cleanup()
