@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Hammer, Car, Building, Sparkles, DollarSign, Truck, Home, Grid3X3 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Hammer, Car, Building, Sparkles, DollarSign, Truck, Home, Grid3X3 } from 'lucide-react';
 
 const JobCategorySelection = ({ translations, language }) => {
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Exactly 8 categories as specified, matching Mittanbud
   const jobCategories = [
@@ -77,6 +78,13 @@ const JobCategorySelection = ({ translations, language }) => {
     navigate(-1);
   };
 
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    // Handle search functionality here
+    console.log('Search query:', searchQuery);
+    // Could implement search logic or redirect to a search results page
+  };
+
   return (
     <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 min-h-screen">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -100,12 +108,31 @@ const JobCategorySelection = ({ translations, language }) => {
         <div className="bg-white rounded-3xl shadow-lg border border-gray-100 p-8 lg:p-12">
           
           {/* Title */}
-          <h2 className="text-xl lg:text-2xl font-semibold text-gray-900 text-center mb-12">
+          <h2 className="text-xl lg:text-2xl font-semibold text-gray-900 text-center mb-8">
             {language === 'is' 
-              ? 'Veldu flokk til að birta verkefnið þitt — alveg ókeypis'
+              ? 'Velg kategori for að legge ut jobben din - helt gratis'
               : 'Choose a category to post your job — completely free'
             }
           </h2>
+
+          {/* Search Bar - Matching Mittanbud exactly */}
+          <form onSubmit={handleSearchSubmit} className="max-w-2xl mx-auto relative mb-12">
+            <div className="relative">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={language === 'is' ? 'Hvað þarftu hjálp við?' : 'What do you need help with?'}
+                className="w-full px-6 py-4 text-lg border border-gray-300 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pr-16 shadow-sm"
+              />
+              <button
+                type="submit"
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-xl transition-colors shadow-sm"
+              >
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          </form>
 
           {/* Categories Grid - Exactly 2x4 layout like Mittanbud */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
