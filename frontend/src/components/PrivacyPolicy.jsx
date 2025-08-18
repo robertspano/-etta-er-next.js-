@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const PrivacyPolicy = ({ translations, language }) => {
   const breadcrumbs = [
     { name: language === 'is' ? 'Heim' : 'Hjem', href: '/' },
-    { name: language === 'is' ? 'Persónuverndarstefna' : 'Personvernerklæring', href: null }
+    { name: language === 'is' ? 'Persónuverndarstefna' : 'Privacy Policy', href: null }
   ];
 
   return (
