@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const TermsOfService = ({ translations, language }) => {
   const breadcrumbs = [
     { name: language === 'is' ? 'Heim' : 'Hjem', href: '/' },
-    { name: language === 'is' ? 'Þjónustuskilmálar' : 'Vilkår for bruk', href: null }
+    { name: language === 'is' ? 'Þjónustuskilmálar' : 'Terms of Service', href: null }
   ];
 
   return (
