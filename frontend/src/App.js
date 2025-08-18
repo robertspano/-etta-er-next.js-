@@ -43,6 +43,13 @@ import CompanySearch from './components/CompanySearch';
 import HandcraftCategoryPage from './components/HandcraftCategoryPage';
 import HouseGardenCategoryPage from './components/HouseGardenCategoryPage';
 
+// Individual Professional Pages
+import ElectricianPage from './components/ElectricianPage';
+
+// Support Pages
+import TermsOfService from './components/TermsOfService';
+import PrivacyPolicy from './components/PrivacyPolicy';
+
 // XL Components
 import XLLanding from './components/xl/XLLanding';
 import XLStart from './components/xl/XLStart';
