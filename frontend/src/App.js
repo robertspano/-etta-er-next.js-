@@ -196,9 +196,21 @@ function App() {
               } 
             />
             
-            {/* Professional Registration Landing - Public - No Header */}
+            {/* Company Registration Route - Public */}
             <Route 
               path="/register-company" 
+              element={
+                <CompanyRegistration 
+                  translations={currentTranslations} 
+                  language={language}
+                  setLanguage={setLanguage}
+                />
+              } 
+            />
+            
+            {/* Professional Registration Landing - Public - No Header - For leads */}
+            <Route 
+              path="/register-professional" 
               element={
                 <ProRegistrationLanding 
                   translations={currentTranslations} 
