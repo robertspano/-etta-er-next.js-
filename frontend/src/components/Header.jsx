@@ -425,50 +425,6 @@ const Header = ({ language, setLanguage, translations }) => {
                     <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
                   </button>
                 </div>
-                    onClick={() => handleDrawerItemClick('#')}
-                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
-                  >
-                    <span className="text-gray-700">{translations.buildNew}</span>
-                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
-                  </button>
-                  
-                  <button
-                    onClick={() => handleDrawerItemClick('#')}
-                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
-                  >
-                    <span className="text-gray-700">{translations.services}</span>
-                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
-                  </button>
-                  
-                  <button
-                    onClick={() => handleDrawerItemClick('#')}
-                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
-                  >
-                    <div className="flex items-center">
-                      <span className="text-gray-700">{translations.companySearch}</span>
-                      <span className="ml-2 px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full font-medium">
-                        {translations.new}
-                      </span>
-                    </div>
-                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
-                  </button>
-                  
-                  <button
-                    onClick={() => handleDrawerItemClick('#')}
-                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
-                  >
-                    <span className="text-gray-700">{translations.majorProjects}</span>
-                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
-                  </button>
-                  
-                  <button
-                    onClick={() => handleDrawerItemClick('#')}
-                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
-                  >
-                    <span className="text-gray-700">{translations.housingAssociations}</span>
-                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
-                  </button>
-                </div>
               </div>
             </div>
           </div>
