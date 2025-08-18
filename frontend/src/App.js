@@ -43,6 +43,8 @@ import CompanySearch from './components/CompanySearch';
 import HandcraftCategoryPage from './components/HandcraftCategoryPage';
 import HouseGardenCategoryPage from './components/HouseGardenCategoryPage';
 import InteriorRenovationCategoryPage from './components/InteriorRenovationCategoryPage';
+import BuildNewCategoryPage from './components/BuildNewCategoryPage';
+import ServicesCategoryPage from './components/ServicesCategoryPage';
 
 // Individual Professional Pages
 import ElectricianPage from './components/ElectricianPage';
