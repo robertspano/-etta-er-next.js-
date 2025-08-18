@@ -112,7 +112,15 @@ NEW FEATURE: Implement 3-step job posting wizard matching Mittanbud's flow exact
   2. Samskiptaupplýsingar / Contact Info - Email, Phone with country code, Name, Address, Postcode, Contact preference (platform+phone vs platform only)
   3. Staðfest / Complete - Show summary, submit button
 - UI: Centered card (~680px), beige background, progress bar with 3 dots, specific button placement
-- Technical: Create/update draft JobRequest via API, persist between steps, set status 'open' on final submit, redirect to dashboard"
+- Technical: Create/update draft JobRequest via API, persist between steps, set status 'open' on final submit, redirect to dashboard
+
+LATEST FEATURE: Implement Company Registration System based on user's screenshot:
+- Route: /register-company with form matching Icelandic company registration design
+- Fields: Company ID (kennitala), Electronic ID/Phone, Name, Email, Password
+- Validation: Icelandic kennitala format (10 digits), phone validation (7-8 digits)
+- Backend: New API endpoint POST /api/auth/register-company
+- Create professional user account with company information
+- Bilingual support (English/Icelandic)"
 
 backend:
   - task: "Job Request API System"
