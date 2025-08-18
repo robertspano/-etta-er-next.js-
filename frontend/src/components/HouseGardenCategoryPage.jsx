@@ -231,34 +231,6 @@ const HouseGardenCategoryPage = ({ translations, language }) => {
         : ['Rengjøring', 'Søppelhenting', 'Vask', 'Vedlikehold']
     }
   ];
-      nameNorwegian: 'Gjerde og port',
-      description: language === 'is'
-        ? 'Uppsetning og viðhald girðinga, hlíða og öryggisbúnaðar.'
-        : 'Installasjon og vedlikehold av gjerder, porter og sikkerhetsutstyr.',
-      professionals: 700,
-      averagePrice: language === 'is' ? '20.000-100.000 kr' : '400-700 kr/time',
-      completedJobs: 3100,
-      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=250&fit=crop',
-      specialties: language === 'is'
-        ? ['Viðargirðingar', 'Málmgirðingar', 'Hlið', 'Öryggis']
-        : ['Tregjerder', 'Metallgjerder', 'Porter', 'Sikkerhet']
-    },
-    {
-      id: 'terrace-deck',
-      name: language === 'is' ? 'Verönd og svalir' : 'Platting og terrasse',
-      nameNorwegian: 'Platting og terrasse',  
-      description: language === 'is'
-        ? 'Byggingar veranda, svala og útiverundumsagna.'
-        : 'Bygging av terrasser, balkonger og uteplasser.',
-      professionals: 1300,
-      averagePrice: language === 'is' ? '60.000-250.000 kr' : '500-900 kr/time',
-      completedJobs: 4200,
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=250&fit=crop',
-      specialties: language === 'is'
-        ? ['Viðarverönd', 'Steinplötur', 'Yfirbyggjur', 'Lýsing']
-        : ['Teterrasse', 'Steinplater', 'Overbygning', 'Belysning']
-    }
-  ];
 
   const breadcrumbs = [
     { name: language === 'is' ? 'Heim' : 'Hjem', href: '/' },
