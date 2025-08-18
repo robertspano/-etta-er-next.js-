@@ -13,14 +13,24 @@ const LoginForm = ({ translations, language }) => {
     password: '',
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
   const { login, error, clearError } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Clear any existing errors when component mounts
+  // Clear any existing errors when component mounts and check for success message
   React.useEffect(() => {
     clearError();
-  }, [clearError]);
+    
+    // Check if we have a success message from registration
+    if (location.state?.message) {
+      setSuccessMessage(location.state.message);
+      // Pre-fill email if provided
+      if (location.state.email) {
+        setFormData(prev => ({ ...prev, email: location.state.email }));
+      }
+    }
+  }, [clearError, location.state]);
 
   // Get return URL from query params
   const searchParams = new URLSearchParams(location.search);
