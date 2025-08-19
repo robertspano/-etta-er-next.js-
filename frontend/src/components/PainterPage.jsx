@@ -504,6 +504,140 @@ const PainterPage = ({ translations, language }) => {
         </div>
       </div>
 
+      {/* When do you need a painter */}
+      <div className="bg-gray-50 py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+            {language === 'is' ? 'Hvenær þarftu málara?' : 'When do you need a painter?'}
+          </h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl mb-4">🏠</div>
+              <h3 className="text-xl font-semibold mb-4">
+                {language === 'is' ? 'Innri endurnýjun' : 'Interior Renovation'}
+              </h3>
+              <p className="text-gray-600 mb-4">
+                {language === 'is' 
+                  ? 'Þegar þú ert að endurnýja herbergi eða allt heimilið. Málarar hjálpa við litaval, undirbúning og faglega málningu.'
+                  : 'When you\'re renovating rooms or the entire home. Painters help with color selection, preparation and professional painting.'
+                }
+              </p>
+              <div className="text-purple-600 font-semibold">
+                {language === 'is' ? 'Verkefnisverð: 80.000-300.000 kr' : 'Project price: 80,000-300,000 kr'}
+              </div>
+            </div>
+            
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl mb-4">🏡</div>
+              <h3 className="text-xl font-semibold mb-4">
+                {language === 'is' ? 'Ytri viðhald' : 'Exterior Maintenance'}
+              </h3>
+              <p className="text-gray-600 mb-4">
+                {language === 'is'
+                  ? 'Reglulegt viðhald á húsveggium til að vernda gegn íslenskum veðri. Mikilvægt á 3-5 ára fresti.'
+                  : 'Regular maintenance of house walls to protect against Icelandic weather. Important every 3-5 years.'
+                }
+              </p>
+              <div className="text-orange-600 font-semibold">
+                {language === 'is' ? 'Verkefnisverð: 150.000-600.000 kr' : 'Project price: 150,000-600,000 kr'}
+              </div>
+            </div>
+            
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl mb-4">🎨</div>
+              <h3 className="text-xl font-semibold mb-4">
+                {language === 'is' ? 'Sérstök verkefni' : 'Special Projects'}
+              </h3>
+              <p className="text-gray-600 mb-4">
+                {language === 'is'
+                  ? 'Skrautmálun, veggfóður eða séráferðir sem krefjast sérhæfðrar þekkingar og reynslu.'
+                  : 'Decorative painting, wallpaper or special finishes that require specialized knowledge and experience.'
+                }
+              </p>
+              <div className="text-green-600 font-semibold">
+                {language === 'is' ? 'Verkefnisverð: 40.000-200.000 kr' : 'Project price: 40,000-200,000 kr'}
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-purple-100 p-8 rounded-xl">
+            <h3 className="text-2xl font-bold text-gray-900 text-center mb-6">
+              {language === 'is' ? 'Hvað hefur áhrif á verð málara?' : 'What affects painter pricing?'}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                  {language === 'is' ? 'Helstu verðáhrifaþættir:' : 'Main pricing factors:'}
+                </h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-center">
+                    <span className="text-purple-500 mr-2">•</span>
+                    {language === 'is' ? 'Stærð og flækjustig verkefnis' : 'Size and complexity of project'}
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-purple-500 mr-2">•</span>
+                    {language === 'is' ? 'Gæði málningar og efna' : 'Quality of paint and materials'}
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-purple-500 mr-2">•</span>
+                    {language === 'is' ? 'Yfirborðsundirbúningur' : 'Surface preparation required'}
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-purple-500 mr-2">•</span>
+                    {language === 'is' ? 'Aðgengi og hæð' : 'Access and height requirements'}
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-gray-700 leading-relaxed">
+                  {language === 'is'
+                    ? 'Verð málara fer eftir stærð verkefnis, gæðum efna og undirbúningi sem þarf. Ytri málun kostar yfirleitt meira vegna veðurs og aðstæðna. Sérstök áferð og skrautmálun krefst meiri tíma og færni.'
+                    : 'Painter prices depend on project size, material quality and required preparation. Exterior painting usually costs more due to weather and conditions. Special textures and decorative painting require more time and skill.'
+                  }
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Statistics Section */}
+      <div className="py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-4">
+            {language === 'is' ? 'Málunarverkefni' : 'Painting Projects'}
+          </h2>
+          <p className="text-gray-600 text-center mb-12">
+            {language === 'is' 
+              ? 'Á undanförnum 12 mánuðum hefur verið lagt út á BuildConnect:'
+              : 'In the past 12 months, posted on BuildConnect:'
+            }
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="text-5xl font-bold text-purple-600 mb-2">3,180</div>
+              <div className="text-xl text-gray-600">
+                {language === 'is' ? 'verkefni' : 'projects'}
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-bold text-green-600 mb-2">846</div>
+              <div className="text-xl text-gray-600">
+                {language === 'is' ? 'umsagnir' : 'reviews'}
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-bold text-orange-600 mb-2">4.8</div>
+              <div className="text-xl text-gray-600">
+                {language === 'is' ? 'af 5 stjörnum' : 'of 5 stars'}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* CTA Section */}
       <div className="bg-purple-600 text-white py-16">
         <div className="max-w-6xl mx-auto px-4 text-center">
@@ -512,8 +646,8 @@ const PainterPage = ({ translations, language }) => {
           </h2>
           <p className="text-xl mb-8 opacity-90">
             {language === 'is'
-              ? 'Fáðu tilboð frá faglegum málurum á þínu svæði.'
-              : 'Get quotes from professional painters in your area.'
+              ? 'Fáðu tilboð frá faglegum málurum á þínu svæði. Ókeypis og án skuldbindinga.'
+              : 'Get quotes from professional painters in your area. Free and without obligation.'
             }
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -521,7 +655,7 @@ const PainterPage = ({ translations, language }) => {
               to="/post?category=painting"
               className="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
-              {language === 'is' ? 'Legg inn verkefni' : 'Post project'}
+              {language === 'is' ? 'Legg inn verkefni ókeypis' : 'Post project for free'}
             </Link>
             <Link 
               to="/bedriftsok?category=maler"
@@ -529,6 +663,21 @@ const PainterPage = ({ translations, language }) => {
             >
               {language === 'is' ? 'Finn málara' : 'Find painters'}
             </Link>
+          </div>
+          
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm opacity-90">
+            <div className="flex items-center justify-center">
+              <span className="mr-2">✓</span>
+              {language === 'is' ? 'Ókeypis að leggja út verkefni' : 'Free to post projects'}
+            </div>
+            <div className="flex items-center justify-center">
+              <span className="mr-2">✓</span>
+              {language === 'is' ? 'Litaráðgjöf í boði' : 'Color consultation available'}
+            </div>
+            <div className="flex items-center justify-center">
+              <span className="mr-2">✓</span>
+              {language === 'is' ? 'Reyndir fagmenn' : 'Experienced professionals'}
+            </div>
           </div>
         </div>
       </div>
