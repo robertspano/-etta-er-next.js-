@@ -9,37 +9,64 @@ const PainterPage = ({ translations, language }) => {
       id: 'interior-painting',
       name: language === 'is' ? 'Innri málun' : 'Interior Painting',
       description: language === 'is' 
-        ? 'Fagleg innri málning veggjá, lofta og húsgagna með hágæða efnum.'
-        : 'Professional interior painting of walls, ceilings and furniture with high-quality materials.',
-      price: language === 'is' ? '8.000-14.000 kr/klst' : '£40-70/hour',
+        ? 'Fagleg innri málun veggjá, lofta og húsgagna með hágæða efnum og fullkomnum frágangi.'
+        : 'Professional interior painting of walls, ceilings and furniture with high-quality materials and perfect finish.',
+      price: language === 'is' ? '12.000-20.000 kr/klst' : '700-1200 kr/hour',
       icon: '🏠'
     },
     {
       id: 'exterior-painting',
       name: language === 'is' ? 'Ytri málun' : 'Exterior Painting',
       description: language === 'is'
-        ? 'Veðurþolinn málning húsveggja og utanhúss með langtímavernd.'
-        : 'Weather-resistant painting of house walls and exteriors with long-term protection.',
-      price: language === 'is' ? '10.000-16.000 kr/klst' : '£50-80/hour',
+        ? 'Veðurþolinn málning húsveggja og utanhúss með langtímavernd gegn íslenskum veðri.'
+        : 'Weather-resistant painting of house walls and exteriors with long-term protection against Icelandic weather.',
+      price: language === 'is' ? '15.000-25.000 kr/klst' : '900-1500 kr/hour',
       icon: '🏡'
     },
     {
       id: 'wallpaper-services',
-      name: language === 'is' ? 'Veggfóður' : 'Wallpaper Services',
+      name: language === 'is' ? 'Veggfóðurþjónusta' : 'Wallpaper Services',
       description: language === 'is'
-        ? 'Fagleg uppsetning og fjarlæging veggfóðurs fyrir öll herbergi.'
-        : 'Professional installation and removal of wallpaper for all rooms.',
-      price: language === 'is' ? '9.000-15.000 kr/klst' : '£45-75/hour',
+        ? 'Fagleg uppsetning og fjarlæging veggfóðurs, þar á meðal sérstök mynstur og áferðir.'
+        : 'Professional installation and removal of wallpaper, including special patterns and textures.',
+      price: language === 'is' ? '10.000-18.000 kr/klst' : '600-1100 kr/hour',
       icon: '📜'
     },
     {
       id: 'surface-preparation',
       name: language === 'is' ? 'Yfirborðsundirbúningur' : 'Surface Preparation',
       description: language === 'is'
-        ? 'Sparkling, slípun og undirbúningur yfirborða fyrir málningu.'
-        : 'Sanding, filling and surface preparation for optimal painting results.',
-      price: language === 'is' ? '7.000-12.000 kr/klst' : '£35-60/hour',
+        ? 'Sparkling, slípun og fullkominn undirbúningur yfirborða fyrir bestu niðurstöður.'
+        : 'Filling, sanding and perfect surface preparation for optimal painting results.',
+      price: language === 'is' ? '8.000-14.000 kr/klst' : '500-900 kr/hour',
       icon: '🔨'
+    },
+    {
+      id: 'decorative-painting',
+      name: language === 'is' ? 'Skrautmálun' : 'Decorative Painting',
+      description: language === 'is'
+        ? 'Sérhæfð skrautmálun, faux finish og listrænar áferðir fyrir sérstök verkefni.'
+        : 'Specialized decorative painting, faux finishes and artistic textures for special projects.',
+      price: language === 'is' ? '18.000-30.000 kr/klst' : '1100-1800 kr/hour',
+      icon: '🎨'
+    },
+    {
+      id: 'wood-staining',
+      name: language === 'is' ? 'Trébeitsun' : 'Wood Staining',
+      description: language === 'is'
+        ? 'Fagleg beitsun og vörn viðaryfirborða innandyra og utandyra.'
+        : 'Professional staining and protection of wood surfaces both indoor and outdoor.',
+      price: language === 'is' ? '14.000-22.000 kr/klst' : '800-1300 kr/hour',
+      icon: '🪵'
+    },
+    {
+      id: 'restoration-painting',
+      name: language === 'is' ? 'Endurnýjunarmálun' : 'Restoration Painting',
+      description: language === 'is'
+        ? 'Sérhæfð endurnýjun og viðgerðir á gömlum byggingum og sögulegum húsum.'
+        : 'Specialized restoration and repairs on old buildings and historic houses.',
+      price: language === 'is' ? '16.000-28.000 kr/klst' : '1000-1600 kr/hour',
+      icon: '🏛️'
     }
   ];
 
