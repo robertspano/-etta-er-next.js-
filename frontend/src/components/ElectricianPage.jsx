@@ -7,39 +7,66 @@ const ElectricianPage = ({ translations, language }) => {
   const electricianServices = [
     {
       id: 'electrical-installation',
-      name: language === 'is' ? 'Rafstjórnun' : 'Elektroinstallasjon',
+      name: language === 'is' ? 'Raflagnasetning' : 'Electrical Installation',
       description: language === 'is' 
-        ? 'Uppsetning og viðhald raflagna í heimilum og fyrirtækjum.'
-        : 'Installasjon og vedlikehold av elektriske anlegg i hjem og bedrifter.',
-      price: language === 'is' ? '25.000-65.000 kr' : '650-950 kr/time',
+        ? 'Uppsetning og viðhald raflagna í heimilum og fyrirtækjum. Frá einföldum úttökum til flókinna kerfa.'
+        : 'Installation and maintenance of electrical systems in homes and businesses. From simple outlets to complex systems.',
+      price: language === 'is' ? '15.000-40.000 kr/verkefni' : '890-1200 kr/hour',
       icon: '⚡'
     },
     {
-      id: 'electrical-repair',
-      name: language === 'is' ? 'Rafviðgerðir' : 'Elektriske reparasjoner',
+      id: 'fuse-box',
+      name: language === 'is' ? 'Rafskápasetning' : 'Fuse Box Installation',
       description: language === 'is'
-        ? 'Viðgerðir á rafmagni, rofa og úttaka.'
-        : 'Reparasjoner av strøm, brytere og stikkontakter.',
-      price: language === 'is' ? '15.000-40.000 kr' : '500-800 kr/time',
-      icon: '🔧'
+        ? 'Setja upp eða skipta út rafskápum og öryggisrofa fyrir örugga rafmagnsdreifingu.'
+        : 'Install or replace fuse boxes and circuit breakers for safe electrical distribution.',
+      price: language === 'is' ? '18.000-35.000 kr' : '1000-1400 kr/hour',
+      icon: '🔌'
     },
     {
-      id: 'smart-home',
-      name: language === 'is' ? 'Snjallheimili' : 'Smarthouse',
+      id: 'ev-charging',
+      name: language === 'is' ? 'Rafbílahleðslur' : 'EV Charging Installation',
       description: language === 'is'
-        ? 'Uppsetning snjallheimiliskerfa og sjálfvirkni.'
-        : 'Installasjon av smarthus-systemer og automatisering.',
-      price: language === 'is' ? '50.000-200.000 kr' : '800-1200 kr/time',
-      icon: '🏠'
+        ? 'Uppsetning hleðslustöðva fyrir rafbíla með öryggisráðstöfunum og vottun.'
+        : 'Installation of EV charging stations with safety measures and certification.',
+      price: language === 'is' ? '25.000-60.000 kr' : '1200-1600 kr/hour',
+      icon: '🔋'
+    },
+    {
+      id: 'lighting-systems',
+      name: language === 'is' ? 'Ljósakerfi' : 'Lighting Systems',
+      description: language === 'is'
+        ? 'Uppsetning ljósabúnaðar, LED-kerfa og snjallljósakerfa innandyra og utandyra.'
+        : 'Installation of lighting equipment, LED systems and smart lighting for indoor and outdoor use.',
+      price: language === 'is' ? '8.000-25.000 kr' : '700-1100 kr/hour',
+      icon: '💡'
+    },
+    {
+      id: 'underfloor-heating',
+      name: language === 'is' ? 'Gólfhitun' : 'Underfloor Heating',
+      description: language === 'is'
+        ? 'Uppsetning rafmagnshitunarkerfa undir gólfefni með hitastýringu.'
+        : 'Installation of electric heating systems under flooring with temperature control.',
+      price: language === 'is' ? '12.000-30.000 kr' : '800-1200 kr/hour',
+      icon: '🔥'
     },
     {
       id: 'electrical-inspection',
-      name: language === 'is' ? 'Rafkerfi skoðun' : 'Elektrisk tilsyn',
+      name: language === 'is' ? 'Rafkerfi skoðun' : 'Electrical Inspection',
       description: language === 'is'
-        ? 'Skoðun og vottun rafkerfa samkvæmt reglugerðum.'
-        : 'Inspeksjon og sertifisering av elektriske anlegg i henhold til forskrifter.',
-      price: language === 'is' ? '10.000-25.000 kr' : '400-600 kr/time',
+        ? 'Skoðun og vottun rafkerfa samkvæmt reglugerðum og öryggisstaðlum.'
+        : 'Inspection and certification of electrical systems according to regulations and safety standards.',
+      price: language === 'is' ? '15.000-35.000 kr' : '900-1300 kr/hour',
       icon: '📋'
+    },
+    {
+      id: 'emergency-service',
+      name: language === 'is' ? 'Neyðarþjónusta' : 'Emergency Service',
+      description: language === 'is'
+        ? 'Sólarhringsþjónusta fyrir rafmagnsbilanir og neyðaraðstæður.'
+        : '24-hour service for electrical failures and emergency situations.',
+      price: language === 'is' ? '18.000-45.000 kr' : '1200-1800 kr/hour',
+      icon: '🚨'
     }
   ];
 
