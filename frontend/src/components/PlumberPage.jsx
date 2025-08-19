@@ -11,16 +11,16 @@ const PlumberPage = ({ translations, language }) => {
       description: language === 'is' 
         ? 'Uppsetning og viðhald vatns- og fráveitukerfa í heimilum og fyrirtækjum.'
         : 'Installation and maintenance of water and drainage systems in homes and businesses.',
-      price: language === 'is' ? '12.000-18.000 kr/klst' : '£60-90/hour',
+      price: language === 'is' ? '12.000-22.000 kr/klst' : '800-1400 kr/hour',
       icon: '🔧'
     },
     {
       id: 'leak-repair',
       name: language === 'is' ? 'Lekageviðgerðir' : 'Leak Repairs',
       description: language === 'is'
-        ? 'Fljót og áhrifarík viðgerð á vatnslásum og lekum.'
-        : 'Quick and effective repair of water leaks and pipe bursts.',
-      price: language === 'is' ? '8.000-15.000 kr/klst' : '£40-75/hour',
+        ? 'Fljót og áhrifarík viðgerð á vatnslásum og lekum. Neyðarþjónusta í boði.'
+        : 'Quick and effective repair of water leaks and pipe bursts. Emergency service available.',
+      price: language === 'is' ? '10.000-18.000 kr/klst' : '700-1200 kr/hour',
       icon: '💧'
     },
     {
@@ -29,17 +29,44 @@ const PlumberPage = ({ translations, language }) => {
       description: language === 'is'
         ? 'Sérhæfð pípulagnaþjónusta fyrir baðherbergisuppbyggingu og endurnýjun.'
         : 'Specialized plumbing services for bathroom construction and renovation.',
-      price: language === 'is' ? '15.000-25.000 kr/klst' : '£75-125/hour',
+      price: language === 'is' ? '15.000-28.000 kr/klst' : '1000-1600 kr/hour',
       icon: '🚿'
     },
     {
       id: 'heating-systems',
       name: language === 'is' ? 'Hitakerfi' : 'Heating Systems',
       description: language === 'is'
-        ? 'Uppsetning og viðhald rörveitukerfa og radíatora.'
-        : 'Installation and maintenance of radiator systems and central heating.',
-      price: language === 'is' ? '13.000-20.000 kr/klst' : '£65-100/hour',
+        ? 'Uppsetning og viðhald rörveitukerfa, radíatora og gólfhitunar.'
+        : 'Installation and maintenance of piping systems, radiators and underfloor heating.',
+      price: language === 'is' ? '14.000-25.000 kr/klst' : '900-1500 kr/hour',
       icon: '🔥'
+    },
+    {
+      id: 'drainage-systems',
+      name: language === 'is' ? 'Fráveitukerfi' : 'Drainage Systems',
+      description: language === 'is'
+        ? 'Uppsetning og viðgerð fráveitupípa og dæla fyrir vatnssafn.'
+        : 'Installation and repair of drainage pipes and pumps for water collection.',
+      price: language === 'is' ? '16.000-30.000 kr/klst' : '1100-1700 kr/hour',
+      icon: '🕳️'
+    },
+    {
+      id: 'water-heaters',
+      name: language === 'is' ? 'Heitt vatn' : 'Water Heaters',
+      description: language === 'is'
+        ? 'Uppsetning og viðhald heitavatnskerfa og tankaskerfa.'
+        : 'Installation and maintenance of hot water systems and tank systems.',
+      price: language === 'is' ? '18.000-35.000 kr/klst' : '1200-1800 kr/hour',
+      icon: '🌡️'
+    },
+    {
+      id: 'kitchen-plumbing',
+      name: language === 'is' ? 'Eldhúspípulagnir' : 'Kitchen Plumbing',
+      description: language === 'is'
+        ? 'Pípulagnaþjónusta fyrir eldhús með uppvaskavélar og ísskápa.'
+        : 'Plumbing services for kitchens with dishwashers and refrigerators.',
+      price: language === 'is' ? '12.000-20.000 kr/klst' : '800-1300 kr/hour',
+      icon: '🍴'
     }
   ];
 
