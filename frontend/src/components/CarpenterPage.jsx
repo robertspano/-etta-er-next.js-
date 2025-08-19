@@ -504,16 +504,150 @@ const CarpenterPage = ({ translations, language }) => {
         </div>
       </div>
 
+      {/* When do you need a carpenter */}
+      <div className="bg-gray-50 py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+            {language === 'is' ? 'Hvenær þarftu snekka?' : 'When do you need a carpenter?'}
+          </h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl mb-4">🏠</div>
+              <h3 className="text-xl font-semibold mb-4">
+                {language === 'is' ? 'Innréttingar og húsgögn' : 'Built-ins & Furniture'}
+              </h3>
+              <p className="text-gray-600 mb-4">
+                {language === 'is' 
+                  ? 'Þegar þú þarft sérhæfðar innréttingar, handunna húsgögn eða sérsmíðaða skápa fyrir heimili þitt.'
+                  : 'When you need specialized built-ins, handcrafted furniture or custom cabinets for your home.'
+                }
+              </p>
+              <div className="text-amber-600 font-semibold">
+                {language === 'is' ? 'Verkefnisverð: 100.000-500.000 kr' : 'Project price: 100,000-500,000 kr'}
+              </div>
+            </div>
+            
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl mb-4">🔨</div>
+              <h3 className="text-xl font-semibold mb-4">
+                {language === 'is' ? 'Endurbætur og viðgerðir' : 'Renovations & Repairs'}
+              </h3>
+              <p className="text-gray-600 mb-4">
+                {language === 'is'
+                  ? 'Fyrir endurbætur á gömlum húsum, gólfskipti, glugga- og hurðaskipti eða viðgerðir á trésmíðaverkum.'
+                  : 'For renovations of old houses, floor replacement, window and door changes or repairs to woodwork.'
+                }
+              </p>
+              <div className="text-green-600 font-semibold">
+                {language === 'is' ? 'Verkefnisverð: 80.000-400.000 kr' : 'Project price: 80,000-400,000 kr'}
+              </div>
+            </div>
+            
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl mb-4">🏗️</div>
+              <h3 className="text-xl font-semibold mb-4">
+                {language === 'is' ? 'Stærri byggingarverkefni' : 'Larger Construction Projects'}
+              </h3>
+              <p className="text-gray-600 mb-4">
+                {language === 'is'
+                  ? 'Þaksmíði, kippubyggingar, veranda, útibygging eða önnur stór byggingarverkefni sem krefjast fagmaðar.'
+                  : 'Roofing carpentry, truss construction, decks, extensions or other major construction projects requiring professionals.'
+                }
+              </p>
+              <div className="text-blue-600 font-semibold">
+                {language === 'is' ? 'Verkefnisverð: 200.000-1.500.000 kr' : 'Project price: 200,000-1,500,000 kr'}
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-amber-100 p-8 rounded-xl">
+            <h3 className="text-2xl font-bold text-gray-900 text-center mb-6">
+              {language === 'is' ? 'Hvað hefur áhrif á verð snekkara?' : 'What affects carpenter pricing?'}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                  {language === 'is' ? 'Helstu verðáhrifaþættir:' : 'Main pricing factors:'}
+                </h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-center">
+                    <span className="text-amber-500 mr-2">•</span>
+                    {language === 'is' ? 'Flækjustig hönnunar og smíði' : 'Design and craftsmanship complexity'}
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-amber-500 mr-2">•</span>
+                    {language === 'is' ? 'Gæði og gerð tréefna' : 'Quality and type of wood materials'}
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-amber-500 mr-2">•</span>
+                    {language === 'is' ? 'Stærð og umfang verkefnis' : 'Project size and scope'}
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-amber-500 mr-2">•</span>
+                    {language === 'is' ? 'Sérhæfðir verkfæri og tækni' : 'Specialized tools and techniques'}
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-gray-700 leading-relaxed">
+                  {language === 'is'
+                    ? 'Verð snekkara fer eftir flækjustigi verkefnis, gæðum efna og tíma sem þarf. Handunnar innréttingar og sérsniðin húsgögn kosta meira vegna nákvæmni og handverks. Stærri byggingarverkefni krefjast oft sérhæfðrar reynslu.'
+                    : 'Carpenter prices depend on project complexity, material quality and time required. Handcrafted built-ins and custom furniture cost more due to precision and craftsmanship. Larger construction projects often require specialized experience.'
+                  }
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Statistics Section */}
+      <div className="py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-4">
+            {language === 'is' ? 'Trésmíðaverkefni' : 'Carpentry Projects'}
+          </h2>
+          <p className="text-gray-600 text-center mb-12">
+            {language === 'is' 
+              ? 'Á undanförnum 12 mánuðum hefur verið lagt út á BuildConnect:'
+              : 'In the past 12 months, posted on BuildConnect:'
+            }
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="text-5xl font-bold text-amber-600 mb-2">2,720</div>
+              <div className="text-xl text-gray-600">
+                {language === 'is' ? 'verkefni' : 'projects'}
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-bold text-green-600 mb-2">734</div>
+              <div className="text-xl text-gray-600">
+                {language === 'is' ? 'umsagnir' : 'reviews'}
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-bold text-blue-600 mb-2">4.9</div>
+              <div className="text-xl text-gray-600">
+                {language === 'is' ? 'af 5 stjörnum' : 'of 5 stars'}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* CTA Section */}
       <div className="bg-amber-600 text-white py-16">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            {language === 'is' ? 'Þarftu trésmíðamann?' : 'Need a carpenter?'}
+            {language === 'is' ? 'Þarftu snekka?' : 'Need a carpenter?'}
           </h2>
           <p className="text-xl mb-8 opacity-90">
             {language === 'is'
-              ? 'Fáðu tilboð frá faglegum trésmíðamönnum á þínu svæði.'
-              : 'Get quotes from professional carpenters in your area.'
+              ? 'Fáðu tilboð frá reyndum trésmíðamönnum á þínu svæði. Ókeypis og án skuldbindinga.'
+              : 'Get quotes from experienced carpenters in your area. Free and without obligation.'
             }
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -521,14 +655,29 @@ const CarpenterPage = ({ translations, language }) => {
               to="/post?category=carpentry"
               className="bg-white text-amber-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
-              {language === 'is' ? 'Legg inn verkefni' : 'Post project'}
+              {language === 'is' ? 'Legg inn verkefni ókeypis' : 'Post project for free'}
             </Link>
             <Link 
               to="/bedriftsok?category=snekker"
               className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-amber-700 transition-colors"
             >
-              {language === 'is' ? 'Finn trésmíðamenn' : 'Find carpenters'}
+              {language === 'is' ? 'Finn snekka' : 'Find carpenters'}
             </Link>
+          </div>
+          
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm opacity-90">
+            <div className="flex items-center justify-center">
+              <span className="mr-2">✓</span>
+              {language === 'is' ? 'Ókeypis að leggja út verkefni' : 'Free to post projects'}
+            </div>
+            <div className="flex items-center justify-center">
+              <span className="mr-2">✓</span>
+              {language === 'is' ? 'Sérhæfðir trésmíðamenn' : 'Specialized carpenters'}
+            </div>
+            <div className="flex items-center justify-center">
+              <span className="mr-2">✓</span>
+              {language === 'is' ? 'Handverk og gæði' : 'Craftsmanship and quality'}
+            </div>
           </div>
         </div>
       </div>
