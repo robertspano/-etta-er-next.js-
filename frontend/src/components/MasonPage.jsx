@@ -211,21 +211,21 @@ const MasonPage = ({ translations, language }) => {
               
               <div className="grid grid-cols-3 gap-4 mb-8">
                 <div className="text-center p-4 bg-white rounded-lg shadow-sm">
-                  <div className="text-2xl font-bold text-stone-600 mb-1">1,800+</div>
+                  <div className="text-2xl font-bold text-red-600 mb-1">650+</div>
                   <div className="text-sm text-gray-600">
                     {language === 'is' ? 'Múrarar' : 'Masons'}
                   </div>
                 </div>
                 <div className="text-center p-4 bg-white rounded-lg shadow-sm">
-                  <div className="text-2xl font-bold text-green-600 mb-1">6,500+</div>
+                  <div className="text-2xl font-bold text-green-600 mb-1">2,800+</div>
                   <div className="text-sm text-gray-600">
-                    {language === 'is' ? 'Verkefni' : 'Projects'}
+                    {language === 'is' ? 'Verkefni 2025' : 'Projects 2025'}
                   </div>
                 </div>
                 <div className="text-center p-4 bg-white rounded-lg shadow-sm">
-                  <div className="text-2xl font-bold text-orange-600 mb-1">4.8</div>
+                  <div className="text-2xl font-bold text-blue-600 mb-1">4.9</div>
                   <div className="text-sm text-gray-600">
-                    {language === 'is' ? 'Einkunn' : 'Rating'}
+                    {language === 'is' ? 'Meðaleinkunn' : 'Average rating'}
                   </div>
                 </div>
               </div>
