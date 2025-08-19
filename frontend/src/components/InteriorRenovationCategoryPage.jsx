@@ -6,78 +6,216 @@ const InteriorRenovationCategoryPage = ({ translations, language }) => {
 
   const interiorServices = [
     {
-      id: 'bathroom-renovation',
-      name: language === 'is' ? 'Baðherbergisendurnýjun' : 'Bathroom Renovation',
-      nameEnglish: 'Bathroom Renovation',
+      id: 'baderomsrenovering',
+      name: language === 'is' ? 'Baðherbergisendurnýjun' : 'Baderomsrenovering',
+      nameNorwegian: 'Baderomsrenovering',
       description: language === 'is' 
         ? 'Heildarendurnýjun baðherbergja með nútímalegum búnaði og hönnun.'
-        : 'Complete bathroom renovations with modern fixtures and design.',
+        : 'Komplette baderenovasjoner med moderne utstyr og design.',
       professionals: 1400,
-      averagePrice: language === 'is' ? '800.000-2.500.000 kr' : '£4,000-12,500',
+      averagePrice: language === 'is' ? '800.000-2.500.000 kr' : '50.000-150.000 kr',
       completedJobs: 5600,
       image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=400&h=250&fit=crop',
       specialties: language === 'is' 
         ? ['Flísavinna', 'Pípulagnir', 'Rafmagn', 'Hönnun']
-        : ['Tiling', 'Plumbing', 'Electrical', 'Design']
+        : ['Flisarbeid', 'Rørlegger', 'Elektriker', 'Design']
     },
     {
-      id: 'kitchen-renovation',
-      name: language === 'is' ? 'Eldhúsendurnýjun' : 'Kitchen Renovation',
-      nameEnglish: 'Kitchen Renovation',
+      id: 'kjokkenrenovering',
+      name: language === 'is' ? 'Eldhúsendurnýjun' : 'Kjøkkenrenovering',
+      nameNorwegian: 'Kjøkkenrenovering',
       description: language === 'is'
         ? 'Sérsniðin eldhús með nýjustu tækjum og innréttingum.'
-        : 'Custom kitchens with the latest appliances and built-ins.',
+        : 'Skreddersydde kjøkken med nyeste utstyr og innredninger.',
       professionals: 1200,
-      averagePrice: language === 'is' ? '1.200.000-4.000.000 kr' : '£6,000-20,000',
+      averagePrice: language === 'is' ? '1.200.000-4.000.000 kr' : '80.000-300.000 kr',
       completedJobs: 4200,
       image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=250&fit=crop',
       specialties: language === 'is'
         ? ['Innréttingar', 'Tæki', 'Hönnun', 'Skipulag']
-        : ['Built-ins', 'Appliances', 'Design', 'Layout']
+        : ['Innredning', 'Hvitevarer', 'Design', 'Planløsning']
     },
     {
-      id: 'flooring',
-      name: language === 'is' ? 'Gólfefni' : 'Flooring',
-      nameEnglish: 'Flooring',
-      description: language === 'is'
-        ? 'Uppsetning og endurnýjun gólfa - parkett, flísar, dúkar og meira.'
-        : 'Installation and renovation of floors - hardwood, tiles, carpets and more.',
-      professionals: 900,
-      averagePrice: language === 'is' ? '150.000-600.000 kr' : '£750-3,000',
-      completedJobs: 7800,
-      image: 'https://images.unsplash.com/photo-1586105251261-72a756497a11?w=400&h=250&fit=crop',
-      specialties: language === 'is'
-        ? ['Parkett', 'Flísar', 'Dúkar', 'Viðhald']
-        : ['Hardwood', 'Tiles', 'Carpet', 'Maintenance']
-    },
-    {
-      id: 'interior-painting',
-      name: language === 'is' ? 'Innri málun' : 'Interior Painting',
-      nameEnglish: 'Interior Painting',
+      id: 'maling-innvendig',
+      name: language === 'is' ? 'Innri málning' : 'Maling innvendig',
+      nameNorwegian: 'Maling innvendig',
       description: language === 'is'
         ? 'Fagleg málning innanhúss með gæða efnum og litaráðgjöf.'
-        : 'Professional interior painting with quality materials and color consultation.',
+        : 'Profesjonell innvendig maling med kvalitetsmaterialer og fargerådgivning.',
       professionals: 1600,
-      averagePrice: language === 'is' ? '80.000-300.000 kr' : '£400-1,500',
+      averagePrice: language === 'is' ? '80.000-300.000 kr' : '15.000-80.000 kr',
       completedJobs: 9200,
       image: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=250&fit=crop',
       specialties: language === 'is'
         ? ['Litaráðgjöf', 'Séráferðir', 'Veggfóður', 'Viðhald']
-        : ['Color Consultation', 'Special Textures', 'Wallpaper', 'Maintenance']
+        : ['Fargerådgivning', 'Spesialteknikker', 'Tapet', 'Vedlikehold']
     },
     {
-      id: 'living-room-renovation',
-      name: language === 'is' ? 'Stofa og uppholdsstofur' : 'Living Room Renovation',
-      nameEnglish: 'Living Room Renovation',
+      id: 'gulv',
+      name: language === 'is' ? 'Gólfefni' : 'Gulv',
+      nameNorwegian: 'Gulv',
       description: language === 'is'
-        ? 'Endurnýjun og hönnun á stofum og félagslegum rýmum heimilisins.'
-        : 'Renovation and design of living rooms and social spaces in the home.',
-      professionals: 800,
-      averagePrice: language === 'is' ? '400.000-1.500.000 kr' : '£2,000-7,500',
-      completedJobs: 3400,
+        ? 'Uppsetning og endurnýjun gólfa - parkett, flísar, dúkar og meira.'
+        : 'Installasjon og renovering av gulv - parkett, flis, vinylgulv og mer.',
+      professionals: 900,
+      averagePrice: language === 'is' ? '150.000-600.000 kr' : '25.000-120.000 kr',
+      completedJobs: 7800,
+      image: 'https://images.unsplash.com/photo-1586105251261-72a756497a11?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Parkett', 'Flísar', 'Vínilgólf', 'Viðhald']
+        : ['Parkett', 'Flis', 'Vinylgulv', 'Vedlikehold']
+    },
+    {
+      id: 'flis',
+      name: language === 'is' ? 'Flísalagning' : 'Flis',
+      nameNorwegian: 'Flis',
+      description: language === 'is'
+        ? 'Fagleg flíslagning fyrir baðherbergi, eldhús og önnur rými.'
+        : 'Profesjonell flislegging for bad, kjøkken og andre rom.',
+      professionals: 1100,
+      averagePrice: language === 'is' ? '200.000-800.000 kr' : '35.000-150.000 kr',
+      completedJobs: 6400,
+      image: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Baðherbergisflísar', 'Eldhúsflísar', 'Gólfflísar', 'Veggflísar']
+        : ['Badromsflis', 'Kjøkkenflis', 'Gulvflis', 'Veggflis']
+    },
+    {
+      id: 'innredning',
+      name: language === 'is' ? 'Innréttingar' : 'Innredning',
+      nameNorwegian: 'Innredning',
+      description: language === 'is'
+        ? 'Sérsmíðaðar innréttingar fyrir eldhús, baðherbergi og geymslu.'
+        : 'Skreddersydde innredninger for kjøkken, bad og oppbevaring.',
+      professionals: 850,
+      averagePrice: language === 'is' ? '300.000-1.200.000 kr' : '50.000-250.000 kr',
+      completedJobs: 3800,
+      image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Eldhúsinnréttingar', 'Skápar', 'Hillur', 'Sérhönnun']
+        : ['Kjøkkeninnredning', 'Skap', 'Hyller', 'Spesialdesign']
+    },
+    {
+      id: 'belysning',
+      name: language === 'is' ? 'Ljósauppsetning' : 'Belysning',
+      nameNorwegian: 'Belysning',
+      description: language === 'is'
+        ? 'Uppsetning og hönnun ljósakerfa fyrir heimili og vinnustaði.'
+        : 'Installasjon og design av belysningssystemer for hjem og arbeidsplasser.',
+      professionals: 650,
+      averagePrice: language === 'is' ? '120.000-500.000 kr' : '20.000-100.000 kr',
+      completedJobs: 4200,
+      image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['LED ljós', 'Takljós', 'Veggljós', 'Smart ljós']
+        : ['LED-lys', 'Taklys', 'Vegglys', 'Smart belysning']
+    },
+    {
+      id: 'vegger',
+      name: language === 'is' ? 'Veggir og skilrúm' : 'Vegger',
+      nameNorwegian: 'Vegger',
+      description: language === 'is'
+        ? 'Byggið nýja veggi, skilrúm og endurskipulagð rými.'
+        : 'Bygging av nye vegger, skillevegger og omorganisering av rom.',
+      professionals: 750,
+      averagePrice: language === 'is' ? '100.000-400.000 kr' : '15.000-80.000 kr',
+      completedJobs: 3600,
+      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Gipsplötur', 'Skilrúm', 'Steinull', 'Málning']
+        : ['Gipsplater', 'Skillevegger', 'Isolering', 'Maling']
+    },
+    {
+      id: 'tak-loft',
+      name: language === 'is' ? 'Loft og hangloft' : 'Tak/loft',
+      nameNorwegian: 'Tak/loft',
+      description: language === 'is'
+        ? 'Uppsetning og endurbætur á loftum og hangloftum.'
+        : 'Installasjon og forbedringer av tak og hengetak.',
+      professionals: 550,
+      averagePrice: language === 'is' ? '80.000-350.000 kr' : '12.000-70.000 kr',
+      completedJobs: 2800,
+      image: 'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Hangloft', 'Akústikloft', 'LED ljós', 'Einangrun']
+        : ['Hengetak', 'Akustikktak', 'LED-belysning', 'Isolering']
+    },
+    {
+      id: 'oppussing-generell',
+      name: language === 'is' ? 'Almenn endurnýjun' : 'Oppussing generell',
+      nameNorwegian: 'Oppussing generell',
+      description: language === 'is'
+        ? 'Heildarendurnýjun og uppfærsla á heimilum og íbúðum.'
+        : 'Totalrenovering og oppgradering av hjem og leiligheter.',
+      professionals: 1300,
+      averagePrice: language === 'is' ? '500.000-3.000.000 kr' : '80.000-500.000 kr',
+      completedJobs: 2400,
       image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=250&fit=crop',
       specialties: language === 'is'
-        ? ['Húsgögn', 'Lýsing', 'Skipulag', 'Innréttingar']
+        ? ['Verkefnastjórnun', 'Hönnun', 'Byggingarleyfi', 'Tímaáætlun']
+        : ['Prosjektledelse', 'Design', 'Byggetillatelser', 'Tidsplan']
+    },
+    {
+      id: 'soverom',
+      name: language === 'is' ? 'Svefnherbergi' : 'Soverom',
+      nameNorwegian: 'Soverom',
+      description: language === 'is'
+        ? 'Endurnýjun og hönnun svefnherbergja fyrir best hvíld.'
+        : 'Renovering og design av soverom for optimal hvile.',
+      professionals: 700,
+      averagePrice: language === 'is' ? '200.000-800.000 kr' : '30.000-150.000 kr',
+      completedJobs: 3200,
+      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Skápar', 'Ljósahönnun', 'Litaval', 'Gólfefni']
+        : ['Garderobeskap', 'Lysdesign', 'Fargevalg', 'Gulvbelegg']
+    },
+    {
+      id: 'kjoller-bod',
+      name: language === 'is' ? 'Kjallari og geymslur' : 'Kjeller/bod',
+      nameNorwegian: 'Kjeller/bod',
+      description: language === 'is'
+        ? 'Endurbætur á kjöllurum og geymslurýmum til nýtingar.'
+        : 'Forbedring av kjellere og lagerrom for bedre utnyttelse.',
+      professionals: 450,
+      averagePrice: language === 'is' ? '300.000-1.200.000 kr' : '50.000-250.000 kr',
+      completedJobs: 1600,
+      image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Rakaskortur', 'Einangrun', 'Ljósauppsetning', 'Gólf']
+        : ['Fuktsperre', 'Isolering', 'Belysning', 'Gulvbelegg']
+    },
+    {
+      id: 'vinduer-dorer-innvendig',
+      name: language === 'is' ? 'Innri gluggar og hurðir' : 'Vinduer/dører innvendig',
+      nameNorwegian: 'Vinduer/dører innvendig',
+      description: language === 'is'
+        ? 'Uppsetning og endurnýjun innri gluggara og hurða.'
+        : 'Installasjon og renovering av innvendige vinduer og dører.',
+      professionals: 800,
+      averagePrice: language === 'is' ? '80.000-300.000 kr' : '15.000-60.000 kr',
+      completedJobs: 4800,
+      image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Hurðaskipti', 'Gluggar', 'Karmar', 'Læsingar']
+        : ['Dørskifte', 'Vinduer', 'Karmer', 'Låsesmed']
+    },
+    {
+      id: 'varme-ventilasjon',
+      name: language === 'is' ? 'Hiti og loftræsting' : 'Varme/ventilasjon',
+      nameNorwegian: 'Varme/ventilasjon',
+      description: language === 'is'
+        ? 'Uppsetning og endurbætur á hitunar- og loftræstikerfum.'
+        : 'Installasjon og forbedring av varme- og ventilasjonsanlegg.',
+      professionals: 600,
+      averagePrice: language === 'is' ? '200.000-800.000 kr' : '40.000-180.000 kr',
+      completedJobs: 2200,
+      image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Varmadælur', 'Loftræsting', 'Gólfhitun', 'Kælikerfi']
+        : ['Varmepumper', 'Ventilasjon', 'Gulvvarme', 'Kjøling']
+    }
+  ];
         : ['Furniture', 'Lighting', 'Layout', 'Built-ins']
     },
     {
