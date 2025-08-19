@@ -261,11 +261,11 @@ const MasonPage = ({ translations, language }) => {
       <div className="py-16">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            {language === 'is' ? 'Múraraþjónusta' : 'Masonry Services'}
+            {language === 'is' ? 'Múrvinaþjónusta' : 'Masonry Services'}
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {masonryServices.map(service => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {masonryServices.slice(0,4).map(service => (
               <div key={service.id} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
                 <div className="text-4xl mb-4">{service.icon}</div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -274,189 +274,261 @@ const MasonPage = ({ translations, language }) => {
                 <p className="text-gray-600 text-sm mb-4">
                   {service.description}
                 </p>
-                <div className="text-stone-600 font-medium text-sm">
+                <div className="text-red-600 font-medium text-sm">
                   {service.price}
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </div>
-
-      {/* Top Masons Section */}
-      <div className="bg-gray-50 py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            {language === 'is' ? 'Bestu múrararnir' : 'Top Masons'}
-          </h2>
           
-          <div className="space-y-6">
-            {topMasons.map(mason => (
-              <div key={mason.id} className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow">
-                <div className="flex flex-col md:flex-row gap-6">
-                  <div className="flex-shrink-0">
-                    <img
-                      src={mason.image}
-                      alt={mason.name}
-                      className="w-full md:w-32 h-24 object-cover rounded-lg"
-                    />
-                  </div>
-                  
-                  <div className="flex-grow">
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between">
-                      <div>
-                        <div className="flex items-center gap-2 mb-2">
-                          <h3 className="text-xl font-semibold text-gray-900">{mason.name}</h3>
-                          {mason.isVerified && (
-                            <span className="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full">
-                              {language === 'is' ? 'Staðfest' : 'Verified'}
-                            </span>
-                          )}
-                          {mason.isInsured && (
-                            <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded-full">
-                              {language === 'is' ? 'Tryggður' : 'Insured'}
-                            </span>
-                          )}
-                        </div>
-                        
-                        <div className="flex items-center gap-4 mb-3">
-                          <div className="flex items-center">
-                            {renderStars(mason.rating)}
-                            <span className="ml-1 text-sm text-gray-600">
-                              {mason.rating} ({mason.reviewCount} {language === 'is' ? 'umsagnir' : 'reviews'})
-                            </span>
-                          </div>
-                          <span className="text-sm text-gray-500">
-                            {mason.completedJobs} {language === 'is' ? 'lokið verkefni' : 'completed jobs'}
-                          </span>
-                        </div>
-                        
-                        <p className="text-gray-600 mb-3">{mason.description}</p>
-                        
-                        <div className="flex flex-wrap gap-2 mb-3">
-                          {mason.specializations.map(spec => (
-                            <span key={spec} className="bg-stone-100 text-stone-700 text-sm px-3 py-1 rounded-full">
-                              {spec}
-                            </span>
-                          ))}
-                        </div>
-                        
-                        <div className="flex items-center gap-4 text-sm text-gray-600">
-                          <span>📍 {mason.location}</span>
-                          <span>💰 {mason.priceRange}</span>
-                          <span>🏢 {mason.employees} {language === 'is' ? 'starfsmenn' : 'employees'}</span>
-                        </div>
-                      </div>
-                      
-                      <div className="flex-shrink-0 mt-4 md:mt-0">
-                        <div className="flex flex-col sm:flex-row md:flex-col gap-2">
-                          <button className="bg-stone-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-stone-700 transition-colors">
-                            {language === 'is' ? 'Hafa samband' : 'Contact us'}
-                          </button>
-                          <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors">
-                            {language === 'is' ? 'Skoða prófíl' : 'View profile'}
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            {masonryServices.slice(4).map(service => (
+              <div key={service.id} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {service.name}
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  {service.description}
+                </p>
+                <div className="text-red-600 font-medium text-sm">
+                  {service.price}
                 </div>
               </div>
             ))}
           </div>
           
-          <div className="text-center mt-8">
-            <Link 
-              to="/bedriftsok?category=murer"
-              className="bg-stone-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-stone-700 transition-colors"
-            >
-              {language === 'is' ? 'Sjá alla múrara' : 'See all masons'}
-            </Link>
+          {/* Pricing Information */}
+          <div className="bg-red-50 rounded-xl p-8 mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+              {language === 'is' ? 'Hvað kostar múrari?' : 'What does a mason cost?'}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-red-600 mb-2">1000-2200 kr/hour</div>
+                <p className="text-gray-600">
+                  {language === 'is' ? 'Venjulegur tímagjald múrara' : 'Typical mason hourly rate'}
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-600 mb-2">45,000 kr</div>
+                <p className="text-gray-600">
+                  {language === 'is' ? 'Meðaltal verkefnis á BuildConnect 2025' : 'Average project on BuildConnect 2025'}
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          {/* What can masons help with */}
+          <div className="bg-white p-8 rounded-xl border border-gray-200">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              {language === 'is' ? 'Hvað getur múrari hjálpað við?' : 'What can a mason help with?'}
+            </h3>
+            <p className="text-gray-700 mb-6 text-lg">
+              {language === 'is'
+                ? 'Múrarar eru sérfræðingar í steinvinnu og múrverki. Þeir geta hjálpað við allt frá grunngjafarvinnu til flókinna endurnýjunarverkefna.'
+                : 'Masons are specialists in stonework and masonry. They can help with everything from foundation work to complex restoration projects.'
+              }
+            </p>
+            
+            <h4 className="text-xl font-semibold text-gray-900 mb-4">
+              {language === 'is' ? 'Múrarar á BuildConnect geta hjálpað þér við:' : 'Masons on BuildConnect can help you with:'}
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                { is: 'Múrverk og steinlagnir', en: 'Brickwork and stone laying' },
+                { is: 'Steinsteypu og grunnvinnu', en: 'Concrete work and foundations' },
+                { is: 'Náttúrusteina veggi og garðveggir', en: 'Natural stone walls and garden walls' },
+                { is: 'Reykháfa og eldavélabyggingar', en: 'Chimney and fireplace construction' },
+                { is: 'Hellulagnir og útiflötur', en: 'Paving and outdoor surfaces' },
+                { is: 'Vatnsþéttingu og rakavörn', en: 'Waterproofing and moisture protection' },
+                { is: 'Viðgerðir á gömlum byggingum', en: 'Repairs on old buildings' },
+                { is: 'Endurnýjun sögulegra mannvirkja', en: 'Restoration of historic structures' }
+              ].map((item, index) => (
+                <div key={index} className="flex items-center">
+                  <span className="text-red-500 mr-2">✓</span>
+                  <span className="text-gray-700">{language === 'is' ? item.is : item.en}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Materials Section */}
-      <div className="py-16">
+      {/* When do you need a mason */}
+      <div className="bg-gray-50 py-16">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            {language === 'is' ? 'Byggingarefni og steinar' : 'Building Materials & Stones'}
+            {language === 'is' ? 'Hvenær þarftu múrara?' : 'When do you need a mason?'}
           </h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl mb-4">🏗️</div>
+              <h3 className="text-xl font-semibold mb-4">
+                {language === 'is' ? 'Nýbyggingar og grunnar' : 'New Construction & Foundations'}
+              </h3>
+              <p className="text-gray-600 mb-4">
+                {language === 'is' 
+                  ? 'Þegar þú ert að byggja nýtt hús eða þarft faglega grunngjöf og steinsteypu fyrir mannvirki.'
+                  : 'When you\'re building a new house or need professional foundation and concrete work for structures.'
+                }
+              </p>
+              <div className="text-red-600 font-semibold">
+                {language === 'is' ? 'Verkefnisverð: 300.000-2.000.000 kr' : 'Project price: 300,000-2,000,000 kr'}
+              </div>
+            </div>
+            
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl mb-4">🪨</div>
+              <h3 className="text-xl font-semibold mb-4">
+                {language === 'is' ? 'Garðveggjir og útiumhverfi' : 'Garden Walls & Outdoor Features'}
+              </h3>
+              <p className="text-gray-600 mb-4">
+                {language === 'is'
+                  ? 'Fyrir steinveggi í garði, stuðningsveggi, hellulagnir og aðrar útiaðgerðir.'
+                  : 'For stone walls in gardens, retaining walls, paving and other outdoor improvements.'
+                }
+              </p>
+              <div className="text-green-600 font-semibold">
+                {language === 'is' ? 'Verkefnisverð: 150.000-800.000 kr' : 'Project price: 150,000-800,000 kr'}
+              </div>
+            </div>
+            
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl mb-4">🏛️</div>
+              <h3 className="text-xl font-semibold mb-4">
+                {language === 'is' ? 'Viðgerðir og endurnýjun' : 'Repairs & Restoration'}
+              </h3>
+              <p className="text-gray-600 mb-4">
+                {language === 'is'
+                  ? 'Viðgerð gamlra steinbygginga, endurnýjun sögulegra mannvirkja eða vatnsþétting kjallarveggja.'
+                  : 'Repair of old stone buildings, restoration of historic structures or waterproofing basement walls.'
+                }
+              </p>
+              <div className="text-blue-600 font-semibold">
+                {language === 'is' ? 'Verkefnisverð: 100.000-1.200.000 kr' : 'Project price: 100,000-1,200,000 kr'}
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-red-100 p-8 rounded-xl">
+            <h3 className="text-2xl font-bold text-gray-900 text-center mb-6">
+              {language === 'is' ? 'Hvað hefur áhrif á verð múrara?' : 'What affects mason pricing?'}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                  {language === 'is' ? 'Helstu verðáhrifaþættir:' : 'Main pricing factors:'}
+                </h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-center">
+                    <span className="text-red-500 mr-2">•</span>
+                    {language === 'is' ? 'Gerð og gæði steinefna' : 'Type and quality of stone materials'}
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-red-500 mr-2">•</span>
+                    {language === 'is' ? 'Flækjustig hönnunar og múrverks' : 'Design complexity and masonry work'}
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-red-500 mr-2">•</span>
+                    {language === 'is' ? 'Aðgengi að verkstaðnum' : 'Access to the work site'}
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-red-500 mr-2">•</span>
+                    {language === 'is' ? 'Sérhæfðir verkfæri og tækni' : 'Specialized tools and techniques'}
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-gray-700 leading-relaxed">
+                  {language === 'is'
+                    ? 'Verð múrara fer eftir gerð steinefna, flækjustigi verkefnis og aðgengi að verkstaðnum. Náttúrusteinn kostar meira en venjulegur múrsteinn. Endurnýjunarverkefni krefjast oft sérhæfðrar reynslu og eru þar af leiðandi dýrari.'
+                    : 'Mason prices depend on the type of stone materials, project complexity and site access. Natural stone costs more than regular brick. Restoration projects often require specialized experience and are therefore more expensive.'
+                  }
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Statistics Section */}
+      <div className="py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-4">
+            {language === 'is' ? 'Múrvinaverkefni' : 'Masonry Projects'}
+          </h2>
+          <p className="text-gray-600 text-center mb-12">
+            {language === 'is' 
+              ? 'Á undanförnum 12 mánuðum hefur verið lagt út á BuildConnect:'
+              : 'In the past 12 months, posted on BuildConnect:'
+            }
+          </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="bg-gray-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🌋</span>
+              <div className="text-5xl font-bold text-red-600 mb-2">1,420</div>
+              <div className="text-xl text-gray-600">
+                {language === 'is' ? 'verkefni' : 'projects'}
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                {language === 'is' ? 'Íslenskur steinn' : 'Icelandic Stone'}
-              </h3>
-              <p className="text-gray-600">
-                {language === 'is'
-                  ? 'Eldfjallassteinn og önnur innlend byggingarefni af bestu gæðum.'
-                  : 'Volcanic stone and other local building materials of the highest quality.'
-                }
-              </p>
             </div>
-            
             <div className="text-center">
-              <div className="bg-brown-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🧱</span>
+              <div className="text-5xl font-bold text-green-600 mb-2">412</div>
+              <div className="text-xl text-gray-600">
+                {language === 'is' ? 'umsagnir' : 'reviews'}
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                {language === 'is' ? 'Múrsteinar' : 'Bricks'}
-              </h3>
-              <p className="text-gray-600">
-                {language === 'is'
-                  ? 'Gæða múrsteinar fyrir alla tegund múrverka.'
-                  : 'Quality bricks for all types of masonry work.'
-                }
-              </p>
             </div>
-            
             <div className="text-center">
-              <div className="bg-gray-200 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">⚒️</span>
+              <div className="text-5xl font-bold text-blue-600 mb-2">4.9</div>
+              <div className="text-xl text-gray-600">
+                {language === 'is' ? 'af 5 stjörnum' : 'of 5 stars'}
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                {language === 'is' ? 'Steinsteypa' : 'Concrete'}
-              </h3>
-              <p className="text-gray-600">
-                {language === 'is'
-                  ? 'Hágæða steinsteypa fyrir alla byggingarþörf.'
-                  : 'High-quality concrete for all construction needs.'
-                }
-              </p>
             </div>
           </div>
         </div>
       </div>
 
       {/* CTA Section */}
-      <div className="bg-stone-600 text-white py-16">
+      <div className="bg-red-600 text-white py-16">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">
             {language === 'is' ? 'Þarftu múrara?' : 'Need a mason?'}
           </h2>
           <p className="text-xl mb-8 opacity-90">
             {language === 'is'
-              ? 'Fáðu tilboð frá faglegum múrurum á þínu svæði.'
-              : 'Get quotes from professional masons in your area.'
+              ? 'Fáðu tilboð frá reyndum múrurum á þínu svæði. Ókeypis og án skuldbindinga.'
+              : 'Get quotes from experienced masons in your area. Free and without obligation.'
             }
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               to="/post?category=masonry"
-              className="bg-white text-stone-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
-              {language === 'is' ? 'Legg inn verkefni' : 'Post project'}
+              {language === 'is' ? 'Legg inn verkefni ókeypis' : 'Post project for free'}
             </Link>
             <Link 
-              to="/bedriftsok?category=murer"
-              className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-stone-700 transition-colors"
+              to="/bedriftsok?category=murverk"
+              className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors"
             >
               {language === 'is' ? 'Finn múrara' : 'Find masons'}
             </Link>
+          </div>
+          
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm opacity-90">
+            <div className="flex items-center justify-center">
+              <span className="mr-2">✓</span>
+              {language === 'is' ? 'Ókeypis að leggja út verkefni' : 'Free to post projects'}
+            </div>
+            <div className="flex items-center justify-center">
+              <span className="mr-2">✓</span>
+              {language === 'is' ? 'Sérhæfðir steinvinnu-sérfræðingar' : 'Specialized stonework experts'}
+            </div>
+            <div className="flex items-center justify-center">
+              <span className="mr-2">✓</span>
+              {language === 'is' ? 'Gæði og ending' : 'Quality and durability'}
+            </div>
           </div>
         </div>
       </div>
