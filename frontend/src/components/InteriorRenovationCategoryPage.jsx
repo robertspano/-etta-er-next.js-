@@ -216,24 +216,6 @@ const InteriorRenovationCategoryPage = ({ translations, language }) => {
         : ['Varmepumper', 'Ventilasjon', 'Gulvvarme', 'Kjøling']
     }
   ];
-        : ['Furniture', 'Lighting', 'Layout', 'Built-ins']
-    },
-    {
-      id: 'basement-renovation',
-      name: language === 'is' ? 'Kjallara- og rísendurnýjun' : 'Basement Renovation',
-      nameEnglish: 'Basement Renovation',
-      description: language === 'is'
-        ? 'Umbreytingar á kjöllurum í nothæf og þægileg rými.'
-        : 'Transforming basements into functional and comfortable spaces.',
-      professionals: 600,
-      averagePrice: language === 'is' ? '600.000-2.000.000 kr' : '£3,000-10,000',
-      completedJobs: 2100,
-      image: 'https://images.unsplash.com/photo-1560184897-ae75f418493e?w=400&h=250&fit=crop',
-      specialties: language === 'is'
-        ? ['Rakavörn', 'Einangrun', 'Lýsing', 'Loftun']
-        : ['Waterproofing', 'Insulation', 'Lighting', 'Ventilation']
-    }
-  ];
 
   const breadcrumbs = [
     { name: language === 'is' ? 'Heim' : 'Home', href: '/' },
