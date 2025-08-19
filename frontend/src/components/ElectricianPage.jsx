@@ -754,16 +754,52 @@ const ElectricianPage = ({ translations, language }) => {
         </div>
       </div>
 
+      {/* Statistics Section */}
+      <div className="bg-gray-50 py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-4">
+            {language === 'is' ? 'Verkefni til rafvirkja' : 'Electrician Projects'}
+          </h2>
+          <p className="text-gray-600 text-center mb-12">
+            {language === 'is' 
+              ? 'Á undanförnum 12 mánuðum hefur verið lagt út á BuildConnect:'
+              : 'In the past 12 months, posted on BuildConnect:'
+            }
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="text-5xl font-bold text-yellow-600 mb-2">4,820</div>
+              <div className="text-xl text-gray-600">
+                {language === 'is' ? 'verkefni' : 'projects'}
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-bold text-green-600 mb-2">1,289</div>
+              <div className="text-xl text-gray-600">
+                {language === 'is' ? 'umsagnir' : 'reviews'}
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl font-bold text-blue-600 mb-2">4.8</div>
+              <div className="text-xl text-gray-600">
+                {language === 'is' ? 'af 5 stjörnum' : 'of 5 stars'}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* CTA Section */}
       <div className="bg-yellow-600 text-white py-16">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            {language === 'is' ? 'Þarftu rafvirkja?' : 'Trenger du en elektriker?'}
+            {language === 'is' ? 'Þarftu rafvirkja?' : 'Need an electrician?'}
           </h2>
           <p className="text-xl mb-8 opacity-90">
             {language === 'is'
-              ? 'Fáðu tilboð frá löggiltum rafvirkjum á þínu svæði.'
-              : 'Få tilbud fra autoriserte elektrikere i ditt område.'
+              ? 'Fáðu tilboð frá löggiltum rafvirkjum á þínu svæði. Ókeypis og án skuldbindinga.'
+              : 'Get quotes from licensed electricians in your area. Free and without obligation.'
             }
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -771,14 +807,29 @@ const ElectricianPage = ({ translations, language }) => {
               to="/post?category=electrical"
               className="bg-white text-yellow-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
-              {language === 'is' ? 'Legg inn verkefni' : 'Legg ut prosjekt'}
+              {language === 'is' ? 'Legg inn verkefni ókeypis' : 'Post project for free'}
             </Link>
             <Link 
               to="/bedriftsok?category=elektriker"
               className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors"
             >
-              {language === 'is' ? 'Finn rafvirkja' : 'Finn elektrikere'}
+              {language === 'is' ? 'Finn rafvirkja' : 'Find electricians'}
             </Link>
+          </div>
+          
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm opacity-90">
+            <div className="flex items-center justify-center">
+              <span className="mr-2">✓</span>
+              {language === 'is' ? 'Ókeypis að leggja út verkefni' : 'Free to post projects'}
+            </div>
+            <div className="flex items-center justify-center">
+              <span className="mr-2">✓</span>
+              {language === 'is' ? 'Fáðu mörg tilboð' : 'Get multiple quotes'}
+            </div>
+            <div className="flex items-center justify-center">
+              <span className="mr-2">✓</span>
+              {language === 'is' ? 'Löggiltir fagmenn' : 'Licensed professionals'}
+            </div>
           </div>
         </div>
       </div>
