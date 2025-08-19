@@ -211,21 +211,21 @@ const CarpenterPage = ({ translations, language }) => {
               
               <div className="grid grid-cols-3 gap-4 mb-8">
                 <div className="text-center p-4 bg-white rounded-lg shadow-sm">
-                  <div className="text-2xl font-bold text-amber-600 mb-1">2,200+</div>
+                  <div className="text-2xl font-bold text-amber-600 mb-1">1,100+</div>
                   <div className="text-sm text-gray-600">
-                    {language === 'is' ? 'Trésmíðamenn' : 'Carpenters'}
+                    {language === 'is' ? 'Snekkarar' : 'Carpenters'}
                   </div>
                 </div>
                 <div className="text-center p-4 bg-white rounded-lg shadow-sm">
-                  <div className="text-2xl font-bold text-green-600 mb-1">8,200+</div>
+                  <div className="text-2xl font-bold text-green-600 mb-1">6,800+</div>
                   <div className="text-sm text-gray-600">
-                    {language === 'is' ? 'Verkefni' : 'Projects'}
+                    {language === 'is' ? 'Verkefni 2025' : 'Projects 2025'}
                   </div>
                 </div>
                 <div className="text-center p-4 bg-white rounded-lg shadow-sm">
-                  <div className="text-2xl font-bold text-brown-600 mb-1">4.8</div>
+                  <div className="text-2xl font-bold text-brown-600 mb-1">4.9</div>
                   <div className="text-sm text-gray-600">
-                    {language === 'is' ? 'Einkunn' : 'Rating'}
+                    {language === 'is' ? 'Meðaleinkunn' : 'Average rating'}
                   </div>
                 </div>
               </div>
