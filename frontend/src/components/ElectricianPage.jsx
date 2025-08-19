@@ -261,10 +261,10 @@ const ElectricianPage = ({ translations, language }) => {
       <div className="py-16">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            {language === 'is' ? 'Rafmagnsþjónusta' : 'Elektriske tjenester'}
+            {language === 'is' ? 'Rafmagnsþjónusta' : 'Electrical Services'}
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {electricianServices.map(service => (
               <div key={service.id} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
                 <div className="text-4xl mb-4">{service.icon}</div>
@@ -279,6 +279,128 @@ const ElectricianPage = ({ translations, language }) => {
                 </div>
               </div>
             ))}
+          </div>
+          
+          {/* Pricing Information */}
+          <div className="bg-yellow-50 rounded-xl p-8 mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+              {language === 'is' ? 'Hvað kostar rafvirki?' : 'What does an electrician cost?'}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-yellow-600 mb-2">890-1200 kr/hour</div>
+                <p className="text-gray-600">
+                  {language === 'is' ? 'Venjulegur tímagjald rafvirkja' : 'Typical electrician hourly rate'}
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-600 mb-2">28,000 kr</div>
+                <p className="text-gray-600">
+                  {language === 'is' ? 'Meðaltal verkefnis á BuildConnect 2025' : 'Average project on BuildConnect 2025'}
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          {/* What can electricians help with */}
+          <div className="bg-white p-8 rounded-xl border border-gray-200 mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              {language === 'is' ? 'Hvað getur rafvirki hjálpað við?' : 'What can an electrician help with?'}
+            </h3>
+            <p className="text-gray-700 mb-6 text-lg">
+              {language === 'is'
+                ? 'Stutt svar: Ef það tengist rafmagni, þá getur rafvirki hjálpað. Allt frá því að leggja víra og setja upp úttök til að setja inn ljósaspottur.'
+                : 'Short answer: If it\'s related to electricity, an electrician can help. Everything from laying wires and installing outlets to putting in spotlights.'
+              }
+            </p>
+            
+            <h4 className="text-xl font-semibold text-gray-900 mb-4">
+              {language === 'is' ? 'Rafvirkjar á BuildConnect geta hjálpað þér við:' : 'Electricians on BuildConnect can help you with:'}
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                { is: 'Setja upp eða skipta rafskáp', en: 'Install or replace fuse box' },
+                { is: 'Setja upp, kanna eða skipta rafkerfi', en: 'Install, inspect or replace electrical system' },
+                { is: 'Setja upp rafbílahleðslu', en: 'Install EV charging station' },
+                { is: 'Setja upp eða flytja úttök', en: 'Install or move outlets' },
+                { is: 'Setja upp gólfhitun', en: 'Install underfloor heating' },
+                { is: 'Setja upp ljósaspotta og aðra lýsingu', en: 'Install spotlights and other lighting' },
+                { is: 'Ýmis viðgerðarþjónusta', en: 'Various repair services' },
+                { is: 'Neyðarþjónusta sólarhringslega', en: '24-hour emergency service' }
+              ].map((item, index) => (
+                <div key={index} className="flex items-center">
+                  <span className="text-yellow-500 mr-2">✓</span>
+                  <span className="text-gray-700">{language === 'is' ? item.is : item.en}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* When do you need an electrician */}
+      <div className="bg-gray-50 py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+            {language === 'is' ? 'Hvenær þarftu rafvirkja?' : 'When do you need an electrician?'}
+          </h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl mb-4">🏠</div>
+              <h3 className="text-xl font-semibold mb-4">
+                {language === 'is' ? 'Endurnýja eldhús' : 'Kitchen Renovation'}
+              </h3>
+              <p className="text-gray-600">
+                {language === 'is' 
+                  ? 'Þegar þú ert að endurnýja eldhúsið þarftu rafvirkja fyrir nýja lýsingu, úttök og rafmagnstæki. Stór tæki þurfa sérstaka rafrás.'
+                  : 'When renovating the kitchen you need an electrician for new lighting, outlets and electrical appliances. Large appliances need dedicated circuits.'
+                }
+              </p>
+            </div>
+            
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl mb-4">🚿</div>
+              <h3 className="text-xl font-semibold mb-4">
+                {language === 'is' ? 'Endurnýja baðherbergi' : 'Bathroom Renovation'}
+              </h3>
+              <p className="text-gray-600">
+                {language === 'is'
+                  ? 'Við endurnýjun baðherbergis þarftu rafvirkja fyrir hitakaðla, nýja lýsingu, úttök og hitastýringu. Vatn og rafmagn krefjast sérstakrar varúðar.'
+                  : 'For bathroom renovation you need an electrician for heating cables, new lighting, outlets and temperature control. Water and electricity require special precautions.'
+                }
+              </p>
+            </div>
+            
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl mb-4">🔌</div>
+              <h3 className="text-xl font-semibold mb-4">
+                {language === 'is' ? 'Skipta rafskáp' : 'Replace Fuse Box'}
+              </h3>
+              <p className="text-gray-600">
+                {language === 'is'
+                  ? 'Ef þú býrð í gamlri íbúð með gömul öryggisrofa getur verið skynsamlegt að uppfæra rafskápinn, sérstaklega ef hann vantar jarðveiturofar.'
+                  : 'If you live in an old apartment with old fuses it might be wise to upgrade the fuse box, especially if it lacks ground fault circuit breakers.'
+                }
+              </p>
+            </div>
+          </div>
+          
+          <div className="text-center">
+            <p className="text-gray-600 mb-6">
+              {language === 'is'
+                ? 'Þú mátt framkvæma smá rafmagnsvinnu sjálfur, eins og að skipta um dekslið á úttökum og tengja frístæða eða festar ljósastæður með úttaki.'
+                : 'You may perform minor electrical work yourself, such as changing outlet covers and connecting freestanding or fixed light fixtures with outlets.'
+              }
+            </p>
+            <div className="bg-yellow-100 p-6 rounded-lg">
+              <p className="text-gray-800 font-medium">
+                {language === 'is'
+                  ? '⚠️ En ef þú átt að tengja sykurjabita, leggja víra eða meira ættir þú að nota rafvirkja. Ef þú velur að framkvæma slík störf sjálfur áttu á hættu að tryggingafélagið hjálpi ekki ef eitthvað fer úrskeiðis.'
+                  : '⚠️ But if you need to connect junction boxes, lay wires or more you should use an electrician. If you choose to perform such work yourself you risk that the insurance company won\'t help if something goes wrong.'
+                }
+              </p>
+            </div>
           </div>
         </div>
       </div>
