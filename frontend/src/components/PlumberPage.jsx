@@ -449,56 +449,134 @@ const PlumberPage = ({ translations, language }) => {
       </div>
 
       {/* Emergency Service Section */}
-      <div className="py-16">
+      <div className="bg-gray-50 py-16">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            {language === 'is' ? 'Neyðarþjónusta' : 'Emergency Service'}
+            {language === 'is' ? 'Neyðarþjónusta og sérsvið' : 'Emergency Service & Specializations'}
           </h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl mb-4">🚨</div>
+              <h3 className="text-xl font-semibold mb-4">
+                {language === 'is' ? '24/7 neyðarþjónusta' : '24/7 Emergency Service'}
+              </h3>
+              <p className="text-gray-600 mb-4">
+                {language === 'is'
+                  ? 'Sólarhringsþjónusta fyrir vatnsláka og neyðartilvik. Meðalviðbragðstími innan 30 mínútna.'
+                  : '24-hour service for water leaks and emergencies. Average response time within 30 minutes.'
+                }
+              </p>
+              <div className="text-red-600 font-semibold">
+                {language === 'is' ? 'Neyðargjald: 1.500-2.200 kr/klst' : 'Emergency rate: 1,500-2,200 kr/hour'}
+              </div>
+            </div>
+            
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl mb-4">🏠</div>
+              <h3 className="text-xl font-semibold mb-4">
+                {language === 'is' ? 'Baðherbergisendurnýjun' : 'Bathroom Renovation'}
+              </h3>
+              <p className="text-gray-600 mb-4">
+                {language === 'is'
+                  ? 'Sérhæfð þjónusta fyrir baðherbergisverkefni. Frá einföldum viðgerðum til heildarendurnýjunar.'
+                  : 'Specialized service for bathroom projects. From simple repairs to complete renovation.'
+                }
+              </p>
+              <div className="text-blue-600 font-semibold">
+                {language === 'is' ? 'Verkefnisverð: 150.000-800.000 kr' : 'Project price: 150,000-800,000 kr'}
+              </div>
+            </div>
+            
+            <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="text-4xl mb-4">🔥</div>
+              <h3 className="text-xl font-semibold mb-4">
+                {language === 'is' ? 'Hitakerfi' : 'Heating Systems'}
+              </h3>
+              <p className="text-gray-600 mb-4">
+                {language === 'is'
+                  ? 'Uppsetning og viðhald hitakerfa, radíatora og gólfhitunar fyrir öll hús.'
+                  : 'Installation and maintenance of heating systems, radiators and underfloor heating for all houses.'
+                }
+              </p>
+              <div className="text-orange-600 font-semibold">
+                {language === 'is' ? 'Kerfisverð: 80.000-350.000 kr' : 'System price: 80,000-350,000 kr'}
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-blue-100 p-8 rounded-xl">
+            <h3 className="text-2xl font-bold text-gray-900 text-center mb-6">
+              {language === 'is' ? 'Hvað hefur áhrif á verðið?' : 'What affects the price?'}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                  {language === 'is' ? 'Helstu verðáhrifaþættir:' : 'Main price factors:'}
+                </h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-center">
+                    <span className="text-blue-500 mr-2">•</span>
+                    {language === 'is' ? 'Stærð og umfang verkefnis' : 'Size and scope of project'}
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-blue-500 mr-2">•</span>
+                    {language === 'is' ? 'Efni og búnaður' : 'Materials and equipment'}
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-blue-500 mr-2">•</span>
+                    {language === 'is' ? 'Aðgengi að pípum' : 'Access to pipes'}
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-blue-500 mr-2">•</span>
+                    {language === 'is' ? 'Flækjustig uppsetningar' : 'Installation complexity'}
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-gray-700 leading-relaxed">
+                  {language === 'is'
+                    ? 'Verð pípulagningamanns fer eftir stærð verkefnis, tíma sem þarf til að vinna verkið og hvaða búnaður þarf. Ef pípulagningamaðurinn þarf að panta íhluti eða búnað sem á að setja upp mun það einnig hækka heildarverðið.'
+                    : 'The price of a plumber depends on the size of the project, the time needed to do the work and what equipment is needed. If the plumber needs to order components or equipment to be installed, this will also increase the total price.'
+                  }
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Statistics Section */}
+      <div className="py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-4">
+            {language === 'is' ? 'Pípulagnaverkefni' : 'Plumbing Projects'}
+          </h2>
+          <p className="text-gray-600 text-center mb-12">
+            {language === 'is' 
+              ? 'Á undanförnum 12 mánuðum hefur verið lagt út á BuildConnect:'
+              : 'In the past 12 months, posted on BuildConnect:'
+            }
+          </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🚨</span>
+              <div className="text-5xl font-bold text-blue-600 mb-2">3,640</div>
+              <div className="text-xl text-gray-600">
+                {language === 'is' ? 'verkefni' : 'projects'}
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                {language === 'is' ? '24/7 þjónusta' : '24/7 Service'}
-              </h3>
-              <p className="text-gray-600">
-                {language === 'is'
-                  ? 'Sólarhringsþjónusta fyrir vatnsláka og neyðartilvik.'
-                  : '24-hour service for water leaks and emergencies.'
-                }
-              </p>
             </div>
-            
             <div className="text-center">
-              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">⚡</span>
+              <div className="text-5xl font-bold text-green-600 mb-2">987</div>
+              <div className="text-xl text-gray-600">
+                {language === 'is' ? 'umsagnir' : 'reviews'}
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                {language === 'is' ? 'Fljót viðbrögð' : 'Quick Response'}
-              </h3>
-              <p className="text-gray-600">
-                {language === 'is'
-                  ? 'Meðalviðbragðstími innan 30 mínútna í höfuðborgarsvæðinu.'
-                  : 'Average response time within 30 minutes in the capital area.'
-                }
-              </p>
             </div>
-            
             <div className="text-center">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🛠️</span>
+              <div className="text-5xl font-bold text-purple-600 mb-2">4.8</div>
+              <div className="text-xl text-gray-600">
+                {language === 'is' ? 'af 5 stjörnum' : 'of 5 stars'}
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                {language === 'is' ? 'Löggiltir sérfræðingar' : 'Licensed Professionals'}
-              </h3>
-              <p className="text-gray-600">
-                {language === 'is'
-                  ? 'Allir pípulagningamenn eru löggiltir og tryggðir.'
-                  : 'All plumbers are licensed and insured professionals.'
-                }
-              </p>
             </div>
           </div>
         </div>
@@ -512,8 +590,8 @@ const PlumberPage = ({ translations, language }) => {
           </h2>
           <p className="text-xl mb-8 opacity-90">
             {language === 'is'
-              ? 'Fáðu tilboð frá löggiltum pípulagningamönnum á þínu svæði.'
-              : 'Get quotes from licensed plumbers in your area.'
+              ? 'Fáðu tilboð frá faglegum pípulagningamönnum á þínu svæði. Ókeypis og án skuldbindinga.'
+              : 'Get quotes from professional plumbers in your area. Free and without obligation.'
             }
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -521,7 +599,7 @@ const PlumberPage = ({ translations, language }) => {
               to="/post?category=plumbing"
               className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
-              {language === 'is' ? 'Legg inn verkefni' : 'Post project'}
+              {language === 'is' ? 'Legg inn verkefni ókeypis' : 'Post project for free'}
             </Link>
             <Link 
               to="/bedriftsok?category=roerlegger"
@@ -529,6 +607,21 @@ const PlumberPage = ({ translations, language }) => {
             >
               {language === 'is' ? 'Finn pípulagningamenn' : 'Find plumbers'}
             </Link>
+          </div>
+          
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm opacity-90">
+            <div className="flex items-center justify-center">
+              <span className="mr-2">✓</span>
+              {language === 'is' ? 'Ókeypis að leggja út verkefni' : 'Free to post projects'}
+            </div>
+            <div className="flex items-center justify-center">
+              <span className="mr-2">✓</span>
+              {language === 'is' ? 'Neyðarþjónusta í boði' : 'Emergency service available'}
+            </div>
+            <div className="flex items-center justify-center">
+              <span className="mr-2">✓</span>
+              {language === 'is' ? 'Löggiltir fagmenn' : 'Licensed professionals'}
+            </div>
           </div>
         </div>
       </div>
