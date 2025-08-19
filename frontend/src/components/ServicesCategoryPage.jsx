@@ -201,54 +201,6 @@ const ServicesCategoryPage = ({ translations, language }) => {
         : ['Hageredskaper', 'Verktøy', 'Småmaskiner', 'Vedlikehold']
     }
   ];
-        : ['Solar Panels', 'Energy Storage', 'Grid Connection', 'Consultation']
-    },
-    {
-      id: 'pest-control',
-      name: language === 'is' ? 'Skaðdýravörn' : 'Pest Control',
-      nameEnglish: 'Pest Control',
-      description: language === 'is'
-        ? 'Fagleg skaðdýravörn fyrir heimili og fyrirtæki með öruggum aðferðum.'
-        : 'Professional pest control for homes and businesses with safe methods.',
-      professionals: 200,
-      averagePrice: language === 'is' ? '15.000-60.000 kr' : '£75-300',
-      completedJobs: 1200,
-      image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&h=250&fit=crop',
-      specialties: language === 'is'
-        ? ['Músgæsla', 'Skordýravörn', 'Fuglvörn', 'Forvarnir']
-        : ['Rodent Control', 'Insect Control', 'Bird Control', 'Prevention']
-    },
-    {
-      id: 'appraisal-services',
-      name: language === 'is' ? 'Fasteignamat' : 'Property Appraisal',
-      nameEnglish: 'Property Appraisal',
-      description: language === 'is'
-        ? 'Fagleg fasteignamat og verðmat fyrir sölu, kaup og tryggingar.'
-        : 'Professional property valuation and appraisal for sales, purchases and insurance.',
-      professionals: 150,
-      averagePrice: language === 'is' ? '80.000-300.000 kr' : '£400-1,500',
-      completedJobs: 900,
-      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=250&fit=crop',
-      specialties: language === 'is'
-        ? ['Íbúðamat', 'Atvinnuhúsnæðismat', 'Tryggingamat', 'Ráðgjöf']
-        : ['Residential Appraisal', 'Commercial Appraisal', 'Insurance Appraisal', 'Consultation']
-    },
-    {
-      id: 'installation-services',
-      name: language === 'is' ? 'Uppsetningarþjónusta' : 'Installation Services',
-      nameEnglish: 'Installation Services',
-      description: language === 'is'
-        ? 'Uppsetnig á tækjum, húsgögnum og búnaði af fagmönnum.'
-        : 'Installation of appliances, furniture and equipment by professionals.',
-      professionals: 800,
-      averagePrice: language === 'is' ? '10.000-80.000 kr' : '£50-400',
-      completedJobs: 3200,
-      image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=250&fit=crop',
-      specialties: language === 'is'
-        ? ['Húsgagnasamsetnig', 'Tækjauppsetning', 'Lýsing', 'Sjónvarp']
-        : ['Furniture Assembly', 'Appliance Installation', 'Lighting', 'TV Mounting']
-    }
-  ];
 
   const breadcrumbs = [
     { name: language === 'is' ? 'Heim' : 'Home', href: '/' },
