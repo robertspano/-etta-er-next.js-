@@ -6,78 +6,201 @@ const ServicesCategoryPage = ({ translations, language }) => {
 
   const serviceTypes = [
     {
-      id: 'moving-services',
-      name: language === 'is' ? 'Flutningsþjónusta' : 'Moving Services',
-      nameEnglish: 'Moving Services',
+      id: 'flytting',
+      name: language === 'is' ? 'Flutningsþjónusta' : 'Flytting',
+      nameNorwegian: 'Flytting',
       description: language === 'is' 
         ? 'Fagleg flutningsþjónusta fyrir heimili og fyrirtæki með öruggri meðhöndlun.'
-        : 'Professional moving services for homes and businesses with safe handling.',
+        : 'Profesjonelle flyttetjenester for hjem og bedrifter med sikker håndtering.',
       professionals: 1200,
-      averagePrice: language === 'is' ? '25.000-150.000 kr' : '£125-750',
+      averagePrice: language === 'is' ? '25.000-150.000 kr' : '2.500-15.000 kr',
       completedJobs: 4800,
       image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=250&fit=crop',
       specialties: language === 'is' 
         ? ['Heimilisflutningar', 'Fyrirtækjaflutningar', 'Flutningshjálp', 'Pökkun']
-        : ['Home Moving', 'Business Moving', 'Moving Help', 'Packing']
+        : ['Hjemmeflytting', 'Bedriftsflytting', 'Flyttehjelp', 'Pakking']
     },
     {
-      id: 'cleaning-services',
-      name: language === 'is' ? 'Þrif og þrifaþjónusta' : 'Cleaning Services',
-      nameEnglish: 'Cleaning Services',
+      id: 'rengjoring',
+      name: language === 'is' ? 'Þrif og þrifaþjónusta' : 'Rengjøring',
+      nameNorwegian: 'Rengjøring',
       description: language === 'is'
         ? 'Alhliða þrifaþjónusta fyrir heimili, skrifstofur og atvinnuhúsnæði.'
-        : 'Comprehensive cleaning services for homes, offices and commercial properties.',
+        : 'Omfattende rengjøringstjenester for hjem, kontor og næringseiendom.',
       professionals: 1800,
-      averagePrice: language === 'is' ? '15.000-80.000 kr' : '£75-400',
+      averagePrice: language === 'is' ? '15.000-80.000 kr' : '1.500-8.000 kr',
       completedJobs: 6200,
       image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=250&fit=crop',
       specialties: language === 'is'
         ? ['Almenn þrif', 'Dýpri þrif', 'Flutningsþrif', 'Skrifstofuþrif']
-        : ['General Cleaning', 'Deep Cleaning', 'Move-out Cleaning', 'Office Cleaning']
+        : ['Vanlig rengjøring', 'Dyprengjøring', 'Flytterengjøring', 'Kontorrengjøring']
     },
     {
-      id: 'automotive-services',
-      name: language === 'is' ? 'Bílaþjónusta' : 'Automotive Services',
-      nameEnglish: 'Automotive Services',
+      id: 'bilservice',
+      name: language === 'is' ? 'Bílaþjónusta' : 'Bilservice',
+      nameNorwegian: 'Bilservice',
       description: language === 'is'
         ? 'Heildarþjónusta fyrir ökutæki - viðgerðir, viðhald og skoðanir.'
-        : 'Complete vehicle services - repairs, maintenance and inspections.',
+        : 'Komplett kjøretøytjenester - reparasjoner, vedlikehold og inspeksjoner.',
       professionals: 900,
-      averagePrice: language === 'is' ? '20.000-200.000 kr' : '£100-1,000',
+      averagePrice: language === 'is' ? '20.000-200.000 kr' : '2.000-20.000 kr',
       completedJobs: 3400,
       image: 'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=400&h=250&fit=crop',
       specialties: language === 'is'
         ? ['Viðgerðir', 'Viðhald', 'Dekkjaþjónusta', 'Skoðanir']
-        : ['Repairs', 'Maintenance', 'Tire Service', 'Inspections']
+        : ['Reparasjoner', 'Vedlikehold', 'Dekkservice', 'Inspeksjoner']
     },
     {
-      id: 'security-services',
-      name: language === 'is' ? 'Öryggisþjónusta' : 'Security Services',
-      nameEnglish: 'Security Services',
+      id: 'sikkerhet',
+      name: language === 'is' ? 'Öryggisþjónusta' : 'Sikkerhet',
+      nameNorwegian: 'Sikkerhet',
       description: language === 'is'
         ? 'Uppsetnig öryggiskerfa, vaktþjónusta og öryggisráðgjöf.'
-        : 'Security system installation, guard services and security consulting.',
+        : 'Sikkerhetssysteminstallasjon, vakttjenester og sikkerhetsrådgivning.',
       professionals: 400,
-      averagePrice: language === 'is' ? '50.000-500.000 kr' : '£250-2,500',
+      averagePrice: language === 'is' ? '50.000-500.000 kr' : '5.000-50.000 kr',
       completedJobs: 1600,
       image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=250&fit=crop',
       specialties: language === 'is'
         ? ['Öryggiskerfi', 'Myndavélar', 'Viðvörunarkerfi', 'Vaktþjónusta']
-        : ['Security Systems', 'CCTV', 'Alarm Systems', 'Guard Services']
+        : ['Sikkerhetssystemer', 'Overvåking', 'Alarmsystemer', 'Vakttjenester']
     },
     {
-      id: 'solar-energy',
-      name: language === 'is' ? 'Sólarorka' : 'Solar Energy',
-      nameEnglish: 'Solar Energy',
+      id: 'solenergi',
+      name: language === 'is' ? 'Sólarorka' : 'Solenergi',
+      nameNorwegian: 'Solenergi',
       description: language === 'is'
         ? 'Uppsetnig sólarsellukerfa og umhverfisvænar orkualausnir.'
-        : 'Installation of solar panel systems and eco-friendly energy solutions.',
+        : 'Installasjon av solcellesystemer og miljøvennlige energiløsninger.',
       professionals: 300,
-      averagePrice: language === 'is' ? '800.000-3.000.000 kr' : '£4,000-15,000',
+      averagePrice: language === 'is' ? '800.000-3.000.000 kr' : '80.000-300.000 kr',
       completedJobs: 800,
       image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=400&h=250&fit=crop',
       specialties: language === 'is'
         ? ['Sólarsellur', 'Orkugeymsla', 'Nettengingar', 'Ráðgjöf']
+        : ['Solceller', 'Energilagring', 'Nettilkobling', 'Rådgivning']
+    },
+    {
+      id: 'it-tjenester',
+      name: language === 'is' ? 'Tölvuþjónusta' : 'IT-tjenester',
+      nameNorwegian: 'IT-tjenester',
+      description: language === 'is'
+        ? 'Tölvuviðgerðir, netuppsetningar og tæknilegur stuðningur.'
+        : 'Datareparasjoner, nettverksoppsett og teknisk støtte.',
+      professionals: 650,
+      averagePrice: language === 'is' ? '15.000-100.000 kr' : '1.500-10.000 kr',
+      completedJobs: 2800,
+      image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Tölvuviðgerðir', 'Netkerfi', 'Hugbúnaður', 'Tæknistuðningur']
+        : ['Datareparasjoner', 'Nettverk', 'Programvare', 'Teknisk støtte']
+    },
+    {
+      id: 'pest-control',
+      name: language === 'is' ? 'Skaðdýraeyðing' : 'Skadedyrbekjempelse',
+      nameNorwegian: 'Skadedyrbekjempelse',
+      description: language === 'is'
+        ? 'Fagleg eyðing skaðdýra og varnir gegn skordýrum og nagdýrum.'
+        : 'Profesjonell bekjempelse av skadedyr og beskyttelse mot insekter og gnagere.',
+      professionals: 350,
+      averagePrice: language === 'is' ? '25.000-120.000 kr' : '2.500-12.000 kr',
+      completedJobs: 1500,
+      image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Músavarnir', 'Skordýraeyðing', 'Fuglvarnir', 'Forvarnir']
+        : ['Musefjerning', 'Insektbekjempelse', 'Fuglevern', 'Forebygging']
+    },
+    {
+      id: 'laspakking',
+      name: language === 'is' ? 'Læsasmíði' : 'Låsesmed',
+      nameNorwegian: 'Låsesmed',
+      description: language === 'is'
+        ? 'Læsasmíði, läsaviðgerðir og öryggisuppsetningar.'
+        : 'Låsesmedarbeid, låsreparasjoner og sikkerhetsinstallasjoner.',
+      professionals: 450,
+      averagePrice: language === 'is' ? '20.000-80.000 kr' : '2.000-8.000 kr',
+      completedJobs: 2200,
+      image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Læsaskipti', 'Nøðopnun', 'Öryggislæsir', 'Bilalæsir']
+        : ['Låsbytte', 'Nødåpning', 'Sikkerhetslåser', 'Billåser']
+    },
+    {
+      id: 'luftkonditionering',
+      name: language === 'is' ? 'Loftræsting og kæling' : 'Luftkondisjonering',
+      nameNorwegian: 'Luftkondisjonering',
+      description: language === 'is'
+        ? 'Uppsetning og viðhald loftræstingar- og kælikerfa.'
+        : 'Installasjon og vedlikehold av ventilasjon- og kjøleanlegg.',
+      professionals: 550,
+      averagePrice: language === 'is' ? '100.000-600.000 kr' : '10.000-60.000 kr',
+      completedJobs: 1800,
+      image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Loftræsting', 'Kælikerfi', 'Viðhald', 'Filterþjónusta']
+        : ['Ventilasjon', 'Kjøleanlegg', 'Vedlikehold', 'Filterservice']
+    },
+    {
+      id: 'malingservices',
+      name: language === 'is' ? 'Málningarþjónusta' : 'Malerservice',
+      nameNorwegian: 'Malerservice',
+      description: language === 'is'
+        ? 'Fagleg málning innanhúss og utanhúss fyrir heimili og fyrirtæki.'
+        : 'Profesjonell maling innendørs og utendørs for hjem og bedrifter.',
+      professionals: 1100,
+      averagePrice: language === 'is' ? '30.000-200.000 kr' : '3.000-20.000 kr',
+      completedJobs: 3800,
+      image: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Innri málning', 'Utri málning', 'Litaráðgjöf', 'Séráferðir']
+        : ['Innvendig maling', 'Utvendig maling', 'Fargerådgivning', 'Spesialteknikker']
+    },
+    {
+      id: 'bilvask',
+      name: language === 'is' ? 'Bílþvottur' : 'Bilvask',
+      nameNorwegian: 'Bilvask',
+      description: language === 'is'
+        ? 'Faglegur bílavegning og hreinsunarþjónusta fyrir öll fartæki.'
+        : 'Profesjonell bilvasking og rengjøringstjenester for alle kjøretøy.',
+      professionals: 650,
+      averagePrice: language === 'is' ? '5.000-30.000 kr' : '500-3.000 kr',
+      completedJobs: 4500,
+      image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Utanþvottur', 'Innanþrif', 'Vaxning', 'Detailing']
+        : ['Utvendig vask', 'Innvendig rengjøring', 'Voksing', 'Detailing']
+    },
+    {
+      id: 'snofrasing',
+      name: language === 'is' ? 'Snjórýming' : 'Snøfresing',
+      nameNorwegian: 'Snøfresing',
+      description: language === 'is'
+        ? 'Snjómokstur og vetrarverk fyrir heimili og fyrirtæki.'
+        : 'Snørydding og vinterarbeid for hjem og bedrifter.',
+      professionals: 800,
+      averagePrice: language === 'is' ? '10.000-50.000 kr' : '1.000-5.000 kr',
+      completedJobs: 3200,
+      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Snjómokstur', 'Strá', 'Ísbrot', 'Bráðaþjónusta']
+        : ['Snøfjerning', 'Strøing', 'Isbryting', 'Akuttservice']
+    },
+    {
+      id: 'maskintjenester',
+      name: language === 'is' ? 'Vélaþjónusta' : 'Maskintjenester',
+      nameNorwegian: 'Maskintjenester',
+      description: language === 'is'
+        ? 'Viðgerðir og viðhald á vélar og tækjum fyrir heimili og iðnað.'
+        : 'Reparasjoner og vedlikehold av maskiner og utstyr for hjem og industri.',
+      professionals: 400,
+      averagePrice: language === 'is' ? '25.000-150.000 kr' : '2.500-15.000 kr',
+      completedJobs: 1600,
+      image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Garðvélar', 'Verkfæri', 'Smávélar', 'Viðhald']
+        : ['Hageredskaper', 'Verktøy', 'Småmaskiner', 'Vedlikehold']
+    }
+  ];
         : ['Solar Panels', 'Energy Storage', 'Grid Connection', 'Consultation']
     },
     {
