@@ -498,6 +498,157 @@ const ElectricianPage = ({ translations, language }) => {
         </div>
       </div>
 
+      {/* How to choose the right electrician */}
+      <div className="py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+            {language === 'is' ? 'Hvernig á að velja réttan rafvirkja' : 'How to choose the right electrician'}
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <div className="bg-white p-6 rounded-xl border border-gray-200 hover:shadow-lg transition-shadow">
+              <div className="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-2xl">💼</span>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                {language === 'is' ? 'Fáðu mörg tilboð' : 'Get multiple quotes'}
+              </h3>
+              <p className="text-gray-600">
+                {language === 'is'
+                  ? 'Auðveldasta leiðin til að finna réttan rafvirkja er að fá mörg tilboð og bera þau saman. Notaðu þjónustu eins og BuildConnect.'
+                  : 'The easiest way to find the right electrician is to get multiple quotes and compare them. Use a service like BuildConnect.'
+                }
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl border border-gray-200 hover:shadow-lg transition-shadow">
+              <div className="bg-green-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-2xl">👥</span>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                {language === 'is' ? 'Bjóðu á skoðun' : 'Invite for inspection'}
+              </h3>
+              <p className="text-gray-600">
+                {language === 'is'
+                  ? 'Þú ættir að bjóða viðeigandi rafvirkjafyrirtækjum á skoðun áður en þú samþykkir tilboð. Ræddu mögulegar lausnir fyrir verkefnið þitt.'
+                  : 'You should invite relevant electrician companies for an inspection before accepting a quote. Discuss possible solutions for your project.'
+                }
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl border border-gray-200 hover:shadow-lg transition-shadow">
+              <div className="bg-yellow-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-2xl">⭐</span>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                {language === 'is' ? 'Athugaðu umsagnir' : 'Check reviews'}
+              </h3>
+              <p className="text-gray-600">
+                {language === 'is'
+                  ? 'Þegar þú velur rafvirkjafyrirtæki er mikilvægt að kanna mat fyrri viðskiptavina. Lestu umsagnir rafvirkjans til að fá góða innsýn.'
+                  : 'When choosing an electrician company, it\'s important to check previous customers\' ratings. Read the electrician\'s reviews to get good insight.'
+                }
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl border border-gray-200 hover:shadow-lg transition-shadow">
+              <div className="bg-purple-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-2xl">📋</span>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                {language === 'is' ? 'Krefjist samnings' : 'Demand a contract'}
+              </h3>
+              <p className="text-gray-600">
+                {language === 'is'
+                  ? 'Allir alvörugir iðnaðarmenn munu biðja um að skrifa samning við viðskiptavininn fyrir verkefnið sem á að framkvæma.'
+                  : 'All serious craftsmen will ask to write a contract with the customer for the project to be performed.'
+                }
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl border border-gray-200 hover:shadow-lg transition-shadow">
+              <div className="bg-red-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-2xl">💰</span>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                {language === 'is' ? 'Greiddu alltaf hvítt' : 'Always pay white'}
+              </h3>
+              <p className="text-gray-600">
+                {language === 'is'
+                  ? 'Þú ættir alltaf að greiða hvítt þegar þú kaupir iðnaðarþjónustu. Ef þú greiðir svart getur þú misst ábyrgð og kvörtunarrétt.'
+                  : 'You should always pay white when buying craftsman services. If you pay black you can lose warranty and complaint rights.'
+                }
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl border border-gray-200 hover:shadow-lg transition-shadow">
+              <div className="bg-orange-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-2xl">🏢</span>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                {language === 'is' ? 'Athugaðu fjármál' : 'Check finances'}
+              </h3>
+              <p className="text-gray-600">
+                {language === 'is'
+                  ? 'Athugaðu fjárhagsleg heilbrigði fyrirtækisins. Þú getur fundið þessar upplýsingar á síðum eins og creditinfo.is eða rsk.is.'
+                  : 'Check the company\'s financial health. You can find this information on sites like creditinfo.is or rsk.is.'
+                }
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Recent Projects */}
+      <div className="bg-gray-50 py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+            {language === 'is' ? 'Nýleg verkefni á BuildConnect' : 'Recent projects on BuildConnect'}
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {[
+              {
+                title: language === 'is' ? 'Flytja rafbílahleðslu' : 'Move EV charging station',
+                location: language === 'is' ? 'Reykjavík' : 'Reykjavik',
+                description: language === 'is' 
+                  ? 'Ég óska eftir tilboði í að flytja hleðslukassa. Ef mögulegt er, vil ég forðast að draga alveg nýjan kapal.'
+                  : 'I want a quote for moving the charging box. If possible, I want to avoid pulling a completely new cable.'
+              },
+              {
+                title: language === 'is' ? 'Hengja upp ljós' : 'Hang up lights',
+                location: language === 'is' ? 'Kópavogur' : 'Kopavogur', 
+                description: language === 'is'
+                  ? 'Hengja upp ljós í gangi. Hér þarf að leggja festing í loft og tengja ljósatengju.'
+                  : 'Hang up light in hallway. Here needs to put fixture in ceiling and connect light socket.'
+              },
+              {
+                title: language === 'is' ? 'Setja upp 4 ný takljós' : 'Install 4 new ceiling lights',
+                location: language === 'is' ? 'Hafnarfjörður' : 'Hafnarfjordur',
+                description: language === 'is'
+                  ? 'Setja upp 4 ný takljós og ýmislegt. Treng hjálp við að setja upp 4 ný takljós og gera við 1 tengi.'
+                  : 'Install 4 new ceiling lights and miscellaneous. Need help installing 4 new ceiling lights and fix 1 connection.'
+              }
+            ].map((project, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+                <h3 className="font-semibold text-gray-900 mb-2">{project.title}</h3>
+                <p className="text-sm text-yellow-600 mb-3">📍 {project.location}</p>
+                <p className="text-gray-600 text-sm">{project.description}</p>
+              </div>
+            ))}
+          </div>
+          
+          <div className="text-center">
+            <Link 
+              to="/post?category=electrical"
+              className="bg-yellow-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors"
+            >
+              {language === 'is' ? 'Legg út þitt verkefni' : 'Post your project'}
+            </Link>
+          </div>
+        </div>
+      </div>
+
       {/* Safety & Quality Section */}
       <div className="py-16">
         <div className="max-w-6xl mx-auto px-4">
