@@ -211,21 +211,21 @@ const PlumberPage = ({ translations, language }) => {
               
               <div className="grid grid-cols-3 gap-4 mb-8">
                 <div className="text-center p-4 bg-white rounded-lg shadow-sm">
-                  <div className="text-2xl font-bold text-blue-600 mb-1">1,200+</div>
+                  <div className="text-2xl font-bold text-blue-600 mb-1">1,600+</div>
                   <div className="text-sm text-gray-600">
                     {language === 'is' ? 'Pípulagningamenn' : 'Plumbers'}
                   </div>
                 </div>
                 <div className="text-center p-4 bg-white rounded-lg shadow-sm">
-                  <div className="text-2xl font-bold text-green-600 mb-1">8,900+</div>
+                  <div className="text-2xl font-bold text-green-600 mb-1">9,200+</div>
                   <div className="text-sm text-gray-600">
-                    {language === 'is' ? 'Verkefni' : 'Projects'}
+                    {language === 'is' ? 'Verkefni 2025' : 'Projects 2025'}
                   </div>
                 </div>
                 <div className="text-center p-4 bg-white rounded-lg shadow-sm">
                   <div className="text-2xl font-bold text-purple-600 mb-1">4.8</div>
                   <div className="text-sm text-gray-600">
-                    {language === 'is' ? 'Einkunn' : 'Rating'}
+                    {language === 'is' ? 'Meðaleinkunn' : 'Average rating'}
                   </div>
                 </div>
               </div>
