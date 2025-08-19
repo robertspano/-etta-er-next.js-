@@ -3512,6 +3512,69 @@ class BuildConnectAPITester:
             except Exception as e:
                 self.log_test("Automotive Flow - Data Verification", False, f"Request failed: {str(e)}")
 
+    async def test_professional_page_routes(self):
+        """Test professional page routes accessibility"""
+        print("\n=== Testing Professional Page Routes ===")
+        
+        # Professional page routes to test
+        professional_routes = [
+            "/professionals/electrician",
+            "/professionals/plumber", 
+            "/professionals/painter",
+            "/professionals/carpenter",
+            "/professionals/mason"
+        ]
+        
+        # Get frontend URL from environment
+        frontend_url = "https://buildconnect-1.preview.emergentagent.com"
+        
+        for route in professional_routes:
+            try:
+                async with self.session.get(f"{frontend_url}{route}") as response:
+                    if response.status == 200:
+                        # Check if the response contains expected content
+                        content = await response.text()
+                        if "BuildConnect" in content or "professional" in content.lower() or "electrician" in content.lower() or "plumber" in content.lower():
+                            self.log_test(f"GET {route}", True, f"Professional page accessible (Status: {response.status})")
+                        else:
+                            self.log_test(f"GET {route}", False, f"Page accessible but content unexpected (Status: {response.status})")
+                    else:
+                        self.log_test(f"GET {route}", False, f"Page not accessible (Status: {response.status})")
+            except Exception as e:
+                self.log_test(f"GET {route}", False, f"Request failed: {str(e)}")
+    
+    async def test_backend_regression(self):
+        """Test that existing backend functionality hasn't regressed"""
+        print("\n=== Testing Backend Regression ===")
+        
+        # Test core endpoints that should still work
+        core_endpoints = [
+            ("/", "BuildConnect API"),
+            ("/health", "healthy"),
+            ("/services", "list"),
+            ("/stats", "totalProjects"),
+            ("/testimonials", "list")
+        ]
+        
+        for endpoint, expected_content in core_endpoints:
+            try:
+                async with self.session.get(f"{BACKEND_URL}{endpoint}") as response:
+                    data = await response.json()
+                    if response.status == 200:
+                        if expected_content == "list":
+                            if isinstance(data, list):
+                                self.log_test(f"Backend Regression - GET {endpoint}", True, f"Endpoint working correctly")
+                            else:
+                                self.log_test(f"Backend Regression - GET {endpoint}", False, f"Expected list, got: {type(data)}")
+                        elif expected_content in str(data):
+                            self.log_test(f"Backend Regression - GET {endpoint}", True, f"Endpoint working correctly")
+                        else:
+                            self.log_test(f"Backend Regression - GET {endpoint}", False, f"Expected content not found: {expected_content}")
+                    else:
+                        self.log_test(f"Backend Regression - GET {endpoint}", False, f"Unexpected status: {response.status}")
+            except Exception as e:
+                self.log_test(f"Backend Regression - GET {endpoint}", False, f"Request failed: {str(e)}")
+
     async def run_all_tests(self):
         """Run all test suites"""
         print("🚀 Starting BuildConnect Backend API Tests")
@@ -3520,6 +3583,13 @@ class BuildConnectAPITester:
         await self.setup()
         
         try:
+            # Professional page routes test (new for review request)
+            await self.test_professional_page_routes()
+            
+            # Backend regression test (new for review request)
+            await self.test_backend_regression()
+            
+            # Core API tests
             await self.test_basic_endpoints()
             await self.test_services_endpoints()
             await self.test_project_creation()
