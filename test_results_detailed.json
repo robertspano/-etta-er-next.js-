@@ -1,254 +1,324 @@
 {
   "summary": {
-    "total": 187,
-    "passed": 166,
-    "failed": 21,
-    "success_rate": 88.77005347593582
+    "total": 197,
+    "passed": 171,
+    "failed": 26,
+    "success_rate": 86.80203045685279
   },
   "results": [
+    {
+      "test": "GET /professionals/electrician",
+      "success": false,
+      "details": "Page accessible but content unexpected (Status: 200)",
+      "timestamp": "2025-08-19T22:31:06.815105",
+      "response_data": null
+    },
+    {
+      "test": "GET /professionals/plumber",
+      "success": false,
+      "details": "Page accessible but content unexpected (Status: 200)",
+      "timestamp": "2025-08-19T22:31:06.824910",
+      "response_data": null
+    },
+    {
+      "test": "GET /professionals/painter",
+      "success": false,
+      "details": "Page accessible but content unexpected (Status: 200)",
+      "timestamp": "2025-08-19T22:31:06.833725",
+      "response_data": null
+    },
+    {
+      "test": "GET /professionals/carpenter",
+      "success": false,
+      "details": "Page accessible but content unexpected (Status: 200)",
+      "timestamp": "2025-08-19T22:31:06.843334",
+      "response_data": null
+    },
+    {
+      "test": "GET /professionals/mason",
+      "success": false,
+      "details": "Page accessible but content unexpected (Status: 200)",
+      "timestamp": "2025-08-19T22:31:06.857513",
+      "response_data": null
+    },
+    {
+      "test": "Backend Regression - GET /",
+      "success": true,
+      "details": "Endpoint working correctly",
+      "timestamp": "2025-08-19T22:31:06.868935",
+      "response_data": null
+    },
+    {
+      "test": "Backend Regression - GET /health",
+      "success": true,
+      "details": "Endpoint working correctly",
+      "timestamp": "2025-08-19T22:31:06.916261",
+      "response_data": null
+    },
+    {
+      "test": "Backend Regression - GET /services",
+      "success": true,
+      "details": "Endpoint working correctly",
+      "timestamp": "2025-08-19T22:31:06.935601",
+      "response_data": null
+    },
+    {
+      "test": "Backend Regression - GET /stats",
+      "success": true,
+      "details": "Endpoint working correctly",
+      "timestamp": "2025-08-19T22:31:07.003994",
+      "response_data": null
+    },
+    {
+      "test": "Backend Regression - GET /testimonials",
+      "success": true,
+      "details": "Endpoint working correctly",
+      "timestamp": "2025-08-19T22:31:07.021731",
+      "response_data": null
+    },
     {
       "test": "GET /api/",
       "success": true,
       "details": "Status: 200, Message: BuildConnect API is running",
-      "timestamp": "2025-08-18T23:36:55.732019",
+      "timestamp": "2025-08-19T22:31:07.067772",
       "response_data": null
     },
     {
       "test": "GET /api/health",
       "success": true,
       "details": "Status: 200, Health: healthy",
-      "timestamp": "2025-08-18T23:36:55.742803",
+      "timestamp": "2025-08-19T22:31:07.074244",
       "response_data": null
     },
     {
       "test": "GET /api/services (English)",
       "success": true,
       "details": "Retrieved 9 services in English",
-      "timestamp": "2025-08-18T23:36:55.771169",
+      "timestamp": "2025-08-19T22:31:07.088073",
       "response_data": null
     },
     {
       "test": "GET /api/services (Icelandic)",
       "success": true,
       "details": "Retrieved 9 services in Icelandic",
-      "timestamp": "2025-08-18T23:36:55.791175",
+      "timestamp": "2025-08-19T22:31:07.110719",
       "response_data": null
     },
     {
       "test": "GET /api/services (Default)",
       "success": true,
       "details": "Default language fallback works (English)",
-      "timestamp": "2025-08-18T23:36:55.808775",
+      "timestamp": "2025-08-19T22:31:07.126307",
       "response_data": null
     },
     {
       "test": "POST /api/projects (Valid)",
       "success": true,
-      "details": "Project created with ID: 7e88f064-b6e0-44ff-a0c2-8a53c223b664",
-      "timestamp": "2025-08-18T23:36:55.869577",
+      "details": "Project created with ID: d1e08bf3-421e-431f-b64e-6f7f49af0dbb",
+      "timestamp": "2025-08-19T22:31:07.178958",
       "response_data": null
     },
     {
       "test": "POST /api/projects (Invalid)",
       "success": true,
       "details": "Validation error returned as expected",
-      "timestamp": "2025-08-18T23:36:55.881253",
+      "timestamp": "2025-08-19T22:31:07.187473",
       "response_data": null
     },
     {
       "test": "GET /api/projects",
       "success": true,
-      "details": "Retrieved 17 projects",
-      "timestamp": "2025-08-18T23:36:55.890519",
+      "details": "Retrieved 18 projects",
+      "timestamp": "2025-08-19T22:31:07.197200",
       "response_data": null
     },
     {
       "test": "GET /api/projects (Filtered)",
       "success": true,
-      "details": "Filtered projects: 17",
-      "timestamp": "2025-08-18T23:36:55.899132",
+      "details": "Filtered projects: 18",
+      "timestamp": "2025-08-19T22:31:07.205577",
       "response_data": null
     },
     {
       "test": "GET /api/projects/{id}",
       "success": true,
       "details": "Retrieved project: Kitchen Renovation Project",
-      "timestamp": "2025-08-18T23:36:55.948628",
+      "timestamp": "2025-08-19T22:31:07.254309",
       "response_data": null
     },
     {
       "test": "GET /api/stats",
       "success": true,
-      "details": "Stats retrieved: 17 projects, 0 professionals",
-      "timestamp": "2025-08-18T23:36:56.016605",
+      "details": "Stats retrieved: 18 projects, 0 professionals",
+      "timestamp": "2025-08-19T22:31:07.265279",
       "response_data": null
     },
     {
       "test": "GET /api/testimonials",
       "success": true,
       "details": "Retrieved 6 testimonials",
-      "timestamp": "2025-08-18T23:36:56.041009",
+      "timestamp": "2025-08-19T22:31:07.272583",
       "response_data": null
     },
     {
       "test": "GET /api/testimonials/featured",
       "success": true,
       "details": "Retrieved 3 featured testimonials",
-      "timestamp": "2025-08-18T23:36:56.090251",
+      "timestamp": "2025-08-19T22:31:07.280874",
       "response_data": null
     },
     {
       "test": "POST /api/auth/register (Customer)",
       "success": true,
-      "details": "Customer registered: customer_1755560216@example.com",
-      "timestamp": "2025-08-18T23:36:56.320375",
+      "details": "Customer registered: customer_1755642667@example.com",
+      "timestamp": "2025-08-19T22:31:07.482822",
       "response_data": null
     },
     {
       "test": "POST /api/auth/register (Professional)",
       "success": true,
-      "details": "Professional registered: professional_1755560216@example.com",
-      "timestamp": "2025-08-18T23:36:56.566691",
+      "details": "Professional registered: professional_1755642667@example.com",
+      "timestamp": "2025-08-19T22:31:07.687503",
       "response_data": null
     },
     {
       "test": "POST /api/auth/cookie/login (Customer)",
       "success": true,
       "details": "Customer login successful with cookie",
-      "timestamp": "2025-08-18T23:36:56.729898",
+      "timestamp": "2025-08-19T22:31:07.891635",
       "response_data": null
     },
     {
       "test": "POST /api/auth/cookie/login (Professional)",
       "success": true,
       "details": "Professional login successful with cookie",
-      "timestamp": "2025-08-18T23:36:56.936107",
+      "timestamp": "2025-08-19T22:31:08.095664",
       "response_data": null
     },
     {
       "test": "GET /api/auth/me (Customer)",
       "success": true,
-      "details": "User info retrieved: customer_1755560216@example.com",
-      "timestamp": "2025-08-18T23:36:56.946025",
+      "details": "User info retrieved: customer_1755642667@example.com",
+      "timestamp": "2025-08-19T22:31:08.103761",
       "response_data": null
     },
     {
       "test": "PUT /api/auth/profile",
       "success": true,
       "details": "Profile updated successfully",
-      "timestamp": "2025-08-18T23:36:57.012255",
+      "timestamp": "2025-08-19T22:31:08.159770",
       "response_data": null
     },
     {
       "test": "POST /api/auth/switch-role",
       "success": true,
       "details": "Role switched to professional",
-      "timestamp": "2025-08-18T23:36:57.064504",
+      "timestamp": "2025-08-19T22:31:08.210666",
       "response_data": null
     },
     {
       "test": "GET /api/auth/customer-only (Customer)",
       "success": true,
       "details": "Customer access correctly denied after role switch",
-      "timestamp": "2025-08-18T23:36:57.074069",
+      "timestamp": "2025-08-19T22:31:08.221220",
       "response_data": null
     },
     {
       "test": "GET /api/auth/professional-only (Professional)",
       "success": true,
       "details": "Professional access granted",
-      "timestamp": "2025-08-18T23:36:57.083557",
+      "timestamp": "2025-08-19T22:31:08.271771",
       "response_data": null
     },
     {
       "test": "GET /api/auth/admin-only (Customer Denied)",
       "success": true,
       "details": "Admin access correctly denied to customer",
-      "timestamp": "2025-08-18T23:36:57.135474",
+      "timestamp": "2025-08-19T22:31:08.279783",
       "response_data": null
     },
     {
       "test": "GET /api/auth/me (Unauthenticated)",
       "success": true,
       "details": "Protected endpoint correctly requires authentication",
-      "timestamp": "2025-08-18T23:36:57.158142",
+      "timestamp": "2025-08-19T22:31:08.367191",
       "response_data": null
     },
     {
       "test": "POST /api/auth/cookie/logout",
       "success": true,
       "details": "Logout successful",
-      "timestamp": "2025-08-18T23:36:57.168218",
+      "timestamp": "2025-08-19T22:31:08.376643",
       "response_data": null
     },
     {
       "test": "Marketplace Customer Registration",
       "success": true,
       "details": "Customer registered successfully",
-      "timestamp": "2025-08-18T23:36:57.323946",
+      "timestamp": "2025-08-19T22:31:08.620992",
       "response_data": null
     },
     {
       "test": "Marketplace Professional Registration",
       "success": true,
       "details": "Professional registered successfully",
-      "timestamp": "2025-08-18T23:36:57.566427",
+      "timestamp": "2025-08-19T22:31:08.783966",
       "response_data": null
     },
     {
       "test": "Marketplace Customer Login",
       "success": true,
       "details": "Customer login successful",
-      "timestamp": "2025-08-18T23:36:57.733299",
+      "timestamp": "2025-08-19T22:31:08.988102",
       "response_data": null
     },
     {
       "test": "Marketplace Professional Login",
       "success": true,
       "details": "Professional login successful",
-      "timestamp": "2025-08-18T23:36:57.937035",
+      "timestamp": "2025-08-19T22:31:09.192513",
       "response_data": null
     },
     {
       "test": "POST /api/job-requests",
       "success": true,
-      "details": "Job created with ID: 8b78599a-8f28-44dd-a15c-1734d10e5411",
-      "timestamp": "2025-08-18T23:36:58.075487",
+      "details": "Job created with ID: 6e5b93f8-376b-4b51-b89e-a568cc125d07",
+      "timestamp": "2025-08-19T22:31:09.212061",
       "response_data": null
     },
     {
       "test": "GET /api/job-requests",
       "success": false,
       "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://buildconnect-1.preview.emergentagent.com/api/job-requests/'",
-      "timestamp": "2025-08-18T23:36:58.107570",
+      "timestamp": "2025-08-19T22:31:09.277129",
       "response_data": null
     },
     {
       "test": "GET /api/job-requests/{id}",
       "success": true,
       "details": "Retrieved job: Kitchen Sink Installation",
-      "timestamp": "2025-08-18T23:36:58.126338",
+      "timestamp": "2025-08-19T22:31:09.289409",
       "response_data": null
     },
     {
       "test": "PUT /api/job-requests/{id}",
       "success": true,
       "details": "Job updated successfully",
-      "timestamp": "2025-08-18T23:36:58.139728",
+      "timestamp": "2025-08-19T22:31:09.300496",
       "response_data": null
     },
     {
       "test": "GET /api/job-requests (Category Filter)",
       "success": false,
       "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://buildconnect-1.preview.emergentagent.com/api/job-requests/?category=plumbing'",
-      "timestamp": "2025-08-18T23:36:58.156293",
+      "timestamp": "2025-08-19T22:31:09.314834",
       "response_data": null
     },
     {
       "test": "POST /api/quotes",
       "success": false,
       "details": "Quote creation failed: 400",
-      "timestamp": "2025-08-18T23:36:58.169182",
+      "timestamp": "2025-08-19T22:31:09.324074",
       "response_data": {
         "detail": "This job is no longer accepting quotes"
       }
@@ -256,92 +326,92 @@
     {
       "test": "POST /api/messages",
       "success": true,
-      "details": "Message sent: 8ee45461-b2d6-40fd-9351-e6f215a3ee96",
-      "timestamp": "2025-08-18T23:36:58.261365",
+      "details": "Message sent: 9c7772cb-a2a2-4eb0-ba18-764390acbb13",
+      "timestamp": "2025-08-19T22:31:09.358970",
       "response_data": null
     },
     {
       "test": "GET /api/messages/job/{id}",
       "success": true,
       "details": "Retrieved 1 messages",
-      "timestamp": "2025-08-18T23:36:58.273501",
+      "timestamp": "2025-08-19T22:31:09.369660",
       "response_data": null
     },
     {
       "test": "GET /api/messages/conversations",
       "success": true,
       "details": "Retrieved 1 conversations",
-      "timestamp": "2025-08-18T23:36:58.326043",
+      "timestamp": "2025-08-19T22:31:09.380635",
       "response_data": null
     },
     {
       "test": "GET /api/notifications",
       "success": true,
       "details": "Retrieved 0 notifications",
-      "timestamp": "2025-08-18T23:36:58.336539",
+      "timestamp": "2025-08-19T22:31:09.430336",
       "response_data": null
     },
     {
       "test": "GET /api/notifications/stats",
       "success": true,
       "details": "Stats: 0 total, 0 unread",
-      "timestamp": "2025-08-18T23:36:58.387393",
+      "timestamp": "2025-08-19T22:31:09.438835",
       "response_data": null
     },
     {
       "test": "PUT /api/notifications/mark-all-read",
       "success": true,
       "details": "Marked notifications as read: Marked 0 notifications as read",
-      "timestamp": "2025-08-18T23:36:58.398472",
+      "timestamp": "2025-08-19T22:31:09.448136",
       "response_data": null
     },
     {
       "test": "POST /api/public/job-requests/draft (Guest)",
       "success": false,
       "details": "Draft created but no guest cookie set",
-      "timestamp": "2025-08-18T23:36:58.409359",
+      "timestamp": "2025-08-19T22:31:09.457691",
       "response_data": null
     },
     {
       "test": "Public Wizard Validation (Short Title)",
       "success": true,
       "details": "Short title correctly rejected",
-      "timestamp": "2025-08-18T23:36:58.419882",
+      "timestamp": "2025-08-19T22:31:09.507267",
       "response_data": null
     },
     {
       "test": "Public Wizard Validation (Short Description)",
       "success": true,
       "details": "Short description correctly rejected",
-      "timestamp": "2025-08-18T23:36:58.470471",
+      "timestamp": "2025-08-19T22:31:09.516082",
       "response_data": null
     },
     {
       "test": "Authorization Test Setup (Guest A)",
       "success": false,
       "details": "No guest cookie set",
-      "timestamp": "2025-08-18T23:36:58.481079",
+      "timestamp": "2025-08-19T22:31:09.525374",
       "response_data": null
     },
     {
       "test": "Public Wizard Rate Limiting",
       "success": false,
       "details": "Rate limiting not working: 12 requests allowed",
-      "timestamp": "2025-08-18T23:36:58.896980",
+      "timestamp": "2025-08-19T22:31:09.842601",
       "response_data": null
     },
     {
       "test": "Authenticated User Login",
       "success": true,
       "details": "User logged in successfully",
-      "timestamp": "2025-08-18T23:36:59.325295",
+      "timestamp": "2025-08-19T22:31:10.267824",
       "response_data": null
     },
     {
       "test": "Public Wizard (Authenticated User)",
       "success": false,
       "details": "Public endpoint failed for auth user: 422",
-      "timestamp": "2025-08-18T23:36:59.334891",
+      "timestamp": "2025-08-19T22:31:10.276250",
       "response_data": {
         "detail": [
           {
@@ -368,168 +438,168 @@
       "test": "Public Wizard Category (handcraft)",
       "success": true,
       "details": "Category handcraft working correctly",
-      "timestamp": "2025-08-18T23:36:59.387621",
+      "timestamp": "2025-08-19T22:31:10.286179",
       "response_data": null
     },
     {
       "test": "Public Wizard Category (bathroom)",
       "success": true,
       "details": "Category bathroom working correctly",
-      "timestamp": "2025-08-18T23:36:59.398254",
+      "timestamp": "2025-08-19T22:31:10.336483",
       "response_data": null
     },
     {
       "test": "Public Wizard Category (automotive)",
       "success": true,
       "details": "Category automotive working correctly",
-      "timestamp": "2025-08-18T23:36:59.449402",
+      "timestamp": "2025-08-19T22:31:10.345891",
       "response_data": null
     },
     {
       "test": "Public Wizard Category (majorProjects)",
       "success": true,
       "details": "Category majorProjects working correctly",
-      "timestamp": "2025-08-18T23:36:59.460641",
+      "timestamp": "2025-08-19T22:31:10.354825",
       "response_data": null
     },
     {
       "test": "Public Wizard Category (cleaning)",
       "success": true,
       "details": "Category cleaning working correctly",
-      "timestamp": "2025-08-18T23:36:59.512273",
+      "timestamp": "2025-08-19T22:31:10.363513",
       "response_data": null
     },
     {
       "test": "Public Wizard Category (housingAssociations)",
       "success": true,
       "details": "Category housingAssociations working correctly",
-      "timestamp": "2025-08-18T23:36:59.522872",
+      "timestamp": "2025-08-19T22:31:10.413681",
       "response_data": null
     },
     {
       "test": "Public Wizard Category (moving)",
       "success": true,
       "details": "Category moving working correctly",
-      "timestamp": "2025-08-18T23:36:59.574339",
+      "timestamp": "2025-08-19T22:31:10.422824",
       "response_data": null
     },
     {
       "test": "POST /api/public/job-requests/draft (Automotive)",
       "success": false,
       "details": "Draft created but no guest cookie set",
-      "timestamp": "2025-08-18T23:36:59.586606",
+      "timestamp": "2025-08-19T22:31:10.472801",
       "response_data": null
     },
     {
       "test": "POST /api/public/job-requests/draft (Regular)",
       "success": false,
       "details": "Draft created but no guest cookie set",
-      "timestamp": "2025-08-18T23:36:59.596695",
+      "timestamp": "2025-08-19T22:31:10.482425",
       "response_data": null
     },
     {
       "test": "Automotive Validation (Missing License Plate)",
       "success": true,
       "details": "Missing license plate correctly rejected",
-      "timestamp": "2025-08-18T23:36:59.605875",
+      "timestamp": "2025-08-19T22:31:10.531815",
       "response_data": null
     },
     {
       "test": "Automotive Validation (Short License Plate)",
       "success": true,
       "details": "Short license plate correctly rejected",
-      "timestamp": "2025-08-18T23:36:59.656555",
+      "timestamp": "2025-08-19T22:31:10.540766",
       "response_data": null
     },
     {
       "test": "Automotive Validation (Long License Plate)",
       "success": true,
       "details": "Long license plate correctly rejected",
-      "timestamp": "2025-08-18T23:36:59.708333",
+      "timestamp": "2025-08-19T22:31:10.548876",
       "response_data": null
     },
     {
       "test": "Automotive Validation (Invalid Characters)",
       "success": true,
       "details": "Invalid license plate characters correctly rejected",
-      "timestamp": "2025-08-18T23:36:59.719565",
+      "timestamp": "2025-08-19T22:31:10.557248",
       "response_data": null
     },
     {
       "test": "Regular Validation (Missing Title)",
       "success": true,
       "details": "Missing title correctly rejected",
-      "timestamp": "2025-08-18T23:36:59.729909",
+      "timestamp": "2025-08-19T22:31:10.605988",
       "response_data": null
     },
     {
       "test": "Regular Validation (Missing Description)",
       "success": true,
       "details": "Missing description correctly rejected",
-      "timestamp": "2025-08-18T23:36:59.780290",
+      "timestamp": "2025-08-19T22:31:10.614764",
       "response_data": null
     },
     {
       "test": "Vehicle Lookup (TEST123)",
       "success": true,
       "details": "Found: Tesla Model 3 2022",
-      "timestamp": "2025-08-18T23:37:00.289934",
+      "timestamp": "2025-08-19T22:31:11.122167",
       "response_data": null
     },
     {
       "test": "Vehicle Lookup (ABC123)",
       "success": true,
       "details": "Found: Toyota Corolla 2019",
-      "timestamp": "2025-08-18T23:37:00.797812",
+      "timestamp": "2025-08-19T22:31:11.628813",
       "response_data": null
     },
     {
       "test": "Vehicle Lookup (XYZ789)",
       "success": true,
       "details": "Found: Volkswagen Golf 2021",
-      "timestamp": "2025-08-18T23:37:01.306681",
+      "timestamp": "2025-08-19T22:31:12.136126",
       "response_data": null
     },
     {
       "test": "Vehicle Lookup (INVALID)",
       "success": true,
       "details": "Vehicle INVALID correctly not found",
-      "timestamp": "2025-08-18T23:37:01.855962",
+      "timestamp": "2025-08-19T22:31:12.643135",
       "response_data": null
     },
     {
       "test": "Vehicle Lookup Rate Limiting",
       "success": false,
       "details": "Rate limiting not working - all 12 requests succeeded",
-      "timestamp": "2025-08-18T23:37:02.109765",
+      "timestamp": "2025-08-19T22:31:12.840967",
       "response_data": null
     },
     {
       "test": "Validation (Empty plate)",
       "success": true,
       "details": "Invalid plate '' correctly rejected",
-      "timestamp": "2025-08-18T23:37:02.118368",
+      "timestamp": "2025-08-19T22:31:12.886726",
       "response_data": null
     },
     {
       "test": "Validation (Too short (1 char))",
       "success": true,
       "details": "Invalid plate 'A' correctly rejected",
-      "timestamp": "2025-08-18T23:37:02.165364",
+      "timestamp": "2025-08-19T22:31:12.892464",
       "response_data": null
     },
     {
       "test": "Validation (Too long (12 chars))",
       "success": true,
       "details": "Invalid plate 'TOOLONGPLATE' correctly rejected",
-      "timestamp": "2025-08-18T23:37:02.172407",
+      "timestamp": "2025-08-19T22:31:12.898003",
       "response_data": null
     },
     {
       "test": "Validation (Invalid characters (hyphen))",
       "success": false,
       "details": "Expected 400, got 200",
-      "timestamp": "2025-08-18T23:37:02.680165",
+      "timestamp": "2025-08-19T22:31:13.406058",
       "response_data": {
         "found": false
       }
@@ -538,7 +608,7 @@
       "test": "Validation (Invalid characters (space))",
       "success": false,
       "details": "Expected 400, got 200",
-      "timestamp": "2025-08-18T23:37:02.686955",
+      "timestamp": "2025-08-19T22:31:13.413396",
       "response_data": {
         "found": false
       }
@@ -547,168 +617,168 @@
       "test": "Validation (Country NO)",
       "success": true,
       "details": "Unsupported country NO correctly rejected",
-      "timestamp": "2025-08-18T23:37:02.695249",
+      "timestamp": "2025-08-19T22:31:13.461097",
       "response_data": null
     },
     {
       "test": "Validation (Country DK)",
       "success": true,
       "details": "Unsupported country DK correctly rejected",
-      "timestamp": "2025-08-18T23:37:02.743328",
+      "timestamp": "2025-08-19T22:31:13.469276",
       "response_data": null
     },
     {
       "test": "Validation (Country SE)",
       "success": true,
       "details": "Unsupported country SE correctly rejected",
-      "timestamp": "2025-08-18T23:37:02.750276",
+      "timestamp": "2025-08-19T22:31:13.475739",
       "response_data": null
     },
     {
       "test": "Validation (Country FI)",
       "success": true,
       "details": "Unsupported country FI correctly rejected",
-      "timestamp": "2025-08-18T23:37:02.757158",
+      "timestamp": "2025-08-19T22:31:13.481690",
       "response_data": null
     },
     {
       "test": "Validation (Country US)",
       "success": true,
       "details": "Unsupported country US correctly rejected",
-      "timestamp": "2025-08-18T23:37:02.806277",
+      "timestamp": "2025-08-19T22:31:13.528053",
       "response_data": null
     },
     {
       "test": "Validation (Missing Plate)",
       "success": true,
       "details": "Missing plate parameter correctly rejected",
-      "timestamp": "2025-08-18T23:37:02.853428",
+      "timestamp": "2025-08-19T22:31:13.533886",
       "response_data": null
     },
     {
       "test": "Automotive Flow - Vehicle Lookup",
       "success": true,
       "details": "Vehicle found: Tesla Model 3",
-      "timestamp": "2025-08-18T23:37:02.860751",
+      "timestamp": "2025-08-19T22:31:13.540336",
       "response_data": null
     },
     {
       "test": "Automotive Flow - Create Draft",
       "success": false,
       "details": "Draft created but no guest cookie",
-      "timestamp": "2025-08-18T23:37:02.871324",
+      "timestamp": "2025-08-19T22:31:13.590801",
       "response_data": null
     },
     {
       "test": "Reviews Sample Data Check",
       "success": true,
       "details": "Found 1 existing reviews",
-      "timestamp": "2025-08-18T23:37:02.931328",
+      "timestamp": "2025-08-19T22:31:13.608889",
       "response_data": null
     },
     {
       "test": "GET /api/reviews (Basic)",
       "success": true,
       "details": "Retrieved 4 reviews for homepage",
-      "timestamp": "2025-08-18T23:37:02.958072",
+      "timestamp": "2025-08-19T22:31:13.630654",
       "response_data": null
     },
     {
       "test": "Homepage Reviews Format Validation",
       "success": true,
       "details": "ReviewListResponse format matches frontend expectations",
-      "timestamp": "2025-08-18T23:37:02.958118",
+      "timestamp": "2025-08-19T22:31:13.630693",
       "response_data": null
     },
     {
       "test": "GET /api/reviews (Limit Parameter)",
       "success": true,
       "details": "Limit parameter working: 2 reviews returned",
-      "timestamp": "2025-08-18T23:37:03.020919",
+      "timestamp": "2025-08-19T22:31:13.698422",
       "response_data": null
     },
     {
       "test": "GET /api/reviews (Locale Parameter)",
       "success": true,
       "details": "Locale parameter accepted: 4 reviews returned",
-      "timestamp": "2025-08-18T23:37:03.047761",
+      "timestamp": "2025-08-19T22:31:13.722656",
       "response_data": null
     },
     {
       "test": "GET /api/reviews/{id}",
       "success": true,
       "details": "Individual review retrieved: Outstanding house extension project",
-      "timestamp": "2025-08-18T23:37:03.081390",
+      "timestamp": "2025-08-19T22:31:13.791837",
       "response_data": null
     },
     {
       "test": "GET /api/reviews/{id} (Not Found)",
       "success": true,
       "details": "Non-existent review returns 404",
-      "timestamp": "2025-08-18T23:37:03.130541",
+      "timestamp": "2025-08-19T22:31:13.799243",
       "response_data": null
     },
     {
       "test": "GET /api/reviews/professional/{id}",
       "success": true,
       "details": "Retrieved 1 reviews for professional",
-      "timestamp": "2025-08-18T23:37:03.154078",
+      "timestamp": "2025-08-19T22:31:13.816680",
       "response_data": null
     },
     {
       "test": "Professional Reviews Filtering",
       "success": true,
       "details": "All reviews belong to correct professional",
-      "timestamp": "2025-08-18T23:37:03.154120",
+      "timestamp": "2025-08-19T22:31:13.816718",
       "response_data": null
     },
     {
       "test": "Professional Reviews (Limit)",
       "success": true,
       "details": "Limit parameter working: 1 reviews",
-      "timestamp": "2025-08-18T23:37:03.207490",
+      "timestamp": "2025-08-19T22:31:13.868087",
       "response_data": null
     },
     {
       "test": "Professional Reviews (Not Found)",
       "success": true,
       "details": "Non-existent professional returns empty list",
-      "timestamp": "2025-08-18T23:37:03.216116",
+      "timestamp": "2025-08-19T22:31:13.876537",
       "response_data": null
     },
     {
       "test": "Review Test Customer Registration",
       "success": true,
       "details": "Customer registered for review testing",
-      "timestamp": "2025-08-18T23:37:03.422734",
+      "timestamp": "2025-08-19T22:31:14.077038",
       "response_data": null
     },
     {
       "test": "Review Test Professional Registration",
       "success": true,
       "details": "Professional registered for review testing",
-      "timestamp": "2025-08-18T23:37:03.625529",
+      "timestamp": "2025-08-19T22:31:14.283966",
       "response_data": null
     },
     {
       "test": "Review Test Customer Login",
       "success": true,
       "details": "Customer logged in for review testing",
-      "timestamp": "2025-08-18T23:37:03.836780",
+      "timestamp": "2025-08-19T22:31:14.488128",
       "response_data": null
     },
     {
       "test": "Review Test Professional Login",
       "success": true,
       "details": "Professional logged in for review testing",
-      "timestamp": "2025-08-18T23:37:04.111381",
+      "timestamp": "2025-08-19T22:31:14.692686",
       "response_data": null
     },
     {
       "test": "POST /api/reviews (Unauthenticated)",
       "success": false,
       "details": "Expected 401, got: 403",
-      "timestamp": "2025-08-18T23:37:04.122025",
+      "timestamp": "2025-08-19T22:31:14.702021",
       "response_data": {
         "detail": "Only customers can create reviews"
       }
@@ -717,28 +787,28 @@
       "test": "POST /api/reviews (Professional Denied)",
       "success": true,
       "details": "Professionals correctly cannot create reviews",
-      "timestamp": "2025-08-18T23:37:04.133010",
+      "timestamp": "2025-08-19T22:31:14.710063",
       "response_data": null
     },
     {
       "test": "Review Creation Validation (Short Title)",
       "success": true,
       "details": "Short title correctly rejected",
-      "timestamp": "2025-08-18T23:37:04.185548",
+      "timestamp": "2025-08-19T22:31:14.718003",
       "response_data": null
     },
     {
       "test": "Review Creation Validation (Invalid Rating)",
       "success": true,
       "details": "Invalid rating correctly rejected",
-      "timestamp": "2025-08-18T23:37:04.195600",
+      "timestamp": "2025-08-19T22:31:14.766606",
       "response_data": null
     },
     {
       "test": "PUT /api/reviews/{id}/moderate (Unauthenticated)",
       "success": false,
       "details": "Expected 401, got: 403",
-      "timestamp": "2025-08-18T23:37:04.266767",
+      "timestamp": "2025-08-19T22:31:14.792896",
       "response_data": {
         "detail": "Admin access required"
       }
@@ -747,216 +817,216 @@
       "test": "Review Moderation API Structure",
       "success": true,
       "details": "Moderation endpoint exists and requires proper authentication",
-      "timestamp": "2025-08-18T23:37:04.266829",
+      "timestamp": "2025-08-19T22:31:14.792960",
       "response_data": null
     },
     {
       "test": "Reviews Authentication & Authorization",
       "success": true,
       "details": "Authentication and authorization rules properly implemented",
-      "timestamp": "2025-08-18T23:37:04.266867",
+      "timestamp": "2025-08-19T22:31:14.792975",
       "response_data": null
     },
     {
       "test": "ReviewListResponse Format",
       "success": true,
       "details": "Response format matches frontend expectations",
-      "timestamp": "2025-08-18T23:37:04.287790",
+      "timestamp": "2025-08-19T22:31:14.850023",
       "response_data": null
     },
     {
       "test": "Sample Reviews Data",
       "success": true,
       "details": "Found 4 sample reviews",
-      "timestamp": "2025-08-18T23:37:04.314802",
+      "timestamp": "2025-08-19T22:31:14.874596",
       "response_data": null
     },
     {
       "test": "Review Relationships",
       "success": true,
       "details": "Reviews have proper company and reviewer relationships",
-      "timestamp": "2025-08-18T23:37:04.314858",
+      "timestamp": "2025-08-19T22:31:14.874632",
       "response_data": null
     },
     {
       "test": "Professional Reviews Consistency",
       "success": true,
       "details": "All 1 reviews belong to correct professional",
-      "timestamp": "2025-08-18T23:37:04.326586",
+      "timestamp": "2025-08-19T22:31:14.885081",
       "response_data": null
     },
     {
       "test": "POST /api/auth/register-company (Valid Data)",
       "success": true,
-      "details": "Company registered: test.company.1755560224@example.is",
-      "timestamp": "2025-08-18T23:37:04.563535",
+      "details": "Company registered: test.company.1755642674@example.is",
+      "timestamp": "2025-08-19T22:31:15.082054",
       "response_data": null
     },
     {
       "test": "Company Registration (8-digit phone)",
       "success": true,
-      "details": "8-digit phone accepted: test.company.8digit.1755560224@example.is",
-      "timestamp": "2025-08-18T23:37:04.729087",
+      "details": "8-digit phone accepted: test.company.8digit.1755642674@example.is",
+      "timestamp": "2025-08-19T22:31:15.284901",
       "response_data": null
     },
     {
       "test": "Company ID Validation (9 digits - too short)",
       "success": true,
       "details": "Invalid company ID correctly rejected",
-      "timestamp": "2025-08-18T23:37:04.735879",
+      "timestamp": "2025-08-19T22:31:15.331888",
       "response_data": null
     },
     {
       "test": "Company ID Validation (11 digits - too long)",
       "success": true,
       "details": "Invalid company ID correctly rejected",
-      "timestamp": "2025-08-18T23:37:04.743553",
+      "timestamp": "2025-08-19T22:31:15.338251",
       "response_data": null
     },
     {
       "test": "Company ID Validation (contains letter)",
       "success": true,
       "details": "Invalid company ID correctly rejected",
-      "timestamp": "2025-08-18T23:37:04.791780",
+      "timestamp": "2025-08-19T22:31:15.385994",
       "response_data": null
     },
     {
       "test": "Company ID Validation (9 digits with dashes)",
       "success": true,
       "details": "Invalid company ID correctly rejected",
-      "timestamp": "2025-08-18T23:37:04.799610",
+      "timestamp": "2025-08-19T22:31:15.393547",
       "response_data": null
     },
     {
       "test": "Company ID Validation (empty company ID)",
       "success": true,
       "details": "Invalid company ID correctly rejected",
-      "timestamp": "2025-08-18T23:37:04.806855",
+      "timestamp": "2025-08-19T22:31:15.401934",
       "response_data": null
     },
     {
       "test": "Phone Validation (6 digits - too short)",
       "success": true,
       "details": "Invalid phone correctly rejected",
-      "timestamp": "2025-08-18T23:37:04.856315",
+      "timestamp": "2025-08-19T22:31:15.450442",
       "response_data": null
     },
     {
       "test": "Phone Validation (9 digits - too long)",
       "success": true,
       "details": "Invalid phone correctly rejected",
-      "timestamp": "2025-08-18T23:37:04.864354",
+      "timestamp": "2025-08-19T22:31:15.457042",
       "response_data": null
     },
     {
       "test": "Phone Validation (contains letter)",
       "success": true,
       "details": "Invalid phone correctly rejected",
-      "timestamp": "2025-08-18T23:37:04.872253",
+      "timestamp": "2025-08-19T22:31:15.463127",
       "response_data": null
     },
     {
       "test": "Phone Validation (empty phone)",
       "success": true,
       "details": "Invalid phone correctly rejected",
-      "timestamp": "2025-08-18T23:37:04.879446",
+      "timestamp": "2025-08-19T22:31:15.468815",
       "response_data": null
     },
     {
       "test": "Email Validation (missing @ symbol)",
       "success": true,
       "details": "Invalid email correctly rejected",
-      "timestamp": "2025-08-18T23:37:04.927372",
+      "timestamp": "2025-08-19T22:31:15.515694",
       "response_data": null
     },
     {
       "test": "Email Validation (missing domain)",
       "success": true,
       "details": "Invalid email correctly rejected",
-      "timestamp": "2025-08-18T23:37:04.935420",
+      "timestamp": "2025-08-19T22:31:15.522764",
       "response_data": null
     },
     {
       "test": "Email Validation (missing local part)",
       "success": true,
       "details": "Invalid email correctly rejected",
-      "timestamp": "2025-08-18T23:37:04.942320",
+      "timestamp": "2025-08-19T22:31:15.570473",
       "response_data": null
     },
     {
       "test": "Email Validation (empty email)",
       "success": true,
       "details": "Invalid email correctly rejected",
-      "timestamp": "2025-08-18T23:37:04.990416",
+      "timestamp": "2025-08-19T22:31:15.577147",
       "response_data": null
     },
     {
       "test": "Password Validation (too short - 5 chars)",
       "success": false,
       "details": "Expected 400/422, got: 200",
-      "timestamp": "2025-08-18T23:37:05.218470",
+      "timestamp": "2025-08-19T22:31:15.822468",
       "response_data": {
         "message": "Company registered successfully",
-        "user_id": "5071a23f-1ea8-4541-b7c6-eabcf1155f5e",
-        "email": "test.pwd.1755560224.5@example.is"
+        "user_id": "f6e5e41e-9675-42fb-831e-20219052d092",
+        "email": "test.pwd.1755642675.5@example.is"
       }
     },
     {
       "test": "Password Validation (too short - 7 chars)",
       "success": false,
       "details": "Expected 400/422, got: 200",
-      "timestamp": "2025-08-18T23:37:05.465288",
+      "timestamp": "2025-08-19T22:31:15.985816",
       "response_data": {
         "message": "Company registered successfully",
-        "user_id": "7b8d358a-06dd-45d1-a06c-d0f940e942e1",
-        "email": "test.pwd.1755560224.7@example.is"
+        "user_id": "25777528-d778-4b95-b149-182a17a03780",
+        "email": "test.pwd.1755642675.7@example.is"
       }
     },
     {
       "test": "Password Validation (empty password)",
       "success": false,
       "details": "Expected 400/422, got: 200",
-      "timestamp": "2025-08-18T23:37:05.623939",
+      "timestamp": "2025-08-19T22:31:16.192966",
       "response_data": {
         "message": "Company registered successfully",
-        "user_id": "208080d8-a89f-4b25-b468-b3510c5e8bd4",
-        "email": "test.pwd.1755560224.0@example.is"
+        "user_id": "7ce82caa-a217-4930-ad0f-e8de820964f6",
+        "email": "test.pwd.1755642675.0@example.is"
       }
     },
     {
       "test": "Name Validation (too short - 1 char)",
       "success": false,
       "details": "Expected 400/422, got: 200",
-      "timestamp": "2025-08-18T23:37:05.867064",
+      "timestamp": "2025-08-19T22:31:16.397036",
       "response_data": {
         "message": "Company registered successfully",
-        "user_id": "28a7ae38-3a86-465e-9c22-7def49a5fdc5",
-        "email": "test.name.1755560224.1@example.is"
+        "user_id": "3065793e-904c-438e-ae74-5ba0c3c56275",
+        "email": "test.name.1755642675.1@example.is"
       }
     },
     {
       "test": "Name Validation (empty name)",
       "success": false,
       "details": "Expected 400/422, got: 200",
-      "timestamp": "2025-08-18T23:37:06.046324",
+      "timestamp": "2025-08-19T22:31:16.677637",
       "response_data": {
         "message": "Company registered successfully",
-        "user_id": "4f791e9f-2c4a-4167-bce7-ea5d0d618358",
-        "email": "test.name.1755560224.0@example.is"
+        "user_id": "f0cc1c6c-43f4-438f-a474-60d59dce0e9a",
+        "email": "test.name.1755642675.0@example.is"
       }
     },
     {
       "test": "First Registration (Duplicate Test)",
       "success": true,
       "details": "First registration successful",
-      "timestamp": "2025-08-18T23:37:06.234645",
+      "timestamp": "2025-08-19T22:31:16.882033",
       "response_data": null
     },
     {
       "test": "Duplicate Email Registration",
       "success": false,
       "details": "Expected 400, got: 500",
-      "timestamp": "2025-08-18T23:37:06.296737",
+      "timestamp": "2025-08-19T22:31:16.891140",
       "response_data": {
         "detail": "Registration failed: "
       }
@@ -965,408 +1035,408 @@
       "test": "Missing Fields (all fields missing)",
       "success": true,
       "details": "Missing fields correctly rejected",
-      "timestamp": "2025-08-18T23:37:06.304731",
+      "timestamp": "2025-08-19T22:31:16.938646",
       "response_data": null
     },
     {
       "test": "Missing Fields (missing electronic_id, name, email, password)",
       "success": true,
       "details": "Missing fields correctly rejected",
-      "timestamp": "2025-08-18T23:37:06.353966",
+      "timestamp": "2025-08-19T22:31:16.944942",
       "response_data": null
     },
     {
       "test": "Missing Fields (missing name, email, password)",
       "success": true,
       "details": "Missing fields correctly rejected",
-      "timestamp": "2025-08-18T23:37:06.361962",
+      "timestamp": "2025-08-19T22:31:16.991611",
       "response_data": null
     },
     {
       "test": "Missing Fields (missing email, password)",
       "success": true,
       "details": "Missing fields correctly rejected",
-      "timestamp": "2025-08-18T23:37:06.410341",
+      "timestamp": "2025-08-19T22:31:16.998687",
       "response_data": null
     },
     {
       "test": "Missing Fields (missing password)",
       "success": true,
       "details": "Missing fields correctly rejected",
-      "timestamp": "2025-08-18T23:37:06.459201",
+      "timestamp": "2025-08-19T22:31:17.006472",
       "response_data": null
     },
     {
       "test": "User Creation Test Setup",
       "success": true,
-      "details": "Test user created: 4f2fa443-f72b-446c-bec2-d8323f9d7514",
-      "timestamp": "2025-08-18T23:37:06.610204",
+      "details": "Test user created: 22e6452e-b0f1-47c9-9ba9-9f7cdaf5375a",
+      "timestamp": "2025-08-19T22:31:17.182098",
       "response_data": null
     },
     {
       "test": "Professional User Login",
       "success": true,
       "details": "Company user can login successfully",
-      "timestamp": "2025-08-18T23:37:06.819821",
+      "timestamp": "2025-08-19T22:31:17.383600",
       "response_data": null
     },
     {
       "test": "Professional Role Verification",
       "success": true,
       "details": "User created with role='professional'",
-      "timestamp": "2025-08-18T23:37:06.873115",
+      "timestamp": "2025-08-19T22:31:17.391984",
       "response_data": null
     },
     {
       "test": "Company ID Storage",
       "success": true,
       "details": "Company ID correctly stored in user profile",
-      "timestamp": "2025-08-18T23:37:06.873156",
+      "timestamp": "2025-08-19T22:31:17.392019",
       "response_data": null
     },
     {
       "test": "Phone Storage",
       "success": true,
       "details": "Phone correctly stored in user profile",
-      "timestamp": "2025-08-18T23:37:06.873164",
+      "timestamp": "2025-08-19T22:31:17.392025",
       "response_data": null
     },
     {
       "test": "Name Parsing",
       "success": true,
       "details": "Name correctly parsed into first_name/last_name",
-      "timestamp": "2025-08-18T23:37:06.873172",
+      "timestamp": "2025-08-19T22:31:17.392032",
       "response_data": null
     },
     {
       "test": "FastAPI-Users Integration",
       "success": true,
       "details": "Company registration integrates with fastapi-users system",
-      "timestamp": "2025-08-18T23:37:07.032222",
+      "timestamp": "2025-08-19T22:31:17.589552",
       "response_data": null
     },
     {
       "test": "Response Schema Validation",
       "success": true,
       "details": "Response matches CompanyRegistrationResponse schema",
-      "timestamp": "2025-08-18T23:37:07.032279",
+      "timestamp": "2025-08-19T22:31:17.589625",
       "response_data": null
     },
     {
       "test": "Database Persistence",
       "success": true,
       "details": "All company information persisted correctly",
-      "timestamp": "2025-08-18T23:37:07.236002",
+      "timestamp": "2025-08-19T22:31:17.803424",
       "response_data": null
     },
     {
       "test": "Moving Draft Creation (varetransport)",
       "success": true,
       "details": "Draft created with subcategory: varetransport",
-      "timestamp": "2025-08-18T23:37:07.289369",
+      "timestamp": "2025-08-19T22:31:17.812278",
       "response_data": null
     },
     {
       "test": "Moving Draft Creation (flyttebyra)",
       "success": true,
       "details": "Draft created with subcategory: flyttebyra",
-      "timestamp": "2025-08-18T23:37:07.301037",
+      "timestamp": "2025-08-19T22:31:17.861492",
       "response_data": null
     },
     {
       "test": "Moving Draft Creation (avfallshandtering)",
       "success": true,
       "details": "Draft created with subcategory: avfallshandtering",
-      "timestamp": "2025-08-18T23:37:07.312687",
+      "timestamp": "2025-08-19T22:31:17.870542",
       "response_data": null
     },
     {
       "test": "Moving Draft Creation (transportBilBat)",
       "success": true,
       "details": "Draft created with subcategory: transportBilBat",
-      "timestamp": "2025-08-18T23:37:07.364401",
+      "timestamp": "2025-08-19T22:31:17.919590",
       "response_data": null
     },
     {
       "test": "Moving Draft Creation (annetFlytting)",
       "success": true,
       "details": "Draft created with subcategory: annetFlytting",
-      "timestamp": "2025-08-18T23:37:07.375870",
+      "timestamp": "2025-08-19T22:31:17.928639",
       "response_data": null
     },
     {
       "test": "Moving Draft Creation (persontransport)",
       "success": true,
       "details": "Draft created with subcategory: persontransport",
-      "timestamp": "2025-08-18T23:37:07.387124",
+      "timestamp": "2025-08-19T22:31:17.945577",
       "response_data": null
     },
     {
       "test": "Moving Draft Creation (pianotransport)",
       "success": true,
       "details": "Draft created with subcategory: pianotransport",
-      "timestamp": "2025-08-18T23:37:07.398070",
+      "timestamp": "2025-08-19T22:31:17.995917",
       "response_data": null
     },
     {
       "test": "Moving Draft Creation (godstransport)",
       "success": true,
       "details": "Draft created with subcategory: godstransport",
-      "timestamp": "2025-08-18T23:37:07.409247",
+      "timestamp": "2025-08-19T22:31:18.007902",
       "response_data": null
     },
     {
       "test": "Moving Draft Update",
       "success": true,
       "details": "Draft updated successfully for subcategory: varetransport",
-      "timestamp": "2025-08-18T23:37:07.463868",
+      "timestamp": "2025-08-19T22:31:18.019787",
       "response_data": null
     },
     {
       "test": "Moving Draft Submission",
       "success": true,
       "details": "Draft submitted successfully with subcategory: varetransport",
-      "timestamp": "2025-08-18T23:37:07.485409",
+      "timestamp": "2025-08-19T22:31:18.071895",
       "response_data": null
     },
     {
       "test": "Moving Subcategory Storage",
       "success": true,
       "details": "Subcategory storage test completed for: varetransport",
-      "timestamp": "2025-08-18T23:37:07.485454",
+      "timestamp": "2025-08-19T22:31:18.071936",
       "response_data": null
     },
     {
       "test": "Non-Moving Regression (handcraft)",
       "success": true,
       "details": "Category handcraft still works without subcategory",
-      "timestamp": "2025-08-18T23:37:07.539334",
+      "timestamp": "2025-08-19T22:31:18.081777",
       "response_data": null
     },
     {
       "test": "Non-Moving Regression (bathroom)",
       "success": true,
       "details": "Category bathroom still works without subcategory",
-      "timestamp": "2025-08-18T23:37:07.550938",
+      "timestamp": "2025-08-19T22:31:18.131320",
       "response_data": null
     },
     {
       "test": "Non-Moving Regression (automotive)",
       "success": true,
       "details": "Category automotive still works without subcategory",
-      "timestamp": "2025-08-18T23:37:07.564203",
+      "timestamp": "2025-08-19T22:31:18.140478",
       "response_data": null
     },
     {
       "test": "Moving Without Subcategory",
       "success": true,
       "details": "Moving category works without subcategory field",
-      "timestamp": "2025-08-18T23:37:07.615422",
+      "timestamp": "2025-08-19T22:31:18.149521",
       "response_data": null
     },
     {
       "test": "Invalid Subcategory",
       "success": true,
       "details": "Invalid subcategory accepted (backend doesn't validate subcategory values)",
-      "timestamp": "2025-08-18T23:37:07.627418",
+      "timestamp": "2025-08-19T22:31:18.158169",
       "response_data": null
     },
     {
       "test": "Cleaning Draft Creation (houseCleaning)",
       "success": true,
       "details": "Draft created with subcategory: houseCleaning",
-      "timestamp": "2025-08-18T23:37:07.637924",
+      "timestamp": "2025-08-19T22:31:18.207689",
       "response_data": null
     },
     {
       "test": "Cleaning Draft Creation (officeCleaning)",
       "success": true,
       "details": "Draft created with subcategory: officeCleaning",
-      "timestamp": "2025-08-18T23:37:07.689831",
+      "timestamp": "2025-08-19T22:31:18.217733",
       "response_data": null
     },
     {
       "test": "Cleaning Draft Creation (deepCleaning)",
       "success": true,
       "details": "Draft created with subcategory: deepCleaning",
-      "timestamp": "2025-08-18T23:37:07.700620",
+      "timestamp": "2025-08-19T22:31:18.270022",
       "response_data": null
     },
     {
       "test": "Cleaning Draft Creation (carCleaning)",
       "success": true,
       "details": "Draft created with subcategory: carCleaning",
-      "timestamp": "2025-08-18T23:37:07.752376",
+      "timestamp": "2025-08-19T22:31:18.279117",
       "response_data": null
     },
     {
       "test": "Cleaning Draft Creation (postConstruction)",
       "success": true,
       "details": "Draft created with subcategory: postConstruction",
-      "timestamp": "2025-08-18T23:37:07.804205",
+      "timestamp": "2025-08-19T22:31:18.288554",
       "response_data": null
     },
     {
       "test": "Cleaning Draft Creation (wasteRemoval)",
       "success": true,
       "details": "Draft created with subcategory: wasteRemoval",
-      "timestamp": "2025-08-18T23:37:07.814799",
+      "timestamp": "2025-08-19T22:31:18.297855",
       "response_data": null
     },
     {
       "test": "Cleaning Draft Creation (eventCleaning)",
       "success": true,
       "details": "Draft created with subcategory: eventCleaning",
-      "timestamp": "2025-08-18T23:37:07.825038",
+      "timestamp": "2025-08-19T22:31:18.347937",
       "response_data": null
     },
     {
       "test": "Cleaning Draft Creation (industrialCleaning)",
       "success": true,
       "details": "Draft created with subcategory: industrialCleaning",
-      "timestamp": "2025-08-18T23:37:07.876129",
+      "timestamp": "2025-08-19T22:31:18.357994",
       "response_data": null
     },
     {
       "test": "Cleaning Draft Creation (windowCleaning)",
       "success": true,
       "details": "Draft created with subcategory: windowCleaning",
-      "timestamp": "2025-08-18T23:37:07.886715",
+      "timestamp": "2025-08-19T22:31:18.367147",
       "response_data": null
     },
     {
       "test": "Cleaning Draft Creation (gardenCleaning)",
       "success": true,
       "details": "Draft created with subcategory: gardenCleaning",
-      "timestamp": "2025-08-18T23:37:07.940667",
+      "timestamp": "2025-08-19T22:31:18.417025",
       "response_data": null
     },
     {
       "test": "Cleaning Draft Creation (carpetCleaning)",
       "success": true,
       "details": "Draft created with subcategory: carpetCleaning",
-      "timestamp": "2025-08-18T23:37:07.991775",
+      "timestamp": "2025-08-19T22:31:18.468132",
       "response_data": null
     },
     {
       "test": "Cleaning Draft Creation (movingCleaning)",
       "success": true,
       "details": "Draft created with subcategory: movingCleaning",
-      "timestamp": "2025-08-18T23:37:08.020324",
+      "timestamp": "2025-08-19T22:31:18.523161",
       "response_data": null
     },
     {
       "test": "Cleaning Draft Creation (pressureWashing)",
       "success": true,
       "details": "Draft created with subcategory: pressureWashing",
-      "timestamp": "2025-08-18T23:37:08.031292",
+      "timestamp": "2025-08-19T22:31:18.532645",
       "response_data": null
     },
     {
       "test": "Cleaning Draft Creation (storageCleaning)",
       "success": true,
       "details": "Draft created with subcategory: storageCleaning",
-      "timestamp": "2025-08-18T23:37:08.083628",
+      "timestamp": "2025-08-19T22:31:18.581780",
       "response_data": null
     },
     {
       "test": "Cleaning Draft Creation (specialized)",
       "success": true,
       "details": "Draft created with subcategory: specialized",
-      "timestamp": "2025-08-18T23:37:08.135466",
+      "timestamp": "2025-08-19T22:31:18.631731",
       "response_data": null
     },
     {
       "test": "Cleaning Draft Creation (otherCleaning)",
       "success": true,
       "details": "Draft created with subcategory: otherCleaning",
-      "timestamp": "2025-08-18T23:37:08.146275",
+      "timestamp": "2025-08-19T22:31:18.642214",
       "response_data": null
     },
     {
       "test": "Cleaning Draft Update",
       "success": true,
       "details": "Draft updated successfully for subcategory: houseCleaning",
-      "timestamp": "2025-08-18T23:37:08.202076",
+      "timestamp": "2025-08-19T22:31:18.654047",
       "response_data": null
     },
     {
       "test": "Cleaning Draft Submission",
       "success": true,
       "details": "Draft submitted successfully with subcategory: houseCleaning",
-      "timestamp": "2025-08-18T23:37:08.215644",
+      "timestamp": "2025-08-19T22:31:18.705752",
       "response_data": null
     },
     {
       "test": "Cleaning Subcategory Persistence Verification",
       "success": true,
       "details": "Subcategory houseCleaning persistence verified through create \u2192 update \u2192 submit workflow",
-      "timestamp": "2025-08-18T23:37:08.215687",
+      "timestamp": "2025-08-19T22:31:18.705794",
       "response_data": null
     },
     {
       "test": "Cleaning Without Subcategory",
       "success": true,
       "details": "Cleaning jobs can be created without subcategory field",
-      "timestamp": "2025-08-18T23:37:08.268103",
+      "timestamp": "2025-08-19T22:31:18.714805",
       "response_data": null
     },
     {
       "test": "Cleaning Subcategory Null Check",
       "success": true,
       "details": "Subcategory correctly null when not provided",
-      "timestamp": "2025-08-18T23:37:08.268142",
+      "timestamp": "2025-08-19T22:31:18.714837",
       "response_data": null
     },
     {
       "test": "Non-Cleaning Category Compatibility",
       "success": true,
       "details": "Non-cleaning categories work without subcategory field",
-      "timestamp": "2025-08-18T23:37:08.279319",
+      "timestamp": "2025-08-19T22:31:18.723370",
       "response_data": null
     },
     {
       "test": "Cleaning Missing Subcategory Validation",
       "success": true,
       "details": "Cleaning jobs work without subcategory (validation passes)",
-      "timestamp": "2025-08-18T23:37:08.289736",
+      "timestamp": "2025-08-19T22:31:18.731433",
       "response_data": null
     },
     {
       "test": "Invalid Cleaning Subcategory",
       "success": true,
       "details": "Invalid cleaning subcategory accepted (backend doesn't validate subcategory values)",
-      "timestamp": "2025-08-18T23:37:08.340436",
+      "timestamp": "2025-08-19T22:31:18.781130",
       "response_data": null
     },
     {
       "test": "Error Handling (404)",
       "success": true,
       "details": "Non-existent project returns 404",
-      "timestamp": "2025-08-18T23:37:08.391678",
+      "timestamp": "2025-08-19T22:31:18.788470",
       "response_data": null
     },
     {
       "test": "Error Handling (Language Fallback)",
       "success": true,
       "details": "Invalid language falls back to English",
-      "timestamp": "2025-08-18T23:37:08.407250",
+      "timestamp": "2025-08-19T22:31:18.803389",
       "response_data": null
     },
     {
       "test": "Error Handling (Duplicate Registration)",
       "success": true,
       "details": "Duplicate email registration correctly rejected",
-      "timestamp": "2025-08-18T23:37:08.457352",
+      "timestamp": "2025-08-19T22:31:18.811516",
       "response_data": null
     },
     {
       "test": "Error Handling (Invalid Login)",
       "success": true,
       "details": "Invalid credentials correctly rejected",
-      "timestamp": "2025-08-18T23:37:08.612740",
+      "timestamp": "2025-08-19T22:31:19.019095",
       "response_data": null
     }
   ],
-  "timestamp": "2025-08-18T23:37:08.613779"
+  "timestamp": "2025-08-19T22:31:19.020095"
 }
