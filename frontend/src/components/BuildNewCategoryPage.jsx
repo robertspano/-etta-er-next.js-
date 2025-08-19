@@ -6,78 +6,186 @@ const BuildNewCategoryPage = ({ translations, language }) => {
 
   const buildNewServices = [
     {
-      id: 'house-construction',
-      name: language === 'is' ? 'Húsbyggingar' : 'House Construction',
-      nameEnglish: 'House Construction',
+      id: 'husbygging',
+      name: language === 'is' ? 'Húsbyggingar' : 'Husbygging',
+      nameNorwegian: 'Husbygging',
       description: language === 'is' 
         ? 'Heildarbygging nýrra íbúðarhúsa frá grunni með faglegum verktökum.'
-        : 'Complete construction of new residential homes from foundation with professional contractors.',
+        : 'Komplett bygging av nye bolighus fra grunnen med profesjonelle entreprenører.',
       professionals: 800,
-      averagePrice: language === 'is' ? '25.000.000-80.000.000 kr' : '£125,000-400,000',
+      averagePrice: language === 'is' ? '25.000.000-80.000.000 kr' : '2.500.000-8.000.000 kr',
       completedJobs: 1200,
       image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=250&fit=crop',
       specialties: language === 'is' 
         ? ['Skipulagning', 'Byggingarstig', 'Léttbyggingar', 'Fullnaðarvinna']
-        : ['Planning', 'Construction Phases', 'Light Construction', 'Finishing Work']
+        : ['Planlegging', 'Byggefaser', 'Lettbygg', 'Ferdigstillelse']
     },
     {
-      id: 'extension-construction',
-      name: language === 'is' ? 'Viðbyggingar' : 'Extension Construction',
-      nameEnglish: 'Extension Construction',
+      id: 'tilbygg',
+      name: language === 'is' ? 'Viðbyggingar' : 'Tilbygg',
+      nameNorwegian: 'Tilbygg',
       description: language === 'is'
         ? 'Stækkun og viðbyggingar við núverandi húsnæði með faglegri framkvæmd.'
-        : 'Extensions and additions to existing properties with professional execution.',
+        : 'Utvidelser og påbygg til eksisterende eiendom med profesjonell utførelse.',
       professionals: 900,
-      averagePrice: language === 'is' ? '3.000.000-15.000.000 kr' : '£15,000-75,000',
+      averagePrice: language === 'is' ? '3.000.000-15.000.000 kr' : '300.000-1.500.000 kr',
       completedJobs: 2100,
       image: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&h=250&fit=crop',
       specialties: language === 'is'
-        ? ['Húsviðbyggingar', 'Nýtt herbergi', 'Risukur', 'Steypuvinnu']
-        : ['House Extensions', 'New Rooms', 'Attic Conversions', 'Concrete Work']
+        ? ['Húsviðbyggingar', 'Nýtt herbergi', 'Risu endurbætur', 'Steypuvinnu']
+        : ['Husutvidelser', 'Nye rom', 'Loftsombygging', 'Betongarbeid']
     },
     {
-      id: 'garage-construction',
-      name: language === 'is' ? 'Bílskúrsbyggingar' : 'Garage Construction',
-      nameEnglish: 'Garage Construction',
+      id: 'garasje',
+      name: language === 'is' ? 'Bílskúrsbyggingar' : 'Garasje',
+      nameNorwegian: 'Garasje',
       description: language === 'is'
         ? 'Bygging nýrra bílskúra og verkstæða með réttum leyfum og útfærslu.'
-        : 'Construction of new garages and workshops with proper permits and execution.',
+        : 'Bygging av nye garasjer og verksteder med riktige tillatelser og utførelse.',
       professionals: 600,
-      averagePrice: language === 'is' ? '1.500.000-8.000.000 kr' : '£7,500-40,000',
+      averagePrice: language === 'is' ? '1.500.000-8.000.000 kr' : '150.000-800.000 kr',
       completedJobs: 1800,
       image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=250&fit=crop',
       specialties: language === 'is'
-        ? ['Einstaklegar bílskúr', 'Tvöfaldur bílskúr', 'Verkstæði', 'Geymslu']
-        : ['Single Garages', 'Double Garages', 'Workshops', 'Storage']
+        ? ['Einstaklingar bílskúrar', 'Tvöfaldur bílskúr', 'Verkstæði', 'Geymsla']
+        : ['Enkelgarasjer', 'Doble garasjer', 'Verksteder', 'Lager']
     },
     {
-      id: 'commercial-construction',
-      name: language === 'is' ? 'Atvinnuhúsnæði' : 'Commercial Construction',
-      nameEnglish: 'Commercial Construction',
+      id: 'naeringsbygg',
+      name: language === 'is' ? 'Atvinnuhúsnæði' : 'Næringsbygg',
+      nameNorwegian: 'Næringsbygg',
       description: language === 'is'
         ? 'Byggingar skrifstofuhúsnæðis, verslana og iðnaðarbygginga.'
-        : 'Construction of office buildings, retail spaces and industrial buildings.',
+        : 'Bygging av kontorbygg, butikklokaler og industribygg.',
       professionals: 500,
-      averagePrice: language === 'is' ? '15.000.000-100.000.000 kr' : '£75,000-500,000',
+      averagePrice: language === 'is' ? '15.000.000-100.000.000 kr' : '1.500.000-10.000.000 kr',
       completedJobs: 800,
       image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400&h=250&fit=crop',
       specialties: language === 'is'
         ? ['Skrifstofur', 'Verslanir', 'Vöruhús', 'Iðnaður']
-        : ['Offices', 'Retail', 'Warehouses', 'Industrial']
+        : ['Kontor', 'Butikk', 'Lager', 'Industri']
     },
     {
-      id: 'summer-house',
-      name: language === 'is' ? 'Sumarhús og kottar' : 'Summer Houses & Cabins',
-      nameEnglish: 'Summer Houses & Cabins',
+      id: 'hytte-fritidsbolig',
+      name: language === 'is' ? 'Sumarhús og kottar' : 'Hytte/fritidsbolig',
+      nameNorwegian: 'Hytte/fritidsbolig',
       description: language === 'is'
         ? 'Bygging sumarhúsa, kotta og helgibústaða í fallegum umhverfi.'
-        : 'Construction of summer houses, cabins and holiday homes in beautiful environments.',
+        : 'Bygging av hytter, koier og fritidsboliger i vakre omgivelser.',
       professionals: 400,
-      averagePrice: language === 'is' ? '8.000.000-35.000.000 kr' : '£40,000-175,000',
+      averagePrice: language === 'is' ? '8.000.000-35.000.000 kr' : '800.000-3.500.000 kr',
       completedJobs: 1100,
       image: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=250&fit=crop',
       specialties: language === 'is'
         ? ['Sumarhús', 'Kottar', 'Timburhús', 'Íslensk hönnun']
+        : ['Sommerhus', 'Koier', 'Trehus', 'Norsk design']
+    },
+    {
+      id: 'carport-utbygning',  
+      name: language === 'is' ? 'Bílhlíf og útihús' : 'Carport og utbygning',
+      nameNorwegian: 'Carport og utbygning',
+      description: language === 'is'
+        ? 'Bygging bílhlífa, útihúsa og annarra smærri útbygginga.'
+        : 'Bygging av carporter, uthus og andre mindre utbygninger.',
+      professionals: 750,
+      averagePrice: language === 'is' ? '500.000-3.000.000 kr' : '50.000-300.000 kr',
+      completedJobs: 2800,
+      image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Bílhlífar', 'Útihús', 'Grill hús', 'Leiksvæði']
+        : ['Carporter', 'Uthus', 'Grillhus', 'Lekeplasser']
+    },
+    {
+      id: 'fundament-grunnarbeid',
+      name: language === 'is' ? 'Grunnur og steinsteypa' : 'Fundament/grunnarbeid',
+      nameNorwegian: 'Fundament/grunnarbeid',
+      description: language === 'is'
+        ? 'Fagleg grunnvinna, steinsteypa og undirbúningur fyrir byggingarverkefni.'
+        : 'Profesjonelt grunnarbeid, betong og forberedelser for byggeprosjekter.',
+      professionals: 650,
+      averagePrice: language === 'is' ? '2.000.000-12.000.000 kr' : '200.000-1.200.000 kr',
+      completedJobs: 1600,
+      image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Grunnsteypir', 'Kjallari', 'Drenun', 'Jarðvinna']
+        : ['Fundamenter', 'Kjellere', 'Drenering', 'Jordarbeid']
+    },
+    {
+      id: 'tomrer-trearbeid',
+      name: language === 'is' ? 'Tré og léttbyggingar' : 'Tømrer/trearbeid',
+      nameNorwegian: 'Tømrer/trearbeid',
+      description: language === 'is'
+        ? 'Trevirki, rammasmíði og léttbyggingar fyrir nýbyggingar.'
+        : 'Trevirke, rammeverk og lettbygg for nybygg.',
+      professionals: 850,
+      averagePrice: language === 'is' ? '1.500.000-8.000.000 kr' : '150.000-800.000 kr',
+      completedJobs: 2400,
+      image: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Rammasmíði', 'Trevirki', 'Takstólar', 'Gólfflokkar']
+        : ['Rammeverk', 'Trevirke', 'Takstoler', 'Gulvbjælker']
+    },
+    {
+      id: 'tak-og-tekning',
+      name: language === 'is' ? 'Þak og þakmaterial' : 'Tak og tekning',
+      nameNorwegian: 'Tak og tekning',
+      description: language === 'is'
+        ? 'Uppsetning þakefna, einangrunar og takkerfa fyrir nýbyggingar.'
+        : 'Installasjon av takmaterialer, isolering og taksystem for nybygg.',
+      professionals: 550,
+      averagePrice: language === 'is' ? '1.200.000-6.000.000 kr' : '120.000-600.000 kr',
+      completedJobs: 1800,
+      image: 'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Þakplötur', 'Einangrun', 'Takrennur', 'Þétting']
+        : ['Takplater', 'Isolering', 'Takrenner', 'Tetting']
+    },
+    {
+      id: 'vinduer-dorer-nybygg',
+      name: language === 'is' ? 'Gluggar og hurðir' : 'Vinduer/dører nybygg',
+      nameNorwegian: 'Vinduer/dører nybygg',
+      description: language === 'is'
+        ? 'Uppsetning gluggara og hurða í nýbyggingum með nútímalegri tækni.'
+        : 'Installasjon av vinduer og dører i nybygg med moderne teknologi.',
+      professionals: 700,
+      averagePrice: language === 'is' ? '800.000-4.000.000 kr' : '80.000-400.000 kr',
+      completedJobs: 2200,
+      image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Einingagluggar', 'Garðhurðir', 'Öryggishurðir', 'Smart locks']
+        : ['Elementvinduer', 'Hagedører', 'Sikkerhetsdører', 'Smarte låser']
+    },
+    {
+      id: 'radgivning-prosjektledelse',
+      name: language === 'is' ? 'Verkefnastjórnun' : 'Rådgivning/prosjektledelse',
+      nameNorwegian: 'Rådgivning/prosjektledelse',
+      description: language === 'is'
+        ? 'Fagleg ráðgjöf og verkefnastjórnun fyrir byggingarverkefni.'
+        : 'Profesjonell rådgivning og prosjektledelse for byggeprosjekter.',
+      professionals: 350,
+      averagePrice: language === 'is' ? '500.000-3.000.000 kr' : '50.000-300.000 kr',
+      completedJobs: 1400,
+      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Arkitektar', 'Verkfræðingar', 'Byggingarstjórar', 'Leyfisvinnu']
+        : ['Arkitekter', 'Ingeniører', 'Byggeledere', 'Tillatelser']
+    },
+    {
+      id: 'landskap-utomhus',
+      name: language === 'is' ? 'Landslag og útaumhverfi' : 'Landskap/utomhus',
+      nameNorwegian: 'Landskap/utomhus',
+      description: language === 'is'
+        ? 'Hönnun og framkvæmd á útirýmum og landslagi í kringum nýbyggingar.'
+        : 'Design og utførelse av uteområder og landskap rundt nybygg.',
+      professionals: 450,
+      averagePrice: language === 'is' ? '800.000-5.000.000 kr' : '80.000-500.000 kr',
+      completedJobs: 1000,
+      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Garðhönnun', 'Göngubrautir', 'Bílastæði', 'Úti lýsing']
+        : ['Hagedesign', 'Gangveier', 'Parkeringsplasser', 'Utebelysning']
+    }
+  ];
         : ['Summer Houses', 'Cabins', 'Log Houses', 'Icelandic Design']
     },
     {
