@@ -9,36 +9,63 @@ const CarpenterPage = ({ translations, language }) => {
       id: 'furniture-making',
       name: language === 'is' ? 'Húsgagnasmiða' : 'Furniture Making',
       description: language === 'is' 
-        ? 'Handunnin húsgögn og innréttingar eftir þínum þörfum og hönnun.'
-        : 'Handcrafted furniture and built-ins according to your needs and design.',
-      price: language === 'is' ? '12.000-20.000 kr/klst' : '£60-100/hour',
+        ? 'Handunnin húsgögn og innréttingar eftir þínum þörfum og nákvæmri hönnun.'
+        : 'Handcrafted furniture and built-ins according to your needs and precise design.',
+      price: language === 'is' ? '15.000-25.000 kr/klst' : '900-1500 kr/hour',
       icon: '🪑'
     },
     {
       id: 'renovation-carpentry',
-      name: language === 'is' ? 'Endurbótaverk' : 'Renovation Carpentry',
+      name: language === 'is' ? 'Endurbótaviðgerðir' : 'Renovation Carpentry',
       description: language === 'is'
-        ? 'Trésmíði fyrir endurbætur, parkett og innra klæðning.'
-        : 'Carpentry work for renovations, flooring and interior cladding.',
-      price: language === 'is' ? '10.000-16.000 kr/klst' : '£50-80/hour',
+        ? 'Trésmíði fyrir endurbætur, parket, innra klæðning og byggjarbreytingar.'
+        : 'Carpentry work for renovations, flooring, interior cladding and structural changes.',
+      price: language === 'is' ? '12.000-20.000 kr/klst' : '800-1300 kr/hour',
       icon: '🏠'
     },
     {
       id: 'deck-construction',
-      name: language === 'is' ? 'Verandabygging' : 'Deck Construction',
+      name: language === 'is' ? 'Veranda og útimannvirki' : 'Deck & Outdoor Construction',
       description: language === 'is'
-        ? 'Byggingar veranda, pallar og útimannvirki úr gæðatré.'
-        : 'Construction of decks, patios and outdoor structures from quality wood.',
-      price: language === 'is' ? '13.000-19.000 kr/klst' : '£65-95/hour',
+        ? 'Bygging veranda, palla og útimannvirkja úr veðurþolnu gæðatré.'
+        : 'Construction of decks, patios and outdoor structures from weather-resistant quality wood.',
+      price: language === 'is' ? '16.000-24.000 kr/klst' : '1000-1600 kr/hour',
       icon: '🏗️'
+    },
+    {
+      id: 'kitchen-carpentry',
+      name: language === 'is' ? 'Eldhúsinnréttingar' : 'Kitchen Carpentry',
+      description: language === 'is'
+        ? 'Sérhæfð trésmíði fyrir eldhúsinnréttingar, skápa og vinnuborð.'
+        : 'Specialized carpentry for kitchen installations, cabinets and worktops.',
+      price: language === 'is' ? '18.000-28.000 kr/klst' : '1100-1700 kr/hour',
+      icon: '👨‍🍳'
+    },
+    {
+      id: 'flooring-installation',
+      name: language === 'is' ? 'Gólflagning' : 'Flooring Installation',
+      description: language === 'is'
+        ? 'Fagleg uppsetning parkets, laminats og annarra tréyfirborða.'
+        : 'Professional installation of parquet, laminate and other wood surfaces.',
+      price: language === 'is' ? '10.000-18.000 kr/klst' : '700-1200 kr/hour',
+      icon: '🪵'
+    },
+    {
+      id: 'roofing-carpentry',
+      name: language === 'is' ? 'Þaksmíði' : 'Roofing Carpentry',
+      description: language === 'is'
+        ? 'Þakstólssmíði, kippubyggingar og þakviðgerðir með áratuga reynslu.'
+        : 'Roof truss construction, rafter building and roof repairs with decades of experience.',
+      price: language === 'is' ? '14.000-22.000 kr/klst' : '900-1400 kr/hour',
+      icon: '🏠'
     },
     {
       id: 'repair-restoration',
       name: language === 'is' ? 'Viðgerðir og endurnýjun' : 'Repair & Restoration',
       description: language === 'is'
-        ? 'Viðgerð og endurnýjun gamlra húsgagna og trésmíðaverka.'
-        : 'Repair and restoration of old furniture and woodwork.',
-      price: language === 'is' ? '9.000-15.000 kr/klst' : '£45-75/hour',
+        ? 'Viðgerð og endurnýjun gamlra húsgagna, trésmíðaverka og sögulegra byggingarhluta.'
+        : 'Repair and restoration of old furniture, woodwork and historic building components.',
+      price: language === 'is' ? '11.000-19.000 kr/klst' : '700-1300 kr/hour',
       icon: '🔨'
     }
   ];
