@@ -186,24 +186,6 @@ const BuildNewCategoryPage = ({ translations, language }) => {
         : ['Hagedesign', 'Gangveier', 'Parkeringsplasser', 'Utebelysning']
     }
   ];
-        : ['Summer Houses', 'Cabins', 'Log Houses', 'Icelandic Design']
-    },
-    {
-      id: 'project-management',
-      name: language === 'is' ? 'Verkefnastjórnun' : 'Project Management',
-      nameEnglish: 'Project Management',
-      description: language === 'is'
-        ? 'Heildarstjórnun byggingarverkefna frá skipulagningu til afhendingar.'
-        : 'Complete management of construction projects from planning to delivery.',
-      professionals: 300,
-      averagePrice: language === 'is' ? '500.000-5.000.000 kr' : '£2,500-25,000',
-      completedJobs: 900,
-      image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400&h=250&fit=crop',
-      specialties: language === 'is'
-        ? ['Skipulagning', 'Umsjón', 'Tímasetning', 'Kostnaðarstjórnun']
-        : ['Planning', 'Supervision', 'Scheduling', 'Cost Management']
-    }
-  ];
 
   const breadcrumbs = [
     { name: language === 'is' ? 'Heim' : 'Home', href: '/' },
