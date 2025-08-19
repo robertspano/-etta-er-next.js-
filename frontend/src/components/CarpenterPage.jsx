@@ -264,8 +264,8 @@ const CarpenterPage = ({ translations, language }) => {
             {language === 'is' ? 'Trésmíðaþjónusta' : 'Carpentry Services'}
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {carpentryServices.map(service => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {carpentryServices.slice(0,4).map(service => (
               <div key={service.id} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
                 <div className="text-4xl mb-4">{service.icon}</div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -279,6 +279,78 @@ const CarpenterPage = ({ translations, language }) => {
                 </div>
               </div>
             ))}
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            {carpentryServices.slice(4).map(service => (
+              <div key={service.id} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  {service.name}
+                </h3>
+                <p className="text-gray-600 text-sm mb-4">
+                  {service.description}
+                </p>
+                <div className="text-amber-600 font-medium text-sm">
+                  {service.price}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Pricing Information */}
+          <div className="bg-amber-50 rounded-xl p-8 mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+              {language === 'is' ? 'Hvað kostar snekkar?' : 'What does a carpenter cost?'}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-amber-600 mb-2">800-1700 kr/hour</div>
+                <p className="text-gray-600">
+                  {language === 'is' ? 'Venjulegur tímagjald trésmíðamanns' : 'Typical carpenter hourly rate'}
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-green-600 mb-2">32,000 kr</div>
+                <p className="text-gray-600">
+                  {language === 'is' ? 'Meðaltal verkefnis á BuildConnect 2025' : 'Average project on BuildConnect 2025'}
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          {/* What can carpenters help with */}
+          <div className="bg-white p-8 rounded-xl border border-gray-200">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              {language === 'is' ? 'Hvað getur snekkar hjálpað við?' : 'What can a carpenter help with?'}
+            </h3>
+            <p className="text-gray-700 mb-6 text-lg">
+              {language === 'is'
+                ? 'Snekkarar eru trésmíðasérfræðingar sem geta hjálpað við allt sem tengist trévinnuþörf. Frá smáum viðgerðum til stórra byggingarverkefna.'
+                : 'Carpenters are woodworking specialists who can help with everything related to wood work needs. From small repairs to large construction projects.'
+              }
+            </p>
+            
+            <h4 className="text-xl font-semibold text-gray-900 mb-4">
+              {language === 'is' ? 'Snekkarar á BuildConnect geta hjálpað þér við:' : 'Carpenters on BuildConnect can help you with:'}
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                { is: 'Húsgögnasmiði og innréttingar', en: 'Furniture making and built-ins' },
+                { is: 'Eldhúsinnréttingar og skápasmíði', en: 'Kitchen installations and cabinet making' },
+                { is: 'Gólflagning og parketlagnir', en: 'Flooring installation and parquet' },
+                { is: 'Veranda og útibyggingar', en: 'Decks and outdoor structures' },
+                { is: 'Þaksmíði og kippubyggingar', en: 'Roofing carpentry and truss construction' },
+                { is: 'Endurbótaviðgerðir og endurnýjun', en: 'Renovation repairs and restoration' },
+                { is: 'Glugga og hurðasetningar', en: 'Window and door installations' },
+                { is: 'Tréveðgeislun og viðhald', en: 'Wood treatment and maintenance' }
+              ].map((item, index) => (
+                <div key={index} className="flex items-center">
+                  <span className="text-amber-500 mr-2">✓</span>
+                  <span className="text-gray-700">{language === 'is' ? item.is : item.en}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
