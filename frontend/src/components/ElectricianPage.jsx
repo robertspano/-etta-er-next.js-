@@ -653,21 +653,21 @@ const ElectricianPage = ({ translations, language }) => {
       <div className="py-16">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            {language === 'is' ? 'Öryggi og gæði' : 'Sikkerhet og kvalitet'}
+            {language === 'is' ? 'Öryggi og gæði' : 'Safety and quality'}
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div className="text-center">
               <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🛡️</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                {language === 'is' ? 'Löggiltir rafvirkjar' : 'Autoriserte elektrikere'}
+                {language === 'is' ? 'Löggiltir rafvirkjar' : 'Certified electricians'}
               </h3>
               <p className="text-gray-600">
                 {language === 'is'
                   ? 'Allir rafvirkjar okkar eru löggiltir og hafa nauðsynlega vottorð.'
-                  : 'Alle våre elektrikere er autoriserte og har nødvendige sertifiseringer.'
+                  : 'All our electricians are licensed and have the necessary certifications.'
                 }
               </p>
             </div>
@@ -677,12 +677,12 @@ const ElectricianPage = ({ translations, language }) => {
                 <span className="text-2xl">📋</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                {language === 'is' ? 'Regluvarsla' : 'Forskriftsmessig'}
+                {language === 'is' ? 'Reglugerðarvarsla' : 'Regulation compliance'}
               </h3>
               <p className="text-gray-600">
                 {language === 'is'
                   ? 'Öll vinna er unnin samkvæmt gildandi reglugerðum og stöðlum.'
-                  : 'Alt arbeid utføres i henhold til gjeldende forskrifter og standarder.'
+                  : 'All work is performed according to applicable regulations and standards.'
                 }
               </p>
             </div>
@@ -692,14 +692,63 @@ const ElectricianPage = ({ translations, language }) => {
                 <span className="text-2xl">⚡</span>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                {language === 'is' ? 'Öryggisábyrgð' : 'Sikkerhetsgaranti'}
+                {language === 'is' ? 'Öryggisábyrgð' : 'Safety guarantee'}
               </h3>
               <p className="text-gray-600">
                 {language === 'is'
                   ? 'Við bjóðum upp á ábyrgð á öllum rafmagnstengdum verkum.'
-                  : 'Vi tilbyr garanti på alt elektrisk arbeid som utføres.'
+                  : 'We offer warranty on all electrical work performed.'
                 }
               </p>
+            </div>
+          </div>
+          
+          {/* Professional Requirements */}
+          <div className="bg-blue-50 p-8 rounded-xl">
+            <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
+              {language === 'is' ? 'Allir rafvirkjar með löggildingu' : 'All electricians have certification'}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                  {language === 'is' ? 'Kröfur til rafvirkja:' : 'Requirements for electricians:'}
+                </h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-center">
+                    <span className="text-green-500 mr-2">✓</span>
+                    {language === 'is' ? 'Löggild rafvirkjalöggildíng' : 'Licensed electrician certification'}
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-green-500 mr-2">✓</span>
+                    {language === 'is' ? 'Tryggingar og ábyrgðartryggingar' : 'Insurance and liability coverage'}
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-green-500 mr-2">✓</span>
+                    {language === 'is' ? 'Þekking á öryggisreglum' : 'Knowledge of safety regulations'}
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-green-500 mr-2">✓</span>
+                    {language === 'is' ? 'Regluleg endurmenntun' : 'Regular continuing education'}
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-gray-700 leading-relaxed">
+                  {language === 'is'
+                    ? 'Til að vera rafvirki á BuildConnect verður fyrirtækið að hafa viðeigandi löggildingu og uppfylla kröfur sem gerðar eru til þess að vera rafvirki í íslenska regluverkinu.'
+                    : 'To be an electrician on BuildConnect, the company must have appropriate licensing and meet the requirements set for being an electrician in the Icelandic regulatory framework.'
+                  }
+                </p>
+                <p className="text-gray-700 mt-4">
+                  <span className="font-semibold">
+                    {language === 'is' ? 'Mikilvægt:' : 'Important:'}
+                  </span>{' '}
+                  {language === 'is'
+                    ? 'Þetta þýðir að rafvirkjar okkar uppfylla kröfur sem gerðar eru til öryggis og gæða.'
+                    : 'This means our electricians meet the requirements for safety and quality.'
+                  }
+                </p>
+              </div>
             </div>
           </div>
         </div>
