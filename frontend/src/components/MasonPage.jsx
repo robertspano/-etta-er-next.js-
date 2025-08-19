@@ -9,36 +9,63 @@ const MasonPage = ({ translations, language }) => {
       id: 'brickwork',
       name: language === 'is' ? 'Múrverk' : 'Brickwork',
       description: language === 'is' 
-        ? 'Fagleg múrvinna úr steini, múrsteinum og öðrum byggingarefnum.'
-        : 'Professional masonry work with stone, bricks and other building materials.',
-      price: language === 'is' ? '15.000-25.000 kr/klst' : '£75-125/hour',
+        ? 'Fagleg múrvinna úr steini, múrsteinum og öðrum byggingarefnum með áratuga reynslu.'
+        : 'Professional masonry work with stone, bricks and other building materials with decades of experience.',
+      price: language === 'is' ? '18.000-28.000 kr/klst' : '1200-1800 kr/hour',
       icon: '🧱'
     },
     {
       id: 'concrete-work',
-      name: language === 'is' ? 'Steinsteypa' : 'Concrete Work',
+      name: language === 'is' ? 'Steinsteypa og grunnar' : 'Concrete Work & Foundations',
       description: language === 'is'
-        ? 'Steypuvinna fyrir grunna, veggi og aðrar byggingarframkvæmdir.'
-        : 'Concrete work for foundations, walls and other construction projects.',
-      price: language === 'is' ? '12.000-20.000 kr/klst' : '£60-100/hour',
+        ? 'Steinsteypa fyrir grunna, veggi og aðrar framkvæmdir með nákvæmni og gæðum.'
+        : 'Concrete work for foundations, walls and other construction projects with precision and quality.',
+      price: language === 'is' ? '15.000-25.000 kr/klst' : '1000-1600 kr/hour',
       icon: '⚒️'
     },
     {
       id: 'stone-walls',
-      name: language === 'is' ? 'Steinveggir' : 'Stone Walls',
+      name: language === 'is' ? 'Náttúrusteinveggir' : 'Natural Stone Walls',
       description: language === 'is'
-        ? 'Bygging og viðgerð steinveggja, stuðningsveggja og garðveggja.'
-        : 'Construction and repair of stone walls, retaining walls and garden walls.',
-      price: language === 'is' ? '18.000-28.000 kr/klst' : '£90-140/hour',
+        ? 'Bygging náttúrusteina veggja, stuðningsveggja og íslenskra garðveggja.'
+        : 'Construction of natural stone walls, retaining walls and Icelandic garden walls.',
+      price: language === 'is' ? '22.000-35.000 kr/klst' : '1400-2200 kr/hour',
       icon: '🪨'
+    },
+    {
+      id: 'chimney-construction',
+      name: language === 'is' ? 'Reykháfasmíði' : 'Chimney Construction',
+      description: language === 'is'
+        ? 'Bygging og viðgerð reykháfa, eldavéla og eldstæða með öryggisstaðlum.'
+        : 'Construction and repair of chimneys, fireplaces and hearths with safety standards.',
+      price: language === 'is' ? '20.000-30.000 kr/klst' : '1300-1900 kr/hour',
+      icon: '🏠'
+    },
+    {
+      id: 'paving-stonework',
+      name: language === 'is' ? 'Hellulagnir' : 'Paving & Stonework',
+      description: language === 'is'
+        ? 'Fagleg hellulagnir, garðstéttir og útiflötur með þolnum efnum.'
+        : 'Professional paving, garden paths and outdoor surfaces with durable materials.',
+      price: language === 'is' ? '16.000-26.000 kr/klst' : '1100-1700 kr/hour',
+      icon: '🪨'
+    },
+    {
+      id: 'waterproofing',
+      name: language === 'is' ? 'Vatnsþétting' : 'Waterproofing',
+      description: language === 'is'
+        ? 'Vatnsþétting kjallarveggja, grunna og annarra steinbygginga gegn rakka.'
+        : 'Waterproofing of basement walls, foundations and other stone structures against moisture.',
+      price: language === 'is' ? '14.000-22.000 kr/klst' : '900-1400 kr/hour',
+      icon: '💧'
     },
     {
       id: 'repair-restoration',
       name: language === 'is' ? 'Viðgerðir og endurnýjun' : 'Repair & Restoration',
       description: language === 'is'
-        ? 'Viðgerð og endurnýjun gamalla múrverka og steinbygginga.'
-        : 'Repair and restoration of old masonry and stone buildings.',
-      price: language === 'is' ? '16.000-24.000 kr/klst' : '£80-120/hour',
+        ? 'Viðgerð og endurnýjun gamalla múrverka, steinbygginga og sögulegra mannvirkja.'
+        : 'Repair and restoration of old masonry, stone buildings and historic structures.',
+      price: language === 'is' ? '19.000-32.000 kr/klst' : '1200-2000 kr/hour',
       icon: '🔨'
     }
   ];
