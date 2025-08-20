@@ -1,16 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import { translations } from '@/data/translations';
-import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import HowItWorks from '@/components/HowItWorks';
-import PopularProjects from '@/components/PopularProjects';
-import ReviewsSection from '@/components/ReviewsSection';
-import TrustSection from '@/components/TrustSection';
-import ProSignupSection from '@/components/ProSignupSection';
-import Footer from '@/components/Footer';
-import { useReviews } from '@/hooks/useReviews';
+import { translations } from '../data/translations';
+import Header from '../components/Header';
+import Hero from '../components/Hero';
+import HowItWorks from '../components/HowItWorks';
+import PopularProjects from '../components/PopularProjects';
+import ReviewsSection from '../components/ReviewsSection';
+import TrustSection from '../components/TrustSection';
+import ProSignupSection from '../components/ProSignupSection';
+import Footer from '../components/Footer';
+import { useReviews } from '../hooks/useReviews';
 
 export default function HomePage() {
   const [language, setLanguage] = useState('en');
