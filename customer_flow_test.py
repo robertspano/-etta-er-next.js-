@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 from typing import Dict, Any, List
 
 # Get backend URL from environment
-BACKEND_URL = "https://service-finder-75.preview.emergentagent.com/api"
+BACKEND_URL = "https://nordic-builders.preview.emergentagent.com/api"
 
 class CustomerFlowTester:
     def __init__(self):

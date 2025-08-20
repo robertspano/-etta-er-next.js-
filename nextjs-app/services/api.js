@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://service-finder-75.preview.emergentagent.com';
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://nordic-builders.preview.emergentagent.com';
 // Ensure HTTPS is used
 const SECURE_BACKEND_URL = BACKEND_URL.replace(/^http:/, 'https:');
 const API_BASE = `${SECURE_BACKEND_URL}/api`;
