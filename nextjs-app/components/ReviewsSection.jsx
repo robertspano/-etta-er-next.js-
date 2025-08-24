@@ -132,91 +132,151 @@ const ReviewCard = ({ review, language }) => {
 };
 
 const ReviewsSection = ({ reviews = [], translations, language, loading = false, error = null }) => {
-  // Sample fake reviews data - always 3 reviews with 5 stars
+  // Sample reviews with more realistic Mittanbud-style data
   const sampleReviews = [
     {
       id: '1',
       company: {
-        id: 'byggmeistari-reykjavik',
-        name: language === 'is' ? 'Byggmeistari Reykjavík' : 'Reykjavik Construction',
+        id: 'nordic-electric-services',
+        name: 'NORDIC ELECTRIC SERVICES',
         logoUrl: null
       },
       rating: 5,
-      excerpt: language === 'is' 
-        ? 'Frábær þjónusta og fagleg vinnubrögð. Verkið var klárað á réttum tíma og innan fjárhagsramma. Mæli eindregið með þessu fyrirtæki.'
-        : 'Excellent service and professional workmanship. The project was completed on time and within budget. Highly recommend this company.',
+      projectType: 'Install EV charger',
+      excerpt: 'Could complete the job quickly, friendly people, and very professional work. Highly recommend!',
       reviewer: {
-        name: language === 'is' ? 'Sigurdur Einarsson' : 'John Peterson',
-        initial: language === 'is' ? 'S' : 'J',
-        location: language === 'is' ? 'Reykjavík' : 'Reykjavik'
+        name: 'Lisa',
+        initial: 'L',
+        location: 'Reykjavik',
+        verified: true
       },
-      date: '2025-01-10T00:00:00.000Z',
+      date: '2025-01-22T00:00:00.000Z',
       url: '#'
     },
     {
       id: '2', 
       company: {
-        id: 'husasmidi-og-vidgerdir',
-        name: language === 'is' ? 'Húsasmíði & Viðgerðir' : 'Home Building & Repairs',
+        id: 'premium-moving-services',
+        name: 'PREMIUM MOVING SERVICES',
         logoUrl: null
       },
       rating: 5,
-      excerpt: language === 'is'
-        ? 'Mjög áhugasamir og hjálplegir starfsmenn. Góð samskipti í gegnum allt ferlið og útkoman var betri en ég bjóst við.'
-        : 'Very dedicated and helpful staff. Great communication throughout the process and the outcome was better than expected.',
+      projectType: 'Moving Company - From Downtown to Suburbs',
+      excerpt: 'Reliable, professional, made a completely smooth job! Outstanding service from start to finish.',
       reviewer: {
-        name: language === 'is' ? 'Anna Kristjánsdóttir' : 'Sarah Mitchell',
-        initial: language === 'is' ? 'A' : 'S',
-        location: language === 'is' ? 'Kópavogur' : 'Kopavogur'
+        name: 'Mark',
+        initial: 'M',
+        location: 'Kopavogur',
+        verified: true
       },
-      date: '2025-01-05T00:00:00.000Z',
+      date: '2025-01-22T00:00:00.000Z',
       url: '#'
     },
     {
       id: '3',
       company: {
-        id: 'handverksfyrirtaeki-islands',
-        name: language === 'is' ? 'Handverksfyrirtæki Íslands' : 'Iceland Craftsmanship Co.',
+        id: 'expert-cleaning-solutions',
+        name: 'EXPERT CLEANING SOLUTIONS',
         logoUrl: null
       },
       rating: 5,
-      excerpt: language === 'is'
-        ? 'Ótrúlega vandvirkir og nákvæmir í sinni vinnu. Verkið var gert hratt og vel. Mun nota þetta fyrirtæki aftur.'
-        : 'Incredibly meticulous and precise in their work. The job was done quickly and well. Will use this company again.',
+      projectType: 'Moving cleaning - 58m2 - Before 21.01.2025',
+      excerpt: 'We are very satisfied with the cleaning of our apartment. Both professional and thorough work.',
       reviewer: {
-        name: language === 'is' ? 'Gunnar Þórsson' : 'Michael Thompson',
-        initial: language === 'is' ? 'G' : 'M', 
-        location: language === 'is' ? 'Hafnarfjörður' : 'Hafnarfjordur'
+        name: 'Sarah',
+        initial: 'S',
+        location: 'Hafnarfjordur',
+        verified: true
       },
-      date: '2024-12-28T00:00:00.000Z',
+      date: '2025-01-22T00:00:00.000Z',
       url: '#'
     }
   ];
 
-  // Use sample reviews instead of passed reviews
+  // Use sample reviews
   const displayReviews = sampleReviews;
 
   return (
-    <section className="py-16 px-4 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-16 px-4 bg-gray-50">
+      <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            {translations.latestReviewsTitle || "Latest Reviews"}
+            Latest Reviews
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            {translations.latestReviewsSubtitle || "See what our customers say about the professionals they've worked with"}
+            Latest reviews of completed jobs on BuildConnect
           </p>
         </div>
 
-        {/* Reviews Container - Show all 3 reviews side by side */}
-        <div className="relative">
-          {/* Reviews Grid - Always show all 3 reviews horizontally */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {displayReviews.map((review) => (
-              <ReviewCard key={review.id} review={review} language={language} />
-            ))}
-          </div>
+        {/* Reviews Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {displayReviews.map((review) => (
+            <div key={review.id} className="bg-white rounded-lg border border-gray-200 shadow-sm p-6 hover:shadow-md transition-shadow">
+              {/* Company Header */}
+              <div className="flex items-center gap-3 mb-4">
+                {/* Company Logo */}
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 flex-shrink-0 flex items-center justify-center">
+                  <div className="text-white text-sm font-bold">
+                    {review.company.name.split(' ').map(word => word[0]).join('').slice(0, 2)}
+                  </div>
+                </div>
+                
+                {/* Company Name */}
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-bold text-blue-600 hover:text-blue-700 transition-colors text-sm">
+                    {review.company.name}
+                  </h3>
+                </div>
+              </div>
+
+              {/* Project Type */}
+              <div className="mb-4">
+                <p className="font-semibold text-gray-900 text-sm">
+                  {review.projectType}
+                </p>
+              </div>
+
+              {/* Review Excerpt */}
+              <div className="mb-4">
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  {review.excerpt}-
+                  <a href={review.url} className="text-blue-600 hover:text-blue-700 font-medium">
+                    Read more
+                  </a>
+                </p>
+              </div>
+
+              {/* Reviewer Info */}
+              <div className="flex items-center gap-3">
+                {/* Reviewer Avatar */}
+                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                  <span className="text-blue-600 font-bold text-xs">
+                    {review.reviewer.initial}
+                  </span>
+                </div>
+                
+                {/* Reviewer Details */}
+                <div className="flex-1">
+                  <p className="font-semibold text-gray-900 text-sm">
+                    {review.reviewer.name}
+                  </p>
+                  <p className="text-gray-500 text-xs">
+                    {review.reviewer.verified && (
+                      <span className="text-green-600 font-medium">BankID-verified user</span>
+                    )}
+                  </p>
+                  <p className="text-gray-500 text-xs">
+                    {review.reviewer.location}, {new Date(review.date).toLocaleDateString('en-GB', {
+                      day: '2-digit',
+                      month: '2-digit',
+                      year: 'numeric'
+                    })}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
