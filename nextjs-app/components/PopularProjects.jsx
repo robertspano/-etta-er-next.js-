@@ -21,14 +21,14 @@ const PopularProjects = ({ translations }) => {
   ];
 
   return (
-    <section className="py-16 lg:py-20 bg-gray-50">
+    <section className="py-16 lg:py-20 bg-[#faf9f7]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl lg:text-4xl font-bold text-[#1a202c] mb-4">
             Popular projects
           </h2>
-          <p className="text-lg text-gray-600 max-w-4xl mx-auto">
+          <p className="text-lg text-[#4a5568] max-w-4xl mx-auto">
             Whether you're starting a major project or a small task? Post your job and get quotes from relevant businesses and craftsmen - or use the search function to find the right company for you!
           </p>
         </div>
@@ -39,11 +39,11 @@ const PopularProjects = ({ translations }) => {
             <Link
               key={index}
               href={project.href}
-              className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 border border-gray-300 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200"
+              className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 border border-gray-300 rounded-lg px-4 py-2 text-sm font-medium text-[#1a202c] hover:text-[#4f46e5] transition-colors duration-200"
             >
               {project.name}
               {project.count && (
-                <span className="text-gray-500">({project.count})</span>
+                <span className="text-[#4a5568]">({project.count})</span>
               )}
             </Link>
           ))}
