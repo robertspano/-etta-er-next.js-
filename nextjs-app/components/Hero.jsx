@@ -247,7 +247,7 @@ const Hero = ({ translations, language }) => {
                   <Button 
                     type="submit" 
                     size="sm" 
-                    className="absolute right-2 top-2 h-10 px-4 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-medium transition-colors duration-200"
+                    className="absolute right-2 top-2 h-10 px-4 rounded-md bg-[#4f46e5] hover:bg-[#4338ca] text-white font-medium transition-colors duration-200"
                   >
                     <ArrowRight className="h-4 w-4" />
                   </Button>
