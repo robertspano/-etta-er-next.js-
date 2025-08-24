@@ -221,8 +221,9 @@ const Hero = ({ translations, language }) => {
                     type="text"
                     placeholder="What do you need help with?"
                     value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onChange={handleInputChange}
                     onFocus={() => {
+                      console.log('Input focused');
                       if (searchQuery.length > 0) {
                         setShowSuggestions(true);
                       }
