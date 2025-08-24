@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{}"
+self.__REACT_LOADABLE_MANIFEST='{"contexts/TranslationsContext.js -> ../data/translations":{"id":7526,"files":["static/chunks/526.67657513ab1bff7c.js"]}}';

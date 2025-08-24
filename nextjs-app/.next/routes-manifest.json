@@ -1,1 +1,125 @@
-{"version":3,"caseSensitive":false,"basePath":"","rewrites":{"beforeFiles":[],"afterFiles":[],"fallback":[]},"redirects":[{"source":"/:path+/","destination":"/:path+","permanent":true,"internal":true,"regex":"^(?:\\/((?:[^\\/]+?)(?:\\/(?:[^\\/]+?))*))\\/$"}],"headers":[]}
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/all-categories",
+      "regex": "^/all\\-categories(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/all\\-categories(?:/)?$"
+    },
+    {
+      "page": "/categories/build-new",
+      "regex": "^/categories/build\\-new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/categories/build\\-new(?:/)?$"
+    },
+    {
+      "page": "/categories/handcraft",
+      "regex": "^/categories/handcraft(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/categories/handcraft(?:/)?$"
+    },
+    {
+      "page": "/categories/house-garden",
+      "regex": "^/categories/house\\-garden(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/categories/house\\-garden(?:/)?$"
+    },
+    {
+      "page": "/categories/interior-renovation",
+      "regex": "^/categories/interior\\-renovation(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/categories/interior\\-renovation(?:/)?$"
+    },
+    {
+      "page": "/categories/services",
+      "regex": "^/categories/services(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/categories/services(?:/)?$"
+    },
+    {
+      "page": "/job-categories",
+      "regex": "^/job\\-categories(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/job\\-categories(?:/)?$"
+    },
+    {
+      "page": "/login",
+      "regex": "^/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/post/cleaning",
+      "regex": "^/post/cleaning(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/post/cleaning(?:/)?$"
+    },
+    {
+      "page": "/post/housing-associations",
+      "regex": "^/post/housing\\-associations(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/post/housing\\-associations(?:/)?$"
+    },
+    {
+      "page": "/post/moving",
+      "regex": "^/post/moving(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/post/moving(?:/)?$"
+    },
+    {
+      "page": "/register-company",
+      "regex": "^/register\\-company(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/register\\-company(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}
