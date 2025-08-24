@@ -125,15 +125,15 @@ const Header = ({ language, setLanguage, translations }) => {
               onClick={handleRegisterCompany}
               className="text-gray-700 hover:text-blue-700 font-medium transition-colors border-b-2 border-transparent hover:border-blue-700"
             >
-              {translations.registerCompany}
+              Register Company
             </button>
             
             {/* Post Project Button - Primary */}
             <Button 
               onClick={handlePostProject}
-              className="h-10 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium"
+              className="h-10 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium"
             >
-              {translations.postProject}
+              Post project
             </Button>
             
             {/* Menu Pill - Single Interactive Element */}
