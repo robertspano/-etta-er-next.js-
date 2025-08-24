@@ -313,7 +313,7 @@ const Hero = ({ translations, language }) => {
                 <button
                   key={category.key}
                   onClick={() => handleCategoryClick(category.key)}
-                  className="group bg-white border border-gray-200 rounded-lg p-4 hover:border-blue-300 hover:shadow-md transition-all duration-200 text-center min-h-[100px] flex flex-col items-center justify-center gap-2"
+                  className="group bg-white border border-gray-200 rounded-lg p-4 hover:border-[#4f46e5] hover:shadow-md transition-all duration-200 text-center min-h-[100px] flex flex-col items-center justify-center gap-2"
                 >
                   {/* Icon */}
                   <div className="text-blue-600 group-hover:text-blue-700 transition-colors duration-200">
