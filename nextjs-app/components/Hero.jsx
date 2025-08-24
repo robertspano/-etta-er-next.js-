@@ -149,8 +149,16 @@ const Hero = ({ translations, language }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // Handle search logic here
-    console.log('Search query:', searchQuery);
+    if (searchQuery.trim()) {
+      // For now, redirect to job categories page
+      router.push('/job-categories');
+    }
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    setSearchQuery('');
+    setShowSuggestions(false);
+    router.push(suggestion.route);
   };
 
   const handleCategoryClick = (categoryKey) => {
