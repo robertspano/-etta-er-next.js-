@@ -141,86 +141,78 @@ const Hero = ({ translations }) => {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 py-16 lg:py-20 overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-pattern opacity-40"></div>
-      <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl -translate-y-32 translate-x-32"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-indigo-400/15 to-cyan-400/15 rounded-full blur-3xl translate-y-32 -translate-x-32"></div>
+    <section className="relative bg-white py-12 lg:py-16">
+      {/* Clean background like Mittanbud */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-white to-slate-50/40"></div>
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-5 gap-12 lg:gap-16 items-center">
-          {/* Left Content - 60% */}
-          <div className="md:col-span-3 space-y-8 animate-fade-in-up">
-            {/* Title */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight text-shadow">
-              <span className="bg-gradient-to-r from-gray-900 via-blue-800 to-gray-900 bg-clip-text text-transparent whitespace-nowrap">
-                {translations.heroNewTitle}
-              </span>
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content - Clean and focused like Mittanbud */}
+          <div className="space-y-8">
+            {/* Title - Strong and clear like Mittanbud */}
+            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
+              Få jobben gjort!
             </h1>
             
-            {/* Subtitle */}
-            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-2xl font-light">
-              {translations.heroNewSubtitle}
+            {/* Subtitle - Direct and clear messaging */}
+            <p className="text-xl lg:text-2xl text-gray-700 leading-relaxed">
+              Beskriv jobben og <strong>motta tilbud fra dyktige fagfolk.</strong> Gratis og uforpliktende.
             </p>
 
-            {/* Search Input */}
-            <form onSubmit={handleSearch} className="mb-6">
-              <div className="relative max-w-lg group">
+            {/* Search Input - Larger and more prominent like Mittanbud */}
+            <form onSubmit={handleSearch} className="w-full">
+              <div className="relative">
                 <Input
                   type="text"
-                  placeholder={translations.heroSearchPlaceholder}
+                  placeholder="Hva trenger du hjelp til?"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="h-16 pl-7 pr-20 text-lg border-3 border-gray-200 rounded-2xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100/50 shadow-lg backdrop-blur-sm bg-white/90 group-hover:shadow-xl transition-all duration-300"
+                  className="h-14 pl-6 pr-16 text-lg border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 shadow-sm bg-white transition-all duration-200 w-full"
                 />
                 <Button 
                   type="submit" 
                   size="sm" 
-                  className="absolute right-2 top-2 h-12 w-12 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 p-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="absolute right-2 top-2 h-10 px-4 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-medium transition-colors duration-200"
                 >
-                  <ArrowRight className="h-6 w-6" />
+                  <ArrowRight className="h-4 w-4" />
                 </Button>
               </div>
             </form>
 
-            {/* Service Categories Grid - 4x2 on desktop (4 per row), 2x4 mobile */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-3 max-w-2xl">
-              {serviceCategories.map((category, index) => {
-                return (
-                  <button
-                    key={category.key}
-                    onClick={() => handleCategoryClick(category.key)}
-                    className="group inline-flex flex-col items-center gap-2 p-2 cursor-pointer select-none transition-all duration-200 animate-fade-in-up"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    {/* Icon - slightly smaller for better fit */}
-                    <div className="text-[#1B2B5B] group-hover:scale-105 transition-transform duration-200">
-                      <div className="w-6 h-6 md:w-7 md:h-7 flex items-center justify-center">
-                        {category.icon}
-                      </div>
+            {/* Category Grid - Clean 2x4 layout like Mittanbud */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 max-w-2xl">
+              {serviceCategories.map((category, index) => (
+                <button
+                  key={category.key}
+                  onClick={() => handleCategoryClick(category.key)}
+                  className="group bg-white border border-gray-200 rounded-lg p-4 hover:border-blue-300 hover:shadow-md transition-all duration-200 text-center min-h-[100px] flex flex-col items-center justify-center gap-2"
+                >
+                  {/* Icon */}
+                  <div className="text-blue-600 group-hover:text-blue-700 transition-colors duration-200">
+                    <div className="w-8 h-8 flex items-center justify-center">
+                      {category.icon}
                     </div>
-                    
-                    {/* Label with underline on hover - smaller text */}
-                    <span className="text-xs font-medium text-slate-800 group-hover:text-[#1B2B5B] text-center leading-tight transition-all duration-200 relative">
-                      {category.name}
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#1B2B5B] group-hover:w-full transition-all duration-200"></span>
-                    </span>
-                  </button>
-                );
-              })}
+                  </div>
+                  
+                  {/* Label */}
+                  <span className="text-sm font-medium text-gray-800 group-hover:text-blue-700 text-center leading-tight transition-colors duration-200">
+                    {category.name}
+                  </span>
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Right Content - 40% - Hero Image */}
-          <div className="md:col-span-2 flex justify-center items-center">
-            <div className="relative animate-fade-in-up w-full max-w-sm md:max-w-md lg:max-w-lg" style={{ animationDelay: '0.3s' }}>
-              {/* Just the Professional Image - completely clean */}
+          {/* Right Content - Professional image like Mittanbud */}
+          <div className="flex justify-center lg:justify-end">
+            <div className="relative max-w-md lg:max-w-lg xl:max-w-xl">
+              {/* Image with subtle styling */}
               <Image 
                 src="https://customer-assets.emergentagent.com/job_renovate-hub-2/artifacts/zcg02po8_image.png" 
                 alt="Professional Craftsman" 
-                width={500}
-                height={500}
-                className="w-full h-auto object-cover"
+                width={600}
+                height={600}
+                className="w-full h-auto object-cover rounded-lg shadow-lg"
               />
             </div>
           </div>
