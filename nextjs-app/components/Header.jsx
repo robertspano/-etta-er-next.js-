@@ -95,12 +95,12 @@ const Header = ({ language, setLanguage, translations }) => {
   };
 
   return (
-    <header className="bg-white sticky top-0 z-50 border-b border-gray-200">
+    <header className="bg-[#F7F5F3] sticky top-0 z-50 border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-[72px]">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold text-[#1a202c] hover:text-[#4f46e5] transition-colors">
+            <Link href="/" className="text-2xl font-bold text-[#1E293B] hover:text-[#4F46E5] transition-colors">
               BuildConnect
             </Link>
           </div>
