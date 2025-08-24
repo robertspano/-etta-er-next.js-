@@ -232,16 +232,16 @@ const ReviewsSection = ({ reviews = [], translations, language, loading = false,
 
               {/* Project Type */}
               <div className="mb-4">
-                <p className="font-semibold text-gray-900 text-sm">
+                <p className="font-semibold text-[#1a202c] text-sm">
                   {review.projectType}
                 </p>
               </div>
 
               {/* Review Excerpt */}
               <div className="mb-4">
-                <p className="text-gray-700 text-sm leading-relaxed">
+                <p className="text-[#4a5568] text-sm leading-relaxed">
                   {review.excerpt}-
-                  <a href={review.url} className="text-blue-600 hover:text-blue-700 font-medium">
+                  <a href={review.url} className="text-[#4f46e5] hover:text-[#4338ca] font-medium">
                     Read more
                   </a>
                 </p>
