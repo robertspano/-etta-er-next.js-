@@ -5,7 +5,7 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 
-const Footer = ({ translations }) => {
+const Footer = ({ translations = {}, language }) => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -15,10 +15,10 @@ const Footer = ({ translations }) => {
           {/* Company Info */}
           <div>
             <div className="text-2xl font-bold text-blue-400 mb-4">
-              {translations.siteName}
+              {translations.siteName || 'BuildConnect'}
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              {translations.footerDescription}
+              {translations.footerDescription || 'Find qualified professionals for your construction projects.'}
             </p>
             <div className="flex space-x-4">
               <Button size="sm" variant="ghost" className="text-gray-400 hover:text-white p-2">
