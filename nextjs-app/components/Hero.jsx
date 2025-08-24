@@ -216,14 +216,14 @@ const Hero = ({ translations, language }) => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content - Clean and focused like Mittanbud */}
           <div className="space-y-8">
-            {/* Title - Strong and clear */}
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
+            {/* Title - Strong and clear like Mittanbud */}
+            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-[#1a202c] leading-tight">
               Get the Job Done!
             </h1>
             
             {/* Subtitle - Direct and clear messaging */}
-            <p className="text-xl lg:text-2xl text-gray-700 leading-relaxed">
-              Describe your project and <strong>get quotes from trusted professionals.</strong> Free and without obligation.
+            <p className="text-xl lg:text-2xl text-[#4a5568] leading-relaxed">
+              Describe your project and <strong className="text-[#1a202c]">get quotes from trusted professionals.</strong> Free and without obligation.
             </p>
 
             {/* Search Input with Suggestions - Larger and more prominent */}
