@@ -208,9 +208,9 @@ const Hero = ({ translations, language }) => {
   };
 
   return (
-    <section className="relative bg-white py-12 lg:py-16">
+    <section className="relative bg-[#faf9f7] py-12 lg:py-16">
       {/* Clean background like Mittanbud */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-white to-slate-50/40"></div>
+      <div className="absolute inset-0 bg-[#faf9f7]"></div>
       
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
