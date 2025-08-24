@@ -132,22 +132,22 @@ const Hero = ({ translations }) => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content - Clean and focused like Mittanbud */}
           <div className="space-y-8">
-            {/* Title - Strong and clear like Mittanbud */}
+            {/* Title - Strong and clear */}
             <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
-              Få jobben gjort!
+              Get the Job Done!
             </h1>
             
             {/* Subtitle - Direct and clear messaging */}
             <p className="text-xl lg:text-2xl text-gray-700 leading-relaxed">
-              Beskriv jobben og <strong>motta tilbud fra dyktige fagfolk.</strong> Gratis og uforpliktende.
+              Describe your project and <strong>get quotes from trusted professionals.</strong> Free and without obligation.
             </p>
 
-            {/* Search Input - Larger and more prominent like Mittanbud */}
+            {/* Search Input - Larger and more prominent */}
             <form onSubmit={handleSearch} className="w-full">
               <div className="relative">
                 <Input
                   type="text"
-                  placeholder="Hva trenger du hjelp til?"
+                  placeholder="What do you need help with?"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="h-14 pl-6 pr-16 text-lg border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 shadow-sm bg-white transition-all duration-200 w-full"
