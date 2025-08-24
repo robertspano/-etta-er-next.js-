@@ -250,23 +250,23 @@ const ReviewsSection = ({ reviews = [], translations, language, loading = false,
               {/* Reviewer Info */}
               <div className="flex items-center gap-3">
                 {/* Reviewer Avatar */}
-                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-                  <span className="text-blue-600 font-bold text-xs">
+                <div className="w-8 h-8 rounded-full bg-[#f0f0f0] flex items-center justify-center flex-shrink-0">
+                  <span className="text-[#1a202c] font-bold text-xs">
                     {review.reviewer.initial}
                   </span>
                 </div>
                 
                 {/* Reviewer Details */}
                 <div className="flex-1">
-                  <p className="font-semibold text-gray-900 text-sm">
+                  <p className="font-semibold text-[#1a202c] text-sm">
                     {review.reviewer.name}
                   </p>
-                  <p className="text-gray-500 text-xs">
+                  <p className="text-green-600 text-xs">
                     {review.reviewer.verified && (
-                      <span className="text-green-600 font-medium">BankID-verified user</span>
+                      <span className="font-medium">BankID-verified user</span>
                     )}
                   </p>
-                  <p className="text-gray-500 text-xs">
+                  <p className="text-[#4a5568] text-xs">
                     {review.reviewer.location}, {new Date(review.date).toLocaleDateString('en-GB', {
                       day: '2-digit',
                       month: '2-digit',
