@@ -70,6 +70,19 @@ const Hero = ({ translations, language }) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Simple test to force show suggestions 
+  useEffect(() => {
+    if (searchQuery === 'h') {
+      console.log('FORCE SHOWING SUGGESTIONS for h');
+      setSearchSuggestions([
+        { name: 'House renovation', route: '/categories/interior-renovation' },
+        { name: 'Heating system', route: '/categories/house-garden' },
+        { name: 'Handcraft work', route: '/categories/handcraft' }
+      ]);
+      setShowSuggestions(true);
+    }
+  }, [searchQuery]);
+
   const serviceCategories = [
     { 
       key: 'handcraft', 
