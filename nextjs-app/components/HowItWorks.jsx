@@ -38,7 +38,7 @@ const HowItWorks = ({ translations }) => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl lg:text-4xl font-bold text-[#1a202c] mb-4">
             How it works
           </h2>
         </div>
@@ -49,18 +49,18 @@ const HowItWorks = ({ translations }) => {
             const IconComponent = step.icon;
             return (
               <div key={step.id} className="text-center">
-                {/* Step Number - Large and prominent */}
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-600 text-white rounded-full text-xl font-bold mb-6">
+                {/* Step Number - Large and prominent like Mittanbud */}
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-[#1a202c] text-white rounded-full text-xl font-bold mb-6">
                   {step.id}
                 </div>
                 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                <h3 className="text-xl font-bold text-[#1a202c] mb-4">
                   {step.title}
                 </h3>
                 
                 {/* Description */}
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-[#4a5568] leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -68,11 +68,11 @@ const HowItWorks = ({ translations }) => {
           })}
         </div>
 
-        {/* CTA Button */}
+        {/* CTA Button - Exactly like Mittanbud */}
         <div className="text-center">
           <Button 
             onClick={handlePostProject}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold rounded-lg transition-colors duration-200"
+            className="bg-[#4f46e5] hover:bg-[#4338ca] text-white px-8 py-3 text-lg font-semibold rounded-lg transition-colors duration-200"
           >
             Post a Job
           </Button>
