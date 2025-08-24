@@ -217,7 +217,7 @@ const Hero = ({ translations, language }) => {
             <div className="w-full relative" ref={searchRef}>
               <form onSubmit={handleSearch}>
                 <div className="relative">
-                  <Input
+                  <input
                     type="text"
                     placeholder="What do you need help with?"
                     value={searchQuery}
