@@ -16,7 +16,7 @@
       "static/chunks/619-ba102abea3e3d0e4.js",
       "static/chunks/900-edaf35f04b0cf42e.js",
       "static/chunks/117-e9646821a142d536.js",
-      "static/chunks/app/layout-481a15b621f7444a.js"
+      "static/chunks/app/layout-8cf516d237326771.js"
     ],
     "/all-categories/page": [
       "static/chunks/webpack-fd6fcf0b5e6d7595.js",
@@ -89,19 +89,19 @@
       "static/chunks/967-64993f5ed9ed3ccb.js",
       "static/chunks/app/page-e815a03b1a958d73.js"
     ],
-    "/post/housing-associations/page": [
-      "static/chunks/webpack-fd6fcf0b5e6d7595.js",
-      "static/chunks/4bd1b696-c023c6e3521b1417.js",
-      "static/chunks/255-01c481785f268126.js",
-      "static/chunks/main-app-f51ab71cfc680c80.js",
-      "static/chunks/app/post/housing-associations/page-28df4e0bb21790ef.js"
-    ],
     "/post/cleaning/page": [
       "static/chunks/webpack-fd6fcf0b5e6d7595.js",
       "static/chunks/4bd1b696-c023c6e3521b1417.js",
       "static/chunks/255-01c481785f268126.js",
       "static/chunks/main-app-f51ab71cfc680c80.js",
       "static/chunks/app/post/cleaning/page-0930cb448fa45d26.js"
+    ],
+    "/post/housing-associations/page": [
+      "static/chunks/webpack-fd6fcf0b5e6d7595.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-01c481785f268126.js",
+      "static/chunks/main-app-f51ab71cfc680c80.js",
+      "static/chunks/app/post/housing-associations/page-28df4e0bb21790ef.js"
     ],
     "/post/moving/page": [
       "static/chunks/webpack-fd6fcf0b5e6d7595.js",

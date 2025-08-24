@@ -9,8 +9,8 @@
   "/job-categories/page": "app/job-categories/page.js",
   "/login/page": "app/login/page.js",
   "/page": "app/page.js",
-  "/post/housing-associations/page": "app/post/housing-associations/page.js",
   "/post/cleaning/page": "app/post/cleaning/page.js",
+  "/post/housing-associations/page": "app/post/housing-associations/page.js",
   "/post/moving/page": "app/post/moving/page.js",
   "/register-company/page": "app/register-company/page.js"
 }

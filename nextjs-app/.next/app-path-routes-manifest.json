@@ -9,8 +9,8 @@
   "/job-categories/page": "/job-categories",
   "/login/page": "/login",
   "/page": "/",
-  "/post/housing-associations/page": "/post/housing-associations",
   "/post/cleaning/page": "/post/cleaning",
+  "/post/housing-associations/page": "/post/housing-associations",
   "/post/moving/page": "/post/moving",
   "/register-company/page": "/register-company"
 }
