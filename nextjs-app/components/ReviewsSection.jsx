@@ -216,7 +216,7 @@ const ReviewsSection = ({ reviews = [], translations, language, loading = false,
               {/* Company Header */}
               <div className="flex items-center gap-3 mb-4">
                 {/* Company Logo */}
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 flex-shrink-0 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#4f46e5] to-[#4338ca] flex-shrink-0 flex items-center justify-center">
                   <div className="text-white text-sm font-bold">
                     {review.company.name.split(' ').map(word => word[0]).join('').slice(0, 2)}
                   </div>
@@ -224,7 +224,7 @@ const ReviewsSection = ({ reviews = [], translations, language, loading = false,
                 
                 {/* Company Name */}
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-blue-600 hover:text-blue-700 transition-colors text-sm">
+                  <h3 className="font-bold text-[#4f46e5] hover:text-[#4338ca] transition-colors text-sm">
                     {review.company.name}
                   </h3>
                 </div>
