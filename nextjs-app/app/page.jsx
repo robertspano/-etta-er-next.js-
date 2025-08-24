@@ -1,10 +1,24 @@
 'use client';
 
+import { useTranslations } from '../contexts/TranslationsContext';
+import Hero from '../components/Hero';
+import HowItWorks from '../components/HowItWorks';
+import PopularProjects from '../components/PopularProjects';
+import ReviewsSection from '../components/ReviewsSection';
+import TrustSection from '../components/TrustSection';
+import ProSignupSection from '../components/ProSignupSection';
+
 export default function HomePage() {
+  const { translations, language } = useTranslations();
+  
   return (
     <div className="min-h-screen bg-white">
-      <h1 className="text-4xl font-bold text-center py-20">Next.js Migration Complete</h1>
-      <p className="text-center text-gray-600">This is the migrated BuildConnect application</p>
+      <Hero translations={translations} language={language} />
+      <HowItWorks translations={translations} language={language} />
+      <PopularProjects translations={translations} language={language} />
+      <ReviewsSection translations={translations} language={language} />
+      <TrustSection translations={translations} language={language} />
+      <ProSignupSection translations={translations} language={language} />
     </div>
   );
 }
