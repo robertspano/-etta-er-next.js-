@@ -110,7 +110,7 @@ const Header = ({ language, setLanguage, translations }) => {
             {/* Language Switcher - Text Style */}
             <div className="relative">
               <Select value={language} onValueChange={setLanguage}>
-                <SelectTrigger className="h-10 px-3 bg-transparent hover:bg-gray-50 border-0 text-sm font-medium">
+                <SelectTrigger className="h-10 px-3 bg-transparent hover:bg-[#F8FAFC] border-0 text-sm font-medium text-[#1E293B]">
                   <span>{language === 'is' ? 'Icelandic' : 'English'}</span>
                 </SelectTrigger>
                 <SelectContent>
@@ -123,7 +123,7 @@ const Header = ({ language, setLanguage, translations }) => {
             {/* Register Company - Text with Hover Underline */}
             <button 
               onClick={handleRegisterCompany}
-              className="text-[#1a202c] hover:text-[#4f46e5] font-medium transition-colors border-b-2 border-transparent hover:border-[#4f46e5]"
+              className="text-[#1E293B] hover:text-[#4F46E5] font-medium transition-colors border-b-2 border-transparent hover:border-[#4F46E5]"
             >
               Register Company
             </button>
@@ -131,7 +131,7 @@ const Header = ({ language, setLanguage, translations }) => {
             {/* Post Project Button - Primary */}
             <Button 
               onClick={handlePostProject}
-              className="h-10 px-4 bg-[#4f46e5] hover:bg-[#4338ca] text-white rounded-lg font-medium"
+              className="h-10 px-4 bg-[#4F46E5] hover:bg-[#4338CA] text-white rounded-lg font-medium"
             >
               Post project
             </Button>
