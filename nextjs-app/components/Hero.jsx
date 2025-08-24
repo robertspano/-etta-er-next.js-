@@ -19,7 +19,7 @@ const Hero = ({ translations }) => {
           <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
         </svg>
       ), 
-      name: "Håndverk" 
+      name: "Handcraft" 
     },
     { 
       key: 'bathroom', 
@@ -32,7 +32,7 @@ const Hero = ({ translations }) => {
           <circle cx="14" cy="13" r="1"/>
         </svg>
       ), 
-      name: "Pusse opp bad" 
+      name: "Bathroom" 
     },
     { 
       key: 'automotive', 
@@ -41,7 +41,7 @@ const Hero = ({ translations }) => {
           <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
         </svg>
       ), 
-      name: "Bilverksted" 
+      name: "Automotive" 
     },
     { 
       key: 'majorProjects', 
@@ -50,7 +50,7 @@ const Hero = ({ translations }) => {
           <span className="text-xl lg:text-2xl font-black">XL</span>
         </div>
       ), 
-      name: "Store prosjekter" 
+      name: "Major Projects" 
     },
     { 
       key: 'cleaning', 
@@ -68,7 +68,7 @@ const Hero = ({ translations }) => {
           <path d="M20 4l0.8 0.8-0.8 0.8-0.8-0.8z"/>
         </svg>
       ), 
-      name: "Rengjøring" 
+      name: "Cleaning" 
     },
     { 
       key: 'housingAssociations', 
@@ -77,7 +77,7 @@ const Hero = ({ translations }) => {
           <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z"/>
         </svg>
       ), 
-      name: "Borettslag og sameier" 
+      name: "Housing Associations" 
     },
     { 
       key: 'moving', 
@@ -86,7 +86,7 @@ const Hero = ({ translations }) => {
           <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
         </svg>
       ), 
-      name: "Flytting og transport" 
+      name: "Moving & Transport" 
     },
     { 
       key: 'allCategories', 
@@ -95,7 +95,7 @@ const Hero = ({ translations }) => {
           <path d="M3 3v8h8V3H3zm6 6H5V5h4v4zm-6 4v8h8v-8H3zm6 6H5v-4h4v4zm4-16v8h8V3h-8zm6 6h-4V5h4v4zm-6 4v8h8v-8h-8zm6 6h-4v-4h4v4z"/>
         </svg>
       ), 
-      name: "Alle kategorier" 
+      name: "All Categories" 
     }
   ];
 
