@@ -17,6 +17,7 @@ export default function HomePage() {
       <Hero translations={translations} language={language} />
       <HowItWorks translations={translations} language={language} />
       <PopularProjects translations={translations} language={language} />
+      <FindCompanySection translations={translations} language={language} />
       <ReviewsSection translations={translations} language={language} />
       <TrustSection translations={translations} language={language} />
       <ProSignupSection translations={translations} language={language} />
