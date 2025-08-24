@@ -172,6 +172,12 @@ const Hero = ({ translations, language }) => {
     setSearchQuery(value);
   };
 
+  const handleSuggestionClick = (suggestion) => {
+    setSearchQuery('');
+    setShowSuggestions(false);
+    router.push(suggestion.route);
+  };
+
   const handleCategoryClick = (categoryKey) => {
     if (categoryKey === 'allCategories') {
       router.push('/all-categories');
