@@ -97,6 +97,43 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[#F7F5F3] text-[#1E293B];
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+}
+
+/* Mittanbud.no specific styles */
+@layer utilities {
+  .mittanbud-bg {
+    background-color: var(--mittanbud-beige);
+  }
+  
+  .mittanbud-bg-light {
+    background-color: var(--mittanbud-beige-light);
+  }
+  
+  .mittanbud-text {
+    color: var(--mittanbud-navy);
+  }
+  
+  .mittanbud-text-light {
+    color: var(--mittanbud-navy-light);
+  }
+  
+  .mittanbud-text-gray {
+    color: var(--mittanbud-gray);
+  }
+  
+  .mittanbud-btn {
+    background-color: var(--mittanbud-blue);
+    color: white;
+  }
+  
+  .mittanbud-btn:hover {
+    background-color: var(--mittanbud-blue-hover);
+  }
+  
+  .mittanbud-border {
+    border-color: var(--mittanbud-border);
   }
 }
