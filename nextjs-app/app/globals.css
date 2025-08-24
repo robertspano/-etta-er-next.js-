@@ -4,33 +4,47 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Mittanbud.no Color Palette */
+    --mittanbud-beige: #F7F5F3;
+    --mittanbud-beige-light: #FAFAF9;
+    --mittanbud-navy: #1E293B;
+    --mittanbud-navy-light: #334155;
+    --mittanbud-blue: #4F46E5;
+    --mittanbud-blue-hover: #4338CA;
+    --mittanbud-blue-light: #6366F1;
+    --mittanbud-gray: #64748B;
+    --mittanbud-gray-light: #94A3B8;
+    --mittanbud-border: #E2E8F0;
+    --mittanbud-white: #FFFFFF;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Updated CSS variables to match Mittanbud */
+    --background: #F7F5F3;
+    --foreground: #1E293B;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --card: #FFFFFF;
+    --card-foreground: #1E293B;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --popover: #FFFFFF;
+    --popover-foreground: #1E293B;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
+    --primary: #4F46E5;
+    --primary-foreground: #FFFFFF;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --secondary: #F1F5F9;
+    --secondary-foreground: #1E293B;
 
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
+    --muted: #F8FAFC;
+    --muted-foreground: #64748B;
+
+    --accent: #F1F5F9;
+    --accent-foreground: #1E293B;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: #E2E8F0;
+    --input: #E2E8F0;
+    --ring: #4F46E5;
 
     --radius: 0.5rem;
 
