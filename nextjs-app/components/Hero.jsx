@@ -211,7 +211,12 @@ const Hero = ({ translations, language }) => {
                     placeholder="What do you need help with?"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    onFocus={() => searchQuery && setShowSuggestions(true)}
+                    onFocus={() => {
+                      if (searchQuery.length > 0) {
+                        setShowSuggestions(true);
+                      }
+                    }}
+                    autoComplete="off"
                     className="h-14 pl-6 pr-16 text-lg border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 shadow-sm bg-white transition-all duration-200 w-full"
                   />
                   <Button 
