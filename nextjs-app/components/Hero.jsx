@@ -226,19 +226,40 @@ const Hero = ({ translations, language }) => {
 
               {/* Search Suggestions Dropdown - Exactly like Mittanbud */}
               {showSuggestions && searchSuggestions.length > 0 && (
-                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
+                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-300 rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
                   {searchSuggestions.map((suggestion, index) => (
                     <button
                       key={index}
                       onClick={() => handleSuggestionClick(suggestion)}
-                      className="w-full text-left px-6 py-3 hover:bg-gray-50 text-gray-800 border-b border-gray-100 last:border-b-0 transition-colors duration-150"
+                      className="w-full text-left px-4 py-3 hover:bg-gray-100 text-gray-800 border-b border-gray-200 last:border-b-0 transition-colors duration-150 text-sm"
                     >
                       {suggestion.name}
                     </button>
                   ))}
                   
                   {/* "Didn't find what you were looking for?" link - exactly like Mittanbud */}
-                  <div className="px-6 py-4 bg-gray-50 text-sm text-gray-600 border-t border-gray-200">
+                  <div className="px-4 py-3 bg-gray-50 text-sm text-gray-600 border-t border-gray-200">
+                    Didn't find what you were looking for?{' '}
+                    <button
+                      onClick={() => {
+                        setShowSuggestions(false);
+                        router.push('/all-categories');
+                      }}
+                      className="text-blue-600 hover:text-blue-700 font-medium underline"
+                    >
+                      See all categories here.
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Show suggestions even when there are no matches but user is typing */}
+              {showSuggestions && searchSuggestions.length === 0 && searchQuery.length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-300 rounded-lg shadow-lg z-50">
+                  <div className="px-4 py-3 text-gray-500 text-sm">
+                    No matches found
+                  </div>
+                  <div className="px-4 py-3 bg-gray-50 text-sm text-gray-600 border-t border-gray-200">
                     Didn't find what you were looking for?{' '}
                     <button
                       onClick={() => {
