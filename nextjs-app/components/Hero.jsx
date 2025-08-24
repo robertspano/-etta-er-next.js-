@@ -40,11 +40,13 @@ const Hero = ({ translations, language }) => {
 
   // Handle search input changes and show suggestions
   useEffect(() => {
+    console.log('Search query changed:', searchQuery);
     if (searchQuery.length > 0) {
       const filtered = allServices.filter(service =>
         service.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         service.name.toLowerCase().startsWith(searchQuery.toLowerCase())
       ).slice(0, 5); // Show max 5 suggestions
+      console.log('Filtered suggestions:', filtered);
       setSearchSuggestions(filtered);
       setShowSuggestions(true);
     } else {
