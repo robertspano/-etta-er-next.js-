@@ -162,19 +162,17 @@ const Hero = ({ translations, language }) => {
   };
 
   const handleCategoryClick = (categoryKey) => {
-    // Special routing for specific categories
     if (categoryKey === 'allCategories') {
       router.push('/all-categories');
     } else if (categoryKey === 'majorProjects') {
       router.push('/xl');
-    } else if (categoryKey === 'housingAssociations') {
-      // Route to housing associations category grid
-      router.push('/post/housing-associations');
     } else if (categoryKey === 'cleaning') {
-      // Route to cleaning subcategory picker
       router.push('/post/cleaning');
+    } else if (categoryKey === 'housingAssociations') {
+      router.push('/post/housing-associations');
+    } else if (categoryKey === 'moving') {
+      router.push('/post/moving');
     } else {
-      // Navigate to job posting wizard with category in URL path
       router.push(`/post/${categoryKey}`);
     }
   };
