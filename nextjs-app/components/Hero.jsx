@@ -14,6 +14,8 @@ const Hero = ({ translations, language }) => {
   const searchRef = useRef(null);
   const router = useRouter();
 
+  console.log('Hero component mounted', { searchQuery, showSuggestions, searchSuggestions });
+
   // All available services for search suggestions
   const allServices = [
     { name: 'Bathroom renovation', category: 'bathroom', route: '/categories/interior-renovation' },
