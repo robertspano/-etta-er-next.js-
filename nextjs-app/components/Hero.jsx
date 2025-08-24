@@ -166,10 +166,10 @@ const Hero = ({ translations, language }) => {
     }
   };
 
-  const handleSuggestionClick = (suggestion) => {
-    setSearchQuery('');
-    setShowSuggestions(false);
-    router.push(suggestion.route);
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    console.log('Input changed:', value);
+    setSearchQuery(value);
   };
 
   const handleCategoryClick = (categoryKey) => {
