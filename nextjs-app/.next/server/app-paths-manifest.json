@@ -1,16 +1,1 @@
-{
-  "/_not-found/page": "app/_not-found/page.js",
-  "/all-categories/page": "app/all-categories/page.js",
-  "/categories/build-new/page": "app/categories/build-new/page.js",
-  "/categories/handcraft/page": "app/categories/handcraft/page.js",
-  "/categories/house-garden/page": "app/categories/house-garden/page.js",
-  "/categories/interior-renovation/page": "app/categories/interior-renovation/page.js",
-  "/categories/services/page": "app/categories/services/page.js",
-  "/job-categories/page": "app/job-categories/page.js",
-  "/login/page": "app/login/page.js",
-  "/page": "app/page.js",
-  "/post/cleaning/page": "app/post/cleaning/page.js",
-  "/post/housing-associations/page": "app/post/housing-associations/page.js",
-  "/post/moving/page": "app/post/moving/page.js",
-  "/register-company/page": "app/register-company/page.js"
-}
+{}
