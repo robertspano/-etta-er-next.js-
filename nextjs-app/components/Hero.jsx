@@ -316,14 +316,14 @@ const Hero = ({ translations, language }) => {
                   className="group bg-white border border-gray-200 rounded-lg p-4 hover:border-[#4f46e5] hover:shadow-md transition-all duration-200 text-center min-h-[100px] flex flex-col items-center justify-center gap-2"
                 >
                   {/* Icon */}
-                  <div className="text-blue-600 group-hover:text-blue-700 transition-colors duration-200">
+                  <div className="text-[#1a202c] group-hover:text-[#4f46e5] transition-colors duration-200">
                     <div className="w-8 h-8 flex items-center justify-center">
                       {category.icon}
                     </div>
                   </div>
                   
                   {/* Label */}
-                  <span className="text-sm font-medium text-gray-800 group-hover:text-blue-700 text-center leading-tight transition-colors duration-200">
+                  <span className="text-sm font-medium text-[#1a202c] group-hover:text-[#4f46e5] text-center leading-tight transition-colors duration-200">
                     {category.name}
                   </span>
                 </button>
