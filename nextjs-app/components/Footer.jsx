@@ -35,34 +35,34 @@ const Footer = ({ translations = {}, language }) => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">{translations.quickLinks}</h3>
+            <h3 className="text-lg font-semibold mb-4">{translations.quickLinks || 'Quick Links'}</h3>
             <ul className="space-y-3">
-              <li><a href="#services" className="text-gray-300 hover:text-white transition-colors">{translations.services}</a></li>
-              <li><a href="#how-it-works" className="text-gray-300 hover:text-white transition-colors">{translations.howItWorks}</a></li>
-              <li><a href="#about" className="text-gray-300 hover:text-white transition-colors">{translations.about}</a></li>
-              <li><a href="#contact" className="text-gray-300 hover:text-white transition-colors">{translations.contact}</a></li>
+              <li><a href="#services" className="text-gray-300 hover:text-white transition-colors">{translations.services || 'Services'}</a></li>
+              <li><a href="#how-it-works" className="text-gray-300 hover:text-white transition-colors">{translations.howItWorks || 'How It Works'}</a></li>
+              <li><a href="#about" className="text-gray-300 hover:text-white transition-colors">{translations.about || 'About'}</a></li>
+              <li><a href="#contact" className="text-gray-300 hover:text-white transition-colors">{translations.contact || 'Contact'}</a></li>
             </ul>
           </div>
 
           {/* Categories */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">{translations.categories}</h3>
+            <h3 className="text-lg font-semibold mb-4">{translations.categories || 'Categories'}</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{translations.services_plumbing}</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{translations.services_electrical}</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{translations.services_carpentry}</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{translations.services_painting}</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{translations.services_plumbing || 'Plumbing'}</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{translations.services_electrical || 'Electrical'}</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{translations.services_carpentry || 'Carpentry'}</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{translations.services_painting || 'Painting'}</a></li>
             </ul>
           </div>
 
           {/* Support */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">{translations.support}</h3>
+            <h3 className="text-lg font-semibold mb-4">{translations.support || 'Support'}</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{translations.helpCenter}</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{translations.safety}</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{translations.terms}</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{translations.privacy}</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{translations.helpCenter || 'Help Center'}</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{translations.safety || 'Safety'}</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{translations.terms || 'Terms'}</a></li>
+              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">{translations.privacy || 'Privacy'}</a></li>
             </ul>
           </div>
         </div>
@@ -70,7 +70,7 @@ const Footer = ({ translations = {}, language }) => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © {currentYear} {translations.siteName}. {translations.allRightsReserved}
+            © {currentYear} {translations.siteName || 'BuildConnect'}. {translations.allRightsReserved || 'All rights reserved'}.
           </p>
           <div className="flex items-center space-x-4 mt-4 md:mt-0 text-sm text-gray-400">
             <div className="flex items-center">
