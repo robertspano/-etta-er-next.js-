@@ -242,8 +242,10 @@ const Hero = ({ translations, language }) => {
               </form>
 
               {/* Search Suggestions Dropdown - Exactly like Mittanbud */}
+              {console.log('Rendering suggestions check:', { showSuggestions, suggestionsLength: searchSuggestions.length })}
               {showSuggestions && searchSuggestions.length > 0 && (
-                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-300 rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
+                <div className="absolute top-full left-0 right-0 mt-1 bg-white border-2 border-blue-300 rounded-lg shadow-xl z-50 max-h-80 overflow-y-auto">
+                  {console.log('Rendering suggestions:', searchSuggestions)}
                   {searchSuggestions.map((suggestion, index) => (
                     <button
                       key={index}
