@@ -7,9 +7,57 @@ import { Button } from './ui/button';
 import { ArrowRight, Search } from 'lucide-react';
 import Image from 'next/image';
 
-const Hero = ({ translations }) => {
+const Hero = ({ translations, language }) => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchSuggestions, setSearchSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const searchRef = useRef(null);
   const router = useRouter();
+
+  // All available services for search suggestions
+  const allServices = [
+    { name: 'Bathroom Renovation', category: 'bathroom', route: '/categories/interior-renovation' },
+    { name: 'Kitchen Renovation', category: 'kitchen', route: '/categories/interior-renovation' },
+    { name: 'Plumber', category: 'plumbing', route: '/categories/handcraft' },
+    { name: 'Electrician', category: 'electrical', route: '/categories/handcraft' },
+    { name: 'Carpenter', category: 'carpentry', route: '/categories/handcraft' },
+    { name: 'Painter', category: 'painting', route: '/categories/handcraft' },
+    { name: 'Roof Repair', category: 'roofing', route: '/categories/house-garden' },
+    { name: 'Window Installation', category: 'windows', route: '/categories/house-garden' },
+    { name: 'Cleaning Service', category: 'cleaning', route: '/post/cleaning' },
+    { name: 'Moving Company', category: 'moving', route: '/post/moving' },
+    { name: 'Garden Work', category: 'gardening', route: '/categories/house-garden' },
+    { name: 'Tiling Work', category: 'tiling', route: '/categories/handcraft' },
+    { name: 'Flooring Installation', category: 'flooring', route: '/categories/interior-renovation' },
+    { name: 'Heating System', category: 'heating', route: '/categories/house-garden' },
+    { name: 'Insulation Work', category: 'insulation', route: '/categories/house-garden' }
+  ];
+
+  // Handle search input changes and show suggestions
+  useEffect(() => {
+    if (searchQuery.length > 0) {
+      const filtered = allServices.filter(service =>
+        service.name.toLowerCase().includes(searchQuery.toLowerCase())
+      ).slice(0, 5); // Show max 5 suggestions
+      setSearchSuggestions(filtered);
+      setShowSuggestions(true);
+    } else {
+      setSearchSuggestions([]);
+      setShowSuggestions(false);
+    }
+  }, [searchQuery]);
+
+  // Close suggestions when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setShowSuggestions(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const serviceCategories = [
     { 
