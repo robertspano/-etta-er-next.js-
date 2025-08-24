@@ -196,25 +196,57 @@ const Hero = ({ translations, language }) => {
               Describe your project and <strong>get quotes from trusted professionals.</strong> Free and without obligation.
             </p>
 
-            {/* Search Input - Larger and more prominent */}
-            <form onSubmit={handleSearch} className="w-full">
-              <div className="relative">
-                <Input
-                  type="text"
-                  placeholder="What do you need help with?"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="h-14 pl-6 pr-16 text-lg border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 shadow-sm bg-white transition-all duration-200 w-full"
-                />
-                <Button 
-                  type="submit" 
-                  size="sm" 
-                  className="absolute right-2 top-2 h-10 px-4 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-medium transition-colors duration-200"
-                >
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </div>
-            </form>
+            {/* Search Input with Suggestions - Larger and more prominent */}
+            <div className="w-full relative" ref={searchRef}>
+              <form onSubmit={handleSearch}>
+                <div className="relative">
+                  <Input
+                    type="text"
+                    placeholder="What do you need help with?"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onFocus={() => searchQuery && setShowSuggestions(true)}
+                    className="h-14 pl-6 pr-16 text-lg border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-100 shadow-sm bg-white transition-all duration-200 w-full"
+                  />
+                  <Button 
+                    type="submit" 
+                    size="sm" 
+                    className="absolute right-2 top-2 h-10 px-4 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-medium transition-colors duration-200"
+                  >
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </div>
+              </form>
+
+              {/* Search Suggestions Dropdown - Exactly like Mittanbud */}
+              {showSuggestions && searchSuggestions.length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
+                  {searchSuggestions.map((suggestion, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleSuggestionClick(suggestion)}
+                      className="w-full text-left px-6 py-3 hover:bg-gray-50 text-gray-800 border-b border-gray-100 last:border-b-0 transition-colors duration-150"
+                    >
+                      {suggestion.name}
+                    </button>
+                  ))}
+                  
+                  {/* "Didn't find what you were looking for?" link - exactly like Mittanbud */}
+                  <div className="px-6 py-4 bg-gray-50 text-sm text-gray-600 border-t border-gray-200">
+                    Didn't find what you were looking for?{' '}
+                    <button
+                      onClick={() => {
+                        setShowSuggestions(false);
+                        router.push('/all-categories');
+                      }}
+                      className="text-blue-600 hover:text-blue-700 font-medium underline"
+                    >
+                      See all categories here.
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
 
             {/* Category Grid - Clean 2x4 layout like Mittanbud */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 max-w-2xl">
