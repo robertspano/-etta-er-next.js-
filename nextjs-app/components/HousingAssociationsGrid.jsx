@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { Search, ArrowRight, Home, DoorOpen, Building, Square, Package, Droplets, Bath, Zap, TreePine, Wrench, Plug, Paintbrush, Hammer, Sparkles, Truck, Grid3X3 } from 'lucide-react';
 
 const HousingAssociationsGrid = ({ translations, language }) => {
@@ -12,97 +13,97 @@ const HousingAssociationsGrid = ({ translations, language }) => {
     {
       key: 'roof',
       icon: <Home className="w-8 h-8" />,
-      name: translations.roof || 'Roof',
+      name: translations.roof || (language === 'is' ? 'Þak' : 'Roof'),
       route: '/post/roof'
     },
     {
       key: 'windowsDoors',
       icon: <DoorOpen className="w-8 h-8" />,
-      name: translations.windowsDoors || 'Windows & Doors', 
+      name: translations.windowsDoors || (language === 'is' ? 'Gluggar og hurðir' : 'Windows & Doors'), 
       route: '/post/windows-doors'
     },
     {
       key: 'facade',
       icon: <Building className="w-8 h-8" />,
-      name: translations.facade || 'Facade',
+      name: translations.facade || (language === 'is' ? 'Útveggir' : 'Facade'),
       route: '/post/facade'
     },
     {
       key: 'balcony',
       icon: <Square className="w-8 h-8" />,
-      name: translations.balcony || 'Balcony',
+      name: translations.balcony || (language === 'is' ? 'Svalir' : 'Balcony'),
       route: '/post/balcony'
     },
     {
       key: 'masonry',
       icon: <Package className="w-8 h-8" />,
-      name: translations.masonry || 'Masonry',
+      name: translations.masonry || (language === 'is' ? 'Múrverk' : 'Masonry'),
       route: '/post/masonry'
     },
     {
       key: 'drainageInsulation',
       icon: <Droplets className="w-8 h-8" />,
-      name: translations.drainageInsulation || 'Drainage & Insulation',
+      name: translations.drainageInsulation || (language === 'is' ? 'Frárennsliser og einangrun' : 'Drainage & Insulation'),
       route: '/post/drainage-insulation'
     },
     {
       key: 'bathroomRenovation',
       icon: <Bath className="w-8 h-8" />,
-      name: translations.bathroomRenovation || 'Bathroom Renovation',
+      name: translations.bathroomRenovation || (language === 'is' ? 'Baðherbergisendurnýjun' : 'Bathroom Renovation'),
       route: '/post/bathroom'
     },
     {
       key: 'evCharger',
       icon: <Zap className="w-8 h-8" />,
-      name: translations.evCharger || 'EV Charger',
+      name: translations.evCharger || (language === 'is' ? 'Rafbílahleðsla' : 'EV Charger'),
       route: '/post/ev-charger'
     },
     {
       key: 'landscaper',
       icon: <TreePine className="w-8 h-8" />,
-      name: translations.landscaper || 'Landscaper',
+      name: translations.landscaper || (language === 'is' ? 'Garðyrkja' : 'Landscaper'),
       route: '/post/landscaping'
     },
     {
       key: 'plumber',
       icon: <Wrench className="w-8 h-8" />,
-      name: translations.plumber || 'Plumber',
+      name: translations.plumber || (language === 'is' ? 'Pípulagningamaður' : 'Plumber'),
       route: '/post/plumbing'
     },
     {
       key: 'electrician',
       icon: <Plug className="w-8 h-8" />,
-      name: translations.electrician || 'Electrician',
+      name: translations.electrician || (language === 'is' ? 'Rafvirki' : 'Electrician'),
       route: '/post/electrical'
     },
     {
       key: 'painter',
       icon: <Paintbrush className="w-8 h-8" />,
-      name: translations.painter || 'Painter',
+      name: translations.painter || (language === 'is' ? 'Málari' : 'Painter'),
       route: '/post/painting'
     },
     {
       key: 'carpenter',
       icon: <Hammer className="w-8 h-8" />,
-      name: translations.carpenter || 'Carpenter',
+      name: translations.carpenter || (language === 'is' ? 'Trésmíðamaður' : 'Carpenter'),
       route: '/post/carpentry'
     },
     {
       key: 'cleaning',
       icon: <Sparkles className="w-8 h-8" />,
-      name: translations.cleaning || 'Cleaning',
+      name: translations.cleaning || (language === 'is' ? 'Þrif' : 'Cleaning'),
       route: '/post/cleaning'
     },
     {
       key: 'movingTransport',
       icon: <Truck className="w-8 h-8" />,
-      name: translations.movingTransport || 'Moving & Transport',
+      name: translations.movingTransport || (language === 'is' ? 'Flutningar og vöruflutninga' : 'Moving & Transport'),
       route: '/post/moving'
     },
     {
       key: 'allCategories',
       icon: <Grid3X3 className="w-8 h-8" />,
-      name: translations.allCategories || 'Other Categories',
+      name: translations.allCategories || (language === 'is' ? 'Aðrir flokkar' : 'Other Categories'),
       route: '/all-categories'
     }
   ];
@@ -114,10 +115,6 @@ const HousingAssociationsGrid = ({ translations, language }) => {
   const filteredCategories = categories.filter(category =>
     category.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
-  const handleBack = () => {
-    router.back();
-  };
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -131,7 +128,7 @@ const HousingAssociationsGrid = ({ translations, language }) => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-            {translations.housingAssociationsTitle || "Choose a category to post your job — completely free"}
+            {translations.housingAssociationsTitle || (language === 'is' ? 'Veldu flokk til að leggja inn verkefnið þitt — alveg ókeypis' : 'Choose a category to post your job — completely free')}
           </h1>
           
           {/* Search Box */}
@@ -141,7 +138,7 @@ const HousingAssociationsGrid = ({ translations, language }) => {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={translations.housingAssociationsSearchPlaceholder || "What do you need help with?"}
+                placeholder={translations.housingAssociationsSearchPlaceholder || (language === 'is' ? 'Hvað þarftu hjálp við?' : 'What do you need help with?')}
                 className="w-full px-6 py-4 text-lg border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pr-14"
               />
               <button
@@ -181,7 +178,7 @@ const HousingAssociationsGrid = ({ translations, language }) => {
         {searchQuery && filteredCategories.length === 0 && (
           <div className="text-center py-12">
             <p className="text-gray-600 text-lg">
-              {translations.noResultsFound || "No categories found matching your search."}
+              {language === 'is' ? 'Engir flokkar fundust sem passa við leitina þína.' : 'Ingen kategorier funnet som matcher søket ditt.'}
             </p>
           </div>
         )}

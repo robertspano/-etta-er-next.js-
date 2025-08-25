@@ -20,6 +20,8 @@ export const translations = {
     // Drawer Categories
     categories: "Categories",
     handcraft: "Handcraft",
+    bathroom: "Bathroom",
+    automotive: "Automotive", 
     homeGarden: "Home & Garden", 
     interiorRenovation: "Interior Renovation",
     buildNew: "Build New",
@@ -27,7 +29,10 @@ export const translations = {
     companySearch: "Company Search",
     new: "New",
     majorProjects: "Major Projects",
+    cleaning: "Cleaning",
     housingAssociations: "Housing Associations",
+    moving: "Moving",
+    allCategories: "All Categories",
     
     // Authentication
     login: "Login",
@@ -185,11 +190,11 @@ export const translations = {
     
     // Housing Associations Categories
     roof: "Roof",
-    windowsDoors: "Windows and Doors",
+    windowsDoors: "Windows & Doors",
     facade: "Facade",
     balcony: "Balcony",
     masonry: "Masonry",
-    drainageInsulation: "Drainage and Insulation",
+    drainageInsulation: "Drainage & Insulation",
     bathroomRenovation: "Bathroom Renovation",
     evCharger: "EV Charger",
     landscaper: "Landscaper",
@@ -198,8 +203,207 @@ export const translations = {
     painter: "Painter",
     carpenter: "Carpenter",
     cleaning: "Cleaning",
-    movingTransport: "Moving and Transport",
+    movingTransport: "Moving & Transport",
     allCategories: "Other Categories",
+    
+    // Job Posting Wizard - Steps
+    jobStep1Title: "About the job",
+    jobStep1Subtitle: "Describe the job",
+    jobStep2Title: "Contact info", 
+    jobStep2Subtitle: "How to contact you",
+    jobStep3Title: "Complete",
+    jobStep3Subtitle: "Review and submit",
+    
+    // Job Posting Wizard - Form Labels
+    jobWhatNeedHelpWith: "What do you need help with?",
+    jobTitlePlaceholder: "Brief description of the job",
+    jobDescriptionLabel: "Description",
+    jobDescriptionPlaceholder: "Describe the job in more detail...",
+    jobLicensePlateLabel: "License Plate",
+    jobLicensePlatePlaceholder: "e.g. ABC123",
+    jobDescribeProblemPlaceholder: "Describe what needs to be done with the car...",
+    jobCharactersMinimum: "characters (minimum)",
+    jobFirstNameLabel: "First Name",
+    jobLastNameLabel: "Last Name", 
+    jobEmailLabel: "Email",
+    jobPhoneLabel: "Phone Number",
+    jobPostcodeLabel: "Postcode",
+    jobPostcodePlaceholder: "e.g. 101",
+    
+    // Job Posting Wizard - Summary
+    jobSummaryTitle: "Job Summary",
+    jobCategoryLabel: "Category:",
+    jobTitleLabel: "Title:",
+    jobContactPersonLabel: "Contact Person:",
+    
+    // Job Posting Wizard - Buttons & Actions
+    jobBackToHome: "Back",
+    jobPostProjectTitle: "Post Project",
+    jobBackButton: "Back",
+    jobNextButton: "Next",
+    jobSubmitButton: "Submit",
+    jobLoadingText: "Loading...",
+    jobSubmittingText: "Submitting...",
+    
+    // Job Posting Wizard - Validation
+    jobPlateValidationError: "License plate must be 2-8 characters",
+    jobTitleValidationError: "Title must be at least 10 characters",
+    jobDescriptionValidationError: "Description must be at least 30 characters",
+    jobEmailValidationError: "Valid email address is required", 
+    jobPhoneValidationError: "Valid phone number is required",
+    jobFirstNameValidationError: "First name is required",
+    jobSubmissionError: "Submission error. Please try again.",
+    jobStepError: "An error occurred. Please try again.",
+    
+    // All Categories Page
+    allCategoriesTitle: "All Categories",
+    allCategoriesSubtitle: "Below you will find an overview of everything BuildConnect can help you with. On these links you will find more information about the different services.",
+    searchPlaceholder: "What do you need help with?",
+    
+    // Main Category Titles
+    husOgHage: "Home & Garden", 
+    tjenester: "Services",
+    innvendigOppussing: "Interior Renovation",
+    byggeNytt: "Build New",
+    borettslagSameier: "Housing Associations",
+    handverker: "Craftsmen",
+    mittanbudXL: "BuildConnect XL",
+    
+    // Home & Garden Subcategories
+    grunnarbeid: "Foundation Work",
+    vinterhage: "Conservatory", 
+    tak: "Roof",
+    platting: "Paving & Terrace",
+    murOgBetong: "Masonry & Concrete",
+    drenering: "Drainage",
+    fasade: "Facade",
+    vinduOgDor: "Windows & Doors",
+    asfaltering: "Asphalting",
+    kladning: "Cladding",
+    beleggningsstein: "Paving Stones",
+    isolering: "Insulation",
+    riving: "Demolition",
+    maleHus: "House Painting",
+    vannOgAvlop: "Water & Drainage",
+    hagearbeid: "Landscaping",
+    trefelling: "Tree Felling",
+    gjerde: "Fencing",
+    
+    // Services Subcategories
+    takst: "Appraisal",
+    elektrikertjenester: "Electrical Services",
+    installasjon: "Installation & Assembly",
+    utleie: "Rental",
+    solcellepanel: "Solar Panels",
+    transport: "Transport",
+    euKontroll: "EU Control",
+    flyttevask: "Moving Cleaning",
+    avfallshandtering: "Waste Management",
+    mekaniskVerksted: "Mechanical Workshop",
+    bilOgBilverksted: "Car Service",
+    rengjoring: "Cleaning",
+    solskjerming: "Sun Protection",
+    skadedyrkontroll: "Pest Control",
+    alarmSikkerhet: "Security & Alarms",
+    elbillader: "EV Chargers",
+    flyttebyra: "Moving Companies",
+    godstransport: "Freight Transport",
+    
+    // Interior Renovation Subcategories
+    gulvbelegg: "Flooring",
+    hybelUtleieenhet: "Rental Units",
+    pusseOppLoft: "Ceiling Repair",
+    pusseVaskerom: "Laundry Room",
+    pagingGulv: "Floor Installation",
+    trapp: "Stairs",
+    pusseOppBad: "Bathroom Repair",
+    membran: "Membranes",
+    ventilasjon: "Ventilation",
+    gulv: "Floors",
+    flislegging: "Tiling",
+    pusseOppKjokken: "Kitchen Renovation",
+    pusseOppTelliget: "Small Repairs",
+    pusseOppOppholdstom: "Living & Bedrooms",
+    interiorsarkitekt: "Interior Design",
+    pusseOppKjeller: "Basement Renovation",
+    maling: "Painting",
+    vatromsbygge: "Wet Rooms",
+    
+    // Build New Subcategories
+    byggefirma: "Construction Company",
+    prosjektleder: "Project Manager",
+    byggesaknod: "Building Permits",
+    arkitekt: "Architect",
+    byggeHus: "House Construction",
+    byggeGarasje: "Garage Construction",
+    ansvarligUtforende: "Responsible Contractor",
+    ferdigOgFerdighytte: "Prefab Cabins",
+    totalrenovering: "Total Renovation",
+    byggePabygg: "Extensions",
+    byggeHytte: "Cabin Construction",
+    byggeFilbygg: "Annexes",
+    ansvarligKontrollerende: "Building Inspector",
+    garasjeport: "Garage Doors",
+    byggingenior: "Building Engineer",
+    
+    // Housing Associations
+    borettslagSameierGeneral: "Housing Associations",
+    
+    // Craftsmen Subcategories
+    murer: "Mason",
+    maler: "Painter",
+    flislegger: "Tiler",
+    elektriker: "Electrician",
+    anleggsgartner: "Landscaper",
+    taktekker: "Roofer",
+    mobelsnekker: "Furniture Maker",
+    losesmed: "Solutions",
+    maskinentreprenar: "Machine Contractor",
+    rorlegger: "Plumber",
+    blikkenslager: "Sheet Metal Worker",
+    snekker: "Carpenter",
+    tomrer: "Builder",
+    prosjektledelse: "Project Management",
+    
+    // BuildConnect XL
+    mittanbudXLGeneral: "BuildConnect XL",
+    
+    // XL Major Projects Section  
+    xlHeadline: "Big project?",
+    xlHeadlineEmphasis: "XL helps you",
+    xlSubtitle: "XL is tailored for large projects (homeowners, housing associations, businesses). We'll match your project with qualified companies — free and without obligation.",
+    xlNote: "XL is an extra service from BuildConnect. We'll contact you to discuss your project and find the right companies for you —",
+    xlLearnMore: "learn more about XL",
+    
+    // XL Categories
+    xlFullRenovation: "Full Renovation",
+    xlWindowsDoors: "Windows & Doors", 
+    xlFacade: "Facade",
+    xlExtensions: "Extensions & Add-ons",
+    xlBathroom: "Bathroom",
+    xlLoft: "Loft",
+    xlPartialRenovation: "Partial Renovation",
+    xlRoof: "Roof",
+    xlHousingAssociations: "Housing Associations",
+    xlBasement: "Basement",
+    xlGarage: "Garage",
+    xlOtherCategories: "Other categories",
+    
+    // XL Lead Form
+    xlLeadFormTitle: "Tell us about your project",
+    xlProjectTitle: "Project title",
+    xlProjectTitlePlaceholder: "Brief description of your project",
+    xlProjectDescription: "Project description",
+    xlProjectDescriptionPlaceholder: "Tell us more about what needs to be done...",
+    xlLocation: "Location/Postcode",
+    xlLocationPlaceholder: "Enter your location",
+    xlContactName: "Full name",
+    xlContactEmail: "Email address",
+    xlContactPhone: "Phone number",
+    xlSubmitLead: "Submit project",
+    xlSuccessTitle: "Thank you!",
+    xlSuccessMessage: "We'll match your project with up to 3 qualified companies and they'll contact you soon.",
+    xlBackToXL: "Back to XL",
     
     // Forms
     required: "Required",
@@ -240,6 +444,38 @@ export const translations = {
     carpenterSubtitle: "Custom woodwork and carpentry services",
     masonTitle: "Mason",
     masonSubtitle: "Professional masonry and stonework services",
+    
+    // Automotive Step - Mittanbud Style
+    mittanbudAutomotiveTitle: "Get quotes from multiple workshops",
+    mittanbudAutomotiveSubtitle: "Enter your vehicle registration to get relevant quotes",
+    mittanbudLicensePlateLabel: "License Plate",
+    mittanbudWhyNeedPlate: "Why do we need this?",
+    mittanbudPlateHelpText: "We use your vehicle's registration number to find information about the type and model and can thus connect you with appropriate workshops and get better quotes.",
+    automotivePlateValidationError: "License plate must be 2-8 alphanumeric characters",
+    
+    // Cleaning Category Picker
+    cleaningStepHeader: "About the job • Contact info • Complete",
+    cleaningCategoryTitle: "What kind of cleaning service do you need?",
+    facadeCleaning: "Facade Cleaning",
+    cleaningServices: "Cleaning Services", 
+    moveOutCleaning: "Move-out Cleaning",
+    otherCleaning: "Other (Cleaning)",
+    
+    // Moving Category Picker
+    movingStepHeader: "About the job • Contact info • Complete",
+    movingCategoryTitle: "What kind of moving service do you need?",
+    showMoreCategories: "Show more categories",
+    showFewerCategories: "Show fewer categories",
+    
+    // Moving Subcategories
+    massetransport: "Bulk Transport",
+    lager: "Storage/Warehousing", 
+    helikoptertransport: "Helicopter Transport",
+    
+    // Housing Associations Grid
+    housingAssociationsTitle: "Choose a category to post your job — completely free",
+    housingAssociationsSearchPlaceholder: "What do you need help with?",
+    noResultsFound: "No categories found matching your search.",
   },
   is: {
     // Site Info
@@ -431,7 +667,7 @@ export const translations = {
     facade: "Framhlið",
     balcony: "Svalir",
     masonry: "Múrarar",
-    drainageInsulation: "Drenun og einangrun",
+    drainageInsulation: "Frárennsliser og einangrun",
     bathroomRenovation: "Endurnýjun baðherbergis",
     evCharger: "Rafbílahleðsla",
     landscaper: "Garðyrkjumaður",
@@ -440,7 +676,7 @@ export const translations = {
     painter: "Málari",
     carpenter: "Trésmíðamaður",
     cleaning: "Þrif",
-    movingTransport: "Flutningar og Flutningsmenn",
+    movingTransport: "Flutningar og vöruflutninga",
     allCategories: "Aðrir flokkar",
     
     // Forms
@@ -482,5 +718,236 @@ export const translations = {
     carpenterSubtitle: "Sérsniðin trévinna og smíðaþjónusta",
     masonTitle: "Múrari",
     masonSubtitle: "Fagleg múrsmíðir og steinvinnaþjónusta",
+    
+    // Automotive Step - Mittanbud Style
+    mittanbudAutomotiveTitle: "Fá tilboð frá fleiri bílaverkstæðum",
+    mittanbudAutomotiveSubtitle: "Leggðu inn bílnúmer svo við getum veitt þér viðeigandi tilboð",
+    mittanbudLicensePlateLabel: "Skráningarmerki",
+    mittanbudWhyNeedPlate: "Hvers vegna þurfum við þetta?",
+    mittanbudPlateHelpText: "Við notum skráningarmerki bílsins þíns til að finna upplýsingar um tegund og gerð og geta þannig tengt þig við viðeigandi verkstæði og fengið betri tilboð.",
+    automotivePlateValidationError: "Skráningarmerki verður að vera 2-8 stafir eða tölur",
+    
+    // Cleaning Category Picker
+    cleaningStepHeader: "Um verkefnið • Tengiliðaupplýsingar • Lokið",
+    cleaningCategoryTitle: "Hvers konar þrifaþjónustu þarftu?",
+    facadeCleaning: "Húsaþrif",
+    cleaningServices: "Þrifaþjónusta",
+    moveOutCleaning: "Flutningsþrif",
+    otherCleaning: "Annað (Þrif)",
+    
+    // Moving Category Picker  
+    movingStepHeader: "Um verkefnið • Tengiliðaupplýsingar • Lokið",
+    movingCategoryTitle: "Hvers konar flutningsþjónustu þarftu?",
+    showMoreCategories: "Sýna fleiri flokka",
+    showFewerCategories: "Sýna færri flokka",
+    
+    // Moving Subcategories  
+    massetransport: "Massaflutningar",
+    lager: "Vörugeymsla",
+    helikoptertransport: "Þyrluflutningar",
+    
+    // Housing Associations Grid
+    housingAssociationsTitle: "Veldu flokk til að leggja inn verkefnið þitt — alveg ókeypis",
+    housingAssociationsSearchPlaceholder: "Hvað þarftu hjálp við?",
+    noResultsFound: "Engir flokkar fundust sem passa við leitina þína.",
+    
+    // Job Posting Wizard - Steps
+    jobStep1Title: "Um verkefnið",
+    jobStep1Subtitle: "Lýstu verkefninu",
+    jobStep2Title: "Tengiliðaupplýsingar", 
+    jobStep2Subtitle: "Hvernig á að hafa samband",
+    jobStep3Title: "Lokið",
+    jobStep3Subtitle: "Farðu yfir og sendu inn",
+    
+    // Job Posting Wizard - Form Labels
+    jobWhatNeedHelpWith: "Hvað þarftu hjálp við?",
+    jobTitlePlaceholder: "Stutt útskýring á verkefninu",
+    jobDescriptionLabel: "Lýsing",
+    jobDescriptionPlaceholder: "Lýstu verkefninu nánar...",
+    jobLicensePlateLabel: "Númeraplata",
+    jobLicensePlatePlaceholder: "T.d. ABC123",
+    jobDescribeProblemPlaceholder: "Lýstu því sem þarf að gera við bílinn...",
+    jobCharactersMinimum: "stafir (lágmark)",
+    jobFirstNameLabel: "Fornafn",
+    jobLastNameLabel: "Eftirnafn", 
+    jobEmailLabel: "Netfang",
+    jobPhoneLabel: "Símanúmer",
+    jobPostcodeLabel: "Póstnúmer",
+    jobPostcodePlaceholder: "T.d. 101",
+    
+    // Job Posting Wizard - Summary
+    jobSummaryTitle: "Yfirlit verkefnis",
+    jobCategoryLabel: "Flokkur:",
+    jobTitleLabel: "Titill:",
+    jobContactPersonLabel: "Tengiliður:",
+    
+    // Job Posting Wizard - Buttons & Actions
+    jobBackToHome: "Til baka",
+    jobPostProjectTitle: "Leggja inn verkefni",
+    jobBackButton: "Til baka",
+    jobNextButton: "Næsta",
+    jobSubmitButton: "Senda inn",
+    jobLoadingText: "Hleður...",
+    jobSubmittingText: "Sendir...",
+    
+    // Job Posting Wizard - Validation
+    jobPlateValidationError: "Númeraplata verður að vera 2-8 stafir",
+    jobTitleValidationError: "Titill verður að vera að minnsta kosti 10 stafir",
+    jobDescriptionValidationError: "Lýsing verður að vera að minnsta kosti 30 stafir",
+    jobEmailValidationError: "Gilt netfang er áskilið", 
+    jobPhoneValidationError: "Gilt símanúmer er áskilið",
+    jobFirstNameValidationError: "Fornafn er áskilið",
+    jobSubmissionError: "Villa við innsendingu. Reyndu aftur.",
+    jobStepError: "Villa kom upp. Reyndu aftur.",
+    
+    // All Categories Page
+    allCategoriesTitle: "Allir flokkar",
+    allCategoriesSubtitle: "Hér fyrir neðan finnurðu yfirlit yfir allt sem BuildConnect getur hjálpað þér með. Á þessum tenglum finnurðu frekari upplýsingar um mismunandi þjónustu.",
+    searchPlaceholder: "Hvað þarftu hjálp við?",
+    
+    // Main Category Titles
+    husOgHage: "Hús og garður", 
+    tjenester: "Þjónusta",
+    innvendigOppussing: "Innri endurnýjun",
+    byggeNytt: "Byggja nýtt",
+    borettslagSameier: "Íbúðasamfélög",
+    handverker: "Handverksmenn",
+    mittanbudXL: "BuildConnect XL",
+    
+    // Home & Garden Subcategories
+    grunnarbeid: "Grunnvinna",
+    vinterhage: "Vetrarhús", 
+    tak: "Þak",
+    platting: "Steinaverk",
+    murOgBetong: "Mur og steinsteypa",
+    drenering: "Frárennsliser",
+    fasade: "Útveggir",
+    vinduOgDor: "Gluggar og hurðir",
+    asfaltering: "Asfaltering",
+    kladning: "Klæðning",
+    beleggningsstein: "Steingar",
+    isolering: "Einangrun",
+    riving: "Riving",
+    maleHus: "Húsamálun",
+    vannOgAvlop: "Vatn og frárennsliser",
+    hagearbeid: "Garðyrkja",
+    trefelling: "Tréfelling",
+    gjerde: "Garðhegningar",
+    
+    // Services Subcategories
+    takst: "Úttekt",
+    elektrikertjenester: "Rafvirkjaþjónusta",
+    installasjon: "Uppsetning og samsett",
+    utleie: "Leiga",
+    solcellepanel: "Sólarvörur",
+    transport: "Flutningar",
+    euKontroll: "EU-eftirlit",
+    flyttevask: "Flutningsþrif",
+    avfallshandtering: "Sorpmeðhöndlun",
+    mekaniskVerksted: "Vélvirkjun",
+    bilOgBilverksted: "Bílaþjónusta",
+    rengjoring: "Þrif",
+    solskjerming: "Sólhlífar",
+    skadedyrkontroll: "Meindýraeftirlit",
+    alarmSikkerhet: "Öryggiskerfi",
+    elbillader: "Rafbílahleðslur",
+    flyttebyra: "Flutningafyrirtæki",
+    godstransport: "Vöruflutningar",
+    
+    // Interior Renovation Subcategories
+    gulvbelegg: "Gólfefni",
+    hybelUtleieenhet: "Íbúðir og leiga",
+    pusseOppLoft: "Loftviðgerð",
+    pusseVaskerom: "Þvottaherbergi",
+    pagingGulv: "Gólflagning",
+    trapp: "Stigi",
+    pusseOppBad: "Baðherbergisviðgerð",
+    membran: "Þéttingar",
+    ventilasjon: "Loftræsting",
+    gulv: "Gólf",
+    flislegging: "Flíslagning",
+    pusseOppKjokken: "Eldhúsviðgerð",
+    pusseOppTelliget: "Smáviðgerðir",
+    pusseOppOppholdstom: "Stofa og svefnherbergi",
+    interiorsarkitekt: "Innanhússhönnun",
+    pusseOppKjeller: "Kjallaraviðgerð",
+    maling: "Málun",
+    vatromsbygge: "Blautrými",
+    
+    // Build New Subcategories
+    byggefirma: "Byggingarfyrirtæki",
+    prosjektleder: "Verkefnastjóri",
+    byggesaknod: "Byggingarleyfi",
+    arkitekt: "Arkitekt",
+    byggeHus: "Húsbygging",
+    byggeGarasje: "Bílskúrsbygging",
+    ansvarligUtforende: "Ábyrgðarmaður",
+    ferdigOgFerdighytte: "Tilbúnar sumarhús",
+    totalrenovering: "Heildarendurnýjun",
+    byggePabygg: "Viðbygging",
+    byggeHytte: "Sumarhús",
+    byggeFilbygg: "Viðbyggingar",
+    ansvarligKontrollerende: "Eftirlitsmaður",
+    garasjeport: "Bílskúrshurðir",
+    byggingenior: "Byggingartæknir",
+    
+    // Housing Associations
+    borettslagSameierGeneral: "Íbúðasamfélög",
+    
+    // Craftsmen Subcategories
+    murer: "Múrari",
+    maler: "Málari",
+    flislegger: "Flíslagningamaður",
+    elektriker: "Rafvirki",
+    anleggsgartner: "Garðyrkjumaður",
+    taktekker: "Þakiðnaðarmaður",
+    mobelsnekker: "Húsgagnasmiður",
+    losesmed: "Lausnir",
+    maskinentreprenar: "Vélvirkjan",
+    rorlegger: "Pípulagningamaður",
+    blikkenslager: "Blikksmiður",
+    snekker: "Trésmiður",
+    tomrer: "Húsasmíðamaður",
+    prosjektledelse: "Verkefnastjórnun",
+    
+    // BuildConnect XL
+    mittanbudXLGeneral: "BuildConnect XL",
+    
+    // XL Major Projects Section - Icelandic
+    xlHeadline: "Stórt verkefni?",
+    xlHeadlineEmphasis: "XL hjálpar þér",
+    xlSubtitle: "XL er sérsniðið fyrir stór verkefni (heimili, húsfélög, fyrirtæki). Við pörum verkefnið við hæfa verktaka — ókeypis og án skuldbindinga.",
+    xlNote: "XL er aukaaðgerð frá BuildConnect. Við höfum samband til að ræða verkefnið og finna réttu verktakana —",
+    xlLearnMore: "lesa meira um XL",
+    
+    // XL Categories - Icelandic
+    xlFullRenovation: "Heildarendurbætur",
+    xlWindowsDoors: "Gluggar & hurðir",
+    xlFacade: "Framkvæmdir á framhlið", 
+    xlExtensions: "Viðbyggingar",
+    xlBathroom: "Baðherbergi",
+    xlLoft: "Risi",
+    xlPartialRenovation: "Deildarendurbætur",
+    xlRoof: "Þak",
+    xlHousingAssociations: "Húsfélög",
+    xlBasement: "Kjallari",
+    xlGarage: "Bílskúr",
+    xlOtherCategories: "Aðrar flokkanir",
+    
+    // XL Lead Form - Icelandic
+    xlLeadFormTitle: "Segðu okkur frá verkefninu þínu",
+    xlProjectTitle: "Titill verkefnis",
+    xlProjectTitlePlaceholder: "Stutt lýsing á verkefninu þínu",
+    xlProjectDescription: "Verkefnalýsing",
+    xlProjectDescriptionPlaceholder: "Segðu okkur meira um hvað þarf að gera...",
+    xlLocation: "Staðsetning/Póstnúmer",
+    xlLocationPlaceholder: "Sláðu inn staðsetninguna þína",
+    xlContactName: "Fullt nafn",
+    xlContactEmail: "Netfang",
+    xlContactPhone: "Símanúmer",
+    xlSubmitLead: "Senda verkefni",
+    xlSuccessTitle: "Takk fyrir!",
+    xlSuccessMessage: "Við munum para verkefnið þitt við allt að 3 hæfa verktaka og þeir munu hafa samband við þig fljótlega.",
+    xlBackToXL: "Til baka í XL",
   }
 };

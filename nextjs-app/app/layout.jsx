@@ -9,11 +9,11 @@ import Footer from '../components/Footer';
 import { useTranslations } from '../contexts/TranslationsContext';
 
 function AppContent({ children }) {
-  const { translations, language } = useTranslations();
+  const { translations, language, setLanguage } = useTranslations();
   
   return (
     <>
-      <Header translations={translations} language={language} />
+      <Header translations={translations} language={language} setLanguage={setLanguage} />
       <main>
         {children}
       </main>

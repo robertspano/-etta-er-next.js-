@@ -1,12 +1,13 @@
 'use client';
 
+import React from 'react';
+import CompanyRegistration from '../../components/CompanyRegistration';
+import { useTranslations } from '../../contexts/TranslationsContext';
+
 export default function CompanyRegistrationPage() {
+  const { language, setLanguage } = useTranslations();
+  
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="text-center">
-        <h1 className="text-3xl font-bold mb-4">Company Registration</h1>
-        <p>Company registration functionality will be implemented here</p>
-      </div>
-    </div>
+    <CompanyRegistration language={language} setLanguage={setLanguage} />
   );
 }

@@ -2,9 +2,10 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { ArrowLeft, Truck, Package, Trash2, Car, MoreHorizontal, Users, Music, Box, Warehouse, Archive, Plane } from 'lucide-react';
 
-const MovingCategoryPicker = ({ translations }) => {
+const MovingCategoryPicker = ({ translations, language }) => {
   const router = useRouter();
   const [expanded, setExpanded] = useState(false);
 
@@ -12,42 +13,42 @@ const MovingCategoryPicker = ({ translations }) => {
     {
       key: 'varetransport',
       icon: <Truck className="w-6 h-6" />,
-      name: translations.varetransport || 'Van Transport'
+      name: translations.varetransport || (language === 'is' ? 'Vöruflutninga' : 'Van Transport')
     },
     {
       key: 'flyttebyra',
       icon: <Package className="w-6 h-6" />,
-      name: translations.flyttebyra || 'Moving Company'
+      name: translations.flyttebyra || (language === 'is' ? 'Flutningafyrirtæki' : 'Moving Company')
     },
     {
       key: 'avfallshandtering',
       icon: <Trash2 className="w-6 h-6" />,
-      name: translations.avfallshandtering || 'Waste Management'
+      name: translations.avfallshandtering || (language === 'is' ? 'Sorpmeðhöndlun' : 'Waste Management')
     },
     {
       key: 'transportBilBat',
       icon: <Car className="w-6 h-6" />,
-      name: translations.transportBilBat || 'Vehicle/Boat Transport'
+      name: translations.transportBilBat || (language === 'is' ? 'Bíla- og bátaflutningar' : 'Vehicle/Boat Transport')
     },
     {
       key: 'annetFlytting',
       icon: <MoreHorizontal className="w-6 h-6" />,
-      name: translations.annetFlytting || 'Other Moving/Transport'
+      name: translations.annetFlytting || (language === 'is' ? 'Annað (Flutningar)' : 'Other Moving/Transport')
     },
     {
       key: 'persontransport',
       icon: <Users className="w-6 h-6" />,
-      name: translations.persontransport || 'Personal Transport'
+      name: translations.persontransport || (language === 'is' ? 'Persónuflutningar' : 'Personal Transport')
     },
     {
       key: 'pianotransport',
       icon: <Music className="w-6 h-6" />,
-      name: translations.pianotransport || 'Piano Moving'
+      name: translations.pianotransport || (language === 'is' ? 'Píanóflutningar' : 'Piano Moving')
     },
     {
       key: 'godstransport',
       icon: <Box className="w-6 h-6" />,
-      name: translations.godstransport || 'Freight Transport'
+      name: translations.godstransport || (language === 'is' ? 'Vöruflutningar' : 'Freight Transport')
     }
   ];
 
@@ -56,17 +57,17 @@ const MovingCategoryPicker = ({ translations }) => {
     {
       key: 'massetransport',
       icon: <Warehouse className="w-6 h-6" />,
-      name: translations.massetransport || 'Bulk Transport'
+      name: translations.massetransport || (language === 'is' ? 'Massaflutningar' : 'Bulk Transport')
     },
     {
       key: 'lager',
       icon: <Archive className="w-6 h-6" />,
-      name: translations.lager || 'Storage/Warehousing'
+      name: translations.lager || (language === 'is' ? 'Vörugeymsla' : 'Storage/Warehousing')
     },
     {
       key: 'helikoptertransport',
       icon: <Plane className="w-6 h-6" />,
-      name: translations.helikoptertransport || 'Helicopter Transport'
+      name: translations.helikoptertransport || (language === 'is' ? 'Þyrluflutningar' : 'Helicopter Transport')
     }
   ];
 
@@ -77,10 +78,6 @@ const MovingCategoryPicker = ({ translations }) => {
     
     // Navigate to simplified contact info form
     router.push('/post/moving/contact');
-  };
-
-  const handleBack = () => {
-    router.back();
   };
 
   const handleToggleExpansion = (e) => {
@@ -95,16 +92,16 @@ const MovingCategoryPicker = ({ translations }) => {
         {/* Step Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-6">
-            <button 
-              onClick={handleBack}
+            <Link 
+              href="/"
               className="mr-4 p-2 rounded-lg hover:bg-white/80 transition-colors"
             >
               <ArrowLeft className="w-5 h-5 text-gray-600" />
-            </button>
+            </Link>
             <div className="flex-1 max-w-md">
               {/* Progress Steps */}
               <div className="text-sm text-gray-600 font-medium mb-2">
-                {translations.movingStepHeader || "About the job • Contact info • Complete"}
+                {language === 'is' ? 'Um verkefnið • Tengiliðaupplýsingar • Lokið' : 'Om jobben • Kontaktinfo • Fullført'}
               </div>
               {/* Progress Bar */}
               <div className="w-full bg-gray-200 rounded-full h-1">
@@ -119,7 +116,7 @@ const MovingCategoryPicker = ({ translations }) => {
           
           {/* Title */}
           <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 text-center mb-8">
-            {translations.movingCategoryTitle || "What kind of moving service do you need?"}
+            {translations.movingCategoryTitle || (language === 'is' ? 'Hvers konar flutningsþjónustu þarftu?' : 'What kind of moving service do you need?')}
           </h1>
 
           {/* Subcategories Grid */}
@@ -180,8 +177,8 @@ const MovingCategoryPicker = ({ translations }) => {
               aria-expanded={expanded}
             >
               {expanded 
-                ? (translations.showFewerCategories || 'Show fewer categories')
-                : (translations.showMoreCategories || 'Show more categories')
+                ? (language === 'is' ? 'Sýna færri flokka' : 'Vis færre kategorier')
+                : (language === 'is' ? 'Sýna fleiri flokka' : 'Vis flere kategorier')
               }
             </button>
           </div>

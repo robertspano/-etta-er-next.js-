@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute, { CustomerRoute, ProfessionalRoute, AdminRoute } from './components/ProtectedRoute';
@@ -127,8 +127,18 @@ const DashboardLayout = ({ children, language, setLanguage, currentTranslations 
 };
 
 function App() {
-  const [language, setLanguage] = useState('en');
+  // Initialize language from localStorage or default to 'en'
+  const [language, setLanguage] = useState(() => {
+    const savedLanguage = localStorage.getItem('bc_language');
+    return savedLanguage || 'en';
+  });
+  
   const currentTranslations = translations[language];
+
+  // Save language to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('bc_language', language);
+  }, [language]);
 
   return (
     <div className="App">

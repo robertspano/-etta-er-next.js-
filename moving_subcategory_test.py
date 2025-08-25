@@ -12,7 +12,7 @@ from datetime import datetime
 from typing import Dict, Any, List
 
 # Get backend URL from environment
-BACKEND_URL = "https://craftlink-3.preview.emergentagent.com/api"
+BACKEND_URL = "https://craft-connect-11.preview.emergentagent.com/api"
 
 class MovingSubcategoryTester:
     def __init__(self):

@@ -1,10 +1,16 @@
 'use client';
 
-import { useTranslations } from '../../contexts/TranslationsContext';
+import React from 'react';
 import AllCategoriesOverview from '../../components/AllCategoriesOverview';
+import { useTranslations } from '../../contexts/TranslationsContext';
 
 export default function AllCategoriesPage() {
-  const { translations, language } = useTranslations();
+  const { language, translations } = useTranslations();
   
-  return <AllCategoriesOverview translations={translations} language={language} />;
+  return (
+    <AllCategoriesOverview 
+      translations={translations} 
+      language={language}
+    />
+  );
 }

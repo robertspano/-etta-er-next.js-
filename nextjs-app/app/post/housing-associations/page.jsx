@@ -1,10 +1,16 @@
 'use client';
 
-import { useTranslations } from '../../../contexts/TranslationsContext';
+import React from 'react';
 import HousingAssociationsGrid from '../../../components/HousingAssociationsGrid';
+import { useTranslations } from '../../../contexts/TranslationsContext';
 
-export default function HousingAssociationsPage() {
-  const { translations, language } = useTranslations();
+export default function HousingAssociationsPostPage() {
+  const { language, translations } = useTranslations();
   
-  return <HousingAssociationsGrid translations={translations} language={language} />;
+  return (
+    <HousingAssociationsGrid 
+      translations={translations} 
+      language={language}
+    />
+  );
 }

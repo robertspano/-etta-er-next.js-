@@ -201,10 +201,10 @@ const ReviewsSection = ({ reviews = [], translations, language, loading = false,
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-[#1a202c] mb-4">
+          <h2 className="text-3xl lg:text-4xl font-bold text-[#1E293B] mb-4">
             Latest Reviews
           </h2>
-          <p className="text-lg text-[#4a5568] max-w-3xl mx-auto">
+          <p className="text-lg text-[#64748B] max-w-3xl mx-auto">
             Latest reviews of completed jobs on BuildConnect
           </p>
         </div>
@@ -212,11 +212,11 @@ const ReviewsSection = ({ reviews = [], translations, language, loading = false,
         {/* Reviews Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {displayReviews.map((review) => (
-            <div key={review.id} className="bg-white rounded-lg border border-gray-200 shadow-sm p-6 hover:shadow-md transition-shadow">
+            <div key={review.id} className="bg-white rounded-lg border border-[#E2E8F0] shadow-sm p-6 hover:shadow-md transition-shadow">
               {/* Company Header */}
               <div className="flex items-center gap-3 mb-4">
                 {/* Company Logo */}
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#4f46e5] to-[#4338ca] flex-shrink-0 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#4F46E5] to-[#4338CA] flex-shrink-0 flex items-center justify-center">
                   <div className="text-white text-sm font-bold">
                     {review.company.name.split(' ').map(word => word[0]).join('').slice(0, 2)}
                   </div>
@@ -224,7 +224,7 @@ const ReviewsSection = ({ reviews = [], translations, language, loading = false,
                 
                 {/* Company Name */}
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-[#4f46e5] hover:text-[#4338ca] transition-colors text-sm">
+                  <h3 className="font-bold text-[#4F46E5] hover:text-[#4338CA] transition-colors text-sm">
                     {review.company.name}
                   </h3>
                 </div>
@@ -232,16 +232,16 @@ const ReviewsSection = ({ reviews = [], translations, language, loading = false,
 
               {/* Project Type */}
               <div className="mb-4">
-                <p className="font-semibold text-[#1a202c] text-sm">
+                <p className="font-semibold text-[#1E293B] text-sm">
                   {review.projectType}
                 </p>
               </div>
 
               {/* Review Excerpt */}
               <div className="mb-4">
-                <p className="text-[#4a5568] text-sm leading-relaxed">
+                <p className="text-[#64748B] text-sm leading-relaxed">
                   {review.excerpt}-
-                  <a href={review.url} className="text-[#4f46e5] hover:text-[#4338ca] font-medium">
+                  <a href={review.url} className="text-[#4F46E5] hover:text-[#4338CA] font-medium">
                     Read more
                   </a>
                 </p>
@@ -250,15 +250,15 @@ const ReviewsSection = ({ reviews = [], translations, language, loading = false,
               {/* Reviewer Info */}
               <div className="flex items-center gap-3">
                 {/* Reviewer Avatar */}
-                <div className="w-8 h-8 rounded-full bg-[#f0f0f0] flex items-center justify-center flex-shrink-0">
-                  <span className="text-[#1a202c] font-bold text-xs">
+                <div className="w-8 h-8 rounded-full bg-[#F1F5F9] flex items-center justify-center flex-shrink-0">
+                  <span className="text-[#1E293B] font-bold text-xs">
                     {review.reviewer.initial}
                   </span>
                 </div>
                 
                 {/* Reviewer Details */}
                 <div className="flex-1">
-                  <p className="font-semibold text-[#1a202c] text-sm">
+                  <p className="font-semibold text-[#1E293B] text-sm">
                     {review.reviewer.name}
                   </p>
                   <p className="text-green-600 text-xs">
@@ -266,7 +266,7 @@ const ReviewsSection = ({ reviews = [], translations, language, loading = false,
                       <span className="font-medium">BankID-verified user</span>
                     )}
                   </p>
-                  <p className="text-[#4a5568] text-xs">
+                  <p className="text-[#64748B] text-xs">
                     {review.reviewer.location}, {new Date(review.date).toLocaleDateString('en-GB', {
                       day: '2-digit',
                       month: '2-digit',

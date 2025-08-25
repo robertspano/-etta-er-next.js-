@@ -138,25 +138,21 @@ const Hero = ({ translations }) => {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 py-16 lg:py-20 overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-pattern opacity-40"></div>
-      <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl -translate-y-32 translate-x-32"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-indigo-400/15 to-cyan-400/15 rounded-full blur-3xl translate-y-32 -translate-x-32"></div>
+    <section className="relative bg-[#F7F5F3] py-16 lg:py-20">
+      {/* Clean background like Mittanbud */}
+      <div className="absolute inset-0 bg-[#F7F5F3]"></div>
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-5 gap-12 lg:gap-16 items-center">
           {/* Left Content - 60% */}
           <div className="md:col-span-3 space-y-8 animate-fade-in-up">
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight text-shadow">
-              <span className="bg-gradient-to-r from-gray-900 via-blue-800 to-gray-900 bg-clip-text text-transparent whitespace-nowrap">
-                {translations.heroNewTitle}
-              </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#1E293B] leading-tight">
+              {translations.heroNewTitle}
             </h1>
             
             {/* Subtitle */}
-            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-2xl font-light">
+            <p className="text-xl md:text-2xl text-[#64748B] leading-relaxed max-w-2xl font-light">
               {translations.heroNewSubtitle}
             </p>
 
@@ -168,12 +164,12 @@ const Hero = ({ translations }) => {
                   placeholder={translations.heroSearchPlaceholder}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="h-16 pl-7 pr-20 text-lg border-3 border-gray-200 rounded-2xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100/50 shadow-lg backdrop-blur-sm bg-white/90 group-hover:shadow-xl transition-all duration-300"
+                  className="h-16 pl-7 pr-20 text-lg border-2 border-[#E2E8F0] rounded-2xl focus:border-[#4F46E5] focus:ring-4 focus:ring-[#4F46E5]/20 shadow-lg bg-white transition-all duration-300 text-[#1E293B] placeholder:text-[#64748B]"
                 />
                 <Button 
                   type="submit" 
                   size="sm" 
-                  className="absolute right-2 top-2 h-12 w-12 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 p-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="absolute right-2 top-2 h-12 w-12 rounded-xl bg-[#4F46E5] hover:bg-[#4338CA] p-0 shadow-lg hover:shadow-xl transition-all duration-300 text-white"
                 >
                   <ArrowRight className="h-6 w-6" />
                 </Button>
@@ -191,16 +187,16 @@ const Hero = ({ translations }) => {
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     {/* Icon - slightly smaller for better fit */}
-                    <div className="text-[#1B2B5B] group-hover:scale-105 transition-transform duration-200">
+                    <div className="text-[#1E293B] group-hover:text-[#4F46E5] group-hover:scale-105 transition-all duration-200">
                       <div className="w-6 h-6 md:w-7 md:h-7 flex items-center justify-center">
                         {category.icon}
                       </div>
                     </div>
                     
                     {/* Label with underline on hover - smaller text */}
-                    <span className="text-xs font-medium text-slate-800 group-hover:text-[#1B2B5B] text-center leading-tight transition-all duration-200 relative">
+                    <span className="text-xs font-medium text-[#1E293B] group-hover:text-[#4F46E5] text-center leading-tight transition-all duration-200 relative">
                       {category.name}
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#1B2B5B] group-hover:w-full transition-all duration-200"></span>
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#4F46E5] group-hover:w-full transition-all duration-200"></span>
                     </span>
                   </button>
                 );

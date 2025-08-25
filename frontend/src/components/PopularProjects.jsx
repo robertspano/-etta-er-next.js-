@@ -133,17 +133,13 @@ const PopularProjects = ({ translations }) => {
   };
 
   return (
-    <section id="popular-projects" className="section-padding bg-gradient-to-b from-gray-50/50 to-white relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute top-1/4 right-0 w-72 h-72 bg-gradient-to-br from-purple-200/15 to-pink-200/15 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-gradient-to-br from-blue-200/15 to-indigo-200/15 rounded-full blur-3xl"></div>
-      
+    <section id="popular-projects" className="section-padding bg-[#F7F5F3] relative overflow-hidden">
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <h2 className="heading-lg text-gray-900 mb-6 animate-fade-in-up text-shadow">
+          <h2 className="heading-lg text-[#1E293B] mb-6 animate-fade-in-up">
             {translations.popularProjectsTitle}
           </h2>
-          <p className="body-lg text-gray-600 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <p className="body-lg text-[#64748B] max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             {translations.popularProjectsSubtitle}
           </p>
         </div>
@@ -161,13 +157,13 @@ const PopularProjects = ({ translations }) => {
                 <div className="relative flex flex-col items-center text-center">
                   {/* Icon Container - smaller gap, larger actual icons */}
                   <div className="w-20 h-20 mb-1 rounded-xl bg-white flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                    <div className="text-[#1B2B5B] w-12 h-12">
+                    <div className="text-[#1E293B] w-12 h-12">
                       {category.icon}
                     </div>
                   </div>
                   
                   {/* Category Name - single line */}
-                  <h3 className="font-bold text-xs text-[#1B2B5B] whitespace-nowrap">
+                  <h3 className="font-bold text-xs text-[#1E293B] whitespace-nowrap">
                     {category.name}
                   </h3>
                 </div>

@@ -12,55 +12,59 @@ const HowItWorks = ({ translations }) => {
     {
       id: 1,
       icon: MessageSquare,
-      title: "Describe the project",
-      description: "Tell us what you need help with, and we'll send it to relevant businesses."
+      title: translations.step1Title || 'Describe your job',
+      description: translations.step1Description || 'Tell us what you need done and we\'ll connect you with professionals.'
     },
     {
       id: 2,
       icon: FileText,
-      title: "Receive offers",
-      description: "You'll quickly get non-binding quotes from pros who want to help."
+      title: translations.step2Title || 'Get quotes',
+      description: translations.step2Description || 'Receive quotes from qualified professionals in your area.'
     },
     {
       id: 3,
       icon: CheckCircle2,
-      title: "Get started!",
-      description: "Review the offers and choose the right company. After the job, you can leave a review."
+      title: translations.step3Title || 'Choose & hire',
+      description: translations.step3Description || 'Compare profiles and reviews, then hire the right professional.'
     }
   ];
 
   const handlePostProject = () => {
-    router.push('/job-categories');
+    router.push('/categories');
   };
 
   return (
-    <section className="py-16 lg:py-20 bg-white">
+    <section className="py-12 lg:py-20 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-[#1a202c] mb-4">
-            How it works
+        <div className="text-center mb-12 lg:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#1E293B] mb-4">
+            {translations.howItWorksTitle || 'How it works'}
           </h2>
         </div>
 
-        {/* Steps Grid - Clean layout like Mittanbud */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-16">
+        {/* Steps Grid - Force side-by-side on larger screens - exactly like React original */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-12 mb-12 lg:mb-16">
           {steps.map((step, index) => {
             const IconComponent = step.icon;
             return (
-              <div key={step.id} className="text-center">
-                {/* Step Number - Large and prominent like Mittanbud */}
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-[#1a202c] text-white rounded-full text-xl font-bold mb-6">
-                  {step.id}
+              <div key={step.id} className="text-center max-w-sm mx-auto md:max-w-none">
+                {/* Icon with Number Badge - Smaller size - exactly like React original */}
+                <div className="relative inline-block mb-4">
+                  <IconComponent className="h-8 w-8 md:h-10 md:w-10 text-[#1E293B]" strokeWidth={1.5} />
+                  {/* Number badge positioned inside top-left of icon */}
+                  <div className="absolute -top-1 -left-1 w-5 h-5 md:w-6 md:h-6 bg-[#1E293B] text-white rounded-full flex items-center justify-center text-xs md:text-sm font-bold">
+                    {step.id}
+                  </div>
                 </div>
                 
-                {/* Title */}
-                <h3 className="text-xl font-bold text-[#1a202c] mb-4">
+                {/* Title - More compact and single line */}
+                <h3 className="text-base md:text-lg font-bold text-[#1E293B] mb-2 md:mb-3 leading-tight whitespace-nowrap">
                   {step.title}
                 </h3>
                 
-                {/* Description */}
-                <p className="text-[#4a5568] leading-relaxed">
+                {/* Description - More compact */}
+                <p className="text-sm md:text-base text-[#64748B] leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -68,13 +72,13 @@ const HowItWorks = ({ translations }) => {
           })}
         </div>
 
-        {/* CTA Button - Exactly like Mittanbud */}
+        {/* CTA Button - exactly like React original */}
         <div className="text-center">
           <Button 
             onClick={handlePostProject}
-            className="bg-[#4f46e5] hover:bg-[#4338ca] text-white px-8 py-3 text-lg font-semibold rounded-lg transition-colors duration-200"
+            className="bg-[#4F46E5] hover:bg-[#4338CA] text-white px-12 py-5 text-xl font-semibold rounded-lg transition-all duration-300"
           >
-            Post a Job
+            {translations.postProject || 'Post a Job'}
           </Button>
         </div>
       </div>

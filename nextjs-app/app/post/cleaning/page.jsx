@@ -1,10 +1,16 @@
 'use client';
 
-import { useTranslations } from '../../../contexts/TranslationsContext';
+import React from 'react';
 import CleaningCategoryPicker from '../../../components/CleaningCategoryPicker';
+import { useTranslations } from '../../../contexts/TranslationsContext';
 
-export default function CleaningPage() {
-  const { translations, language } = useTranslations();
+export default function CleaningPostPage() {
+  const { language, translations } = useTranslations();
   
-  return <CleaningCategoryPicker translations={translations} language={language} />;
+  return (
+    <CleaningCategoryPicker 
+      translations={translations} 
+      language={language}
+    />
+  );
 }

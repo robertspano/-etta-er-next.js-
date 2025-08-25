@@ -54,7 +54,7 @@ const ProSignupSection = ({ translations }) => {
 
             {/* CTA Button */}
             <a 
-              href="/register" 
+              href="/register-company" 
               className="inline-flex items-center px-6 lg:px-8 py-3 lg:py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
             >
               {translations.proSignupCta}

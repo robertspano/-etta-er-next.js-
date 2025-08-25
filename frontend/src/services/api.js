@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://craftlink-3.preview.emergentagent.com';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://craft-connect-11.preview.emergentagent.com';
 // Ensure HTTPS is used
 const SECURE_BACKEND_URL = BACKEND_URL.replace(/^http:/, 'https:');
 const API_BASE = `${SECURE_BACKEND_URL}/api`;

@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 const TrustSection = ({ translations }) => {
   const cards = [
     {
@@ -13,8 +11,8 @@ const TrustSection = ({ translations }) => {
           </svg>
         </div>
       ),
-      title: translations.trustCard1Title,
-      description: translations.trustCard1Description
+      title: translations.trustCard1Title || "Find skilled professionals",
+      description: translations.trustCard1Description || "BuildConnect makes it easy to find professionals, whether the job is big or small. You can contact companies directly, or let us find the right one!"
     },
     {
       icon: (
@@ -25,8 +23,8 @@ const TrustSection = ({ translations }) => {
           </svg>
         </div>
       ),
-      title: translations.trustCard2Title,
-      description: translations.trustCard2Description
+      title: translations.trustCard2Title || "Safe and reliable businesses",
+      description: translations.trustCard2Description || "BuildConnect ensures that companies can perform your type of work. The reviews tell you what experience others have had with the company."
     },
     {
       icon: (
@@ -37,8 +35,8 @@ const TrustSection = ({ translations }) => {
           </svg>
         </div>
       ),
-      title: translations.trustCard3Title,
-      description: translations.trustCard3Description
+      title: translations.trustCard3Title || "Reviews you can trust",
+      description: translations.trustCard3Description || "Reviews can only be given for jobs posted on BuildConnect. To rate work, those posting the job must also be BankID verified for who they are."
     }
   ];
 
@@ -85,10 +83,10 @@ const TrustSection = ({ translations }) => {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            {translations.trustSectionTitle}
+            {translations.trustSectionTitle || "A fast and secure way to find professionals"}
           </h2>
           <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            {translations.trustSectionSubtitle}
+            {translations.trustSectionSubtitle || "At BuildConnect we regularly review the companies on the service. We've also made it easier for you to ensure you've chosen the best company for your project:"}
           </p>
         </div>
 

@@ -1,10 +1,16 @@
 'use client';
 
-import { useTranslations } from '../../../contexts/TranslationsContext';
+import React from 'react';
 import MovingCategoryPicker from '../../../components/MovingCategoryPicker';
+import { useTranslations } from '../../../contexts/TranslationsContext';
 
-export default function MovingPage() {
-  const { translations, language } = useTranslations();
+export default function MovingPostPage() {
+  const { language, translations } = useTranslations();
   
-  return <MovingCategoryPicker translations={translations} language={language} />;
+  return (
+    <MovingCategoryPicker 
+      translations={translations} 
+      language={language}
+    />
+  );
 }

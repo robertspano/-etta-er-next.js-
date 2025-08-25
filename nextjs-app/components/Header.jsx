@@ -110,12 +110,12 @@ const Header = ({ language, setLanguage, translations }) => {
             {/* Language Switcher - Text Style */}
             <div className="relative">
               <Select value={language} onValueChange={setLanguage}>
-                <SelectTrigger className="h-10 px-3 bg-transparent hover:bg-[#F8FAFC] border-0 text-sm font-medium text-[#1E293B]">
+                <SelectTrigger className="h-10 px-3 bg-white hover:bg-[#F8FAFC] border border-[#E2E8F0] text-sm font-medium text-[#1E293B] shadow-sm">
                   <span>{language === 'is' ? 'Icelandic' : 'English'}</span>
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="is">Icelandic</SelectItem>
-                  <SelectItem value="en">English</SelectItem>
+                <SelectContent className="bg-white border border-[#E2E8F0] shadow-lg">
+                  <SelectItem value="is" className="text-[#1E293B] hover:bg-[#F8FAFC] focus:bg-[#F8FAFC]">Icelandic</SelectItem>
+                  <SelectItem value="en" className="text-[#1E293B] hover:bg-[#F8FAFC] focus:bg-[#F8FAFC]">English</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -125,7 +125,7 @@ const Header = ({ language, setLanguage, translations }) => {
               onClick={handleRegisterCompany}
               className="text-[#1E293B] hover:text-[#4F46E5] font-medium transition-colors border-b-2 border-transparent hover:border-[#4F46E5]"
             >
-              Register Company
+              {translations.registerCompany}
             </button>
             
             {/* Post Project Button - Primary */}
@@ -133,20 +133,20 @@ const Header = ({ language, setLanguage, translations }) => {
               onClick={handlePostProject}
               className="h-10 px-4 bg-[#4F46E5] hover:bg-[#4338CA] text-white rounded-lg font-medium"
             >
-              Post project
+              {translations.postJob}
             </Button>
             
             {/* Menu Pill - Single Interactive Element */}
             <button
               onClick={() => setIsDrawerOpen(true)}
               aria-label="Open menu"
-              className="inline-flex items-center gap-3 h-11 px-3 bg-white border border-gray-200 rounded-full hover:bg-gray-50 focus:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 cursor-pointer transition-colors"
+              className="inline-flex items-center gap-3 h-11 px-3 bg-white border border-[#E2E8F0] rounded-full hover:bg-[#F8FAFC] focus:bg-[#F8FAFC] focus:ring-2 focus:ring-[#4F46E5] focus:ring-offset-1 cursor-pointer transition-colors"
             >
               {/* Hamburger Icon */}
-              <Menu className="h-6 w-6 text-gray-600 pointer-events-none" />
+              <Menu className="h-6 w-6 text-[#64748B] pointer-events-none" />
               
               {/* Profile Avatar */}
-              <User className="h-6 w-6 text-gray-600 pointer-events-none" />
+              <User className="h-6 w-6 text-[#64748B] pointer-events-none" />
             </button>
           </div>
 
@@ -155,13 +155,13 @@ const Header = ({ language, setLanguage, translations }) => {
             <button
               onClick={() => setIsDrawerOpen(true)}
               aria-label="Open menu"
-              className="inline-flex items-center gap-3 h-10 px-3 bg-white border border-gray-200 rounded-full hover:bg-gray-50 focus:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 cursor-pointer transition-colors"
+              className="inline-flex items-center gap-3 h-10 px-3 bg-white border border-[#E2E8F0] rounded-full hover:bg-[#F8FAFC] focus:bg-[#F8FAFC] focus:ring-2 focus:ring-[#4F46E5] focus:ring-offset-1 cursor-pointer transition-colors"
             >
               {/* Hamburger Icon */}
-              <Menu className="h-5 w-5 text-gray-600 pointer-events-none" />
+              <Menu className="h-5 w-5 text-[#64748B] pointer-events-none" />
               
               {/* Profile Avatar */}
-              <User className="h-5 w-5 text-gray-600 pointer-events-none" />
+              <User className="h-5 w-5 text-[#64748B] pointer-events-none" />
             </button>
           </div>
         </div>
@@ -180,12 +180,12 @@ const Header = ({ language, setLanguage, translations }) => {
               
               {/* Language Switcher */}
               <Select value={language} onValueChange={setLanguage}>
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="w-full bg-white border border-[#E2E8F0] shadow-sm">
                   <span>{language === 'is' ? 'Icelandic' : 'English'}</span>
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="is">Icelandic</SelectItem>
-                  <SelectItem value="en">English</SelectItem>
+                <SelectContent className="bg-white border border-[#E2E8F0] shadow-lg">
+                  <SelectItem value="is" className="text-[#1E293B] hover:bg-[#F8FAFC] focus:bg-[#F8FAFC]">Icelandic</SelectItem>
+                  <SelectItem value="en" className="text-[#1E293B] hover:bg-[#F8FAFC] focus:bg-[#F8FAFC]">English</SelectItem>
                 </SelectContent>
               </Select>
               

@@ -1,0 +1,64 @@
+
+> buildconnect-nextjs@0.1.0 dev
+> next dev
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /app/yarn.lock as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * /app/nextjs-app/package-lock.json
+
+   ▲ Next.js 15.5.0
+   - Local:        http://localhost:3000
+   - Network:      http://10.64.144.42:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.4s
+ ○ Compiling / ...
+ ✓ Compiled / in 8.6s (1150 modules)
+API Service initialized with: {
+  BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
+  SECURE_BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
+  API_BASE: 'https://craft-connect-11.preview.emergentagent.com/api'
+}
+Hero component mounted { searchQuery: '', showSuggestions: false, searchSuggestions: [] }
+ HEAD / 200 in 9538ms
+ ✓ Compiled in 1557ms (475 modules)
+Hero component mounted { searchQuery: '', showSuggestions: false, searchSuggestions: [] }
+ GET /?x_request_source=preview 200 in 213ms
+Hero component mounted { searchQuery: '', showSuggestions: false, searchSuggestions: [] }
+ GET /?x_request_source=preview 200 in 163ms
+ ⚠ Cross origin request detected from craftlink-3.preview.emergentagent.com to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ ⚠ The "images.domains" configuration is deprecated. Please use "images.remotePatterns" configuration instead.
+Hero component mounted { searchQuery: '', showSuggestions: false, searchSuggestions: [] }
+ GET / 200 in 202ms
+ ○ Compiling /job-categories ...
+ ✓ Compiled /job-categories in 3.2s (1165 modules)
+ GET /job-categories 200 in 3360ms
+ GET /job-categories 200 in 40ms
+ ○ Compiling /post/cleaning ...
+ ✓ Compiled /post/cleaning in 815ms (1180 modules)
+ GET /post/cleaning 200 in 979ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 521ms (1185 modules)
+ GET /post/cleaning/contact 404 in 629ms
+API Service initialized with: {
+  BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
+  SECURE_BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
+  API_BASE: 'https://craft-connect-11.preview.emergentagent.com/api'
+}
+ GET /post/cleaning/contact 404 in 385ms
+ GET / 200 in 44ms
+ GET /post/automotive 404 in 29ms
+ GET /post/automotive 404 in 90ms
+ GET / 200 in 28ms
+ GET /post/bathroom 404 in 36ms
+ GET /post/bathroom 404 in 92ms
+ GET / 200 in 28ms
+ GET /post/automotive 404 in 41ms
+ GET /post/automotive 404 in 117ms
+ GET / 200 in 36ms
+[?25h

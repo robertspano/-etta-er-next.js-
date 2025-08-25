@@ -1,12 +1,12 @@
 'use client';
 
-import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const ProSignupSection = ({ translations }) => {
+  console.log('ProSignupSection rendering with translations:', translations);
   return (
-    <section className="bg-slate-800 relative overflow-hidden">
+    <section className="bg-[#203563] relative overflow-hidden py-16 md:py-20 min-h-[600px]" style={{backgroundColor: '#203563', minHeight: '600px'}}>
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex flex-col md:flex-row min-h-[500px] md:min-h-[600px] items-center gap-8 md:gap-12">
           
@@ -49,20 +49,20 @@ const ProSignupSection = ({ translations }) => {
 
             {/* Title */}
             <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-4 lg:mb-6 leading-tight">
-              {translations.proSignupTitle}
+              {translations.proSignupTitle || "Want more customers?"}
             </h2>
 
             {/* Subtitle */}
             <p className="text-base lg:text-lg xl:text-xl text-slate-300 mb-6 lg:mb-8 leading-relaxed max-w-lg">
-              {translations.proSignupSubtitle}
+              {translations.proSignupSubtitle || "Register your company on BuildConnect and get access to new jobs every week."}
             </p>
 
             {/* CTA Button */}
             <Link 
-              href="/register" 
+              href="/register-company" 
               className="inline-flex items-center px-6 lg:px-8 py-3 lg:py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
             >
-              {translations.proSignupCta}
+              {translations.proSignupCta || "Start here"}
               <svg className="ml-2 w-4 h-4 lg:w-5 lg:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
                       d="M17 8l4 4m0 0l-4 4m4-4H3" />

@@ -92,12 +92,12 @@ const Header = ({ language, setLanguage, translations }) => {
   };
 
   return (
-    <header className="bg-white sticky top-0 z-50 border-b border-gray-200">
+    <header className="bg-[#F7F5F3] sticky top-0 z-50 border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-[72px]">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors">
+            <Link to="/" className="text-2xl font-bold text-[#1E293B] hover:text-[#4F46E5] transition-colors">
               {translations.siteName}
             </Link>
           </div>
@@ -120,7 +120,7 @@ const Header = ({ language, setLanguage, translations }) => {
             {/* Register Company - Text with Hover Underline */}
             <button 
               onClick={handleRegisterCompany}
-              className="text-gray-700 hover:text-blue-700 font-medium transition-colors border-b-2 border-transparent hover:border-blue-700"
+              className="text-[#1E293B] hover:text-[#4F46E5] font-medium transition-colors border-b-2 border-transparent hover:border-[#4F46E5]"
             >
               {translations.registerCompany}
             </button>
@@ -128,7 +128,7 @@ const Header = ({ language, setLanguage, translations }) => {
             {/* Post Project Button - Primary */}
             <Button 
               onClick={handlePostProject}
-              className="h-10 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium"
+              className="h-10 px-4 bg-[#4F46E5] hover:bg-[#4338CA] text-white rounded-xl font-medium"
             >
               {translations.postProject}
             </Button>
@@ -137,13 +137,13 @@ const Header = ({ language, setLanguage, translations }) => {
             <button
               onClick={() => setIsDrawerOpen(true)}
               aria-label="Open menu"
-              className="inline-flex items-center gap-3 h-11 px-3 bg-white border border-gray-200 rounded-full hover:bg-gray-50 focus:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 cursor-pointer transition-colors"
+              className="inline-flex items-center gap-3 h-11 px-3 bg-white border border-[#E2E8F0] rounded-full hover:bg-[#F8FAFC] focus:bg-[#F8FAFC] focus:ring-2 focus:ring-[#4F46E5] focus:ring-offset-1 cursor-pointer transition-colors"
             >
               {/* Hamburger Icon */}
-              <Menu className="h-6 w-6 text-gray-600 pointer-events-none" />
+              <Menu className="h-6 w-6 text-[#64748B] pointer-events-none" />
               
               {/* Profile Avatar */}
-              <User className="h-6 w-6 text-gray-600 pointer-events-none" />
+              <User className="h-6 w-6 text-[#64748B] pointer-events-none" />
             </button>
           </div>
 

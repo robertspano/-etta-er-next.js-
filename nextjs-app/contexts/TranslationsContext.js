@@ -8,15 +8,36 @@ export function TranslationsProvider({ children }) {
   const [language, setLanguage] = useState('en');
   const [translations, setTranslations] = useState({});
 
+  // Initialize language from localStorage on component mount
+  useEffect(() => {
+    // Only run on client side
+    if (typeof window !== 'undefined') {
+      const savedLanguage = localStorage.getItem('buildconnect_language');
+      if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'is')) {
+        setLanguage(savedLanguage);
+      }
+    }
+  }, []);
+
+  // Save language to localStorage whenever it changes
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('buildconnect_language', language);
+    }
+  }, [language]);
+
   useEffect(() => {
     // Load translations based on language
     const loadTranslations = async () => {
       try {
         // Import the translations data
         const { translations: translationsData } = await import('../data/translations');
-        setTranslations(translationsData);
+        // Set the translations for the current language
+        setTranslations(translationsData[language] || translationsData.en);
       } catch (error) {
         console.error('Error loading translations:', error);
+        // Fallback to empty object
+        setTranslations({});
       }
     };
 
@@ -28,7 +49,7 @@ export function TranslationsProvider({ children }) {
     setLanguage,
     translations,
     t: (key) => {
-      return translations[key] && translations[key][language] ? translations[key][language] : key;
+      return translations[key] || key;
     }
   };
 
