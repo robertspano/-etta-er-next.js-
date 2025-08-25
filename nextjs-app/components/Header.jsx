@@ -95,9 +95,9 @@ const Header = ({ language, setLanguage, translations }) => {
   };
 
   return (
-    <header className="bg-transparent backdrop-blur-sm sticky top-0 z-50 border-b border-[#E2E8F0]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-[72px]">
+    <header className="absolute top-0 left-0 right-0 z-50">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="text-2xl font-bold text-white hover:text-[#10B981] transition-colors">
