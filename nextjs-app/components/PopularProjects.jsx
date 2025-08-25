@@ -91,7 +91,7 @@ const PopularProjects = ({ translations }) => {
     { 
       key: 'housingAssociations', 
       icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
           <path d="M1 11h6V9H1v2zm0 4h6v-2H1v2zm0 4h6v-2H1v2zm8-8h14V9H9v2zm0 4h14v-2H9v2zm0 4h14v-2H9v2zM1 3v4h20V3H1z"/>
         </svg>
       ), 
