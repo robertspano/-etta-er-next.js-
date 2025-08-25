@@ -145,7 +145,7 @@ const PopularProjects = ({ translations }) => {
           </p>
         </div>
 
-        {/* Category Grid - Same style as Hero section with touching boxes */}
+        {/* Category Grid - Same style as Hero section with touching boxes - SLIGHTLY LARGER */}
         <div className="flex justify-center">
           <div className="inline-block bg-white rounded-xl shadow-2xl overflow-hidden">
             {/* Row 1 - First 4 categories */}
@@ -154,10 +154,10 @@ const PopularProjects = ({ translations }) => {
                 <button
                   key={category.key}
                   onClick={() => handleCategoryClick(category.key)}
-                  className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
+                  className="group flex flex-col items-center justify-center p-7 lg:p-9 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200 w-[150px] lg:w-[190px] h-[130px] lg:h-[150px]"
                 >
-                  {/* Icon - Same as Hero */}
-                  <div className="w-14 h-14 lg:w-16 lg:h-16 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
+                  {/* Icon - Slightly larger */}
+                  <div className="w-16 h-16 lg:w-18 lg:h-18 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
                     {category.icon}
                   </div>
                   
@@ -175,10 +175,10 @@ const PopularProjects = ({ translations }) => {
                 <button
                   key={category.key}
                   onClick={() => handleCategoryClick(category.key)}
-                  className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
+                  className="group flex flex-col items-center justify-center p-7 lg:p-9 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200 w-[150px] lg:w-[190px] h-[130px] lg:h-[150px]"
                 >
-                  {/* Icon - Same as Hero */}
-                  <div className="w-14 h-14 lg:w-16 lg:h-16 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
+                  {/* Icon - Slightly larger */}
+                  <div className="w-16 h-16 lg:w-18 lg:h-18 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
                     {category.icon}
                   </div>
                   
@@ -196,10 +196,10 @@ const PopularProjects = ({ translations }) => {
                 <button
                   key={category.key}
                   onClick={() => handleCategoryClick(category.key)}
-                  className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
+                  className="group flex flex-col items-center justify-center p-7 lg:p-9 hover:bg-gray-50 transition-colors duration-200 w-[150px] lg:w-[190px] h-[130px] lg:h-[150px]"
                 >
-                  {/* Icon - Same as Hero */}
-                  <div className="w-14 h-14 lg:w-16 lg:h-16 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
+                  {/* Icon - Slightly larger */}
+                  <div className="w-16 h-16 lg:w-18 lg:h-18 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
                     {category.icon}
                   </div>
                   
