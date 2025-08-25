@@ -96,65 +96,76 @@ const Hero = ({ translations, language }) => {
   };
 
   return (
-    <section className="relative bg-[#F7F5F3] py-16 lg:py-20 overflow-hidden">
-      {/* Background decoration - exactly like original React version */}
-      <div className="absolute inset-0 bg-pattern opacity-40"></div>
-      <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl -translate-y-32 translate-x-32"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-indigo-400/15 to-cyan-400/15 rounded-full blur-3xl translate-y-32 -translate-x-32"></div>
+    <section 
+      className="relative min-h-screen flex items-center justify-center"
+      style={{
+        backgroundImage: `url('https://customer-assets.emergentagent.com/job_craft-connect-11/artifacts/czdu1dn3_pexels-freestockpro-12932486.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Background overlay */}
+      <div className="absolute inset-0 bg-black/40"></div>
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-5 gap-12 lg:gap-16 items-center">
-          {/* Left Content - 60% - Exactly like original React */}
-          <div className="md:col-span-3 space-y-8 animate-fade-in-up">
-            {/* Title */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#1E293B] leading-tight text-shadow">
-              <span className="bg-gradient-to-r from-[#1E293B] via-[#4F46E5] to-[#1E293B] bg-clip-text text-transparent whitespace-nowrap">
-                {translations.heroNewTitle || 'Get the Job Done!'}
-              </span>
-            </h1>
-            
-            {/* Subtitle */}
-            <p className="text-xl md:text-2xl text-[#64748B] leading-relaxed max-w-2xl font-light">
-              {translations.heroNewSubtitle || 'Describe your project and get quotes from trusted professionals. Free and without obligation.'}
-            </p>
+      <div className="relative max-w-4xl mx-auto px-4 text-center">
+        {/* Main Headline - exactly like byggstart */}
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+          {translations.heroNewTitle || 'Get the Job Done!'}
+        </h1>
+        
+        {/* Subtitle with highlighted text - like byggstart's green text */}
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#10B981] mb-8">
+          {translations.heroNewSubtitle || 'Find trusted professionals for your project'}
+        </h2>
+        
+        {/* Additional subtitle */}
+        <p className="text-lg md:text-xl text-white/90 mb-12 max-w-2xl mx-auto">
+          Choose category below and get 3 price quotes: Free, simple and non-binding
+        </p>
 
-            {/* Service Categories Grid - 4x2 on desktop (4 per row), 2x4 mobile - LARGER icons and text */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-4 max-w-3xl">
-              {serviceCategories.map((category, index) => {
-                return (
-                  <button
-                    key={category.key}
-                    onClick={() => handleCategoryClick(category.key)}
-                    className="group inline-flex flex-col items-center gap-3 p-3 cursor-pointer select-none transition-all duration-200 animate-fade-in-up hover:scale-105"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    {/* Icon with larger size */}
-                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-white/90 shadow-lg flex items-center justify-center group-hover:shadow-xl group-hover:scale-110 transition-all duration-300 backdrop-blur-sm border border-white/20">
-                      <div className="text-[#1E293B] w-12 h-12 md:w-14 md:h-14">
-                        {category.icon}
-                      </div>
-                    </div>
-                    
-                    {/* Category name with larger text */}
-                    <span className="text-sm md:text-lg font-bold text-[#1E293B] text-center leading-tight group-hover:text-[#4F46E5] transition-colors duration-200">
-                      {category.name}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
+        {/* Service Categories Grid - 2 rows x 4 columns, touching boxes like byggstart */}
+        <div className="inline-block bg-white rounded-lg shadow-2xl overflow-hidden">
+          <div className="grid grid-cols-4 divide-x divide-gray-200">
+            {/* Row 1 */}
+            {serviceCategories.slice(0, 4).map((category, index) => (
+              <button
+                key={category.key}
+                onClick={() => handleCategoryClick(category.key)}
+                className="group flex flex-col items-center justify-center p-6 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200"
+              >
+                {/* Icon */}
+                <div className="w-12 h-12 text-[#10B981] mb-3 group-hover:scale-110 transition-transform duration-200">
+                  {category.icon}
+                </div>
+                
+                {/* Category name */}
+                <span className="text-sm font-medium text-gray-800 text-center leading-tight">
+                  {category.name}
+                </span>
+              </button>
+            ))}
           </div>
-
-          {/* Right Content - 40% - Hero Image - exactly like original */}
-          <div className="md:col-span-2 flex justify-center items-center">
-            <div className="relative animate-fade-in-up w-full max-w-sm md:max-w-md lg:max-w-lg" style={{ animationDelay: '0.3s' }}>
-              {/* Just the Professional Image - completely clean */}
-              <img 
-                src="https://customer-assets.emergentagent.com/job_renovate-hub-2/artifacts/zcg02po8_image.png" 
-                alt="Professional Craftsman" 
-                className="w-full h-auto object-cover"
-              />
-            </div>
+          
+          <div className="grid grid-cols-4 divide-x divide-gray-200">
+            {/* Row 2 */}
+            {serviceCategories.slice(4, 8).map((category, index) => (
+              <button
+                key={category.key}
+                onClick={() => handleCategoryClick(category.key)}
+                className="group flex flex-col items-center justify-center p-6 hover:bg-gray-50 transition-colors duration-200"
+              >
+                {/* Icon */}
+                <div className="w-12 h-12 text-[#10B981] mb-3 group-hover:scale-110 transition-transform duration-200">
+                  {category.icon}
+                </div>
+                
+                {/* Category name */}
+                <span className="text-sm font-medium text-gray-800 text-center leading-tight">
+                  {category.name}
+                </span>
+              </button>
+            ))}
           </div>
         </div>
       </div>
