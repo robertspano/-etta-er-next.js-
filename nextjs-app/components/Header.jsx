@@ -123,7 +123,7 @@ const Header = ({ language, setLanguage, translations }) => {
             {/* Register Company - Text with Hover Underline */}
             <button 
               onClick={handleRegisterCompany}
-              className="text-[#1E293B] hover:text-[#4F46E5] font-medium transition-colors border-b-2 border-transparent hover:border-[#4F46E5]"
+              className="text-white hover:text-[#10B981] font-medium transition-colors border-b-2 border-transparent hover:border-[#10B981]"
             >
               {translations.registerCompany}
             </button>
@@ -131,7 +131,7 @@ const Header = ({ language, setLanguage, translations }) => {
             {/* Post Project Button - Primary */}
             <Button 
               onClick={handlePostProject}
-              className="h-10 px-4 bg-[#4F46E5] hover:bg-[#4338CA] text-white rounded-lg font-medium"
+              className="h-10 px-4 bg-[#10B981] hover:bg-[#059669] text-white rounded-lg font-medium"
             >
               {translations.postJob}
             </Button>
