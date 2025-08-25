@@ -7,7 +7,6 @@ import { Button } from './ui/button';
 import { Search, Star, Users, ArrowRight, Hammer, Droplets, Car, Building, Sparkles, Home, Truck, Grid3X3 } from 'lucide-react';
 
 const Hero = ({ translations, language }) => {
-  const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
 
   const serviceCategories = [
