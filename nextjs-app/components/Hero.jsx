@@ -124,7 +124,7 @@ const Hero = ({ translations, language }) => {
           Choose category below and get 3 price quotes: Free, simple and non-binding
         </p>
 
-        {/* Service Categories Grid - 2 rows x 4 columns, Medium size boxes */}
+        {/* Service Categories Grid - 2 rows x 4 columns, FIXED size boxes */}
         <div className="inline-block bg-white rounded-xl shadow-2xl overflow-hidden">
           <div className="grid grid-cols-4 divide-x divide-gray-200">
             {/* Row 1 */}
@@ -132,15 +132,15 @@ const Hero = ({ translations, language }) => {
               <button
                 key={category.key}
                 onClick={() => handleCategoryClick(category.key)}
-                className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200 min-w-[140px] lg:min-w-[180px]"
+                className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
               >
-                {/* Icon - Medium size */}
-                <div className="w-14 h-14 lg:w-16 lg:h-16 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200">
+                {/* Icon - Fixed size */}
+                <div className="w-14 h-14 lg:w-16 lg:h-16 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
                   {category.icon}
                 </div>
                 
-                {/* Category name - Medium text */}
-                <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight">
+                {/* Category name - Fixed height with text wrapping */}
+                <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight h-8 lg:h-10 flex items-center justify-center">
                   {category.name}
                 </span>
               </button>
@@ -153,15 +153,15 @@ const Hero = ({ translations, language }) => {
               <button
                 key={category.key}
                 onClick={() => handleCategoryClick(category.key)}
-                className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 min-w-[140px] lg:min-w-[180px]"
+                className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
               >
-                {/* Icon - Medium size */}
-                <div className="w-14 h-14 lg:w-16 lg:h-16 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200">
+                {/* Icon - Fixed size */}
+                <div className="w-14 h-14 lg:w-16 lg:h-16 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
                   {category.icon}
                 </div>
                 
-                {/* Category name - Medium text */}
-                <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight">
+                {/* Category name - Fixed height with text wrapping */}
+                <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight h-8 lg:h-10 flex items-center justify-center">
                   {category.name}
                 </span>
               </button>
