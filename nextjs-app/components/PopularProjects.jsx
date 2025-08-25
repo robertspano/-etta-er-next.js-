@@ -37,8 +37,8 @@ const PopularProjects = ({ translations }) => {
     { 
       key: 'majorProjects', 
       icon: (
-        <div className="flex items-center justify-center">
-          <span className="text-2xl font-black text-[#1E293B]">XL</span>
+        <div className="w-full h-full flex items-center justify-center">
+          <span className="text-2xl lg:text-3xl font-black text-[#10B981]">XL</span>
         </div>
       ), 
       name: translations.majorProjects || 'Major Projects'
