@@ -114,12 +114,6 @@ const Hero = ({ translations, language }) => {
     }
   ];
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    // Handle search logic here
-    console.log('Search query:', searchQuery);
-  };
-
   const handleCategoryClick = (categoryKey) => {
     // Route to specialized pages like mittanbud.no
     if (categoryKey === 'allCategories') {
