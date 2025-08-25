@@ -100,7 +100,7 @@ const Header = ({ language, setLanguage, translations }) => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold text-white hover:text-[#10B981] transition-colors">
+            <Link href="/" className="text-2xl font-bold text-white hover:text-[#10B981] transition-colors drop-shadow-lg">
               BuildConnect
             </Link>
           </div>
