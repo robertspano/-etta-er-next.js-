@@ -64,7 +64,7 @@ const PopularProjects = ({ translations }) => {
     { 
       key: 'painting', 
       icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
           <path d="M18.85 10.39l1.06-1.06c.78-.78.78-2.05 0-2.83L18.5 5.09c-.78-.78-2.05-.78-2.83 0L14.61 6.15l4.24 4.24zM2.81 21.19c-.78.78-.78 2.05 0 2.83.39.39.9.58 1.41.58s1.02-.19 1.41-.58L8.1 21.54 2.46 15.9l-2.65 2.65-.65-2.83zM5.44 14.83l7.07-7.07 4.24 4.24-7.07 7.07z"/>
         </svg>
       ), 
