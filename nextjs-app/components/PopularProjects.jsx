@@ -145,32 +145,72 @@ const PopularProjects = ({ translations }) => {
           </p>
         </div>
 
-        {/* Category Grid - 4x3 layout (4 per row, 3 rows) to match original React version */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
-          {projectCategories.map((category, index) => {
-            return (
-              <button
-                key={category.key}
-                onClick={() => handleCategoryClick(category.key)}
-                className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-transparent hover:scale-105 p-4 card-hover animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="relative flex flex-col items-center text-center">
-                  {/* Icon Container - smaller gap, larger actual icons - exactly like React original */}
-                  <div className="w-20 h-20 mb-1 rounded-xl bg-white flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                    <div className="text-[#1E293B] w-12 h-12">
-                      {category.icon}
-                    </div>
+        {/* Category Grid - Same style as Hero section with touching boxes */}
+        <div className="flex justify-center">
+          <div className="inline-block bg-white rounded-xl shadow-2xl overflow-hidden">
+            {/* Row 1 - First 4 categories */}
+            <div className="grid grid-cols-4 divide-x divide-gray-200">
+              {projectCategories.slice(0, 4).map((category, index) => (
+                <button
+                  key={category.key}
+                  onClick={() => handleCategoryClick(category.key)}
+                  className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
+                >
+                  {/* Icon - Same as Hero */}
+                  <div className="w-14 h-14 lg:w-16 lg:h-16 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
+                    {category.icon}
                   </div>
                   
-                  {/* Category Name - single line */}
-                  <h3 className="font-bold text-xs text-[#1E293B] whitespace-nowrap">
+                  {/* Category name - Fixed height */}
+                  <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight h-8 lg:h-10 flex items-center justify-center">
                     {category.name}
-                  </h3>
-                </div>
-              </button>
-            );
-          })}
+                  </span>
+                </button>
+              ))}
+            </div>
+            
+            {/* Row 2 - Next 4 categories */}
+            <div className="grid grid-cols-4 divide-x divide-gray-200">
+              {projectCategories.slice(4, 8).map((category, index) => (
+                <button
+                  key={category.key}
+                  onClick={() => handleCategoryClick(category.key)}
+                  className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
+                >
+                  {/* Icon - Same as Hero */}
+                  <div className="w-14 h-14 lg:w-16 lg:h-16 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
+                    {category.icon}
+                  </div>
+                  
+                  {/* Category name - Fixed height */}
+                  <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight h-8 lg:h-10 flex items-center justify-center">
+                    {category.name}
+                  </span>
+                </button>
+              ))}
+            </div>
+            
+            {/* Row 3 - Last 4 categories */}
+            <div className="grid grid-cols-4 divide-x divide-gray-200">
+              {projectCategories.slice(8, 12).map((category, index) => (
+                <button
+                  key={category.key}
+                  onClick={() => handleCategoryClick(category.key)}
+                  className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
+                >
+                  {/* Icon - Same as Hero */}
+                  <div className="w-14 h-14 lg:w-16 lg:h-16 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
+                    {category.icon}
+                  </div>
+                  
+                  {/* Category name - Fixed height */}
+                  <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight h-8 lg:h-10 flex items-center justify-center">
+                    {category.name}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
