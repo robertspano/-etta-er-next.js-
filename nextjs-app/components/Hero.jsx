@@ -193,22 +193,6 @@ const Hero = ({ translations, language }) => {
                 );
               })}
             </div>
-                    {/* Icon - slightly smaller for better fit */}
-                    <div className="text-[#1E293B] group-hover:scale-105 transition-transform duration-200">
-                      <div className="w-6 h-6 md:w-7 md:h-7 flex items-center justify-center">
-                        {category.icon}
-                      </div>
-                    </div>
-                    
-                    {/* Label with underline on hover - smaller text */}
-                    <span className="text-xs font-medium text-[#1E293B] group-hover:text-[#4F46E5] text-center leading-tight transition-all duration-200 relative">
-                      {category.name}
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#4F46E5] group-hover:w-full transition-all duration-200"></span>
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
           </div>
 
           {/* Right Content - 40% - Hero Image - exactly like original */}
