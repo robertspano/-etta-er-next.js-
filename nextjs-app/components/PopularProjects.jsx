@@ -202,9 +202,11 @@ const PopularProjects = ({ translations }) => {
                   onClick={() => handleCategoryClick(category.key)}
                   className="group flex flex-col items-center justify-center p-7 lg:p-9 hover:bg-gray-50 transition-colors duration-200 w-[150px] lg:w-[190px] h-[130px] lg:h-[150px]"
                 >
-                  {/* Icon - Slightly larger */}
-                  <div className="w-16 h-16 lg:w-18 lg:h-18 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
-                    {category.icon}
+                  {/* Icon - Properly centered and sized */}
+                  <div className="w-16 h-16 lg:w-18 lg:h-18 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0 flex items-center justify-center">
+                    <div className="w-full h-full flex items-center justify-center">
+                      {category.icon}
+                    </div>
                   </div>
                   
                   {/* Category name - Fixed height */}
