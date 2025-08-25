@@ -19,7 +19,7 @@ const PopularProjects = ({ translations }) => {
     { 
       key: 'bathroom', 
       icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
           <path d="M7 7h10v2H7V7zM7 11h10v8c0 1.1-.9 2-2 2H9c-1.1 0-2-.9-2-2v-8zm2 2v4h6v-4H9z"/>
         </svg>
       ), 
