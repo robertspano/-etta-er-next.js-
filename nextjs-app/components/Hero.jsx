@@ -124,7 +124,7 @@ const Hero = ({ translations, language }) => {
           Choose category below and get 3 price quotes: Free, simple and non-binding
         </p>
 
-        {/* Service Categories Grid - 2 rows x 4 columns, LARGER boxes like byggstart */}
+        {/* Service Categories Grid - 2 rows x 4 columns, Medium size boxes */}
         <div className="inline-block bg-white rounded-xl shadow-2xl overflow-hidden">
           <div className="grid grid-cols-4 divide-x divide-gray-200">
             {/* Row 1 */}
@@ -132,15 +132,15 @@ const Hero = ({ translations, language }) => {
               <button
                 key={category.key}
                 onClick={() => handleCategoryClick(category.key)}
-                className="group flex flex-col items-center justify-center p-8 lg:p-10 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200 min-w-[160px] lg:min-w-[200px]"
+                className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200 min-w-[140px] lg:min-w-[180px]"
               >
-                {/* Icon - Much larger */}
-                <div className="w-16 h-16 lg:w-20 lg:h-20 text-[#10B981] mb-4 group-hover:scale-110 transition-transform duration-200">
+                {/* Icon - Medium size */}
+                <div className="w-14 h-14 lg:w-16 lg:h-16 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200">
                   {category.icon}
                 </div>
                 
-                {/* Category name - Larger text */}
-                <span className="text-base lg:text-lg font-medium text-gray-800 text-center leading-tight">
+                {/* Category name - Medium text */}
+                <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight">
                   {category.name}
                 </span>
               </button>
@@ -153,15 +153,15 @@ const Hero = ({ translations, language }) => {
               <button
                 key={category.key}
                 onClick={() => handleCategoryClick(category.key)}
-                className="group flex flex-col items-center justify-center p-8 lg:p-10 hover:bg-gray-50 transition-colors duration-200 min-w-[160px] lg:min-w-[200px]"
+                className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 min-w-[140px] lg:min-w-[180px]"
               >
-                {/* Icon - Much larger */}
-                <div className="w-16 h-16 lg:w-20 lg:h-20 text-[#10B981] mb-4 group-hover:scale-110 transition-transform duration-200">
+                {/* Icon - Medium size */}
+                <div className="w-14 h-14 lg:w-16 lg:h-16 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200">
                   {category.icon}
                 </div>
                 
-                {/* Category name - Larger text */}
-                <span className="text-base lg:text-lg font-medium text-gray-800 text-center leading-tight">
+                {/* Category name - Medium text */}
+                <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight">
                   {category.name}
                 </span>
               </button>
