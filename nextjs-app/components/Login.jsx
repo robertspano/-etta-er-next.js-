@@ -84,18 +84,31 @@ const Login = ({ language = 'en', setLanguage }) => {
     setErrors({});
     
     try {
-      await apiService.login(formData.email, formData.password);
+      console.log('Attempting login with:', formData.email);
       
-      // Get user info to determine redirect
-      const userInfo = await apiService.getCurrentUser();
+      const loginResponse = await apiService.login(formData.email, formData.password);
+      console.log('Login response:', loginResponse);
       
-      // Redirect based on user role
-      if (userInfo.role === 'professional') {
+      // Wait a moment for cookie to be set
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Try to get user info to determine redirect
+      try {
+        const userInfo = await apiService.getCurrentUser();
+        console.log('User info:', userInfo);
+        
+        // Redirect based on user role
+        if (userInfo.role === 'professional') {
+          router.push('/dashboard/professional');
+        } else if (userInfo.role === 'admin') {
+          router.push('/dashboard/admin');
+        } else {
+          router.push('/dashboard/customer');
+        }
+      } catch (userError) {
+        console.error('Failed to get user info after login:', userError);
+        // Still consider login successful, redirect to professional dashboard (default for company registration)
         router.push('/dashboard/professional');
-      } else if (userInfo.role === 'admin') {
-        router.push('/dashboard/admin');
-      } else {
-        router.push('/dashboard/customer');
       }
       
     } catch (error) {
