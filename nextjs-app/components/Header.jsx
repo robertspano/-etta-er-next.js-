@@ -65,7 +65,7 @@ const Header = ({ language, setLanguage, translations }) => {
   const handlePostProject = () => {
     closeDrawer();
     // Always go to job category selection page, no login required
-    router.push('/job-categories');
+    router.push('/post-job');
   };
 
   const handleLogin = () => {
