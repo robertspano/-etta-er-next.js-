@@ -12,7 +12,8 @@ const TrustSection = ({ translations }) => {
         </div>
       ),
       title: translations.trustCard1Title || "Find skilled professionals",
-      description: translations.trustCard1Description || "BuildConnect makes it easy to find professionals, whether the job is big or small. You can contact companies directly, or let us find the right one!"
+      description: translations.trustCard1Description || "BuildConnect makes it easy to find professionals, whether the job is big or small. You can contact companies directly, or let us find the right one!",
+      link: "/how-it-works-detailed"
     },
     {
       icon: (
@@ -24,7 +25,8 @@ const TrustSection = ({ translations }) => {
         </div>
       ),
       title: translations.trustCard2Title || "Safe and reliable businesses",
-      description: translations.trustCard2Description || "BuildConnect ensures that companies can perform your type of work. The reviews tell you what experience others have had with the company."
+      description: translations.trustCard2Description || "BuildConnect ensures that companies can perform your type of work. The reviews tell you what experience others have had with the company.",
+      link: "/company-requirements"
     },
     {
       icon: (
@@ -36,7 +38,8 @@ const TrustSection = ({ translations }) => {
         </div>
       ),
       title: translations.trustCard3Title || "Reviews you can trust",
-      description: translations.trustCard3Description || "Reviews can only be given for jobs posted on BuildConnect. To rate work, those posting the job must also be BankID verified for who they are."
+      description: translations.trustCard3Description || "Reviews can only be given for jobs posted on BuildConnect. To rate work, those posting the job must also be BankID verified for who they are.",
+      link: "/reviews-system"
     }
   ];
 
@@ -133,9 +136,9 @@ const TrustSection = ({ translations }) => {
                 {card.description}
               </p>
 
-              {/* Learn More Link - Bigger and more readable */}
+              {/* Learn More Link - Bigger and more readable with dynamic link */}
               <a 
-                href="#" 
+                href={card.link} 
                 className="inline-flex items-center justify-center lg:justify-start text-blue-600 hover:text-blue-700 font-medium text-sm lg:text-base transition-all duration-200 group-hover:translate-x-1"
               >
                 {translations.learnMore || 'Learn more'}

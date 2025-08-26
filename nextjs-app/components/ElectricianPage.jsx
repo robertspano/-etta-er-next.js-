@@ -36,34 +36,8 @@ const ElectricianPage = ({ translations, language }) => {
     }
   ];
 
-  const breadcrumbs = [
-    { name: language === 'is' ? 'Heim' : 'Hjem', href: '/' },
-    { name: language === 'is' ? 'Handverk' : 'Håndverker', href: '/handcraft' },
-    { name: language === 'is' ? 'Rafvirki' : 'Elektriker', href: null }
-  ];
-
   return (
-    <div className="min-h-screen bg-white">
-      {/* Breadcrumb */}
-      <div className="max-w-6xl mx-auto px-4 py-4">
-        <nav className="flex" aria-label="Breadcrumb">
-          <ol className="flex items-center space-x-2">
-            {breadcrumbs.map((crumb, index) => (
-              <li key={index} className="flex items-center">
-                {index > 0 && <span className="mx-2 text-gray-400">/</span>}
-                {crumb.href ? (
-                  <Link href={crumb.href} className="text-blue-600 hover:text-blue-800">
-                    {crumb.name}
-                  </Link>
-                ) : (
-                  <span className="text-gray-500">{crumb.name}</span>
-                )}
-              </li>
-            ))}
-          </ol>
-        </nav>
-      </div>
-
+    <div className="min-h-screen bg-white pt-20">
       {/* Hero Section */}
       <div className="relative bg-yellow-50 py-16">
         <div className="max-w-6xl mx-auto px-4">

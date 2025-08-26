@@ -12,7 +12,7 @@ from datetime import datetime
 from typing import Dict, Any, List
 
 # Get backend URL from environment
-BACKEND_URL = "https://craft-connect-11.preview.emergentagent.com/api"
+BACKEND_URL = "https://construct-hub-37.preview.emergentagent.com/api"
 
 class BuildConnectAPITester:
     def __init__(self):
@@ -3526,7 +3526,7 @@ class BuildConnectAPITester:
         ]
         
         # Get frontend URL from environment
-        frontend_url = "https://craft-connect-11.preview.emergentagent.com"
+        frontend_url = "https://construct-hub-37.preview.emergentagent.com"
         
         for route in professional_routes:
             try:
