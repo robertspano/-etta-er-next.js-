@@ -100,7 +100,7 @@ const Header = ({ language, setLanguage, translations }) => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold text-white hover:text-[#10B981] transition-colors drop-shadow-lg">
+            <Link href="/" className="text-2xl font-black text-gray-900 hover:text-[#10B981] transition-colors drop-shadow-sm">
               BuildConnect
             </Link>
           </div>
@@ -110,7 +110,7 @@ const Header = ({ language, setLanguage, translations }) => {
             {/* Language Switcher - Text Style */}
             <div className="relative">
               <Select value={language} onValueChange={setLanguage}>
-                <SelectTrigger className="h-10 px-3 bg-transparent hover:bg-white/10 border border-white/20 text-sm font-medium text-white shadow-lg drop-shadow-lg">
+                <SelectTrigger className="h-10 px-3 bg-white/90 hover:bg-white border border-gray-300 text-sm font-medium text-gray-900 shadow-sm drop-shadow-sm">
                   <span>{language === 'is' ? 'Icelandic' : 'English'}</span>
                 </SelectTrigger>
                 <SelectContent className="bg-white border border-gray-200 shadow-lg">
@@ -123,7 +123,7 @@ const Header = ({ language, setLanguage, translations }) => {
             {/* Register Company - Text with Hover Underline */}
             <button 
               onClick={handleRegisterCompany}
-              className="text-white hover:text-[#10B981] font-medium transition-colors border-b-2 border-transparent hover:border-[#10B981] drop-shadow-lg"
+              className="text-gray-900 hover:text-[#10B981] font-medium transition-colors border-b-2 border-transparent hover:border-[#10B981] drop-shadow-sm"
             >
               {translations.registerCompany}
             </button>
