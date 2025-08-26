@@ -365,6 +365,10 @@ export const translations = {
     tomrer: "Builder",
     prosjektledelse: "Project Management",
     
+    // Post Job Page
+    postJobPageTitle: "Choose category to post your job",
+    postJobPageSubtitle: "Completely free",
+    
     // BuildConnect XL
     mittanbudXLGeneral: "BuildConnect XL",
     
