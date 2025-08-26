@@ -1,12 +1,13 @@
 'use client';
 
+import React from 'react';
+import Login from '../../components/Login';
+import { useTranslations } from '../../contexts/TranslationsContext';
+
 export default function LoginPage() {
+  const { language, setLanguage } = useTranslations();
+  
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="text-center">
-        <h1 className="text-3xl font-bold mb-4">Login Page</h1>
-        <p>Login functionality will be implemented here</p>
-      </div>
-    </div>
+    <Login language={language} setLanguage={setLanguage} />
   );
 }
