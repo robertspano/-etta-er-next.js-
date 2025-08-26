@@ -1,4 +1,7 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js",
-  "/register-company/page": "app/register-company/page.js"
+  "/register-company/page": "app/register-company/page.js",
+  "/professionals/electrician/page": "app/professionals/electrician/page.js",
+  "/professionals/plumber/page": "app/professionals/plumber/page.js"
 }
