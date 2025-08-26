@@ -80,7 +80,10 @@ app.include_router(api_router)
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:3000",  # Next.js development server
+        "https://construct-hub-37.preview.emergentagent.com",  # Production/preview URL
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
