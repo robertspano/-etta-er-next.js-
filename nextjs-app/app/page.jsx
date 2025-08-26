@@ -5,7 +5,6 @@ import Hero from '../components/Hero';
 import HowItWorks from '../components/HowItWorks';
 import PopularProjects from '../components/PopularProjects';
 import TrustSection from '../components/TrustSection';
-import ReviewsSection from '../components/ReviewsSection';
 import ProSignupSection from '../components/ProSignupSection';
 
 export default function HomePage() {
@@ -17,7 +16,6 @@ export default function HomePage() {
       <HowItWorks translations={translations} language={language} />
       <PopularProjects translations={translations} language={language} />
       <TrustSection translations={translations} language={language} />
-      <ReviewsSection translations={translations} language={language} />
       <ProSignupSection translations={translations} language={language} />
     </div>
   );
