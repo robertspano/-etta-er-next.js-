@@ -1,3 +1,6 @@
 {
-  "/post-job/page": "app/post-job/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/post-job/page": "app/post-job/page.js",
+  "/page": "app/page.js",
+  "/register-company/page": "app/register-company/page.js"
 }
