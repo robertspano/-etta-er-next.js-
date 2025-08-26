@@ -83,8 +83,7 @@ class ApiService {
       formData.append('username', email);
       formData.append('password', password);
       
-      const response = await axios.post(`${API_BASE}/auth/cookie/login`, formData, {
-        withCredentials: true,
+      const response = await this.client.post('/auth/cookie/login', formData, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
