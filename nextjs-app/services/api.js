@@ -31,7 +31,13 @@ class ApiService {
 
     // Add response interceptor for error handling (authenticated client)
     this.client.interceptors.response.use(
-      (response) => response.data,
+      (response) => {
+        // Handle 204 No Content responses (like login success)
+        if (response.status === 204) {
+          return { success: true, status: response.status };
+        }
+        return response.data;
+      },
       (error) => {
         console.error('API Error:', error.response?.data || error.message);
         
