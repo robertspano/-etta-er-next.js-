@@ -19,9 +19,9 @@
  ○ Compiling / ...
  ✓ Compiled / in 9.6s (1137 modules)
 API Service initialized with: {
-  BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  SECURE_BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  API_BASE: 'https://craft-connect-11.preview.emergentagent.com/api'
+  BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  SECURE_BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  API_BASE: 'https://construct-hub-37.preview.emergentagent.com/api'
 }
  GET / 200 in 10496ms
  GET / 200 in 702ms
@@ -39,9 +39,9 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
  ○ Compiling / ...
  ✓ Compiled / in 2.8s (1137 modules)
 API Service initialized with: {
-  BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  SECURE_BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  API_BASE: 'https://craft-connect-11.preview.emergentagent.com/api'
+  BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  SECURE_BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  API_BASE: 'https://construct-hub-37.preview.emergentagent.com/api'
 }
  GET /?x_request_source=preview 200 in 2886ms
  GET /?x_request_source=preview 200 in 304ms
@@ -49,9 +49,9 @@ API Service initialized with: {
  ✓ Compiled in 2.8s (1137 modules)
  ✓ Compiled in 1472ms (469 modules)
 API Service initialized with: {
-  BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  SECURE_BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  API_BASE: 'https://craft-connect-11.preview.emergentagent.com/api'
+  BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  SECURE_BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  API_BASE: 'https://construct-hub-37.preview.emergentagent.com/api'
 }
  GET /?x_request_source=preview 200 in 582ms
  GET /?x_request_source=preview 200 in 154ms
@@ -67,9 +67,9 @@ API Service initialized with: {
  GET /post/handcraft 404 in 3556ms
  GET /post/electrical 404 in 3831ms
 API Service initialized with: {
-  BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  SECURE_BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  API_BASE: 'https://craft-connect-11.preview.emergentagent.com/api'
+  BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  SECURE_BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  API_BASE: 'https://construct-hub-37.preview.emergentagent.com/api'
 }
  GET /post/handcraft 404 in 1012ms
  GET / 200 in 103ms
@@ -79,9 +79,9 @@ API Service initialized with: {
  GET / 200 in 205ms
  ⚠ The "images.domains" configuration is deprecated. Please use "images.remotePatterns" configuration instead.
 API Service initialized with: {
-  BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  SECURE_BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  API_BASE: 'https://craft-connect-11.preview.emergentagent.com/api'
+  BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  SECURE_BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  API_BASE: 'https://construct-hub-37.preview.emergentagent.com/api'
 }
  GET / 200 in 1064ms
  GET /?x_request_source=preview 200 in 444ms
@@ -93,9 +93,9 @@ API Service initialized with: {
  ✓ Compiled in 1919ms (1174 modules)
  GET /?x_request_source=preview 200 in 196ms
 API Service initialized with: {
-  BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  SECURE_BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  API_BASE: 'https://craft-connect-11.preview.emergentagent.com/api'
+  BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  SECURE_BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  API_BASE: 'https://construct-hub-37.preview.emergentagent.com/api'
 }
  GET / 200 in 1231ms
  GET / 200 in 164ms
@@ -104,9 +104,9 @@ API Service initialized with: {
  ✓ Compiled in 2.1s (1174 modules)
  GET /?x_request_source=preview 200 in 346ms
 API Service initialized with: {
-  BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  SECURE_BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  API_BASE: 'https://craft-connect-11.preview.emergentagent.com/api'
+  BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  SECURE_BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  API_BASE: 'https://construct-hub-37.preview.emergentagent.com/api'
 }
  GET / 200 in 1180ms
  ○ Compiling /post/moving ...
@@ -116,9 +116,9 @@ API Service initialized with: {
  GET /post/automotive 404 in 10095ms
  GET /post/moving 200 in 11187ms
 API Service initialized with: {
-  BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  SECURE_BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  API_BASE: 'https://craft-connect-11.preview.emergentagent.com/api'
+  BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  SECURE_BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  API_BASE: 'https://construct-hub-37.preview.emergentagent.com/api'
 }
  GET /post/bathroom 404 in 1205ms
  GET /post/bathroom 404 in 1208ms
@@ -139,9 +139,9 @@ API Service initialized with: {
  GET /post/handcraft 404 in 1402ms
  GET /post/handcraft 404 in 128ms
 API Service initialized with: {
-  BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  SECURE_BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  API_BASE: 'https://craft-connect-11.preview.emergentagent.com/api'
+  BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  SECURE_BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  API_BASE: 'https://construct-hub-37.preview.emergentagent.com/api'
 }
  GET /post/handcraft 404 in 1308ms
  GET / 200 in 90ms
@@ -154,9 +154,9 @@ API Service initialized with: {
  ✓ Compiled in 1996ms (1192 modules)
  GET / 200 in 302ms
 API Service initialized with: {
-  BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  SECURE_BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  API_BASE: 'https://craft-connect-11.preview.emergentagent.com/api'
+  BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  SECURE_BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  API_BASE: 'https://construct-hub-37.preview.emergentagent.com/api'
 }
  GET /?x_request_source=preview 200 in 940ms
  GET /?x_request_source=preview 200 in 560ms
@@ -191,9 +191,9 @@ API Service initialized with: {
  ✓ Compiled in 1165ms (1173 modules)
  ✓ Compiled in 656ms (1173 modules)
 API Service initialized with: {
-  BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  SECURE_BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  API_BASE: 'https://craft-connect-11.preview.emergentagent.com/api'
+  BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  SECURE_BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  API_BASE: 'https://construct-hub-37.preview.emergentagent.com/api'
 }
  GET / 200 in 1353ms
  GET /?x_request_source=preview 200 in 173ms
@@ -202,9 +202,9 @@ API Service initialized with: {
  ✓ Compiled /_not-found in 4.2s (1178 modules)
  GET /post/handcraft 404 in 4547ms
 API Service initialized with: {
-  BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  SECURE_BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  API_BASE: 'https://craft-connect-11.preview.emergentagent.com/api'
+  BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  SECURE_BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  API_BASE: 'https://construct-hub-37.preview.emergentagent.com/api'
 }
  GET /post/handcraft 404 in 843ms
  GET / 200 in 103ms

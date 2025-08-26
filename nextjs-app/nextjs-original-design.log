@@ -19,9 +19,9 @@
  ○ Compiling / ...
  ✓ Compiled / in 8.6s (1150 modules)
 API Service initialized with: {
-  BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  SECURE_BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  API_BASE: 'https://craft-connect-11.preview.emergentagent.com/api'
+  BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  SECURE_BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  API_BASE: 'https://construct-hub-37.preview.emergentagent.com/api'
 }
 Hero component mounted { searchQuery: '', showSuggestions: false, searchSuggestions: [] }
  HEAD / 200 in 9538ms
@@ -46,9 +46,9 @@ Hero component mounted { searchQuery: '', showSuggestions: false, searchSuggesti
  ✓ Compiled /_not-found in 521ms (1185 modules)
  GET /post/cleaning/contact 404 in 629ms
 API Service initialized with: {
-  BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  SECURE_BACKEND_URL: 'https://craft-connect-11.preview.emergentagent.com',
-  API_BASE: 'https://craft-connect-11.preview.emergentagent.com/api'
+  BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  SECURE_BACKEND_URL: 'https://construct-hub-37.preview.emergentagent.com',
+  API_BASE: 'https://construct-hub-37.preview.emergentagent.com/api'
 }
  GET /post/cleaning/contact 404 in 385ms
  GET / 200 in 44ms
