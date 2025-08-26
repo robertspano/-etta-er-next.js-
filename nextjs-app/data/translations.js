@@ -914,6 +914,10 @@ export const translations = {
     tomrer: "Húsasmíðamaður",
     prosjektledelse: "Verkefnastjórnun",
     
+    // Post Job Page - Icelandic
+    postJobPageTitle: "Veldu flokk til að setja inn verkefnið þitt",
+    postJobPageSubtitle: "Alveg ókeypis",
+    
     // BuildConnect XL
     mittanbudXLGeneral: "BuildConnect XL",
     
