@@ -30,7 +30,7 @@ const HowItWorks = ({ translations }) => {
   ];
 
   const handlePostProject = () => {
-    router.push('/categories');
+    router.push('/post-job');
   };
 
   return (
