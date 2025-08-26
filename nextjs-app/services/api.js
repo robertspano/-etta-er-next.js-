@@ -1,11 +1,12 @@
 import axios from 'axios';
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://construct-hub-37.preview.emergentagent.com';
-// Ensure HTTPS is used
-const SECURE_BACKEND_URL = BACKEND_URL.replace(/^http:/, 'https:');
+// Check if we're in local development mode
+const IS_LOCAL_DEV = typeof window !== 'undefined' && window.location.hostname === 'localhost';
+const SECURE_BACKEND_URL = IS_LOCAL_DEV ? 'http://localhost:8001' : BACKEND_URL.replace(/^http:/, 'https:');
 const API_BASE = `${SECURE_BACKEND_URL}/api`;
 
-console.log('API Service initialized with:', { BACKEND_URL, SECURE_BACKEND_URL, API_BASE });
+console.log('API Service initialized with:', { BACKEND_URL, SECURE_BACKEND_URL, API_BASE, IS_LOCAL_DEV });
 
 class ApiService {
   constructor() {
