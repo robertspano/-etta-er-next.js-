@@ -178,7 +178,7 @@ async def send_login_link(
         print(f"Subject: Login without password - BuildConnect")
         print(f"Login Code: {code}")
         print(f"Valid for: 15 minutes")
-        print(f"Login URL: https://construction-hub-19.preview.emergentagent.com/login-code?email={request.email}&code={code}")
+        print(f"Login URL: https://verki-rebrand.preview.emergentagent.com/login-code?email={request.email}&code={code}")
         print("="*50)
         email_sent = True
         

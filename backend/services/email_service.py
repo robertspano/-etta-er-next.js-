@@ -19,7 +19,7 @@ class EmailService:
         self.from_name = os.getenv('FROM_NAME', 'BuildConnect')
         
         # Base URL for login
-        self.base_url = os.getenv('FRONTEND_URL', 'https://construction-hub-19.preview.emergentagent.com')
+        self.base_url = os.getenv('FRONTEND_URL', 'https://verki-rebrand.preview.emergentagent.com')
     
     def load_template(self, template_name: str) -> str:
         """Load email template from file"""
