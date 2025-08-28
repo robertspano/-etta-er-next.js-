@@ -125,30 +125,7 @@ const CompanyRegistration = ({ language = 'en', setLanguage }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50">
-      {/* Simple Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <Link href="/" className="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors">
-              {t.siteName}
-            </Link>
-            
-            {/* Language Switcher */}
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={toggleLanguage}
-                className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors"
-              >
-                <span className="text-sm font-medium">
-                  {language === 'en' ? 'EN' : 'IS'}
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-gray-50 pt-16">
 
       {/* Main Content */}
       <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">

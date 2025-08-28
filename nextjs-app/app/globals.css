@@ -4,55 +4,49 @@
 
 @layer base {
   :root {
-    /* Mittanbud.no Color Palette */
-    --mittanbud-beige: #F7F5F3;
-    --mittanbud-beige-light: #FAFAF9;
-    --mittanbud-navy: #1E293B;
-    --mittanbud-navy-light: #334155;
-    --mittanbud-blue: #4F46E5;
-    --mittanbud-blue-hover: #4338CA;
-    --mittanbud-blue-light: #6366F1;
-    --mittanbud-gray: #64748B;
-    --mittanbud-gray-light: #94A3B8;
-    --mittanbud-border: #E2E8F0;
-    --mittanbud-white: #FFFFFF;
+    /* New Blue Color Palette Variables */
+    --federal-blue: #03045e;
+    --honolulu-blue: #0077b6;
+    --pacific-cyan: #00b4d8;
+    --non-photo-blue: #90e0ef;
+    --light-cyan: #caf0f8;
 
-    /* Updated CSS variables to match Mittanbud */
-    --background: #F7F5F3;
-    --foreground: #1E293B;
+    /* Updated CSS variables using new blue color palette */
+    --background: 202 240 248; /* Light cyan variation */
+    --foreground: 3 4 94; /* Federal blue for text */
 
-    --card: #FFFFFF;
-    --card-foreground: #1E293B;
+    --card: 255 255 255; /* White cards */
+    --card-foreground: 3 4 94; /* Federal blue text */
 
-    --popover: #FFFFFF;
-    --popover-foreground: #1E293B;
+    --popover: 255 255 255;
+    --popover-foreground: 3 4 94;
 
-    --primary: #4F46E5;
-    --primary-foreground: #FFFFFF;
+    --primary: 0 119 182; /* Honolulu blue for primary actions */
+    --primary-foreground: 255 255 255;
 
-    --secondary: #F1F5F9;
-    --secondary-foreground: #1E293B;
+    --secondary: 144 224 239; /* Non-photo blue for secondary elements */
+    --secondary-foreground: 3 4 94;
 
-    --muted: #F8FAFC;
-    --muted-foreground: #64748B;
+    --muted: 202 240 248; /* Light cyan for muted backgrounds */
+    --muted-foreground: 7 31 37; /* Dark blue for muted text */
 
-    --accent: #F1F5F9;
-    --accent-foreground: #1E293B;
+    --accent: 0 180 216; /* Pacific cyan for accents */
+    --accent-foreground: 3 4 94;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: #E2E8F0;
-    --input: #E2E8F0;
-    --ring: #4F46E5;
+    --border: 144 224 239; /* Non-photo blue for borders */
+    --input: 144 224 239;
+    --ring: 0 119 182; /* Honolulu blue for focus rings */
 
     --radius: 0.5rem;
 
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --chart-1: 0 119 182; /* Honolulu blue */
+    --chart-2: 0 180 216; /* Pacific cyan */
+    --chart-3: 3 4 94; /* Federal blue */
+    --chart-4: 144 224 239; /* Non-photo blue */
+    --chart-5: 202 240 248; /* Light cyan */
   }
 
   .dark {
@@ -97,7 +91,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-[#F7F5F3] text-[#1E293B];
+    @apply bg-light_cyan text-federal_blue;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
   }
@@ -113,9 +107,9 @@ button:focus,
 input:focus,
 textarea:focus,
 select:focus {
-  outline: 3px solid #4F46E5;
+  outline: 3px solid #219ebc;
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+  box-shadow: 0 0 0 4px rgba(33, 158, 188, 0.1);
 }
 
 /* Enhanced hover effects for cards */
@@ -193,11 +187,11 @@ select:focus {
 
 /* Enhanced gradient backgrounds */
 .gradient-blue {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #219ebc 0%, #023047 100%);
 }
 
 .gradient-soft {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, #e8f4fa 0%, #8ecae6 100%);
 }
 
 /* Custom utilities */
@@ -211,7 +205,7 @@ select:focus {
 
 .bg-pattern {
   background-image: 
-    radial-gradient(circle at 1px 1px, rgba(79, 70, 229, 0.15) 1px, transparent 0);
+    radial-gradient(circle at 1px 1px, rgba(33, 158, 188, 0.15) 1px, transparent 0);
   background-size: 20px 20px;
 }
 
@@ -223,14 +217,14 @@ select:focus {
 
 /* Enhanced button styles */
 .btn-primary {
-  background: linear-gradient(135deg, #4F46E5 0%, #4338CA 100%);
-  box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.3);
+  background: linear-gradient(135deg, #219ebc 0%, #023047 100%);
+  box-shadow: 0 4px 14px 0 rgba(33, 158, 188, 0.3);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #4338CA 0%, #3730A3 100%);
-  box-shadow: 0 8px 25px 0 rgba(79, 70, 229, 0.4);
+  background: linear-gradient(135deg, #023047 0%, #011c2a 100%);
+  box-shadow: 0 8px 25px 0 rgba(33, 158, 188, 0.4);
   transform: translateY(-2px);
 }
 

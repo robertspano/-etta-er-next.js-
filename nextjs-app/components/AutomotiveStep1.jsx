@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, HelpCircle } from 'lucide-react';
+import { HelpCircle, Zap, Circle, Shield, Droplets } from 'lucide-react';
 
 const AutomotiveStep1 = ({ translations, language }) => {
   const router = useRouter();
@@ -60,7 +60,7 @@ const AutomotiveStep1 = ({ translations, language }) => {
     
     setLookupLoading(true);
     try {
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://construct-hub-37.preview.emergentagent.com';
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://construction-hub-19.preview.emergentagent.com';
       const response = await fetch(`${backendUrl}/api/public/vehicle-lookup?plate=${plate}&country=IS`);
       if (response.ok) {
         const data = await response.json();
@@ -89,42 +89,52 @@ const AutomotiveStep1 = ({ translations, language }) => {
     }
   }, [isValid, licensePlate]);
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (isValid) {
-      // Store data and navigate to next step
-      localStorage.setItem('bc_automotive_plate', licensePlate);
-      localStorage.setItem('bc_automotive_country', countryCode);
-      if (vehicleInfo) {
-        localStorage.setItem('bc_automotive_vehicle', JSON.stringify(vehicleInfo));
+      try {
+        // Send license plate to backend
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/automotive/create-job`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            license_plate: licensePlate,
+            vehicle_type: vehicleInfo?.make || null,
+            location: countryCode
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to create automotive job');
+        }
+
+        const result = await response.json();
+        
+        // Store job ID and other data locally for next steps
+        localStorage.setItem('bc_automotive_job_id', result.job_id);
+        localStorage.setItem('bc_automotive_plate', licensePlate);
+        localStorage.setItem('bc_automotive_country', countryCode);
+        if (vehicleInfo) {
+          localStorage.setItem('bc_automotive_vehicle', JSON.stringify(vehicleInfo));
+        }
+
+        // Navigate to step 2
+        router.push('/post/automotive/contact');
+      } catch (error) {
+        console.error('Error creating automotive job:', error);
+        // Still navigate even if backend fails (for demo purposes)
+        localStorage.setItem('bc_automotive_plate', licensePlate);
+        localStorage.setItem('bc_automotive_country', countryCode);
+        router.push('/post/automotive/contact');
       }
-      router.push('/post/automotive/contact');
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white shadow-sm">
-        <div className="max-w-4xl mx-auto px-4 py-6">
-          <div className="flex items-center gap-4">
-            <Link href="/" className="flex items-center gap-2 text-blue-600 hover:text-blue-700">
-              <ArrowLeft className="w-4 h-4" />
-              {language === 'is' ? 'Til baka' : 'Back'}
-            </Link>
-            <div>
-              <h1 className="text-xl font-semibold text-gray-900">
-                {language === 'is' ? 'Leggja inn verkefni' : 'Post project'}
-              </h1>
-              <p className="text-sm text-gray-600">
-                {language === 'is' ? 'Bílar' : 'Automotive'}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <div className="min-h-screen bg-gray-50 pt-20">
       {/* Main Content */}
-      <div className="max-w-2xl mx-auto px-4 py-8">
+      <div className="max-w-2xl mx-auto px-4 py-6">
         {/* Progress bar */}
         <div className="flex items-center justify-center mb-8">
           <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-600 text-white text-sm font-medium">
@@ -140,110 +150,74 @@ const AutomotiveStep1 = ({ translations, language }) => {
           </div>
         </div>
 
+        {/* Main form */}
         <div className="bg-white rounded-lg shadow-sm p-8">
-          {/* Heading matching Mittanbud exactly */}
-          <div className="text-center mb-8">
+          {/* License plate input */}
+          <div className="mb-8 text-center">
             <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              {translations.mittanbudAutomotiveTitle || (language === 'is' ? 'Fá tilboð frá fleiri bílaverkstæðum' : 'Get quotes from multiple workshops')}
+              {language === 'is' ? 'Fá tilboð frá fleiri bílverkstæði' : 'Get quotes from multiple workshops'}
             </h2>
-            <p className="text-gray-600 text-base">
-              {translations.mittanbudAutomotiveSubtitle || (language === 'is' ? 'Leggðu inn bílnúmer svo við getum veitt þér viðeigandi tilboð' : 'Enter your vehicle registration to get relevant quotes')}
+            <p className="text-gray-600 mb-8">
+              {language === 'is' ? 'Leggðu inn bílnúmerið svo hentar við info um kjöreytið ditt fyrir þig' : 'Enter your license plate so we find info about your vehicle for you'}
             </p>
-          </div>
-          
-          {/* License plate input section */}
-          <div className="space-y-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-3">
-                {translations.mittanbudLicensePlateLabel || (language === 'is' ? 'Skráningarmerki' : 'License Plate')} <span className="text-red-500">*</span>
-              </label>
-              
-              {/* License plate component matching Mittanbud layout */}
-              <div className="flex items-center justify-center mb-4">
-                <div className="flex items-center bg-white border-2 border-gray-300 rounded-lg overflow-hidden shadow-sm" style={{width: '280px', height: '60px'}}>
-                  {/* IS flag section - left side */}
-                  <div className="flex items-center bg-blue-600 text-white px-3 h-full" style={{width: '60px'}}>
-                    <div className="text-center">
-                      <div className="text-white text-xs font-bold">🇮🇸</div>
-                      <div className="text-white text-xs font-bold mt-1">IS</div>
+            
+            {/* License plate styled like a real plate */}
+            <div className="flex justify-center mb-6">
+              <div className="relative">
+                {/* License plate container */}
+                <div className="bg-white border-4 border-black rounded-lg p-4 shadow-lg" style={{width: '280px', height: '100px'}}>
+                  {/* Icelandic flag */}
+                  <div className="absolute top-2 left-2 w-8 h-6 rounded-sm overflow-hidden">
+                    <div className="w-full h-full bg-blue-600 relative">
+                      <div className="absolute top-0 left-0 w-full h-1 bg-white"></div>
+                      <div className="absolute top-2 left-0 w-full h-1 bg-red-600"></div>
+                      <div className="absolute top-4 left-0 w-full h-1 bg-white"></div>
+                      <div className="absolute top-0 left-0 w-1 h-full bg-white"></div>
+                      <div className="absolute top-0 left-2 w-1 h-full bg-red-600"></div>
+                      <div className="absolute top-0 left-4 w-1 h-full bg-white"></div>
                     </div>
+                    <span className="absolute bottom-0 left-1 text-xs font-bold text-black">IS</span>
                   </div>
                   
-                  {/* License plate input - right side */}
-                  <div className="flex-1 h-full">
-                    <input
-                      type="text"
-                      value={licensePlate}
-                      onChange={handlePlateChange}
-                      onPaste={handlePaste}
-                      placeholder="AB12345"
-                      className="w-full h-full px-4 text-2xl font-mono font-bold text-gray-900 bg-white border-0 focus:outline-none focus:ring-0 text-center tracking-wider"
-                      maxLength={8}
-                      style={{ 
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.1em'
-                      }}
-                    />
+                  {/* License plate input */}
+                  <input
+                    type="text"
+                    value={licensePlate}
+                    onChange={handlePlateChange}
+                    onPaste={handlePaste}
+                    placeholder="AB12345"
+                    className="w-full h-full bg-transparent border-none outline-none text-center text-3xl font-bold text-black tracking-widest mt-4"
+                    maxLength={7}
+                    style={{fontFamily: 'monospace'}}
+                  />
+                </div>
+                
+                {isValid && (
+                  <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex items-center text-green-600">
+                    <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-sm">{language === 'is' ? 'Gilt bílnúmer' : 'Valid license plate'}</span>
                   </div>
-                </div>
+                )}
               </div>
-
-              {/* Validation error */}
-              {validationError && (
-                <p className="text-sm text-red-600 text-center mt-2">{validationError}</p>
-              )}
-
-              {/* Vehicle info display if lookup successful */}
-              {vehicleInfo && vehicleInfo.found && (
-                <div className="bg-green-50 border border-green-200 rounded-lg p-3 mt-3">
-                  <p className="text-green-800 text-sm font-medium">
-                    ✓ {language === 'is' ? 'Ökutæki fundið' : 'Vehicle found'}: {vehicleInfo.make} {vehicleInfo.model} ({vehicleInfo.year})
-                  </p>
-                </div>
-              )}
-
-              {/* Help link */}
-              <div className="flex items-center justify-center mt-4">
-                <button
-                  type="button"
-                  onClick={() => setShowHelp(!showHelp)}
-                  className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-800 transition-colors underline"
-                >
-                  <HelpCircle className="h-4 w-4" />
-                  {translations.mittanbudWhyNeedPlate || (language === 'is' ? 'Hvers vegna þurfum við þetta?' : 'Why do we need this?')}
-                </button>
-              </div>
-
-              {/* Help text */}
-              {showHelp && (
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-3 text-sm text-blue-800">
-                  <p>
-                    {translations.mittanbudPlateHelpText || (language === 'is' 
-                      ? 'Við notum skráningarmerki bílsins þíns til að finna upplýsingar um tegund og gerð og geta þannig tengt þig við viðeigandi verkstæði og fengið betri tilboð.'
-                      : 'We use your vehicle\'s registration number to find information about the type and model and can thus connect you with appropriate workshops and get better quotes.'
-                    )}
-                  </p>
-                </div>
-              )}
             </div>
-          </div>
 
-          {/* Action Buttons */}
-          <div className="flex justify-between items-center mt-8 pt-6 border-t">
-            <Link
-              href="/"
-              className="px-6 py-2 text-gray-600 hover:text-gray-700"
-            >
-              {language === 'is' ? 'Til baka' : 'Back'}
-            </Link>
-            
+            {/* Continue button */}
             <button
               onClick={handleNext}
-              disabled={!isValid || lookupLoading}
-              className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+              disabled={!isValid}
+              className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed font-medium mb-4"
             >
-              {lookupLoading ? (language === 'is' ? 'Hleður...' : 'Loading...') : (language === 'is' ? 'Næsta' : 'Next')}
+              {language === 'is' ? 'Halda áfram' : 'Continue'}
             </button>
+
+            {/* Help text link */}
+            <div className="text-center">
+              <button className="text-blue-600 hover:text-blue-700 text-sm">
+                {language === 'is' ? 'Af hverju þurfum við þetta?' : 'Why do we need this?'}
+              </button>
+            </div>
           </div>
         </div>
       </div>

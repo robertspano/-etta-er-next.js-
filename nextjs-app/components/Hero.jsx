@@ -10,63 +10,61 @@ const Hero = ({ translations, language }) => {
   const serviceCategories = [
     { 
       key: 'handcraft', 
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
-          <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
-        </svg>
-      ), 
+      icon: <Hammer className="w-full h-full" strokeWidth={1.5} />, 
       name: translations.handcraft || 'Handcraft' 
     },
     { 
       key: 'bathroom', 
       icon: (
         <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full">
-          {/* Shower head */}
-          <circle cx="12" cy="8" r="6" fill="none" stroke="currentColor" strokeWidth="2"/>
-          <circle cx="10" cy="6" r="0.5"/>
-          <circle cx="12" cy="6" r="0.5"/>
-          <circle cx="14" cy="6" r="0.5"/>
-          <circle cx="9" cy="8" r="0.5"/>
-          <circle cx="11" cy="8" r="0.5"/>
-          <circle cx="13" cy="8" r="0.5"/>
-          <circle cx="15" cy="8" r="0.5"/>
+          {/* Shower head - centered */}
+          <circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" strokeWidth="1.5"/>
           <circle cx="10" cy="10" r="0.5"/>
           <circle cx="12" cy="10" r="0.5"/>
           <circle cx="14" cy="10" r="0.5"/>
+          <circle cx="9" cy="12" r="0.5"/>
+          <circle cx="11" cy="12" r="0.5"/>
+          <circle cx="13" cy="12" r="0.5"/>
+          <circle cx="15" cy="12" r="0.5"/>
+          <circle cx="10" cy="14" r="0.5"/>
+          <circle cx="12" cy="14" r="0.5"/>
+          <circle cx="14" cy="14" r="0.5"/>
         </svg>
       ), 
       name: translations.bathroom || 'Bathroom' 
     },
     { 
       key: 'automotive', 
-      icon: <Car className="w-full h-full" />, 
+      icon: <Car className="w-full h-full" strokeWidth={1.5} />, 
       name: translations.automotive || 'Automotive' 
     },
     { 
       key: 'majorProjects', 
       icon: (
-        <div className="text-3xl font-black text-[#10B981]">XL</div>
+        <div className="w-full h-full flex items-center justify-center">
+          <span className="text-3xl font-black text-honolulu_blue">XL</span>
+        </div>
       ), 
       name: translations.majorProjects || 'Major Projects' 
     },
     { 
       key: 'cleaning', 
-      icon: <Sparkles className="w-full h-full" />, 
+      icon: <Sparkles className="w-full h-full" strokeWidth={1.5} />, 
       name: translations.cleaning || 'Cleaning' 
     },
     { 
       key: 'housingAssociations', 
-      icon: <Building className="w-full h-full" />, 
+      icon: <Building className="w-full h-full" strokeWidth={1.5} />, 
       name: translations.housingAssociations || 'Housing' 
     },
     { 
       key: 'moving', 
-      icon: <Truck className="w-full h-full" />, 
+      icon: <Truck className="w-full h-full" strokeWidth={1.5} />, 
       name: translations.moving || 'Moving' 
     },
     { 
       key: 'allCategories', 
-      icon: <Grid3X3 className="w-full h-full" />, 
+      icon: <Grid3X3 className="w-full h-full" strokeWidth={1.5} />, 
       name: translations.allCategories || 'All Categories' 
     }
   ];
@@ -114,8 +112,8 @@ const Hero = ({ translations, language }) => {
           {translations.heroNewTitle || 'Get the Job Done!'}
         </h1>
         
-        {/* Subtitle with highlighted text - like byggstart's green text */}
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#10B981] mb-8">
+        {/* Subtitle with highlighted text - using pacific cyan */}
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-pacific_cyan mb-8">
           {translations.heroNewSubtitle || 'Find trusted professionals for your project'}
         </h2>
         
@@ -135,7 +133,7 @@ const Hero = ({ translations, language }) => {
                 className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
               >
                 {/* Icon - Fixed size */}
-                <div className="w-14 h-14 lg:w-16 lg:h-16 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
+                <div className="w-14 h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
                   {category.icon}
                 </div>
                 
@@ -156,7 +154,7 @@ const Hero = ({ translations, language }) => {
                 className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
               >
                 {/* Icon - Fixed size */}
-                <div className="w-14 h-14 lg:w-16 lg:h-16 text-[#10B981] mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
+                <div className="w-14 h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
                   {category.icon}
                 </div>
                 

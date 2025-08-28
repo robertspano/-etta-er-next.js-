@@ -14,8 +14,12 @@ const Footer = ({ translations = {}, language }) => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <div className="text-2xl font-bold text-[#4F46E5] mb-4">
-              {translations.siteName || 'BuildConnect'}
+            <div className="mb-4">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_construction-hub-19/artifacts/k90y66eg_Your%20paragraph%20text%20%283000%20x%203000%20px%29%20%281000%20x%201000%20px%29%20%28Logo%29%20%282%29-cropped.svg" 
+                alt="verki Logo" 
+                className="h-8 w-auto object-contain"
+              />
             </div>
             <p className="text-[#94A3B8] mb-6 leading-relaxed">
               {translations.footerDescription || 'Find qualified professionals for your construction projects.'}
@@ -70,12 +74,12 @@ const Footer = ({ translations = {}, language }) => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-[#334155] flex flex-col md:flex-row justify-between items-center">
           <p className="text-[#64748B] text-sm">
-            © {currentYear} {translations.siteName || 'BuildConnect'}. {translations.allRightsReserved || 'All rights reserved'}.
+            © {currentYear} {translations.siteName || 'verki'}. {translations.allRightsReserved || 'All rights reserved'}.
           </p>
           <div className="flex items-center space-x-4 mt-4 md:mt-0 text-sm text-[#64748B]">
             <div className="flex items-center">
               <Mail className="h-4 w-4 mr-2" />
-              info@buildconnect.is
+              info@verki.is
             </div>
             <div className="flex items-center">
               <Phone className="h-4 w-4 mr-2" />

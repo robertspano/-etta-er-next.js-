@@ -38,7 +38,7 @@ const HowItWorks = ({ translations }) => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#1E293B] mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-federal_blue mb-4">
             {translations.howItWorksTitle || 'How it works'}
           </h2>
         </div>
@@ -51,20 +51,20 @@ const HowItWorks = ({ translations }) => {
               <div key={step.id} className="text-center max-w-sm mx-auto md:max-w-none">
                 {/* Icon with Number Badge - Smaller size - exactly like React original */}
                 <div className="relative inline-block mb-4">
-                  <IconComponent className="h-8 w-8 md:h-10 md:w-10 text-[#1E293B]" strokeWidth={1.5} />
+                  <IconComponent className="h-8 w-8 md:h-10 md:w-10 text-federal_blue" strokeWidth={1.5} />
                   {/* Number badge positioned inside top-left of icon */}
-                  <div className="absolute -top-1 -left-1 w-5 h-5 md:w-6 md:h-6 bg-[#1E293B] text-white rounded-full flex items-center justify-center text-xs md:text-sm font-bold">
+                  <div className="absolute -top-1 -left-1 w-5 h-5 md:w-6 md:h-6 bg-honolulu_blue text-white rounded-full flex items-center justify-center text-xs md:text-sm font-bold">
                     {step.id}
                   </div>
                 </div>
                 
                 {/* Title - More compact and single line */}
-                <h3 className="text-base md:text-lg font-bold text-[#1E293B] mb-2 md:mb-3 leading-tight whitespace-nowrap">
+                <h3 className="text-base md:text-lg font-bold text-prussian_blue mb-2 md:mb-3 leading-tight whitespace-nowrap">
                   {step.title}
                 </h3>
                 
                 {/* Description - More compact */}
-                <p className="text-sm md:text-base text-[#64748B] leading-relaxed">
+                <p className="text-sm md:text-base text-prussian_blue-300 leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -76,7 +76,7 @@ const HowItWorks = ({ translations }) => {
         <div className="text-center">
           <Button 
             onClick={handlePostProject}
-            className="bg-[#4F46E5] hover:bg-[#4338CA] text-white px-12 py-5 text-xl font-semibold rounded-lg transition-all duration-300"
+            className="bg-honolulu_blue hover:bg-federal_blue text-white px-12 py-5 text-xl font-semibold rounded-lg transition-all duration-300"
           >
             {translations.postProject || 'Post a Job'}
           </Button>

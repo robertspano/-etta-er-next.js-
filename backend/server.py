@@ -11,7 +11,7 @@ from datetime import datetime
 
 # Import our routes and services
 from services.database import db_service
-from routes import projects, services, stats, testimonials, auth, job_requests, quotes, messages, notifications, public_job_requests, public, reviews, xl, pro_leads
+from routes import projects, services, stats, testimonials, auth, job_requests, quotes, messages, notifications, public_job_requests, public, reviews, xl, pro_leads, automotive
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -72,6 +72,7 @@ api_router.include_router(testimonials.router)
 api_router.include_router(reviews.router)
 api_router.include_router(xl.router)
 api_router.include_router(pro_leads.router)
+api_router.include_router(automotive.router)
 
 # Include the main API router
 app.include_router(api_router)
@@ -82,7 +83,7 @@ app.add_middleware(
     allow_credentials=True,
     allow_origins=[
         "http://localhost:3000",  # Next.js development server
-        "https://construct-hub-37.preview.emergentagent.com",  # Production/preview URL
+        "https://construction-hub-19.preview.emergentagent.com",  # Production/preview URL
     ],
     allow_methods=["*"],
     allow_headers=["*"],

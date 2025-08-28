@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://construct-hub-37.preview.emergentagent.com';
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://construction-hub-19.preview.emergentagent.com';
 // Check if we're in local development mode
 const IS_LOCAL_DEV = typeof window !== 'undefined' && window.location.hostname === 'localhost';
 const SECURE_BACKEND_URL = IS_LOCAL_DEV ? 'http://localhost:8001' : BACKEND_URL.replace(/^http:/, 'https:');
@@ -81,6 +81,24 @@ class ApiService {
       return response;
     } catch (error) {
       throw new Error(error.response?.data?.detail || 'Failed to register company');
+    }
+  }
+
+  async sendLoginLink(email) {
+    try {
+      const response = await this.client.post('/auth/send-login-link', { email });
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to send login link');
+    }
+  }
+
+  async verifyLoginCode(email, code) {
+    try {
+      const response = await this.client.post('/auth/verify-login-code', { email, code });
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to verify code');
     }
   }
 

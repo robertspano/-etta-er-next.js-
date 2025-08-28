@@ -205,7 +205,7 @@ const ReviewsSection = ({ reviews = [], translations, language, loading = false,
             Latest Reviews
           </h2>
           <p className="text-lg text-[#64748B] max-w-3xl mx-auto">
-            Latest reviews of completed jobs on BuildConnect
+            Latest reviews of completed jobs on verki
           </p>
         </div>
 

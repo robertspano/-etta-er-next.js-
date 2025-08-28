@@ -3,118 +3,69 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { Eye, EyeOff, LogIn, AlertCircle } from 'lucide-react';
-import { Input } from './ui/input';
-import { Button } from './ui/button';
-import apiService from '@/services/api';
 import { translations } from '@/data/translations';
+import apiService from '@/services/api';
 
 const Login = ({ language = 'en', setLanguage }) => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
-  
+  const [email, setEmail] = useState('');
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-  const [successMessage, setSuccessMessage] = useState('');
   
   const router = useRouter();
   const searchParams = useSearchParams();
   const t = translations[language];
 
-  // Handle success message from registration
+  // Handle email from URL params or localStorage
   useEffect(() => {
-    const message = searchParams.get('message');
-    const email = searchParams.get('email');
-    
-    if (message) {
-      setSuccessMessage(decodeURIComponent(message));
-    }
-    
-    if (email) {
-      setFormData(prev => ({ ...prev, email: decodeURIComponent(email) }));
+    const emailFromUrl = searchParams.get('email') || localStorage.getItem('loginEmail') || '';
+    if (emailFromUrl) {
+      setEmail(emailFromUrl);
     }
   }, [searchParams]);
 
-  const validateForm = () => {
-    const newErrors = {};
-    
-    // Email validation
+  const validateEmail = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email.trim()) {
-      newErrors.email = language === 'is' ? 'Netfang er nauðsynlegt' : 'Email is required';
-    } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = language === 'is' ? 'Vinsamlegast sláðu inn gilt netfang' : 'Please enter a valid email address';
+    if (!email.trim()) {
+      setErrors({ email: language === 'is' ? 'Netfang er nauðsynlegt' : 'Email is required' });
+      return false;
+    } else if (!emailRegex.test(email)) {
+      setErrors({ email: language === 'is' ? 'Ugyldig e-postadresse' : 'Invalid email address' });
+      return false;
     }
-    
-    // Password validation
-    if (!formData.password.trim()) {
-      newErrors.password = language === 'is' ? 'Lykilorð er nauðsynlegt' : 'Password is required';
-    }
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    setErrors({});
+    return true;
   };
 
-  const handleInputChange = (field, value) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
-    
-    // Clear error when user starts typing
-    if (errors[field]) {
-      setErrors(prev => ({
-        ...prev,
-        [field]: ''
-      }));
+  const handleEmailChange = (value) => {
+    setEmail(value);
+    if (errors.email) {
+      setErrors({});
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!validateForm()) {
+    if (!validateEmail()) {
       return;
     }
 
     setLoading(true);
-    setErrors({});
     
     try {
-      console.log('Attempting login with:', formData.email);
+      // Use the passwordless login API
+      await apiService.sendLoginLink(email);
       
-      const loginResponse = await apiService.login(formData.email, formData.password);
-      console.log('Login response:', loginResponse);
+      // Store email for next step
+      localStorage.setItem('loginEmail', email);
       
-      // Wait a moment for cookie to be set
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Try to get user info to determine redirect
-      try {
-        const userInfo = await apiService.getCurrentUser();
-        console.log('User info:', userInfo);
-        
-        // Redirect based on user role
-        if (userInfo.role === 'professional') {
-          router.push('/dashboard/professional');
-        } else if (userInfo.role === 'admin') {
-          router.push('/dashboard/admin');
-        } else {
-          router.push('/dashboard/customer');
-        }
-      } catch (userError) {
-        console.error('Failed to get user info after login:', userError);
-        // Still consider login successful, redirect to professional dashboard (default for company registration)
-        router.push('/dashboard/professional');
-      }
+      // Redirect to confirmation page
+      router.push(`/login-passwordless-confirm?email=${encodeURIComponent(email)}`);
       
     } catch (error) {
-      console.error('Failed to login:', error);
+      console.error('Failed to send login link:', error);
       setErrors({ 
-        submit: error.message || (language === 'is' ? 'Innskráning mistókst. Vinsamlegast athugaðu netfang og lykilorð.' : 'Login failed. Please check your email and password.')
+        submit: error.message || (language === 'is' ? 'Villa kom upp. Reyndu aftur.' : 'An error occurred. Please try again.')
       });
     } finally {
       setLoading(false);
@@ -128,158 +79,91 @@ const Login = ({ language = 'en', setLanguage }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
-      {/* Simple Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <Link href="/" className="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors">
-              {t.siteName}
-            </Link>
-            
-            {/* Language Switcher */}
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={toggleLanguage}
-                className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors"
-              >
-                <span className="text-sm font-medium">
-                  {language === 'en' ? 'EN' : 'IS'}
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-
+    <div className="min-h-screen bg-gray-50 pt-16">
       {/* Main Content */}
-      <div className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8">
-          {/* Header */}
-          <div className="text-center">
-            <div className="flex justify-center mb-6">
-              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center">
-                <LogIn className="h-8 w-8 text-white" />
-              </div>
-            </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
-              {language === 'is' ? 'Skrá inn' : 'Sign In'}
+      <div className="flex items-center justify-center py-20 px-4">
+        <div className="max-w-md w-full">
+          {/* Login Card - Like mittanbud */}
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            {/* Title */}
+            <h1 className="text-2xl font-bold text-center text-gray-900 mb-8">
+              {language === 'is' ? 'Logg inn' : 'Log in'}
             </h1>
-            <p className="text-sm text-gray-600">
-              {language === 'is' 
-                ? 'Skráðu þig inn í þinn BuildConnect reikning' 
-                : 'Sign in to your BuildConnect account'}
-            </p>
-          </div>
 
-          {/* Success Message */}
-          {successMessage && (
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-              <div className="flex items-center">
-                <div className="flex-shrink-0">
-                  <AlertCircle className="h-5 w-5 text-green-400" />
-                </div>
-                <div className="ml-3">
-                  <p className="text-sm text-green-700">{successMessage}</p>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Login Form */}
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            {/* Email */}
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                {language === 'is' ? 'Netfang' : 'Email'} *
-              </label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                placeholder={language === 'is' ? 'Sláðu inn netfang' : 'Enter your email'}
-                value={formData.email}
-                onChange={(e) => handleInputChange('email', e.target.value)}
-                className={`h-12 ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
-              />
-              {errors.email && (
-                <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-              )}
-            </div>
-
-            {/* Password */}
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-                {language === 'is' ? 'Lykilorð' : 'Password'} *
-              </label>
-              <div className="relative">
-                <Input
-                  id="password"
-                  name="password"
-                  type={showPassword ? 'text' : 'password'}
-                  placeholder={language === 'is' ? 'Sláðu inn lykilorð' : 'Enter your password'}
-                  value={formData.password}
-                  onChange={(e) => handleInputChange('password', e.target.value)}
-                  className={`h-12 pr-12 ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
+            {/* Login Form */}
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              {/* Email - Like mittanbud */}
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  {language === 'is' ? 'E-post' : 'Email'}
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="din@epost.no"
+                  value={email}
+                  onChange={(e) => handleEmailChange(e.target.value)}
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-honolulu_blue focus:border-transparent ${
+                    errors.email ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600"
-                >
-                  {showPassword ? (
-                    <EyeOff className="h-5 w-5" />
-                  ) : (
-                    <Eye className="h-5 w-5" />
-                  )}
-                </button>
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                )}
               </div>
-              {errors.password && (
-                <p className="mt-1 text-sm text-red-600">{errors.password}</p>
-              )}
-            </div>
 
-            {/* Submit Error */}
-            {errors.submit && (
-              <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                <div className="flex items-center">
-                  <div className="flex-shrink-0">
-                    <AlertCircle className="h-5 w-5 text-red-400" />
-                  </div>
-                  <div className="ml-3">
-                    <p className="text-sm text-red-700">{errors.submit}</p>
-                  </div>
+              {/* Submit Error */}
+              {errors.submit && (
+                <div className="text-sm text-red-600 text-center bg-red-50 p-3 rounded-lg">
+                  {errors.submit}
+                </div>
+              )}
+
+              {/* Next Button - Like mittanbud */}
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full px-6 py-3 bg-honolulu_blue text-white rounded-lg hover:bg-federal_blue disabled:bg-gray-400 disabled:cursor-not-allowed font-semibold transition-colors"
+              >
+                {loading 
+                  ? (language === 'is' ? 'Sendir...' : 'Sending...') 
+                  : (language === 'is' ? 'Neste' : 'Next')
+                }
+              </button>
+            </form>
+
+            {/* Footer Links - Like mittanbud - All together without "Or" */}
+            <div className="mt-6">
+              <div className="border-t border-gray-200 pt-4">
+                <div className="flex flex-col space-y-3 text-center">
+                  <Link href="/forgot-email" className="text-honolulu_blue hover:text-federal_blue text-sm">
+                    {language === 'is' ? 'Glemt e-post?' : 'Forgot email?'}
+                  </Link>
+                  
+                  <Link 
+                    href={`/login-with-password?email=${encodeURIComponent(email)}`}
+                    className="text-honolulu_blue hover:text-federal_blue text-sm"
+                  >
+                    {language === 'is' ? 'Logg inn med passord' : 'Login with password'}
+                  </Link>
+                  
+                  <Link 
+                    href="/register-company" 
+                    className="text-honolulu_blue hover:text-federal_blue text-sm font-medium"
+                  >
+                    {language === 'is' ? 'Registrer ny bedrift' : 'Register new company'}
+                  </Link>
+                  
+                  <Link 
+                    href="/post-job" 
+                    className="text-honolulu_blue hover:text-federal_blue text-sm font-medium"
+                  >
+                    {language === 'is' ? 'Legg ut jobb' : 'Post job'}
+                  </Link>
                 </div>
               </div>
-            )}
-
-            {/* Submit Button */}
-            <Button
-              type="submit"
-              disabled={loading}
-              className="w-full h-12 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-colors"
-            >
-              {loading 
-                ? (language === 'is' ? 'Skrái inn...' : 'Signing in...') 
-                : (language === 'is' ? 'Skrá inn' : 'Sign In')
-              }
-            </Button>
-          </form>
-
-          {/* Footer Links */}
-          <div className="text-center space-y-2">
-            <p className="text-sm text-gray-600">
-              {language === 'is' ? 'Ert þú ekki með reikning?' : "Don't have an account?"}{' '}
-              <Link href="/register-company" className="text-blue-500 hover:text-blue-600 font-medium">
-                {language === 'is' ? 'Skrá fyrirtæki' : 'Register as Company'}
-              </Link>
-            </p>
-            <p className="text-sm text-gray-600">
-              <Link href="/forgot-password" className="text-blue-500 hover:text-blue-600">
-                {language === 'is' ? 'Gleymdirðu lykilorðið?' : 'Forgot your password?'}
-              </Link>
-            </p>
+            </div>
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@ export function TranslationsProvider({ children }) {
   useEffect(() => {
     // Only run on client side
     if (typeof window !== 'undefined') {
-      const savedLanguage = localStorage.getItem('buildconnect_language');
+      const savedLanguage = localStorage.getItem('verki_language');
       if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'is')) {
         setLanguage(savedLanguage);
       }
@@ -22,7 +22,7 @@ export function TranslationsProvider({ children }) {
   // Save language to localStorage whenever it changes
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      localStorage.setItem('buildconnect_language', language);
+      localStorage.setItem('verki_language', language);
     }
   }, [language]);
 

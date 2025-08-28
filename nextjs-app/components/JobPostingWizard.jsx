@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Check } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 const JobPostingWizard = ({ translations, language, category }) => {
   const router = useRouter();
@@ -26,7 +26,15 @@ const JobPostingWizard = ({ translations, language, category }) => {
     lastName: '',
     address: '',
     postcode: '',
-    contactPreference: 'platform_and_phone'
+    contactPreference: 'platform_and_phone',
+    // Step 3 additional fields
+    attachments: [],
+    customerType: 'private', // private, business, housing_association, organization
+    projectDescription: '',
+    areaSize: '',
+    materialsHandling: 'company', // company, customer, undecided
+    documentationRequired: null, // true, false, null
+    startDate: 'anytime' // anytime, specific_date
   });
 
   const categoryNames = {
@@ -90,12 +98,24 @@ const JobPostingWizard = ({ translations, language, category }) => {
       setError(translations.jobEmailValidationError || (language === 'is' ? 'Gilt netfang er áskilið' : 'Valid email address is required'));
       return false;
     }
-    if (!formData.phone || formData.phone.length < 7) {
-      setError(translations.jobPhoneValidationError || (language === 'is' ? 'Gilt símanúmer er áskilið' : 'Valid phone number is required'));
+    if (!formData.phone || formData.phone.length < 7 || !/^\d+$/.test(formData.phone)) {
+      setError(translations.jobPhoneValidationError || (language === 'is' ? 'Gilt símanúmer er áskilið (7 tölustafir)' : 'Valid phone number is required (7 digits)'));
       return false;
     }
     if (!formData.firstName || formData.firstName.length < 2) {
       setError(translations.jobFirstNameValidationError || (language === 'is' ? 'Fornafn er áskilið' : 'First name is required'));
+      return false;
+    }
+    if (!formData.lastName || formData.lastName.length < 2) {
+      setError(translations.jobLastNameValidationError || (language === 'is' ? 'Eftirnafn er áskilið' : 'Last name is required'));
+      return false;
+    }
+    if (!formData.address || formData.address.length < 5) {
+      setError(translations.jobAddressValidationError || (language === 'is' ? 'Heimilisfang er áskilið' : 'Address is required'));
+      return false;
+    }
+    if (!formData.postcode) {
+      setError(translations.jobPostcodeValidationError || (language === 'is' ? 'Póstnúmer er áskilið' : 'Postal code is required'));
       return false;
     }
     return true;
@@ -138,16 +158,19 @@ const JobPostingWizard = ({ translations, language, category }) => {
     setLoading(true);
 
     try {
-      // Here you would normally submit to the backend
-      // For now, just show success message
-      setSuccess(language === 'is' ? 'Verkefni sent inn!' : 'Jobb sendt inn!');
+      // Store email for success page
+      localStorage.setItem('submittedJobEmail', formData.email);
       
+      // Show success message briefly
+      setSuccess(language === 'is' ? 'Verkefni sent inn!' : 'Job submitted!');
+      
+      // Use window.location instead of router.push for more reliable redirect
       setTimeout(() => {
-        router.push('/');
-      }, 2000);
+        window.location.href = `/job-submitted?email=${encodeURIComponent(formData.email)}`;
+      }, 1000);
+      
     } catch (err) {
       setError(translations.jobSubmissionError || (language === 'is' ? 'Villa við innsendingu. Reyndu aftur.' : 'Submission error. Please try again.'));
-    } finally {
       setLoading(false);
     }
   };
@@ -159,7 +182,7 @@ const JobPostingWizard = ({ translations, language, category }) => {
           <div 
             className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium ${
               step.number <= currentStep 
-                ? 'bg-blue-600 text-white' 
+                ? 'bg-honolulu_blue text-white' 
                 : 'bg-gray-200 text-gray-600'
             }`}
           >
@@ -168,7 +191,7 @@ const JobPostingWizard = ({ translations, language, category }) => {
           {index < steps.length - 1 && (
             <div 
               className={`w-20 h-1 mx-2 ${
-                step.number < currentStep ? 'bg-blue-600' : 'bg-gray-200'
+                step.number < currentStep ? 'bg-honolulu_blue' : 'bg-gray-200'
               }`} 
             />
           )}
@@ -265,149 +288,522 @@ const JobPostingWizard = ({ translations, language, category }) => {
 
   const renderStep2 = () => (
     <div className="space-y-6">
+      {/* Why do we need this section */}
+      <div className="bg-blue-50 rounded-lg p-4 mb-6">
+        <h3 className="text-sm font-medium text-blue-900 mb-2">
+          {language === 'is' ? 'Hvers vegna þurfum við þetta?' : 'Why do we need this?'}
+        </h3>
+        <p className="text-sm text-blue-800">
+          {language === 'is' 
+            ? 'Netfangið þitt verður notað til að senda þér tilboð frá Mittanbud og viðeigandi upplýsingar fyrir verkefnið þitt, og það verður einnig sýnilegt fyrirtækjum sem velja.' 
+            : 'Your email address will be used to send you quotes from Mittanbud and relevant information for your job, and it will also be visible to companies you choose.'}
+        </p>
+      </div>
+
+      {/* Email field with validation */}
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          {language === 'is' ? 'Netfang' : 'Email'}
+        </label>
+        <div className="relative">
+          <input
+            type="email"
+            value={formData.email}
+            onChange={(e) => updateFormData('email', e.target.value)}
+            className={`w-full px-4 py-3 pr-10 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+              formData.email && formData.email.includes('@') 
+                ? 'border-green-500 bg-green-50' 
+                : 'border-gray-300'
+            }`}
+            placeholder={language === 'is' ? 'Sláðu inn netfang' : 'Enter email address'}
+          />
+          {formData.email && formData.email.includes('@') && (
+            <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
+              <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                <Check className="w-4 h-4 text-white" />
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Phone field with validation */}
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          {language === 'is' ? 'Símanúmer' : 'Phone Number'}
+        </label>
+        <div className="flex">
+          <select 
+            className="px-3 py-3 border border-r-0 border-gray-300 rounded-l-lg bg-gray-50 text-gray-700"
+            value="+354"
+            readOnly
+          >
+            <option>+354</option>
+          </select>
+          <input
+            type="tel"
+            value={formData.phone}
+            onChange={(e) => updateFormData('phone', e.target.value)}
+            className={`flex-1 px-4 py-3 border rounded-r-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+              formData.phone && (formData.phone.length < 7 || !/^\d+$/.test(formData.phone))
+                ? 'border-red-500' 
+                : 'border-gray-300'
+            }`}
+            placeholder={language === 'is' ? 'Símanúmer' : 'Phone number'}
+          />
+        </div>
+        {formData.phone && (formData.phone.length < 7 || !/^\d+$/.test(formData.phone)) && (
+          <p className="text-sm text-red-600 mt-1">
+            {language === 'is' ? 'Ógilt símanúmer' : 'Invalid phone number'}
+          </p>
+        )}
+      </div>
+
+      {/* Name fields */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            {translations.jobFirstNameLabel || (language === 'is' ? 'Fornafn' : 'First Name')}
+            {language === 'is' ? 'Fornafn' : 'First Name'}
           </label>
           <input
             type="text"
             value={formData.firstName}
             onChange={(e) => updateFormData('firstName', e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className={`w-full px-4 py-3 pr-10 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+              formData.firstName && formData.firstName.length >= 2 
+                ? 'border-green-500 bg-green-50' 
+                : 'border-gray-300'
+            }`}
+            placeholder={language === 'is' ? 'Sláðu inn fornafn' : 'Enter first name'}
           />
+          {formData.firstName && formData.firstName.length >= 2 && (
+            <div className="absolute right-3 top-11">
+              <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                <Check className="w-4 h-4 text-white" />
+              </div>
+            </div>
+          )}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            {translations.jobLastNameLabel || (language === 'is' ? 'Eftirnafn' : 'Last Name')}
+            {language === 'is' ? 'Eftirnafn' : 'Last Name'}
           </label>
-          <input
-            type="text"
-            value={formData.lastName}
-            onChange={(e) => updateFormData('lastName', e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          />
+          <div className="relative">
+            <input
+              type="text"
+              value={formData.lastName}
+              onChange={(e) => updateFormData('lastName', e.target.value)}
+              className={`w-full px-4 py-3 pr-10 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                formData.lastName && formData.lastName.length >= 2 
+                  ? 'border-green-500 bg-green-50' 
+                  : 'border-gray-300'
+              }`}
+              placeholder={language === 'is' ? 'Sláðu inn eftirnafn' : 'Enter last name'}
+            />
+            {formData.lastName && formData.lastName.length >= 2 && (
+              <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
+                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                  <Check className="w-4 h-4 text-white" />
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-      
+
+      {/* Address field */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          {translations.jobEmailLabel || (language === 'is' ? 'Netfang' : 'Email')}
+          {language === 'is' ? 'Verkefnisheimilisfang' : 'Project Address'}
         </label>
-        <input
-          type="email"
-          value={formData.email}
-          onChange={(e) => updateFormData('email', e.target.value)}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-        />
+        <div className="relative">
+          <input
+            type="text"
+            value={formData.address}
+            onChange={(e) => updateFormData('address', e.target.value)}
+            className={`w-full px-4 py-3 pr-10 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+              formData.address && formData.address.length >= 5 
+                ? 'border-green-500 bg-green-50' 
+                : 'border-gray-300'
+            }`}
+            placeholder={language === 'is' ? 'Sláðu inn heimilisfang' : 'Enter address'}
+          />
+          {formData.address && formData.address.length >= 5 && (
+            <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
+              <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                <Check className="w-4 h-4 text-white" />
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-      
-      <div>
+
+      {/* Postal code field */}
+      <div className="w-48">
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          {translations.jobPhoneLabel || (language === 'is' ? 'Símanúmer' : 'Phone Number')}
-        </label>
-        <input
-          type="tel"
-          value={formData.phone}
-          onChange={(e) => updateFormData('phone', e.target.value)}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-        />
-      </div>
-      
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          {translations.jobPostcodeLabel || (language === 'is' ? 'Póstnúmer' : 'Postcode')}
+          {language === 'is' ? 'Póstnúmer' : 'Postal Code'}
         </label>
         <input
           type="text"
           value={formData.postcode}
           onChange={(e) => updateFormData('postcode', e.target.value)}
-          placeholder={translations.jobPostcodePlaceholder || (language === 'is' ? 'T.d. 101' : 'e.g. 101')}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+            !formData.postcode ? 'border-red-500' : 'border-gray-300'
+          }`}
+          placeholder={language === 'is' ? 'T.d. 101' : 'e.g. 101'}
+          maxLength={3}
         />
+        {!formData.postcode && (
+          <p className="text-sm text-red-600 mt-1">
+            {language === 'is' ? 'Reiturinn er áskilinn' : 'Field is required'}
+          </p>
+        )}
+      </div>
+
+      {/* Contact preference */}
+      <div className="mt-8">
+        <h3 className="text-lg font-medium text-gray-900 mb-4">
+          {language === 'is' ? 'Hvernig óskaru eftir að fyrirtækið hafi samband?' : 'How would you like companies to contact you?'}
+        </h3>
+        <div className="space-y-3">
+          <label className="flex items-start">
+            <input
+              type="radio"
+              name="contactPreference"
+              value="platform_and_phone"
+              checked={formData.contactPreference === 'platform_and_phone'}
+              onChange={(e) => updateFormData('contactPreference', e.target.value)}
+              className="mt-1 mr-3 h-4 w-4 text-honolulu_blue focus:ring-honolulu_blue"
+            />
+            <div>
+              <div className="font-medium text-gray-900">
+                {language === 'is' ? 'Í gegnum verki og síma' : 'Through verki and phone'}
+              </div>
+              <div className="text-sm text-gray-600">
+                {language === 'is' 
+                  ? 'Fyrirtæki geta haft samband við þig bæði í gegnum vettvanginn og í síma' 
+                  : 'Companies can contact you both through the platform and by phone'}
+              </div>
+            </div>
+          </label>
+          <label className="flex items-start">
+            <input
+              type="radio"
+              name="contactPreference"
+              value="platform_only"
+              checked={formData.contactPreference === 'platform_only'}
+              onChange={(e) => updateFormData('contactPreference', e.target.value)}
+              className="mt-1 mr-3 h-4 w-4 text-honolulu_blue focus:ring-honolulu_blue"
+            />
+            <div>
+              <div className="font-medium text-gray-900">
+                {language === 'is' ? 'Bara í gegnum verki' : 'Only through verki'}
+              </div>
+              <div className="text-sm text-gray-600">
+                {language === 'is' 
+                  ? 'Fyrirtæki geta aðeins haft samband við þig í gegnum vettvanginn' 
+                  : 'Companies can only contact you through the platform'}
+              </div>
+            </div>
+          </label>
+        </div>
       </div>
     </div>
   );
 
   const renderStep3 = () => (
-    <div className="space-y-6">
-      <div className="bg-gray-50 rounded-lg p-6">
-        <h3 className="text-lg font-semibold mb-4">
-          {translations.jobSummaryTitle || (language === 'is' ? 'Yfirlit verkefnis' : 'Job Summary')}
+    <div className="space-y-8">
+      {/* Success message at the top */}
+      {success && (
+        <div className="bg-pacific_cyan text-white rounded-lg p-4 mb-6 text-center">
+          <div className="flex items-center justify-center mb-2">
+            <Check className="w-6 h-6 mr-2" />
+            <h3 className="text-lg font-semibold">
+              {language === 'is' ? 'Verkefnið hefur verið sent til samþykktar' : 'The job has been submitted for approval'}
+            </h3>
+          </div>
+          <p className="text-non_photo_blue">
+            {language === 'is' 
+              ? 'Þú munt fá tilboð frá fyrirtækjum innan skamms' 
+              : 'You will receive quotes from companies shortly'}
+          </p>
+        </div>
+      )}
+
+      {/* Want more and better answers section */}
+      <div className="bg-light_cyan rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-federal_blue mb-2">
+          {language === 'is' ? 'Vilt þú fleiri og betri svör?' : 'Do you want more and better answers?'}
         </h3>
-        
-        <div className="space-y-3">
-          <div>
-            <span className="font-medium">{translations.jobCategoryLabel || (language === 'is' ? 'Flokkur:' : 'Category:')}</span>
-            <span className="ml-2">{categoryNames[formData.category]}</span>
-          </div>
-          
-          {formData.category === 'automotive' ? (
-            <div>
-              <span className="font-medium">{translations.jobLicensePlateLabel || (language === 'is' ? 'Númeraplata:' : 'License Plate:')}</span>
-              <span className="ml-2">{formData.licensePlate}</span>
+        <p className="text-honolulu_blue text-sm">
+          {language === 'is' 
+            ? 'Fylltu út spurningarnar hér að neðan, það er valfrjálst'
+            : 'Fill out the questions below, it is optional'}
+        </p>
+      </div>
+
+      {/* File upload section */}
+      <div>
+        <h4 className="text-lg font-medium text-gray-900 mb-3">
+          {language === 'is' ? 'Myndir eða viðhengi fyrir verkefnið' : 'Pictures or attachments for the job'}
+        </h4>
+        <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition-colors">
+          <div className="space-y-2">
+            <div className="mx-auto w-12 h-12 flex items-center justify-center bg-gray-100 rounded-lg">
+              <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+              </svg>
             </div>
-          ) : (
             <div>
-              <span className="font-medium">{translations.jobTitleLabel || (language === 'is' ? 'Titill:' : 'Title:')}</span>
-              <span className="ml-2">{formData.title}</span>
+              <button
+                type="button"
+                className="text-honolulu_blue hover:text-federal_blue font-medium"
+                onClick={() => {
+                  // Handle file upload
+                  console.log('File upload clicked');
+                }}
+              >
+                {language === 'is' ? 'Hlaða upp mynd eða viðhengi' : 'Upload image or attachment'}
+              </button>
             </div>
-          )}
-          
-          <div>
-            <span className="font-medium">{translations.jobDescriptionLabel || (language === 'is' ? 'Lýsing:' : 'Description:')}</span>
-            <p className="mt-1 text-sm text-gray-600">{formData.description}</p>
-          </div>
-          
-          <div>
-            <span className="font-medium">{translations.jobContactPersonLabel || (language === 'is' ? 'Tengiliður:' : 'Contact Person:')}</span>
-            <span className="ml-2">{formData.firstName} {formData.lastName}</span>
-          </div>
-          
-          <div>
-            <span className="font-medium">{translations.jobEmailLabel || (language === 'is' ? 'Netfang:' : 'Email:')}</span>
-            <span className="ml-2">{formData.email}</span>
-          </div>
-          
-          <div>
-            <span className="font-medium">{translations.jobPhoneLabel || (language === 'is' ? 'Símanúmer:' : 'Phone:')}</span>
-            <span className="ml-2">{formData.phone}</span>
+            <p className="text-xs text-gray-500">
+              {language === 'is' ? 'Dragðu skrár hingað eða smelltu til að velja' : 'Drag files here or click to select'}
+            </p>
           </div>
         </div>
       </div>
-      
-      {success && (
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-          <p className="text-green-700">{success}</p>
+
+      {/* Customer type */}
+      <div>
+        <h4 className="text-lg font-medium text-gray-900 mb-4">
+          {language === 'is' ? 'Hver ertu sem viðskiptavinur?' : 'Who are you as a customer?'}
+        </h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <label className="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+            <input
+              type="radio"
+              name="customerType"
+              value="private"
+              checked={formData.customerType === 'private'}
+              onChange={(e) => updateFormData('customerType', e.target.value)}
+              className="mr-3 h-4 w-4 text-honolulu_blue focus:ring-honolulu_blue"
+            />
+            <span className="font-medium text-gray-900">
+              {language === 'is' ? 'Einkaaðili' : 'Private person'}
+            </span>
+          </label>
+          <label className="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+            <input
+              type="radio"
+              name="customerType"
+              value="business"
+              checked={formData.customerType === 'business'}
+              onChange={(e) => updateFormData('customerType', e.target.value)}
+              className="mr-3 h-4 w-4 text-honolulu_blue focus:ring-honolulu_blue"
+            />
+            <span className="font-medium text-gray-900">
+              {language === 'is' ? 'Fyrirtæki' : 'Business'}
+            </span>
+          </label>
+          <label className="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+            <input
+              type="radio"
+              name="customerType"
+              value="housing_association"
+              checked={formData.customerType === 'housing_association'}
+              onChange={(e) => updateFormData('customerType', e.target.value)}
+              className="mr-3 h-4 w-4 text-honolulu_blue focus:ring-honolulu_blue"
+            />
+            <span className="font-medium text-gray-900">
+              {language === 'is' ? 'Íbúðasamfélag/Húsfélög' : 'Housing association'}
+            </span>
+          </label>
+          <label className="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+            <input
+              type="radio"
+              name="customerType"
+              value="organization"
+              checked={formData.customerType === 'organization'}
+              onChange={(e) => updateFormData('customerType', e.target.value)}
+              className="mr-3 h-4 w-4 text-honolulu_blue focus:ring-honolulu_blue"
+            />
+            <span className="font-medium text-gray-900">
+              {language === 'is' ? 'Félag' : 'Organization'}
+            </span>
+          </label>
         </div>
-      )}
+      </div>
+
+      {/* Project description */}
+      <div>
+        <label className="block text-lg font-medium text-gray-900 mb-3">
+          {language === 'is' 
+            ? 'Getur þú gefið stutta lýsingu á því hvað verkefnið felur í sér?' 
+            : 'Can you give a short description of what the project involves?'}
+        </label>
+        <textarea
+          value={formData.projectDescription}
+          onChange={(e) => updateFormData('projectDescription', e.target.value)}
+          placeholder={language === 'is' 
+            ? 'Lýstu verkefninu nánar hér...' 
+            : 'Describe the project in more detail here...'}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+          rows={4}
+        />
+      </div>
+
+      {/* Area size */}
+      <div>
+        <label className="block text-lg font-medium text-gray-900 mb-3">
+          {language === 'is' 
+            ? 'Hversu stórt er svæðið sem á að meðhöndla? Getur þú gefið upp fermetrafjölda?' 
+            : 'How big is the area to be treated? Can you specify square meters?'}
+        </label>
+        <div className="flex items-center space-x-2">
+          <input
+            type="number"
+            value={formData.areaSize}
+            onChange={(e) => updateFormData('areaSize', e.target.value)}
+            placeholder="0"
+            className="w-32 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+          <span className="text-gray-700">
+            {language === 'is' ? 'fermetrar' : 'square meters'}
+          </span>
+        </div>
+      </div>
+
+      {/* Materials handling */}
+      <div>
+        <h4 className="text-lg font-medium text-gray-900 mb-4">
+          {language === 'is' 
+            ? 'Á fyrirtækið að sjá um efnin, eða hefur þú þegar keypt þau?' 
+            : 'Should the company arrange materials, or have you already bought them?'}
+        </h4>
+        <div className="space-y-2">
+          <label className="flex items-center">
+            <input
+              type="radio"
+              name="materialsHandling"
+              value="company"
+              checked={formData.materialsHandling === 'company'}
+              onChange={(e) => updateFormData('materialsHandling', e.target.value)}
+              className="mr-3 h-4 w-4 text-honolulu_blue focus:ring-honolulu_blue"
+            />
+            <span className="text-gray-900">
+              {language === 'is' 
+                ? 'Fyrirtækið á að sjá um efnin' 
+                : 'The company should arrange materials'}
+            </span>
+          </label>
+          <label className="flex items-center">
+            <input
+              type="radio"
+              name="materialsHandling"
+              value="customer"
+              checked={formData.materialsHandling === 'customer'}
+              onChange={(e) => updateFormData('materialsHandling', e.target.value)}
+              className="mr-3 h-4 w-4 text-honolulu_blue focus:ring-honolulu_blue"
+            />
+            <span className="text-gray-900">
+              {language === 'is' 
+                ? 'Ég hef þegar keypt efnin' 
+                : 'I have already bought the materials'}
+            </span>
+          </label>
+          <label className="flex items-center">
+            <input
+              type="radio"
+              name="materialsHandling"
+              value="undecided"
+              checked={formData.materialsHandling === 'undecided'}
+              onChange={(e) => updateFormData('materialsHandling', e.target.value)}
+              className="mr-3 h-4 w-4 text-honolulu_blue focus:ring-honolulu_blue"
+            />
+            <span className="text-gray-900">
+              {language === 'is' 
+                ? 'Óviss/á eftir að ákveða' 
+                : 'Undecided/to be decided'}
+            </span>
+          </label>
+        </div>
+      </div>
+
+      {/* Documentation requirement */}
+      <div>
+        <h4 className="text-lg font-medium text-gray-900 mb-4">
+          {language === 'is' 
+            ? 'Vilt þú skjölun í Húsgögnum?' 
+            : 'Do you want documentation in the Housing folder?'}
+        </h4>
+        <div className="flex space-x-4">
+          <label className="flex items-center">
+            <input
+              type="radio"
+              name="documentationRequired"
+              value="true"
+              checked={formData.documentationRequired === true}
+              onChange={(e) => updateFormData('documentationRequired', true)}
+              className="mr-2 h-4 w-4 text-honolulu_blue focus:ring-honolulu_blue"
+            />
+            <span className="text-gray-900">
+              {language === 'is' ? 'Já' : 'Yes'}
+            </span>
+          </label>
+          <label className="flex items-center">
+            <input
+              type="radio"
+              name="documentationRequired"
+              value="false"
+              checked={formData.documentationRequired === false}
+              onChange={(e) => updateFormData('documentationRequired', false)}
+              className="mr-2 h-4 w-4 text-honolulu_blue focus:ring-honolulu_blue"
+            />
+            <span className="text-gray-900">
+              {language === 'is' ? 'Nei' : 'No'}
+            </span>
+          </label>
+        </div>
+      </div>
+
+      {/* Start date */}
+      <div>
+        <label className="block text-lg font-medium text-gray-900 mb-3">
+          {language === 'is' 
+            ? 'Hvenær vilt þú að verkefnið eigi að byrja?' 
+            : 'When do you want the job to start?'}
+        </label>
+        <select
+          value={formData.startDate}
+          onChange={(e) => updateFormData('startDate', e.target.value)}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        >
+          <option value="anytime">
+            {language === 'is' ? 'Hvenær sem er' : 'Anytime'}
+          </option>
+          <option value="asap">
+            {language === 'is' ? 'Eins fljótt og auðið er' : 'As soon as possible'}
+          </option>
+          <option value="within_week">
+            {language === 'is' ? 'Innan viku' : 'Within a week'}
+          </option>
+          <option value="within_month">
+            {language === 'is' ? 'Innan mánaðar' : 'Within a month'}
+          </option>
+          <option value="specific_date">
+            {language === 'is' ? 'Ákveðin dagsetning' : 'Specific date'}
+          </option>
+        </select>
+      </div>
+
+      {/* Summary section - REMOVED */}
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white shadow-sm">
-        <div className="max-w-4xl mx-auto px-4 py-6">
-          <div className="flex items-center gap-4">
-            <Link href="/" className="flex items-center gap-2 text-blue-600 hover:text-blue-700">
-              <ArrowLeft className="w-4 h-4" />
-              {translations.jobBackToHome || (language === 'is' ? 'Til baka' : 'Back')}
-            </Link>
-            <div>
-              <h1 className="text-xl font-semibold text-gray-900">
-                {translations.jobPostProjectTitle || (language === 'is' ? 'Leggja inn verkefni' : 'Post Project')}
-              </h1>
-              <p className="text-sm text-gray-600">
-                {categoryNames[formData.category]}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <div className="min-h-screen bg-light_cyan pt-20">
       {/* Main Content */}
-      <div className="max-w-2xl mx-auto px-4 py-8">
+      <div className="max-w-2xl mx-auto px-4 py-6">
         {renderProgressBar()}
         {renderStepTitle()}
         
@@ -436,7 +832,7 @@ const JobPostingWizard = ({ translations, language, category }) => {
               <button
                 onClick={handleNext}
                 disabled={loading}
-                className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                className="px-8 py-3 bg-honolulu_blue text-white rounded-lg hover:bg-federal_blue disabled:opacity-50 disabled:cursor-not-allowed font-medium"
               >
                 {loading ? (translations.jobLoadingText || (language === 'is' ? 'Hleður...' : 'Loading...')) : (translations.jobNextButton || (language === 'is' ? 'Næsta' : 'Next'))}
               </button>
@@ -444,9 +840,9 @@ const JobPostingWizard = ({ translations, language, category }) => {
               <button
                 onClick={handleSubmit}
                 disabled={loading || success}
-                className="px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                className="px-12 py-3 bg-honolulu_blue text-white rounded-lg hover:bg-federal_blue disabled:opacity-50 disabled:cursor-not-allowed font-medium text-lg"
               >
-                {loading ? (translations.jobSubmittingText || (language === 'is' ? 'Sendir...' : 'Submitting...')) : (translations.jobSubmitButton || (language === 'is' ? 'Senda inn' : 'Submit'))}
+                {loading ? (translations.jobSubmittingText || (language === 'is' ? 'Sendir...' : 'Submitting...')) : (translations.jobSubmitButton || (language === 'is' ? 'Fullfør' : 'Complete'))}
               </button>
             )}
           </div>

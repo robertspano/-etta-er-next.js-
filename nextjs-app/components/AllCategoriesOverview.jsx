@@ -1,17 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Home, Wrench, Building, Users, Hammer, Zap, Car, Search, ArrowRight } from 'lucide-react';
+import { Home, Wrench, Building, Users, Hammer, Zap, Car } from 'lucide-react';
 
 const AllCategoriesOverview = ({ translations, language }) => {
   const router = useRouter();
-  const [searchQuery, setSearchQuery] = useState('');
 
-  const handleBack = () => {
-    router.back();
-  };
+
+
 
   // Main category boxes with all subcategories - exactly like Mittanbud
   const categoryBoxes = [
@@ -176,12 +174,12 @@ const AllCategoriesOverview = ({ translations, language }) => {
     },
     {
       key: 'mittanbud-xl',
-      title: translations.mittanbudXL || (language === 'is' ? 'BuildConnect XL' : 'BuildConnect XL'),
+      title: translations.mittanbudXL || (language === 'is' ? 'verki XL' : 'verki XL'),
       icon: <Zap className="w-8 h-8" />,
       items: [
         // Column 1
         [
-          translations.mittanbudXLGeneral || (language === 'is' ? 'BuildConnect XL' : 'BuildConnect XL')
+          translations.mittanbudXLGeneral || (language === 'is' ? 'verki XL' : 'verki XL')
         ]
       ]
     }
@@ -206,61 +204,26 @@ const AllCategoriesOverview = ({ translations, language }) => {
     }
   };
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    // Could implement search functionality here
-  };
+
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="flex items-center gap-4 mb-4">
-            <button 
-              onClick={handleBack}
-              className="flex items-center gap-2 text-blue-600 hover:text-blue-700"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              {language === 'is' ? 'Til baka' : 'Back'}
-            </button>
-          </div>
-          
-          <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {translations.allCategoriesTitle || (language === 'is' ? 'Allir flokkar' : 'All Categories')}
-            </h1>
-            <p className="text-lg text-gray-600 max-w-4xl">
-              {translations.allCategoriesSubtitle || (language === 'is'
-                ? 'Hér fyrir neðan finnurðu yfirlit yfir allt sem BuildConnect getur hjálpað þér með. Á þessum tenglum finnurðu frekari upplýsingar um mismunandi þjónustu.'
-                : 'Below you will find an overview of everything BuildConnect can help you with. On these links you will find more information about the different services.'
-              )}
-            </p>
-          </div>
-          
-          {/* Search Box */}
-          <form onSubmit={handleSearchSubmit} className="max-w-2xl relative">
-            <div className="relative">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={translations.searchPlaceholder || (language === 'is' ? 'Hvað þarftu hjálp við?' : 'What do you need help with?')}
-                className="w-full px-6 py-4 text-lg border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pr-14"
-              />
-              <button
-                type="submit"
-                className="absolute right-2 top-1/2 -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full transition-colors"
-              >
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </div>
-          </form>
+    <div className="min-h-screen bg-gray-50 pt-16">
+      {/* Page Content */}
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        {/* Page Header with tighter spacing */}
+        <div className="mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            {translations.allCategoriesTitle || (language === 'is' ? 'Allir flokkar' : 'All Categories')}
+          </h1>
+          <p className="text-lg text-gray-600 max-w-4xl mb-8">
+            {translations.allCategoriesSubtitle || (language === 'is'
+              ? 'Hér fyrir neðan finnurðu yfirlit yfir allt sem verki getur hjálpað þér með. Á þessum tenglum finnurðu frekari upplýsingar um mismunandi þjónustu.'
+              : 'Below you will find an overview of everything verki can help you with. On these links you will find more information about the different services.'
+            )}
+          </p>
         </div>
-      </div>
 
-      {/* Main Categories Grid - Like Mittanbud */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
+        {/* Main Categories Grid - Like Mittanbud */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {categoryBoxes.map((categoryBox) => (
             <div 

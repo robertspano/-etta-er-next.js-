@@ -100,8 +100,12 @@ const Header = ({ language, setLanguage, translations }) => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-black text-gray-900 hover:text-[#10B981] transition-colors drop-shadow-sm">
-              BuildConnect
+            <Link href="/" className="flex items-center group">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_construction-hub-19/artifacts/k90y66eg_Your%20paragraph%20text%20%283000%20x%203000%20px%29%20%281000%20x%201000%20px%29%20%28Logo%29%20%282%29-cropped.svg" 
+                alt="Verki Logo" 
+                className="h-12 lg:h-14 w-auto object-contain transition-all duration-300 group-hover:scale-105 drop-shadow-lg"
+              />
             </Link>
           </div>
 
@@ -123,7 +127,7 @@ const Header = ({ language, setLanguage, translations }) => {
             {/* Register Company - Text with Hover Underline */}
             <button 
               onClick={handleRegisterCompany}
-              className="text-gray-900 hover:text-[#10B981] font-medium transition-colors border-b-2 border-transparent hover:border-[#10B981] drop-shadow-sm"
+              className="text-federal_blue hover:text-honolulu_blue font-medium transition-colors border-b-2 border-transparent hover:border-honolulu_blue drop-shadow-sm"
             >
               {translations.registerCompany}
             </button>
@@ -131,7 +135,7 @@ const Header = ({ language, setLanguage, translations }) => {
             {/* Post Project Button - Primary */}
             <Button 
               onClick={handlePostProject}
-              className="h-10 px-4 bg-[#10B981] hover:bg-[#059669] text-white rounded-lg font-medium shadow-lg"
+              className="h-10 px-4 bg-honolulu_blue hover:bg-federal_blue text-white rounded-lg font-medium shadow-lg"
             >
               {translations.postJob}
             </Button>
@@ -140,13 +144,13 @@ const Header = ({ language, setLanguage, translations }) => {
             <button
               onClick={() => setIsDrawerOpen(true)}
               aria-label="Open menu"
-              className="inline-flex items-center gap-3 h-11 px-3 bg-white border border-[#E2E8F0] rounded-full hover:bg-[#F8FAFC] focus:bg-[#F8FAFC] focus:ring-2 focus:ring-[#4F46E5] focus:ring-offset-1 cursor-pointer transition-colors"
+              className="inline-flex items-center gap-3 h-11 px-3 bg-white border border-non_photo_blue rounded-full hover:bg-light_cyan focus:bg-light_cyan focus:ring-2 focus:ring-honolulu_blue focus:ring-offset-1 cursor-pointer transition-colors"
             >
               {/* Hamburger Icon */}
-              <Menu className="h-6 w-6 text-[#64748B] pointer-events-none" />
+              <Menu className="h-6 w-6 text-federal_blue pointer-events-none" />
               
               {/* Profile Avatar */}
-              <User className="h-6 w-6 text-[#64748B] pointer-events-none" />
+              <User className="h-6 w-6 text-federal_blue pointer-events-none" />
             </button>
           </div>
 
@@ -371,7 +375,7 @@ const Header = ({ language, setLanguage, translations }) => {
                 
                 <div className="space-y-1">
                   <button
-                    onClick={() => handleDrawerItemClick('/haandverker')}
+                    onClick={() => handleDrawerItemClick('/categories/handcraft')}
                     className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
                   >
                     <span className="text-gray-700">{language === 'is' ? 'Iðnaður' : 'Handcraft'}</span>

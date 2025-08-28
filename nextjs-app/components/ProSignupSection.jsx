@@ -40,7 +40,7 @@ const ProSignupSection = ({ translations }) => {
                 <svg className="w-7 h-7 lg:w-8 lg:h-8 mr-3 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                 </svg>
-                <span className="text-lg lg:text-xl font-bold">BuildConnect</span>
+                <span className="text-lg lg:text-xl font-bold">verki</span>
                 <span className="ml-2 px-2 py-1 bg-blue-600 text-white text-xs font-semibold rounded-full">
                   PROFF
                 </span>
@@ -54,7 +54,7 @@ const ProSignupSection = ({ translations }) => {
 
             {/* Subtitle */}
             <p className="text-base lg:text-lg xl:text-xl text-slate-300 mb-6 lg:mb-8 leading-relaxed max-w-lg">
-              {translations.proSignupSubtitle || "Register your company on BuildConnect and get access to new jobs every week."}
+              {translations.proSignupSubtitle || "Register your company on verki and get access to new jobs every week."}
             </p>
 
             {/* CTA Button */}

@@ -1,199 +1,173 @@
 'use client';
 
-import React from 'react';
-import { useRouter } from 'next/navigation';
-import { useTranslations } from '../../contexts/TranslationsContext';
-import { ChevronDown, Star, Shield, FileText, Users } from 'lucide-react';
+import { useContext } from 'react';
+import { TranslationsContext } from '@/contexts/TranslationsContext';
 
 const HowItWorksDetailedPage = () => {
-  const { translations } = useTranslations();
-  const router = useRouter();
+  const { language, translations } = useContext(TranslationsContext);
 
   return (
-    <div className="min-h-screen bg-[#F7F5F3] pt-20">
-      <div className="max-w-4xl mx-auto px-4 py-16">
-        
-        {/* Header */}
-        <div className="text-center mb-8">
-          <p className="text-blue-600 font-medium mb-4">
-            {translations.startGuide || 'Start Guide'}
-          </p>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            {translations.detailedPageTitle || 'Find skilled professionals on BuildConnect'}
+    <div className="min-h-screen bg-gray-50 pt-16">
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        {/* Hero Section */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            {language === 'is' ? 'Finndu hæfa fagmenn á verki' : 'Find qualified professionals on verki'}
           </h1>
-          <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            {translations.detailedPageSubtitle || 'BuildConnect gives you the opportunity to find skilled craftsmen and companies within a range of specialties. Whether you need to upgrade your bathroom, renovate your kitchen, or upgrade your bathroom, BuildConnect ensures that you get quotes from relevant and qualified professionals - for both large and small jobs.'}
-          </p>
+          
+          <div className="max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 leading-relaxed mb-8">
+              {language === 'is' 
+              ? 'verki gefur þér tækifæri til að finna hæfa handverksmenn og fyrirtæki innan margra sérsviða. Hvort sem þú þarft að endurnýja baðherbergið, gera upp eldhúsið eða ráðast í stærra verkefni tryggir verki að þú fáir tilboð frá viðeigandi og reyndum fagmönnum – bæði fyrir stór og smá verkefni.'
+              : 'verki gives you the opportunity to find qualified craftsmen and companies within many specialties. Whether you need to renovate the bathroom, renovate the kitchen or embark on a larger project, verki ensures that you get quotes from relevant and experienced professionals - for both large and small projects.'
+              }
+            </p>
+          </div>
+          
+          {/* Hero Image */}
+          <div className="mb-8">
+            <img 
+              src="https://customer-assets.emergentagent.com/job_craft-connect-11/artifacts/czdu1dn3_pexels-freestockpro-12932486.jpg" 
+              alt={language === 'is' ? 'Verkamenn að vinna' : 'Workers at construction site'}
+              className="w-full max-w-4xl mx-auto rounded-lg shadow-lg"
+            />
+          </div>
         </div>
 
-        {/* Hero Image */}
-        <div className="mb-12">
-          <img 
-            src="https://customer-assets.emergentagent.com/job_craft-connect-11/artifacts/czdu1dn3_pexels-freestockpro-12932486.jpg"
-            alt="Professional craftswoman" 
-            className="w-full h-80 object-cover rounded-lg shadow-lg"
-          />
+        <div className="bg-white rounded-lg shadow-sm p-8">
+          <div className="prose max-w-none">
+            {/* Get Multiple Quotes */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                {language === 'is' ? 'Fáðu mörg tilboð og berðu saman' : 'Get multiple quotes and compare'}
+              </h2>
+              <p className="leading-relaxed mb-4">
+                {language === 'is' 
+                  ? 'Einn af stærstu kostum verki er að þú getur fengið tilboð frá mismunandi fyrirtækjum fyrir verkefnið þitt. Þannig verður auðveldara að bera saman verð, kjör og umsagnir áður en ákvörðun er tekin. Ef þú ert óviss um hvaða fyrirtæki hentar best, þá hjálpar verki þér að komast í samband við réttu aðilana.'
+                  : 'One of the biggest advantages of verki is that you can get quotes from different companies for your project. This makes it easier to compare prices, terms and reviews before making a decision. If you are unsure about which company is best suited, verki helps you get in touch with the right parties.'
+                }
+              </p>
+            </section>
+
+            {/* Contact Individual Companies */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                {language === 'is' ? 'Hafðu samband við einstök fyrirtæki' : 'Contact individual companies'}
+              </h2>
+              <p className="leading-relaxed mb-4">
+                {language === 'is' 
+                  ? 'Ef þú ert þegar með hug á tilteknu fyrirtæki eða hefur fengið góða reynslu áður, getur þú haft samband beint við það í gegnum verki. Þú getur líka fundið fyrirtæki með leit og fengið tilboð beint frá þeim sem henta verkefninu best.'
+                  : 'If you already have a specific company in mind or have had good experience before, you can contact it directly through verki. You can also find companies by searching and get quotes directly from those that best suit the project.'
+                }
+              </p>
+            </section>
+
+            {/* Choose Right Company */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                {language === 'is' ? 'Veldu rétta fyrirtækið' : 'Choose the right company'}
+              </h2>
+              <p className="leading-relaxed mb-4">
+                {language === 'is' 
+                  ? 'Áður en þú tekur ákvörðun geturðu skoðað prófíla fyrirtækjanna, lesið umsagnir frá fyrri viðskiptavinum og séð myndir af unnum verkum. Þannig færðu góða innsýn í gæði og reynslu fyrirtækisins og getur tekið upplýsta ákvörðun.'
+                  : 'Before making a decision, you can view company profiles, read reviews from previous customers, and see pictures of completed work. This gives you good insight into the quality and experience of the company and allows you to make an informed decision.'
+                }
+              </p>
+            </section>
+
+            {/* Reviews Section */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                {language === 'is' ? 'Umsagnir gefa þér öryggi' : 'Reviews give you security'}
+              </h2>
+              <p className="leading-relaxed mb-4">
+                {language === 'is' 
+                  ? 'Allar umsagnir í verki eru staðfestar frá raunverulegum notendum. Þær hjálpa þér að velja rétta fyrirtækið og tryggja að ákvörðunin byggi á traustum grunni.'
+                  : 'All reviews in verki are verified from real users. They help you choose the right company and ensure that the decision is based on a solid foundation.'
+                }
+              </p>
+            </section>
+
+            {/* Contracts Section */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                {language === 'is' ? 'Samningar tryggja gott samstarf' : 'Contracts ensure good cooperation'}
+              </h2>
+              <p className="leading-relaxed mb-4">
+                {language === 'is' 
+                  ? 'Þegar þú hefur valið fyrirtækið eða handverksmanninn sem hentar best fyrir verkefnið þitt, geturðu gert formlegan samning beint í gegnum verki. Það tryggir skýra verkáætlun, tímamörk og verð – sem eykur öryggi og dregur úr misskilningi.'
+                  : 'When you have chosen the company or craftsman that best suits your project, you can make a formal contract directly through verki. This ensures clear work schedules, deadlines and prices - which increases security and reduces misunderstandings.'
+                }
+              </p>
+            </section>
+
+            {/* Larger Projects */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                {language === 'is' ? 'Aðstoð með stærri verkefni' : 'Help with larger projects'}
+              </h2>
+              <p className="leading-relaxed mb-4">
+                {language === 'is' 
+                  ? 'Byggir þú á stærra verkefni? Með verki XL þjónustunni færðu sérstaka aðstoð við að finna réttu fyrirtækin, fá tilboð og fylgja verkefninu eftir frá A til Ö.'
+                  : 'Are you building on a larger project? With the verki XL service, you get special assistance in finding the right companies, getting quotes and following the project from A to Z.'
+                }
+              </p>
+            </section>
+
+            {/* Documentation */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                {language === 'is' ? 'Verkefnaskjöl á einum stað' : 'Project documents in one place'}
+              </h2>
+              <p className="leading-relaxed mb-4">
+                {language === 'is' 
+                  ? 'Með verki geturðu vistað öll nauðsynleg skjöl – samninga, ábyrgðir og lokareikninga – á einum stað. Þannig heldurðu auðveldlega utan um verkefnið og tryggir góða yfirsýn frá upphafi til enda.'
+                  : 'With verki you can store all necessary documents – contracts, warranties and final invoices – in one place. This way you easily keep track of the project and ensure good overview from start to finish.'
+                }
+              </p>
+            </section>
+
+            {/* Why verki */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                {language === 'is' ? 'Af hverju verki?' : 'Why verki?'}
+              </h2>
+              <p className="leading-relaxed mb-4">
+                {language === 'is' 
+                  ? 'verki sameinar alla þessa kosti á einum stað:'
+                  : 'verki combines all these benefits in one place:'
+                }
+              </p>
+              
+              <ul className="list-disc list-inside space-y-3 ml-4">
+                {language === 'is' ? (
+                  <>
+                    <li>Aðgang að hæfum fagmönnum</li>
+                    <li>Margar tilboðstilraunir sem auðvelda samanburð</li>
+                    <li>Staðfestar umsagnir notenda</li>
+                    <li>Skjalageymslu sem tryggir yfirsýn</li>
+                    <li>Öryggi í gegnum formlega samninga</li>
+                  </>
+                ) : (
+                  <>
+                    <li>Access to qualified professionals</li>
+                    <li>Multiple quote attempts that facilitate comparison</li>
+                    <li>Verified user reviews</li>
+                    <li>Document storage that ensures overview</li>
+                    <li>Security through formal contracts</li>
+                  </>
+                )}
+              </ul>
+              
+              <p className="leading-relaxed mt-6 font-medium text-gray-900">
+                {language === 'is' 
+                  ? 'Hraðvirkt, einfalt og öruggt – þess vegna velja þúsundir að nota verki.'
+                  : 'Fast, simple and secure – that\'s why thousands choose to use verki.'
+                }
+              </p>
+            </section>
+          </div>
         </div>
-
-        {/* Content Dropdown */}
-        <div className="mb-12">
-          <details className="bg-white rounded-lg shadow-sm border">
-            <summary className="p-6 cursor-pointer font-semibold text-gray-900 flex items-center justify-between">
-              {translations.contentDropdown || 'Content'}
-              <ChevronDown className="w-5 h-5" />
-            </summary>
-          </details>
-        </div>
-
-        {/* Get Multiple Quotes Section */}
-        <section className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-            {translations.multipleQuotesTitle || 'Get multiple quotes from multiple companies'}
-          </h2>
-          <p className="text-gray-600 leading-relaxed mb-6">
-            {translations.multipleQuotesDescription || 'One of the biggest advantages of BuildConnect is that you can receive multiple quotes from different companies for your job. This makes it easy to compare prices, terms and evaluations before you make a decision.'}
-          </p>
-          <p className="text-gray-600 leading-relaxed mb-6">
-            {translations.uncertaintyText || 'So, are you unsure about which company suits your job best?'}
-          </p>
-          <p className="text-gray-600 leading-relaxed">
-            <a href="/post-job" className="text-blue-600 hover:underline">
-              {translations.postJobLink || 'Post the job on BuildConnect'}
-            </a>
-            {translations.postJobDescription || ', and we\'ll make sure it\'s shown to relevant companies. The companies you get in touch with will also have the necessary capacity to get the job done!'}
-          </p>
-        </section>
-
-        {/* Contact Individual Companies */}
-        <section className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-            {translations.contactIndividualTitle || 'You can also contact individual companies'}
-          </h2>
-          <p className="text-gray-600 leading-relaxed mb-6">
-            {translations.contactIndividualDescription || 'Do you have good experience with a company, or a recommendation from family, friends or colleagues? You can also contact the company directly through their profile page.'}
-          </p>
-          <p className="text-gray-600 leading-relaxed">
-            {translations.companySearchDescription || 'You can find the profile via the company search, but if the company has helped you before on BuildConnect, you will be able to log in and also be able to find offers for the company there.'}
-          </p>
-        </section>
-
-        {/* Boligmappa Integration */}
-        <section className="mb-16 bg-gray-50 p-8 rounded-lg">
-          <p className="text-center text-gray-600 leading-relaxed">
-            {translations.boligmappaIntegration || 'BuildConnect collaborates with Boligmappa, where all jobs posted via BuildConnect cost nothing to document. By using BuildConnect to mediate the job, the craftsman (and you) can thus save money on the documentation!'}
-          </p>
-        </section>
-
-        {/* How to Choose Right Company */}
-        <section className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-            {translations.chooseRightCompanyTitle || 'How to choose the right company?'}
-          </h2>
-          <p className="text-gray-600 leading-relaxed mb-6">
-            {translations.chooseRightCompanyDescription || 'To make the choice simpler, you can visit the company\'s profile page. There you will find reviews from previous customers, certifications they hold and also images from completed projects.'}
-          </p>
-          <p className="text-gray-600 leading-relaxed">
-            {translations.confidenceDescription || 'This gives you a good insight into the company\'s competence and experience, so that you can make a safe decision.'}
-          </p>
-        </section>
-
-        {/* Reviews Section */}
-        <section className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-            {translations.reviewsConfidenceTitle || 'Reviews make you more confident in your choice'}
-          </h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            {translations.reviewsDescription || 'Jobs posted via BuildConnect can be reviewed, and many choose to do this to help others make the right choice of company. All reviews on BuildConnect since autumn 2024 come from BankID-verified users. This way you can be sure that those who posted the job are someone we have checked that they are who they say they are. This (and more) is done so that the reviews are given on the right basis.'}
-          </p>
-          <a href="#" className="text-blue-600 hover:underline">
-            {translations.readMoreReviews || 'Read more about reviews here!'}
-          </a>
-        </section>
-
-        {/* Contract Writing */}
-        <section className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-            {translations.contractWritingTitle || 'The opportunity to write a contract with the company'}
-          </h2>
-          <p className="text-gray-600 leading-relaxed mb-6">
-            {translations.contractWritingDescription || 'When you have chosen the craftsman or company that best suits your project, BuildConnect offers the opportunity to enter into a formal contract. This ensures that all parties agree on scope of work, schedule and price, and gives you extra security that the work starts.'}
-          </p>
-          <p className="text-gray-600 leading-relaxed">
-            {translations.contractBenefits || 'A written contract is an important tool to avoid misunderstandings and ensure good cooperation.'}
-          </p>
-        </section>
-
-        {/* Larger Projects */}
-        <section className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-            {translations.largerProjectsTitle || 'We also help you with larger projects'}
-          </h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            {translations.largerProjectsDescription || 'If you are going to do a bigger project, BuildConnect XL is the service for you! Our project managers find relevant companies to quote your assignment, and help you through the entire process from A to Z.'}
-          </p>
-          <a href="/major-projects" className="text-blue-600 hover:underline">
-            {translations.readMoreXL || 'Read more about BuildConnect XL here!'}
-          </a>
-        </section>
-
-        {/* Housing Associations */}
-        <section className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-            {translations.housingAssociationsTitle || 'BuildConnect can also be used for housing associations and cooperatives'}
-          </h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            {translations.housingAssociationsDescription || 'Should the housing association or cooperative be upgraded? By using BuildConnect or BuildConnect XL, housing associations can easily find professional specialists for everything from maintenance work to major renovation projects. The advantage is that the service is flexible - whether you need help with small, regular tasks or a major project, BuildConnect can deliver the right assistance.'}
-          </p>
-          <a href="#" className="text-blue-600 hover:underline">
-            {translations.readMoreHousing || 'Read more about collaboration with housing associations and cooperatives here!'}
-          </a>
-        </section>
-
-        {/* Documentation Section */}
-        <section className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-            {translations.documentationTitle || 'Job documentation in Boligmappa'}
-          </h2>
-          <p className="text-gray-600 leading-relaxed mb-6">
-            {translations.documentationDescription || 'Another big plus with BuildConnect is the opportunity to document the project in Boligmappa. This is a practical solution that ensures that all necessary documentation, for example contracts, guarantees and final invoices - is collected in one place.'}
-          </p>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            {translations.boligmappaAdvantage || 'With Boligmappa you can easily keep track of all details related to the project, something that can be very valuable when reselling the property or during later maintenance work.'}
-          </p>
-          <a href="#" className="text-blue-600 hover:underline">
-            {translations.readMoreBoligmappa || 'Read more about collaboration with Boligmappa here!'}
-          </a>
-        </section>
-
-        {/* Qualified Professionals */}
-        <section className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-            {translations.qualifiedProfessionalsTitle || 'BuildConnect gives you qualified craftsmen'}
-          </h2>
-          <p className="text-gray-600 leading-relaxed mb-6">
-            {translations.qualifiedProfessionalsDescription || 'BuildConnect gives you easy access to qualified craftsmen by retrieving multiple quotes on your project. You can easily compare prices, terms and read reviews from previous customers before making your choice. The companies\' profiles give you insight into the quality of the work, and with BankID-verified reviews you can be sure of your choice. The service gives you security through the opportunity to enter into a contract with the craftsman and ensure good cooperation.'}
-          </p>
-          <a href="#" className="text-blue-600 hover:underline">
-            {translations.readMoreFunction || 'Read more about how BuildConnect works here!'}
-          </a>
-          <p className="text-gray-600 leading-relaxed mt-6 font-medium">
-            {translations.popularChoice || 'Fast, safe and simple - that\'s why over 300,000 Norwegians choose BuildConnect every year.'}
-          </p>
-        </section>
-
-        {/* Call to Action */}
-        <section className="bg-gray-100 rounded-lg p-8 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-            {translations.finalCTATitle || 'Do you have a job you want done?'}
-          </h2>
-          <button
-            onClick={() => router.push('/post-job')}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-200"
-          >
-            {translations.finalCTAButton || 'Post your job now'}
-          </button>
-        </section>
-
       </div>
     </div>
   );
