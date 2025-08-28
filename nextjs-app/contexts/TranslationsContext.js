@@ -5,7 +5,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const TranslationsContext = createContext();
 
 export function TranslationsProvider({ children }) {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState('is'); // Default to Icelandic
   const [translations, setTranslations] = useState({});
 
   // Initialize language from localStorage on component mount
