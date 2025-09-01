@@ -84,22 +84,45 @@ export default function VerifyIdentityPage() {
       return;
     }
 
+    // Ensure phone number starts with +
+    let formattedPhone = phone.trim();
+    if (!formattedPhone.startsWith('+')) {
+      formattedPhone = '+354' + formattedPhone;
+    }
+
     setLoading(true);
     
     try {
       setUpRecaptcha();
       const appVerifier = window.recaptchaVerifier;
       
-      const confirmation = await window.firebase.auth().signInWithPhoneNumber(phone, appVerifier);
+      console.log('Sending SMS to:', formattedPhone);
+      
+      const confirmation = await window.firebase.auth().signInWithPhoneNumber(formattedPhone, appVerifier);
       setConfirmResult(confirmation);
-      alert("SMS kóði sendur! 📱");
+      alert("SMS kóði sendur! 📱 Athugaðu símann þinn.");
+      console.log('SMS sent successfully');
     } catch (error: any) {
       console.error("SMS send error:", error);
-      alert("Villa við að senda SMS: " + (error.message || error));
+      
+      // More specific error messages
+      if (error.code === 'auth/invalid-phone-number') {
+        alert("Ógilt símanúmer. Notaðu +354 format (t.d. +354 123 4567)");
+      } else if (error.code === 'auth/too-many-requests') {
+        alert("Of margar beiðnir. Reyndu aftur síðar.");
+      } else if (error.code === 'auth/captcha-check-failed') {
+        alert("reCAPTCHA villa. Endurhladdu síðunni og reyndu aftur.");
+      } else {
+        alert("Villa við að senda SMS: " + (error.message || 'Óþekkt villa'));
+      }
       
       // Reset reCAPTCHA on error
       if (window.recaptchaVerifier) {
-        window.recaptchaVerifier.clear();
+        try {
+          window.recaptchaVerifier.clear();
+        } catch (e) {
+          console.log('Could not clear recaptcha');
+        }
         window.recaptchaVerifier = null;
       }
     } finally {

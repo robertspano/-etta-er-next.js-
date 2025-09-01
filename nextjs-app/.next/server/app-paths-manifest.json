@@ -1,1 +1,8 @@
-{}
+{
+  "/page": "app/page.js",
+  "/login/page": "app/login/page.js",
+  "/login-passwordless-confirm/page": "app/login-passwordless-confirm/page.js",
+  "/login-with-password/page": "app/login-with-password/page.js",
+  "/dashboard/customer/page": "app/dashboard/customer/page.js",
+  "/verify-identity/page": "app/verify-identity/page.js"
+}
