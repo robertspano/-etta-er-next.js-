@@ -3,7 +3,23 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from '../../../../contexts/TranslationsContext';
-import { Bell, Menu, X, Plus } from 'lucide-react';
+import { 
+  Bell, 
+  Menu, 
+  X, 
+  Plus,
+  Home,
+  FolderOpen,
+  User,
+  ChevronRight,
+  Hammer,
+  Wrench,
+  Building,
+  Sparkles,
+  Car,
+  Truck,
+  Grid3X3
+} from 'lucide-react';
 
 export default function CustomerProjectsPage() {
   const { t, language } = useTranslations();
