@@ -1,135 +1,183 @@
-'use client';
+"use client";
 
-import React from 'react';
-import LoggedInLayout from '../../../../components/LoggedInLayout';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useTranslations } from '../../../../contexts/TranslationsContext';
-import { useAuth } from '../../../../contexts/AuthContext';
-import Link from 'next/link';
-import { Plus, FileText, Clock, CheckCircle } from 'lucide-react';
 
-export default function ProjectsPage() {
-  const { language, translations } = useTranslations();
-  const { user, loading } = useAuth();
-  
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
-      </div>
-    );
-  }
+export default function CustomerProjectsPage() {
+  const { t, language } = useTranslations();
+  const router = useRouter();
+  const [activeTab, setActiveTab] = useState('active');
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  if (!user) {
-    window.location.href = '/login';
-    return null;
-  }
+  useEffect(() => {
+    // Simulate fetching projects - replace with actual API call
+    const fetchProjects = async () => {
+      setLoading(true);
+      try {
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // Mock data - replace with actual API response
+        setProjects([
+          // Example finished project (uncomment to test)
+          // {
+          //   id: 1,
+          //   title: 'Baðherbergisverkefni',
+          //   status: 'completed',
+          //   company: 'Nordic Construction AS',
+          //   lastContact: '6 dagar síðan',
+          //   description: 'Engin bedrifter har tatt kontakt - Lagt ut 6 dagar síðan',
+          //   type: 'bathroom'
+          // }
+        ]);
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+        setProjects([]);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  // Mock projects data - replace with real data
-  const projects = []; // Empty for now
+    fetchProjects();
+  }, []);
+
+  const activeProjects = projects.filter(p => p.status === 'active' || p.status === 'open' || p.status === 'in_progress');
+  const finishedProjects = projects.filter(p => p.status === 'completed' || p.status === 'cancelled');
+
+  const currentProjects = activeTab === 'active' ? activeProjects : finishedProjects;
 
   return (
-    <LoggedInLayout language={language} translations={translations}>
-      <div className="max-w-6xl mx-auto px-6">
-        
-        {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">
-            {language === 'is' ? 'Mín verkefni' : 'My Projects'}
-          </h1>
-          <Link 
-            href="/post-job"
-            className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-          >
-            <Plus className="w-5 h-5 mr-2" />
-            {language === 'is' ? 'Nýtt verk' : 'New Project'}
-          </Link>
-        </div>
-
-        {/* Tabs */}
-        <div className="border-b border-gray-200 mb-8">
-          <nav className="-mb-px flex space-x-8">
-            <button className="border-b-2 border-blue-500 py-2 px-1 text-sm font-medium text-blue-600">
-              {language === 'is' ? 'Öll verkefni' : 'All Projects'}
-            </button>
-            <button className="border-b-2 border-transparent py-2 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
-              {language === 'is' ? 'Virk' : 'Active'} (0)
-            </button>
-            <button className="border-b-2 border-transparent py-2 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300">
-              {language === 'is' ? 'Lokið' : 'Completed'} (0)
-            </button>
-          </nav>
-        </div>
-
-        {/* Empty State */}
-        {projects.length === 0 ? (
-          <div className="text-center py-16">
-            <div className="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6">
-              <FileText className="w-12 h-12 text-gray-400" />
+    <div className="min-h-screen bg-gray-50">
+      {/* Header - Mittanbud style */}
+      <div className="bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <div className="flex items-center">
+              <button 
+                onClick={() => router.push('/dashboard/customer')}
+                className="flex-shrink-0"
+              >
+                <span className="text-2xl font-bold text-blue-900">verki</span>
+              </button>
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">
-              {language === 'is' ? 'Engin verkefni ennþá' : 'No projects yet'}
-            </h3>
-            <p className="text-gray-600 mb-8 max-w-md mx-auto">
-              {language === 'is'
-                ? 'Þegar þú hefur búið til verkefni munu þau birtast hér. Byrjaðu með því að búa til þitt fyrsta verkefni.'
-                : 'When you create projects, they will appear here. Start by creating your first project.'
-              }
-            </p>
-            <Link 
-              href="/post-job"
-              className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-            >
-              <Plus className="w-5 h-5 mr-2" />
-              {language === 'is' ? 'Búa til fyrsta verkefni' : 'Create First Project'}
-            </Link>
-          </div>
-        ) : (
-          /* Projects List - for future use */
-          <div className="space-y-6">
-            {projects.map((project) => (
-              <div key={project.id} className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow">
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4">
-                      {project.description}
-                    </p>
-                    <div className="flex items-center space-x-4 text-sm text-gray-500">
-                      <span className="flex items-center">
-                        <Clock className="w-4 h-4 mr-1" />
-                        {new Date(project.created_at).toLocaleDateString()}
-                      </span>
-                      <span className="flex items-center">
-                        <FileText className="w-4 h-4 mr-1" />
-                        {project.offers_count || 0} {language === 'is' ? 'tilboð' : 'offers'}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
-                      project.status === 'active' 
-                        ? 'bg-green-100 text-green-800' 
-                        : project.status === 'completed'
-                        ? 'bg-blue-100 text-blue-800'
-                        : 'bg-gray-100 text-gray-800'
-                    }`}>
-                      {project.status === 'active' && <CheckCircle className="w-4 h-4 mr-1" />}
-                      {project.status === 'active' 
-                        ? (language === 'is' ? 'Virkt' : 'Active')
-                        : project.status === 'completed'
-                        ? (language === 'is' ? 'Lokið' : 'Completed')
-                        : (language === 'is' ? 'Drög' : 'Draft')
-                      }
-                    </span>
-                  </div>
+
+            {/* Navigation */}
+            <div className="flex items-center space-x-4">
+              <button 
+                onClick={() => router.push('/post')}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium"
+              >
+                Nýtt verk
+              </button>
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                  <span className="text-sm font-medium text-gray-600">😊</span>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
-        )}
+        </div>
       </div>
-    </LoggedInLayout>
+
+      {/* Main Content - Mittanbud layout */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="bg-white rounded-lg shadow">
+          {/* Page Header */}
+          <div className="border-b border-gray-200 px-6 py-4">
+            <h1 className="text-2xl font-bold text-gray-900">Mín verk</h1>
+          </div>
+
+          {/* Tabs - Mittanbud style */}
+          <div className="border-b border-gray-200">
+            <nav className="-mb-px flex">
+              <button
+                onClick={() => setActiveTab('active')}
+                className={`py-4 px-6 text-sm font-medium border-b-2 ${
+                  activeTab === 'active'
+                    ? 'border-blue-500 text-blue-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                }`}
+              >
+                Virk
+              </button>
+              <button
+                onClick={() => setActiveTab('finished')}
+                className={`py-4 px-6 text-sm font-medium border-b-2 ${
+                  activeTab === 'finished'
+                    ? 'border-blue-500 text-blue-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                }`}
+              >
+                Lokið
+              </button>
+            </nav>
+          </div>
+
+          {/* Content */}
+          <div className="p-6">
+            {loading ? (
+              <div className="flex items-center justify-center h-64">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+              </div>
+            ) : currentProjects.length === 0 ? (
+              // Empty State - matching Mittanbud exactly
+              <div className="text-center py-16">
+                <div className="bg-gray-50 rounded-lg p-12">
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">
+                    {activeTab === 'active' ? 'Engin virk verk' : 'Engin lokið verk'}
+                  </h3>
+                  <p className="text-gray-600 mb-6 max-w-md mx-auto">
+                    {activeTab === 'active' 
+                      ? 'Búðu til nýtt verk til að fá tilboð frá hæfum fagfyrirtækjum. Algjörlega óbindandi og ókeypis!'
+                      : 'Þú hefur ekki lokið neinum verkum ennþá.'
+                    }
+                  </p>
+                  {activeTab === 'active' && (
+                    <button
+                      onClick={() => router.push('/post')}
+                      className="inline-flex items-center px-6 py-3 border border-blue-600 text-blue-600 hover:bg-blue-50 rounded-md font-medium"
+                    >
+                      Legg út verk
+                      <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  )}
+                </div>
+              </div>
+            ) : (
+              // Project List - Mittanbud style
+              <div className="space-y-4">
+                {currentProjects.map((project) => (
+                  <div key={project.id} className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                    <div className="flex items-start justify-between">
+                      <div className="flex items-start space-x-4">
+                        <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                          <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-medium text-gray-900">{project.title}</h3>
+                          <p className="text-sm text-gray-600">{project.description}</p>
+                        </div>
+                      </div>
+                      <div className="ml-4 text-right">
+                        <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                          Opna
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
