@@ -157,7 +157,7 @@ export default function CustomerDashboardPage() {
             </Link>
 
             {/* Notifications */}
-            <div className="relative">
+            <div className="relative" ref={notificationRef}>
               <button 
                 onClick={() => setNotificationOpen(!notificationOpen)}
                 className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg relative"
