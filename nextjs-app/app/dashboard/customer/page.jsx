@@ -73,7 +73,7 @@ export default function CustomerDashboardPage() {
     },
     {
       name: language === 'is' ? 'Setja inn verk' : 'Post a Project',
-      href: '/post-job',
+      href: '/post',
       icon: Plus
     },
     {
