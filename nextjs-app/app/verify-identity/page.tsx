@@ -1,13 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
-declare global {
-  interface Window {
-    firebase: any;
-    recaptchaVerifier: any;
-  }
-}
+import { useState } from "react";
+import { auth, RecaptchaVerifier, signInWithPhoneNumber } from "../../lib/firebase";
 
 export default function VerifyIdentityPage() {
   const [phone, setPhone] = useState("");
