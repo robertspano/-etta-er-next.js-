@@ -159,12 +159,13 @@ export default function CustomerProjectsPage() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <button 
-                onClick={() => router.push('/dashboard/customer')}
-                className="flex-shrink-0"
-              >
-                <span className="text-2xl font-bold text-blue-900">verki</span>
-              </button>
+              <Link href="/dashboard/customer" className="flex items-center">
+                <img 
+                  src="https://customer-assets.emergentagent.com/job_construction-hub-19/artifacts/k90y66eg_Your%20paragraph%20text%20%283000%20x%203000%20px%29%20%281000%20x%201000%20px%29%20%28Logo%29%20%282%29-cropped.svg" 
+                  alt="Verki Logo" 
+                  className="h-10 w-auto object-contain"
+                />
+              </Link>
             </div>
 
             {/* Right Section - New Project + Notifications + Profile */}
