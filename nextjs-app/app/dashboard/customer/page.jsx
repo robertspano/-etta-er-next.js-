@@ -551,7 +551,7 @@ export default function CustomerDashboardPage() {
                   </Link>
 
                   <Link
-                    href="/post-job"
+                    href="/post"
                     onClick={() => setSidebarOpen(false)}
                     className="flex items-center justify-between px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg transition-colors group"
                   >
