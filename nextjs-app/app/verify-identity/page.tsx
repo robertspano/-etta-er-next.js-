@@ -114,12 +114,6 @@ export default function VerifyIdentityPage() {
               </p>
             </div>
 
-            {/* Debug info */}
-            <div className="text-xs text-gray-500 bg-gray-50 p-2 rounded">
-              Firebase Status: {firebaseLoaded ? '✅ Tilbúið' : '⏳ Hleður...'}
-              {phone && <div>Símanúmer: {phone.startsWith('+') ? phone : '+354' + phone}</div>}
-            </div>
-
             {!confirmResult && (
               <button
                 onClick={sendCode}
