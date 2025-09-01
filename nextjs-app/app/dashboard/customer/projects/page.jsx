@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from '../../../../contexts/TranslationsContext';
+import { Bell, Menu, X, Plus } from 'lucide-react';
 
 export default function CustomerProjectsPage() {
   const { t, language } = useTranslations();
