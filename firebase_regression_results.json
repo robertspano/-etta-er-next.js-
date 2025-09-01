@@ -1,0 +1,172 @@
+{
+  "total": 17,
+  "passed": 14,
+  "failed": 3,
+  "success_rate": 82.35294117647058,
+  "results": [
+    {
+      "test": "GET /api/",
+      "success": true,
+      "details": "Status: 200, Message: BuildConnect API is running",
+      "timestamp": "2025-09-01T19:38:58.686591",
+      "response_data": null
+    },
+    {
+      "test": "GET /api/health",
+      "success": true,
+      "details": "Status: 200, Health: healthy",
+      "timestamp": "2025-09-01T19:38:58.695285",
+      "response_data": null
+    },
+    {
+      "test": "Customer Registration",
+      "success": true,
+      "details": "Customer registered: firebase_test_customer_1756755538@example.com",
+      "timestamp": "2025-09-01T19:38:58.845146",
+      "response_data": null
+    },
+    {
+      "test": "Customer Login",
+      "success": true,
+      "details": "Customer login successful with cookie",
+      "timestamp": "2025-09-01T19:38:58.919447",
+      "response_data": null
+    },
+    {
+      "test": "Get Current User",
+      "success": true,
+      "details": "User info retrieved: firebase_test_customer_1756755538@example.com",
+      "timestamp": "2025-09-01T19:38:58.928682",
+      "response_data": null
+    },
+    {
+      "test": "Customer Logout",
+      "success": true,
+      "details": "Logout successful",
+      "timestamp": "2025-09-01T19:38:58.937444",
+      "response_data": null
+    },
+    {
+      "test": "Professional Registration",
+      "success": true,
+      "details": "Professional registered: firebase_test_pro_1756755538@example.com",
+      "timestamp": "2025-09-01T19:38:59.063800",
+      "response_data": null
+    },
+    {
+      "test": "Professional Login",
+      "success": true,
+      "details": "Professional login successful",
+      "timestamp": "2025-09-01T19:38:59.132341",
+      "response_data": null
+    },
+    {
+      "test": "Profile Update",
+      "success": true,
+      "details": "Profile updated successfully",
+      "timestamp": "2025-09-01T19:38:59.141955",
+      "response_data": null
+    },
+    {
+      "test": "Job Creation",
+      "success": false,
+      "details": "Job creation failed: 200",
+      "timestamp": "2025-09-01T19:38:59.192791",
+      "response_data": {
+        "id": "9404b917-00ad-467b-af5a-b5c26169d206",
+        "customer_id": "a0b8c315-efcc-4286-b4c3-e6b7d62ad75f",
+        "category": "plumbing",
+        "subcategory": null,
+        "title": "Kitchen Sink Installation",
+        "description": "Need professional plumber to install new kitchen sink with proper connections and drainage",
+        "postcode": "101",
+        "address": null,
+        "budget_min": null,
+        "budget_max": null,
+        "budget_currency": "ISK",
+        "priority": "medium",
+        "status": "draft",
+        "posted_at": "2025-09-01T19:38:59.148000",
+        "deadline": null,
+        "quotes_count": 0,
+        "photos": [],
+        "is_featured": false,
+        "views_count": 0,
+        "license_plate": null,
+        "plate_country": null
+      }
+    },
+    {
+      "test": "Get Available Jobs",
+      "success": true,
+      "details": "Found job for quoting: 502319d1-13bb-4feb-ae45-d62205f1d8de",
+      "timestamp": "2025-09-01T19:38:59.205131",
+      "response_data": null
+    },
+    {
+      "test": "Quote Submission",
+      "success": false,
+      "details": "Quote submission failed: 422",
+      "timestamp": "2025-09-01T19:38:59.253924",
+      "response_data": {
+        "detail": [
+          {
+            "type": "missing",
+            "loc": [
+              "body",
+              "expires_at"
+            ],
+            "msg": "Field required",
+            "input": {
+              "job_request_id": "502319d1-13bb-4feb-ae45-d62205f1d8de",
+              "amount": 75000,
+              "message": "Professional quote for your project with quality materials and workmanship",
+              "estimated_duration": "2-3 days",
+              "materials_cost": 25000,
+              "labor_cost": 50000,
+              "includes_materials": true
+            },
+            "url": "https://errors.pydantic.dev/2.11/v/missing"
+          }
+        ]
+      }
+    },
+    {
+      "test": "Homepage Reviews",
+      "success": true,
+      "details": "Retrieved 4 reviews",
+      "timestamp": "2025-09-01T19:38:59.279750",
+      "response_data": null
+    },
+    {
+      "test": "Individual Review",
+      "success": true,
+      "details": "Retrieved review: Outstanding house extension project",
+      "timestamp": "2025-09-01T19:38:59.288630",
+      "response_data": null
+    },
+    {
+      "test": "Professional Reviews",
+      "success": true,
+      "details": "Retrieved 1 professional reviews",
+      "timestamp": "2025-09-01T19:38:59.339130",
+      "response_data": null
+    },
+    {
+      "test": "Company Registration",
+      "success": false,
+      "details": "Company registration failed: 500",
+      "timestamp": "2025-09-01T19:38:59.347105",
+      "response_data": {
+        "detail": "Failed to register company: "
+      }
+    },
+    {
+      "test": "Company Registration Validation",
+      "success": true,
+      "details": "Invalid data correctly rejected",
+      "timestamp": "2025-09-01T19:38:59.352413",
+      "response_data": null
+    }
+  ]
+}
