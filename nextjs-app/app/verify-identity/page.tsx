@@ -169,7 +169,7 @@ export default function VerifyIdentityPage() {
                 className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm disabled:bg-gray-100"
               />
               <p className="mt-1 text-xs text-gray-500">
-                Dæmi: +354 123 4567 (með +354 forskeyti)
+                Dæmi: +354 123 4567, 354 123 4567, eða 123 4567
               </p>
             </div>
 
