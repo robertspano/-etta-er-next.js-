@@ -227,11 +227,13 @@ export default function CustomerProjectsPage() {
                 <Menu className="h-5 w-5 text-gray-600" />
                 
                 {/* Profile Image */}
-                <img 
-                  src="https://customer-assets.emergentagent.com/job_construction-hub-19/artifacts/k90y66eg_Your%20paragraph%20text%20%283000%20x%203000%20px%29%20%281000%20x%201000%20px%29%20%28Logo%29%20%282%29-cropped.svg" 
-                  alt="Profile" 
-                  className="w-6 h-6 rounded-full object-cover"
-                />
+                <div className="w-6 h-6 rounded-full overflow-hidden flex items-center justify-center bg-gray-50">
+                  <img 
+                    src="https://customer-assets.emergentagent.com/job_verkefni-hub/artifacts/14ma9nv6_smiling-emoticon-square-face.png" 
+                    alt="Profile"
+                    className="w-5 h-5 object-contain"
+                  />
+                </div>
               </button>
             </div>
           </div>
