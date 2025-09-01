@@ -393,7 +393,7 @@ export default function CustomerProjectsPage() {
                             <span className="font-medium">{item.name}</span>
                           </div>
                           <ChevronRight className="w-5 h-5 text-gray-300 group-hover:text-gray-400" />
-                        </a>
+                        </Link>
                       );
                     })}
                   </nav>
