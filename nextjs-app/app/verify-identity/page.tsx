@@ -51,30 +51,31 @@ export default function VerifyIdentityPage() {
     }
   };
 
-  // Verify OTP code
+  // Staðfesta OTP
   const verifyCode = async () => {
     if (!confirmResult) {
       alert("Senddu SMS kóða fyrst");
       return;
     }
-
+    
     if (!otp.trim()) {
       alert("Vinsamlegast sláðu inn SMS kóðann");
       return;
     }
 
     setLoading(true);
-
+    
     try {
       await confirmResult.confirm(otp);
-      alert("🎉 Auðkennisstaðfesting tókst!");
+      alert("✅ Auðkennisstaðfesting tókst!");
       
+      // Redirect back to dashboard after successful verification
       setTimeout(() => {
         window.location.href = "/dashboard/customer";
       }, 1500);
-    } catch (error: any) {
-      console.error("OTP verification error:", error);
-      alert("Villa í SMS kóða. Reyndu aftur.");
+    } catch (err: any) {
+      console.error(err);
+      alert("Villa í OTP: " + err.message);
     } finally {
       setLoading(false);
     }
