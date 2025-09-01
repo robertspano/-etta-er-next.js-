@@ -149,7 +149,7 @@ export default function CustomerDashboardPage() {
             
             {/* New Project Button */}
             <Link 
-              href="/post-job"
+              href="/post"
               className="hidden sm:inline-flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
             >
               <Plus className="w-4 h-4 mr-2" />
