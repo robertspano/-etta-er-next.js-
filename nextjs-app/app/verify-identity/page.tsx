@@ -9,59 +9,12 @@ export default function VerifyIdentityPage() {
   const [confirmResult, setConfirmResult] = useState<any | null>(null);
   const [loading, setLoading] = useState(false);
 
-  // Load Firebase
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // Load Firebase scripts
-      const loadFirebase = async () => {
-        if (window.firebase) {
-          setFirebaseLoaded(true);
-          return;
-        }
-
-        // Load Firebase app
-        await new Promise((resolve) => {
-          const script1 = document.createElement('script');
-          script1.src = 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js';
-          script1.onload = resolve;
-          document.head.appendChild(script1);
-        });
-
-        // Load Firebase auth
-        await new Promise((resolve) => {
-          const script2 = document.createElement('script');
-          script2.src = 'https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js';
-          script2.onload = resolve;
-          document.head.appendChild(script2);
-        });
-
-        // Initialize Firebase
-        try {
-          window.firebase.initializeApp({
-            apiKey: "AIzaSyBBLfPqjGRHcmMNZX567W84-aiVG5rUUE",
-            authDomain: "verki-login.firebaseapp.com",
-            projectId: "verki-login",
-          });
-          setFirebaseLoaded(true);
-        } catch (error) {
-          console.error("Firebase initialization error:", error);
-        }
-      };
-
-      loadFirebase();
-    }
-  }, []);
-
-  // Setup reCAPTCHA
-  const setUpRecaptcha = () => {
-    if (firebaseLoaded && !window.recaptchaVerifier) {
-      try {
-        window.recaptchaVerifier = new window.firebase.auth.RecaptchaVerifier("recaptcha-container", {
-          size: "invisible",
-        });
-      } catch (error) {
-        console.error("reCAPTCHA setup error:", error);
-      }
+  // Setja upp Recaptcha
+  const setupRecaptcha = () => {
+    if (!(window as any).recaptchaVerifier) {
+      (window as any).recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
+        size: "invisible",
+      });
     }
   };
 
