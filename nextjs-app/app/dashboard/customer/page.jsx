@@ -246,7 +246,7 @@ export default function CustomerDashboardPage() {
                   }
                 </p>
                 <Link 
-                  href="/post-job"
+                  href="/post"
                   className="inline-flex items-center border border-gray-400 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors"
                 >
                   {language === 'is' ? 'Legg út verk' : 'Post a project'}
