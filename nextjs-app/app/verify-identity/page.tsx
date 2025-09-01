@@ -100,20 +100,18 @@ export default function VerifyIdentityPage() {
               <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
                 Símanúmer
               </label>
-              <div className="mt-1">
-                <input
-                  id="phone"
-                  type="tel"
-                  placeholder="+354 123 4567"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  disabled={loading || !!confirmResult}
-                  className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm disabled:bg-gray-100"
-                />
-                <p className="mt-1 text-xs text-gray-500">
-                  Dæmi: +354 123 4567 (með +354 forskeyti)
-                </p>
-              </div>
+              <input
+                id="phone"
+                type="tel"
+                placeholder="+354 123 4567"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                disabled={loading || !!confirmResult}
+                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm disabled:bg-gray-100"
+              />
+              <p className="mt-1 text-xs text-gray-500">
+                Dæmi: +354 123 4567 (með +354 forskeyti)
+              </p>
             </div>
 
             {/* Debug info */}
