@@ -32,6 +32,7 @@ export default function CustomerDashboardPage() {
   const { language, translations } = useTranslations();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [notificationOpen, setNotificationOpen] = useState(false);
   const router = useRouter();
 
   // Authentication function - redirect to Firebase phone auth
