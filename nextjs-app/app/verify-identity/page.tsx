@@ -18,58 +18,33 @@ export default function VerifyIdentityPage() {
     }
   };
 
-  // Send SMS code
+  // Senda SMS
   const sendCode = async () => {
-    if (!firebaseLoaded) {
-      alert("Firebase er ekki tilbúið ennþá...");
-      return;
-    }
-
     if (!phone.trim()) {
       alert("Vinsamlegast sláðu inn símanúmer");
       return;
     }
 
-    // Ensure phone number starts with +
-    let formattedPhone = phone.trim();
-    if (!formattedPhone.startsWith('+')) {
-      formattedPhone = '+354' + formattedPhone;
-    }
-
     setLoading(true);
+    setupRecaptcha();
+    const appVerifier = (window as any).recaptchaVerifier;
     
     try {
-      setUpRecaptcha();
-      const appVerifier = window.recaptchaVerifier;
-      
-      console.log('Sending SMS to:', formattedPhone);
-      
-      const confirmation = await window.firebase.auth().signInWithPhoneNumber(formattedPhone, appVerifier);
+      const confirmation = await signInWithPhoneNumber(auth, phone, appVerifier);
       setConfirmResult(confirmation);
-      alert("SMS kóði sendur! 📱 Athugaðu símann þinn.");
-      console.log('SMS sent successfully');
-    } catch (error: any) {
-      console.error("SMS send error:", error);
-      
-      // More specific error messages
-      if (error.code === 'auth/invalid-phone-number') {
-        alert("Ógilt símanúmer. Notaðu +354 format (t.d. +354 123 4567)");
-      } else if (error.code === 'auth/too-many-requests') {
-        alert("Of margar beiðnir. Reyndu aftur síðar.");
-      } else if (error.code === 'auth/captcha-check-failed') {
-        alert("reCAPTCHA villa. Endurhladdu síðunni og reyndu aftur.");
-      } else {
-        alert("Villa við að senda SMS: " + (error.message || 'Óþekkt villa'));
-      }
+      alert("📲 SMS kóði sendur! Athugaðu símann þinn.");
+    } catch (err: any) {
+      console.error(err);
+      alert("Villa við SMS: " + err.message);
       
       // Reset reCAPTCHA on error
-      if (window.recaptchaVerifier) {
+      if ((window as any).recaptchaVerifier) {
         try {
-          window.recaptchaVerifier.clear();
+          (window as any).recaptchaVerifier.clear();
         } catch (e) {
           console.log('Could not clear recaptcha');
         }
-        window.recaptchaVerifier = null;
+        (window as any).recaptchaVerifier = null;
       }
     } finally {
       setLoading(false);
