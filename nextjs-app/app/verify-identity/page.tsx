@@ -18,6 +18,41 @@ export default function VerifyIdentityPage() {
     }
   };
 
+  // Format phone number for Firebase
+  const formatPhoneForFirebase = (phoneNumber: string): string => {
+    // Remove all spaces, dashes, parentheses, and other formatting
+    let cleaned = phoneNumber.replace(/[\s\-\(\)\.\+]/g, '');
+    
+    // If it starts with 354 (Iceland country code without +), add the +
+    if (cleaned.startsWith('354') && cleaned.length === 10) {
+      return '+' + cleaned;
+    }
+    
+    // If it doesn't start with +, assume it's Iceland and add +354
+    if (!cleaned.startsWith('+')) {
+      // If it's 7 digits, it's a local Iceland number
+      if (cleaned.length === 7) {
+        return '+354' + cleaned;
+      }
+      // If it's 10 digits and starts with 354, add +
+      if (cleaned.length === 10 && cleaned.startsWith('354')) {
+        return '+' + cleaned;
+      }
+      // Otherwise assume it needs +354 prefix
+      return '+354' + cleaned;
+    }
+    
+    return cleaned;
+  };
+
+  // Validate phone number format
+  const validatePhoneNumber = (phoneNumber: string): boolean => {
+    const formatted = formatPhoneForFirebase(phoneNumber);
+    // Iceland phone numbers should be +354 followed by 7 digits
+    const icelandRegex = /^\+354[0-9]{7}$/;
+    return icelandRegex.test(formatted);
+  };
+
   // Senda SMS
   const sendCode = async () => {
     if (!phone.trim()) {
@@ -25,17 +60,41 @@ export default function VerifyIdentityPage() {
       return;
     }
 
+    // Format and validate phone number
+    const formattedPhone = formatPhoneForFirebase(phone);
+    
+    if (!validatePhoneNumber(phone)) {
+      alert("Vinsamlegast sláðu inn gilt íslenskt símanúmer (t.d. +354 123 4567 eða 123 4567)");
+      return;
+    }
+
+    console.log('Original phone:', phone);
+    console.log('Formatted phone:', formattedPhone);
+
     setLoading(true);
     setupRecaptcha();
     const appVerifier = (window as any).recaptchaVerifier;
     
     try {
-      const confirmation = await signInWithPhoneNumber(auth, phone, appVerifier);
+      const confirmation = await signInWithPhoneNumber(auth, formattedPhone, appVerifier);
       setConfirmResult(confirmation);
       alert("📲 SMS kóði sendur! Athugaðu símann þinn.");
     } catch (err: any) {
-      console.error(err);
-      alert("Villa við SMS: " + err.message);
+      console.error('Firebase error:', err);
+      let errorMessage = "Villa við SMS sending";
+      
+      // Provide more specific error messages
+      if (err.code === 'auth/invalid-phone-number') {
+        errorMessage = "Ógilt símanúmer. Vinsamlegast notaðu íslenskt símanúmer (t.d. +354 123 4567)";
+      } else if (err.code === 'auth/too-many-requests') {
+        errorMessage = "Of margar tilraunir. Vinsamlegast reyndu aftur síðar.";
+      } else if (err.code === 'auth/quota-exceeded') {
+        errorMessage = "SMS kvóti náð. Vinsamlegast reyndu aftur síðar.";
+      } else {
+        errorMessage = `Villa við SMS: ${err.message}`;
+      }
+      
+      alert(errorMessage);
       
       // Reset reCAPTCHA on error
       if ((window as any).recaptchaVerifier) {
