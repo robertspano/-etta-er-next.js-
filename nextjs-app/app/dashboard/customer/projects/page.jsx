@@ -378,7 +378,7 @@ export default function CustomerProjectsPage() {
                     {mainNavItems.map((item) => {
                       const Icon = item.icon;
                       return (
-                        <a
+                        <Link
                           key={item.name}
                           href={item.href}
                           onClick={() => setSidebarOpen(false)}
