@@ -332,6 +332,102 @@ export default function CustomerProjectsPage() {
           </div>
         </div>
       </div>
+
+      {/* Right Sidebar - Slide-in Menu */}
+      {sidebarOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50" 
+            onClick={() => setSidebarOpen(false)}
+          ></div>
+          
+          {/* Sidebar */}
+          <div className="fixed top-0 right-0 w-80 h-full bg-white shadow-xl">
+            <div className="flex flex-col h-full">
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b border-gray-200">
+                <div className="flex items-center">
+                  <div className="w-12 h-12 rounded-full overflow-hidden mr-4 flex items-center justify-center bg-gray-50">
+                    <img 
+                      src="https://customer-assets.emergentagent.com/job_verkefni-hub/artifacts/14ma9nv6_smiling-emoticon-square-face.png" 
+                      alt="Profile"
+                      className="w-10 h-10 object-contain"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      Róbert Spanó
+                    </h3>
+                    <p className="text-sm text-gray-500">
+                      robertstefansson2404@gmail.com
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div className="border-t border-gray-200 mx-6"></div>
+
+              {/* Navigation Content */}
+              <div className="flex-1 overflow-y-auto py-6">
+                <div className="px-6">
+                  {/* Main Navigation */}
+                  <nav className="space-y-2">
+                    {mainNavItems.map((item) => {
+                      const Icon = item.icon;
+                      return (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          onClick={() => setSidebarOpen(false)}
+                          className={`flex items-center justify-between px-4 py-3 rounded-lg transition-colors group ${
+                            item.active 
+                              ? 'bg-blue-50 text-blue-700 border border-blue-200' 
+                              : 'text-gray-900 hover:bg-gray-50'
+                          }`}
+                        >
+                          <div className="flex items-center">
+                            <Icon className={`w-5 h-5 mr-3 ${item.active ? 'text-blue-600' : 'text-gray-400'}`} />
+                            <span className="font-medium">{item.name}</span>
+                          </div>
+                          <ChevronRight className="w-5 h-5 text-gray-300 group-hover:text-gray-400" />
+                        </a>
+                      );
+                    })}
+                  </nav>
+
+                  {/* Categories Section */}
+                  <div className="mt-8">
+                    <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">
+                      {language === 'is' ? 'Flokkar' : 'Categories'}
+                    </h4>
+                    <nav className="space-y-2">
+                      {categoryItems.map((item) => {
+                        const Icon = item.icon;
+                        return (
+                          <a
+                            key={item.name}
+                            href={item.href}
+                            onClick={() => setSidebarOpen(false)}
+                            className="flex items-center justify-between px-4 py-3 text-gray-900 hover:bg-gray-50 rounded-lg transition-colors group"
+                          >
+                            <div className="flex items-center">
+                              <Icon className="w-5 h-5 mr-3 text-gray-400" />
+                              <span className="font-medium">{item.name}</span>
+                            </div>
+                            <ChevronRight className="w-5 h-5 text-gray-300 group-hover:text-gray-400" />
+                          </a>
+                        );
+                      })}
+                    </nav>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
