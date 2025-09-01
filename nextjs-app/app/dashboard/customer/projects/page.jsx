@@ -85,19 +85,71 @@ export default function CustomerProjectsPage() {
               </button>
             </div>
 
-            {/* Navigation */}
-            <div className="flex items-center space-x-4">
+            {/* Right Section - New Project + Notifications + Profile */}
+            <div className="flex items-center gap-3">
+              {/* New Project Button */}
               <button 
                 onClick={() => router.push('/post')}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium"
+                className="hidden sm:inline-flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
               >
+                <Plus className="w-4 h-4 mr-2" />
                 Nýtt verk
               </button>
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
-                  <span className="text-sm font-medium text-gray-600">😊</span>
-                </div>
+
+              {/* Notifications */}
+              <div className="relative" ref={notificationRef}>
+                <button 
+                  onClick={() => setNotificationOpen(!notificationOpen)}
+                  className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg relative"
+                >
+                  <Bell className="w-5 h-5" />
+                </button>
+
+                {/* Notification Dropdown - Mittanbud style */}
+                {notificationOpen && (
+                  <div className="absolute right-0 mt-2 w-80 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                    {/* Header */}
+                    <div className="flex items-center justify-between p-4 border-b border-gray-200">
+                      <h3 className="text-lg font-semibold text-gray-900">Varslingar</h3>
+                      <button 
+                        onClick={() => setNotificationOpen(false)}
+                        className="text-gray-400 hover:text-gray-600"
+                      >
+                        <X className="w-5 h-5" />
+                      </button>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="p-8 text-center">
+                      <div className="mx-auto w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                        <Bell className="w-8 h-8 text-gray-400" />
+                      </div>
+                      <h4 className="text-lg font-medium text-gray-900 mb-2">
+                        Engar nýjar varslingar
+                      </h4>
+                      <p className="text-gray-600 text-sm">
+                        Hér var það tómt. Komdu aftur seinna.
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
+
+              {/* Menu Button - Like dashboard style with custom profile image */}
+              <button
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+                className="flex items-center gap-3 h-10 px-3 bg-white border border-gray-300 rounded-full hover:bg-gray-50 focus:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 cursor-pointer transition-colors"
+              >
+                {/* Hamburger Menu Icon */}
+                <Menu className="h-5 w-5 text-gray-600" />
+                
+                {/* Profile Image */}
+                <img 
+                  src="https://customer-assets.emergentagent.com/job_construction-hub-19/artifacts/k90y66eg_Your%20paragraph%20text%20%283000%20x%203000%20px%29%20%281000%20x%201000%20px%29%20%28Logo%29%20%282%29-cropped.svg" 
+                  alt="Profile" 
+                  className="w-6 h-6 rounded-full object-cover"
+                />
+              </button>
             </div>
           </div>
         </div>
