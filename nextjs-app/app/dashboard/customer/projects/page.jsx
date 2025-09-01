@@ -11,6 +11,26 @@ export default function CustomerProjectsPage() {
   const [activeTab, setActiveTab] = useState('active');
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [notificationOpen, setNotificationOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const notificationRef = useRef(null);
+
+  // Close notification dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (notificationRef.current && !notificationRef.current.contains(event.target)) {
+        setNotificationOpen(false);
+      }
+    };
+
+    if (notificationOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [notificationOpen]);
 
   useEffect(() => {
     // Simulate fetching projects - replace with actual API call
