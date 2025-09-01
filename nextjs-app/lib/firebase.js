@@ -4,12 +4,12 @@ import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth
 
 // Firebase configuration from user's project
 const firebaseConfig = {
-  apiKey: "AIzaSyCp_2LPB3XPNDzwJIGbKXcOu0D5DJfLEFE",
-  authDomain: "verki-app.firebaseapp.com",
-  projectId: "verki-app",
-  storageBucket: "verki-app.firebasestorage.app",
-  messagingSenderId: "950067899509",
-  appId: "1:950067899509:web:0c67fbd26b1e1b6da93cb8"
+  apiKey: "AIzaSyBBLfpq2jGHRcmMNZX567W84-aivG5ruUE",
+  authDomain: "verki-login.firebaseapp.com",
+  projectId: "verki-login",
+  storageBucket: "verki-login.firebasestorage.app",
+  messagingSenderId: "442656367557",
+  appId: "1:442656367557:web:87ac4d28252159a6e8a1ac"
 };
 
 // Initialize Firebase
