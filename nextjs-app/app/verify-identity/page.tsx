@@ -6,8 +6,7 @@ import { auth, RecaptchaVerifier, signInWithPhoneNumber } from "../../lib/fireba
 export default function VerifyIdentityPage() {
   const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");
-  const [confirmResult, setConfirmResult] = useState<any>(null);
-  const [firebaseLoaded, setFirebaseLoaded] = useState(false);
+  const [confirmResult, setConfirmResult] = useState<any | null>(null);
   const [loading, setLoading] = useState(false);
 
   // Load Firebase
