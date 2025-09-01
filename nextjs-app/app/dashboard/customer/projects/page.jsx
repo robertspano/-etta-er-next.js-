@@ -85,6 +85,71 @@ export default function CustomerProjectsPage() {
 
   const currentProjects = activeTab === 'active' ? activeProjects : finishedProjects;
 
+  // Main navigation items
+  const mainNavItems = [
+    {
+      name: language === 'is' ? 'Heim' : 'Home',
+      href: '/dashboard/customer',
+      icon: Home,
+      active: false
+    },
+    {
+      name: language === 'is' ? 'Mín verkefni' : 'My Projects',
+      href: '/dashboard/customer/projects',
+      icon: FolderOpen,
+      active: true
+    },
+    {
+      name: language === 'is' ? 'Setja inn verk' : 'Post a Project',
+      href: '/post',
+      icon: Plus
+    },
+    {
+      name: language === 'is' ? 'Prófill' : 'Profile',
+      href: '/dashboard/customer/profile',
+      icon: User
+    }
+  ];
+
+  // Category items
+  const categoryItems = [
+    {
+      name: language === 'is' ? 'Handverk' : 'Handcraft',
+      href: '/post/handcraft',
+      icon: Hammer
+    },
+    {
+      name: language === 'is' ? 'Baðherbergi' : 'Bathroom',
+      href: '/post/bathroom',
+      icon: Wrench
+    },
+    {
+      name: language === 'is' ? 'Stórt verkefni' : 'Major Projects',
+      href: '/post/major-projects',
+      icon: Building
+    },
+    {
+      name: language === 'is' ? 'Þrif' : 'Cleaning',
+      href: '/post/cleaning',
+      icon: Sparkles
+    },
+    {
+      name: language === 'is' ? 'Bifreiðar' : 'Automotive',
+      href: '/post/automotive',
+      icon: Car
+    },
+    {
+      name: language === 'is' ? 'Flutningar' : 'Moving',
+      href: '/post/moving',
+      icon: Truck
+    },
+    {
+      name: language === 'is' ? 'Öll verkefni' : 'All Categories',
+      href: '/all-categories',
+      icon: Grid3X3
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header - Mittanbud style */}
