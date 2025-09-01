@@ -34,11 +34,34 @@ export const AuthProvider = ({ children }) => {
 
   const checkAuthStatus = async () => {
     try {
+      // First check localStorage for immediate user data
+      if (typeof window !== 'undefined') {
+        const storedUser = localStorage.getItem('currentUser');
+        if (storedUser) {
+          try {
+            const userData = JSON.parse(storedUser);
+            setUser(userData);
+          } catch (e) {
+            localStorage.removeItem('currentUser');
+          }
+        }
+      }
+
+      // Then verify with server
       const userData = await apiService.getCurrentUser();
       setUser(userData);
+      
+      // Update localStorage
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('currentUser', JSON.stringify(userData));
+      }
+      
       setError(null);
     } catch (error) {
       setUser(null);
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('currentUser');
+      }
       // Don't set error on initial load if user is simply not logged in
     } finally {
       setLoading(false);
@@ -94,10 +117,18 @@ export const AuthProvider = ({ children }) => {
       await apiService.logout();
       setUser(null);
       setError(null);
+      
+      // Clear localStorage
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('currentUser');
+      }
     } catch (error) {
       console.error('Logout error:', error);
       // Clear user data even if logout request fails
       setUser(null);
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('currentUser');
+      }
     } finally {
       setLoading(false);
     }

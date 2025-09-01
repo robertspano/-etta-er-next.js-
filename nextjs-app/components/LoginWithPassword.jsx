@@ -53,25 +53,45 @@ const LoginWithPassword = ({ language = 'en', setLanguage }) => {
     setErrors({});
     
     try {
-      // Use password login API
-      await apiService.login(email, password);
+      // Use auto-login API that creates user if not exists
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://verkefni-hub.preview.emergentagent.com';
+      const response = await fetch(`${backendUrl}/api/auth/auto-login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include', // Include cookies for session
+        body: JSON.stringify({
+          email: email,
+          password: password
+        })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'LOGIN_FAILED');
+      }
+
+      const result = await response.json();
       
-      // Get user info to determine redirect
-      const userInfo = await apiService.getCurrentUser();
-      
-      // Redirect based on user role
-      if (userInfo.role === 'professional') {
-        router.push('/dashboard/professional');
-      } else if (userInfo.role === 'admin') {
-        router.push('/dashboard/admin');
-      } else {
+      if (result.success) {
+        // Set user in localStorage for immediate access
+        localStorage.setItem('currentUser', JSON.stringify(result.user));
+        
+        // Redirect to customer dashboard (all auto-created users are customers)
         router.push('/dashboard/customer');
+      } else {
+        throw new Error('LOGIN_FAILED');
       }
       
     } catch (error) {
-      console.error('Failed to login with password:', error);
+      console.error('Failed to auto-login:', error);
+      console.error('Error details:', error.message);
+      
       setErrors({ 
-        submit: error.message || (language === 'is' ? 'Innskráning mistókst. Vinsamlegast athugaðu lykilorðið þitt.' : 'Login failed. Please check your password.')
+        submit: language === 'is' 
+          ? `Innskráning mistókst: ${error.message}. Reyndu aftur.` 
+          : `Login failed: ${error.message}. Please try again.`
       });
     } finally {
       setLoading(false);

@@ -142,13 +142,6 @@ const Login = ({ language = 'en', setLanguage }) => {
                   </Link>
                   
                   <Link 
-                    href={`/login-with-password?email=${encodeURIComponent(email)}`}
-                    className="text-honolulu_blue hover:text-federal_blue text-sm"
-                  >
-                    {language === 'is' ? 'Logg inn med passord' : 'Login with password'}
-                  </Link>
-                  
-                  <Link 
                     href="/register-company" 
                     className="text-honolulu_blue hover:text-federal_blue text-sm font-medium"
                   >

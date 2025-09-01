@@ -88,7 +88,7 @@ const JobSubmittedSuccess = ({ language = 'en', setLanguage }) => {
             {/* View Job Button - Longer like mittanbud */}
             <div className="text-center mb-8">
               <Link
-                href="/login-passwordless"
+                href={`/login-with-password?email=${encodeURIComponent(userEmail)}`}
                 className="inline-block px-20 py-4 bg-honolulu_blue text-white rounded-lg hover:bg-federal_blue transition-colors font-semibold text-lg shadow-lg w-80"
               >
                 {language === 'is' ? 'Sjá verkefnið þitt' : 'View your job'}

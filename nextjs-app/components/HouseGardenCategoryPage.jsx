@@ -2,56 +2,140 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useTranslations } from '@/contexts/TranslationsContext';
 
 const HouseGardenCategoryPage = ({ translations, language }) => {
   const [selectedService, setSelectedService] = useState(null);
 
   const houseGardenServices = [
     {
-      id: 'anleggsgartner',
-      name: language === 'is' ? 'Garðyrkjumenn' : 'Anleggsgartner',
-      nameNorwegian: 'Anleggsgartner',
+      id: 'grunnarbeid',
+      name: language === 'is' ? 'Grunnvinna' : 'Foundation Work',
       description: language === 'is' 
-        ? 'Garðhönnun, grasflötuviðhald og þjónusta fyrir útirými.'
-        : 'Hagedesign, plenvedlikehold og tjenester for uteplasser.',
-      professionals: 1600,
-      averagePrice: language === 'is' ? '40.000-400.000 kr' : '400-800 kr/time',
-      completedJobs: 3800,
-      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=250&fit=crop',
+        ? 'Fagleg jarðvinna og undirbúningur fyrir öll byggingarverkefni.'
+        : 'Professional excavation and preparation for all construction projects.',
+      professionalsText: language === 'is' ? 'Reyndir sérfræðingar' : 'Experienced specialists',
+      projectsText: language === 'is' ? 'Áreiðanleg þjónusta' : 'Reliable service guaranteed',
+      priceText: language === 'is' ? 'Sanngjörn verðlagning' : 'Fair pricing policy',
+      image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=250&fit=crop',
       specialties: language === 'is' 
-        ? ['Garðhönnun', 'Trjáklippingar', 'Grasfletir', 'Útiplöntun']
-        : ['Hagedesign', 'Trefelling', 'Plen', 'Uteplanting']
+        ? ['Uppgröftur', 'Grunnur']
+        : ['Excavation', 'Foundation']
     },
     {
-      id: 'trefelling',
-      name: language === 'is' ? 'Trjáfelling' : 'Trefelling',
-      nameNorwegian: 'Trefelling',
-      description: language === 'is'
-        ? 'Fagleg trjáfelling, klipping og viðhald á trjám og runnum.'
-        : 'Profesjonell trefelling, beskjæring og vedlikehold av trær og busker.',
-      professionals: 850,
-      averagePrice: language === 'is' ? '25.000-150.000 kr' : '500-1000 kr/time',
-      completedJobs: 2400,
-      image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=250&fit=crop',
+      id: 'kledning',
+      name: language === 'is' ? 'Klæðning' : 'Cladding',
+      description: language === 'is' 
+        ? 'Fagleg utanáklæðning húsa með gæðaefnum og fínni handverki.'
+        : 'Professional exterior cladding with quality materials and fine craftsmanship.',
+      professionalsText: language === 'is' ? 'Hæfir klæðningarsérfræðingar' : 'Skilled cladding specialists',
+      projectsText: language === 'is' ? 'Vandað handverk' : 'Meticulous workmanship', 
+      priceText: language === 'is' ? 'Gagnsæ kostnaðarmat' : 'Transparent cost estimates',
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=250&fit=crop',
       specialties: language === 'is'
-        ? ['Trjáfelling', 'Klipping', 'Stubbfræsing', 'Öryggisfelling']
-        : ['Trefelling', 'Beskjæring', 'Stubbfresing', 'Sikkerhetsfelling']
+        ? ['Viðarklæðning', 'Steinklæðning']
+        : ['Wood cladding', 'Stone cladding']
     },
     {
-      id: 'plen',
-      name: language === 'is' ? 'Grassláttur og viðhald' : 'Plen',
-      nameNorwegian: 'Plen',
+      id: 'vinterhage',
+      name: language === 'is' ? 'Vetrarhús' : 'Conservatory',
       description: language === 'is'
-        ? 'Grasflötuviðhald, sláttur og umhirða grasflatna.'
-        : 'Plenvedlikehold, klipping og pleie av gressplener.',
-      professionals: 1200,
-      averagePrice: language === 'is' ? '15.000-80.000 kr' : '300-600 kr/time',
-      completedJobs: 4200,
+        ? 'Sérhæfðir sérfræðingar í vetrarhúsabyggingum og glersamsetningum.'
+        : 'Specialized experts in conservatory construction and glass installations.',
+      professionalsText: language === 'is' ? 'Sérhæfðir byggingaraðilar' : 'Specialized builders available',
+      projectsText: language === 'is' ? 'Persónuleg þjónusta' : 'Personalized service approach',
+      priceText: language === 'is' ? 'Ráðgjafarþjónusta innifalin' : 'Consultation included',
       image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=250&fit=crop',
       specialties: language === 'is'
-        ? ['Grassláttur', 'Fræsowing', 'Áburðargjöf', 'Viðhald']
-        : ['Plenklipping', 'Såing', 'Gjødsling', 'Vedlikehold']
+        ? ['Glerveggir', 'Þakgluggar']
+        : ['Glass walls', 'Roof windows']
     },
+    {
+      id: 'belegningsstein',
+      name: language === 'is' ? 'Steineggjarvinnsla' : 'Paving Stones',
+      description: language === 'is'
+        ? 'Fagmenn í steinsetningu með áratuga reynslu og vandaða handverki.'
+        : 'Stone laying experts with decades of experience and careful craftsmanship.',
+      professionalsText: language === 'is' ? 'Reyndir steinleggingaraðilar' : 'Experienced stone layers',
+      projectsText: language === 'is' ? 'Varanlegt handverk' : 'Durable craftsmanship',
+      priceText: language === 'is' ? 'Kostnaðarmat í boði' : 'Free cost estimates',
+      image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Hellulagnir', 'Steingólf']
+        : ['Paving', 'Stone flooring']
+    },
+    {
+      id: 'tak',
+      name: language === 'is' ? 'Þakviðgerðir og þaklagnir' : 'Roofing',
+      description: language === 'is'
+        ? 'Þekkingarmiklir þaksérfræðingar með áherslu á gæði og öryggi.'
+        : 'Knowledgeable roofing specialists with emphasis on quality and safety.',
+      professionalsText: language === 'is' ? 'Löggiltir þaksérfræðingar' : 'Certified roofing experts',
+      projectsText: language === 'is' ? 'Trygging og ábyrgðir' : 'Insurance and warranties',
+      priceText: language === 'is' ? 'Ókeypis úttekt í boði' : 'Free assessments available',
+      image: 'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Þakviðgerðir', 'Þaksteypa']
+        : ['Roof repairs', 'Roofing']
+    },
+    {
+      id: 'isolering',
+      name: language === 'is' ? 'Einangrun' : 'Insulation',
+      description: language === 'is'
+        ? 'Orkusparandi einangrunarlausnir frá umhverfisvænum sérfræðingum.'
+        : 'Energy-saving insulation solutions from environmentally conscious experts.',
+      professionalsText: language === 'is' ? 'Orkusérfræðingar tilbúnir' : 'Energy specialists ready',
+      projectsText: language === 'is' ? 'Umhverfisvænar lausnir' : 'Eco-friendly solutions',
+      priceText: language === 'is' ? 'Orkusparnaður tryggður' : 'Energy savings guaranteed',
+      image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Þakeinangrun', 'Veggeinangrun']
+        : ['Roof insulation', 'Wall insulation']
+    },
+    {
+      id: 'vindu-dor',
+      name: language === 'is' ? 'Gluggar og hurðir' : 'Windows & Doors',
+      description: language === 'is'
+        ? 'Sérfræðingar í gluggum og hurðum með áherslu á orkunýtni.'
+        : 'Window and door specialists with focus on energy efficiency.',
+      professionalsText: language === 'is' ? 'Gluggasérfræðingar' : 'Window specialists ready',
+      projectsText: language === 'is' ? 'Orkunýtin lausnir' : 'Energy efficient solutions', 
+      priceText: language === 'is' ? 'Mæling og tilboð ókeypis' : 'Free measuring and quotes',
+      image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Gluggaskipti', 'Hurðaskipti']
+        : ['Window replacement', 'Door replacement']
+    },
+    {
+      id: 'male-hus',
+      name: language === 'is' ? 'Húsamálun' : 'House Painting',
+      description: language === 'is'
+        ? 'Reyndir málarar með áherslu á gæðaefni og vandaða frágang.'
+        : 'Experienced painters with focus on quality materials and meticulous finish.',
+      professionalsText: language === 'is' ? 'Fagmálarar tilbúnir' : 'Professional painters ready',
+      projectsText: language === 'is' ? 'Gæðamálning tryggð' : 'Quality paint guaranteed',
+      priceText: language === 'is' ? 'Ókeypis verðtilboð' : 'Free quotes available',
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Utanmálun', 'Innanmálun']
+        : ['Exterior painting', 'Interior painting']
+    },
+
+    {
+      id: 'trefelling',
+      name: language === 'is' ? 'Trjáfelling og stubbfræsing' : 'Tree Felling & Stump Grinding',
+      description: language === 'is'
+        ? 'Öruggar trjáfelling með fullu öryggisvörnum og faglegum búnaði.'
+        : 'Safe tree felling with full safety equipment and professional tools.',
+      professionalsText: language === 'is' ? 'Löggiltir trjáfellingar' : 'Certified arborists available',
+      projectsText: language === 'is' ? 'Öryggi í fyrrúm' : 'Safety first approach',
+      priceText: language === 'is' ? 'Tryggingar í lagi' : 'Fully insured service',
+      image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Trjáfelling', 'Stubbfræsing']
+        : ['Tree felling', 'Stump grinding']
+    },
+
     {
       id: 'uteplanter',
       name: language === 'is' ? 'Útiplöntur' : 'Uteplanter',
@@ -84,34 +168,52 @@ const HouseGardenCategoryPage = ({ translations, language }) => {
     },
     {
       id: 'tak',
-      name: language === 'is' ? 'Þak' : 'Tak',
-      nameNorwegian: 'Tak',
+      name: language === 'is' ? 'Þakviðgerðir' : 'Roofing',
       description: language === 'is'
-        ? 'Þakviðgerðir, uppsetningar og viðhald af reyndum þaksérfræðingum.'
-        : 'Takreparasjoner, installasjoner og vedlikehold av erfarne takspesialister.',
+        ? 'Þakviðgerðir, uppsetningar og viðhald frá reyndum þaksérfræðingum.'
+        : 'Roof repairs, installations and maintenance from experienced roofing specialists.',
       professionals: 1200,
-      averagePrice: language === 'is' ? '65.000-250.000 kr' : '600-1000 kr/time',
+      professionalsText: language === 'is' ? 'Sannreyndir fagmenn' : 'Verified professionals',
+      projectsText: language === 'is' ? 'Gæðaverkefni afhent' : 'Quality projects',
+      priceText: language === 'is' ? 'Samkeppnishæf verðlagning' : 'Competitive pricing',
       completedJobs: 4500,
       image: 'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=400&h=250&fit=crop',
       specialties: language === 'is'
-        ? ['Þakviðgerðir', 'Þaksteypa', 'Einangrun', 'Takrennur']
-        : ['Takreparasjoner', 'Taklegging', 'Isolering', 'Takrenner']
+        ? ['Þakviðgerðir', 'Þaksteypa', 'Einangrun']
+        : ['Roof repairs', 'Roofing', 'Insulation']
+    },
+
+    {
+      id: 'vindu-dor',
+      name: language === 'is' ? 'Gluggar og hurðir' : 'Windows & Doors',
+      description: language === 'is'
+        ? 'Uppsetning og viðgerð á gluggum og hurðum fyrir heimili.'
+        : 'Installation and repair of windows and doors for homes.',
+      professionals: 620,
+      professionalsText: language === 'is' ? 'Sannreyndir fagmenn' : 'Verified professionals',
+      projectsText: language === 'is' ? 'Gæðaverkefni afhent' : 'Quality projects', 
+      priceText: language === 'is' ? 'Samkeppnishæf verðlagning' : 'Competitive pricing',
+      completedJobs: 1800,
+      image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=250&fit=crop',
+      specialties: language === 'is'
+        ? ['Gluggaskipti', 'Hurðaskipti', 'Viðgerðir']
+        : ['Window replacement', 'Door replacement', 'Repairs']
     },
     {
-      id: 'fasade',
-      name: language === 'is' ? 'Útveggir og fasade' : 'Fasade',
-      nameNorwegian: 'Fasade',
-      description: language === 'is'
-        ? 'Fasadeviðgerðir, málun og endurnýjun húsveggja.'
-        : 'Fasadereparasjoner, maling og renovering av husvegger.',
-      professionals: 800,
-      averagePrice: language === 'is' ? '30.000-150.000 kr' : '450-750 kr/time',
-      completedJobs: 2100,
-      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=250&fit=crop',
-      specialties: language === 'is'
-        ? ['Fasademálun', 'Klæðning', 'Einangrun', 'Viðhald']
-        : ['Fasademaling', 'Kledning', 'Isolering', 'Vedlikehold']
+      id: 'hagearbeid',
+      name: language === 'is' ? 'Garðyrkja' : 'Garden Work',
+      description: language === 'is' 
+        ? 'Garðyrkjusérfræðingar sem breyta garðinum þínum í paradís.'
+        : 'Garden specialists who transform your garden into a paradise.',
+      professionalsText: language === 'is' ? 'Skapandi garðyrkjumenn' : 'Creative gardeners available',
+      projectsText: language === 'is' ? 'Fallegir garðar skapaðir' : 'Beautiful gardens created',
+      priceText: language === 'is' ? 'Hönnunarráðgjöf innifalin' : 'Design consultation included',
+      image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=250&fit=crop',
+      specialties: language === 'is' 
+        ? ['Garðhönnun', 'Trjáklippingar']
+        : ['Garden design', 'Tree trimming']
     },
+
     {
       id: 'vinduer-dorer',
       name: language === 'is' ? 'Gluggar og hurðir' : 'Vinduer og dører',
@@ -236,132 +338,129 @@ const HouseGardenCategoryPage = ({ translations, language }) => {
 
   const breadcrumbs = [
     { name: language === 'is' ? 'Heim' : 'Hjem', href: '/' },
-    { name: language === 'is' ? 'Allir flokkar' : 'Alle kategorier', href: '/alle-kategorier' },
+    { name: language === 'is' ? 'Allir flokkar' : 'All Categories', href: '/all-categories' },
     { name: language === 'is' ? 'Hús og garður' : 'Hus og hage', href: null }
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Breadcrumb */}
-      <div className="max-w-6xl mx-auto px-4 py-4">
-        <nav className="flex" aria-label="Breadcrumb">
-          <ol className="flex items-center space-x-2">
-            {breadcrumbs.map((crumb, index) => (
-              <li key={index} className="flex items-center">
-                {index > 0 && <span className="mx-2 text-gray-400">/</span>}
-                {crumb.href ? (
-                  <Link href={crumb.href} className="text-blue-600 hover:text-blue-800">
-                    {crumb.name}
-                  </Link>
-                ) : (
-                  <span className="text-gray-500">{crumb.name}</span>
-                )}
-              </li>
-            ))}
-          </ol>
-        </nav>
-      </div>
-
-      {/* Header Section */}
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            {language === 'is' ? 'Hús og garður' : 'Hus og hage'}
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {language === 'is'
-              ? 'Allt fyrir heimilið þitt og garðinn. Frá þaki til grunns - við höfum sérfræðinga fyrir öll útiverkefni.'
-              : 'Everything for your home and garden. From roof to foundation - we have specialists for all outdoor projects.'
-            }
-          </p>
-        </div>
-
-        {/* Stats Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 text-center">
-          <div className="bg-green-50 rounded-lg p-6">
-            <div className="text-3xl font-bold text-green-600 mb-2">8,750+</div>
-            <div className="text-gray-600">
-              {language === 'is' ? 'Sérfræðingar í garði og húsum' : 'Garden and house specialists'}
-            </div>
+    <div className="min-h-screen bg-light_cyan">
+      {/* Header Section with Background */}
+      <div className="bg-gradient-to-br from-light_cyan to-non_photo_blue py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl lg:text-5xl font-bold text-federal_blue mb-6">
+              {language === 'is' ? 'Hús og garður' : 'House & Garden'}
+            </h1>
+            <p className="text-xl text-honolulu_blue max-w-4xl mx-auto leading-relaxed">
+              {language === 'is'
+                ? 'Finndu hæfa iðnaðarmenn fyrir verkefnið þitt. Frá garðyrkju til þakviðgerða - við höfum fagmennina sem þú þarft.'
+                : 'Find qualified professionals for your project. From gardening to roof repairs - we have the experts you need.'
+              }
+            </p>
           </div>
-          <div className="bg-blue-50 rounded-lg p-6">
-            <div className="text-3xl font-bold text-blue-600 mb-2">38,200+</div>
-            <div className="text-gray-600">
-              {language === 'is' ? 'Lokið verkefni' : 'Completed projects'}
+
+          {/* How it works cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white/90 backdrop-blur-sm rounded-lg p-6 text-center">
+              <div className="text-2xl font-bold text-honolulu_blue mb-2">
+                {language === 'is' ? 'Sérvaldur fagmenn' : 'Selected professionals'}
+              </div>
+              <p className="text-federal_blue text-sm">
+                {language === 'is'
+                  ? 'Sérvaldur handverksmenn tilbúnir að gera drauma þína að veruleika.'
+                  : 'Selected craftsmen ready to make your dreams come true.'
+                }
+              </p>
             </div>
-          </div>
-          <div className="bg-orange-50 rounded-lg p-6">
-            <div className="text-3xl font-bold text-orange-600 mb-2">4.8</div>
-            <div className="text-gray-600">
-              {language === 'is' ? 'Meðaleinkunn' : 'Average rating'}
+            <div className="bg-white/90 backdrop-blur-sm rounded-lg p-6 text-center">
+              <div className="text-2xl font-bold text-honolulu_blue mb-2">
+                {language === 'is' ? 'Gæði tryggð' : 'Quality assured'}
+              </div>
+              <p className="text-federal_blue text-sm">
+                {language === 'is'
+                  ? 'Frá hugmynd til veruleika - við afhendum gæði.'
+                  : 'From idea to reality - we deliver quality.'
+                }
+              </p>
+            </div>
+            <div className="bg-white/90 backdrop-blur-sm rounded-lg p-6 text-center">
+              <div className="text-2xl font-bold text-honolulu_blue mb-2">
+                {language === 'is' ? 'Traust og áreiðanleiki' : 'Trust and reliability'}
+              </div>
+              <p className="text-federal_blue text-sm">
+                {language === 'is'
+                  ? 'Byggjum varanleg sambönd með traustri þjónustu.'
+                  : 'Building lasting relationships with reliable service.'
+                }
+              </p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Services Grid */}
-      <div className="bg-gray-50 py-16">
+      <div className="bg-white py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            {language === 'is' ? 'Veldu þjónustu' : 'Select service'}
+          <h2 className="text-3xl font-bold text-federal_blue text-center mb-12">
+            {language === 'is' ? 'Veldu þjónustu' : 'Choose Service'}
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {houseGardenServices.map(service => (
               <div 
                 key={service.id} 
-                className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer overflow-hidden"
-                onClick={() => setSelectedService(service)}
+                className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all cursor-pointer overflow-hidden border border-non_photo_blue hover:border-honolulu_blue h-fit"
               >
                 <img 
                   src={service.image} 
                   alt={service.name}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-40 object-cover"
                 />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <div className="p-5">
+                  <h3 className="text-lg font-semibold text-federal_blue mb-2 leading-tight">
                     {service.name}
                   </h3>
-                  <p className="text-gray-600 mb-4 text-sm line-clamp-3">
+                  <p className="text-honolulu_blue mb-4 text-sm leading-relaxed line-clamp-2">
                     {service.description}
                   </p>
                   
-                  <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                    <span>👥 {service.professionals.toLocaleString()} {language === 'is' ? 'sérfræðingar' : 'specialists'}</span>
-                    <span>✅ {service.completedJobs.toLocaleString()} {language === 'is' ? 'verkefni' : 'projects'}</span>
+                  <div className="flex items-center justify-between text-xs text-honolulu_blue mb-4">
+                    <span className="flex items-center">👥 {service.professionalsText}</span>
+                    <span className="flex items-center">✅ {service.projectsText}</span>
                   </div>
                   
                   <div className="mb-4">
-                    <div className="text-sm font-medium text-gray-700 mb-2">
+                    <div className="text-xs font-medium text-federal_blue mb-2">
                       {language === 'is' ? 'Sérhæfingar:' : 'Specialties:'}
                     </div>
                     <div className="flex flex-wrap gap-1">
-                      {service.specialties.slice(0, 3).map(specialty => (
-                        <span key={specialty} className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">
+                      {service.specialties.slice(0, 2).map(specialty => (
+                        <span key={specialty} className="bg-light_cyan text-honolulu_blue text-xs px-2 py-1 rounded-full">
                           {specialty}
                         </span>
                       ))}
                     </div>
                   </div>
                   
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-gray-900">
-                      {service.averagePrice}
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-sm font-medium text-federal_blue">
+                      {service.priceText}
                     </span>
-                    <div className="flex gap-2">
-                      <Link 
-                        href={`/bedriftsok?category=${service.id}`}
-                        className="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors"
-                      >
-                        {language === 'is' ? 'Finn sérfræðing' : 'Find specialist'}
-                      </Link>
-                      <Link 
-                        href={`/post?category=${service.id}`}
-                        className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors"
-                      >
-                        {language === 'is' ? 'Legg út verk' : 'Post job'}
-                      </Link>
-                    </div>
+                  </div>
+                  
+                  <div className="flex gap-2">
+                    <Link 
+                      href={`/professionals/${service.id}`}
+                      className="flex-1 bg-honolulu_blue text-white px-3 py-2 rounded-lg text-xs font-medium hover:bg-federal_blue transition-colors text-center"
+                    >
+                      {language === 'is' ? 'Finn fagmann' : 'Find professional'}
+                    </Link>
+                    <Link 
+                      href={`/post/house-garden?category=${service.id}`}
+                      className="flex-1 border border-honolulu_blue text-honolulu_blue px-3 py-2 rounded-lg text-xs font-medium hover:bg-light_cyan transition-colors text-center"
+                    >
+                      {language === 'is' ? 'Legg út jobb' : 'Post job'}
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -370,57 +469,30 @@ const HouseGardenCategoryPage = ({ translations, language }) => {
         </div>
       </div>
 
-      {/* Popular Projects Section */}
-      <div className="py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            {language === 'is' ? 'Vinsælustu verkefnin' : 'Most popular projects'}
-          </h2>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { name: language === 'is' ? 'Garðyrkja' : 'Gardening', count: '2,800+' },
-              { name: language === 'is' ? 'Þakviðgerðir' : 'Roof Repairs', count: '2,100+' },
-              { name: language === 'is' ? 'Gluggaskipti' : 'Window Replacement', count: '1,900+' },
-              { name: language === 'is' ? 'Fasademálun' : 'Facade Painting', count: '1,600+' },
-              { name: language === 'is' ? 'Girðingar' : 'Fencing', count: '1,400+' },
-              { name: language === 'is' ? 'Þil og verandir' : 'Decks & Patios', count: '1,200+' },
-              { name: language === 'is' ? 'Drenering' : 'Drainage', count: '900+' },
-              { name: language === 'is' ? 'Útiljós' : 'Outdoor Lighting', count: '800+' }
-            ].map((item, index) => (
-              <div key={index} className="text-center p-4 bg-gray-50 rounded-lg">
-                <div className="text-2xl font-bold text-green-600 mb-1">{item.count}</div>
-                <div className="text-sm text-gray-600">{item.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* CTA Section */}
-      <div className="bg-green-600 text-white py-16">
+      <div className="bg-honolulu_blue text-white py-16">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">
             {language === 'is' ? 'Tilbúinn að byrja?' : 'Ready to start?'}
           </h2>
           <p className="text-xl mb-8 opacity-90">
             {language === 'is'
-              ? 'Leggðu inn garð- eða húsverkefnið þitt og fáðu tilboð frá hæfum sérfræðingum.'
-              : 'Post your garden or house project and get quotes from qualified specialists.'
+              ? 'Leggðu inn garð- eða húsverkefnið þitt og fáðu tilboð frá hæfum sérfræðingum á þínu svæði.'
+              : 'Post your garden or house project and get quotes from qualified specialists in your area.'
             }
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
-              href="/job-categories"
-              className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              href="/post/house-garden"
+              className="bg-white text-honolulu_blue px-8 py-3 rounded-lg font-semibold hover:bg-light_cyan transition-colors"
             >
               {language === 'is' ? 'Legg inn verkefni' : 'Post project'}
             </Link>
             <Link 
-              href="/bedriftsok"
-              className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+              href="/professionals/house-garden"
+              className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-federal_blue transition-colors"
             >
-              {language === 'is' ? 'Finn sérfræðinga' : 'Find specialists'}
+              {language === 'is' ? 'Finn sérfræðinga' : 'Find professionals'}
             </Link>
           </div>
         </div>

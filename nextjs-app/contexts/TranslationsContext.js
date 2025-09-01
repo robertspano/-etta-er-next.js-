@@ -15,6 +15,9 @@ export function TranslationsProvider({ children }) {
       const savedLanguage = localStorage.getItem('verki_language');
       if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'is')) {
         setLanguage(savedLanguage);
+      } else {
+        // Default to Icelandic if no saved preference
+        setLanguage('is');
       }
     }
   }, []);

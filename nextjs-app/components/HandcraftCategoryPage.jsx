@@ -210,59 +210,59 @@ const HandcraftCategoryPage = ({ translations, language }) => {
             {language === 'is' ? 'Veldu þjónustu' : 'Choose Service'}
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {handcraftServices.map(service => (
               <div 
                 key={service.id} 
-                className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer overflow-hidden border border-non_photo_blue hover:border-honolulu_blue"
+                className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all cursor-pointer overflow-hidden border border-non_photo_blue hover:border-honolulu_blue h-fit"
               >
                 <img 
                   src={service.image} 
                   alt={service.name}
-                  className="w-full h-56 object-cover"
+                  className="w-full h-40 object-cover"
                 />
-                <div className="p-8">
-                  <h3 className="text-xl font-semibold text-federal_blue mb-3 leading-tight">
+                <div className="p-5">
+                  <h3 className="text-lg font-semibold text-federal_blue mb-2 leading-tight">
                     {service.name}
                   </h3>
-                  <p className="text-honolulu_blue mb-6 text-base leading-relaxed">
+                  <p className="text-honolulu_blue mb-4 text-sm leading-relaxed line-clamp-2">
                     {service.description}
                   </p>
                   
-                  <div className="flex items-center justify-between text-sm text-honolulu_blue mb-6">
+                  <div className="flex items-center justify-between text-xs text-honolulu_blue mb-4">
                     <span className="flex items-center">👥 {service.professionalsText}</span>
                     <span className="flex items-center">✅ {service.projectsText}</span>
                   </div>
                   
-                  <div className="mb-6">
-                    <div className="text-sm font-medium text-federal_blue mb-3">
+                  <div className="mb-4">
+                    <div className="text-xs font-medium text-federal_blue mb-2">
                       {language === 'is' ? 'Sérhæfingar:' : 'Specialties:'}
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                      {service.specialties.slice(0, 3).map(specialty => (
-                        <span key={specialty} className="bg-light_cyan text-honolulu_blue text-sm px-3 py-2 rounded-full">
+                    <div className="flex flex-wrap gap-1">
+                      {service.specialties.slice(0, 2).map(specialty => (
+                        <span key={specialty} className="bg-light_cyan text-honolulu_blue text-xs px-2 py-1 rounded-full">
                           {specialty}
                         </span>
                       ))}
                     </div>
                   </div>
                   
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-base font-medium text-federal_blue">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-sm font-medium text-federal_blue">
                       {service.priceText}
                     </span>
                   </div>
                   
-                  <div className="flex gap-3">
+                  <div className="flex gap-2">
                     <Link 
                       href={`/professionals/${service.id}`}
-                      className="flex-1 bg-honolulu_blue text-white px-4 py-3 rounded-lg text-sm font-medium hover:bg-federal_blue transition-colors text-center"
+                      className="flex-1 bg-honolulu_blue text-white px-3 py-2 rounded-lg text-xs font-medium hover:bg-federal_blue transition-colors text-center"
                     >
                       {language === 'is' ? 'Finn fagmann' : 'Find professional'}
                     </Link>
                     <Link 
                       href={`/post/handcraft?category=${service.id}`}
-                      className="flex-1 border border-honolulu_blue text-honolulu_blue px-4 py-3 rounded-lg text-sm font-medium hover:bg-light_cyan transition-colors text-center"
+                      className="flex-1 border border-honolulu_blue text-honolulu_blue px-3 py-2 rounded-lg text-xs font-medium hover:bg-light_cyan transition-colors text-center"
                     >
                       {language === 'is' ? 'Legg út jobb' : 'Post job'}
                     </Link>

@@ -118,7 +118,10 @@ const PasswordlessConfirm = ({ language = 'en', setLanguage }) => {
 
             {/* Footer Link - exactly like mittanbud */}
             <div className="mt-8 text-center">
-              <Link href="/login" className="text-blue-600 hover:text-blue-700 text-sm font-medium">
+              <Link 
+                href={`/login-with-password?email=${encodeURIComponent(email)}`}
+                className="text-blue-600 hover:text-blue-700 text-sm font-medium"
+              >
                 {language === 'is' ? 'Innskráning með lykilorði' : 'Login with password'}
               </Link>
             </div>

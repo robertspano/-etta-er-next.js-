@@ -1,0 +1,195 @@
+[
+  {
+    "test": "Database Health Check",
+    "success": true,
+    "details": "Database connection healthy",
+    "timestamp": "2025-08-30T00:55:43.099187",
+    "response_data": null
+  },
+  {
+    "test": "Database Services Query",
+    "success": true,
+    "details": "Retrieved 9 services from database",
+    "timestamp": "2025-08-30T00:55:43.123054",
+    "response_data": null
+  },
+  {
+    "test": "Database Write Operation",
+    "success": false,
+    "details": "Project creation failed: 422",
+    "timestamp": "2025-08-30T00:55:43.171816",
+    "response_data": {
+      "detail": [
+        {
+          "type": "enum",
+          "loc": [
+            "body",
+            "serviceType"
+          ],
+          "msg": "Input should be 'plumbing', 'electrical', 'carpentry', 'painting', 'roofing', 'heating', 'renovation', 'landscaping' or 'construction'",
+          "input": "testing",
+          "ctx": {
+            "expected": "'plumbing', 'electrical', 'carpentry', 'painting', 'roofing', 'heating', 'renovation', 'landscaping' or 'construction'"
+          },
+          "url": "https://errors.pydantic.dev/2.11/v/enum"
+        }
+      ]
+    }
+  },
+  {
+    "test": "Passwordless Login Link Request",
+    "success": true,
+    "details": "Login link sent to test.passwordless@verki.is",
+    "timestamp": "2025-08-30T00:55:43.179507",
+    "response_data": null
+  },
+  {
+    "test": "Passwordless Code Verification Endpoint",
+    "success": false,
+    "details": "Unexpected response: 500",
+    "timestamp": "2025-08-30T00:55:43.227915",
+    "response_data": {
+      "detail": "Failed to verify login code: "
+    }
+  },
+  {
+    "test": "Passwordless Email Validation",
+    "success": true,
+    "details": "Invalid email format correctly rejected",
+    "timestamp": "2025-08-30T00:55:43.276125",
+    "response_data": null
+  },
+  {
+    "test": "Auto-Registration (Customer)",
+    "success": true,
+    "details": "Customer auto-registered: autoregister_1756515343@verki.is",
+    "timestamp": "2025-08-30T00:55:43.379806",
+    "response_data": null
+  },
+  {
+    "test": "Auto-Registration (Professional)",
+    "success": true,
+    "details": "Professional auto-registered: autopro_1756515343@verki.is",
+    "timestamp": "2025-08-30T00:55:43.525230",
+    "response_data": null
+  },
+  {
+    "test": "Auto-Registration Duplicate Handling",
+    "success": true,
+    "details": "Duplicate registration correctly rejected",
+    "timestamp": "2025-08-30T00:55:43.533595",
+    "response_data": null
+  },
+  {
+    "test": "User Management Setup",
+    "success": true,
+    "details": "Test user created for management testing",
+    "timestamp": "2025-08-30T00:55:43.617897",
+    "response_data": null
+  },
+  {
+    "test": "User Login for Management",
+    "success": true,
+    "details": "User logged in successfully",
+    "timestamp": "2025-08-30T00:55:43.719769",
+    "response_data": null
+  },
+  {
+    "test": "Get Current User Info",
+    "success": true,
+    "details": "User info retrieved: usermgmt_1756515343@verki.is",
+    "timestamp": "2025-08-30T00:55:43.729031",
+    "response_data": null
+  },
+  {
+    "test": "Profile Update",
+    "success": true,
+    "details": "Profile updated successfully",
+    "timestamp": "2025-08-30T00:55:43.737531",
+    "response_data": null
+  },
+  {
+    "test": "User Logout",
+    "success": true,
+    "details": "Logout successful",
+    "timestamp": "2025-08-30T00:55:43.744279",
+    "response_data": null
+  },
+  {
+    "test": "Email Service Test (verki@verki.is)",
+    "success": true,
+    "details": "Email service processed request for verki@verki.is",
+    "timestamp": "2025-08-30T00:55:45.731991",
+    "response_data": null
+  },
+  {
+    "test": "Email Service Test (test.email@verki.is)",
+    "success": true,
+    "details": "Email service processed request for test.email@verki.is",
+    "timestamp": "2025-08-30T00:55:45.783127",
+    "response_data": null
+  },
+  {
+    "test": "Email Service Test (nonexistent@verki.is)",
+    "success": true,
+    "details": "Email service processed request for nonexistent@verki.is",
+    "timestamp": "2025-08-30T00:55:45.793219",
+    "response_data": null
+  },
+  {
+    "test": "Email Validation ()",
+    "success": true,
+    "details": "Invalid email '' correctly rejected",
+    "timestamp": "2025-08-30T00:55:45.801078",
+    "response_data": null
+  },
+  {
+    "test": "Email Validation (invalid)",
+    "success": true,
+    "details": "Invalid email 'invalid' correctly rejected",
+    "timestamp": "2025-08-30T00:55:45.851810",
+    "response_data": null
+  },
+  {
+    "test": "Email Validation (@verki.is)",
+    "success": true,
+    "details": "Invalid email '@verki.is' correctly rejected",
+    "timestamp": "2025-08-30T00:55:45.861596",
+    "response_data": null
+  },
+  {
+    "test": "Email Validation (test@)",
+    "success": true,
+    "details": "Invalid email 'test@' correctly rejected",
+    "timestamp": "2025-08-30T00:55:45.872595",
+    "response_data": null
+  },
+  {
+    "test": "Email Validation (test..test@verki.is)",
+    "success": true,
+    "details": "Invalid email 'test..test@verki.is' correctly rejected",
+    "timestamp": "2025-08-30T00:55:45.917967",
+    "response_data": null
+  },
+  {
+    "test": "Verki User Password Login",
+    "success": true,
+    "details": "Password login successful for verki@verki.is",
+    "timestamp": "2025-08-30T00:55:46.021247",
+    "response_data": null
+  },
+  {
+    "test": "Verki User Data Retrieval",
+    "success": true,
+    "details": "User data retrieved for verki@verki.is",
+    "timestamp": "2025-08-30T00:55:46.069587",
+    "response_data": null
+  },
+  {
+    "test": "Verki User Passwordless Login",
+    "success": true,
+    "details": "Passwordless login still works for verki@verki.is",
+    "timestamp": "2025-08-30T00:55:46.798396",
+    "response_data": null
+  }
+]

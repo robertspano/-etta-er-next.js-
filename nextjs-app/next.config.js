@@ -4,7 +4,7 @@ const nextConfig = {
     domains: ['service-finder-75.preview.emergentagent.com', 'customer-assets.emergentagent.com'],
   },
   env: {
-    NEXT_PUBLIC_BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL || 'https://verki-rebrand.preview.emergentagent.com',
+    NEXT_PUBLIC_BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL || 'https://verkefni-hub.preview.emergentagent.com',
   },
 }
 

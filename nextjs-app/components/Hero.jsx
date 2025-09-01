@@ -118,9 +118,6 @@ const Hero = ({ translations, language }) => {
         </h2>
         
         {/* Additional subtitle */}
-        <p className="text-lg md:text-xl text-white/90 mb-12 max-w-2xl mx-auto">
-          Choose category below and get 3 price quotes: Free, simple and non-binding
-        </p>
 
         {/* Service Categories Grid - 2 rows x 4 columns, FIXED size boxes */}
         <div className="inline-block bg-white rounded-xl shadow-2xl overflow-hidden">

@@ -12,7 +12,7 @@ from datetime import datetime
 from typing import Dict, Any, List
 
 # Get backend URL from environment
-BACKEND_URL = "https://verki-rebrand.preview.emergentagent.com/api"
+BACKEND_URL = "https://verkefni-hub.preview.emergentagent.com/api"
 
 class BuildConnectAPITester:
     def __init__(self):
@@ -1108,6 +1108,455 @@ class BuildConnectAPITester:
                     self.log_test("Professional Reviews Consistency", False, f"Failed to get professional reviews: {response.status}")
         except Exception as e:
             self.log_test("Professional Reviews Consistency", False, f"Request failed: {str(e)}")
+
+    async def check_verki_user_exists(self, email: str):
+        """Check if verki@verki.is user exists in the database"""
+        print(f"\n--- Step 1: Checking if {email} user exists ---")
+        
+        try:
+            # Try to get user info by attempting login with a dummy password
+            login_data = {
+                "username": email,
+                "password": "dummy_password_to_check_user_exists"
+            }
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/cookie/login",
+                data=login_data,
+                headers={"Content-Type": "application/x-www-form-urlencoded"}
+            ) as response:
+                if response.status == 400:
+                    # User exists but wrong password - this is what we expect
+                    self.log_test("Verki User Exists Check", True, f"User {email} exists in database")
+                elif response.status == 422:
+                    # User doesn't exist
+                    self.log_test("Verki User Exists Check", False, f"User {email} does not exist in database")
+                else:
+                    data = await response.json() if response.content_type == 'application/json' else await response.text()
+                    self.log_test("Verki User Exists Check", False, f"Unexpected response: {response.status}", data)
+        except Exception as e:
+            self.log_test("Verki User Exists Check", False, f"Request failed: {str(e)}")
+
+    async def create_or_update_verki_user(self, email: str, password: str):
+        """Create or update verki@verki.is user with proper password"""
+        print(f"\n--- Step 2: Creating/updating {email} user with password ---")
+        
+        # First try to create the user
+        user_data = {
+            "email": email,
+            "password": password,
+            "role": "customer",
+            "first_name": "Verki",
+            "last_name": "User",
+            "phone": "+354-555-0000",
+            "language": "is"
+        }
+        
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/register",
+                json=user_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 201:
+                    self.log_test("Verki User Creation", True, f"User {email} created successfully with password")
+                elif response.status == 400 and "already exists" in str(data).lower():
+                    self.log_test("Verki User Creation", True, f"User {email} already exists (will test password)")
+                else:
+                    self.log_test("Verki User Creation", False, f"Unexpected response: {response.status}", data)
+        except Exception as e:
+            self.log_test("Verki User Creation", False, f"Request failed: {str(e)}")
+
+    async def test_password_login_endpoint(self, email: str, password: str):
+        """Test the /api/auth/cookie/login endpoint with verki@verki.is and password"""
+        print(f"\n--- Step 3: Testing password login endpoint for {email} ---")
+        
+        login_data = {
+            "username": email,
+            "password": password
+        }
+        
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/cookie/login",
+                data=login_data,
+                headers={"Content-Type": "application/x-www-form-urlencoded"}
+            ) as response:
+                if response.status == 204:
+                    # Successful login
+                    cookies = response.cookies
+                    if "buildconnect_auth" in cookies:
+                        self.log_test("Password Login Success", True, f"Password login successful for {email}")
+                        return cookies["buildconnect_auth"].value
+                    else:
+                        self.log_test("Password Login Success", False, "Login successful but no auth cookie")
+                        return None
+                elif response.status == 400:
+                    # Bad credentials
+                    data = await response.json() if response.content_type == 'application/json' else await response.text()
+                    if "LOGIN_BAD_CREDENTIALS" in str(data):
+                        self.log_test("Password Login Credentials", False, f"LOGIN_BAD_CREDENTIALS error - password not set correctly for {email}")
+                    else:
+                        self.log_test("Password Login Credentials", False, f"Bad credentials: {data}")
+                    return None
+                else:
+                    data = await response.json() if response.content_type == 'application/json' else await response.text()
+                    self.log_test("Password Login Endpoint", False, f"Unexpected response: {response.status}", data)
+                    return None
+        except Exception as e:
+            self.log_test("Password Login Endpoint", False, f"Request failed: {str(e)}")
+            return None
+
+    async def verify_password_authentication(self, email: str, password: str):
+        """Verify user can successfully authenticate with password and get user data"""
+        print(f"\n--- Step 4: Verifying password authentication for {email} ---")
+        
+        # First login
+        session_cookie = await self.test_password_login_endpoint(email, password)
+        
+        if session_cookie:
+            # Test getting user info with the session
+            try:
+                cookies = {"buildconnect_auth": session_cookie}
+                async with self.session.get(
+                    f"{BACKEND_URL}/auth/me",
+                    cookies=cookies
+                ) as response:
+                    data = await response.json()
+                    if response.status == 200:
+                        required_fields = ["id", "email", "role", "profile", "is_verified"]
+                        has_fields = all(field in data for field in required_fields)
+                        if has_fields and data.get("email") == email:
+                            self.log_test("Password Auth User Data", True, f"Successfully retrieved user data for {email}")
+                        else:
+                            self.log_test("Password Auth User Data", False, "Missing fields or incorrect email", data)
+                    else:
+                        self.log_test("Password Auth User Data", False, f"Failed to get user info: {response.status}", data)
+            except Exception as e:
+                self.log_test("Password Auth User Data", False, f"Request failed: {str(e)}")
+        else:
+            self.log_test("Password Authentication", False, "Cannot verify authentication - login failed")
+
+    async def test_passwordless_still_works(self, email: str):
+        """Test that passwordless login still works for the same email"""
+        print(f"\n--- Step 5: Testing passwordless login still works for {email} ---")
+        
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/send-login-link",
+                json={"email": email},
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 200:
+                    required_fields = ["message", "email"]
+                    has_all_fields = all(field in data for field in required_fields)
+                    
+                    if (has_all_fields and 
+                        data.get("email") == email and
+                        isinstance(data.get("message"), str)):
+                        self.log_test("Passwordless Still Works", True, f"Passwordless login code sent successfully to {email}")
+                    else:
+                        self.log_test("Passwordless Still Works", False, "Invalid response format", data)
+                else:
+                    self.log_test("Passwordless Still Works", False, f"Failed to send login link: {response.status}", data)
+        except Exception as e:
+            self.log_test("Passwordless Still Works", False, f"Request failed: {str(e)}")
+
+    async def test_password_login_for_verki_user(self):
+        """Test and fix password login for verki@verki.is user as requested"""
+        print("\n=== Testing Password Login for verki@verki.is User ===")
+        
+        # Test email from the review request
+        test_email = "verki@verki.is"
+        test_password = "Lindarbraut31"  # Password user tried to use
+        
+        # Step 1: Check if verki@verki.is user exists in database
+        await self.check_verki_user_exists(test_email)
+        
+        # Step 2: Create or update user with proper password
+        await self.create_or_update_verki_user(test_email, test_password)
+        
+        # Step 3: Test password login endpoint
+        await self.test_password_login_endpoint(test_email, test_password)
+        
+        # Step 4: Verify user can authenticate with password
+        await self.verify_password_authentication(test_email, test_password)
+        
+        # Step 5: Test that passwordless login still works
+        await self.test_passwordless_still_works(test_email)
+    
+    async def create_user_if_not_exists(self, email: str):
+        """Create user account if it doesn't exist"""
+        print(f"\n--- Step 1: Creating user account for {email} if needed ---")
+        
+        # First check if user exists by trying to send login link
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/send-login-link",
+                json={"email": email},
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 200:
+                    self.log_test("User Account Check", True, f"User {email} exists or endpoint working")
+                else:
+                    self.log_test("User Account Check", False, f"Unexpected response: {response.status}", data)
+        except Exception as e:
+            self.log_test("User Account Check", False, f"Request failed: {str(e)}")
+        
+        # Try to create user account (will fail if already exists, which is fine)
+        user_data = {
+            "email": email,
+            "password": "TempPassword123!",
+            "role": "customer",
+            "first_name": "Verki",
+            "last_name": "User",
+            "phone": "+354-555-0000",
+            "language": "is"
+        }
+        
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/register",
+                json=user_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 201:
+                    self.log_test("User Creation", True, f"User {email} created successfully")
+                elif response.status == 400 and "already exists" in str(data):
+                    self.log_test("User Creation", True, f"User {email} already exists (expected)")
+                else:
+                    self.log_test("User Creation", False, f"Unexpected response: {response.status}", data)
+        except Exception as e:
+            self.log_test("User Creation", False, f"Request failed: {str(e)}")
+    
+    async def test_send_login_link_with_verki_email(self, email: str):
+        """Test /api/auth/send-login-link endpoint with verki@verki.is"""
+        print(f"\n--- Step 2: Testing /api/auth/send-login-link with {email} ---")
+        
+        login_link_data = {
+            "email": email
+        }
+        
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/send-login-link",
+                json=login_link_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                
+                if response.status == 200:
+                    required_fields = ["message", "email"]
+                    has_all_fields = all(field in data for field in required_fields)
+                    
+                    if (has_all_fields and 
+                        data.get("email") == email and
+                        isinstance(data.get("message"), str) and
+                        len(data.get("message", "")) > 0):
+                        self.log_test("Send Login Link (verki@verki.is)", True, 
+                                    f"✅ Login link sent successfully - Status: {response.status}, Message: '{data.get('message')}', Email: {data.get('email')}")
+                    else:
+                        self.log_test("Send Login Link (verki@verki.is)", False, 
+                                    "Response missing required fields or invalid format", data)
+                else:
+                    self.log_test("Send Login Link (verki@verki.is)", False, 
+                                f"❌ Expected 200 status, got: {response.status}", data)
+        except Exception as e:
+            self.log_test("Send Login Link (verki@verki.is)", False, f"❌ Request failed: {str(e)}")
+    
+    async def test_smtp_credentials(self):
+        """Check if Gmail SMTP credentials are working correctly"""
+        print("\n--- Step 3: Testing Gmail SMTP Credentials ---")
+        
+        # Test SMTP connection by checking environment variables
+        import os
+        smtp_server = os.getenv('SMTP_SERVER', 'smtp.gmail.com')
+        smtp_port = os.getenv('SMTP_PORT', '587')
+        smtp_username = os.getenv('SMTP_USERNAME', '')
+        smtp_password = os.getenv('SMTP_PASSWORD', '')
+        
+        # Check if credentials are configured
+        if smtp_username and smtp_password:
+            self.log_test("SMTP Credentials Configuration", True, 
+                        f"✅ SMTP credentials configured - Server: {smtp_server}:{smtp_port}, Username: {smtp_username}")
+            
+            # Test actual SMTP connection
+            try:
+                import smtplib
+                with smtplib.SMTP(smtp_server, int(smtp_port)) as server:
+                    server.starttls()
+                    server.login(smtp_username, smtp_password)
+                    self.log_test("SMTP Connection Test", True, 
+                                "✅ Gmail SMTP connection successful - credentials are working")
+            except Exception as e:
+                self.log_test("SMTP Connection Test", False, 
+                            f"❌ Gmail SMTP connection failed: {str(e)}")
+        else:
+            self.log_test("SMTP Credentials Configuration", False, 
+                        f"❌ SMTP credentials not configured - Username: '{smtp_username}', Password: {'*' * len(smtp_password) if smtp_password else 'empty'}")
+    
+    async def test_login_code_generation_and_storage(self, email: str):
+        """Verify that login codes are being generated and stored properly"""
+        print("\n--- Step 4: Testing Login Code Generation and Storage ---")
+        
+        # Send login link to generate a code
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/send-login-link",
+                json={"email": email},
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                
+                if response.status == 200:
+                    self.log_test("Login Code Generation", True, 
+                                "✅ Login code generation triggered successfully")
+                    
+                    # Test code verification with invalid code to check storage
+                    try:
+                        async with self.session.post(
+                            f"{BACKEND_URL}/auth/verify-login-code",
+                            json={"email": email, "code": "000000"},
+                            headers={"Content-Type": "application/json"}
+                        ) as verify_response:
+                            verify_data = await verify_response.json()
+                            
+                            if verify_response.status == 400 and "Invalid code" in str(verify_data):
+                                self.log_test("Login Code Storage Verification", True, 
+                                            "✅ Login codes are being stored and validated properly")
+                            else:
+                                self.log_test("Login Code Storage Verification", False, 
+                                            f"Unexpected verification response: {verify_response.status}", verify_data)
+                    except Exception as e:
+                        self.log_test("Login Code Storage Verification", False, f"Verification test failed: {str(e)}")
+                else:
+                    self.log_test("Login Code Generation", False, 
+                                f"Failed to generate login code: {response.status}", data)
+        except Exception as e:
+            self.log_test("Login Code Generation", False, f"Request failed: {str(e)}")
+    
+    async def check_backend_logs_for_email_errors(self):
+        """Check backend logs for any specific error messages during email sending"""
+        print("\n--- Step 5: Checking Backend Logs for Email Errors ---")
+        
+        # Since we can't directly access logs in this environment, we'll test the email service functionality
+        try:
+            # Test email service by sending to a test email and checking for errors
+            test_response = await self.session.post(
+                f"{BACKEND_URL}/auth/send-login-link",
+                json={"email": "test.log.check@example.com"},
+                headers={"Content-Type": "application/json"}
+            )
+            
+            if test_response.status == 200:
+                self.log_test("Backend Email Service Status", True, 
+                            "✅ Email service responding without server errors")
+            else:
+                data = await test_response.json()
+                self.log_test("Backend Email Service Status", False, 
+                            f"❌ Email service returning errors: {test_response.status}", data)
+                
+        except Exception as e:
+            self.log_test("Backend Email Service Status", False, 
+                        f"❌ Email service connection failed: {str(e)}")
+        
+        # Additional check: Test with the actual verki email to see if there are specific errors
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/send-login-link",
+                json={"email": "verki@verki.is"},
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                
+                if response.status == 200:
+                    self.log_test("Verki Email Service Test", True, 
+                                "✅ No server errors when sending to verki@verki.is")
+                else:
+                    self.log_test("Verki Email Service Test", False, 
+                                f"❌ Server error when sending to verki@verki.is: {response.status}", data)
+        except Exception as e:
+            self.log_test("Verki Email Service Test", False, 
+                        f"❌ Request to verki@verki.is failed: {str(e)}")
+    
+    async def test_send_login_link_validation(self):
+        """Test send-login-link endpoint validation"""
+        print("\n--- Additional Test: Send Login Link Validation ---")
+        
+        # Test with invalid email format
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/send-login-link",
+                json={"email": "invalid-email-format"},
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status == 422:
+                    self.log_test("Invalid Email Format Validation", True, 
+                                "✅ Invalid email format correctly rejected")
+                else:
+                    data = await response.json()
+                    self.log_test("Invalid Email Format Validation", False, 
+                                f"Expected 422, got: {response.status}", data)
+        except Exception as e:
+            self.log_test("Invalid Email Format Validation", False, f"Request failed: {str(e)}")
+        
+        # Test with missing email field
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/send-login-link",
+                json={},
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status == 422:
+                    self.log_test("Missing Email Field Validation", True, 
+                                "✅ Missing email field correctly rejected")
+                else:
+                    data = await response.json()
+                    self.log_test("Missing Email Field Validation", False, 
+                                f"Expected 422, got: {response.status}", data)
+        except Exception as e:
+            self.log_test("Missing Email Field Validation", False, f"Request failed: {str(e)}")
+    
+    async def test_verify_login_code_endpoint(self):
+        """Test the verify-login-code endpoint"""
+        print("\n--- Additional Test: Verify Login Code Endpoint ---")
+        
+        # Test with invalid code format
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/verify-login-code",
+                json={"email": "verki@verki.is", "code": "12345"},  # 5 digits instead of 6
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status == 400:
+                    self.log_test("Invalid Code Format Validation", True, 
+                                "✅ Invalid code format correctly rejected")
+                else:
+                    data = await response.json()
+                    self.log_test("Invalid Code Format Validation", False, 
+                                f"Expected 400, got: {response.status}", data)
+        except Exception as e:
+            self.log_test("Invalid Code Format Validation", False, f"Request failed: {str(e)}")
+        
+        # Test with non-existent email
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/verify-login-code",
+                json={"email": "nonexistent@example.com", "code": "123456"},
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                if response.status == 400:
+                    self.log_test("Non-existent Email Verification", True, 
+                                "✅ Non-existent email correctly rejected")
+                else:
+                    data = await response.json()
+                    self.log_test("Non-existent Email Verification", False, 
+                                f"Expected 400, got: {response.status}", data)
+        except Exception as e:
+            self.log_test("Non-existent Email Verification", False, f"Request failed: {str(e)}")
 
     async def test_send_login_link_endpoint(self):
         """Test the send-login-link endpoint as requested in review"""
@@ -4048,7 +4497,7 @@ class BuildConnectAPITester:
         ]
         
         # Get frontend URL from environment
-        frontend_url = "https://verki-rebrand.preview.emergentagent.com"
+        frontend_url = "https://verkefni-hub.preview.emergentagent.com"
         
         for route in professional_routes:
             try:
@@ -4288,8 +4737,8 @@ class BuildConnectAPITester:
             # Test Send Login Link Endpoint (Priority Testing - Review Request)
             await self.test_send_login_link_endpoint()
             
-            # Test Comprehensive Passwordless Login System (Priority Testing - Review Request)
-            await self.test_passwordless_login_system()
+            # Test Password Login for verki@verki.is user (Priority Testing - Review Request)
+            await self.test_password_login_for_verki_user()
             
             # Test Company Registration System (Priority Testing)
             await self.test_company_registration_system()

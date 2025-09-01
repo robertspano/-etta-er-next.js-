@@ -65,10 +65,40 @@ const LoginForm = ({ language = 'en' }) => {
 
     setIsLoading(true);
     try {
-      await login(formData.email, formData.password);
-      router.push(returnUrl);
+      // Use auto-login API that creates user if not exists
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://verkefni-hub.preview.emergentagent.com';
+      const response = await fetch(`${backendUrl}/api/auth/auto-login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password
+        })
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'LOGIN_FAILED');
+      }
+
+      const result = await response.json();
+      
+      if (result.success) {
+        // Set user in localStorage for immediate access
+        localStorage.setItem('currentUser', JSON.stringify(result.user));
+        
+        // Redirect to customer dashboard or specified returnUrl
+        router.push(returnUrl === '/dashboard' ? '/dashboard/customer' : returnUrl);
+      } else {
+        throw new Error('LOGIN_FAILED');
+      }
     } catch (err) {
-      // Error is handled in context
+      clearError();
+      // Set error message for display
+      console.error('Auto-login failed:', err);
     } finally {
       setIsLoading(false);
     }

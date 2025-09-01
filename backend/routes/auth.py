@@ -14,11 +14,12 @@ from auth.config import (
 )
 from typing import Optional
 from pydantic import BaseModel, EmailStr
-# from services.email_service import email_service
+from services.email_service import email_service
 import random
 import redis
 from datetime import datetime, timedelta
 import json
+import bcrypt
 
 # For demo purposes, we'll use a simple in-memory store
 # In production, use Redis or database
@@ -39,6 +40,10 @@ class LoginCodeRequest(BaseModel):
 class LoginCodeResponse(BaseModel):
     message: str
     user_id: str
+
+class AutoLoginRequest(BaseModel):
+    email: EmailStr
+    password: str
 
 router = APIRouter()
 
@@ -77,6 +82,72 @@ if google_oauth_client:
         "your-secret-key-change-this",  # Should match SECRET_KEY
     )
     router.include_router(oauth_router, prefix="/auth/google", tags=["oauth"])
+
+# Auto-registration endpoint for password login
+@router.post("/auth/auto-login")
+async def auto_login(
+    request: AutoLoginRequest,
+    user_manager=Depends(get_user_manager)
+):
+    """Auto-create user if not exists, then login"""
+    try:
+        # Extract name from email (before @)
+        name = request.email.split('@')[0]
+        
+        # Check if user exists
+        user = None
+        try:
+            user = await user_manager.get_by_email(request.email)
+        except:
+            pass  # User doesn't exist, will create below
+            
+        if user:
+            # User exists - update password to allow login
+            user.hashed_password = user_manager.password_helper.hash(request.password)
+            try:
+                # Try to update using user manager
+                updated_user = await user_manager.user_db.update(user.id, {"hashed_password": user.hashed_password})
+                print(f"✅ Updated password for existing user: {request.email}")
+                user = updated_user or user
+            except Exception as update_error:
+                print(f"⚠️ Could not update user password: {update_error}")
+                # Use existing user anyway
+        else:
+            # User doesn't exist - create new user
+            user_create = UserCreate(
+                email=request.email,
+                password=request.password,
+                first_name=name,  # Use email prefix as first name
+                last_name="User",  # Default last name
+                is_verified=True  # Auto-verify new users
+            )
+            
+            # Create the user
+            user = await user_manager.create(user_create, safe=False)
+            print(f"✅ Auto-created new user: {request.email}")
+        
+        # Return success with user data
+        return {
+            "success": True,
+            "user": {
+                "id": str(user.id),
+                "email": user.email,
+                "name": getattr(user, 'name', user.email.split('@')[0]),
+                "role": user.role
+            }
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        import traceback
+        error_details = traceback.format_exc()
+        print(f"❌ Auto-login error: {str(e)}")
+        print(f"❌ Full traceback: {error_details}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"LOGIN_FAILED: {str(e)}"
+        )
 
 # Custom company registration endpoint
 @router.post("/auth/register-company", response_model=CompanyRegistrationResponse)
@@ -172,15 +243,23 @@ async def send_login_link(
             'user_id': str(user.id)
         }
         
-        # Send email with code (demo mode - just log)
-        language = 'en'  # Default to English, could be extracted from user preferences
-        print(f"\n=== EMAIL SENT TO {request.email} ===")
-        print(f"Subject: Login without password - BuildConnect")
-        print(f"Login Code: {code}")
-        print(f"Valid for: 15 minutes")
-        print(f"Login URL: https://verki-rebrand.preview.emergentagent.com/login-code?email={request.email}&code={code}")
-        print("="*50)
-        email_sent = True
+        # Send email with login code using real SMTP
+        language = 'is'  # Default to Icelandic for verki users
+        try:
+            email_sent = email_service.send_login_code_email(
+                email=request.email,
+                code=code,
+                language=language
+            )
+            
+            if email_sent:
+                print(f"✅ Login code email sent successfully to {request.email}")
+            else:
+                print(f"❌ Failed to send login code email to {request.email}")
+                
+        except Exception as email_error:
+            print(f"❌ Email service error: {str(email_error)}")
+            # Continue anyway for security reasons
         
         # Always return success for security
         return LoginLinkResponse(

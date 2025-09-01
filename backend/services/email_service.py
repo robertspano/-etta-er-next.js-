@@ -1,7 +1,7 @@
 import smtplib
 import os
-from email.mime.text import MimeText
-from email.mime.multipart import MimeMultipart
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 from jinja2 import Template
 from pathlib import Path
 import logging
@@ -15,11 +15,11 @@ class EmailService:
         self.smtp_port = int(os.getenv('SMTP_PORT', '587'))
         self.smtp_username = os.getenv('SMTP_USERNAME', '')
         self.smtp_password = os.getenv('SMTP_PASSWORD', '')
-        self.from_email = os.getenv('FROM_EMAIL', 'noreply@buildconnect.is')
-        self.from_name = os.getenv('FROM_NAME', 'BuildConnect')
+        self.from_email = os.getenv('SMTP_FROM_EMAIL', 'noreply@verki.is')
+        self.from_name = os.getenv('SMTP_FROM_NAME', 'verki')
         
         # Base URL for login
-        self.base_url = os.getenv('FRONTEND_URL', 'https://verki-rebrand.preview.emergentagent.com')
+        self.base_url = os.getenv('FRONTEND_URL', 'https://verkefni-hub.preview.emergentagent.com')
     
     def load_template(self, template_name: str) -> str:
         """Load email template from file"""
@@ -54,38 +54,38 @@ class EmailService:
                 variables = {
                     'language': 'is',
                     'title': 'Innskráning án lykilorðs',
-                    'message': f'Hér er innskráningarkóðinn þinn fyrir BuildConnect. Kóðinn er gildur í 15 mínútur.',
+                    'message': f'Hér er innskráningarkóðinn þinn fyrir verki. Kóðinn er gildur í 15 mínútur.',
                     'code_label': 'Innskráningarkóði:',
                     'login_code': code,
                     'expiry_message': 'Kóðinn er gildur í 15 mínútur',
                     'button_text': 'Skrá inn',
                     'login_url': f'{self.base_url}/login-code?email={email}&code={code}',
                     'security_message': 'Ef þú baðst ekki um þennan kóða, geturðu hunsað þennan tölvupóst með góðri samvisku. Einhver annar kann að hafa slegið inn netfangið þitt fyrir mistök.',
-                    'footer_message': 'Þessi tölvupóstur var sendur af BuildConnect vegna innskráningarbeiðni.',
+                    'footer_message': 'Þessi tölvupóstur var sendur af verki vegna innskráningarbeiðni.',
                     'website_text': 'Heimasíða',
                     'website_url': self.base_url,
                     'support_text': 'Þjónustusver',
                     'support_url': f'{self.base_url}/support'
                 }
-                subject = 'Innskráning án lykilorðs - BuildConnect'
+                subject = 'Innskráning án lykilorðs - verki'
             else:
                 variables = {
                     'language': 'en',
                     'title': 'Login without password',
-                    'message': f'Here is your login code for BuildConnect. The code is valid for 15 minutes.',
+                    'message': f'Here is your login code for verki. The code is valid for 15 minutes.',
                     'code_label': 'Login Code:',
                     'login_code': code,
                     'expiry_message': 'Code is valid for 15 minutes',
                     'button_text': 'Login',
                     'login_url': f'{self.base_url}/login-code?email={email}&code={code}',
                     'security_message': 'If you did not request this code, you can safely ignore this email. Someone else might have typed your email address by mistake.',
-                    'footer_message': 'This email was sent by BuildConnect due to a login request.',
+                    'footer_message': 'This email was sent by verki due to a login request.',
                     'website_text': 'Website',
                     'website_url': self.base_url,
                     'support_text': 'Support',
                     'support_url': f'{self.base_url}/support'
                 }
-                subject = 'Login without password - BuildConnect'
+                subject = 'Login without password - verki'
             
             # Render template
             html_content = self.render_template(template_content, **variables)
@@ -94,13 +94,13 @@ class EmailService:
                 return False
             
             # Create email message
-            msg = MimeMultipart('alternative')
+            msg = MIMEMultipart('alternative')
             msg['Subject'] = subject
             msg['From'] = f'{self.from_name} <{self.from_email}>'
             msg['To'] = email
             
             # Add HTML content
-            html_part = MimeText(html_content, 'html', 'utf-8')
+            html_part = MIMEText(html_content, 'html', 'utf-8')
             msg.attach(html_part)
             
             # Add plain text version
@@ -123,7 +123,7 @@ class EmailService:
 {variables['support_text']}: {variables['support_url']}
             """.strip()
             
-            text_part = MimeText(plain_text, 'plain', 'utf-8')
+            text_part = MIMEText(plain_text, 'plain', 'utf-8')
             msg.attach(text_part)
             
             # Send email (for demo, we'll just log it)

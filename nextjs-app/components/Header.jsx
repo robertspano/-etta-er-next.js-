@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
+import apiService from '@/services/api';
 import { Button } from './ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { 
@@ -109,50 +110,47 @@ const Header = ({ language, setLanguage, translations }) => {
             </Link>
           </div>
 
-          {/* Desktop Right Side Actions */}
-          <div className="hidden md:flex items-center space-x-3">
-            {/* Language Switcher - Text Style */}
-            <div className="relative">
-              <Select value={language} onValueChange={setLanguage}>
-                <SelectTrigger className="h-10 px-3 bg-white/90 hover:bg-white border border-gray-300 text-sm font-medium text-gray-900 shadow-sm drop-shadow-sm">
-                  <span>{language === 'is' ? 'Icelandic' : 'English'}</span>
-                </SelectTrigger>
-                <SelectContent className="bg-white border border-gray-200 shadow-lg">
-                  <SelectItem value="is" className="text-gray-800 hover:bg-gray-50 focus:bg-gray-50">Icelandic</SelectItem>
-                  <SelectItem value="en" className="text-gray-800 hover:bg-gray-50 focus:bg-gray-50">English</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            
-            {/* Register Company - Text with Hover Underline */}
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-4">
+            {/* Language Selector - Dropdown */}
+            <Select value={language} onValueChange={setLanguage}>
+              <SelectTrigger className="w-[140px] h-10 bg-white border border-gray-300 rounded-lg text-gray-800 text-sm">
+                <SelectValue placeholder="Language">
+                  {language === 'is' ? 'Icelandic' : 'English'}
+                </SelectValue>
+              </SelectTrigger>
+              <SelectContent className="bg-white border border-gray-300 shadow-lg">
+                <SelectItem value="is" className="text-gray-800 hover:bg-gray-100">Icelandic</SelectItem>
+                <SelectItem value="en" className="text-gray-800 hover:bg-gray-100">English</SelectItem>
+              </SelectContent>
+            </Select>
+
+            {/* Register Company Button */}
+            <Link href="/register-company">
+              <button className="text-blue-800 hover:text-cyan-400 hover:underline px-4 py-2.5 font-medium text-base transition-all duration-200">
+                {language === 'is' ? 'Skrá fyrirtæki' : 'Register Company'}
+              </button>
+            </Link>
+
+            {/* Post Project Button */}
+            <Link href="/post-job">
+              <button className="bg-blue-800 hover:bg-blue-900 text-white px-4 py-2.5 rounded-lg font-medium text-sm transition-colors">
+                {language === 'is' ? 'Setja inn verk' : 'Post Project'}
+              </button>
+            </Link>
+
+            {/* Combined Menu & Profile Button - White rounded pill */}
             <button 
-              onClick={handleRegisterCompany}
-              className="text-federal_blue hover:text-honolulu_blue font-medium transition-colors border-b-2 border-transparent hover:border-honolulu_blue drop-shadow-sm"
+              onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+              className="flex items-center gap-3 h-10 px-3 bg-white border border-gray-300 rounded-full hover:bg-gray-50 focus:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 cursor-pointer transition-colors"
             >
-              {translations.registerCompany}
-            </button>
-            
-            {/* Post Project Button - Primary */}
-            <Button 
-              onClick={handlePostProject}
-              className="h-10 px-4 bg-honolulu_blue hover:bg-federal_blue text-white rounded-lg font-medium shadow-lg"
-            >
-              {translations.postJob}
-            </Button>
-            
-            {/* Menu Pill - Single Interactive Element */}
-            <button
-              onClick={() => setIsDrawerOpen(true)}
-              aria-label="Open menu"
-              className="inline-flex items-center gap-3 h-11 px-3 bg-white border border-non_photo_blue rounded-full hover:bg-light_cyan focus:bg-light_cyan focus:ring-2 focus:ring-honolulu_blue focus:ring-offset-1 cursor-pointer transition-colors"
-            >
-              {/* Hamburger Icon */}
-              <Menu className="h-6 w-6 text-federal_blue pointer-events-none" />
+              {/* Menu Icon */}
+              <Menu className="h-5 w-5 text-gray-600" />
               
               {/* Profile Avatar */}
-              <User className="h-6 w-6 text-federal_blue pointer-events-none" />
+              <User className="h-5 w-5 text-gray-600" />
             </button>
-          </div>
+          </nav>
 
           {/* Mobile Menu Button - Single Pill Design */}
           <div className="md:hidden">
@@ -342,11 +340,11 @@ const Header = ({ language, setLanguage, translations }) => {
                         <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
                       </button>
                     )}
-                    
-                    {/* Divider */}
-                    <div className="border-t border-gray-200 my-4"></div>
                   </>
                 )}
+                
+                {/* Divider */}
+                <div className="border-t border-gray-200 my-4"></div>
                 
                 {/* Action Buttons */}
                 <button
@@ -383,7 +381,7 @@ const Header = ({ language, setLanguage, translations }) => {
                   </button>
                   
                   <button
-                    onClick={() => handleDrawerItemClick('/hus-og-hage')}
+                    onClick={() => handleDrawerItemClick('/categories/house-garden')}
                     className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
                   >
                     <span className="text-gray-700">{language === 'is' ? 'Hús og garður' : 'House & Garden'}</span>
@@ -391,14 +389,13 @@ const Header = ({ language, setLanguage, translations }) => {
                   </button>
                   
                   <button
-                    onClick={() => handleDrawerItemClick('/alle-kategorier')}
+                    onClick={() => handleDrawerItemClick('/all-categories')}
                     className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
                   >
                     <span className="text-gray-700">{language === 'is' ? 'Allir flokkar' : 'All categories'}</span>
                     <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
                   </button>
                 </div>
-                
                 {/* Support Links */}
                 <div className="border-t border-gray-200 my-4"></div>
                 <div className="mb-3">
