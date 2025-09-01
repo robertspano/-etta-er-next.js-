@@ -139,13 +139,43 @@ export default function CustomerDashboardPage() {
             </Link>
 
             {/* Notifications */}
-            <button className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg relative">
-              <Bell className="w-5 h-5" />
-              {/* Notification badge */}
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                3
-              </span>
-            </button>
+            <div className="relative">
+              <button 
+                onClick={() => setNotificationOpen(!notificationOpen)}
+                className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg relative"
+              >
+                <Bell className="w-5 h-5" />
+              </button>
+
+              {/* Notification Dropdown - Mittanbud style */}
+              {notificationOpen && (
+                <div className="absolute right-0 mt-2 w-80 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                  {/* Header */}
+                  <div className="flex items-center justify-between p-4 border-b border-gray-200">
+                    <h3 className="text-lg font-semibold text-gray-900">Varslingar</h3>
+                    <button 
+                      onClick={() => setNotificationOpen(false)}
+                      className="text-gray-400 hover:text-gray-600"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="p-8 text-center">
+                    <div className="mx-auto w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                      <Bell className="w-8 h-8 text-gray-400" />
+                    </div>
+                    <h4 className="text-lg font-medium text-gray-900 mb-2">
+                      Engar nýjar varslingar
+                    </h4>
+                    <p className="text-gray-600 text-sm">
+                      Hér var það tómt. Komdu aftur seinna.
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
 
             {/* Menu Button - Like hero section style with custom profile image */}
             <button
