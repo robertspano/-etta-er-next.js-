@@ -61,12 +61,10 @@ class CustomerDashboardTester:
             "title": "Test job for dashboard linking verification",
             "description": "This is a test job to verify that contact fields are properly stored and can be used for linking",
             "postcode": "101",
-            "address": "Test Address 123, Reykjavik",
-            "contact_email": self.test_user_email,
-            "contact_phone": "+354-555-1234",
-            "contact_first_name": "Dashboard",
-            "contact_last_name": "Tester",
-            "contact_preference": "platform_and_phone"
+            "email": self.test_user_email,
+            "phone": "+354-555-1234",
+            "first_name": "Dashboard",
+            "last_name": "Tester"
         }
         
         try:
