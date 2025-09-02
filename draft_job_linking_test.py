@@ -379,37 +379,37 @@ class DraftJobLinkingTester:
             
             # Step 5: Verify job retrieval
             final_linked_count = await self.step_5_verify_job_retrieval()
-                
-                # Summary
-                print("\n" + "=" * 60)
-                print("🔍 DEBUG SUMMARY")
-                print("=" * 60)
-                
-                if draft_id:
-                    print(f"✅ Draft job created with ID: {draft_id}")
-                else:
-                    print("❌ Failed to create draft job")
-                
-                if auth_success:
-                    print(f"✅ User test@verki.is authenticated successfully")
-                    print(f"   User ID: {self.user_id}")
-                else:
-                    print("❌ User authentication failed")
-                
-                print(f"📊 Linking Results:")
-                print(f"   - Jobs linked by endpoint: {linked_count}")
-                print(f"   - Total user jobs found: {user_jobs_count}")
-                print(f"   - Final linked jobs count: {final_linked_count}")
-                
-                if linked_count > 0 and final_linked_count > 0:
-                    print("✅ Draft job linking appears to be working!")
-                else:
-                    print("❌ Draft job linking issue detected!")
-                    print("\n🔧 POTENTIAL ISSUES:")
-                    print("   1. Email matching logic might be case-sensitive")
-                    print("   2. Draft jobs might not have contact_email field set")
-                    print("   3. Database query filters might be incorrect")
-                    print("   4. Status transition from 'draft' to 'open' might be failing")
+            
+            # Summary
+            print("\n" + "=" * 60)
+            print("🔍 DEBUG SUMMARY")
+            print("=" * 60)
+            
+            if draft_id:
+                print(f"✅ Draft job created with ID: {draft_id}")
+            else:
+                print("❌ Failed to create draft job")
+            
+            if self.user_id:
+                print(f"✅ User test@verki.is identified successfully")
+                print(f"   User ID: {self.user_id}")
+            else:
+                print("❌ User identification failed")
+            
+            print(f"📊 Linking Results:")
+            print(f"   - Jobs linked by endpoint: {linked_count}")
+            print(f"   - Total user jobs found: {user_jobs_count}")
+            print(f"   - Final linked jobs count: {final_linked_count}")
+            
+            if linked_count > 0 and final_linked_count > 0:
+                print("✅ Draft job linking appears to be working!")
+            else:
+                print("❌ Draft job linking issue detected!")
+                print("\n🔧 POTENTIAL ISSUES:")
+                print("   1. Email matching logic might be case-sensitive")
+                print("   2. Draft jobs might not have contact_email field set")
+                print("   3. Database query filters might be incorrect")
+                print("   4. Status transition from 'draft' to 'open' might be failing")
             
         finally:
             await self.cleanup()
