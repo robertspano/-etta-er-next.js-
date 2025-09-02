@@ -25,6 +25,11 @@ class DraftJobRequestCreate(BaseModel):
     licensePlate: Optional[str] = None  # For automotive category
     plateCountry: Optional[str] = None  # For automotive category
     vehicleInfo: Optional[dict] = None  # Vehicle lookup results
+    # Contact information for linking to user after registration
+    email: Optional[str] = None
+    phone: Optional[str] = None
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None
     
     @field_validator('title', mode='before')
     @classmethod
