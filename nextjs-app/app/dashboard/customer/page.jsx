@@ -61,21 +61,29 @@ export default function CustomerDashboardPage() {
   // Fetch user's projects
   useEffect(() => {
     const fetchUserProjects = async () => {
-      if (!user) return;
-      
+      // Always try to fetch, but handle unauthenticated case
       setProjectsLoading(true);
       try {
-        // TODO: Replace with actual API endpoint that fetches user's jobs
-        const response = await api.get('/job-requests', {
-          params: {
-            user_id: user.id,
-            limit: 3 // Show only first 3 on dashboard
+        // Fetch user's job requests from backend
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8001'}/api/job-requests`, {
+          credentials: 'include', // Include cookies for authentication
+          headers: {
+            'Content-Type': 'application/json',
           }
         });
         
-        if (response.data && response.data.jobs) {
-          setUserProjects(response.data.jobs);
+        if (response.ok) {
+          const data = await response.json();
+          // Backend returns array directly, limit to first 3 for dashboard
+          const projects = Array.isArray(data) ? data.slice(0, 3) : [];
+          setUserProjects(projects);
+          console.log('Fetched projects:', projects);
+        } else if (response.status === 401) {
+          // User not authenticated, show empty state
+          console.log('User not authenticated');
+          setUserProjects([]);
         } else {
+          console.error('Failed to fetch projects:', response.status);
           setUserProjects([]);
         }
       } catch (error) {
@@ -87,7 +95,7 @@ export default function CustomerDashboardPage() {
     };
 
     fetchUserProjects();
-  }, [user]);
+  }, []); // Remove user dependency to always fetch
 
   // Authentication function - redirect to Firebase phone auth
   const startAuthentication = () => {
