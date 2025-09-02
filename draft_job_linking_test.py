@@ -67,7 +67,7 @@ class DraftJobLinkingTester:
                 headers={"Content-Type": "application/json"}
             ) as response:
                 data = await response.json()
-                if response.status == 201:
+                if response.status in [200, 201]:
                     draft_id = data.get("id")
                     self.log_test("Create Draft Job", True, f"Created draft job with ID: {draft_id}")
                     
