@@ -441,7 +441,7 @@ async def admin_only_endpoint(user: User = Depends(get_current_admin)):
 @router.post("/auth/link-draft-jobs")
 async def link_draft_jobs_to_user(user: User = Depends(current_active_user)):
     """Link any draft jobs with matching email to authenticated user"""
-    from services.db_service import db_service
+    from services.database import db_service
     
     try:
         # Find draft jobs with matching email
