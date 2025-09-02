@@ -207,8 +207,23 @@ class DraftLinkingVerificationTester:
                 f"{BACKEND_URL}/job-requests?customer_only=true",
                 cookies=cookies
             ) as response:
-                data = await response.json()
                 if response.status == 200:
+                    data = await response.json()
+                elif response.status == 500:
+                    # Handle 500 error - try to get text response
+                    error_text = await response.text()
+                    self.log_test("User Jobs Verification", False, f"Server error (500): {error_text[:200]}")
+                    return 0
+                else:
+                    # Handle other errors
+                    try:
+                        data = await response.json()
+                    except:
+                        data = await response.text()
+                    self.log_test("User Jobs Verification", False, f"HTTP {response.status}: {data}")
+                    return 0
+                
+                if True:  # Continue with success case
                     user_jobs = [job for job in data if job.get("customer_id") == self.user_id]
                     open_jobs = [job for job in user_jobs if job.get("status") == "open"]
                     
