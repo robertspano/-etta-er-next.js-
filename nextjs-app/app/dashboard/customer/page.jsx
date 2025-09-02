@@ -64,7 +64,7 @@ export default function CustomerDashboardPage() {
       setProjectsLoading(true);
       try {
         // Fetch user's job requests from backend
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8001'}/api/job-requests`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8001'}/api/job-requests?customer_only=true`, {
           credentials: 'include', // Include cookies for authentication
           headers: {
             'Content-Type': 'application/json',
