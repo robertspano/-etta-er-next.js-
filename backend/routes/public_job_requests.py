@@ -291,6 +291,18 @@ async def update_draft_job_request(
         update_dict = update_data.model_dump(exclude_unset=True)
         update_dict["updated_at"] = datetime.utcnow()
         
+        # Map contact fields to database field names
+        if 'email' in update_dict:
+            update_dict['contact_email'] = update_dict.pop('email')
+        if 'phone' in update_dict:
+            update_dict['contact_phone'] = update_dict.pop('phone')
+        if 'firstName' in update_dict:
+            update_dict['contact_first_name'] = update_dict.pop('firstName')
+        if 'lastName' in update_dict:
+            update_dict['contact_last_name'] = update_dict.pop('lastName')
+        if 'contactPreference' in update_dict:
+            update_dict['contact_preference'] = update_dict.pop('contactPreference')
+        
         # Handle vehicle info update
         if 'vehicleInfo' in update_dict:
             vehicle_info = update_dict.pop('vehicleInfo')
