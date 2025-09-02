@@ -60,7 +60,13 @@ export default function CustomerDashboardPage() {
   // Fetch user's projects
   useEffect(() => {
     const fetchUserProjects = async () => {
-      // Always try to fetch, but handle unauthenticated case
+      // Only fetch if user is authenticated
+      if (!user) {
+        setProjectsLoading(false);
+        setUserProjects([]);
+        return;
+      }
+
       setProjectsLoading(true);
       try {
         // Fetch user's job requests from backend
@@ -79,9 +85,10 @@ export default function CustomerDashboardPage() {
           setUserProjects(projects);
           console.log('Fetched projects:', projects);
         } else if (response.status === 401) {
-          // User not authenticated, show empty state
-          console.log('User not authenticated');
-          setUserProjects([]);
+          // User not authenticated, redirect to login
+          console.log('User not authenticated, redirecting to login');
+          router.push('/login');
+          return;
         } else {
           console.error('Failed to fetch projects:', response.status);
           setUserProjects([]);
@@ -95,7 +102,7 @@ export default function CustomerDashboardPage() {
     };
 
     fetchUserProjects();
-  }, []); // Remove user dependency to always fetch
+  }, [user]); // Depend on user to refetch when user changes
 
   // Authentication function - redirect to Firebase phone auth
   const startAuthentication = () => {
