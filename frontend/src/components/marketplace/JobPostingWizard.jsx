@@ -307,12 +307,13 @@ const JobPostingWizard = ({ translations, language }) => {
         localStorage.removeItem('bc_draft_job_id');
         localStorage.removeItem('bc_draft_form_data');
         
-        // Navigate to success page or homepage after short delay
+        // Navigate to job-submitted page with email and jobId parameters
         setTimeout(() => {
           if (user) {
             navigate('/dashboard');
           } else {
-            navigate('/', { state: { jobSubmitted: true } });
+            // Redirect to job-submitted page with email and jobId
+            navigate(`/job-submitted?email=${encodeURIComponent(formData.email)}&jobId=${draftJobId}`);
           }
         }, 2000);
       }
