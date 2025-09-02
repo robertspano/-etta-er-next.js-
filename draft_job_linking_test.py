@@ -231,8 +231,22 @@ class DraftJobLinkingTester:
         print("\n=== STEP 3: Testing Draft Job Linking Endpoint ===")
         
         if not self.user_session:
-            self.log_test("Draft Job Linking", False, "No user session available")
-            return
+            self.log_test("Draft Job Linking", False, "No user session available - cannot test linking endpoint")
+            
+            # Try to test the endpoint without authentication to see what error we get
+            try:
+                async with self.session.post(
+                    f"{BACKEND_URL}/auth/link-draft-jobs",
+                    headers={"Content-Type": "application/json"}
+                ) as response:
+                    data = await response.json()
+                    if response.status == 401:
+                        self.log_test("Draft Job Linking Endpoint (Unauthenticated)", True, "Endpoint correctly requires authentication")
+                    else:
+                        self.log_test("Draft Job Linking Endpoint (Unauthenticated)", False, f"Unexpected response: {response.status}", data)
+            except Exception as e:
+                self.log_test("Draft Job Linking Endpoint (Unauthenticated)", False, f"Request failed: {str(e)}")
+            return 0
         
         try:
             cookies = {"buildconnect_auth": self.user_session}
