@@ -333,15 +333,15 @@ class DraftJobLinkingTester:
             # Step 2: Test user authentication
             auth_success = await self.step_2_test_user_authentication()
             
-            if auth_success:
-                # Step 3: Test draft job linking endpoint
-                linked_count = await self.step_3_test_draft_job_linking_endpoint()
-                
-                # Step 4: Debug linking logic
-                user_jobs_count = await self.step_4_debug_linking_logic()
-                
-                # Step 5: Verify job retrieval
-                final_linked_count = await self.step_5_verify_job_retrieval()
+            # Try to proceed with testing even if authentication partially failed
+            # Step 3: Test draft job linking endpoint
+            linked_count = await self.step_3_test_draft_job_linking_endpoint()
+            
+            # Step 4: Debug linking logic
+            user_jobs_count = await self.step_4_debug_linking_logic()
+            
+            # Step 5: Verify job retrieval
+            final_linked_count = await self.step_5_verify_job_retrieval()
                 
                 # Summary
                 print("\n" + "=" * 60)
