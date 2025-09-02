@@ -735,6 +735,18 @@ metadata:
           agent: "testing"
           comment: "✅ LANGUAGE PERSISTENCE IMPLEMENTATION AND TESTING COMPLETED! Successfully implemented localStorage persistence for language selection and comprehensively tested all functionality: 1) ✅ Implementation: Added useState initialization from localStorage ('bc_language' key) and useEffect to save language changes to localStorage in App.js, 2) ✅ Initial Language Switch: Successfully switched from English to Icelandic using language selector dropdown, 3) ✅ Content Change Verification: Hero title correctly changed from 'Get the Job Done!' to 'Fáðu verkið gert!' with full UI translation, 4) ✅ Page Refresh Test: Performed page refresh (F5), 5) ✅ PERSISTENCE VERIFICATION - CRITICAL SUCCESS: Language selection now PERSISTS after page refresh! Icelandic maintained after refresh with hero title still showing 'Fáðu verkið gert!' and language selector showing 'Icelandic', 6) ✅ Switch Back Test: Successfully switched back to English and verified persistence after refresh, 7) ✅ localStorage Integration: Working correctly with 'bc_language' key storing user preference. Screenshots captured for all test steps. Language persistence functionality now fully functional - users' language preference persists across page refreshes and browser sessions as requested."
 
+  - task: "Complete Mittanbud-style Workflow Testing"
+    implemented: true
+    working: false
+    file: "/app/frontend/src/components/marketplace/JobPostingWizard.jsx, /app/frontend/src/components/auth/LoginForm.jsx, /app/frontend/src/components/dashboard/Dashboard.jsx"
+    stuck_count: 1
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: false
+          agent: "testing"
+          comment: "✅ COMPREHENSIVE MITTANBUD-STYLE WORKFLOW TESTING COMPLETED! Successfully tested complete end-to-end flow: 1) ✅ Public job posting without authentication works perfectly - /post/handcraft loads without login redirect, 2) ✅ 3-step wizard flow functional - About Job → Contact Info → Summary with proper validation (title ≥10 chars, description ≥30 chars, phone number validation), 3) ✅ Job submission successful - creates job with ID a1e28c83-d9f8-442e-a46b-89ab24857829, 4) ✅ Redirect to /job-submitted page working - URL: /job-submitted?email=test%40verki.is&jobId=a1e28c83-d9f8-442e-a46b-89ab24857829, 5) ✅ 'View Post' button functional - text 'Sjá verkefnið þitt' with correct returnUrl parameter, 6) ✅ Authentication flow working - redirects to /login-with-password?email=test%40verki.is&returnUrl=%2Fdashboard%2Fcustomer%2Fprojects%2Fa1e28c83-d9f8-442e-a46b-89ab24857829, 7) ✅ Email pre-filled correctly in login form, 8) ✅ Login successful with password 'Lindarbraut31', 9) ❌ CRITICAL ISSUE: Dashboard shows 404 error - route /dashboard not found, preventing verification of job linking and dashboard integration. MAIN ISSUE: Dashboard route configuration problem causing 404 error. All other workflow components working perfectly as designed."
+
   - task: "Send Login Link Endpoint Implementation"
     implemented: true
     working: true
