@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends, HTTPException, Query, status, UploadFile, File
+from fastapi import APIRouter, Depends, HTTPException, Query, UploadFile, File
+from fastapi import status
 from typing import List, Optional
 from datetime import datetime
 from models.job_request import (
