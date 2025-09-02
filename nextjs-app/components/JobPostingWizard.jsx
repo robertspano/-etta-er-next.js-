@@ -221,12 +221,12 @@ const JobPostingWizard = ({ translations, language, category }) => {
       localStorage.setItem('submittedJobId', jobResult.id);
       
       // Show success message briefly
-      setSuccess(language === 'is' ? 'Verkefni sent inn! Fer í dashboard...' : 'Job submitted! Going to dashboard...');
+      setSuccess(language === 'is' ? 'Verkefni sent inn!' : 'Job submitted!');
       
-      // Redirect to dashboard to see the posted job
+      // Use window.location instead of router.push for more reliable redirect
       setTimeout(() => {
-        window.location.href = `/dashboard/customer`;
-      }, 1500);
+        window.location.href = `/job-submitted?email=${encodeURIComponent(formData.email)}`;
+      }, 1000);
       
     } catch (err) {
       console.error('Job submission error:', err);
