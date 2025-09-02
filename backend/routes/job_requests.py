@@ -132,7 +132,7 @@ async def get_job_request(
         job_request = await db_service.get_document("job_requests", job_id)
         if not job_request:
             raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
+                status_code=404,
                 detail="Job request not found"
             )
         
@@ -166,7 +166,7 @@ async def update_job_request(
         job_request = await db_service.get_document("job_requests", job_id)
         if not job_request:
             raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
+                status_code=404,
                 detail="Job request not found"
             )
         
@@ -210,7 +210,7 @@ async def delete_job_request(
         job_request = await db_service.get_document("job_requests", job_id)
         if not job_request:
             raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
+                status_code=404,
                 detail="Job request not found"
             )
         
@@ -258,7 +258,7 @@ async def upload_job_photo(
         job_request = await db_service.get_document("job_requests", job_id)
         if not job_request:
             raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
+                status_code=404,
                 detail="Job request not found"
             )
         
@@ -304,7 +304,7 @@ async def update_job_status(
         job_request = await db_service.get_document("job_requests", job_id)
         if not job_request:
             raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
+                status_code=404,
                 detail="Job request not found"
             )
         
