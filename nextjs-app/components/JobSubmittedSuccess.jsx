@@ -8,14 +8,17 @@ import { translations } from '@/data/translations';
 
 const JobSubmittedSuccess = ({ language = 'en', setLanguage }) => {
   const [userEmail, setUserEmail] = useState('');
+  const [jobId, setJobId] = useState('');
   const router = useRouter();
   const searchParams = useSearchParams();
   const t = translations[language];
 
   useEffect(() => {
-    // Get email from URL params or localStorage
+    // Get email and jobId from URL params or localStorage
     const email = searchParams.get('email') || localStorage.getItem('submittedJobEmail') || 'your.email@example.com';
+    const id = searchParams.get('jobId') || localStorage.getItem('submittedJobId') || '';
     setUserEmail(email);
+    setJobId(id);
   }, [searchParams]);
 
   const toggleLanguage = () => {
