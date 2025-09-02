@@ -188,7 +188,7 @@ class DraftJobLinkingTester:
                         cookies = response.cookies
                         if "buildconnect_auth" in cookies:
                             self.user_session = cookies["buildconnect_auth"].value
-                            self.log_test("User Login", True, f"Successfully logged in test@verki.is with password: {password}")
+                            self.log_test("User Login", True, f"Successfully logged in {test_email} with password: {password}")
                             
                             # Get user info to verify
                             await self.get_user_info()
