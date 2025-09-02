@@ -264,8 +264,8 @@ class CustomerDashboardTester:
                 headers={"Content-Type": "application/json"}
             ) as response:
                 data = await response.json()
-                if response.status == 201 and data.get("success"):
-                    e2e_draft_id = data.get("draft_id")
+                if response.status == 200 and data.get("id"):
+                    e2e_draft_id = data.get("id")
                     self.log_test("E2E Draft Creation", True, f"Created draft job {e2e_draft_id}")
                 else:
                     self.log_test("E2E Draft Creation", False, f"Failed: {response.status}", data)
