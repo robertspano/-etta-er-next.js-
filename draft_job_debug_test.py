@@ -50,9 +50,11 @@ class DraftJobDebugTester:
         """Authenticate a user to get session and user info"""
         print("\n=== STEP 1: Authenticating User ===")
         
-        # Use verki@verki.is as the test user
-        email = "verki@verki.is"
-        password = "verki123"
+        # Create a unique test user for this debug session
+        import time
+        timestamp = str(int(time.time()))
+        email = f"debug_user_{timestamp}@example.com"
+        password = "DebugTest123!"
         
         # First try to register the user (in case it doesn't exist)
         user_data = {
