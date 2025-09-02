@@ -28,7 +28,6 @@ import {
 } from 'lucide-react';
 import { useTranslations } from '../../../contexts/TranslationsContext';
 import { useAuth } from '../../../contexts/AuthContext';
-import api from '../../../services/api';
 
 export default function CustomerDashboardPage() {
   const { language, translations } = useTranslations();
