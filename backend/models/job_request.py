@@ -169,23 +169,23 @@ class JobRequestUpdate(BaseModel):
 class JobRequestResponse(BaseModel):
     """Schema for job request responses"""
     id: str
-    customer_id: str
+    customer_id: Optional[str] = None  # Can be null for guest jobs
     category: str
     subcategory: Optional[str] = None  # Service subcategory
-    title: Optional[str]  # Optional for automotive
-    description: Optional[str]  # Optional for automotive
+    title: Optional[str] = None  # Optional for automotive
+    description: Optional[str] = None  # Optional for automotive
     postcode: str
-    address: Optional[str]
-    budget_min: Optional[float]
-    budget_max: Optional[float]
-    budget_currency: str
-    priority: JobPriority
-    status: JobStatus
+    address: Optional[str] = None
+    budget_min: Optional[float] = None
+    budget_max: Optional[float] = None
+    budget_currency: str = "ISK"
+    priority: JobPriority = JobPriority.MEDIUM
+    status: JobStatus = JobStatus.DRAFT
     posted_at: datetime
-    deadline: Optional[datetime]
-    quotes_count: int
-    photos: List[str]
-    is_featured: bool
-    views_count: int
+    deadline: Optional[datetime] = None
+    quotes_count: int = 0
+    photos: List[str] = []
+    is_featured: bool = False
+    views_count: int = 0
     license_plate: Optional[str] = None  # For automotive
     plate_country: Optional[str] = None  # For automotive
