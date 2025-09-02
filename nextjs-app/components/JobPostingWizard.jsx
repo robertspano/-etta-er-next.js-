@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Check, User } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 const JobPostingWizard = ({ translations, language, category }) => {
