@@ -35,8 +35,11 @@ export default function CustomerDashboardPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [notificationOpen, setNotificationOpen] = useState(false);
+  const [userProjects, setUserProjects] = useState([]);
+  const [projectsLoading, setProjectsLoading] = useState(true);
   const router = useRouter();
   const notificationRef = useRef(null);
+  const { user } = useAuth();
 
   // Close notification dropdown when clicking outside
   useEffect(() => {
