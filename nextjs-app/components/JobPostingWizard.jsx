@@ -158,19 +158,51 @@ const JobPostingWizard = ({ translations, language, category }) => {
     setLoading(true);
 
     try {
+      // Prepare job data for backend
+      const jobData = {
+        category: formData.category,
+        title: formData.title || null,
+        description: formData.description || formData.projectDescription || null,
+        postcode: formData.postcode,
+        address: formData.address || null,
+        license_plate: formData.licensePlate || null,
+        plate_country: formData.plateCountry || null,
+        priority: 'medium' // Default priority
+      };
+
+      // Submit job to backend
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8001'}/api/job-requests`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include', // Include cookies for authentication
+        body: JSON.stringify(jobData)
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Failed to submit job');
+      }
+
+      const jobResult = await response.json();
+      console.log('Job created successfully:', jobResult);
+
       // Store email for success page
       localStorage.setItem('submittedJobEmail', formData.email);
+      localStorage.setItem('submittedJobId', jobResult.id);
       
       // Show success message briefly
       setSuccess(language === 'is' ? 'Verkefni sent inn!' : 'Job submitted!');
       
-      // Use window.location instead of router.push for more reliable redirect
+      // Redirect to success page
       setTimeout(() => {
-        window.location.href = `/job-submitted?email=${encodeURIComponent(formData.email)}`;
+        window.location.href = `/job-submitted?email=${encodeURIComponent(formData.email)}&jobId=${jobResult.id}`;
       }, 1000);
       
     } catch (err) {
-      setError(translations.jobSubmissionError || (language === 'is' ? 'Villa við innsendingu. Reyndu aftur.' : 'Submission error. Please try again.'));
+      console.error('Job submission error:', err);
+      setError(err.message || (translations.jobSubmissionError || (language === 'is' ? 'Villa við innsendingu. Reyndu aftur.' : 'Submission error. Please try again.')));
       setLoading(false);
     }
   };
