@@ -130,10 +130,10 @@ class DraftJobLinkingTester:
             ) as response:
                 data = await response.json()
                 if response.status == 201:
-                    self.log_test("User Registration", True, f"User test@verki.is registered successfully")
+                    self.log_test("User Registration", True, f"User {test_email} registered successfully")
                     self.user_id = data.get("id")
                 elif response.status == 400 and "already exists" in str(data).lower():
-                    self.log_test("User Registration", True, f"User test@verki.is already exists (expected)")
+                    self.log_test("User Registration", True, f"User {test_email} already exists (expected)")
                 else:
                     self.log_test("User Registration", False, f"Unexpected response: {response.status}", data)
         except Exception as e:
