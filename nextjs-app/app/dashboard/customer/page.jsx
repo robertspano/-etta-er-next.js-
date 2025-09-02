@@ -58,6 +58,37 @@ export default function CustomerDashboardPage() {
     };
   }, [notificationOpen]);
 
+  // Fetch user's projects
+  useEffect(() => {
+    const fetchUserProjects = async () => {
+      if (!user) return;
+      
+      setProjectsLoading(true);
+      try {
+        // TODO: Replace with actual API endpoint that fetches user's jobs
+        const response = await api.get('/job-requests', {
+          params: {
+            user_id: user.id,
+            limit: 3 // Show only first 3 on dashboard
+          }
+        });
+        
+        if (response.data && response.data.jobs) {
+          setUserProjects(response.data.jobs);
+        } else {
+          setUserProjects([]);
+        }
+      } catch (error) {
+        console.error('Error fetching user projects:', error);
+        setUserProjects([]);
+      } finally {
+        setProjectsLoading(false);
+      }
+    };
+
+    fetchUserProjects();
+  }, [user]);
+
   // Authentication function - redirect to Firebase phone auth
   const startAuthentication = () => {
     window.location.href = "/verify-identity";
