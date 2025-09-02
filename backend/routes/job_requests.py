@@ -73,7 +73,7 @@ async def get_job_requests(
         if customer_only and current_user:
             if current_user.role not in ["customer", "admin"]:
                 raise HTTPException(
-                    status_code=status.HTTP_403_FORBIDDEN,
+                    status_code=403,
                     detail="Only customers can view their own jobs"
                 )
             query_filter["customer_id"] = current_user.id
