@@ -151,7 +151,7 @@ async def get_job_request(
         raise
     except Exception as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=500,
             detail=f"Failed to fetch job request: {str(e)}"
         )
 
@@ -184,7 +184,7 @@ async def update_job_request(
         success = await db_service.update_document("job_requests", job_id, update_data)
         if not success:
             raise HTTPException(
-                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                status_code=500,
                 detail="Failed to update job request"
             )
         
@@ -196,7 +196,7 @@ async def update_job_request(
         raise
     except Exception as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=500,
             detail=f"Failed to update job request: {str(e)}"
         )
 
@@ -233,7 +233,7 @@ async def delete_job_request(
         success = await db_service.delete_document("job_requests", job_id)
         if not success:
             raise HTTPException(
-                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                status_code=500,
                 detail="Failed to delete job request"
             )
         
@@ -243,7 +243,7 @@ async def delete_job_request(
         raise
     except Exception as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=500,
             detail=f"Failed to delete job request: {str(e)}"
         )
 
@@ -289,7 +289,7 @@ async def upload_job_photo(
         raise
     except Exception as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=500,
             detail=f"Failed to upload photo: {str(e)}"
         )
 
@@ -334,7 +334,7 @@ async def update_job_status(
         success = await db_service.update_document("job_requests", job_id, update_data)
         if not success:
             raise HTTPException(
-                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                status_code=500,
                 detail="Failed to update job status"
             )
         
@@ -346,6 +346,6 @@ async def update_job_status(
         raise
     except Exception as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=500,
             detail=f"Failed to update job status: {str(e)}"
         )
