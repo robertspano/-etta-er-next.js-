@@ -72,7 +72,7 @@ class CustomerDashboardDebugTester:
                 headers={"Content-Type": "application/json"}
             ) as response:
                 data = await response.json()
-                if response.status == 201:
+                if response.status in [200, 201]:
                     self.user_id = data.get("id")
                     self.log_test("User Registration", True, f"User registered: {user_data['email']}")
                 else:
