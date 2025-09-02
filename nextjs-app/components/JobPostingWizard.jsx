@@ -216,16 +216,26 @@ const JobPostingWizard = ({ translations, language, category }) => {
       const jobResult = await response.json();
       console.log('Job created successfully:', jobResult);
 
-      // Store email for success page
+      // Get job ID from response (different field names for different endpoints)
+      const jobId = jobResult.id || jobResult.job_id || jobResult._id || null;
+      console.log('Extracted job ID:', jobId);
+
+      // Store email and job ID for success page
       localStorage.setItem('submittedJobEmail', formData.email);
-      localStorage.setItem('submittedJobId', jobResult.id);
+      if (jobId) {
+        localStorage.setItem('submittedJobId', jobId);
+      }
       
       // Show success message briefly
       setSuccess(language === 'is' ? 'Verkefni sent inn!' : 'Job submitted!');
       
       // Redirect to success page with job ID for "View Post" functionality  
       setTimeout(() => {
-        window.location.href = `/job-submitted?email=${encodeURIComponent(formData.email)}&jobId=${jobResult.id}`;
+        const redirectUrl = jobId 
+          ? `/job-submitted?email=${encodeURIComponent(formData.email)}&jobId=${jobId}`
+          : `/job-submitted?email=${encodeURIComponent(formData.email)}`;
+        console.log('Redirecting to:', redirectUrl);
+        window.location.href = redirectUrl;
       }, 1000);
       
     } catch (err) {
