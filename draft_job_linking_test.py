@@ -205,7 +205,7 @@ class DraftJobLinkingTester:
                 continue
         
         # If we get here, none of the passwords worked
-        self.log_test("User Login", False, f"All password attempts failed for test@verki.is")
+        self.log_test("User Login", False, f"All password attempts failed for {test_email}")
         return False
 
     async def get_user_info(self):
