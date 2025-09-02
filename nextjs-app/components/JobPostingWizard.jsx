@@ -263,7 +263,7 @@ const JobPostingWizard = ({ translations, language, category }) => {
       localStorage.setItem('submittedJobId', jobResult.id);
       
       // Show success message briefly
-      setSuccess(language === 'is' ? 'Verkefni sent inn!' : 'Job submitted!');
+      setSuccess(language === 'is' ? 'Verkefni sent inn! Fer í dashboard...' : 'Job submitted! Going to dashboard...');
       
       // Redirect to dashboard to see the posted job
       setTimeout(() => {
