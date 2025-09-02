@@ -15,28 +15,8 @@ const JobPostingWizard = ({ translations, language, category }) => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   
-  // Authentication check
-  useEffect(() => {
-    if (!authLoading && !user) {
-      // Redirect to login if not authenticated
-      router.push('/login');
-      return;
-    }
-  }, [authLoading, user, router]);
-
-  // Show loading while checking authentication
-  if (authLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-      </div>
-    );
-  }
-
-  // Don't render if user is not authenticated
-  if (!user) {
-    return null;
-  }
+  // Note: Job posting is now public - users can post jobs without authentication
+  // After job submission, they will be prompted to create account or login to manage their jobs
 
   // Form data
   const [formData, setFormData] = useState({
