@@ -59,18 +59,18 @@ const JobPostingWizard = ({ translations, language, category }) => {
         </div>
         
         <div className="space-y-3">
-          <Link 
-            href="/login"
-            className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors inline-block"
+          <button 
+            onClick={() => window.location.href = '/login'}
+            className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors"
           >
             {language === 'is' ? 'Skrá inn' : 'Login'}
-          </Link>
-          <Link 
-            href="/register"
-            className="w-full border border-gray-300 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-50 transition-colors inline-block"
+          </button>
+          <button 
+            onClick={() => window.location.href = '/register-company'}
+            className="w-full border border-gray-300 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-50 transition-colors"
           >
             {language === 'is' ? 'Stofna aðgang' : 'Create Account'}
-          </Link>
+          </button>
         </div>
         
         <p className="text-sm text-gray-500 mt-4">
