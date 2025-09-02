@@ -4826,11 +4826,11 @@ class BuildConnectAPITester:
             self.log_test("Job Creation Test", False, "No customer session available")
             return None
         
-        # Sample job data as specified in the request
+        # Sample job data as specified in the request (with longer description to meet validation)
         job_data = {
             "category": "handcraft",
-            "title": "Test verkefni",
-            "description": "Test lýsing á verkefni",
+            "title": "Test verkefni fyrir handcraft",
+            "description": "Test lýsing á verkefni sem þarf að vera lengri en 30 stafir til að standast validation",
             "postcode": "101",
             "address": "Reykjavik",
             "priority": "medium"
