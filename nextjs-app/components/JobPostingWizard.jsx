@@ -176,14 +176,37 @@ const JobPostingWizard = ({ translations, language, category }) => {
       };
 
       // Submit job to backend
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8001'}/api/job-requests`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include', // Include cookies for authentication
-        body: JSON.stringify(jobData)
-      });
+      // Try authenticated endpoint first, fallback to public if not authenticated
+      let response;
+      
+      if (user) {
+        // User is authenticated - use private endpoint
+        response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8001'}/api/job-requests`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify(jobData)
+        });
+      } else {
+        // User is not authenticated - use public endpoint
+        const publicJobData = {
+          ...jobData,
+          email: formData.email,
+          phone: formData.phone,
+          first_name: formData.firstName,
+          last_name: formData.lastName
+        };
+        
+        response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8001'}/api/public/job-requests/draft`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(publicJobData)
+        });
+      }
 
       if (!response.ok) {
         const errorData = await response.json();
