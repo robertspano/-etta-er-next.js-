@@ -54,6 +54,15 @@ export const AuthProvider = ({ children }) => {
       const userData = await apiService.getCurrentUser();
       setUser(userData);
       
+      // Try to link any draft jobs with matching email
+      try {
+        await apiService.linkDraftJobs();
+        console.log('✅ Draft jobs linked successfully after login');
+      } catch (linkError) {
+        console.warn('⚠️ Failed to link draft jobs:', linkError);
+        // Don't fail the login if draft linking fails
+      }
+      
       return userData;
     } catch (error) {
       const errorMessage = error.message || 'Login failed';
