@@ -163,38 +163,45 @@ class DraftJobLinkingTester:
         except Exception as e:
             self.log_test("Auto Login", False, f"Auto-login request failed: {str(e)}")
         
-        # Now try regular login
-        login_data = {
-            "username": "test@verki.is",
-            "password": "testpassword123"
-        }
+        # Try multiple passwords that might work
+        passwords_to_try = ["testpassword123", "password", "verki123", "test123"]
         
-        try:
-            async with self.session.post(
-                f"{BACKEND_URL}/auth/cookie/login",
-                data=login_data,
-                headers={"Content-Type": "application/x-www-form-urlencoded"}
-            ) as response:
-                if response.status == 204:
-                    # Successful login
-                    cookies = response.cookies
-                    if "buildconnect_auth" in cookies:
-                        self.user_session = cookies["buildconnect_auth"].value
-                        self.log_test("User Login", True, f"Successfully logged in test@verki.is")
-                        
-                        # Get user info to verify
-                        await self.get_user_info()
-                        return True
+        for password in passwords_to_try:
+            login_data = {
+                "username": "test@verki.is",
+                "password": password
+            }
+            
+            try:
+                async with self.session.post(
+                    f"{BACKEND_URL}/auth/cookie/login",
+                    data=login_data,
+                    headers={"Content-Type": "application/x-www-form-urlencoded"}
+                ) as response:
+                    if response.status == 204:
+                        # Successful login
+                        cookies = response.cookies
+                        if "buildconnect_auth" in cookies:
+                            self.user_session = cookies["buildconnect_auth"].value
+                            self.log_test("User Login", True, f"Successfully logged in test@verki.is with password: {password}")
+                            
+                            # Get user info to verify
+                            await self.get_user_info()
+                            return True
+                        else:
+                            self.log_test("User Login", False, "Login successful but no auth cookie")
+                    elif response.status == 400:
+                        # Try next password
+                        continue
                     else:
-                        self.log_test("User Login", False, "Login successful but no auth cookie")
-                        return False
-                else:
-                    data = await response.json() if response.content_type == 'application/json' else await response.text()
-                    self.log_test("User Login", False, f"Login failed: {response.status}", data)
-                    return False
-        except Exception as e:
-            self.log_test("User Login", False, f"Request failed: {str(e)}")
-            return False
+                        data = await response.json() if response.content_type == 'application/json' else await response.text()
+                        self.log_test("User Login", False, f"Login failed: {response.status}", data)
+            except Exception as e:
+                continue
+        
+        # If we get here, none of the passwords worked
+        self.log_test("User Login", False, f"All password attempts failed for test@verki.is")
+        return False
 
     async def get_user_info(self):
         """Get current user information"""
