@@ -4785,8 +4785,8 @@ class BuildConnectAPITester:
         # Test POST /api/job-requests without authentication
         job_data = {
             "category": "handcraft",
-            "title": "Test verkefni",
-            "description": "Test lýsing á verkefni",
+            "title": "Test verkefni fyrir handcraft",
+            "description": "Test lýsing á verkefni sem þarf að vera lengri en 30 stafir til að standast validation",
             "postcode": "101",
             "address": "Reykjavik",
             "priority": "medium"
