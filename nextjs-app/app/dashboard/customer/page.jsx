@@ -270,25 +270,109 @@ export default function CustomerDashboardPage() {
                 </Link>
               </div>
               
-              {/* Empty State - exactly like mittanbud.no */}
-              <div className="bg-gray-100 rounded-lg p-12 text-center">
-                <h2 className="text-xl font-semibold text-gray-900 mb-4">
-                  {language === 'is' ? 'Engin virk verkefni' : 'No active projects'}
-                </h2>
-                <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                  {language === 'is' 
-                    ? 'Búðu til nýtt verkefni til að fá tilboð frá hæfum fyrirtækjum. Algjörlega óbindandi og ókeypis!'
-                    : 'Create a new project to receive offers from qualified companies. Completely non-binding and free!'
-                  }
-                </p>
-                <Link 
-                  href="/post"
-                  className="inline-flex items-center border border-gray-400 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors"
-                >
-                  {language === 'is' ? 'Legg út verk' : 'Post a project'}
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-              </div>
+              {/* Projects Display */}
+              {projectsLoading ? (
+                <div className="bg-gray-100 rounded-lg p-12 text-center">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+                  <p className="text-gray-600 mt-4">
+                    {language === 'is' ? 'Sæki verkefni...' : 'Loading projects...'}
+                  </p>
+                </div>
+              ) : userProjects.length === 0 ? (
+                /* Empty State - exactly like mittanbud.no */
+                <div className="bg-gray-100 rounded-lg p-12 text-center">
+                  <h2 className="text-xl font-semibold text-gray-900 mb-4">
+                    {language === 'is' ? 'Engin virk verkefni' : 'No active projects'}
+                  </h2>
+                  <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+                    {language === 'is' 
+                      ? 'Búðu til nýtt verkefni til að fá tilboð frá hæfum fyrirtækjum. Algjörlega óbindandi og ókeypis!'
+                      : 'Create a new project to receive offers from qualified companies. Completely non-binding and free!'
+                    }
+                  </p>
+                  <Link 
+                    href="/post"
+                    className="inline-flex items-center border border-gray-400 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                  >
+                    {language === 'is' ? 'Legg út verk' : 'Post a project'}
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </div>
+              ) : (
+                /* Projects List - like Mittanbud */
+                <div className="space-y-4">
+                  {userProjects.map((project) => (
+                    <div key={project.id} className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow">
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <div className="flex items-center space-x-3 mb-2">
+                            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                              <Building className="w-6 h-6 text-blue-600" />
+                            </div>
+                            <div>
+                              <h3 className="text-lg font-medium text-gray-900">
+                                {project.title || project.description?.substring(0, 50) + '...'}
+                              </h3>
+                              <div className="flex items-center space-x-2 mt-1">
+                                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                                  project.status === 'open' 
+                                    ? 'bg-orange-100 text-orange-800' 
+                                    : project.status === 'draft'
+                                    ? 'bg-gray-100 text-gray-800'
+                                    : 'bg-green-100 text-green-800'
+                                }`}>
+                                  {project.status === 'open' 
+                                    ? (language === 'is' ? 'Væntar samþykktar' : 'Awaiting approval')
+                                    : project.status === 'draft'
+                                    ? (language === 'is' ? 'Drög' : 'Draft')
+                                    : (language === 'is' ? 'Virkt' : 'Active')
+                                  }
+                                </span>
+                                <span className="text-sm text-gray-500">
+                                  {new Date(project.created_at).toLocaleDateString('is-IS')}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <p className="text-gray-600 text-sm mb-3">
+                            {project.description?.substring(0, 120)}
+                            {project.description?.length > 120 ? '...' : ''}
+                          </p>
+                          <div className="flex items-center space-x-4 text-sm text-gray-500">
+                            <span className="flex items-center">
+                              <CheckCircle className="w-4 h-4 mr-1" />
+                              {project.quotes_count || 0} {language === 'is' ? 'tilboð' : 'quotes'}
+                            </span>
+                            {project.postcode && (
+                              <span>{project.postcode}</span>
+                            )}
+                          </div>
+                        </div>
+                        <div className="ml-4">
+                          <Link
+                            href={`/dashboard/customer/projects/${project.id}`}
+                            className="text-blue-600 hover:text-blue-700 text-sm font-medium"
+                          >
+                            {language === 'is' ? 'Opna' : 'Open'}
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                  
+                  {userProjects.length >= 3 && (
+                    <div className="text-center">
+                      <Link 
+                        href="/dashboard/customer/projects"
+                        className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+                      >
+                        {language === 'is' ? 'Sjá öll verkefni' : 'See all projects'}
+                        <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Identity Verification Section - exactly like mittanbud.no */}
