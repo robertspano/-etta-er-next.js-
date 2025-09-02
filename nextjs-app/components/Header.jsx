@@ -396,31 +396,7 @@ const Header = ({ language, setLanguage, translations }) => {
                     <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
                   </button>
                 </div>
-                {/* Support Links */}
-                <div className="border-t border-gray-200 my-4"></div>
-                <div className="mb-3">
-                  <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider px-1">
-                    {language === 'is' ? 'Upplýsingar' : 'Information'}
-                  </h3>
-                </div>
-                
-                <div className="space-y-1">
-                  <button
-                    onClick={() => handleDrawerItemClick('/vilkar')}
-                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
-                  >
-                    <span className="text-gray-700">{language === 'is' ? 'Þjónustuskilmálar' : 'Terms of Service'}</span>
-                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
-                  </button>
-                  
-                  <button
-                    onClick={() => handleDrawerItemClick('/personvern')}
-                    className="w-full flex items-center justify-between py-3 text-left hover:bg-gray-50 rounded-lg transition-colors group"
-                  >
-                    <span className="text-gray-700">{language === 'is' ? 'Persónuverndarstefna' : 'Privacy Policy'}</span>
-                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
-                  </button>
-                </div>
+
               </div>
             </div>
           </div>
