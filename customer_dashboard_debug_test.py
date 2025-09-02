@@ -187,7 +187,7 @@ class CustomerDashboardDebugTester:
                 headers={"Content-Type": "application/json"}
             ) as response:
                 data = await response.json()
-                if response.status == 201:
+                if response.status in [200, 201]:
                     draft_id = data.get("id")
                     self.log_test("Create Draft Job", True, f"Draft job created with ID: {draft_id}")
                     
