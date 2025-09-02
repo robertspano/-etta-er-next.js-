@@ -651,6 +651,23 @@ function App() {
               } 
             />
 
+            {/* Job Submitted Success Page */}
+            <Route 
+              path="/job-submitted" 
+              element={
+                <AuthLayout 
+                  language={language} 
+                  setLanguage={setLanguage} 
+                  currentTranslations={currentTranslations}
+                >
+                  <JobSubmitted 
+                    translations={currentTranslations} 
+                    language={language} 
+                  />
+                </AuthLayout>
+              } 
+            />
+
             {/* Auth Routes */}
             <Route 
               path="/login" 
