@@ -788,7 +788,7 @@ metadata:
 
 test_plan:
   current_focus:
-    - "3-Step Public Job Posting Wizard Implementation"
+    - "Draft Job Linking Debug - FIXED"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
