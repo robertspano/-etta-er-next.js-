@@ -15,8 +15,32 @@ const JobPostingWizard = ({ translations, language, category }) => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   
-  // Note: Job posting is now public - users can post jobs without authentication
-  // After job submission, they will be prompted to create account or login to manage their jobs
+  // Authentication check - users must be logged in to post jobs (like Mittanbud)
+  useEffect(() => {
+    if (!authLoading && !user) {
+      // Redirect to login with return URL
+      const returnUrl = encodeURIComponent(window.location.pathname);
+      window.location.href = `/login?returnUrl=${returnUrl}`;
+      return;
+    }
+  }, [authLoading, user]);
+
+  // Show loading while checking authentication
+  if (authLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+        <p className="ml-3 text-gray-600">
+          {language === 'is' ? 'Athuga innskráningu...' : 'Checking authentication...'}
+        </p>
+      </div>
+    );
+  }
+
+  // Don't render if user is not authenticated (will redirect)
+  if (!user) {
+    return null;
+  }
 
   // Form data
   const [formData, setFormData] = useState({
