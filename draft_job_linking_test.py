@@ -105,10 +105,8 @@ class DraftJobLinkingTester:
         """Step 2: Test user authentication for test@verki.is"""
         print("\n=== STEP 2: Testing User Authentication ===")
         
-        # Use a unique email for this test to avoid conflicts
-        import time
-        timestamp = str(int(time.time()))
-        test_email = f"test_{timestamp}@verki.is"
+        # Use the specific email requested in the debug task
+        test_email = "test@verki.is"
         
         # First, try to create/register the user
         user_data = {
