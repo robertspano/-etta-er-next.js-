@@ -130,6 +130,15 @@ class ApiService {
     }
   }
 
+  async linkDraftJobs() {
+    try {
+      const response = await this.client.post('/auth/link-draft-jobs');
+      return response;
+    } catch (error) {
+      throw new Error(error.response?.data?.detail || 'Failed to link draft jobs');
+    }
+  }
+
   async requestPasswordReset(email) {
     try {
       const response = await this.client.post('/auth/forgot-password', { email });
