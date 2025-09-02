@@ -144,14 +144,26 @@ async def analyze_user_jobs():
         }
         
         async with session.post(
-            f"{BACKEND_URL}/job-requests",
+            f"{BACKEND_URL}/job-requests/",  # Add trailing slash to avoid redirect
             json=job_data,
             cookies=cookies,
             headers={"Content-Type": "application/json"}
         ) as response:
             if response.status == 200:
                 new_job = await response.json()
-                print(f"✅ Created new job: {new_job.get('id')}")
+                # Handle both single job and list responses due to redirect issues
+                if isinstance(new_job, list):
+                    print(f"⚠️ Got list response instead of single job (redirect issue)")
+                    if len(new_job) > 0:
+                        # Find the most recent job (likely the one we just created)
+                        new_job = max(new_job, key=lambda x: x.get('posted_at', ''))
+                        print(f"✅ Using most recent job: {new_job.get('id')}")
+                    else:
+                        print(f"❌ Empty list returned")
+                        return
+                else:
+                    print(f"✅ Created new job: {new_job.get('id')}")
+                
                 print(f"   Title: {new_job.get('title')}")
                 print(f"   Status: {new_job.get('status')}")
                 print(f"   Customer ID: {new_job.get('customer_id')}")
