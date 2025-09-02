@@ -250,11 +250,10 @@ class CustomerDashboardTester:
             "title": "End-to-end test bathroom renovation project",
             "description": "Complete bathroom renovation including tiles, fixtures, and plumbing work for testing purposes",
             "postcode": "105",
-            "address": "E2E Test Street 456, Reykjavik",
-            "contact_email": e2e_email,
-            "contact_phone": "+354-555-9876",
-            "contact_first_name": "E2E",
-            "contact_last_name": "Tester"
+            "email": e2e_email,
+            "phone": "+354-555-9876",
+            "first_name": "E2E",
+            "last_name": "Tester"
         }
         
         e2e_draft_id = None
