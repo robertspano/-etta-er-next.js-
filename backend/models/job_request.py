@@ -45,6 +45,13 @@ class JobRequest(Document):
     vehicle_year: Optional[int] = None
     vehicle_color: Optional[str] = None
     
+    # Contact information (for guest jobs linking after registration)
+    contact_email: Optional[str] = None
+    contact_phone: Optional[str] = None  
+    contact_first_name: Optional[str] = None
+    contact_last_name: Optional[str] = None
+    contact_preference: Optional[str] = None
+    
     # Budget and Priority
     budget_min: Optional[float] = None
     budget_max: Optional[float] = None
