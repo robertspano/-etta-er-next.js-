@@ -173,7 +173,7 @@ class DraftJobLinkingTester:
         
         for password in passwords_to_try:
             login_data = {
-                "username": "test@verki.is",
+                "username": test_email,
                 "password": password
             }
             
