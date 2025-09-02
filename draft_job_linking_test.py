@@ -134,7 +134,28 @@ class DraftJobLinkingTester:
         except Exception as e:
             self.log_test("User Registration", False, f"Request failed: {str(e)}")
         
-        # Now try to login
+        # Try auto-login first (creates/updates user with password)
+        auto_login_data = {
+            "email": "test@verki.is",
+            "password": "testpassword123"
+        }
+        
+        try:
+            async with self.session.post(
+                f"{BACKEND_URL}/auth/auto-login",
+                json=auto_login_data,
+                headers={"Content-Type": "application/json"}
+            ) as response:
+                data = await response.json()
+                if response.status == 200 and data.get("success"):
+                    self.user_id = data.get("user", {}).get("id")
+                    self.log_test("Auto Login", True, f"Auto-login successful for test@verki.is, User ID: {self.user_id}")
+                else:
+                    self.log_test("Auto Login", False, f"Auto-login failed: {response.status}", data)
+        except Exception as e:
+            self.log_test("Auto Login", False, f"Auto-login request failed: {str(e)}")
+        
+        # Now try regular login
         login_data = {
             "username": "test@verki.is",
             "password": "testpassword123"
