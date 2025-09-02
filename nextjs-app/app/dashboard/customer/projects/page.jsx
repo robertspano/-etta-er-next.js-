@@ -26,6 +26,7 @@ import {
 export default function CustomerProjectsPage() {
   const { t, language } = useTranslations();
   const router = useRouter();
+  const { user } = useAuth();
   const [activeTab, setActiveTab] = useState('active');
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
