@@ -54,9 +54,11 @@ export default function CustomerProjectsPage() {
   useEffect(() => {
     // Fetch user's projects from API
     const fetchProjects = async () => {
+      if (!user) return;
+      
       setLoading(true);
       try {
-        // Replace with actual API call to get user's projects
+        // Fetch user's job requests from backend
         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8001'}/api/job-requests`, {
           credentials: 'include', // Include cookies for authentication
           headers: {
@@ -66,11 +68,8 @@ export default function CustomerProjectsPage() {
         
         if (response.ok) {
           const data = await response.json();
-          if (data.jobs) {
-            setProjects(data.jobs);
-          } else {
-            setProjects([]);
-          }
+          // Backend returns array directly, not wrapped in jobs object
+          setProjects(Array.isArray(data) ? data : []);
         } else {
           console.error('Failed to fetch projects:', response.status);
           setProjects([]);
@@ -84,7 +83,7 @@ export default function CustomerProjectsPage() {
     };
 
     fetchProjects();
-  }, []);
+  }, [user]);
 
   const activeProjects = projects.filter(p => p.status === 'active' || p.status === 'open' || p.status === 'in_progress');
   const finishedProjects = projects.filter(p => p.status === 'completed' || p.status === 'cancelled');
