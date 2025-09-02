@@ -9,7 +9,7 @@ import aiohttp
 import json
 from datetime import datetime
 
-BACKEND_URL = "https://build-connect-9.preview.emergentagent.com/api"
+BACKEND_URL = "https://byggja-verki.preview.emergentagent.com/api"
 
 async def debug_dashboard_api():
     """Debug the exact API calls that dashboard makes"""

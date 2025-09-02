@@ -12,7 +12,7 @@ from datetime import datetime
 from typing import Dict, Any, List
 
 # Backend URL from environment
-BACKEND_URL = "https://build-connect-9.preview.emergentagent.com/api"
+BACKEND_URL = "https://byggja-verki.preview.emergentagent.com/api"
 
 class FirebaseRegressionTester:
     def __init__(self):

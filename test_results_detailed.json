@@ -289,7 +289,7 @@
     {
       "test": "GET /api/job-requests",
       "success": false,
-      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://build-connect-9.preview.emergentagent.com/api/job-requests/'",
+      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://byggja-verki.preview.emergentagent.com/api/job-requests/'",
       "timestamp": "2025-09-02T13:22:24.263187",
       "response_data": null
     },
@@ -310,7 +310,7 @@
     {
       "test": "GET /api/job-requests (Category Filter)",
       "success": false,
-      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://build-connect-9.preview.emergentagent.com/api/job-requests/?category=plumbing'",
+      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://byggja-verki.preview.emergentagent.com/api/job-requests/?category=plumbing'",
       "timestamp": "2025-09-02T13:22:24.300885",
       "response_data": null
     },
@@ -1553,7 +1553,7 @@
     {
       "test": "User Jobs Retrieval Test",
       "success": false,
-      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://build-connect-9.preview.emergentagent.com/api/job-requests/'",
+      "details": "Request failed: 500, message='Attempt to decode JSON with unexpected mimetype: text/plain; charset=utf-8', url='https://byggja-verki.preview.emergentagent.com/api/job-requests/'",
       "timestamp": "2025-09-02T13:22:35.424374",
       "response_data": null
     },

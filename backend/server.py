@@ -83,7 +83,7 @@ app.add_middleware(
     allow_credentials=True,
     allow_origins=[
         "http://localhost:3000",  # Next.js development server
-        "https://build-connect-9.preview.emergentagent.com",  # Production/preview URL
+        "https://byggja-verki.preview.emergentagent.com",  # Production/preview URL
     ],
     allow_methods=["*"],
     allow_headers=["*"],

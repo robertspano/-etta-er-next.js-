@@ -1,29 +1,27 @@
 <analysis>
-The trajectory outlines the evolution of the verki application from its initial development to the current debugging phase of Firebase phone authentication. Initially, the AI engineer focused on comprehensive UI/UX updates, including a -inspired customer dashboard, language localization, and authentication flows. A significant portion of the work involved iterative refinements to the  component, the  section, and the  layout, constantly aligning with the user's detailed Icelandic-language feedback and 's exact styling and content. Issues often involved minor misinterpretations of styling requests or caching problems requiring restarts. The most recent and complex task revolves around integrating Firebase phone authentication. Despite receiving the user's Firebase config and their functional  component, the SMS sending mechanism is not working, and Firebase appears stuck in a loading state, indicating a configuration or import issue that the AI is actively troubleshooting and trying to resolve via code, as the user cannot make console changes.
+The trajectory details the iterative development and debugging of the verki application, transitioning from UI/UX refinements to complex feature integrations. Initial efforts focused on recreating the  customer dashboard, including a custom header, notification panel, and project listing. A major phase involved debugging Firebase phone authentication, which required fixing missing configuration, invalid API keys, and phone number formatting, eventually hitting a billing enablement issue. The focus then shifted to implementing the Mittanbud-style job posting flow, allowing anonymous posting followed by authentication to link jobs to a user's dashboard. This involved significant backend changes for draft job linking and frontend adjustments for authentication redirects and dynamic content display. The work concludes with a persistent issue where the customer dashboard fails to display linked projects, despite backend verification of job linking, pointing to a frontend data fetching or authentication cookie problem.
 </analysis>
 
 <product_requirements>
-The verki application is a construction services marketplace, designed to mimic , with full Icelandic and English localization. Key requirements and implemented features include:
-
-1.  **Branding and Redesigns**: Consistent verki identity, blue/cyan palette, custom logo, replacing BuildConnect mentions. Simplified Job Submitted and Login pages, mirroring .
-2.  **Category Pages**: Detailed, responsive Handcraft and Hús og garður pages, unified All Categories overview, with Icelandic content.
-3.  **Localization**: Default Icelandic ('is'), ISK currency, +354 phone code, 3-digit postal codes. All text must be switchable between Icelandic and English using .
-4.  **Authentication**: Real SMTP for passwordless login, auto-registration for password login, and universal redirection to a -inspired customer dashboard.
-5.  **Customer Dashboard**: A -like layout for logged-in users, featuring My Projects, Identity Verification, and a category overview. The dashboard requires a specific header (Nýtt verk, notification bell, profile icon with dropdown), a right-side slide-in menu (not a left sidebar) with shortcuts (Home, My Projects, Post a Project, Profile) and categories, and a footer. The Staðfesta auðkenni á Verki button text was changed to Staðfesta með rafrænum skilríkjum and must trigger Firebase phone authentication.
-6.  **Hero Section**: Text Choose category below and get 3 price quotes: Free, simple and non-binding was removed.
-7.  **Profile Icon**: The profile icon in the header and menu was customized to a specific user-provided image (a smiling emoticon).
-8.  **Dashboard Content Refinement**: Fá verkefnið gert af skikkeligum fagfólki title centered and enlarged, and three quick action cards below it were removed.
+The verki application is a construction services marketplace, designed to mimic , with full Icelandic and English localization.
+1.  **Branding & UI**: Consistent verki identity, blue/cyan palette, custom logo, simplified Job Submitted and Login pages. Removed Choose category below... from Hero section. Custom smiley emoticon for profile icon.
+2.  **Category Pages**: Responsive Handcraft, Hús og garður, and All Categories pages with Icelandic content.
+3.  **Localization**: Default Icelandic ('is'), ISK currency, +354 phone code, 3-digit postal codes.
+4.  **Authentication**: Firebase Phone Auth (triggered by Staðfesta með rafrænum skilríkjum), real SMTP for passwordless login, auto-registration, and redirection to customer dashboard.
+5.  **Customer Dashboard**: -like layout featuring My Projects, Identity Verification, and a category overview. Requires a specific header (Nýtt verk, notification bell with dropdown, profile icon), a right-side slide-in menu, and a footer. My Projects page should display active/completed jobs with status.
+6.  **Job Posting Flow**: Users can post jobs anonymously via a multi-step wizard. After posting, a View Post button on the success page prompts login (if not authenticated) to link the job to their account and view it on their dashboard.
+7.  **Sidebar Content**: Remove the UPPLÝSINGAR section (including Þjónustuskilmálar and Persónuverndarstefna) from the homepage's main sidebar.
 </product_requirements>
 
 <key_technical_concepts>
--   **Frontend:** Next.js (App Router), React.js, Tailwind CSS, , , React Context API, i18n via .
--   **Backend:** FastAPI, Python, Pydantic, MongoDB, , , .
--   **Authentication:** Firebase Phone Authentication (RecaptchaVerifier, signInWithPhoneNumber, confirmResult.confirm), Email-based passwordless login.
+-   **Frontend:** Next.js (App Router), React.js, Tailwind CSS, , , React Context API (AuthContext, TranslationsContext), i18n.
+-   **Backend:** FastAPI, Python, Pydantic, MongoDB, Beanie ODM, , , .
+-   **Authentication:** Firebase Phone Authentication (RecaptchaVerifier, signInWithPhoneNumber), Email-based passwordless login, JWT.
 -   **Operations:** backend                          RUNNING   pid 27, uptime 0:00:03
-code-server                      RUNNING   pid 29, uptime 0:00:02
-frontend                         STOPPED   Sep 01 07:21 PM
-mongodb                          RUNNING   pid 31, uptime 0:00:02
-supervisor> .
+code-server                      RUNNING   pid 29, uptime 0:00:03
+frontend                         RUNNING   pid 32, uptime 0:00:03
+mongodb                          RUNNING   pid 35, uptime 0:00:03
+supervisor> , Playwright.
 </key_technical_concepts>
 
 <code_architecture>
@@ -32,45 +30,40 @@ The application uses a monorepo structure with  (FastAPI) and  (Next.js for fron
 
 
 **Key Files and Changes:**
--   : Conditionally renders the public  component. Updated to prevent duplicate headers on logged-in dashboard.
--   : Defines the public navigation bar. Modified to match specific Skrá fyrirtæki button styling (no background, dark blue text, light blue/underline on hover), larger text size, and ensure Setja inn verk retains its blue background. Combined menu/profile button implemented here for public view.
--   : Main landing page hero section. Modified to remove the Choose category below and get 3 price quotes: Free, simple and non-binding text.
--   : **(Primary dashboard component)** This was iteratively refined to match 's layout. It now includes a dedicated header (with Nýtt verk, notification bell, combined menu/profile button using a custom image), the My Projects section, Identity Verification box, and a category flashcard grid. It also now contains the logic for the right slide-in menu, replacing a previous left sidebar attempt. The component has undergone significant refactoring to incorporate specific user feedback on element placement, styling, and text.
--   : The page that renders the customer dashboard. Initially used a  component, but reverted to directly embedding the  content to avoid rendering issues. It now effectively serves as the entry point for the detailed  component.
--   : **(New file)** Created to host the user-provided Firebase phone authentication component. It contains the Firebase SDK initialization, , , and  logic, integrated with the user's Firebase config.
--   : Handles password-based login. Was updated to use  for backend calls and to correctly redirect to .
--   : Manages user authentication state. Updated to include localStorage support for persistent sessions and proper logout functionality.
--   : Updated with  for frontend API calls.
+-   : Created for Firebase phone auth, integrated user config, added phone formatting and validation.
+-   : **New file** for Firebase SDK initialization with user's project credentials.
+-   : Updated to fetch and display user projects, integrated notification bell with a dropdown, and sidebar logic.
+-   : Refactored to replicate Mittanbud's project list, and now shares the identical header and sidebar structure with the main dashboard.
+-   : **New file** to act as a root  route, redirecting appropriately.
+-   : **New file** created for displaying individual job details.
+-   : Modified to remove the UPPLÝSINGAR (Information) section from the homepage's main sidebar.
+-   : Adjusted to allow public job posting, collecting  and  for later linkage, aligning with the Mittanbud UX flow.
+-   : Enhanced with a View Post button that intelligently redirects to the job detail page, prompting login if necessary and passing a .
+-   : Updated to process  parameters for post-login redirection and to call the new backend  endpoint to associate anonymously posted jobs.
+-   : Modified to include  and  fields in the  schema and save this contact information when a draft job is created.
+-   : A new  endpoint was introduced. It's responsible for finding draft jobs matching a user's email and updating their  and  upon successful login.
 </code_architecture>
 
 <pending_tasks>
 -   Integrate payment processing (e.g., SaltPay/Valitor/Rapyd).
 -   Implement advanced file uploads and messaging functionalities.
 -   Implement postcode-based service areas and filtering.
--   Develop in-app and email notifications (beyond login codes).
+-   Develop in-app and email notifications (beyond basic panel).
 -   Implement simple role switching and complete professional onboarding.
 -   Address accessibility and performance (Phase 2).
 -   Plan Phase 3: complete request → quote → acceptance flow.
 -   Continue automotive job posting flow.
--   **Resolve Firebase phone authentication SMS sending issue.**
+-   Resolve Firebase phone authentication billing issue.
+-   Resolve homepage sidebar buttons remaining after header removal.
+-   Fix job posting wizard form state persistence.
+-   Debug dashboard not displaying linked jobs.
+-   Ensure authentication cookies are correctly set and used for API calls.
 </pending_tasks>
 
 <current_work>
-Immediately before this summary request, the AI engineer was actively engaged in debugging the Firebase phone authentication feature. The user provided their complete Firebase  component code and their Firebase project configuration (, , ).
-
-The AI engineer integrated this code into a new page: . The Staðfesta með rafrænum skilríkjum button on the customer dashboard was linked to redirect users to this new  page.
-
-The core issue currently being addressed is that, despite the integration of the user's Firebase code and configuration, the SMS codes are not being sent, and the Firebase authentication process appears stuck in a loading state on the frontend (as observed in screenshot  showing Firebase Status: ⏳ Hleður...).
-
-The AI has attempted to:
-1.  Integrate the provided Firebase  code.
-2.  Incorporate the user's Firebase API credentials directly into the .
-3.  Add debug logging to diagnose the issue.
-4.  Guided the user on necessary Firebase Console configurations (enabling phone auth, authorized domains, adding test phone numbers).
-
-However, the user explicitly stated they could not make changes in the Firebase console (það virkar ekki að breyta þessu í firebase geturu þú lagað hann og látið þetta virka en hafðu þetta allt á next.js), shifting the burden of resolution back to code-based fixes. The AI's last action was to update the  with the user's provided Firebase code, again with promises of better styling and Next.js best practices, and then proceed to take a screenshot to verify functionality. The current state is that Firebase is still not sending SMS codes, and the AI is awaiting feedback from the latest screenshot.
+Immediately prior to this summary, the AI engineer was actively engaged in troubleshooting why user-posted projects were not appearing in the customer dashboard (). Despite a critical fix being applied by the backend testing agent (resolving a  schema mismatch in ) and backend confirmation that draft jobs were successfully linked to a test user's account (), the dashboard persistently displayed an Engin virk verkefni (empty projects) state. Frontend testing showed 3 issues in console logs (), and further investigation revealed that while user data was stored in  post-login, authentication cookies were not being properly set or utilized by frontend API calls (). The AI had confirmed  was used in  and API calls but suspected the issue lay in the dashboard's specific API call or the way cookies were handled within the Next.js environment, preventing proper project data retrieval. The Mittanbud-style flow (anonymous job posting, then login to link via View Post) has been implemented, but its effectiveness is hindered by the dashboard's failure to display the linked projects.
 </current_work>
 
 <optional_next_step>
-Debug the Firebase phone authentication setup to resolve the persistent loading status and enable actual SMS code sending, leveraging the user-provided code.
+Investigate the dashboard's API call for user projects to fix the display issue.
 </optional_next_step>
