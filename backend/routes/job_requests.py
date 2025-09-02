@@ -225,7 +225,7 @@ async def delete_job_request(
         quotes = await db_service.get_documents("quotes", {"job_request_id": job_id})
         if quotes and any(q.get("status") == "pending" for q in quotes):
             raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
+                status_code=400,
                 detail="Cannot delete job with pending quotes. Cancel the job instead."
             )
         
