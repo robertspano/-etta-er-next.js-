@@ -38,6 +38,7 @@ import MovingContactForm from './components/MovingContactForm';
 import CleaningCategoryPicker from './components/CleaningCategoryPicker';
 import CleaningContactForm from './components/CleaningContactForm';
 import HousingAssociationsGrid from './components/HousingAssociationsGrid';
+import JobSubmitted from './components/JobSubmitted';
 
 // New Company Search and Category Pages
 import CompanySearch from './components/CompanySearch';
