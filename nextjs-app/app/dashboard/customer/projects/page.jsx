@@ -364,9 +364,12 @@ export default function CustomerProjectsPage() {
                         </div>
                       </div>
                       <div className="ml-4 text-right">
-                        <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                        <Link
+                          href={`/dashboard/customer/projects/${project.id}`}
+                          className="text-blue-600 hover:text-blue-700 text-sm font-medium"
+                        >
                           {language === 'is' ? 'Opna' : 'Open'}
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
