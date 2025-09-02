@@ -437,3 +437,44 @@ async def professional_only_endpoint(user: User = Depends(get_current_profession
 async def admin_only_endpoint(user: User = Depends(get_current_admin)):
     """Test endpoint for admin access"""
     return {"message": "Admin access granted", "user_id": user.id}
+
+@router.post("/auth/link-draft-jobs")
+async def link_draft_jobs_to_user(user: User = Depends(current_active_user)):
+    """Link any draft jobs with matching email to authenticated user"""
+    from services.db_service import db_service
+    
+    try:
+        # Find draft jobs with matching email
+        draft_jobs = await db_service.get_documents(
+            "job_requests",
+            filter_dict={
+                "contact_email": user.email,
+                "status": "draft",
+                "customer_id": None  # Only unlinked drafts
+            }
+        )
+        
+        linked_count = 0
+        for job in draft_jobs:
+            # Link job to user
+            await db_service.update_document(
+                "job_requests",
+                job["id"],
+                {
+                    "customer_id": user.id,
+                    "status": "open",  # Change from draft to open
+                    "updated_at": datetime.utcnow()
+                }
+            )
+            linked_count += 1
+        
+        return {
+            "message": f"Successfully linked {linked_count} draft jobs to your account",
+            "linked_jobs": linked_count
+        }
+        
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to link draft jobs: {str(e)}"
+        )
