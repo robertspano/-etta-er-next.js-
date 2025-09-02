@@ -38,14 +38,7 @@ export default function CustomerDashboardPage() {
   const [projectsLoading, setProjectsLoading] = useState(true);
   const router = useRouter();
   const notificationRef = useRef(null);
-  const { user, loading, isAuthenticated } = useAuth();
-
-  // Redirect to login if not authenticated
-  useEffect(() => {
-    if (!loading && !isAuthenticated()) {
-      router.push('/login');
-    }
-  }, [loading, isAuthenticated, router]);
+  const { user } = useAuth();
 
   // Close notification dropdown when clicking outside
   useEffect(() => {
