@@ -317,19 +317,55 @@ export default function CustomerProjectsPage() {
                   <div key={project.id} className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
                     <div className="flex items-start justify-between">
                       <div className="flex items-start space-x-4">
-                        <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                          <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                          <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                           </svg>
                         </div>
                         <div>
-                          <h3 className="text-lg font-medium text-gray-900">{project.title}</h3>
-                          <p className="text-sm text-gray-600">{project.description}</p>
+                          <h3 className="text-lg font-medium text-gray-900">
+                            {project.title || `${project.category} verkefni` || 'Verkefni'}
+                          </h3>
+                          <div className="flex items-center space-x-2 mt-1">
+                            <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                              project.status === 'open' 
+                                ? 'bg-orange-100 text-orange-800' 
+                                : project.status === 'draft'
+                                ? 'bg-gray-100 text-gray-800'
+                                : project.status === 'completed'
+                                ? 'bg-green-100 text-green-800'
+                                : 'bg-blue-100 text-blue-800'
+                            }`}>
+                              {project.status === 'open' 
+                                ? (language === 'is' ? 'Væntar samþykktar' : 'Awaiting approval')
+                                : project.status === 'draft'
+                                ? (language === 'is' ? 'Drög' : 'Draft')
+                                : project.status === 'completed'
+                                ? (language === 'is' ? 'Lokið' : 'Completed')
+                                : (language === 'is' ? 'Virkt' : 'Active')
+                              }
+                            </span>
+                            <span className="text-sm text-gray-500">
+                              {new Date(project.posted_at).toLocaleDateString('is-IS')}
+                            </span>
+                          </div>
+                          <p className="text-sm text-gray-600 mt-1">
+                            {project.description?.substring(0, 100)}
+                            {project.description?.length > 100 ? '...' : ''}
+                          </p>
+                          <div className="flex items-center space-x-4 text-sm text-gray-500 mt-2">
+                            <span className="flex items-center">
+                              📄 {project.quotes_count || 0} {language === 'is' ? 'tilboð' : 'quotes'}
+                            </span>
+                            {project.postcode && (
+                              <span>📍 {project.postcode}</span>
+                            )}
+                          </div>
                         </div>
                       </div>
                       <div className="ml-4 text-right">
                         <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
-                          Opna
+                          {language === 'is' ? 'Opna' : 'Open'}
                         </button>
                       </div>
                     </div>
