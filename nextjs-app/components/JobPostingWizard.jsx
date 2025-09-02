@@ -8,6 +8,7 @@ import { useAuth } from '../contexts/AuthContext';
 
 const JobPostingWizard = ({ translations, language, category }) => {
   const router = useRouter();
+  const { user, loading: authLoading } = useAuth();
   
   const [currentStep, setCurrentStep] = useState(1);
   const [loading, setLoading] = useState(false);
