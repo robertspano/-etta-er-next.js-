@@ -78,8 +78,16 @@ const LoginWithPassword = ({ language = 'en', setLanguage }) => {
         // Set user in localStorage for immediate access
         localStorage.setItem('currentUser', JSON.stringify(result.user));
         
-        // Redirect to customer dashboard (all auto-created users are customers)
-        router.push('/dashboard/customer');
+        // Check for returnUrl parameter to redirect after login
+        const urlParams = new URLSearchParams(window.location.search);
+        const returnUrl = urlParams.get('returnUrl');
+        
+        if (returnUrl) {
+          router.push(decodeURIComponent(returnUrl));
+        } else {
+          // Redirect to customer dashboard as default
+          router.push('/dashboard/customer');
+        }
       } else {
         throw new Error('LOGIN_FAILED');
       }
