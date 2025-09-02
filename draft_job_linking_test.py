@@ -271,6 +271,30 @@ class DraftJobLinkingTester:
         """Step 4: Debug the linking logic by checking database directly"""
         print("\n=== STEP 4: Debugging Linking Logic ===")
         
+        # First, let's check all open jobs to see if we can find any patterns
+        try:
+            async with self.session.get(f"{BACKEND_URL}/job-requests") as response:
+                data = await response.json()
+                if response.status == 200:
+                    all_jobs = data
+                    draft_jobs = [job for job in all_jobs if job.get("status") == "draft"]
+                    open_jobs = [job for job in all_jobs if job.get("status") == "open"]
+                    
+                    self.log_test("All Jobs Check", True, f"Found {len(all_jobs)} total jobs, {len(draft_jobs)} draft, {len(open_jobs)} open")
+                    
+                    # Look for jobs with our test email
+                    jobs_with_test_email = [job for job in all_jobs if "test@verki.is" in str(job)]
+                    self.log_test("Jobs with Test Email", True, f"Found {len(jobs_with_test_email)} jobs containing test@verki.is")
+                    
+                    # Print details of jobs with our email
+                    for job in jobs_with_test_email:
+                        job_info = f"ID: {job.get('id')}, Status: {job.get('status')}, Customer ID: {job.get('customer_id')}"
+                        self.log_test("Job with Test Email Details", True, job_info)
+                else:
+                    self.log_test("All Jobs Check", False, f"Failed to get jobs: {response.status}", data)
+        except Exception as e:
+            self.log_test("All Jobs Check", False, f"Request failed: {str(e)}")
+        
         # Check if there are any draft jobs with the email
         try:
             # We can't directly query the database, but we can check via the job-requests endpoint
@@ -289,14 +313,13 @@ class DraftJobLinkingTester:
                         
                         self.log_test("User Jobs Check", True, f"Found {len(user_jobs)} total jobs, {len(draft_jobs)} draft, {len(open_jobs)} open")
                         
-                        # Check for jobs with contact_email
-                        jobs_with_email = [job for job in data if job.get("contact_email") == "test@verki.is"]
-                        self.log_test("Jobs with Contact Email", True, f"Found {len(jobs_with_email)} jobs with contact_email: test@verki.is")
-                        
                         return len(user_jobs)
                     else:
                         self.log_test("User Jobs Check", False, f"Failed to get user jobs: {response.status}", data)
                         return 0
+            else:
+                self.log_test("User Jobs Check", False, "No user session available")
+                return 0
         except Exception as e:
             self.log_test("User Jobs Check", False, f"Request failed: {str(e)}")
             return 0
