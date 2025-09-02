@@ -15,73 +15,8 @@ const JobPostingWizard = ({ translations, language, category }) => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   
-  // Authentication check - users must be logged in to post jobs (like Mittanbud)
-  useEffect(() => {
-    if (!authLoading && !user) {
-      // Show login prompt instead of redirect
-      setError(language === 'is' 
-        ? 'Þú þarft að vera innskráður til að setja inn verkefni. Vinsamlegast skráðu þig inn eða stofnaðu aðgang.'
-        : 'You need to be logged in to post a job. Please login or create an account.'
-      );
-      return;
-    }
-  }, [authLoading, user, language]);
-
-  // Show loading while checking authentication
-  if (authLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-        <p className="ml-3 text-gray-600">
-          {language === 'is' ? 'Athuga innskráningu...' : 'Checking authentication...'}
-        </p>
-      </div>
-    );
-  }
-
-  // Show login prompt if user is not authenticated
-  if (!user) {
-    return (
-      <div className="max-w-md mx-auto p-8 bg-white rounded-lg shadow-lg text-center">
-        <div className="mb-6">
-          <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <User className="w-8 h-8 text-blue-600" />
-          </div>
-          <h2 className="text-xl font-bold text-gray-900 mb-2">
-            {language === 'is' ? 'Innskráning nauðsynleg' : 'Login Required'}
-          </h2>
-          <p className="text-gray-600 mb-6">
-            {language === 'is' 
-              ? 'Þú þarft að vera innskráður til að setja inn verkefni og fylgjast með tilboðum.'
-              : 'You need to be logged in to post jobs and track your offers.'
-            }
-          </p>
-        </div>
-        
-        <div className="space-y-3">
-          <button 
-            onClick={() => window.location.href = '/login'}
-            className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-          >
-            {language === 'is' ? 'Skrá inn' : 'Login'}
-          </button>
-          <button 
-            onClick={() => window.location.href = '/register-company'}
-            className="w-full border border-gray-300 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-50 transition-colors"
-          >
-            {language === 'is' ? 'Stofna aðgang' : 'Create Account'}
-          </button>
-        </div>
-        
-        <p className="text-sm text-gray-500 mt-4">
-          {language === 'is' 
-            ? 'Með aðgang getur þú fylgst með öllum þínum verkefnum og tilboðum á einum stað.'
-            : 'With an account you can track all your projects and offers in one place.'
-          }
-        </p>
-      </div>
-    );
-  }
+  // Note: Job posting is now public - users can post jobs without authentication
+  // After job submission, they will be prompted to create account or login to manage their jobs
 
   // Form data
   const [formData, setFormData] = useState({
