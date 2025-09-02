@@ -141,7 +141,7 @@ class DraftJobLinkingTester:
         
         # Try auto-login first (creates/updates user with password)
         auto_login_data = {
-            "email": "test@verki.is",
+            "email": test_email,
             "password": "testpassword123"
         }
         
