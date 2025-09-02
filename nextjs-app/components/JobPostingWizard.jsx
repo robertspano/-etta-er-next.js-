@@ -265,10 +265,10 @@ const JobPostingWizard = ({ translations, language, category }) => {
       // Show success message briefly
       setSuccess(language === 'is' ? 'Verkefni sent inn!' : 'Job submitted!');
       
-      // Redirect to success page
+      // Redirect to dashboard to see the posted job
       setTimeout(() => {
-        window.location.href = `/job-submitted?email=${encodeURIComponent(formData.email)}&jobId=${jobResult.id}`;
-      }, 1000);
+        window.location.href = `/dashboard/customer`;
+      }, 1500);
       
     } catch (err) {
       console.error('Job submission error:', err);
