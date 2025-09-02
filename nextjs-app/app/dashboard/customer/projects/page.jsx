@@ -50,26 +50,29 @@ export default function CustomerProjectsPage() {
   }, [notificationOpen]);
 
   useEffect(() => {
-    // Simulate fetching projects - replace with actual API call
+    // Fetch user's projects from API
     const fetchProjects = async () => {
       setLoading(true);
       try {
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        // Replace with actual API call to get user's projects
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8001'}/api/job-requests`, {
+          credentials: 'include', // Include cookies for authentication
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
         
-        // Mock data - replace with actual API response
-        setProjects([
-          // Example finished project (uncomment to test)
-          // {
-          //   id: 1,
-          //   title: 'Baðherbergisverkefni',
-          //   status: 'completed',
-          //   company: 'Nordic Construction AS',
-          //   lastContact: '6 dagar síðan',
-          //   description: 'Engin bedrifter har tatt kontakt - Lagt ut 6 dagar síðan',
-          //   type: 'bathroom'
-          // }
-        ]);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.jobs) {
+            setProjects(data.jobs);
+          } else {
+            setProjects([]);
+          }
+        } else {
+          console.error('Failed to fetch projects:', response.status);
+          setProjects([]);
+        }
       } catch (error) {
         console.error('Error fetching projects:', error);
         setProjects([]);
