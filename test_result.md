@@ -679,6 +679,18 @@ metadata:
           comment: "✅ PASSWORD LOGIN FOR VERKI@VERKI.IS USER FIXED AND FULLY WORKING! Root cause identified: user existed but had no hashed_password field. Fixed by updating MongoDB record with bcrypt-hashed 'Lindarbraut31' password. All tests passing: password login (204 status), user data retrieval, logout, wrong password rejection (400 status), passwordless login still works. Complete solution implemented."
         - working: true
 
+  - task: "Customer Dashboard Jobs Not Displaying Issue"
+    implemented: false
+    working: false
+    file: "/app/backend/models/job_request.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: false
+          agent: "testing"
+          comment: "🔍 CUSTOMER DASHBOARD ISSUE ROOT CAUSE IDENTIFIED! Comprehensive debugging completed for the issue where customer dashboard shows 'Engin virk verkefni' despite backend confirmation of draft job linking. **ROOT CAUSE:** The JobRequest model in /app/backend/models/job_request.py is MISSING contact fields (contact_email, contact_phone, contact_first_name, contact_last_name) that are being set by the public API endpoint. When jobs are created via /api/public/job-requests/draft with email field, the contact_email is not stored in database because the Beanie Document model doesn't define this field. This causes POST /api/auth/link-draft-jobs to find no jobs to link (since contact_email is always None). **TESTING VERIFIED:** 1) ✅ Authentication: GET /api/auth/me working perfectly, 2) ✅ Job API: GET /api/job-requests?customer_only=true working correctly, 3) ✅ Job Creation: Public API creates jobs successfully, 4) ✅ Link Endpoint: POST /api/auth/link-draft-jobs responds correctly but finds no jobs due to missing contact_email field. **SOLUTION:** Add contact_email: Optional[str] = None, contact_phone: Optional[str] = None, contact_first_name: Optional[str] = None, contact_last_name: Optional[str] = None to JobRequest model."
+
   - task: "Draft Job Linking Issue Debug and Fix"
     implemented: true
     working: true
