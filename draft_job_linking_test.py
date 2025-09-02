@@ -154,7 +154,7 @@ class DraftJobLinkingTester:
                 data = await response.json()
                 if response.status == 200 and data.get("success"):
                     self.user_id = data.get("user", {}).get("id")
-                    self.log_test("Auto Login", True, f"Auto-login successful for test@verki.is, User ID: {self.user_id}")
+                    self.log_test("Auto Login", True, f"Auto-login successful for {test_email}, User ID: {self.user_id}")
                     
                     # Check if we got a session cookie from auto-login
                     cookies = response.cookies
