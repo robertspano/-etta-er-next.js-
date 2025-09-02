@@ -173,7 +173,7 @@ async def update_job_request(
         # Check ownership or admin
         if job_request["customer_id"] != current_user.id and current_user.role != "admin":
             raise HTTPException(
-                status_code=status.HTTP_403_FORBIDDEN,
+                status_code=403,
                 detail="You can only update your own job requests"
             )
         
@@ -217,7 +217,7 @@ async def delete_job_request(
         # Check ownership or admin
         if job_request["customer_id"] != current_user.id and current_user.role != "admin":
             raise HTTPException(
-                status_code=status.HTTP_403_FORBIDDEN,
+                status_code=403,
                 detail="You can only delete your own job requests"
             )
         
@@ -265,7 +265,7 @@ async def upload_job_photo(
         # Check ownership
         if job_request["customer_id"] != current_user.id and current_user.role != "admin":
             raise HTTPException(
-                status_code=status.HTTP_403_FORBIDDEN,
+                status_code=403,
                 detail="You can only upload photos to your own job requests"
             )
         
@@ -315,7 +315,7 @@ async def update_job_status(
         
         if not (is_owner or is_assigned or is_admin):
             raise HTTPException(
-                status_code=status.HTTP_403_FORBIDDEN,
+                status_code=403,
                 detail="You don't have permission to update this job's status"
             )
         
