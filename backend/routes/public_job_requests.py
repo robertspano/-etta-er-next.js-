@@ -199,7 +199,12 @@ async def create_draft_job_request(
             "quotes_count": 0,
             "max_quotes": 10,
             "views_count": 0,
-            "is_featured": False
+            "is_featured": False,
+            # Contact information for linking after registration
+            "contact_email": job_data.email,
+            "contact_phone": job_data.phone,
+            "contact_first_name": job_data.first_name,
+            "contact_last_name": job_data.last_name
         }
         
         # Add vehicle info if provided
