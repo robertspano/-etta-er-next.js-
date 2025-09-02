@@ -5066,6 +5066,9 @@ class BuildConnectAPITester:
             # Test New Automotive Job Creation Endpoint (Priority Testing - Review Request)
             await self.test_automotive_endpoints()
             
+            # Test Job-Requests API Endpoints (Priority Testing - Review Request)
+            await self.test_job_requests_api_endpoints()
+            
             await self.test_error_handling()
         finally:
             await self.cleanup()
