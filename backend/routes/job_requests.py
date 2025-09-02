@@ -40,7 +40,7 @@ async def create_job_request(
         
     except Exception as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            status_code=500,
             detail=f"Failed to create job request: {str(e)}"
         )
 
