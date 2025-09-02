@@ -78,6 +78,25 @@ const LoginWithPassword = ({ language = 'en', setLanguage }) => {
         // Set user in localStorage for immediate access
         localStorage.setItem('currentUser', JSON.stringify(result.user));
         
+        // Try to link any draft jobs to the user after login
+        try {
+          const linkResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8001'}/api/auth/link-draft-jobs`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          });
+          
+          if (linkResponse.ok) {
+            const linkResult = await linkResponse.json();
+            console.log('Draft jobs linked:', linkResult);
+          }
+        } catch (linkError) {
+          console.log('Could not link draft jobs:', linkError);
+          // Don't block login if linking fails
+        }
+        
         // Check for returnUrl parameter to redirect after login
         const urlParams = new URLSearchParams(window.location.search);
         const returnUrl = urlParams.get('returnUrl');
