@@ -163,7 +163,7 @@ const MajorProjectsPage = () => {
                 className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
               >
                 {/* Icon - Fixed size, same style as hero */}
-                <div className="w-14 h-14 lg:w-16 lg:h-16 text-blue-600 mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0 flex items-center justify-center">
+                <div className="w-14 h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0 flex items-center justify-center">
                   {category.icon}
                 </div>
                 
