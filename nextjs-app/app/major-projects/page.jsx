@@ -3,6 +3,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from '../../contexts/TranslationsContext';
+import { Home, DoorOpen, Shield, Plus, Droplets, Building2, Wrench, Zap, Building, Warehouse } from 'lucide-react';
 
 const MajorProjectsPage = () => {
   const { translations } = useTranslations();
