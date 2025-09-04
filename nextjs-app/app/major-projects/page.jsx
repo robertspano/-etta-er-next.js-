@@ -87,7 +87,15 @@ const MajorProjectsPage = () => {
   ];
 
   const handleCategoryClick = (category) => {
-    router.push(`/post/major-projects?subcategory=${category.key}`);
+    // Only specific major project categories go to job wizard
+    const jobWizardCategories = ['fullRenovation', 'windowsDoors', 'facade', 'extensions', 'bathroom', 'loft', 'partialRenovation', 'roof'];
+    
+    if (jobWizardCategories.includes(category.key)) {
+      router.push(`/post/major-projects?subcategory=${category.key}`);
+    } else {
+      // Other categories go to all categories page
+      router.push('/all-categories');
+    }
   };
 
   return (
