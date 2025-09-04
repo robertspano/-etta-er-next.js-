@@ -873,7 +873,7 @@ const JobPostingWizard = ({ translations, language, category, subcategory }) => 
   );
 
   return (
-    <div className="min-h-screen bg-light_cyan pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 pt-20">
       {/* Main Content */}
       <div className="max-w-2xl mx-auto px-4 py-6">
         {renderProgressBar()}
