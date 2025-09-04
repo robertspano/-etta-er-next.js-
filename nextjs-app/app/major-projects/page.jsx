@@ -87,7 +87,7 @@ const MajorProjectsPage = () => {
   ];
 
   const handleCategoryClick = (category) => {
-    router.push(`/major-projects/start?category=${category.key}`);
+    router.push(`/post/major-projects?subcategory=${category.key}`);
   };
 
   return (
