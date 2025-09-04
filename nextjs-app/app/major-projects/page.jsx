@@ -124,68 +124,111 @@ const MajorProjectsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-stone-50">
-      {/* Header Section */}
-      <div className="bg-stone-50 py-16 lg:py-20">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="max-w-4xl">
-            {/* Main Headline */}
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-6">
-              {translations.xlHeadline}{' '}
-              <span className="relative">
-                <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent font-black">
-                  {translations.xlHeadlineEmphasis}
-                </span>
-                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full"></div>
-              </span>
-            </h1>
+    <section 
+      className="relative min-h-screen flex items-center justify-center"
+      style={{
+        backgroundImage: `url('https://customer-assets.emergentagent.com/job_craft-connect-11/artifacts/czdu1dn3_pexels-freestockpro-12932486.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Background overlay */}
+      <div className="absolute inset-0 bg-black/40"></div>
+      
+      <div className="relative max-w-6xl mx-auto px-4 text-center">
+        {/* Main Headline - same as hero */}
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+          {translations.xlHeadline}
+        </h1>
+        
+        {/* Subtitle with highlighted text - using pacific cyan */}
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-pacific_cyan mb-8">
+          {translations.xlHeadlineEmphasis}
+        </h2>
+        
+        {/* Subtitle description */}
+        <p className="text-lg lg:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto mb-12">
+          {translations.xlSubtitle}
+        </p>
 
-            {/* Subtitle */}
-            <p className="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-3xl">
-              {translations.xlSubtitle}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Categories Grid Section */}
-      <div className="bg-white py-16">
-        <div className="container mx-auto px-4 max-w-7xl">
-          {/* Categories Grid - 3 rows x 4 columns */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 mb-12">
-            {categories.map((category, index) => (
+        {/* Categories Grid - Same style as hero section */}
+        <div className="inline-block bg-white rounded-xl shadow-2xl overflow-hidden">
+          {/* Row 1 - 4 categories */}
+          <div className="grid grid-cols-4 divide-x divide-gray-200">
+            {categories.slice(0, 4).map((category, index) => (
               <button
                 key={index}
                 onClick={() => handleCategoryClick(category)}
-                className="group bg-white border border-gray-200 rounded-xl p-4 lg:p-6 hover:border-blue-300 hover:shadow-lg transition-all duration-300 text-center"
+                className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
               >
-                {/* Icon */}
-                <div className="w-16 h-16 lg:w-20 lg:h-20 mx-auto mb-3 bg-white rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                  <div className="text-[#1B2B5B] w-12 h-12 lg:w-16 lg:h-16">
-                    {category.icon}
-                  </div>
+                {/* Icon - Fixed size, same style as hero */}
+                <div className="w-14 h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
+                  {category.icon}
                 </div>
-
-                {/* Label */}
-                <h3 className="text-xs lg:text-sm font-semibold text-gray-900 leading-tight">
+                
+                {/* Category name - Fixed height with text wrapping */}
+                <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight h-8 lg:h-10 flex items-center justify-center">
                   {category.translation}
-                </h3>
+                </span>
               </button>
             ))}
           </div>
-
-          {/* Note */}
-          <div className="text-center">
-            <p className="text-sm text-gray-500 max-w-2xl mx-auto leading-relaxed">
-              {translations.xlNote}{' '}
-              <a href="#" className="text-blue-600 hover:text-blue-700 underline">
-                {translations.xlLearnMore}
-              </a>
-            </p>
+          
+          {/* Row 2 - 4 categories */}
+          <div className="grid grid-cols-4 divide-x divide-gray-200">
+            {categories.slice(4, 8).map((category, index) => (
+              <button
+                key={index}
+                onClick={() => handleCategoryClick(category)}
+                className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
+              >
+                {/* Icon - Fixed size, same style as hero */}
+                <div className="w-14 h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
+                  {category.icon}
+                </div>
+                
+                {/* Category name - Fixed height with text wrapping */}
+                <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight h-8 lg:h-10 flex items-center justify-center">
+                  {category.translation}
+                </span>
+              </button>
+            ))}
+          </div>
+          
+          {/* Row 3 - 4 categories */}
+          <div className="grid grid-cols-4 divide-x divide-gray-200">
+            {categories.slice(8, 12).map((category, index) => (
+              <button
+                key={index}
+                onClick={() => handleCategoryClick(category)}
+                className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
+              >
+                {/* Icon - Fixed size, same style as hero */}
+                <div className="w-14 h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
+                  {category.icon}
+                </div>
+                
+                {/* Category name - Fixed height with text wrapping */}
+                <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight h-8 lg:h-10 flex items-center justify-center">
+                  {category.translation}
+                </span>
+              </button>
+            ))}
           </div>
         </div>
+
+        {/* Note */}
+        <div className="text-center mt-8">
+          <p className="text-sm text-white/80 max-w-2xl mx-auto leading-relaxed">
+            {translations.xlNote}{' '}
+            <a href="#" className="text-pacific_cyan hover:text-white underline">
+              {translations.xlLearnMore}
+            </a>
+          </p>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
