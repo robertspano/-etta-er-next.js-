@@ -132,7 +132,7 @@ const AutomotiveStep1 = ({ translations, language }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 pt-20">
       {/* Main Content */}
       <div className="max-w-2xl mx-auto px-4 py-6">
         {/* Progress indicators with labels - Mittanbud style */}
