@@ -167,6 +167,7 @@ const JobPostingWizard = ({ translations, language, category, subcategory }) => 
       // Prepare job data for backend
       const jobData = {
         category: formData.category,
+        subcategory: formData.subcategory || null,
         title: formData.title || null,
         description: formData.description || formData.projectDescription || null,
         postcode: formData.postcode,
