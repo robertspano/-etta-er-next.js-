@@ -135,20 +135,33 @@ const AutomotiveStep1 = ({ translations, language }) => {
     <div className="min-h-screen bg-gray-50 pt-20">
       {/* Main Content */}
       <div className="max-w-2xl mx-auto px-4 py-6">
-        {/* Progress bar - Mittanbud style */}
-        <div className="flex items-center justify-center mb-8">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 rounded-full flex items-center justify-center bg-blue-600 text-white text-sm font-medium">
-              1
+        {/* Progress indicators with labels - Mittanbud style */}
+        <div className="text-center mb-8">
+          <div className="flex items-center justify-center mb-4">
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 rounded-full flex items-center justify-center bg-blue-600 text-white text-sm font-medium">
+                1
+              </div>
+              <div className="w-2 h-2 rounded-full bg-gray-300"></div>
+              <div className="w-8 h-8 rounded-full flex items-center justify-center bg-gray-300 text-gray-600 text-sm font-medium">
+                2
+              </div>
+              <div className="w-2 h-2 rounded-full bg-gray-300"></div>
+              <div className="w-8 h-8 rounded-full flex items-center justify-center bg-gray-300 text-gray-600 text-sm font-medium">
+                3
+              </div>
             </div>
-            <div className="w-2 h-2 rounded-full bg-gray-300"></div>
-            <div className="w-8 h-8 rounded-full flex items-center justify-center bg-gray-300 text-gray-600 text-sm font-medium">
-              2
-            </div>
-            <div className="w-2 h-2 rounded-full bg-gray-300"></div>
-            <div className="w-8 h-8 rounded-full flex items-center justify-center bg-gray-300 text-gray-600 text-sm font-medium">
-              3
-            </div>
+          </div>
+          
+          {/* Step labels */}
+          <div className="flex items-center justify-center space-x-1 text-sm text-gray-600">
+            <span className="text-blue-600 font-medium">
+              {language === 'is' ? 'Um verkefnið' : 'About the job'}
+            </span>
+            <span className="mx-2">•</span>
+            <span>{language === 'is' ? 'Samskiptaupplýsingar' : 'Contact info'}</span>
+            <span className="mx-2">•</span>
+            <span>{language === 'is' ? 'Fullkomnað' : 'Complete'}</span>
           </div>
         </div>
 
