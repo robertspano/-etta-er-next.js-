@@ -75,27 +75,29 @@ const CleaningCategoryPicker = ({ translations, language }) => {
             {translations.cleaningCategoryTitle || (language === 'is' ? 'Hvers konar þrifaþjónustu þarftu?' : 'What kind of cleaning service do you need?')}
           </h1>
 
-          {/* Categories Grid - 2x2 layout exactly like Mittanbud */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-            {cleaningSubcategories.map((category, index) => (
-              <button
-                key={category.key}
-                onClick={() => handleSubcategorySelect(category.key)}
-                className="flex items-center p-6 bg-white border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-md transition-all duration-200 text-left group min-h-[120px]"
-              >
-                {/* Icon */}
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gray-50 flex items-center justify-center mr-4 group-hover:bg-blue-50 transition-colors">
-                  <div className="text-[#1B2B5B] group-hover:text-blue-600 transition-colors">
-                    {category.icon}
-                  </div>
-                </div>
-                
-                {/* Category Name */}
-                <span className="font-medium text-gray-900 group-hover:text-blue-700 transition-colors text-lg">
-                  {category.name}
-                </span>
-              </button>
-            ))}
+          {/* Categories Grid - Hero section style with horizontal layout */}
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white shadow-2xl overflow-hidden">
+              <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+                {cleaningSubcategories.map((category, index) => (
+                  <button
+                    key={category.key}
+                    onClick={() => handleSubcategorySelect(category.key)}
+                    className="group flex items-center justify-start p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 gap-3 border border-slate-200 bg-white shadow-sm hover:shadow-md hover:scale-105 transition-transform"
+                  >
+                    {/* Icon - Same size and style as hero */}
+                    <div className="w-14 h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-0 group-hover:scale-110 transition-transform duration-200 flex-shrink-0 flex items-center justify-center">
+                      {category.icon}
+                    </div>
+                    
+                    {/* Category name - Same typography as hero */}
+                    <span className="text-sm lg:text-base font-medium text-gray-800 text-left leading-tight flex items-center justify-center">
+                      {category.name}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
