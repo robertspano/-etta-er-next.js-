@@ -178,7 +178,7 @@ const AutomotiveStep1 = ({ translations, language }) => {
             
             {/* License plate styled like Mittanbud */}
             <div className="flex justify-center mb-6">
-              <div className="relative">
+              <div className="relative" style={{outline: 'none'}}>
                 {/* License plate container */}
                 <div className="bg-white border-2 border-gray-800 rounded-md shadow-lg flex items-center focus-within:outline-none focus-within:ring-0" style={{width: '220px', height: '60px'}}>
                   {/* Icelandic flag */}
