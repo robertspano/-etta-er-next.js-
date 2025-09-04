@@ -178,9 +178,9 @@ const MajorProjectsPage = () => {
 
         {/* Note */}
         <div className="text-center mt-8">
-          <p className="text-sm text-white/80 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm text-gray-600 max-w-2xl mx-auto leading-relaxed">
             {translations.xlNote}{' '}
-            <a href="#" className="text-pacific_cyan hover:text-white underline">
+            <a href="#" className="text-blue-600 hover:text-blue-700 underline">
               {translations.xlLearnMore}
             </a>
           </p>
