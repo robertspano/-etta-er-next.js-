@@ -14,6 +14,7 @@ const AutomotiveStep1 = ({ translations, language }) => {
   const [validationError, setValidationError] = useState('');
   const [lookupLoading, setLookupLoading] = useState(false);
   const [vehicleInfo, setVehicleInfo] = useState(null);
+  const [showHelp, setShowHelp] = useState(false);
 
   // Clean and format license plate input - only allow A-Z and 0-9
   const cleanLicensePlate = (input) => {
