@@ -8,26 +8,26 @@ import { ArrowLeft, Building, Sparkles, Package, MoreHorizontal } from 'lucide-r
 const CleaningCategoryPicker = ({ translations, language }) => {
   const router = useRouter();
 
-  // Only the 4 specific cleaning subcategories from Mittanbud
+  // Only the 4 specific cleaning subcategories from Mittanbud - Hero section style icons
   const cleaningSubcategories = [
     {
       key: 'facadeCleaning',
-      icon: <Building className="w-8 h-8" />,
+      icon: <Building className="w-full h-full" strokeWidth={1.5} />,
       name: translations.facadeCleaning || (language === 'is' ? 'Húsaþrif' : 'Facade Cleaning')
     },
     {
       key: 'cleaningServices',
-      icon: <Sparkles className="w-8 h-8" />,
+      icon: <Sparkles className="w-full h-full" strokeWidth={1.5} />,
       name: translations.cleaningServices || (language === 'is' ? 'Þrifaþjónusta' : 'Cleaning Services')
     },
     {
       key: 'moveOutCleaning',
-      icon: <Package className="w-8 h-8" />,
+      icon: <Package className="w-full h-full" strokeWidth={1.5} />,
       name: translations.moveOutCleaning || (language === 'is' ? 'Flutningsþrif' : 'Move-out Cleaning')
     },
     {
       key: 'otherCleaning',
-      icon: <MoreHorizontal className="w-8 h-8" />,
+      icon: <MoreHorizontal className="w-full h-full" strokeWidth={1.5} />,
       name: translations.otherCleaning || (language === 'is' ? 'Annað (Þrif)' : 'Other (Cleaning)')
     }
   ];
