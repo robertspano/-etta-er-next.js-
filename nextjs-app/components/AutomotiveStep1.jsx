@@ -209,11 +209,12 @@ const AutomotiveStep1 = ({ translations, language }) => {
                     onChange={handlePlateChange}
                     onPaste={handlePaste}
                     placeholder="AB12345"
-                    className="flex-1 h-full bg-transparent border-none outline-none text-center text-xl font-bold text-gray-900 tracking-wider focus:ring-0"
+                    className="flex-1 h-full bg-transparent border-none outline-none text-center text-xl font-bold text-gray-900 tracking-wider focus:ring-0 focus:outline-none focus:border-none"
                     maxLength={7}
                     style={{
                       fontFamily: 'monospace',
-                      letterSpacing: '2px'
+                      letterSpacing: '2px',
+                      boxShadow: 'none'
                     }}
                   />
                 </div>
