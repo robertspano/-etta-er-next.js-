@@ -180,26 +180,26 @@ const AutomotiveStep1 = ({ translations, language }) => {
             <div className="flex justify-center mb-6">
               <div className="relative">
                 {/* License plate container */}
-                <div className="bg-white border-2 border-gray-800 rounded-md shadow-lg flex items-center" style={{width: '220px', height: '60px'}}>
+                <div className="bg-white border-2 border-gray-800 rounded-md shadow-lg flex items-center focus-within:outline-none focus-within:ring-0" style={{width: '220px', height: '60px'}}>
                   {/* Icelandic flag */}
-                  <div className="w-8 h-6 ml-2 mr-3 flex-shrink-0 relative border border-gray-300">
+                  <div className="w-8 h-6 ml-2 mr-3 flex-shrink-0 relative border border-gray-300 overflow-hidden">
                     {/* Blue background */}
                     <div className="w-full h-full bg-blue-600"></div>
                     
-                    {/* White cross (vertical) */}
-                    <div className="absolute top-0 left-2 w-1 h-full bg-white"></div>
+                    {/* White cross - vertical strip */}
+                    <div className="absolute top-0 left-2 w-1.5 h-full bg-white"></div>
                     
-                    {/* White cross (horizontal) */}
-                    <div className="absolute top-2 left-0 w-full h-1 bg-white"></div>
+                    {/* White cross - horizontal strip */}
+                    <div className="absolute top-2 left-0 w-full h-1.5 bg-white"></div>
                     
-                    {/* Red cross (vertical) */}
+                    {/* Red cross - vertical strip (narrower, centered in white) */}
                     <div className="absolute top-0 left-2.5 w-0.5 h-full bg-red-600"></div>
                     
-                    {/* Red cross (horizontal) */}
+                    {/* Red cross - horizontal strip (narrower, centered in white) */}
                     <div className="absolute top-2.5 left-0 w-full h-0.5 bg-red-600"></div>
                     
                     {/* IS text */}
-                    <div className="absolute bottom-0 left-0 text-xs font-bold text-white bg-blue-600 px-0.5">IS</div>
+                    <div className="absolute bottom-0 left-0.5 text-xs font-bold text-white" style={{fontSize: '8px'}}>IS</div>
                   </div>
                   
                   {/* License plate input */}
