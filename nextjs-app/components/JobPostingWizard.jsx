@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Check } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
-const JobPostingWizard = ({ translations, language, category }) => {
+const JobPostingWizard = ({ translations, language, category, subcategory }) => {
   const router = useRouter();
   const { user, loading: authLoading } = useAuth();
   
@@ -21,6 +21,7 @@ const JobPostingWizard = ({ translations, language, category }) => {
   // Form data
   const [formData, setFormData] = useState({
     category: category || '',
+    subcategory: subcategory || '',
     title: '',
     description: '',
     licensePlate: '',  // For automotive category
