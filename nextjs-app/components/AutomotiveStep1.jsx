@@ -224,9 +224,13 @@ const AutomotiveStep1 = ({ translations, language }) => {
             <button
               onClick={handleNext}
               disabled={!isValid}
-              className="bg-gray-300 text-gray-600 px-6 py-2 rounded font-medium mb-4 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-400 hover:text-gray-800 transition-colors"
+              className={`px-6 py-2 rounded font-medium mb-4 transition-colors ${
+                isValid 
+                  ? 'bg-blue-600 text-white hover:bg-blue-700' 
+                  : 'bg-gray-300 text-gray-600 cursor-not-allowed'
+              }`}
             >
-              {validationError ? (language === 'is' ? 'Villa er nauðsynleg' : 'Error is required') : (language === 'is' ? 'Halda áfram' : 'Continue')}
+              {!licensePlate ? (language === 'is' ? 'Villa er nauðsynleg' : 'Error is required') : (language === 'is' ? 'Halda áfram' : 'Continue')}
             </button>
 
             {/* Help text link */}
