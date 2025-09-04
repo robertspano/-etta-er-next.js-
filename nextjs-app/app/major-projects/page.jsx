@@ -12,108 +12,74 @@ const MajorProjectsPage = () => {
   const categories = [
     { 
       key: 'fullRenovation', 
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-        </svg>
-      ), 
+      icon: <Home className="w-full h-full" strokeWidth={1.5} />, 
       translation: translations.xlFullRenovation 
     },
     { 
       key: 'windowsDoors', 
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-          <path d="M2 3h20v18H2V3zm2 2v14h16V5H4zm2 2h12v10H6V7zm2 2v6h8V9H8z"/>
-        </svg>
-      ), 
+      icon: <DoorOpen className="w-full h-full" strokeWidth={1.5} />, 
       translation: translations.xlWindowsDoors 
     },
     { 
       key: 'facade', 
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-          <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.34-.21 2.61-.63 3.78-1.25C19.16 24.65 22 21.05 22 17V7l-10-5zM12 4.15L20 8.18v8.82c0 3.26-2.18 6.34-5 7.14V12h-6v12.14c-2.82-.8-5-3.88-5-7.14V8.18L12 4.15z"/>
-        </svg>
-      ), 
+      icon: <Shield className="w-full h-full" strokeWidth={1.5} />, 
       translation: translations.xlFacade 
     },
     { 
       key: 'extensions', 
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-        </svg>
-      ), 
+      icon: <Plus className="w-full h-full" strokeWidth={1.5} />, 
       translation: translations.xlExtensions 
     },
     { 
       key: 'bathroom', 
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-          <path d="M7 7h10v2H7V7zM7 11h10v8c0 1.1-.9 2-2 2H9c-1.1 0-2-.9-2-2v-8zm2 2v4h6v-4H9z"/>
-        </svg>
-      ), 
+      icon: <Droplets className="w-full h-full" strokeWidth={1.5} />, 
       translation: translations.xlBathroom 
     },
     { 
       key: 'loft', 
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5zm2-8h0v6h0v-6z"/>
-        </svg>
-      ), 
+      icon: <Building2 className="w-full h-full" strokeWidth={1.5} />, 
       translation: translations.xlLoft 
     },
     { 
       key: 'partialRenovation', 
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-          <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/>
-        </svg>
-      ), 
+      icon: <Wrench className="w-full h-full" strokeWidth={1.5} />, 
       translation: translations.xlPartialRenovation 
     },
     { 
       key: 'roof', 
       icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-          <path d="M12 3L2 12h3v8h14v-8h3L12 3zm0 2.84L18.16 12H16v6H8v-6H5.84L12 5.84z"/>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
+          <path d="M3 21h18"/>
+          <path d="M5 21V7l8-4v18"/>
+          <path d="M19 21V7l-8-4"/>
         </svg>
       ), 
       translation: translations.xlRoof 
     },
     { 
       key: 'housingAssociations', 
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-          <path d="M1 11h6V9H1v2zm0 4h6v-2H1v2zm0 4h6v-2H1v2zm8-8h14V9H9v2zm0 4h14v-2H9v2zm0 4h14v-2H9v2zM1 3v4h20V3H1z"/>
-        </svg>
-      ), 
+      icon: <Building className="w-full h-full" strokeWidth={1.5} />, 
       translation: translations.xlHousingAssociations 
     },
     { 
       key: 'basement', 
       icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-          <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-4h-2v2h2v-2zm0-8h-2v6h2V8z"/>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
+          <path d="M3 12h18m-9 4.5V7.5M7.5 21v-9l4.5-4.5 4.5 4.5v9"/>
         </svg>
       ), 
       translation: translations.xlBasement 
     },
     { 
       key: 'garage', 
-      icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-          <path d="M19 11h-8v2h8v-2zm0 4h-8v2h8v-2zm0-8H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2z"/>
-        </svg>
-      ), 
+      icon: <Warehouse className="w-full h-full" strokeWidth={1.5} />, 
       translation: translations.xlGarage 
     },
     { 
       key: 'otherCategories', 
       icon: (
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-          <path d="M3 3v8h8V3H3zm6 6H5V5h4v4zm-6 4v8h8v-8H3zm6 6H5v-4h4v4zm4-16v8h8V3h-8zm6 6h-4V5h4v4zm-6 4v8h8v-8h-8zm6 6h-4v-4h4v4z"/>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
+          <path d="M3 3h6v6H3zM15 3h6v6h-6zM3 15h6v6H3zM15 15h6v6h-6z"/>
         </svg>
       ), 
       translation: translations.xlOtherCategories 
