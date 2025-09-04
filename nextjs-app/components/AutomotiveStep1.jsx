@@ -161,22 +161,30 @@ const AutomotiveStep1 = ({ translations, language }) => {
               {language === 'is' ? 'Leggðu inn bílnúmerið svo hentar við info um kjöreytið ditt fyrir þig' : 'Enter your license plate so we find info about your vehicle for you'}
             </p>
             
-            {/* License plate styled like a real plate */}
+            {/* License plate styled like Mittanbud */}
             <div className="flex justify-center mb-6">
               <div className="relative">
                 {/* License plate container */}
-                <div className="bg-white border-4 border-black rounded-lg p-4 shadow-lg" style={{width: '280px', height: '100px'}}>
+                <div className="bg-white border-2 border-gray-800 rounded-md shadow-lg flex items-center" style={{width: '220px', height: '60px'}}>
                   {/* Icelandic flag */}
-                  <div className="absolute top-2 left-2 w-8 h-6 rounded-sm overflow-hidden">
-                    <div className="w-full h-full bg-blue-600 relative">
-                      <div className="absolute top-0 left-0 w-full h-1 bg-white"></div>
-                      <div className="absolute top-2 left-0 w-full h-1 bg-red-600"></div>
-                      <div className="absolute top-4 left-0 w-full h-1 bg-white"></div>
-                      <div className="absolute top-0 left-0 w-1 h-full bg-white"></div>
-                      <div className="absolute top-0 left-2 w-1 h-full bg-red-600"></div>
-                      <div className="absolute top-0 left-4 w-1 h-full bg-white"></div>
-                    </div>
-                    <span className="absolute bottom-0 left-1 text-xs font-bold text-black">IS</span>
+                  <div className="w-8 h-6 ml-2 mr-3 flex-shrink-0 relative border border-gray-300">
+                    {/* Blue background */}
+                    <div className="w-full h-full bg-blue-600"></div>
+                    
+                    {/* White cross (vertical) */}
+                    <div className="absolute top-0 left-2 w-1 h-full bg-white"></div>
+                    
+                    {/* White cross (horizontal) */}
+                    <div className="absolute top-2 left-0 w-full h-1 bg-white"></div>
+                    
+                    {/* Red cross (vertical) */}
+                    <div className="absolute top-0 left-2.5 w-0.5 h-full bg-red-600"></div>
+                    
+                    {/* Red cross (horizontal) */}
+                    <div className="absolute top-2.5 left-0 w-full h-0.5 bg-red-600"></div>
+                    
+                    {/* IS text */}
+                    <div className="absolute bottom-0 left-0 text-xs font-bold text-white bg-blue-600 px-0.5">IS</div>
                   </div>
                   
                   {/* License plate input */}
@@ -186,20 +194,14 @@ const AutomotiveStep1 = ({ translations, language }) => {
                     onChange={handlePlateChange}
                     onPaste={handlePaste}
                     placeholder="AB12345"
-                    className="w-full h-full bg-transparent border-none outline-none text-center text-3xl font-bold text-black tracking-widest mt-4"
+                    className="flex-1 h-full bg-transparent border-none outline-none text-center text-xl font-bold text-gray-900 tracking-wider focus:ring-0"
                     maxLength={7}
-                    style={{fontFamily: 'monospace'}}
+                    style={{
+                      fontFamily: 'monospace',
+                      letterSpacing: '2px'
+                    }}
                   />
                 </div>
-                
-                {isValid && (
-                  <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex items-center text-green-600">
-                    <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-sm">{language === 'is' ? 'Gilt bílnúmer' : 'Valid license plate'}</span>
-                  </div>
-                )}
               </div>
             </div>
 
