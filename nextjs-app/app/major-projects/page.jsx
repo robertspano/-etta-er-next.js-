@@ -128,18 +128,18 @@ const MajorProjectsPage = () => {
     >
       
       <div className="relative max-w-6xl mx-auto px-4 text-center">
-        {/* Main Headline - same as hero */}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+        {/* Main Headline */}
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
           {translations.xlHeadline}
         </h1>
         
-        {/* Subtitle with highlighted text - using pacific cyan */}
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-pacific_cyan mb-8">
+        {/* Subtitle with highlighted text */}
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-blue-600 mb-8">
           {translations.xlHeadlineEmphasis}
         </h2>
         
         {/* Subtitle description */}
-        <p className="text-lg lg:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto mb-12">
+        <p className="text-lg lg:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto mb-12">
           {translations.xlSubtitle}
         </p>
 
