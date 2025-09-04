@@ -136,35 +136,20 @@ const AutomotiveStep1 = ({ translations, language }) => {
       {/* Main Content */}
       <div className="max-w-2xl mx-auto px-4 py-6">
         {/* Progress indicators - same style as handcraft */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-4">
-            <div className="flex items-center space-x-4">
-              {/* Step 1 - Active */}
-              <div className="w-12 h-12 rounded-full flex items-center justify-center bg-blue-600 text-white text-lg font-medium">
-                1
-              </div>
-              <div className="w-2 h-2 rounded-full bg-gray-300"></div>
-              {/* Step 2 - Inactive */}
-              <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gray-300 text-gray-600 text-lg font-medium">
-                2
-              </div>
-              <div className="w-2 h-2 rounded-full bg-gray-300"></div>
-              {/* Step 3 - Inactive */}
-              <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gray-300 text-gray-600 text-lg font-medium">
-                3
-              </div>
-            </div>
+        <div className="flex items-center justify-center mb-8">
+          {/* Step 1 - Active */}
+          <div className="w-10 h-10 rounded-full flex items-center justify-center bg-honolulu_blue text-white text-sm font-medium">
+            1
           </div>
-          
-          {/* Step labels */}
-          <div className="flex items-center justify-center space-x-1 text-sm text-gray-600">
-            <span className="text-blue-600 font-medium">
-              {language === 'is' ? 'Um verkefnið' : 'About the job'}
-            </span>
-            <span className="mx-3">•</span>
-            <span>{language === 'is' ? 'Samskiptaupplýsingar' : 'Contact info'}</span>
-            <span className="mx-3">•</span>
-            <span>{language === 'is' ? 'Fullkomnað' : 'Complete'}</span>
+          <div className="w-20 h-1 mx-2 bg-gray-200"></div>
+          {/* Step 2 - Inactive */}
+          <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 text-gray-600 text-sm font-medium">
+            2
+          </div>
+          <div className="w-20 h-1 mx-2 bg-gray-200"></div>
+          {/* Step 3 - Inactive */}
+          <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 text-gray-600 text-sm font-medium">
+            3
           </div>
         </div>
 
