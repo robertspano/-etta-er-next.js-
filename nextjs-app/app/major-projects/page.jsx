@@ -124,17 +124,8 @@ const MajorProjectsPage = () => {
   };
 
   return (
-    <section 
-      className="relative min-h-screen flex items-center justify-center"
-      style={{
-        backgroundImage: `url('https://customer-assets.emergentagent.com/job_craft-connect-11/artifacts/czdu1dn3_pexels-freestockpro-12932486.jpg')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
+    <section className="relative min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center pt-20"
     >
-      {/* Background overlay */}
-      <div className="absolute inset-0 bg-black/40"></div>
       
       <div className="relative max-w-6xl mx-auto px-4 text-center">
         {/* Main Headline - same as hero */}
