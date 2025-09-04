@@ -209,17 +209,30 @@ const AutomotiveStep1 = ({ translations, language }) => {
             <button
               onClick={handleNext}
               disabled={!isValid}
-              className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed font-medium mb-4"
+              className="bg-gray-300 text-gray-600 px-6 py-2 rounded font-medium mb-4 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-400 hover:text-gray-800 transition-colors"
             >
-              {language === 'is' ? 'Halda áfram' : 'Continue'}
+              {validationError ? (language === 'is' ? 'Villa er nauðsynleg' : 'Error is required') : (language === 'is' ? 'Halda áfram' : 'Continue')}
             </button>
 
             {/* Help text link */}
             <div className="text-center">
-              <button className="text-blue-600 hover:text-blue-700 text-sm">
+              <button 
+                onClick={() => setShowHelp(!showHelp)}
+                className="text-blue-600 hover:text-blue-700 text-sm underline"
+              >
                 {language === 'is' ? 'Af hverju þurfum við þetta?' : 'Why do we need this?'}
               </button>
             </div>
+            
+            {/* Help text expansion */}
+            {showHelp && (
+              <div className="mt-4 p-4 bg-blue-50 rounded-lg text-sm text-gray-700">
+                {language === 'is' 
+                  ? 'Við notum bílnúmerið til að finna upplýsingar um bílinn þinn svo verkstæði geti gefið nákvæmari tilboð.' 
+                  : 'We use the license plate to find information about your vehicle so workshops can provide more accurate quotes.'
+                }
+              </div>
+            )}
           </div>
         </div>
       </div>
