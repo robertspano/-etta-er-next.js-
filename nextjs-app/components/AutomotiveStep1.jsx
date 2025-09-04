@@ -138,7 +138,7 @@ const AutomotiveStep1 = ({ translations, language }) => {
         {/* Progress indicators - same style as handcraft */}
         <div className="flex items-center justify-center mb-8">
           {/* Step 1 - Active */}
-          <div className="w-10 h-10 rounded-full flex items-center justify-center bg-honolulu_blue text-white text-sm font-medium">
+          <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-600 text-white text-sm font-medium">
             1
           </div>
           <div className="w-20 h-1 mx-2 bg-gray-200"></div>
