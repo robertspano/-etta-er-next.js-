@@ -176,30 +176,33 @@ const AutomotiveStep1 = ({ translations, language }) => {
               {language === 'is' ? 'Leggðu inn bílnúmerið svo hentar við info um kjöreytið ditt fyrir þig' : 'Enter your license plate so we find info about your vehicle for you'}
             </p>
             
-            {/* License plate styled like Mittanbud */}
+            {/* Icelandic License Plate Input */}
             <div className="flex justify-center mb-6">
-              <div className="relative" style={{outline: 'none'}}>
+              <div className="relative max-w-md mx-auto">
                 {/* License plate container */}
-                <div className="bg-white border-2 border-gray-800 rounded-md shadow-lg flex items-center focus-within:outline-none focus-within:ring-0" style={{width: '220px', height: '60px'}}>
-                  {/* Icelandic flag */}
-                  <div className="w-8 h-6 ml-2 mr-3 flex-shrink-0 relative border border-gray-300 overflow-hidden">
-                    {/* Blue background */}
-                    <div className="w-full h-full bg-blue-600"></div>
-                    
-                    {/* White cross - vertical strip */}
-                    <div className="absolute top-0 left-2 w-1.5 h-full bg-white"></div>
-                    
-                    {/* White cross - horizontal strip */}
-                    <div className="absolute top-2 left-0 w-full h-1.5 bg-white"></div>
-                    
-                    {/* Red cross - vertical strip (narrower, centered in white) */}
-                    <div className="absolute top-0 left-2.5 w-0.5 h-full bg-red-600"></div>
-                    
-                    {/* Red cross - horizontal strip (narrower, centered in white) */}
-                    <div className="absolute top-2.5 left-0 w-full h-0.5 bg-red-600"></div>
+                <div className="relative h-14 sm:h-16 rounded-lg shadow-sm" style={{borderColor: '#3B5CCC', borderWidth: '2px'}}>
+                  {/* Left flag box - fixed width blue cube */}
+                  <div className="absolute left-0 top-0 h-full flex flex-col items-center justify-center text-white font-bold" style={{width: '80px', backgroundColor: '#3B5CCC', borderTopLeftRadius: '0.5rem', borderBottomLeftRadius: '0.5rem'}}>
+                    {/* Icelandic flag */}
+                    <div className="w-8 h-5 mb-1 relative border border-white/20 overflow-hidden">
+                      {/* Blue background */}
+                      <div className="w-full h-full bg-blue-600"></div>
+                      
+                      {/* White cross - vertical */}
+                      <div className="absolute top-0 left-2.5 w-1 h-full bg-white"></div>
+                      
+                      {/* White cross - horizontal */}
+                      <div className="absolute top-1.5 left-0 w-full h-1 bg-white"></div>
+                      
+                      {/* Red cross - vertical (narrower, centered) */}
+                      <div className="absolute top-0 left-2.5 w-0.5 h-full bg-red-600" style={{left: '11px'}}></div>
+                      
+                      {/* Red cross - horizontal (narrower, centered) */}
+                      <div className="absolute left-0 w-full h-0.5 bg-red-600" style={{top: '9px'}}></div>
+                    </div>
                     
                     {/* IS text */}
-                    <div className="absolute bottom-0 left-0.5 text-xs font-bold text-white" style={{fontSize: '8px'}}>IS</div>
+                    <div className="text-xs font-bold">IS</div>
                   </div>
                   
                   {/* License plate input */}
@@ -209,15 +212,29 @@ const AutomotiveStep1 = ({ translations, language }) => {
                     onChange={handlePlateChange}
                     onPaste={handlePaste}
                     placeholder="AB12345"
-                    className="flex-1 h-full bg-transparent border-none outline-none text-center text-xl font-bold text-gray-900 tracking-wider focus:ring-0 focus:outline-none focus:border-none"
-                    maxLength={7}
+                    aria-label="Bílnúmer"
+                    aria-invalid={!!validationError}
+                    className={`
+                      w-full h-full bg-white rounded-lg text-center text-2xl sm:text-3xl font-semibold 
+                      tracking-widest uppercase border-0 outline-none pl-24 pr-4
+                      focus:ring-2 focus:ring-sky-500/40
+                      ${validationError ? 'text-red-600' : 'text-gray-900'}
+                    `}
                     style={{
-                      fontFamily: 'monospace',
-                      letterSpacing: '2px',
-                      boxShadow: 'none'
+                      borderColor: validationError ? '#EF4444' : '#3B5CCC',
+                      borderWidth: '2px',
+                      fontFamily: 'system-ui, -apple-system, sans-serif'
                     }}
+                    maxLength={7}
                   />
                 </div>
+                
+                {/* Error message */}
+                {validationError && (
+                  <div className="mt-2 text-sm text-red-600 text-center">
+                    {validationError}
+                  </div>
+                )}
               </div>
             </div>
 
