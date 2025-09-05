@@ -218,6 +218,7 @@ const HousingAssociationsGrid = ({ translations, language }) => {
               </button>
             ))}
           </div>
+          </div>
         </div>
       </div>
     </section>
