@@ -109,8 +109,8 @@ const MovingCategoryPicker = ({ translations, language }) => {
     localStorage.setItem('bc_selected_subcategory', selectedCategory);
     localStorage.setItem('bc_form_data', JSON.stringify(formData));
     
-    // Navigate to the next step
-    router.push('/post/moving/contact');
+    // Navigate to the job wizard at step 2 (contact information)
+    router.push('/post/moving?step=2');
   };
 
   const handleInputChange = (field, value) => {
