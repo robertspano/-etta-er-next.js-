@@ -122,66 +122,102 @@ const HousingAssociationsGrid = ({ translations, language }) => {
   };
 
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 min-h-screen">
+    <section className="py-16 lg:py-24 bg-gradient-to-br from-blue-50 to-cyan-50 min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+          <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8">
             {translations.housingAssociationsTitle || (language === 'is' ? 'Veldu flokk til að leggja inn verkefnið þitt — alveg ókeypis' : 'Choose a category to post your job — completely free')}
           </h1>
-          
-          {/* Search Box */}
-          <form onSubmit={handleSearchSubmit} className="max-w-2xl mx-auto relative">
-            <div className="relative">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={translations.housingAssociationsSearchPlaceholder || (language === 'is' ? 'Hvað þarftu hjálp við?' : 'What do you need help with?')}
-                className="w-full px-6 py-4 text-lg border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pr-14"
-              />
-              <button
-                type="submit"
-                className="absolute right-2 top-1/2 -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full transition-colors"
-              >
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </div>
-          </form>
         </div>
 
-        {/* Categories Grid - Perfect 4x4 Layout */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 lg:gap-6 max-w-5xl mx-auto">
-          {filteredCategories.map((category, index) => (
-            <button
-              key={category.key}
-              onClick={() => handleCategoryClick(category)}
-              className="bg-white aspect-square p-4 lg:p-6 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-200 text-center group flex flex-col justify-center items-center min-h-[140px] lg:min-h-[160px]"
-            >
-              {/* Icon */}
-              <div className="mb-2 lg:mb-3 flex justify-center">
-                <div className="text-[#1B2B5B] group-hover:text-blue-600 transition-colors">
+        {/* Categories Grid - Hero section style */}
+        <div className="inline-block bg-white rounded-xl shadow-2xl overflow-hidden mx-auto">
+          <div className="grid grid-cols-4 divide-x divide-gray-200">
+            {/* Row 1 */}
+            {categories.slice(0, 4).map((category, index) => (
+              <button
+                key={category.key}
+                onClick={() => handleCategoryClick(category)}
+                className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
+              >
+                {/* Icon - Same size and style as hero */}
+                <div className="w-14 h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
                   {category.icon}
                 </div>
-              </div>
-              
-              {/* Category Name */}
-              <h3 className="font-medium text-gray-900 group-hover:text-blue-700 transition-colors text-xs lg:text-sm leading-tight">
-                {category.name}
-              </h3>
-            </button>
-          ))}
-        </div>
-
-        {/* No results message */}
-        {searchQuery && filteredCategories.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-600 text-lg">
-              {language === 'is' ? 'Engir flokkar fundust sem passa við leitina þína.' : 'Ingen kategorier funnet som matcher søket ditt.'}
-            </p>
+                
+                {/* Category name - Same typography as hero */}
+                <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight h-8 lg:h-10 flex items-center justify-center">
+                  {category.name}
+                </span>
+              </button>
+            ))}
           </div>
-        )}
+          
+          <div className="grid grid-cols-4 divide-x divide-gray-200">
+            {/* Row 2 */}
+            {categories.slice(4, 8).map((category, index) => (
+              <button
+                key={category.key}
+                onClick={() => handleCategoryClick(category)}
+                className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
+              >
+                {/* Icon - Same size and style as hero */}
+                <div className="w-14 h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
+                  {category.icon}
+                </div>
+                
+                {/* Category name - Same typography as hero */}
+                <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight h-8 lg:h-10 flex items-center justify-center">
+                  {category.name}
+                </span>
+              </button>
+            ))}
+          </div>
+          
+          <div className="grid grid-cols-4 divide-x divide-gray-200">
+            {/* Row 3 */}
+            {categories.slice(8, 12).map((category, index) => (
+              <button
+                key={category.key}
+                onClick={() => handleCategoryClick(category)}
+                className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
+              >
+                {/* Icon - Same size and style as hero */}
+                <div className="w-14 h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
+                  {category.icon}
+                </div>
+                
+                {/* Category name - Same typography as hero */}
+                <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight h-8 lg:h-10 flex items-center justify-center">
+                  {category.name}
+                </span>
+              </button>
+            ))}
+          </div>
+          
+          <div className="grid grid-cols-4 divide-x divide-gray-200">
+            {/* Row 4 */}
+            {categories.slice(12, 16).map((category, index) => (
+              <button
+                key={category.key}
+                onClick={() => handleCategoryClick(category)}
+                className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
+              >
+                {/* Icon - Same size and style as hero */}
+                <div className="w-14 h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
+                  {category.icon}
+                </div>
+                
+                {/* Category name - Same typography as hero */}
+                <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight h-8 lg:h-10 flex items-center justify-center">
+                  {category.name}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
