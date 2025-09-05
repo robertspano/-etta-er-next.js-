@@ -133,7 +133,8 @@ const HousingAssociationsGrid = ({ translations, language }) => {
         </div>
 
         {/* Categories Grid - Hero section style */}
-        <div className="inline-block bg-white rounded-xl shadow-2xl overflow-hidden mx-auto">
+        <div className="flex justify-center">
+          <div className="inline-block bg-white rounded-xl shadow-2xl overflow-hidden">
           <div className="grid grid-cols-4 divide-x divide-gray-200">
             {/* Row 1 */}
             {categories.slice(0, 4).map((category, index) => (
