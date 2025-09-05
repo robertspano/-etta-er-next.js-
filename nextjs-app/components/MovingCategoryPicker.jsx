@@ -86,101 +86,59 @@ const MovingCategoryPicker = ({ translations, language }) => {
   };
 
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 min-h-screen">
+    <section className="py-16 lg:py-24 bg-gradient-to-br from-blue-50 to-cyan-50 min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Step Header */}
+        {/* Step Header - Same as cleaning/handcraft */}
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-6">
-            <Link 
-              href="/"
-              className="mr-4 p-2 rounded-lg hover:bg-white/80 transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5 text-gray-600" />
-            </Link>
-            <div className="flex-1 max-w-md">
-              {/* Progress Steps */}
-              <div className="text-sm text-gray-600 font-medium mb-2">
-                {language === 'is' ? 'Um verkefnið • Tengiliðaupplýsingar • Lokið' : 'Om jobben • Kontaktinfo • Fullført'}
-              </div>
-              {/* Progress Bar */}
-              <div className="w-full bg-gray-200 rounded-full h-1">
-                <div className="bg-blue-600 h-1 rounded-full" style={{ width: '33%' }}></div>
-              </div>
+          {/* Progress indicators - same style as handcraft */}
+          <div className="flex items-center justify-center mb-8">
+            {/* Step 1 - Active */}
+            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-600 text-white text-sm font-medium">
+              1
+            </div>
+            <div className="w-20 h-1 mx-2 bg-gray-200"></div>
+            {/* Step 2 - Inactive */}
+            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 text-gray-600 text-sm font-medium">
+              2
+            </div>
+            <div className="w-20 h-1 mx-2 bg-gray-200"></div>
+            {/* Step 3 - Inactive */}
+            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 text-gray-600 text-sm font-medium">
+              3
             </div>
           </div>
         </div>
 
-        {/* Main Card */}
-        <div className="bg-white rounded-3xl shadow-lg border border-gray-100 p-8 lg:p-12">
-          
-          {/* Title */}
-          <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 text-center mb-8">
-            {translations.movingCategoryTitle || (language === 'is' ? 'Hvers konar flutningsþjónustu þarftu?' : 'What kind of moving service do you need?')}
-          </h1>
+        {/* Title */}
+        <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 text-center mb-8">
+          {translations.movingCategoryTitle || (language === 'is' ? 'Hvers konar flutningsþjónustu þarftu?' : 'What kind of moving service do you need?')}
+        </h1>
 
-          {/* Subcategories Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            {movingSubcategories.map((subcategory, index) => (
-              <button
-                key={subcategory.key}
-                onClick={() => handleSubcategorySelect(subcategory.key)}
-                className="flex items-center p-4 bg-white border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-md transition-all duration-200 text-left group"
-              >
-                {/* Icon */}
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gray-50 flex items-center justify-center mr-4 group-hover:bg-blue-50 transition-colors">
-                  <div className="text-[#1B2B5B] group-hover:text-blue-600 transition-colors">
-                    {subcategory.icon}
-                  </div>
-                </div>
-                
-                {/* Name */}
-                <span className="font-medium text-gray-900 group-hover:text-blue-700 transition-colors">
-                  {subcategory.name}
-                </span>
-              </button>
-            ))}
-            
-            {/* Additional Categories (Expandable) */}
-            <div className={`col-span-full grid grid-cols-1 md:grid-cols-2 gap-4 transition-all duration-200 ${
-              expanded 
-                ? 'opacity-100 max-h-96' 
-                : 'opacity-0 max-h-0 overflow-hidden'
-            }`}>
-              {additionalSubcategories.map((subcategory, index) => (
+        {/* Categories Grid - Hero section style with selective dividers */}
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white shadow-2xl overflow-hidden">
+            <div className="grid grid-cols-1 md:grid-cols-2 md:divide-x divide-gray-200">
+              {movingSubcategories.map((category, index) => (
                 <button
-                  key={subcategory.key}
-                  onClick={() => handleSubcategorySelect(subcategory.key)}
-                  className="flex items-center p-4 bg-white border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-md transition-all duration-200 text-left group"
+                  key={category.key}
+                  onClick={() => handleSubcategorySelect(category.key)}
+                  className={`group flex items-center justify-start p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 gap-3 border border-slate-200 bg-white shadow-sm hover:shadow-md hover:scale-105 transition-transform ${
+                    index === 0 ? 'border-b border-gray-200' : ''
+                  }`}
                 >
-                  {/* Icon */}
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gray-50 flex items-center justify-center mr-4 group-hover:bg-blue-50 transition-colors">
-                    <div className="text-[#1B2B5B] group-hover:text-blue-600 transition-colors">
-                      {subcategory.icon}
-                    </div>
+                  {/* Icon - Same size and style as hero */}
+                  <div className="w-14 h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-0 group-hover:scale-110 transition-transform duration-200 flex-shrink-0 flex items-center justify-center">
+                    {category.icon}
                   </div>
                   
-                  {/* Name */}
-                  <span className="font-medium text-gray-900 group-hover:text-blue-700 transition-colors">
-                    {subcategory.name}
+                  {/* Category name - Same typography as hero */}
+                  <span className="text-sm lg:text-base font-medium text-gray-800 text-left leading-tight flex items-center justify-center">
+                    {category.name}
                   </span>
                 </button>
               ))}
             </div>
-          </div>
-
-          {/* Toggle More Categories Button */}
-          <div className="text-center">
-            <button
-              onClick={handleToggleExpansion}
-              className="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors"
-              aria-expanded={expanded}
-            >
-              {expanded 
-                ? (language === 'is' ? 'Sýna færri flokka' : 'Vis færre kategorier')
-                : (language === 'is' ? 'Sýna fleiri flokka' : 'Vis flere kategorier')
-              }
-            </button>
           </div>
         </div>
       </div>
