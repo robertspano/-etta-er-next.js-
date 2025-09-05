@@ -26,10 +26,25 @@ const ComplaintPage = () => {
             alt="verki Logo"
             className="h-16 w-auto mx-auto mb-4"
           />
-          <div className="w-32 h-1 bg-gray-300 rounded mx-auto">
-            <div className="h-1 bg-blue-600 rounded animate-pulse" style={{ width: '60%' }}></div>
+          <div className="w-32 h-1 bg-gray-300 rounded mx-auto overflow-hidden">
+            <div className="h-1 bg-blue-600 rounded animate-loading-bar" style={{ width: '30%' }}></div>
           </div>
         </div>
+        
+        <style jsx>{`
+          @keyframes loading-bar {
+            0% {
+              transform: translateX(-100%);
+            }
+            100% {
+              transform: translateX(400%);
+            }
+          }
+          
+          .animate-loading-bar {
+            animation: loading-bar 1.5s ease-in-out infinite;
+          }
+        `}</style>
       </div>
     );
   }
