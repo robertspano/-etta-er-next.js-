@@ -57,7 +57,8 @@ const MovingCategoryPicker = ({ translations, language }) => {
     {
       key: 'pianotransport',
       icon: <Music className="w-full h-full" strokeWidth={1.5} />,
-      name: translations.pianotransport || (language === 'is' ? 'Píanóflutningar' : 'Piano Moving')
+      name: translations.pianotransport || (language === 'is' ? 'Píanóflutningar' : 'Piano Moving'),
+      showForm: true // This category will show the form
     },
     {
       key: 'godstransport',
