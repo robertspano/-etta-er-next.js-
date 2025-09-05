@@ -51,7 +51,8 @@ const MovingCategoryPicker = ({ translations, language }) => {
     {
       key: 'persontransport',
       icon: <Users className="w-full h-full" strokeWidth={1.5} />,
-      name: translations.persontransport || (language === 'is' ? 'Persónuflutningar' : 'Personal Transport')
+      name: translations.persontransport || (language === 'is' ? 'Persónuflutningar' : 'Personal Transport'),
+      showForm: true // This category will show the form
     },
     {
       key: 'pianotransport',
