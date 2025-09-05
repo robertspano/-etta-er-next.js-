@@ -20,7 +20,7 @@ const Footer = ({ translations = {}, language }) => {
               </h3>
               <ul className="space-y-3">
                 <li>
-                  <a href="#" className="text-blue-400 bg-blue-100 px-3 py-1 rounded text-sm hover:bg-blue-200 transition-colors">
+                  <a href="/contact" className="text-blue-400 bg-blue-100 px-3 py-1 rounded text-sm hover:bg-blue-200 transition-colors">
                     {language === 'is' ? 'Tengiliður' : 'Contact'}
                   </a>
                 </li>
