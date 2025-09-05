@@ -278,6 +278,174 @@ const MovingCategoryPicker = ({ translations, language }) => {
             </div>
           </div>
         )}
+
+        {/* Moving Company Form - Appears when moving company is selected */}
+        {selectedCategory === 'flyttebyra' && (
+          <div className="max-w-4xl mx-auto mt-8">
+            <div className="bg-white shadow-2xl rounded-lg overflow-hidden">
+              <div className="p-6 lg:p-8">
+                <form onSubmit={handleFormSubmit} className="space-y-6">
+                  
+                  {/* From Location */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <MapPin className="w-4 h-4 inline mr-2 text-honolulu_blue" />
+                      {language === 'is' ? 'Hvaðan á að flytja?' : 'Where should it be transported from?'}
+                    </label>
+                    <div className="flex gap-4">
+                      <input
+                        type="text"
+                        placeholder={language === 'is' ? 'Götuheiti' : 'Street address'}
+                        value={formData.fromLocation}
+                        onChange={(e) => handleInputChange('fromLocation', e.target.value)}
+                        className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        required
+                      />
+                      <input
+                        type="text"
+                        placeholder={language === 'is' ? 'Póstnúmer' : 'Postal code'}
+                        className="w-32 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      />
+                    </div>
+                  </div>
+
+                  {/* To Location */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <MapPin className="w-4 h-4 inline mr-2 text-honolulu_blue" />
+                      {language === 'is' ? 'Hvert á að flytja?' : 'Where should it be transported to?'}
+                    </label>
+                    <div className="flex gap-4">
+                      <input
+                        type="text"
+                        placeholder={language === 'is' ? 'Götuheiti' : 'Street address'}
+                        value={formData.toLocation}
+                        onChange={(e) => handleInputChange('toLocation', e.target.value)}
+                        className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        required
+                      />
+                      <input
+                        type="text"
+                        placeholder={language === 'is' ? 'Póstnúmer' : 'Postal code'}
+                        className="w-32 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Home Size */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      {language === 'is' ? 'Hvað er heimilið þitt stórt? (m²)' : 'How big is your home? (m²)'}
+                    </label>
+                    <div className="grid grid-cols-5 gap-2">
+                      <button
+                        type="button"
+                        onClick={() => handleInputChange('homeSize', '0-50')}
+                        className={`px-4 py-3 text-sm border rounded-lg transition-colors ${
+                          formData.homeSize === '0-50' 
+                            ? 'bg-blue-100 border-blue-500 text-blue-700' 
+                            : 'border-gray-300 hover:bg-gray-50'
+                        }`}
+                      >
+                        0-50
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleInputChange('homeSize', '51-100')}
+                        className={`px-4 py-3 text-sm border rounded-lg transition-colors ${
+                          formData.homeSize === '51-100' 
+                            ? 'bg-blue-100 border-blue-500 text-blue-700' 
+                            : 'border-gray-300 hover:bg-gray-50'
+                        }`}
+                      >
+                        51-100
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleInputChange('homeSize', '101-150')}
+                        className={`px-4 py-3 text-sm border rounded-lg transition-colors ${
+                          formData.homeSize === '101-150' 
+                            ? 'bg-blue-100 border-blue-500 text-blue-700' 
+                            : 'border-gray-300 hover:bg-gray-50'
+                        }`}
+                      >
+                        101-150
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleInputChange('homeSize', '151-200')}
+                        className={`px-4 py-3 text-sm border rounded-lg transition-colors ${
+                          formData.homeSize === '151-200' 
+                            ? 'bg-blue-100 border-blue-500 text-blue-700' 
+                            : 'border-gray-300 hover:bg-gray-50'
+                        }`}
+                      >
+                        151-200
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleInputChange('homeSize', '200+')}
+                        className={`px-4 py-3 text-sm border rounded-lg transition-colors ${
+                          formData.homeSize === '200+' 
+                            ? 'bg-blue-100 border-blue-500 text-blue-700' 
+                            : 'border-gray-300 hover:bg-gray-50'
+                        }`}
+                      >
+                        200+
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Start Date */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <Calendar className="w-4 h-4 inline mr-2 text-honolulu_blue" />
+                      {language === 'is' ? 'Hvenær vilt þú að verkið hefjist?' : 'When do you want the job to start?'}
+                    </label>
+                    <select
+                      value={formData.startDate}
+                      onChange={(e) => handleInputChange('startDate', e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    >
+                      <option value="">{language === 'is' ? 'Veldu tíma' : 'Select timing'}</option>
+                      <option value="asap">{language === 'is' ? 'Eins fljótt og auðið er' : 'As soon as possible'}</option>
+                      <option value="within_week">{language === 'is' ? 'Innan viku' : 'Within a week'}</option>
+                      <option value="within_month">{language === 'is' ? 'Innan mánaðar' : 'Within a month'}</option>
+                      <option value="flexible">{language === 'is' ? 'Sveigjanlegt' : 'Flexible'}</option>
+                    </select>
+                  </div>
+
+                  {/* Job Description */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      {language === 'is' ? 'Lýsing á verkinu' : 'Job description'}
+                    </label>
+                    <textarea
+                      rows={4}
+                      placeholder={language === 'is' ? 'Lýstu verkinu sem þú þarft að láta gera...' : 'Describe the work that needs to be done...'}
+                      value={formData.description}
+                      onChange={(e) => handleInputChange('description', e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+                      required
+                    />
+                  </div>
+
+                  {/* Submit Button */}
+                  <div className="flex justify-center pt-4">
+                    <button
+                      type="submit"
+                      className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition-colors duration-200 min-w-[200px]"
+                    >
+                      {language === 'is' ? 'Áfram' : 'Continue'}
+                    </button>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
