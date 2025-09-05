@@ -18,9 +18,10 @@ const MovingCategoryPicker = ({ translations, language }) => {
 
   const movingSubcategories = [
     {
-      key: 'varetransport',
+      key: 'sendibila',
       icon: <Truck className="w-full h-full" strokeWidth={1.5} />,
-      name: translations.varetransport || (language === 'is' ? 'Vöruflutninga' : 'Van Transport')
+      name: translations.sendibila || (language === 'is' ? 'Sendibílaþjónusta' : 'Delivery Service'),
+      showForm: true // This category will show the form
     },
     {
       key: 'flyttebyra',
