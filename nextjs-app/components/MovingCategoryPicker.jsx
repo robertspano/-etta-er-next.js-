@@ -13,7 +13,8 @@ const MovingCategoryPicker = ({ translations, language }) => {
     fromLocation: '',
     toLocation: '',
     startDate: '',
-    description: ''
+    description: '',
+    homeSize: ''
   });
 
   const movingSubcategories = [
