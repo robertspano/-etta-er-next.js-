@@ -13,10 +13,7 @@ const ContactPage = () => {
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link href="/" className="flex items-center text-blue-600 hover:text-blue-700">
-            <ArrowLeft className="w-5 h-5 mr-2" />
-            {language === 'is' ? 'Til baka' : 'Back'}
-          </Link>
+          {/* Empty header for spacing */}
         </div>
       </div>
 
@@ -24,9 +21,6 @@ const ContactPage = () => {
         
         {/* Page Header */}
         <div className="text-center mb-16">
-          <p className="text-blue-600 font-medium mb-4">
-            {language === 'is' ? 'Um' : 'About'}
-          </p>
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             {language === 'is' 
               ? 'Þarftu að komast í samband við verki?' 
@@ -49,7 +43,6 @@ const ContactPage = () => {
                 alt="verki Logo"
                 className="h-16 w-auto mx-auto mb-4"
               />
-              <h2 className="text-3xl font-bold text-gray-900">verki</h2>
             </div>
 
             {/* Service Icons */}
