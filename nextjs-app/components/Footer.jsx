@@ -110,10 +110,11 @@ const Footer = ({ translations = {}, language }) => {
       {/* Bottom Footer Section */}
       <div className="bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col lg:flex-row justify-between items-center">
+          <div className="flex justify-between items-start">
             
-            {/* Left side - Logo and Copyright */}
-            <div className="flex flex-col lg:flex-row items-center space-y-4 lg:space-y-0 lg:space-x-6">
+            {/* Left side - Logo, Copyright, and Legal Links stacked */}
+            <div className="flex flex-col space-y-4">
+              {/* Logo */}
               <div className="flex items-center">
                 <img 
                   src="https://customer-assets.emergentagent.com/job_construction-hub-19/artifacts/k90y66eg_Your%20paragraph%20text%20%283000%20x%203000%20px%29%20%281000%20x%201000%20px%29%20%28Logo%29%20%282%29-cropped.svg" 
@@ -121,28 +122,30 @@ const Footer = ({ translations = {}, language }) => {
                   className="h-8 w-auto object-contain brightness-0 invert"
                 />
               </div>
+              
+              {/* Copyright */}
               <p className="text-gray-400 text-sm">
                 verki Marketplaces AS © {currentYear}
               </p>
-            </div>
-
-            {/* Center - Legal Links */}
-            <div className="flex flex-wrap justify-center items-center space-x-4 text-sm text-gray-400 my-4 lg:my-0">
-              <a href="#" className="hover:text-white transition-colors">
-                {language === 'is' ? 'Persónuverndarstefna' : 'Privacy policy'}
-              </a>
-              <span>•</span>
-              <a href="#" className="hover:text-white transition-colors">
-                {language === 'is' ? 'Síðukort' : 'Sitemap'}
-              </a>
-              <span>•</span>
-              <a href="#" className="hover:text-white transition-colors">
-                {language === 'is' ? 'Skilmálar' : 'Terms'}
-              </a>
-              <span>•</span>
-              <a href="#" className="hover:text-white transition-colors">
-                {language === 'is' ? 'Vafrakökustillingar' : 'Cookie settings'}
-              </a>
+              
+              {/* Legal Links */}
+              <div className="flex flex-wrap items-center space-x-4 text-sm text-gray-400">
+                <a href="#" className="hover:text-white transition-colors">
+                  {language === 'is' ? 'Persónuverndarstefna' : 'Privacy policy'}
+                </a>
+                <span>•</span>
+                <a href="#" className="hover:text-white transition-colors">
+                  {language === 'is' ? 'Síðukort' : 'Sitemap'}
+                </a>
+                <span>•</span>
+                <a href="#" className="hover:text-white transition-colors">
+                  {language === 'is' ? 'Skilmálar' : 'Terms'}
+                </a>
+                <span>•</span>
+                <a href="#" className="hover:text-white transition-colors">
+                  {language === 'is' ? 'Vafrakökustillingar' : 'Cookie settings'}
+                </a>
+              </div>
             </div>
 
             {/* Right side - Social Media */}
