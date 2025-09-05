@@ -79,13 +79,37 @@ const MovingCategoryPicker = ({ translations, language }) => {
     }
   ];
 
-  const handleSubcategorySelect = (subcategoryKey) => {
-    // Store moving subcategory in localStorage for the wizard
-    localStorage.setItem('bc_selected_category', 'moving');
-    localStorage.setItem('bc_selected_subcategory', subcategoryKey);
+  const handleSubcategorySelect = (subcategoryKey, category) => {
+    if (category.showForm) {
+      // If this category should show the form, set it as selected
+      setSelectedCategory(subcategoryKey);
+    } else {
+      // Store moving subcategory in localStorage for the wizard
+      localStorage.setItem('bc_selected_category', 'moving');
+      localStorage.setItem('bc_selected_subcategory', subcategoryKey);
+      
+      // Navigate to simplified contact info form
+      router.push('/post/moving/contact');
+    }
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
     
-    // Navigate to simplified contact info form
+    // Store the form data and selected category
+    localStorage.setItem('bc_selected_category', 'moving');
+    localStorage.setItem('bc_selected_subcategory', selectedCategory);
+    localStorage.setItem('bc_form_data', JSON.stringify(formData));
+    
+    // Navigate to the next step
     router.push('/post/moving/contact');
+  };
+
+  const handleInputChange = (field, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
   };
 
   const handleToggleExpansion = (e) => {
