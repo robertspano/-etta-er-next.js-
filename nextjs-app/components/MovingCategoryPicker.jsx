@@ -45,7 +45,8 @@ const MovingCategoryPicker = ({ translations, language }) => {
     {
       key: 'annetFlytting',
       icon: <MoreHorizontal className="w-full h-full" strokeWidth={1.5} />,
-      name: translations.annetFlytting || (language === 'is' ? 'Annað (Flutningar)' : 'Other Moving/Transport')
+      name: translations.annetFlytting || (language === 'is' ? 'Annað (Flutningar)' : 'Other Moving/Transport'),
+      showForm: true // This category will show the form
     },
     {
       key: 'persontransport',
