@@ -75,27 +75,81 @@ const CleaningCategoryPicker = ({ translations, language }) => {
             {translations.cleaningCategoryTitle || (language === 'is' ? 'Hvers konar þrifaþjónustu þarftu?' : 'What kind of cleaning service do you need?')}
           </h1>
 
-          {/* Categories Grid - Hero section style with horizontal layout */}
+          {/* Categories Grid - Hero section style with selective dividers */}
           <div className="max-w-4xl mx-auto">
             <div className="bg-white shadow-2xl overflow-hidden">
-              <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
-                {cleaningSubcategories.map((category, index) => (
+              <div className="grid grid-cols-1 md:grid-cols-2 md:divide-x divide-gray-200">
+                
+                {/* Left Column - Húsaþrif and Flutningsþrif with divider between them */}
+                <div className="divide-y divide-gray-200">
                   <button
-                    key={category.key}
-                    onClick={() => handleSubcategorySelect(category.key)}
+                    key={cleaningSubcategories[0].key}
+                    onClick={() => handleSubcategorySelect(cleaningSubcategories[0].key)}
                     className="group flex items-center justify-start p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 gap-3 border border-slate-200 bg-white shadow-sm hover:shadow-md hover:scale-105 transition-transform"
                   >
                     {/* Icon - Same size and style as hero */}
                     <div className="w-14 h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-0 group-hover:scale-110 transition-transform duration-200 flex-shrink-0 flex items-center justify-center">
-                      {category.icon}
+                      {cleaningSubcategories[0].icon}
                     </div>
                     
                     {/* Category name - Same typography as hero */}
                     <span className="text-sm lg:text-base font-medium text-gray-800 text-left leading-tight flex items-center justify-center">
-                      {category.name}
+                      {cleaningSubcategories[0].name}
                     </span>
                   </button>
-                ))}
+                  
+                  <button
+                    key={cleaningSubcategories[2].key}
+                    onClick={() => handleSubcategorySelect(cleaningSubcategories[2].key)}
+                    className="group flex items-center justify-start p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 gap-3 border border-slate-200 bg-white shadow-sm hover:shadow-md hover:scale-105 transition-transform"
+                  >
+                    {/* Icon - Same size and style as hero */}
+                    <div className="w-14 h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-0 group-hover:scale-110 transition-transform duration-200 flex-shrink-0 flex items-center justify-center">
+                      {cleaningSubcategories[2].icon}
+                    </div>
+                    
+                    {/* Category name - Same typography as hero */}
+                    <span className="text-sm lg:text-base font-medium text-gray-800 text-left leading-tight flex items-center justify-center">
+                      {cleaningSubcategories[2].name}
+                    </span>
+                  </button>
+                </div>
+
+                {/* Right Column - Þrifaþjónusta and Annað with no divider between them */}
+                <div>
+                  <button
+                    key={cleaningSubcategories[1].key}
+                    onClick={() => handleSubcategorySelect(cleaningSubcategories[1].key)}
+                    className="group flex items-center justify-start p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 gap-3 border border-slate-200 bg-white shadow-sm hover:shadow-md hover:scale-105 transition-transform"
+                  >
+                    {/* Icon - Same size and style as hero */}
+                    <div className="w-14 h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-0 group-hover:scale-110 transition-transform duration-200 flex-shrink-0 flex items-center justify-center">
+                      {cleaningSubcategories[1].icon}
+                    </div>
+                    
+                    {/* Category name - Same typography as hero */}
+                    <span className="text-sm lg:text-base font-medium text-gray-800 text-left leading-tight flex items-center justify-center">
+                      {cleaningSubcategories[1].name}
+                    </span>
+                  </button>
+                  
+                  <button
+                    key={cleaningSubcategories[3].key}
+                    onClick={() => handleSubcategorySelect(cleaningSubcategories[3].key)}
+                    className="group flex items-center justify-start p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 gap-3 border border-slate-200 bg-white shadow-sm hover:shadow-md hover:scale-105 transition-transform"
+                  >
+                    {/* Icon - Same size and style as hero */}
+                    <div className="w-14 h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-0 group-hover:scale-110 transition-transform duration-200 flex-shrink-0 flex items-center justify-center">
+                      {cleaningSubcategories[3].icon}
+                    </div>
+                    
+                    {/* Category name - Same typography as hero */}
+                    <span className="text-sm lg:text-base font-medium text-gray-800 text-left leading-tight flex items-center justify-center">
+                      {cleaningSubcategories[3].name}
+                    </span>
+                  </button>
+                </div>
+
               </div>
             </div>
           </div>
