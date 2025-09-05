@@ -63,7 +63,8 @@ const MovingCategoryPicker = ({ translations, language }) => {
     {
       key: 'godstransport',
       icon: <Box className="w-full h-full" strokeWidth={1.5} />,
-      name: translations.godstransport || (language === 'is' ? 'Vöruflutningar' : 'Freight Transport')
+      name: translations.godstransport || (language === 'is' ? 'Vöruflutningar' : 'Freight Transport'),
+      showForm: true // This category will show the form
     }
   ];
 
