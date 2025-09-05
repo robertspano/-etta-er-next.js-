@@ -26,7 +26,8 @@ const MovingCategoryPicker = ({ translations, language }) => {
     {
       key: 'flyttebyra',
       icon: <Package className="w-full h-full" strokeWidth={1.5} />,
-      name: translations.flyttebyra || (language === 'is' ? 'Flutningafyrirtæki' : 'Moving Company')
+      name: translations.flyttebyra || (language === 'is' ? 'Flutningafyrirtæki' : 'Moving Company'),
+      showForm: true // This category will show the form
     },
     {
       key: 'avfallshandtering',
