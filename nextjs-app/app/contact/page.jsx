@@ -10,10 +10,10 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         
         {/* Page Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 mt-12">
           <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             {language === 'is' 
               ? 'Þarftu að komast í samband við verki?' 
