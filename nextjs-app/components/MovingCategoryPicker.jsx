@@ -3,11 +3,18 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, Truck, Package, Trash2, Car, MoreHorizontal, Users, Music, Box, Warehouse, Archive, Plane } from 'lucide-react';
+import { ArrowLeft, Truck, Package, Trash2, Car, MoreHorizontal, Users, Music, Box, Warehouse, Archive, Plane, Calendar, MapPin } from 'lucide-react';
 
 const MovingCategoryPicker = ({ translations, language }) => {
   const router = useRouter();
   const [expanded, setExpanded] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [formData, setFormData] = useState({
+    fromLocation: '',
+    toLocation: '',
+    startDate: '',
+    description: ''
+  });
 
   const movingSubcategories = [
     {
