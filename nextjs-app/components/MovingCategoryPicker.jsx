@@ -39,7 +39,8 @@ const MovingCategoryPicker = ({ translations, language }) => {
     {
       key: 'transportBilBat',
       icon: <Car className="w-full h-full" strokeWidth={1.5} />,
-      name: translations.transportBilBat || (language === 'is' ? 'Bíla- og bátaflutningar' : 'Vehicle/Boat Transport')
+      name: translations.transportBilBat || (language === 'is' ? 'Bíla- og bátaflutningar' : 'Vehicle/Boat Transport'),
+      showForm: true // This category will show the form
     },
     {
       key: 'annetFlytting',
