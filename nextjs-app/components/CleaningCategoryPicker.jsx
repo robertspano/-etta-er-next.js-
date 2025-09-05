@@ -45,7 +45,7 @@ const CleaningCategoryPicker = ({ translations, language }) => {
     <section className="py-16 lg:py-24 bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Step Header */}
+        {/* Step Header - Same as handcraft/automotive */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-6">
             <Link 
@@ -54,15 +54,23 @@ const CleaningCategoryPicker = ({ translations, language }) => {
             >
               <ArrowLeft className="w-5 h-5 text-gray-600" />
             </Link>
-            <div className="flex-1 max-w-md">
-              {/* Progress Steps - 3 step flow like Mittanbud */}
-              <div className="text-sm text-gray-600 font-medium mb-2">
-                {translations.cleaningStepHeader || (language === 'is' ? 'Um verkefnið • Tengiliðaupplýsingar • Lokið' : 'About the job • Contact info • Complete')}
-              </div>
-              {/* Progress Bar - Step 1 of 3 */}
-              <div className="w-full bg-gray-200 rounded-full h-1">
-                <div className="bg-blue-600 h-1 rounded-full" style={{ width: '33%' }}></div>
-              </div>
+          </div>
+          
+          {/* Progress indicators - same style as handcraft */}
+          <div className="flex items-center justify-center mb-8">
+            {/* Step 1 - Active */}
+            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-blue-600 text-white text-sm font-medium">
+              1
+            </div>
+            <div className="w-20 h-1 mx-2 bg-gray-200"></div>
+            {/* Step 2 - Inactive */}
+            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 text-gray-600 text-sm font-medium">
+              2
+            </div>
+            <div className="w-20 h-1 mx-2 bg-gray-200"></div>
+            {/* Step 3 - Inactive */}
+            <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 text-gray-600 text-sm font-medium">
+              3
             </div>
           </div>
         </div>
