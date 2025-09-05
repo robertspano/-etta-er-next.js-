@@ -118,9 +118,8 @@ const Footer = ({ translations = {}, language }) => {
                 <img 
                   src="https://customer-assets.emergentagent.com/job_construction-hub-19/artifacts/k90y66eg_Your%20paragraph%20text%20%283000%20x%203000%20px%29%20%281000%20x%201000%20px%29%20%28Logo%29%20%282%29-cropped.svg" 
                   alt="verki Logo" 
-                  className="h-8 w-auto object-contain"
+                  className="h-8 w-auto object-contain brightness-0 invert"
                 />
-                <span className="ml-2 text-xl font-bold text-white">verki</span>
               </div>
               <p className="text-gray-400 text-sm">
                 verki Marketplaces AS © {currentYear}
