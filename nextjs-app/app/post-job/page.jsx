@@ -68,7 +68,7 @@ const PostJobPage = () => {
     <section 
       className="relative min-h-screen flex items-center justify-center pt-20"
       style={{
-        backgroundImage: `url('https://customer-assets.emergentagent.com/job_icejobs/artifacts/h9dx0kkm_ChatGPT%20Image%20Sep%205%2C%202025%2C%2009_10_12%20PM.png')`,
+        backgroundImage: `url('https://customer-assets.emergentagent.com/job_craft-connect-11/artifacts/czdu1dn3_pexels-freestockpro-12932486.jpg')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
