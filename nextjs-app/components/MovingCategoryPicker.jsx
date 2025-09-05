@@ -33,7 +33,8 @@ const MovingCategoryPicker = ({ translations, language }) => {
     {
       key: 'avfallshandtering',
       icon: <Trash2 className="w-full h-full" strokeWidth={1.5} />,
-      name: translations.avfallshandtering || (language === 'is' ? 'Sorpmeðhöndlun' : 'Waste Management')
+      name: translations.avfallshandtering || (language === 'is' ? 'Sorpmeðhöndlun' : 'Waste Management'),
+      showForm: true // This category will show the form
     },
     {
       key: 'transportBilBat',
