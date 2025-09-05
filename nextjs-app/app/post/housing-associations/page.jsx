@@ -1,16 +1,32 @@
 'use client';
 
 import React from 'react';
-import HousingAssociationsGrid from '../../../components/HousingAssociationsGrid';
+import { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useTranslations } from '../../../contexts/TranslationsContext';
+import JobPostingWizard from '../../../components/JobPostingWizard';
 
-export default function HousingAssociationsPostPage() {
-  const { language, translations } = useTranslations();
-  
+const HousingAssociationsPostingWrapper = () => {
+  const { translations, language } = useTranslations();
+  const searchParams = useSearchParams();
+  const subcategory = searchParams.get('subcategory');
+
   return (
-    <HousingAssociationsGrid 
+    <JobPostingWizard 
       translations={translations} 
-      language={language}
+      language={language} 
+      category="housingAssociations"
+      subcategory={subcategory}
     />
   );
-}
+};
+
+const HousingAssociationsPostingPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HousingAssociationsPostingWrapper />
+    </Suspense>
+  );
+};
+
+export default HousingAssociationsPostingPage;
