@@ -11,7 +11,7 @@ const ProSignupSection = ({ translations }) => {
         <div className="flex flex-col md:flex-row min-h-[500px] md:min-h-[600px] items-center gap-4 md:gap-8">
           
           {/* Left side - Professional Photo */}
-          <div className="relative flex-1 flex justify-center lg:justify-end lg:pr-8">
+          <div className="relative flex-1 flex justify-center lg:justify-end lg:pr-8 items-start lg:items-start pt-8">
             {/* Professional photo */}
             <Image 
               src="https://customer-assets.emergentagent.com/job_icejobs/artifacts/l41dnwnm_ChatGPT%20Image%20Sep%205%2C%202025%2C%2009_10_12%20PM.png"
