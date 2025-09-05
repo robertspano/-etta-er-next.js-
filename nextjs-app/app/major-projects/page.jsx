@@ -88,7 +88,7 @@ const MajorProjectsPage = () => {
 
   const handleCategoryClick = (category) => {
     // Only specific major project categories go to job wizard
-    const jobWizardCategories = ['fullRenovation', 'windowsDoors', 'facade', 'extensions', 'bathroom', 'loft', 'partialRenovation', 'roof'];
+    const jobWizardCategories = ['fullRenovation', 'windowsDoors', 'facade', 'extensions', 'bathroom', 'loft', 'partialRenovation', 'roof', 'housingAssociations', 'basement', 'garage'];
     
     if (jobWizardCategories.includes(category.key)) {
       router.push(`/post/major-projects?subcategory=${category.key}`);
