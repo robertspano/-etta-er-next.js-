@@ -30,33 +30,33 @@ const ContactPage = () => {
         <div className="bg-gray-100 rounded-lg p-12 mb-16">
           <div className="text-center">
             {/* Logo */}
-            <div className="mb-8">
+            <div className="mb-12">
               <img 
                 src="https://customer-assets.emergentagent.com/job_construction-hub-19/artifacts/k90y66eg_Your%20paragraph%20text%20%283000%20x%203000%20px%29%20%281000%20x%201000%20px%29%20%28Logo%29%20%282%29-cropped.svg"
                 alt="verki Logo"
-                className="h-16 w-auto mx-auto mb-4"
+                className="h-24 w-auto mx-auto mb-4"
               />
             </div>
 
             {/* Service Icons */}
-            <div className="flex justify-center items-center space-x-8">
+            <div className="flex justify-center items-center space-x-12">
               <div className="text-gray-600">
-                <Hammer className="w-12 h-12 mx-auto" />
+                <Hammer className="w-16 h-16 mx-auto" />
               </div>
               <div className="text-gray-600">
-                <MessageSquare className="w-12 h-12 mx-auto" />
+                <MessageSquare className="w-16 h-16 mx-auto" />
               </div>
               <div className="text-gray-600">
-                <Brush className="w-12 h-12 mx-auto" />
+                <Brush className="w-16 h-16 mx-auto" />
               </div>
               <div className="text-gray-600">
-                <Droplets className="w-12 h-12 mx-auto" />
+                <Droplets className="w-16 h-16 mx-auto" />
               </div>
               <div className="text-gray-600">
-                <Shield className="w-12 h-12 mx-auto" />
+                <Shield className="w-16 h-16 mx-auto" />
               </div>
               <div className="text-gray-600">
-                <AlertTriangle className="w-12 h-12 mx-auto" />
+                <AlertTriangle className="w-16 h-16 mx-auto" />
               </div>
             </div>
           </div>
