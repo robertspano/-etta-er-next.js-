@@ -13,52 +13,94 @@ const Footer = ({ translations = {}, language }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             
-            {/* Om verki */}
+            {/* Um verki / About verki */}
             <div>
-              <h3 className="text-lg font-semibold mb-6 text-white">Om verki</h3>
+              <h3 className="text-lg font-semibold mb-6 text-white">
+                {language === 'is' ? 'Um verki' : 'About verki'}
+              </h3>
               <ul className="space-y-3">
                 <li>
                   <a href="#" className="text-blue-400 bg-blue-100 px-3 py-1 rounded text-sm hover:bg-blue-200 transition-colors">
-                    Kontakt
+                    {language === 'is' ? 'Tengiliður' : 'Contact'}
                   </a>
                 </li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Presse</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Karriere</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Vår historie</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  {language === 'is' ? 'Fréttir' : 'Press'}
+                </a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  {language === 'is' ? 'Starfsmöguleikar' : 'Careers'}
+                </a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  {language === 'is' ? 'Saga okkar' : 'Our story'}
+                </a></li>
               </ul>
             </div>
 
-            {/* For privatperson */}
+            {/* Fyrir einstaklinga / For individuals */}
             <div>
-              <h3 className="text-lg font-semibold mb-6 text-white">For privatperson</h3>
+              <h3 className="text-lg font-semibold mb-6 text-white">
+                {language === 'is' ? 'Fyrir einstaklinga' : 'For individuals'}
+              </h3>
               <ul className="space-y-3">
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Aktuelt</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Inspirasjon</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Hjelpesenter</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Referanser</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Startguide</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  {language === 'is' ? 'Fréttir' : 'News'}
+                </a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  {language === 'is' ? 'Hugmyndir' : 'Inspiration'}
+                </a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  {language === 'is' ? 'Hjálparmiðstöð' : 'Help center'}
+                </a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  {language === 'is' ? 'Umsagnir' : 'Reviews'}
+                </a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  {language === 'is' ? 'Byrjendahandbók' : 'Getting started'}
+                </a></li>
               </ul>
             </div>
 
-            {/* For bedrifter */}
+            {/* Fyrir fyrirtæki / For businesses */}
             <div>
-              <h3 className="text-lg font-semibold mb-6 text-white">For bedrifter</h3>
+              <h3 className="text-lg font-semibold mb-6 text-white">
+                {language === 'is' ? 'Fyrir fyrirtæki' : 'For businesses'}
+              </h3>
               <ul className="space-y-3">
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Registrer bedrift</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Referanser</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Aktuelt</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Startguide</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Fordeler</a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  {language === 'is' ? 'Skrá fyrirtæki' : 'Register business'}
+                </a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  {language === 'is' ? 'Umsagnir' : 'Reviews'}
+                </a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  {language === 'is' ? 'Fréttir' : 'News'}
+                </a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  {language === 'is' ? 'Byrjendahandbók' : 'Getting started'}
+                </a></li>
+                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
+                  {language === 'is' ? 'Kostir' : 'Benefits'}
+                </a></li>
               </ul>
             </div>
 
-            {/* Kundeservice */}
+            {/* Þjónustuver / Customer service */}
             <div>
-              <h3 className="text-lg font-semibold mb-6 text-white">Kundeservice</h3>
+              <h3 className="text-lg font-semibold mb-6 text-white">
+                {language === 'is' ? 'Þjónustuver' : 'Customer service'}
+              </h3>
               <div className="space-y-3 text-gray-300">
-                <p className="text-sm">09:00 - 16:00 på hverdager. Stengt í helgene</p>
-                <p className="text-sm">Send e-post: info@verki.is</p>
-                <p className="text-sm">Ring oss: 22 00 09 30</p>
+                <p className="text-sm">
+                  {language === 'is' 
+                    ? '09:00 - 16:00 á virkum dögum. Lokað um helgar' 
+                    : '09:00 - 16:00 on weekdays. Closed on weekends'}
+                </p>
+                <p className="text-sm">
+                  {language === 'is' ? 'Sendu tölvupóst: info@verki.is' : 'Send email: info@verki.is'}
+                </p>
+                <p className="text-sm">
+                  {language === 'is' ? 'Hringdu í okkur: +354 22 00 09 30' : 'Call us: +354 22 00 09 30'}
+                </p>
               </div>
             </div>
           </div>
@@ -87,13 +129,21 @@ const Footer = ({ translations = {}, language }) => {
 
             {/* Center - Legal Links */}
             <div className="flex flex-wrap justify-center items-center space-x-4 text-sm text-gray-400 my-4 lg:my-0">
-              <a href="#" className="hover:text-white transition-colors">Personvernerklæring</a>
+              <a href="#" className="hover:text-white transition-colors">
+                {language === 'is' ? 'Persónuverndarstefna' : 'Privacy policy'}
+              </a>
               <span>•</span>
-              <a href="#" className="hover:text-white transition-colors">Nettstedskart</a>
+              <a href="#" className="hover:text-white transition-colors">
+                {language === 'is' ? 'Síðukort' : 'Sitemap'}
+              </a>
               <span>•</span>
-              <a href="#" className="hover:text-white transition-colors">Vilkår</a>
+              <a href="#" className="hover:text-white transition-colors">
+                {language === 'is' ? 'Skilmálar' : 'Terms'}
+              </a>
               <span>•</span>
-              <a href="#" className="hover:text-white transition-colors">Cookie innstillinger</a>
+              <a href="#" className="hover:text-white transition-colors">
+                {language === 'is' ? 'Vafrakökustillingar' : 'Cookie settings'}
+              </a>
             </div>
 
             {/* Right side - Social Media */}
