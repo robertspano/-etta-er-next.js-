@@ -691,6 +691,65 @@ const MovingCategoryPicker = ({ translations, language }) => {
             </div>
           </div>
         )}
+
+        {/* Piano Moving Form - Appears when piano moving is selected */}
+        {selectedCategory === 'pianotransport' && (
+          <div className="max-w-4xl mx-auto mt-8">
+            <div className="bg-white shadow-2xl rounded-lg overflow-hidden">
+              <div className="p-6 lg:p-8">
+                <form onSubmit={handleFormSubmit} className="space-y-6">
+                  
+                  {/* Start Date */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <Calendar className="w-4 h-4 inline mr-2 text-honolulu_blue" />
+                      {language === 'is' ? 'Hvenær vilt þú að verkið hefjist?' : 'When do you want the job to start?'}
+                    </label>
+                    <select
+                      value={formData.startDate}
+                      onChange={(e) => handleInputChange('startDate', e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      required
+                    >
+                      <option value="">{language === 'is' ? 'Veldu tíma' : 'Select timing'}</option>
+                      <option value="anytime">{language === 'is' ? 'Hvenær sem er' : 'Anytime'}</option>
+                      <option value="asap">{language === 'is' ? 'Eins fljótt og auðið er' : 'As soon as possible'}</option>
+                      <option value="within_week">{language === 'is' ? 'Innan viku' : 'Within a week'}</option>
+                      <option value="within_month">{language === 'is' ? 'Innan mánaðar' : 'Within a month'}</option>
+                      <option value="flexible">{language === 'is' ? 'Sveigjanlegt' : 'Flexible'}</option>
+                    </select>
+                  </div>
+
+                  {/* Job Description */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      {language === 'is' ? 'Lýsing á verkinu' : 'Job description'}
+                    </label>
+                    <textarea
+                      rows={4}
+                      placeholder={language === 'is' ? 'Lýstu verkinu sem þú þarft að láta gera...' : 'Describe the work that needs to be done...'}
+                      value={formData.description}
+                      onChange={(e) => handleInputChange('description', e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+                      required
+                    />
+                  </div>
+
+                  {/* Submit Button */}
+                  <div className="flex justify-center pt-4">
+                    <button
+                      type="submit"
+                      className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition-colors duration-200 min-w-[200px]"
+                    >
+                      {language === 'is' ? 'Áfram' : 'Continue'}
+                    </button>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
