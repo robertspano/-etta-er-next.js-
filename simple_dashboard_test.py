@@ -8,7 +8,7 @@ import asyncio
 import aiohttp
 import json
 
-BACKEND_URL = "https://byggja-verki.preview.emergentagent.com/api"
+BACKEND_URL = "https://icejobs.preview.emergentagent.com/api"
 
 async def test_user_dashboard():
     """Test if user can see their jobs in dashboard"""
