@@ -65,17 +65,17 @@ const ComplaintPage = () => {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <div className="text-center">
+        <div className="text-left max-w-2xl">
           
           {/* Main Title */}
-          <h1 className="text-3xl lg:text-4xl font-normal text-gray-800 mb-8 leading-relaxed max-w-3xl mx-auto">
+          <h1 className="text-3xl lg:text-4xl font-normal text-gray-800 mb-8 leading-relaxed">
             {language === 'is' 
               ? 'Við biðjumst afsökunar á því að þú hafir upplifað óþægilega reynslu á verki, og þökkum þér að hafa samband við okkur.'
               : 'We apologize that you have had an unpleasant experience on verki, and appreciate that you contact us.'}
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 mb-12">
             {language === 'is'
               ? 'Í þessu formi munum við biðja þig um að deila nokkrum smáatriðum um atburðinn.'
               : 'In this form we will ask you to share some details about the incident.'}
