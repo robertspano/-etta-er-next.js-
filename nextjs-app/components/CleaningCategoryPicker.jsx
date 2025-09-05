@@ -47,15 +47,6 @@ const CleaningCategoryPicker = ({ translations, language }) => {
         
         {/* Step Header - Same as handcraft/automotive */}
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-6">
-            <Link 
-              href="/"
-              className="mr-4 p-2 rounded-lg hover:bg-white/80 transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5 text-gray-600" />
-            </Link>
-          </div>
-          
           {/* Progress indicators - same style as handcraft */}
           <div className="flex items-center justify-center mb-8">
             {/* Step 1 - Active */}
