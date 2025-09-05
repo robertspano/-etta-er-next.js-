@@ -12,42 +12,42 @@ const MovingCategoryPicker = ({ translations, language }) => {
   const movingSubcategories = [
     {
       key: 'varetransport',
-      icon: <Truck className="w-6 h-6" />,
+      icon: <Truck className="w-full h-full" strokeWidth={1.5} />,
       name: translations.varetransport || (language === 'is' ? 'Vöruflutninga' : 'Van Transport')
     },
     {
       key: 'flyttebyra',
-      icon: <Package className="w-6 h-6" />,
+      icon: <Package className="w-full h-full" strokeWidth={1.5} />,
       name: translations.flyttebyra || (language === 'is' ? 'Flutningafyrirtæki' : 'Moving Company')
     },
     {
       key: 'avfallshandtering',
-      icon: <Trash2 className="w-6 h-6" />,
+      icon: <Trash2 className="w-full h-full" strokeWidth={1.5} />,
       name: translations.avfallshandtering || (language === 'is' ? 'Sorpmeðhöndlun' : 'Waste Management')
     },
     {
       key: 'transportBilBat',
-      icon: <Car className="w-6 h-6" />,
+      icon: <Car className="w-full h-full" strokeWidth={1.5} />,
       name: translations.transportBilBat || (language === 'is' ? 'Bíla- og bátaflutningar' : 'Vehicle/Boat Transport')
     },
     {
       key: 'annetFlytting',
-      icon: <MoreHorizontal className="w-6 h-6" />,
+      icon: <MoreHorizontal className="w-full h-full" strokeWidth={1.5} />,
       name: translations.annetFlytting || (language === 'is' ? 'Annað (Flutningar)' : 'Other Moving/Transport')
     },
     {
       key: 'persontransport',
-      icon: <Users className="w-6 h-6" />,
+      icon: <Users className="w-full h-full" strokeWidth={1.5} />,
       name: translations.persontransport || (language === 'is' ? 'Persónuflutningar' : 'Personal Transport')
     },
     {
       key: 'pianotransport',
-      icon: <Music className="w-6 h-6" />,
+      icon: <Music className="w-full h-full" strokeWidth={1.5} />,
       name: translations.pianotransport || (language === 'is' ? 'Píanóflutningar' : 'Piano Moving')
     },
     {
       key: 'godstransport',
-      icon: <Box className="w-6 h-6" />,
+      icon: <Box className="w-full h-full" strokeWidth={1.5} />,
       name: translations.godstransport || (language === 'is' ? 'Vöruflutningar' : 'Freight Transport')
     }
   ];
