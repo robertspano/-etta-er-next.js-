@@ -56,17 +56,17 @@ const MovingCategoryPicker = ({ translations, language }) => {
   const additionalSubcategories = [
     {
       key: 'massetransport',
-      icon: <Warehouse className="w-6 h-6" />,
+      icon: <Warehouse className="w-full h-full" strokeWidth={1.5} />,
       name: translations.massetransport || (language === 'is' ? 'Massaflutningar' : 'Bulk Transport')
     },
     {
       key: 'lager',
-      icon: <Archive className="w-6 h-6" />,
+      icon: <Archive className="w-full h-full" strokeWidth={1.5} />,
       name: translations.lager || (language === 'is' ? 'Vörugeymsla' : 'Storage/Warehousing')
     },
     {
       key: 'helikoptertransport',
-      icon: <Plane className="w-6 h-6" />,
+      icon: <Plane className="w-full h-full" strokeWidth={1.5} />,
       name: translations.helikoptertransport || (language === 'is' ? 'Þyrluflutningar' : 'Helicopter Transport')
     }
   ];
