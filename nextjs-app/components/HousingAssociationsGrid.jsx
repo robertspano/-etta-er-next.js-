@@ -109,20 +109,7 @@ const HousingAssociationsGrid = ({ translations, language }) => {
   ];
 
   const handleCategoryClick = (category) => {
-    // Special routing for specific categories
-    if (category.key === 'cleaning') {
-      // Go to cleaning category picker page
-      router.push('/post/cleaning');
-    } else if (category.key === 'movingTransport') {
-      // Go to moving page (when it exists)
-      router.push('/post/moving');
-    } else if (category.key === 'allCategories') {
-      // Go to all categories page
-      router.push('/all-categories');
-    } else {
-      // All other categories go directly to job wizard
-      router.push(`/post/housing-associations?subcategory=${category.key}`);
-    }
+    router.push(category.route);
   };
 
   const filteredCategories = categories.filter(category =>
