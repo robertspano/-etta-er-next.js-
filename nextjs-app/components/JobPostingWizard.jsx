@@ -15,6 +15,31 @@ const JobPostingWizard = ({ translations, language, category, subcategory }) => 
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   
+  // Check URL parameters to set initial step
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const step = urlParams.get('step');
+    if (step && !isNaN(parseInt(step))) {
+      setCurrentStep(parseInt(step));
+    }
+  }, []);
+  
+  // Load form data from localStorage if available
+  useEffect(() => {
+    const savedCategory = localStorage.getItem('bc_selected_category');
+    const savedSubcategory = localStorage.getItem('bc_selected_subcategory');
+    const savedFormData = localStorage.getItem('bc_form_data');
+    
+    if (savedCategory && savedSubcategory) {
+      setFormData(prev => ({
+        ...prev,
+        category: savedCategory,
+        subcategory: savedSubcategory,
+        ...(savedFormData ? JSON.parse(savedFormData) : {})
+      }));
+    }
+  }, []);
+  
   // Job posting is public - users can post jobs without authentication
   // After job submission, they will be offered to login to manage their jobs
 
