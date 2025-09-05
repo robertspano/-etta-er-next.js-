@@ -8,17 +8,17 @@ const ProSignupSection = ({ translations }) => {
   return (
     <section className="bg-[#203563] relative overflow-hidden py-16 md:py-20 min-h-[600px]" style={{backgroundColor: '#203563', minHeight: '600px'}}>
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="flex flex-col md:flex-row min-h-[500px] md:min-h-[600px] items-center gap-8 md:gap-12">
+        <div className="flex flex-col md:flex-row min-h-[500px] md:min-h-[600px] items-center gap-4 md:gap-8">
           
           {/* Left side - Professional Photo */}
-          <div className="relative flex-1 flex justify-center lg:justify-start">
+          <div className="relative flex-1 flex justify-center lg:justify-end lg:pr-8">
             {/* Professional photo */}
             <Image 
               src="https://customer-assets.emergentagent.com/job_icejobs/artifacts/l41dnwnm_ChatGPT%20Image%20Sep%205%2C%202025%2C%2009_10_12%20PM.png"
               alt="Professional contractor"
-              width={400}
-              height={520}
-              className="w-80 h-96 lg:w-96 lg:h-[500px] xl:w-[400px] xl:h-[520px] object-contain object-bottom"
+              width={450}
+              height={580}
+              className="w-96 h-[480px] lg:w-[420px] lg:h-[540px] xl:w-[450px] xl:h-[580px] object-contain object-bottom"
             />
             
             {/* Subtle decorative overlay */}
