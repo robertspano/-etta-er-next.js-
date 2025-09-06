@@ -1,7 +1,11 @@
+import '../../globals.css';
+
 export default function ComplaintLayout({ children }) {
   return (
-    <div>
-      {children}
-    </div>
+    <html lang="is">
+      <body>
+        {children}
+      </body>
+    </html>
   );
 }
