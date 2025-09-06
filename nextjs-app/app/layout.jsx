@@ -16,6 +16,9 @@ function AppContent({ children }) {
   // Check if we're on a dashboard page (logged-in user)
   const isDashboardPage = pathname && pathname.startsWith('/dashboard');
   
+  // Check if we're on complaint page
+  const isComplaintPage = pathname && pathname.startsWith('/complaint');
+  
   // Update HTML lang attribute when language changes
   useEffect(() => {
     if (typeof document !== 'undefined') {
@@ -25,15 +28,17 @@ function AppContent({ children }) {
   
   return (
     <>
-      {/* Only show the public header if NOT on dashboard pages */}
-      {!isDashboardPage && (
+      {/* Only show the public header if NOT on dashboard pages or complaint pages */}
+      {!isDashboardPage && !isComplaintPage && (
         <Header translations={translations} language={language} setLanguage={setLanguage} />
       )}
       <main className={isDashboardPage ? '' : ''}>
         {children}
       </main>
-      {/* Always show footer */}
-      <Footer translations={translations} language={language} />
+      {/* Show footer only if NOT on complaint pages */}
+      {!isComplaintPage && (
+        <Footer translations={translations} language={language} />
+      )}
     </>
   );
 }
