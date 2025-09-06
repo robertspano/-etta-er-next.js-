@@ -80,7 +80,10 @@ const ComplaintPage = () => {
           </p>
 
           {/* Start Button - Left aligned */}
-          <button className="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium px-8 py-4 rounded transition-colors duration-200">
+          <button 
+            onClick={() => window.location.href = '/complaint/form'}
+            className="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium px-8 py-4 rounded transition-colors duration-200"
+          >
             {language === 'is' ? 'Byrja' : 'Start'}
           </button>
 
