@@ -47,8 +47,8 @@ const ComplaintFormPage = () => {
         />
       </div>
 
-      {/* Main Form Content */}
-      <div className="min-h-screen flex items-center px-4 sm:px-6 lg:px-8">
+      {/* Main Form Content - Text block centered on page but text left-aligned */}
+      <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="text-left max-w-2xl">
           
           {/* Question Title with Step Number */}
@@ -100,7 +100,7 @@ const ComplaintFormPage = () => {
             )}
           </div>
 
-          {/* Submit Button */}
+          {/* Submit Button - Left aligned within centered block */}
           <button
             onClick={handleSubmit}
             disabled={!selectedOption}
