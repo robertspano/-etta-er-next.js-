@@ -30,9 +30,8 @@ const ComplaintFormPage = () => {
 
   const handleSubmit = () => {
     if (selectedOption) {
-      // Handle form submission
-      console.log('Selected option:', selectedOption);
-      // Navigate to next step or process complaint
+      // Navigate to email step
+      window.location.href = '/complaint/email';
     }
   };
 
