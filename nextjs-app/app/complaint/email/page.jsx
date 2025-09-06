@@ -9,8 +9,8 @@ const ComplaintEmailPage = () => {
 
   const handleSubmit = () => {
     if (email) {
-      console.log('Email submitted:', email);
-      // Navigate to next step or complete complaint
+      // Navigate to details step
+      window.location.href = '/complaint/details';
     }
   };
 
