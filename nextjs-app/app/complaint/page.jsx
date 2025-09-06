@@ -52,6 +52,15 @@ const ComplaintPage = () => {
   // Main Complaint Form Page - Only gray background and content
   return (
     <div className="min-h-screen bg-gray-100">
+      {/* Logo in top right corner */}
+      <div className="absolute top-6 right-6">
+        <img 
+          src="https://customer-assets.emergentagent.com/job_construction-hub-19/artifacts/k90y66eg_Your%20paragraph%20text%20%283000%20x%203000%20px%29%20%281000%20x%201000%20px%29%20%28Logo%29%20%282%29-cropped.svg"
+          alt="verki Logo"
+          className="h-8 w-auto"
+        />
+      </div>
+
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="text-left max-w-2xl">
