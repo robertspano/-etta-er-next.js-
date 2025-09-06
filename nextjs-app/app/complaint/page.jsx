@@ -52,19 +52,17 @@ const ComplaintPage = () => {
   // Main Complaint Form Page
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Header with logo */}
-      <div className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <img 
-            src="https://customer-assets.emergentagent.com/job_construction-hub-19/artifacts/k90y66eg_Your%20paragraph%20text%20%283000%20x%203000%20px%29%20%281000%20x%201000%20px%29%20%28Logo%29%20%282%29-cropped.svg"
-            alt="verki Logo"
-            className="h-8 w-auto"
-          />
-        </div>
+      {/* Simple header with just logo */}
+      <div className="px-4 sm:px-6 lg:px-8 py-6">
+        <img 
+          src="https://customer-assets.emergentagent.com/job_construction-hub-19/artifacts/k90y66eg_Your%20paragraph%20text%20%283000%20x%203000%20px%29%20%281000%20x%201000%20px%29%20%28Logo%29%20%282%29-cropped.svg"
+          alt="verki Logo"
+          className="h-8 w-auto"
+        />
       </div>
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-left max-w-2xl">
           
           {/* Main Title */}
