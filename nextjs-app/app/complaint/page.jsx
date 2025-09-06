@@ -61,8 +61,8 @@ const ComplaintPage = () => {
         />
       </div>
 
-      {/* Main Content - Left aligned and lower on page */}
-      <div className="min-h-screen flex items-center px-4 sm:px-6 lg:px-8">
+      {/* Main Content - Text block centered on page but text left-aligned */}
+      <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="text-left max-w-3xl">
           
           {/* Main Title */}
@@ -79,7 +79,7 @@ const ComplaintPage = () => {
               : 'In this form we will ask you to share some details about the incident.'}
           </p>
 
-          {/* Start Button - Left aligned */}
+          {/* Start Button - Left aligned within centered block */}
           <button 
             onClick={() => window.location.href = '/complaint/form'}
             className="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium px-8 py-4 rounded transition-colors duration-200"
