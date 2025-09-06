@@ -61,9 +61,9 @@ const ComplaintPage = () => {
         />
       </div>
 
-      {/* Main Content - Centered and lower on page */}
-      <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl">
+      {/* Main Content - Left aligned and lower on page */}
+      <div className="min-h-screen flex items-center px-4 sm:px-6 lg:px-8">
+        <div className="text-left max-w-3xl">
           
           {/* Main Title */}
           <h1 className="text-3xl lg:text-4xl font-normal text-gray-800 mb-8 leading-relaxed">
@@ -79,7 +79,7 @@ const ComplaintPage = () => {
               : 'In this form we will ask you to share some details about the incident.'}
           </p>
 
-          {/* Start Button - Further down and centered */}
+          {/* Start Button - Left aligned */}
           <button className="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium px-8 py-4 rounded transition-colors duration-200">
             {language === 'is' ? 'Byrja' : 'Start'}
           </button>
