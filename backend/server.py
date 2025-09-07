@@ -83,7 +83,7 @@ app.add_middleware(
     allow_credentials=True,
     allow_origins=[
         "http://localhost:3000",  # Next.js development server
-        "https://icejobs.preview.emergentagent.com",  # Production/preview URL
+        "https://movers-platform-1.preview.emergentagent.com",  # Production/preview URL
     ],
     allow_methods=["*"],
     allow_headers=["*"],

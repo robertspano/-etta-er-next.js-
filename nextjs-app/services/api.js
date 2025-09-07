@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://icejobs.preview.emergentagent.com';
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://movers-platform-1.preview.emergentagent.com';
 // Check if we're in local development mode
 const IS_LOCAL_DEV = typeof window !== 'undefined' && window.location.hostname === 'localhost';
 const SECURE_BACKEND_URL = IS_LOCAL_DEV ? 'http://localhost:8001' : BACKEND_URL.replace(/^http:/, 'https:');

@@ -60,7 +60,7 @@ const AutomotiveStep1 = ({ translations, language }) => {
     
     setLookupLoading(true);
     try {
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://icejobs.preview.emergentagent.com';
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://movers-platform-1.preview.emergentagent.com';
       const response = await fetch(`${backendUrl}/api/public/vehicle-lookup?plate=${plate}&country=IS`);
       if (response.ok) {
         const data = await response.json();

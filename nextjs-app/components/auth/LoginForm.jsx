@@ -66,7 +66,7 @@ const LoginForm = ({ language = 'en' }) => {
     setIsLoading(true);
     try {
       // Use auto-login API that creates user if not exists
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://icejobs.preview.emergentagent.com';
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://movers-platform-1.preview.emergentagent.com';
       const response = await fetch(`${backendUrl}/api/auth/auto-login`, {
         method: 'POST',
         headers: {
