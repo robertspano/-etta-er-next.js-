@@ -51,12 +51,12 @@ const ComplaintUploadPage = () => {
       <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="text-left max-w-2xl w-full">
           
-          {/* Upload Question Title with Step Number */}
+          {/* Upload Question Title with Step Number - matching mittanbud.no */}
           <h1 className="text-2xl lg:text-3xl font-normal text-gray-800 mb-8 leading-relaxed">
             <span className="text-blue-600 mr-2">4→</span>
             {language === 'is' 
-              ? 'Bættu við tengdum myndum og skrám, ef þú vilt.' 
-              : 'Add related images and files, if desired.'}
+              ? 'Legg við relaterte bilder og filer, om ønskelig.' 
+              : 'Legg við relaterte bilder og filer, om ønskelig.'}
           </h1>
 
           {/* File Upload Area with dotted border matching mittanbud.no */}
