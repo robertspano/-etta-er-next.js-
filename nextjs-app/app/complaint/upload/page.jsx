@@ -65,9 +65,8 @@ const ComplaintUploadPage = () => {
     
     console.log('Complaint submitted with files:', complaintData);
     
-    // For now, show success message and redirect to home
-    alert('Kvörtun hefur verið send inn! / Complaint has been submitted!');
-    window.location.href = '/';
+    // Navigate to success page
+    window.location.href = '/complaint/success';
   };
 
   return (
