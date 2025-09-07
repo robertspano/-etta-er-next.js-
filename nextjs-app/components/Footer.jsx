@@ -85,7 +85,7 @@ const Footer = ({ translations = {}, language }) => {
                   {language === 'is' ? 'Sendu tölvupóst: verki@verki.is' : 'Send email: verki@verki.is'}
                 </p>
                 <p className="text-sm">
-                  {language === 'is' ? 'Hringdu í okkur: +354 22 00 09 30' : 'Call us: +354 22 00 09 30'}
+                  {language === 'is' ? 'Hringdu í okkur: 787 7887' : 'Call us: 787 7887'}
                 </p>
               </div>
             </div>
