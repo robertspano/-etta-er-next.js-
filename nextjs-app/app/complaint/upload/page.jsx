@@ -56,8 +56,18 @@ const ComplaintUploadPage = () => {
   };
 
   const handleSubmit = () => {
-    console.log('Files submitted:', selectedFiles);
-    // Complete complaint submission or navigate to success page
+    // Complete complaint submission
+    const complaintData = {
+      files: selectedFiles,
+      totalFiles: selectedFiles.length,
+      timestamp: new Date().toISOString()
+    };
+    
+    console.log('Complaint submitted with files:', complaintData);
+    
+    // For now, show success message and redirect to home
+    alert('Kvörtun hefur verið send inn! / Complaint has been submitted!');
+    window.location.href = '/';
   };
 
   return (
