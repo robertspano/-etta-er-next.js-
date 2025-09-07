@@ -9,8 +9,8 @@ const ComplaintDetailsPage = () => {
 
   const handleSubmit = () => {
     if (complaint.trim()) {
-      console.log('Complaint submitted:', complaint);
-      // Navigate to next step or complete complaint
+      // Navigate to step 4 - file upload
+      window.location.href = '/complaint/upload';
     }
   };
 
