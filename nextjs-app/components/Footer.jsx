@@ -61,8 +61,6 @@ const Footer = ({ translations = {}, language }) => {
                 <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
                   {language === 'is' ? 'Skrá fyrirtæki' : 'Register business'}
                 </a></li>
-
-
                 <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
                   {language === 'is' ? 'Byrjendahandbók' : 'Getting started'}
                 </a></li>
