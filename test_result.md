@@ -57,8 +57,8 @@
 ##   test_priority: "high_first"  # or "sequential" or "stuck_first"
 ##
 ## agent_communication:
-##     -agent: "main"  # or "testing" or "user"
-##     -message: "Communication message between agents"
+##     - agent: "main"
+##       message: "✅ COMPLAINT STEP 4 FILE UPLOAD COMPLETED! Successfully implemented the final step of the 4-step complaint flow with file upload functionality matching mittanbud.no design exactly. Updated navigation from step 3 to step 4, enhanced upload page with drag-and-drop support, file validation, and proper submission logic. Ready for comprehensive frontend testing of the complete complaint flow: /complaint → /complaint/form → /complaint/email → /complaint/details → /complaint/upload → completion."
      
 #====================================================================================================
 # ICELAND DEFAULTS IMPLEMENTATION - PHASE 1 COMPLETED
