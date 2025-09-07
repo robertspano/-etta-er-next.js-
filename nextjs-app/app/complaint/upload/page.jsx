@@ -85,7 +85,7 @@ const ComplaintUploadPage = () => {
 
           {/* File Upload Area with dotted border matching mittanbud.no */}
           <div 
-            className={`mb-8 border-2 border-dashed rounded-lg p-16 text-center transition-colors ${
+            className={`mb-8 border-2 border-dashed rounded-lg p-16 text-center transition-colors cursor-pointer ${
               isDragOver 
                 ? 'border-blue-500 bg-blue-50' 
                 : 'border-blue-400 bg-white'
@@ -93,6 +93,7 @@ const ComplaintUploadPage = () => {
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
+            onClick={handleUploadAreaClick}
           >
             {/* Upload icon - matching mittanbud style */}
             <div className="mb-6">
@@ -103,14 +104,12 @@ const ComplaintUploadPage = () => {
 
             {/* Upload text */}
             <p className="text-lg text-gray-600 mb-2">
-              {language === 'is' 
-                ? 'Velg fil eller dra her' 
-                : 'Velg fil eller dra her'}
+              Velg fil eller dra her
             </p>
 
             {/* File size limit */}
             <p className="text-sm text-gray-500 mb-6">
-              {language === 'is' ? 'Maks. størrelse: 10MB' : 'Maks. størrelse: 10MB'}
+              Maks. størrelse: 10MB
             </p>
 
             {/* Hidden file input */}
@@ -122,20 +121,33 @@ const ComplaintUploadPage = () => {
               className="hidden"
               id="file-upload"
             />
-
-            {/* File status */}
-            <div className="mt-4">
-              {selectedFiles.length > 0 ? (
-                <div className="text-sm text-gray-600">
-                  {selectedFiles.map((file, index) => (
-                    <div key={index} className="mb-1">
-                      {file.name} ({Math.round(file.size / 1024)} KB)
-                    </div>
-                  ))}
-                </div>
-              ) : null}
-            </div>
           </div>
+
+          {/* Selected Files Display */}
+          {selectedFiles.length > 0 && (
+            <div className="mb-8">
+              <h3 className="text-lg font-medium text-gray-800 mb-4">Valgte filer:</h3>
+              <div className="space-y-2">
+                {selectedFiles.map((file, index) => (
+                  <div key={index} className="flex items-center justify-between bg-gray-50 p-3 rounded">
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-gray-800">{file.name}</p>
+                      <p className="text-xs text-gray-500">{Math.round(file.size / 1024)} KB</p>
+                    </div>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        removeFile(index);
+                      }}
+                      className="text-red-500 hover:text-red-700 text-sm font-medium"
+                    >
+                      Fjern
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Submit Button - matching mittanbud.no style */}
           <button
