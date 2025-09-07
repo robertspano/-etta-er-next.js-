@@ -161,7 +161,16 @@ LATEST FEATURE: Implement Company Registration System based on user's screenshot
 - Validation: Icelandic kennitala format (10 digits), phone validation (7-8 digits)
 - Backend: New API endpoint POST /api/auth/register-company
 - Create professional user account with company information
-- Bilingual support (English/Icelandic)"
+- Bilingual support (English/Icelandic)
+
+CURRENT FEATURE: Implement Complaint System Step 4 - File Upload:
+- Complete the 4-step complaint flow by adding file upload functionality
+- Route: /complaint/upload (step 4 after /complaint/details)
+- Design: Match mittanbud.no exactly with dotted border upload area, circular upload icon
+- Text: 'Legg við relaterte bilder og filer, om ønskelig.' and 'Velg fil eller dra her'
+- Functionality: Multiple file upload, drag-and-drop, 10MB file size limit, file validation
+- Navigation: Step 3 (details) should navigate to Step 4 (upload) on OK button click
+- Submit: Final submission should complete the complaint flow and redirect to homepage"
 
 backend:
   - task: "Job Request API System"
