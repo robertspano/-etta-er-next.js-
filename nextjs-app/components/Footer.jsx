@@ -82,7 +82,7 @@ const Footer = ({ translations = {}, language }) => {
                     : '09:00 - 16:00 on weekdays. Closed on weekends'}
                 </p>
                 <p className="text-sm">
-                  {language === 'is' ? 'Sendu tölvupóst: info@verki.is' : 'Send email: info@verki.is'}
+                  {language === 'is' ? 'Sendu tölvupóst: verki@verki.is' : 'Send email: verki@verki.is'}
                 </p>
                 <p className="text-sm">
                   {language === 'is' ? 'Hringdu í okkur: +354 22 00 09 30' : 'Call us: +354 22 00 09 30'}
