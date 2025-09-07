@@ -113,12 +113,12 @@ const ComplaintUploadPage = () => {
             </div>
           </div>
 
-          {/* Submit Button */}
+          {/* Submit Button - matching mittanbud.no style */}
           <button
             onClick={handleSubmit}
             className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-8 py-3 rounded transition-colors duration-200"
           >
-            {language === 'is' ? 'Senda inn' : 'Send in'}
+            Send inn
           </button>
 
         </div>
