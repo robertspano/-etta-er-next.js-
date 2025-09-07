@@ -59,32 +59,34 @@ const ComplaintUploadPage = () => {
               : 'Add related images and files, if desired.'}
           </h1>
 
-          {/* File Upload Area */}
+          {/* File Upload Area with dotted border matching mittanbud.no */}
           <div 
-            className={`mb-8 border-2 border-dashed rounded-lg p-12 text-center transition-colors ${
+            className={`mb-8 border-2 border-dashed rounded-lg p-16 text-center transition-colors ${
               isDragOver 
                 ? 'border-blue-500 bg-blue-50' 
-                : 'border-gray-300 bg-gray-50'
+                : 'border-blue-400 bg-white'
             }`}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
           >
-            {/* Upload icon */}
-            <div className="mb-4">
-              <Upload className="w-12 h-12 text-blue-500 mx-auto" />
+            {/* Upload icon - matching mittanbud style */}
+            <div className="mb-6">
+              <div className="w-16 h-16 mx-auto border-2 border-blue-400 rounded-full flex items-center justify-center">
+                <Upload className="w-8 h-8 text-blue-500" />
+              </div>
             </div>
 
             {/* Upload text */}
             <p className="text-lg text-gray-600 mb-2">
               {language === 'is' 
-                ? 'Veldu skrá eða dragðu hér' 
-                : 'Choose file or drag here'}
+                ? 'Velg fil eller dra her' 
+                : 'Velg fil eller dra her'}
             </p>
 
             {/* File size limit */}
-            <p className="text-sm text-gray-500 mb-4">
-              {language === 'is' ? 'Hámark stærð: 10MB' : 'Max size: 10MB'}
+            <p className="text-sm text-gray-500 mb-6">
+              {language === 'is' ? 'Maks. størrelse: 10MB' : 'Maks. størrelse: 10MB'}
             </p>
 
             {/* Hidden file input */}
@@ -97,14 +99,6 @@ const ComplaintUploadPage = () => {
               id="file-upload"
             />
 
-            {/* File upload button */}
-            <label
-              htmlFor="file-upload"
-              className="inline-block bg-white border border-gray-300 rounded px-4 py-2 text-gray-700 cursor-pointer hover:bg-gray-50 transition-colors"
-            >
-              {language === 'is' ? 'Velja skrár' : 'Choose files'}
-            </label>
-
             {/* File status */}
             <div className="mt-4">
               {selectedFiles.length > 0 ? (
@@ -115,11 +109,7 @@ const ComplaintUploadPage = () => {
                     </div>
                   ))}
                 </div>
-              ) : (
-                <p className="text-sm text-gray-500">
-                  {language === 'is' ? 'Engin skrá valin' : 'No file chosen'}
-                </p>
-              )}
+              ) : null}
             </div>
           </div>
 
