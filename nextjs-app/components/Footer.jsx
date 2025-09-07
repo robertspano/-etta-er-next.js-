@@ -47,9 +47,6 @@ const Footer = ({ translations = {}, language }) => {
                   {language === 'is' ? 'Hjálparmiðstöð' : 'Help center'}
                 </a></li>
                 <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
-                  {language === 'is' ? 'Umsagnir' : 'Reviews'}
-                </a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
                   {language === 'is' ? 'Byrjendahandbók' : 'Getting started'}
                 </a></li>
               </ul>
