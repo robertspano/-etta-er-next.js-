@@ -842,7 +842,7 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Complaint System Step 4 - File Upload Implementation"
+    - "Complete 6-Step Complaint System with Success Page"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
