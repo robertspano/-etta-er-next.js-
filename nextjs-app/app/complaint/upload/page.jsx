@@ -11,7 +11,15 @@ const ComplaintUploadPage = () => {
 
   const handleFileSelect = (event) => {
     const files = Array.from(event.target.files);
-    setSelectedFiles(files);
+    const validFiles = files.filter(file => {
+      // Check file size (10MB = 10 * 1024 * 1024 bytes)
+      if (file.size > 10 * 1024 * 1024) {
+        alert(`File ${file.name} is too large. Maximum size is 10MB.`);
+        return false;
+      }
+      return true;
+    });
+    setSelectedFiles(prev => [...prev, ...validFiles]);
   };
 
   const handleDragOver = (event) => {
@@ -28,7 +36,23 @@ const ComplaintUploadPage = () => {
     event.preventDefault();
     setIsDragOver(false);
     const files = Array.from(event.dataTransfer.files);
-    setSelectedFiles(files);
+    const validFiles = files.filter(file => {
+      // Check file size (10MB = 10 * 1024 * 1024 bytes)
+      if (file.size > 10 * 1024 * 1024) {
+        alert(`File ${file.name} is too large. Maximum size is 10MB.`);
+        return false;
+      }
+      return true;
+    });
+    setSelectedFiles(prev => [...prev, ...validFiles]);
+  };
+
+  const handleUploadAreaClick = () => {
+    document.getElementById('file-upload').click();
+  };
+
+  const removeFile = (index) => {
+    setSelectedFiles(prev => prev.filter((_, i) => i !== index));
   };
 
   const handleSubmit = () => {
