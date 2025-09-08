@@ -1,10 +1,9 @@
 'use client';
 
-import { useContext } from 'react';
-import { TranslationsContext } from '@/contexts/TranslationsContext';
+import { useTranslations } from '../../contexts/TranslationsContext';
 
 const HowItWorksDetailedPage = () => {
-  const { language, translations } = useContext(TranslationsContext);
+  const { language, translations } = useTranslations();
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
