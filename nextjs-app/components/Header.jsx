@@ -182,12 +182,12 @@ const Header = ({ language, setLanguage, translations }) => {
               
               {/* Language Switcher */}
               <Select value={language} onValueChange={setLanguage}>
-                <SelectTrigger className="w-full bg-white border border-[#E2E8F0] shadow-sm">
+                <SelectTrigger className="w-full bg-slate-800 border border-slate-600 shadow-sm text-white hover:bg-slate-700 transition-colors">
                   <span>{language === 'is' ? 'Icelandic' : 'English'}</span>
                 </SelectTrigger>
-                <SelectContent className="bg-white border border-[#E2E8F0] shadow-lg">
-                  <SelectItem value="is" className="text-[#1E293B] hover:bg-[#F8FAFC] focus:bg-[#F8FAFC]">Icelandic</SelectItem>
-                  <SelectItem value="en" className="text-[#1E293B] hover:bg-[#F8FAFC] focus:bg-[#F8FAFC]">English</SelectItem>
+                <SelectContent className="bg-slate-800 border border-slate-600 shadow-lg">
+                  <SelectItem value="is" className="text-white hover:bg-slate-700 focus:bg-slate-700">Icelandic</SelectItem>
+                  <SelectItem value="en" className="text-white hover:bg-slate-700 focus:bg-slate-700">English</SelectItem>
                 </SelectContent>
               </Select>
               
