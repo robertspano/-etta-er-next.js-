@@ -114,14 +114,14 @@ const Header = ({ language, setLanguage, translations }) => {
           <nav className="hidden md:flex items-center space-x-4">
             {/* Language Selector - Dropdown */}
             <Select value={language} onValueChange={setLanguage}>
-              <SelectTrigger className="w-[140px] h-10 bg-white border border-gray-300 rounded-lg text-gray-800 text-sm">
+              <SelectTrigger className="w-[140px] h-10 bg-slate-800 border border-slate-600 rounded-lg text-white text-sm hover:bg-slate-700 transition-colors">
                 <SelectValue placeholder="Language">
                   {language === 'is' ? 'Icelandic' : 'English'}
                 </SelectValue>
               </SelectTrigger>
-              <SelectContent className="bg-white border border-gray-300 shadow-lg">
-                <SelectItem value="is" className="text-gray-800 hover:bg-gray-100">Icelandic</SelectItem>
-                <SelectItem value="en" className="text-gray-800 hover:bg-gray-100">English</SelectItem>
+              <SelectContent className="bg-slate-800 border border-slate-600 shadow-lg">
+                <SelectItem value="is" className="text-white hover:bg-slate-700 focus:bg-slate-700">Icelandic</SelectItem>
+                <SelectItem value="en" className="text-white hover:bg-slate-700 focus:bg-slate-700">English</SelectItem>
               </SelectContent>
             </Select>
 
