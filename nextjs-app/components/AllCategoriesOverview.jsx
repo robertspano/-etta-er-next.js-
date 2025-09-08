@@ -210,17 +210,25 @@ const AllCategoriesOverview = ({ translations, language }) => {
     <div className="min-h-screen bg-gray-50 pt-16">
       {/* Page Content */}
       <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Page Header with tighter spacing */}
-        <div className="mb-8 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        {/* Page Header with more spacing and split subtitle */}
+        <div className="mb-8 text-center pt-8">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             {translations.allCategoriesTitle || (language === 'is' ? 'Allir flokkar' : 'All Categories')}
           </h1>
-          <p className="text-sm text-gray-600 max-w-3xl mx-auto mb-8">
-            {translations.allCategoriesSubtitle || (language === 'is'
-              ? 'Hér fyrir neðan finnurðu yfirlit yfir allt sem verki getur hjálpað þér með. Á þessum tenglum finnurðu frekari upplýsingar um mismunandi þjónustu.'
-              : 'Below you will find an overview of everything verki can help you with. On these links you will find more information about the different services.'
-            )}
-          </p>
+          <div className="max-w-3xl mx-auto mb-8 space-y-1">
+            <p className="text-sm text-gray-600">
+              {language === 'is'
+                ? 'Hér fyrir neðan finnurðu yfirlit yfir allt sem verki getur hjálpað þér með.'
+                : 'Below you will find an overview of everything verki can help you with.'
+              }
+            </p>
+            <p className="text-sm text-gray-600">
+              {language === 'is'
+                ? 'Á þessum tenglum finnurðu frekari upplýsingar um mismunandi þjónustu.'
+                : 'On these links you will find more information about the various services.'
+              }
+            </p>
+          </div>
         </div>
 
         {/* Main Categories Grid - Like Mittanbud */}
