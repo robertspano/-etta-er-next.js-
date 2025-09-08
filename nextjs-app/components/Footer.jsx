@@ -77,11 +77,6 @@ const Footer = ({ translations = {}, language }) => {
               </h3>
               <div className="space-y-3 text-gray-300">
                 <p className="text-sm">
-                  {language === 'is' 
-                    ? '09:00 - 16:00 á virkum dögum. Lokað um helgar' 
-                    : '09:00 - 16:00 on weekdays. Closed on weekends'}
-                </p>
-                <p className="text-sm">
                   {language === 'is' ? 'Sendu tölvupóst: verki@verki.is' : 'Send email: verki@verki.is'}
                 </p>
                 <p className="text-sm">
