@@ -39,13 +39,13 @@ const Footer = ({ translations = {}, language }) => {
                 {language === 'is' ? 'Fyrir einstaklinga' : 'For individuals'}
               </h3>
               <ul className="space-y-3">
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <li><a href="#" className="text-gray-300 hover:text-white hover:underline transition-colors">
                   {language === 'is' ? 'Hugmyndir' : 'Inspiration'}
                 </a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <li><a href="#" className="text-gray-300 hover:text-white hover:underline transition-colors">
                   {language === 'is' ? 'Hjálparmiðstöð' : 'Help center'}
                 </a></li>
-                <li><a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <li><a href="#" className="text-gray-300 hover:text-white hover:underline transition-colors">
                   {language === 'is' ? 'Byrjendahandbók' : 'Getting started'}
                 </a></li>
               </ul>
