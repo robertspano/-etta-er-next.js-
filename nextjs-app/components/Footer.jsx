@@ -110,19 +110,19 @@ const Footer = ({ translations = {}, language }) => {
               
               {/* Legal Links */}
               <div className="flex flex-wrap items-center space-x-4 text-sm text-gray-400">
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="#" className="hover:text-white hover:underline transition-colors">
                   {language === 'is' ? 'Persónuverndarstefna' : 'Privacy policy'}
                 </a>
                 <span>•</span>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="#" className="hover:text-white hover:underline transition-colors">
                   {language === 'is' ? 'Síðukort' : 'Sitemap'}
                 </a>
                 <span>•</span>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="#" className="hover:text-white hover:underline transition-colors">
                   {language === 'is' ? 'Skilmálar' : 'Terms'}
                 </a>
                 <span>•</span>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="#" className="hover:text-white hover:underline transition-colors">
                   {language === 'is' ? 'Vafrakökustillingar' : 'Cookie settings'}
                 </a>
               </div>
