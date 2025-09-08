@@ -57,7 +57,7 @@ const Footer = ({ translations = {}, language }) => {
                 {language === 'is' ? 'Fyrir fyrirtæki' : 'For businesses'}
               </h3>
               <ul className="space-y-3">
-                <li><a href="#" className="text-gray-300 hover:text-white hover:underline transition-colors">
+                <li><a href="/register-company" className="text-gray-300 hover:text-white hover:underline transition-colors">
                   {language === 'is' ? 'Skrá fyrirtæki' : 'Register business'}
                 </a></li>
                 <li><a href="#" className="text-gray-300 hover:text-white hover:underline transition-colors">
