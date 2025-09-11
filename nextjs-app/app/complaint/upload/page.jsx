@@ -104,22 +104,74 @@ const ComplaintUploadPage = () => {
             onDrop={handleDrop}
             onClick={handleUploadAreaClick}
           >
-            {/* Upload icon - matching mittanbud style */}
-            <div className="mb-6">
-              <div className="w-16 h-16 mx-auto border-2 border-blue-400 rounded-full flex items-center justify-center">
-                <Upload className="w-8 h-8 text-blue-500" />
-              </div>
-            </div>
+            {selectedFiles.length === 0 ? (
+              <>
+                {/* Upload icon - matching mittanbud style */}
+                <div className="mb-6">
+                  <div className="w-16 h-16 mx-auto border-2 border-blue-400 rounded-full flex items-center justify-center">
+                    <Upload className="w-8 h-8 text-blue-500" />
+                  </div>
+                </div>
 
-            {/* Upload text */}
-            <p className="text-lg text-gray-600 mb-2">
-              Velg fil eller dra her
-            </p>
+                {/* Upload text */}
+                <p className="text-lg text-gray-600 mb-2">
+                  Velg fil eller dra her
+                </p>
 
-            {/* File size limit */}
-            <p className="text-sm text-gray-500 mb-6">
-              Maks. størrelse: 10MB
-            </p>
+                {/* File size limit */}
+                <p className="text-sm text-gray-500 mb-6">
+                  Maks. størrelse: 10MB
+                </p>
+              </>
+            ) : (
+              <>
+                {/* Upload text when files are selected */}
+                <p className="text-sm text-gray-600 mb-4">
+                  Velg fil eller dra her
+                </p>
+                
+                {/* Selected Files Display - Inside the upload area */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4">
+                  {selectedFiles.map((file, index) => (
+                    <div key={index} className="relative bg-gray-100 border border-gray-200 rounded-lg p-3 text-left">
+                      {/* File icon */}
+                      <div className="flex items-center mb-2">
+                        <div className="w-8 h-8 bg-blue-100 rounded flex items-center justify-center mr-2">
+                          <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                          </svg>
+                        </div>
+                        {/* Remove button */}
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            removeFile(index);
+                          }}
+                          className="ml-auto text-red-500 hover:text-red-700 w-4 h-4 flex items-center justify-center"
+                        >
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </div>
+                      
+                      {/* File info */}
+                      <p className="text-xs font-medium text-gray-800 truncate" title={file.name}>
+                        {file.name}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        {Math.round(file.size / 1024)} KB
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Add more files text */}
+                <p className="text-xs text-gray-500 mt-4">
+                  Maks. størrelse: 10MB • Klikk for å leggja til fleiri filer
+                </p>
+              </>
+            )}
 
             {/* Hidden file input */}
             <input
