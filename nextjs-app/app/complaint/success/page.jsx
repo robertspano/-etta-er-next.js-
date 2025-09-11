@@ -1,21 +1,20 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslations } from '../../../contexts/TranslationsContext';
+import { CheckCircle } from 'lucide-react';
 
 const ComplaintSuccessPage = () => {
   const { language, translations } = useTranslations();
 
-  const handleSubmit = () => {
-    // Navigate to homepage
-    window.location.href = '/';
-  };
+  // Auto-redirect to homepage after 5 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      window.location.href = '/';
+    }, 5000);
 
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      handleSubmit();
-    }
-  };
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -28,10 +27,17 @@ const ComplaintSuccessPage = () => {
         />
       </div>
 
-      {/* Main Success Content - Text block centered on page but text left-aligned */}
+      {/* Main Success Content - Text block centered on page */}
       <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl w-full">
           
+          {/* Success Icon */}
+          <div className="mb-8">
+            <div className="w-20 h-20 mx-auto bg-green-100 rounded-full flex items-center justify-center">
+              <CheckCircle className="w-12 h-12 text-green-600" />
+            </div>
+          </div>
+
           {/* Success Title */}
           <h1 className="text-2xl lg:text-3xl font-normal text-gray-800 mb-6 leading-relaxed">
             {language === 'is' 
@@ -40,24 +46,18 @@ const ComplaintSuccessPage = () => {
           </h1>
 
           {/* Success Subtitle */}
-          <p className="text-lg text-gray-600 mb-12">
+          <p className="text-lg text-gray-600 mb-8">
             {language === 'is'
               ? 'Við metum málið og höldum þér upplýstum.'
               : 'Vi vurderer saken og holder deg oppdatert.'}
           </p>
 
-          {/* Submit Button with Enter instruction */}
-          <button
-            onClick={handleSubmit}
-            onKeyDown={handleKeyDown}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-8 py-3 rounded transition-colors duration-200 flex items-center gap-2 mx-auto"
-            autoFocus
-          >
-            {language === 'is' ? 'Senda inn málið þitt' : 'Send inn saken din'}
-            <span className="text-sm opacity-75">
-              {language === 'is' ? 'þrykk Enter ↵' : 'Trykk Enter ↵'}
-            </span>
-          </button>
+          {/* Auto-redirect notification */}
+          <p className="text-sm text-gray-500">
+            {language === 'is'
+              ? 'Þú verður vísað á aðalsíðuna eftir nokkrar sekúndur...'
+              : 'Du blir omdirigert til hovedsiden om noen sekunder...'}
+          </p>
 
         </div>
       </div>
