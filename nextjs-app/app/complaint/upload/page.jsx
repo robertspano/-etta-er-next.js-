@@ -184,32 +184,6 @@ const ComplaintUploadPage = () => {
             />
           </div>
 
-          {/* Selected Files Display */}
-          {selectedFiles.length > 0 && (
-            <div className="mb-8">
-              <h3 className="text-lg font-medium text-gray-800 mb-4">Valgte filer:</h3>
-              <div className="space-y-2">
-                {selectedFiles.map((file, index) => (
-                  <div key={index} className="flex items-center justify-between bg-gray-50 p-3 rounded">
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-gray-800">{file.name}</p>
-                      <p className="text-xs text-gray-500">{Math.round(file.size / 1024)} KB</p>
-                    </div>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        removeFile(index);
-                      }}
-                      className="text-red-500 hover:text-red-700 text-sm font-medium"
-                    >
-                      Fjern
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
           {/* Submit Button - matching mittanbud.no style */}
           <button
             onClick={handleSubmit}
