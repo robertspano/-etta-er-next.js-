@@ -213,15 +213,15 @@ const OurStoryPage = () => {
         </div>
 
         {/* Values Section */}
-        <div className="mt-16 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg p-8">
+        <div className="mt-16 bg-light_cyan rounded-lg p-8">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">
             {language === 'is' ? 'Gildi okkar' : 'Our Values'}
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8 text-blue-600" />
+              <div className="w-16 h-16 bg-federal_blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-8 h-8 text-federal_blue" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">
                 {language === 'is' ? 'Gagnsæi' : 'Transparency'}
@@ -232,8 +232,8 @@ const OurStoryPage = () => {
             </div>
             
             <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Heart className="w-8 h-8 text-green-600" />
+              <div className="w-16 h-16 bg-honolulu_blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Heart className="w-8 h-8 text-honolulu_blue" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">
                 {language === 'is' ? 'Traust' : 'Trust'}
@@ -247,8 +247,8 @@ const OurStoryPage = () => {
             </div>
             
             <div className="text-center">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Zap className="w-8 h-8 text-orange-600" />
+              <div className="w-16 h-16 bg-pacific_cyan-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Zap className="w-8 h-8 text-pacific_cyan" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">
                 {language === 'is' ? 'Hraði' : 'Speed'}
@@ -262,8 +262,8 @@ const OurStoryPage = () => {
             </div>
             
             <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-purple-600" />
+              <div className="w-16 h-16 bg-non_photo_blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-8 h-8 text-non_photo_blue" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">
                 {language === 'is' ? 'Sanngirni' : 'Fairness'}
