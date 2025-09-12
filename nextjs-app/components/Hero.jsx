@@ -96,37 +96,46 @@ const Hero = ({ translations, language }) => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Spline 3D Background using iframe */}
+      {/* 3D Background with multiple fallback options */}
       <div className="absolute inset-0 w-full h-full">
-        {!splineLoaded && (
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-800 flex items-center justify-center z-10">
-            <div className="text-white text-center">
-              <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mx-auto mb-4"></div>
-              <p className="text-xl font-medium">Loading 3D Experience...</p>
-            </div>
-          </div>
-        )}
         
+        {/* Try Spline embed URL */}
         <iframe 
-          src="https://my.spline.design/untitled-JBeu1IcUGflJuFNPbAznQqcU/" 
+          src="https://my.spline.design/untitled-JBeu1IcUGflJuFNPbAznQqcU/embed" 
           className="w-full h-full border-0"
-          onLoad={() => setSplineLoaded(true)}
+          onLoad={() => {
+            console.log('Spline loaded successfully');
+            setSplineLoaded(true);
+          }}
           onError={() => {
             console.error('Spline iframe loading error');
             setSplineLoaded(true);
           }}
           title="3D Background Animation"
           loading="eager"
+          allow="camera; microphone; fullscreen"
+          style={{ 
+            border: 'none',
+            background: 'transparent'
+          }}
         />
         
-        {/* Fallback gradient background if iframe fails */}
-        {!splineLoaded && (
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-800"></div>
-        )}
+        {/* Beautiful gradient fallback if 3D doesn't load */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-cyan-500 to-purple-600 opacity-90"></div>
+        
+        {/* Animated particles fallback */}
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-4 h-4 bg-white/20 rounded-full animate-pulse"></div>
+          <div className="absolute top-20 right-20 w-6 h-6 bg-cyan-300/30 rounded-full animate-bounce"></div>
+          <div className="absolute bottom-20 left-20 w-3 h-3 bg-blue-300/40 rounded-full animate-ping"></div>
+          <div className="absolute bottom-32 right-32 w-5 h-5 bg-purple-300/20 rounded-full animate-pulse"></div>
+          <div className="absolute top-1/3 left-1/4 w-2 h-2 bg-white/30 rounded-full animate-bounce delay-300"></div>
+          <div className="absolute bottom-1/3 right-1/4 w-4 h-4 bg-cyan-400/25 rounded-full animate-ping delay-500"></div>
+        </div>
       </div>
       
       {/* Background overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/20 z-5"></div>
+      <div className="absolute inset-0 bg-black/10 z-5"></div>
       
       <div className="relative max-w-4xl mx-auto px-4 text-center z-10">
         {/* Main Headline */}
@@ -135,7 +144,7 @@ const Hero = ({ translations, language }) => {
         </h1>
         
         {/* Subtitle */}
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-cyan-300 mb-8 drop-shadow-2xl">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-cyan-200 mb-8 drop-shadow-2xl">
           {translations.heroNewSubtitle || 'Finndu trausta fagmenn fyrir verkefnið þitt'}
         </h2>
         
