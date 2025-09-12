@@ -58,10 +58,10 @@ const OurStoryPage = () => {
           </div>
 
           {/* 2025: Launch */}
-          <div className="bg-white rounded-lg shadow-sm p-8 border-l-4 border-green-500">
+          <div className="bg-white rounded-lg shadow-sm p-8 border-l-4 border-honolulu_blue">
             <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
-                <Rocket className="w-6 h-6 text-green-600" />
+              <div className="w-12 h-12 bg-honolulu_blue-100 rounded-full flex items-center justify-center mr-4">
+                <Rocket className="w-6 h-6 text-honolulu_blue" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900">
                 {language === 'is' ? '2025: Verki fer í loftið' : '2025: Verki Takes Off'}
