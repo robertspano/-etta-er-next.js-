@@ -40,10 +40,10 @@ const OurStoryPage = () => {
         <div className="space-y-16">
           
           {/* 2024: The Idea */}
-          <div className="bg-white rounded-lg shadow-sm p-8 border-l-4 border-blue-500">
+          <div className="bg-white rounded-lg shadow-sm p-8 border-l-4 border-federal_blue">
             <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                <Lightbulb className="w-6 h-6 text-blue-600" />
+              <div className="w-12 h-12 bg-federal_blue-100 rounded-full flex items-center justify-center mr-4">
+                <Lightbulb className="w-6 h-6 text-federal_blue" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900">
                 {language === 'is' ? '2024: Hugmyndin kviknar' : '2024: The Idea Sparks'}
