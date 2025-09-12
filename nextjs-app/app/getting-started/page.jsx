@@ -168,8 +168,8 @@ const GettingStartedPage = () => {
           {/* Writing a Good Request */}
           <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
             <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
-                <FileText className="w-6 h-6 text-green-600" />
+              <div className="w-12 h-12 bg-honolulu_blue-100 rounded-full flex items-center justify-center mr-4">
+                <FileText className="w-6 h-6 text-honolulu_blue" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900">
                 {language === 'is' ? 'Skrifaðu góða verkbeiðni' : 'Write a Good Project Request'}
