@@ -110,7 +110,7 @@ const GettingStartedPage = () => {
         
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <div className="w-20 h-20 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-6">
+          <div className="w-20 h-20 bg-federal_blue rounded-full flex items-center justify-center mx-auto mb-6">
             <BookOpen className="w-10 h-10 text-white" />
           </div>
           
