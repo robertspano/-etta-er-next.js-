@@ -219,8 +219,8 @@ const GettingStartedPage = () => {
           {/* Comparing Quotes */}
           <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
             <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                <DollarSign className="w-6 h-6 text-blue-600" />
+              <div className="w-12 h-12 bg-pacific_cyan-100 rounded-full flex items-center justify-center mr-4">
+                <DollarSign className="w-6 h-6 text-pacific_cyan" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900">
                 {language === 'is' ? 'Berðu saman tilboð' : 'Compare Quotes'}
