@@ -105,7 +105,7 @@ const GettingStartedPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 pt-16">
+    <div className="min-h-screen bg-light_cyan pt-16">
       <div className="max-w-6xl mx-auto px-4 py-12">
         
         {/* Hero Section */}
