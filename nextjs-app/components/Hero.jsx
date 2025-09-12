@@ -97,43 +97,49 @@ const Hero = ({ translations, language }) => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Spline 3D Background */}
+      {/* Spline 3D Background using iframe */}
       <div className="absolute inset-0 w-full h-full">
         {!splineLoaded && (
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-800 flex items-center justify-center">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-800 flex items-center justify-center z-10">
             <div className="text-white text-center">
               <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mx-auto mb-4"></div>
               <p className="text-xl font-medium">Loading 3D Experience...</p>
             </div>
           </div>
         )}
-        <Spline 
-          scene="https://my.spline.design/untitled-JBeu1IcUGflJuFNPbAznQqcU/" 
+        
+        <iframe 
+          src="https://my.spline.design/untitled-JBeu1IcUGflJuFNPbAznQqcU/" 
+          className="w-full h-full border-0"
           onLoad={() => setSplineLoaded(true)}
-          onError={(error) => {
-            console.error('Spline loading error:', error);
-            setSplineLoaded(true); // Show content even if spline fails
+          onError={() => {
+            console.error('Spline iframe loading error');
+            setSplineLoaded(true);
           }}
-          className="w-full h-full object-cover"
+          title="3D Background Animation"
+          loading="eager"
         />
+        
+        {/* Fallback gradient background if iframe fails */}
+        {!splineLoaded && (
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-cyan-500 to-blue-800"></div>
+        )}
       </div>
       
       {/* Background overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/20"></div>
+      <div className="absolute inset-0 bg-black/20 z-5"></div>
       
       <div className="relative max-w-4xl mx-auto px-4 text-center z-10">
-        {/* Main Headline - exactly like byggstart */}
+        {/* Main Headline */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-2xl">
           {translations.heroNewTitle || 'Fáðu verkið gert!'}
         </h1>
         
-        {/* Subtitle with highlighted text - using pacific cyan */}
+        {/* Subtitle */}
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-cyan-300 mb-8 drop-shadow-2xl">
           {translations.heroNewSubtitle || 'Finndu trausta fagmenn fyrir verkefnið þitt'}
         </h2>
         
-        {/* Additional subtitle */}
-
         {/* Service Categories Grid - 2 rows x 4 columns, FIXED size boxes */}
         <div className="inline-block bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl overflow-hidden">
           <div className="grid grid-cols-4 divide-x divide-gray-200">
