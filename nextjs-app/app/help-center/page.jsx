@@ -18,9 +18,9 @@ const HelpCenterPage = () => {
         ? 'Lærðu skref-fyrir-skref hvernig þú notar Verki til að finna rétta verktaka'
         : 'Learn step-by-step how to use Verki to find the right contractor',
       icon: <Settings className="w-8 h-8" />,
-      color: 'blue',
+      color: 'federal_blue',
       link: '/help-center/how-it-works',
-      gradient: 'from-blue-500 to-cyan-500'
+      gradient: 'bg-federal_blue'
     },
     {
       title: language === 'is' ? 'Öryggi og gæðatrygging' : 'Security and Quality Assurance',
@@ -28,9 +28,9 @@ const HelpCenterPage = () => {
         ? 'Uppgötvaðu hvernig við tryggum öryggi og gæði í öllum verkefnum'
         : 'Discover how we ensure security and quality in all projects',
       icon: <Shield className="w-8 h-8" />,
-      color: 'green',
+      color: 'honolulu_blue',
       link: '/help-center/security-quality',
-      gradient: 'from-green-500 to-emerald-500'
+      gradient: 'bg-honolulu_blue'
     },
     {
       title: language === 'is' ? 'Hvað ef eitthvað fer úrskeiðis' : 'What If Something Goes Wrong',
@@ -38,9 +38,9 @@ const HelpCenterPage = () => {
         ? 'Leiðbeiningar um hvernig á að leysa vandamál og fá hjálp þegar þörf krefur'
         : 'Instructions on how to solve problems and get help when needed',
       icon: <AlertTriangle className="w-8 h-8" />,
-      color: 'orange',
+      color: 'pacific_cyan',
       link: '/help-center/troubleshooting',
-      gradient: 'from-orange-500 to-red-500'
+      gradient: 'bg-pacific_cyan'
     },
     {
       title: language === 'is' ? 'Hvernig skrifa ég góða verkbeiðni' : 'How to Write a Good Project Request',
@@ -48,9 +48,9 @@ const HelpCenterPage = () => {
         ? 'Ráð og leiðbeiningar til að skrifa skýrar verkbeiðnir sem fá betri tilboð'
         : 'Tips and guidance for writing clear project requests that get better quotes',
       icon: <FileText className="w-8 h-8" />,
-      color: 'purple',
+      color: 'non_photo_blue',
       link: '/help-center/project-requests',
-      gradient: 'from-purple-500 to-violet-500'
+      gradient: 'bg-non_photo_blue'
     },
     {
       title: language === 'is' ? 'Algengar spurningar' : 'Frequently Asked Questions',
@@ -58,9 +58,9 @@ const HelpCenterPage = () => {
         ? 'Svör við algengum spurningum um notkun Verki og þjónustuna'
         : 'Answers to common questions about using Verki and the service',
       icon: <HelpCircle className="w-8 h-8" />,
-      color: 'indigo',
+      color: 'honolulu_blue',
       link: '/help-center/faq',
-      gradient: 'from-indigo-500 to-blue-600'
+      gradient: 'bg-honolulu_blue'
     }
   ];
 
