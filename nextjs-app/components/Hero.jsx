@@ -96,13 +96,14 @@ const Hero = ({ translations, language }) => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Spline 3D Video Background with responsive zoom */}
+      {/* Spline 3D Video Background with faster loading */}
       <div className="absolute inset-0 w-full h-full">
         <video 
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
           className="w-full h-full object-cover 
                      /* Desktop: normal zoom */ 
                      md:scale-100 
@@ -113,7 +114,11 @@ const Hero = ({ translations, language }) => {
           style={{
             transformOrigin: 'center center'
           }}
-          onLoadStart={() => console.log('Video loading started')}
+          onLoadStart={() => {
+            console.log('Video loading started');
+            // Hide loading state immediately when video starts loading
+            setSplineLoaded(true);
+          }}
           onCanPlay={() => {
             console.log('Video can play');
             setSplineLoaded(true);
@@ -131,12 +136,12 @@ const Hero = ({ translations, language }) => {
           <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-cyan-500 to-purple-600"></div>
         </video>
         
-        {/* Loading state while video loads */}
+        {/* Much shorter loading state - only shows for a brief moment */}
         {!splineLoaded && (
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-cyan-500 to-purple-600 flex items-center justify-center z-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-cyan-500 to-purple-600 flex items-center justify-center z-10 opacity-90">
             <div className="text-white text-center">
-              <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mx-auto mb-4"></div>
-              <p className="text-xl font-medium">Loading 3D Experience...</p>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-3"></div>
+              <p className="text-lg font-medium">Loading...</p>
             </div>
           </div>
         )}
