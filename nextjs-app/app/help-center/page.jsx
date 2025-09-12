@@ -69,25 +69,25 @@ const HelpCenterPage = () => {
       icon: <Users className="w-6 h-6" />,
       label: language === 'is' ? 'Virkir notendur' : 'Active Users',
       value: '2,500+',
-      color: 'text-blue-600'
+      color: 'text-federal_blue'
     },
     {
       icon: <CheckCircle className="w-6 h-6" />,
       label: language === 'is' ? 'Lokið verkefni' : 'Completed Projects',
       value: '1,200+',
-      color: 'text-green-600'
+      color: 'text-honolulu_blue'
     },
     {
       icon: <Clock className="w-6 h-6" />,
       label: language === 'is' ? 'Meðalsvörunartími' : 'Average Response Time',
       value: language === 'is' ? '< 2 klst' : '< 2 hrs',
-      color: 'text-orange-600'
+      color: 'text-pacific_cyan'
     },
     {
       icon: <Target className="w-6 h-6" />,
       label: language === 'is' ? 'Ánægja viðskiptavina' : 'Customer Satisfaction',
       value: '4.8/5',
-      color: 'text-purple-600'
+      color: 'text-non_photo_blue'
     }
   ];
 
