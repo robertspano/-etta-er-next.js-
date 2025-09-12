@@ -95,33 +95,33 @@ const Hero = ({ translations, language }) => {
   };
 
   return (
-    <section 
-      className="relative min-h-screen flex items-center justify-center"
-      style={{
-        backgroundImage: `url('https://customer-assets.emergentagent.com/job_craft-connect-11/artifacts/czdu1dn3_pexels-freestockpro-12932486.jpg')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
-      {/* Background overlay */}
-      <div className="absolute inset-0 bg-black/40"></div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Spline 3D Background */}
+      <div className="absolute inset-0 w-full h-full">
+        <Spline 
+          scene="https://my.spline.design/untitled-JBeu1IcUGflJuFNPbAznQqcU/" 
+          className="w-full h-full object-cover"
+        />
+      </div>
       
-      <div className="relative max-w-4xl mx-auto px-4 text-center">
+      {/* Background overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/30"></div>
+      
+      <div className="relative max-w-4xl mx-auto px-4 text-center z-10">
         {/* Main Headline - exactly like byggstart */}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-lg">
           {translations.heroNewTitle || 'Get the Job Done!'}
         </h1>
         
         {/* Subtitle with highlighted text - using pacific cyan */}
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-pacific_cyan mb-8">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-pacific_cyan mb-8 drop-shadow-lg">
           {translations.heroNewSubtitle || 'Find trusted professionals for your project'}
         </h2>
         
         {/* Additional subtitle */}
 
         {/* Service Categories Grid - 2 rows x 4 columns, FIXED size boxes */}
-        <div className="inline-block bg-white rounded-xl shadow-2xl overflow-hidden">
+        <div className="inline-block bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl overflow-hidden">
           <div className="grid grid-cols-4 divide-x divide-gray-200">
             {/* Row 1 */}
             {serviceCategories.slice(0, 4).map((category, index) => (
