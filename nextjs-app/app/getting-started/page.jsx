@@ -137,10 +137,10 @@ const GettingStartedPage = () => {
               <div key={index} className="relative">
                 <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-100">
                   <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full flex items-center justify-center font-bold text-lg mr-4">
+                    <div className="w-12 h-12 bg-federal_blue text-white rounded-full flex items-center justify-center font-bold text-lg mr-4">
                       {step.number}
                     </div>
-                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+                    <div className="w-10 h-10 bg-federal_blue-100 rounded-full flex items-center justify-center text-federal_blue">
                       {step.icon}
                     </div>
                   </div>
