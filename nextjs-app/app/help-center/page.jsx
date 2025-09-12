@@ -225,14 +225,14 @@ const HelpCenterPage = () => {
         {/* Popular Articles Preview */}
         <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-            <div className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center mr-3">
-              <CheckCircle className="w-5 h-5 text-yellow-600" />
+            <div className="w-8 h-8 bg-federal_blue-100 rounded-full flex items-center justify-center mr-3">
+              <CheckCircle className="w-5 h-5 text-federal_blue" />
             </div>
             {language === 'is' ? 'Vinsælustu leiðbeiningarnar' : 'Most Popular Guides'}
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="border-l-4 border-blue-400 pl-6 py-4">
+            <div className="border-l-4 border-federal_blue pl-6 py-4">
               <h3 className="font-semibold text-gray-900 mb-2">
                 {language === 'is' ? 'Skref-fyrir-skref ferli' : 'Step-by-step Process'}
               </h3>
@@ -244,7 +244,7 @@ const HelpCenterPage = () => {
               </p>
             </div>
             
-            <div className="border-l-4 border-green-400 pl-6 py-4">
+            <div className="border-l-4 border-honolulu_blue pl-6 py-4">
               <h3 className="font-semibold text-gray-900 mb-2">
                 {language === 'is' ? 'Öryggi og traust' : 'Security and Trust'}
               </h3>
@@ -256,7 +256,7 @@ const HelpCenterPage = () => {
               </p>
             </div>
             
-            <div className="border-l-4 border-purple-400 pl-6 py-4">
+            <div className="border-l-4 border-pacific_cyan pl-6 py-4">
               <h3 className="font-semibold text-gray-900 mb-2">
                 {language === 'is' ? 'Betri verkbeiðnir' : 'Better Project Requests'}
               </h3>
@@ -268,7 +268,7 @@ const HelpCenterPage = () => {
               </p>
             </div>
             
-            <div className="border-l-4 border-orange-400 pl-6 py-4">
+            <div className="border-l-4 border-non_photo_blue pl-6 py-4">
               <h3 className="font-semibold text-gray-900 mb-2">
                 {language === 'is' ? 'Lausn á vandamálum' : 'Problem Solving'}
               </h3>
