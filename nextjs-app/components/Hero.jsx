@@ -183,7 +183,7 @@ const Hero = ({ translations, language }) => {
                   {category.icon}
                 </div>
                 
-                {/* Category name - Fixed height with text wrapping */>
+                {/* Category name - Fixed height with text wrapping */}
                 <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight h-8 lg:h-10 flex items-center justify-center">
                   {category.name}
                 </span>
