@@ -270,8 +270,8 @@ const GettingStartedPage = () => {
           {/* Choose Right Contractor */}
           <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
             <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-                <Users className="w-6 h-6 text-purple-600" />
+              <div className="w-12 h-12 bg-non_photo_blue-100 rounded-full flex items-center justify-center mr-4">
+                <Users className="w-6 h-6 text-non_photo_blue" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900">
                 {language === 'is' ? 'Veldu réttan verktaka' : 'Choose the Right Contractor'}
@@ -280,7 +280,7 @@ const GettingStartedPage = () => {
             
             <ul className="space-y-4">
               <li className="flex items-start">
-                <Star className="w-5 h-5 text-yellow-500 mr-3 mt-0.5 flex-shrink-0" />
+                <Star className="w-5 h-5 text-gray-500 mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-700">
                   {language === 'is' 
                     ? 'Lestu umsagnir frá fyrri verkum.'
@@ -289,7 +289,7 @@ const GettingStartedPage = () => {
                 </span>
               </li>
               <li className="flex items-start">
-                <Shield className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                <Shield className="w-5 h-5 text-federal_blue mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-700">
                   {language === 'is' 
                     ? 'Skoðaðu vottanir og tryggingar.'
@@ -298,7 +298,7 @@ const GettingStartedPage = () => {
                 </span>
               </li>
               <li className="flex items-start">
-                <MessageCircle className="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />
+                <MessageCircle className="w-5 h-5 text-honolulu_blue mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-700">
                   {language === 'is' 
                     ? 'Metaðu samskipti og svörun áður en þú samþykkir.'
@@ -312,8 +312,8 @@ const GettingStartedPage = () => {
           {/* Payments and Security */}
           <div className="bg-white rounded-xl shadow-lg p-8 border border-gray-100">
             <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
-                <Shield className="w-6 h-6 text-orange-600" />
+              <div className="w-12 h-12 bg-pacific_cyan-100 rounded-full flex items-center justify-center mr-4">
+                <Shield className="w-6 h-6 text-pacific_cyan" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900">
                 {language === 'is' ? 'Greiðslur og öryggi' : 'Payments and Security'}
@@ -322,7 +322,7 @@ const GettingStartedPage = () => {
             
             <ul className="space-y-4">
               <li className="flex items-start">
-                <CheckCircle className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-pacific_cyan mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-700">
                   {language === 'is' 
                     ? 'Hafið skriflegan samning um umfang, verð og greiðsluáætlun.'
@@ -331,7 +331,7 @@ const GettingStartedPage = () => {
                 </span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-pacific_cyan mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-700">
                   {language === 'is' 
                     ? 'Greiddu ekki allt fyrirfram. Skiptið greiðslum eftir áföngum og afhendingu.'
@@ -340,7 +340,7 @@ const GettingStartedPage = () => {
                 </span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="w-5 h-5 text-orange-500 mr-3 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-pacific_cyan mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-700">
                   {language === 'is' 
                     ? 'Geymdu samskipti og kvittanir á einum stað.'
@@ -354,10 +354,10 @@ const GettingStartedPage = () => {
         </div>
 
         {/* Reviews Section */}
-        <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl p-8 mb-16 border border-yellow-200">
+        <div className="bg-light_cyan rounded-xl p-8 mb-16 border border-gray-200">
           <div className="flex items-center mb-6">
-            <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
-              <Star className="w-6 h-6 text-yellow-600" />
+            <div className="w-12 h-12 bg-federal_blue-100 rounded-full flex items-center justify-center mr-4">
+              <Star className="w-6 h-6 text-federal_blue" />
             </div>
             <h3 className="text-2xl font-bold text-gray-900">
               {language === 'is' ? 'Umsagnir og gæðamat' : 'Reviews and Quality Assessment'}
@@ -366,8 +366,8 @@ const GettingStartedPage = () => {
           
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Star className="w-8 h-8 text-yellow-600" />
+              <div className="w-16 h-16 bg-federal_blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Star className="w-8 h-8 text-federal_blue" />
               </div>
               <p className="text-gray-700">
                 {language === 'is' 
@@ -377,8 +377,8 @@ const GettingStartedPage = () => {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-yellow-600" />
+              <div className="w-16 h-16 bg-honolulu_blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-8 h-8 text-honolulu_blue" />
               </div>
               <p className="text-gray-700">
                 {language === 'is' 
@@ -388,8 +388,8 @@ const GettingStartedPage = () => {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Eye className="w-8 h-8 text-yellow-600" />
+              <div className="w-16 h-16 bg-pacific_cyan-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Eye className="w-8 h-8 text-pacific_cyan" />
               </div>
               <p className="text-gray-700">
                 {language === 'is' 
@@ -402,10 +402,10 @@ const GettingStartedPage = () => {
         </div>
 
         {/* Problem Solving */}
-        <div className="bg-red-50 rounded-xl p-8 mb-16 border border-red-200">
+        <div className="bg-gray-50 rounded-xl p-8 mb-16 border border-gray-200">
           <div className="flex items-center mb-6">
-            <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
-              <AlertTriangle className="w-6 h-6 text-red-600" />
+            <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+              <AlertTriangle className="w-6 h-6 text-gray-600" />
             </div>
             <h3 className="text-2xl font-bold text-gray-900">
               {language === 'is' ? 'Hvað ef eitthvað fer úrskeiðis' : 'What If Something Goes Wrong'}
@@ -415,7 +415,7 @@ const GettingStartedPage = () => {
           <div className="grid md:grid-cols-2 gap-6">
             <ul className="space-y-4">
               <li className="flex items-start">
-                <MessageCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                <MessageCircle className="w-5 h-5 text-gray-600 mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-700">
                   {language === 'is' 
                     ? 'Hafðu strax samband við verktaka og reyndu að leysa málið.'
@@ -424,7 +424,7 @@ const GettingStartedPage = () => {
                 </span>
               </li>
               <li className="flex items-start">
-                <FileText className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                <FileText className="w-5 h-5 text-gray-600 mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-700">
                   {language === 'is' 
                     ? 'Skráðu vandann með texta og myndum.'
@@ -435,7 +435,7 @@ const GettingStartedPage = () => {
             </ul>
             <ul className="space-y-4">
               <li className="flex items-start">
-                <Book className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                <Book className="w-5 h-5 text-gray-600 mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-700">
                   {language === 'is' 
                     ? 'Skoðaðu samninginn og pöntun til að sjá hvað var samið um.'
@@ -444,7 +444,7 @@ const GettingStartedPage = () => {
                 </span>
               </li>
               <li className="flex items-start">
-                <HelpCircle className="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+                <HelpCircle className="w-5 h-5 text-gray-600 mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-700">
                   {language === 'is' 
                     ? 'Leitaðu aðstoðar ef mál leysist ekki með samtali.'
@@ -459,8 +459,8 @@ const GettingStartedPage = () => {
         {/* Glossary */}
         <div className="bg-white rounded-xl shadow-lg p-8 mb-16 border border-gray-100">
           <div className="flex items-center mb-8">
-            <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mr-4">
-              <Book className="w-6 h-6 text-indigo-600" />
+            <div className="w-12 h-12 bg-federal_blue-100 rounded-full flex items-center justify-center mr-4">
+              <Book className="w-6 h-6 text-federal_blue" />
             </div>
             <h3 className="text-2xl font-bold text-gray-900">
               {language === 'is' ? 'Orðalisti' : 'Glossary'}
@@ -469,7 +469,7 @@ const GettingStartedPage = () => {
           
           <div className="grid md:grid-cols-2 gap-6">
             {glossaryTerms.map((term, index) => (
-              <div key={index} className="border-l-4 border-indigo-200 pl-6 py-3">
+              <div key={index} className="border-l-4 border-federal_blue-200 pl-6 py-3">
                 <h4 className="font-semibold text-gray-900 mb-2">{term.term}</h4>
                 <p className="text-gray-600 text-sm">{term.definition}</p>
               </div>
@@ -480,8 +480,8 @@ const GettingStartedPage = () => {
         {/* FAQ Section */}
         <div className="bg-white rounded-xl shadow-lg p-8 mb-16 border border-gray-100">
           <div className="flex items-center mb-8">
-            <div className="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center mr-4">
-              <HelpCircle className="w-6 h-6 text-cyan-600" />
+            <div className="w-12 h-12 bg-honolulu_blue-100 rounded-full flex items-center justify-center mr-4">
+              <HelpCircle className="w-6 h-6 text-honolulu_blue" />
             </div>
             <h3 className="text-2xl font-bold text-gray-900">
               {language === 'is' ? 'Algengar spurningar' : 'Frequently Asked Questions'}
@@ -499,7 +499,7 @@ const GettingStartedPage = () => {
         </div>
 
         {/* Contact Section */}
-        <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl p-8 text-white text-center">
+        <div className="bg-federal_blue rounded-xl p-8 text-white text-center">
           <div className="flex items-center justify-center mb-6">
             <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
               <Mail className="w-8 h-8 text-white" />
@@ -519,7 +519,7 @@ const GettingStartedPage = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
               href="mailto:verki@verki.is" 
-              className="inline-flex items-center bg-white text-blue-600 font-medium px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+              className="inline-flex items-center bg-white text-federal_blue font-medium px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors duration-200"
             >
               <Mail className="w-5 h-5 mr-2" />
               verki@verki.is
