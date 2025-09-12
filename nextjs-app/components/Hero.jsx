@@ -96,14 +96,23 @@ const Hero = ({ translations, language }) => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Spline 3D Video Background */}
+      {/* Spline 3D Video Background with responsive zoom */}
       <div className="absolute inset-0 w-full h-full">
         <video 
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover 
+                     /* Desktop: normal zoom */ 
+                     md:scale-100 
+                     /* Mobile: zoom out to show more of the scene */
+                     scale-75 
+                     /* Smooth transition between sizes */
+                     transition-transform duration-500"
+          style={{
+            transformOrigin: 'center center'
+          }}
           onLoadStart={() => console.log('Video loading started')}
           onCanPlay={() => {
             console.log('Video can play');
@@ -133,21 +142,21 @@ const Hero = ({ translations, language }) => {
         )}
       </div>
       
-      {/* Background overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/30 z-5"></div>
+      {/* Background overlay for better text readability - lighter on mobile for better view */}
+      <div className="absolute inset-0 bg-black/30 md:bg-black/30 z-5"></div>
       
       <div className="relative max-w-4xl mx-auto px-4 text-center z-10">
         {/* Main Headline */}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-2xl">
+        <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-4 drop-shadow-2xl">
           {translations.heroNewTitle || 'Fáðu verkið gert!'}
         </h1>
         
         {/* Subtitle */}
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-cyan-200 mb-8 drop-shadow-2xl">
+        <h2 className="text-lg md:text-2xl lg:text-4xl font-bold text-cyan-200 mb-8 drop-shadow-2xl">
           {translations.heroNewSubtitle || 'Finndu trausta fagmenn fyrir verkefnið þitt'}
         </h2>
         
-        {/* Service Categories Grid - 2 rows x 4 columns, FIXED size boxes */}
+        {/* Service Categories Grid - responsive sizing */}
         <div className="inline-block bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl overflow-hidden">
           <div className="grid grid-cols-4 divide-x divide-gray-200">
             {/* Row 1 */}
@@ -155,15 +164,15 @@ const Hero = ({ translations, language }) => {
               <button
                 key={category.key}
                 onClick={() => handleCategoryClick(category.key)}
-                className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
+                className="group flex flex-col items-center justify-center p-4 md:p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 border-b border-gray-200 w-[100px] md:w-[140px] lg:w-[180px] h-[90px] md:h-[120px] lg:h-[140px]"
               >
-                {/* Icon - Fixed size */}
-                <div className="w-14 h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
+                {/* Icon - responsive size */}
+                <div className="w-10 h-10 md:w-14 md:h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-2 md:mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
                   {category.icon}
                 </div>
                 
-                {/* Category name - Fixed height with text wrapping */}
-                <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight h-8 lg:h-10 flex items-center justify-center">
+                {/* Category name - responsive text */}
+                <span className="text-xs md:text-sm lg:text-base font-medium text-gray-800 text-center leading-tight h-6 md:h-8 lg:h-10 flex items-center justify-center">
                   {category.name}
                 </span>
               </button>
@@ -176,15 +185,15 @@ const Hero = ({ translations, language }) => {
               <button
                 key={category.key}
                 onClick={() => handleCategoryClick(category.key)}
-                className="group flex flex-col items-center justify-center p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 w-[140px] lg:w-[180px] h-[120px] lg:h-[140px]"
+                className="group flex flex-col items-center justify-center p-4 md:p-6 lg:p-8 hover:bg-gray-50 transition-colors duration-200 w-[100px] md:w-[140px] lg:w-[180px] h-[90px] md:h-[120px] lg:h-[140px]"
               >
-                {/* Icon - Fixed size */}
-                <div className="w-14 h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
+                {/* Icon - responsive size */}
+                <div className="w-10 h-10 md:w-14 md:h-14 lg:w-16 lg:h-16 text-honolulu_blue mb-2 md:mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
                   {category.icon}
                 </div>
                 
-                {/* Category name - Fixed height with text wrapping */}
-                <span className="text-sm lg:text-base font-medium text-gray-800 text-center leading-tight h-8 lg:h-10 flex items-center justify-center">
+                {/* Category name - responsive text */}
+                <span className="text-xs md:text-sm lg:text-base font-medium text-gray-800 text-center leading-tight h-6 md:h-8 lg:h-10 flex items-center justify-center">
                   {category.name}
                 </span>
               </button>
