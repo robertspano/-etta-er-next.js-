@@ -336,9 +336,6 @@ const CompanyRequirementsPage = () => {
 
           </div>
         </div>
-
-
-
       </div>
     </div>
   );
