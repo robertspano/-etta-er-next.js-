@@ -286,7 +286,7 @@ const OurStoryPage = () => {
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">
+              <div className="w-12 h-12 bg-federal_blue text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">
                 1
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">
@@ -298,7 +298,7 @@ const OurStoryPage = () => {
             </div>
             
             <div className="text-center">
-              <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">
+              <div className="w-12 h-12 bg-federal_blue text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">
                 2
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">
@@ -313,7 +313,7 @@ const OurStoryPage = () => {
             </div>
             
             <div className="text-center">
-              <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">
+              <div className="w-12 h-12 bg-federal_blue text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">
                 3
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">
