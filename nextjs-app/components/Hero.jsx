@@ -96,7 +96,7 @@ const Hero = ({ translations, language }) => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Spline 3D Video Background with faster loading */}
+      {/* Spline 3D Video Background - no fallback */}
       <div className="absolute inset-0 w-full h-full">
         <video 
           autoPlay
@@ -116,7 +116,6 @@ const Hero = ({ translations, language }) => {
           }}
           onLoadStart={() => {
             console.log('Video loading started');
-            // Hide loading state immediately when video starts loading
             setSplineLoaded(true);
           }}
           onCanPlay={() => {
@@ -132,23 +131,11 @@ const Hero = ({ translations, language }) => {
             src="https://customer-assets.emergentagent.com/job_movers-platform-1/artifacts/xdyzt278_untitled%20%281%29.mp4" 
             type="video/mp4" 
           />
-          {/* Fallback for browsers that don't support video */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-cyan-500 to-purple-600"></div>
         </video>
-        
-        {/* Much shorter loading state - only shows for a brief moment */}
-        {!splineLoaded && (
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-cyan-500 to-purple-600 flex items-center justify-center z-10 opacity-90">
-            <div className="text-white text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-3"></div>
-              <p className="text-lg font-medium">Loading...</p>
-            </div>
-          </div>
-        )}
       </div>
       
-      {/* Background overlay for better text readability - lighter on mobile for better view */}
-      <div className="absolute inset-0 bg-black/30 md:bg-black/30 z-5"></div>
+      {/* Background overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/25 z-5"></div>
       
       <div className="relative max-w-4xl mx-auto px-4 text-center z-10">
         {/* Main Headline */}
