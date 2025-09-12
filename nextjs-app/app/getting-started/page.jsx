@@ -229,7 +229,7 @@ const GettingStartedPage = () => {
             
             <ul className="space-y-4">
               <li className="flex items-start">
-                <CheckCircle className="w-5 h-5 text-blue-500 mr-3 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-pacific_cyan mr-3 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-700">
                   {language === 'is' 
                     ? 'Skoðaðu hvað er innifalið í verði. Er efni innifalið eða aðeins vinna.'
