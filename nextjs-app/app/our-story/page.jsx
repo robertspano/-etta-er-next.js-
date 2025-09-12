@@ -133,10 +133,10 @@ const OurStoryPage = () => {
           </div>
 
           {/* Roadmap 2025-2026 */}
-          <div className="bg-white rounded-lg shadow-sm p-8 border-l-4 border-orange-500">
+          <div className="bg-white rounded-lg shadow-sm p-8 border-l-4 border-non_photo_blue">
             <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
-                <TrendingUp className="w-6 h-6 text-orange-600" />
+              <div className="w-12 h-12 bg-non_photo_blue-100 rounded-full flex items-center justify-center mr-4">
+                <TrendingUp className="w-6 h-6 text-non_photo_blue" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900">
                 {language === 'is' ? 'Vegvísir 2025 til 2026' : 'Roadmap 2025 to 2026'}
