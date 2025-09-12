@@ -160,7 +160,7 @@ const HelpCenterPage = () => {
                 className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden"
               >
                 {/* Card Header with Gradient */}
-                <div className={`bg-gradient-to-r ${topic.gradient} p-6 text-white relative overflow-hidden`}>
+                <div className={`${topic.gradient} p-6 text-white relative overflow-hidden`}>
                   <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-16 -mt-16"></div>
                   <div className="relative z-10 flex items-center">
                     <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
