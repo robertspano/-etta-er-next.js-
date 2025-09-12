@@ -1,12 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Search, Star, Users, ArrowRight, Hammer, Droplets, Car, Building, Sparkles, Home, Truck, Grid3X3 } from 'lucide-react';
 import Spline from '@splinetool/react-spline';
 
 const Hero = ({ translations, language }) => {
   const router = useRouter();
+  const [splineLoaded, setSplineLoaded] = useState(false);
 
   const serviceCategories = [
     { 
