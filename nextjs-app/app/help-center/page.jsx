@@ -104,12 +104,12 @@ const HelpCenterPage = () => {
             <div className="absolute top-4 right-1/4 w-12 h-12 bg-pacific_cyan-200 rounded-full opacity-25 animate-pulse delay-500"></div>
             
             <div className="relative z-10">
-              <div className="w-24 h-24 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg">
+              <div className="w-24 h-24 bg-federal_blue rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg">
                 <LifeBuoy className="w-12 h-12 text-white" />
               </div>
               
               <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <span className="text-federal_blue">
                   Help Center
                 </span>
                 <span className="block text-3xl md:text-4xl font-medium text-gray-700 mt-2">
