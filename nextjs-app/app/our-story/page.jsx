@@ -340,7 +340,7 @@ const OurStoryPage = () => {
           
           <a 
             href="/" 
-            className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-medium px-8 py-3 rounded-lg transition-colors duration-200"
+            className="inline-flex items-center bg-federal_blue hover:bg-honolulu_blue text-white font-medium px-8 py-3 rounded-lg transition-colors duration-200"
           >
             {language === 'is' ? 'Byrjaðu verkefni' : 'Start a Project'}
             <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
