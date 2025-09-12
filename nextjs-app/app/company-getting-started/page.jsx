@@ -49,7 +49,7 @@ const CompanyGettingStartedPage = () => {
 
   const profileTips = [
     "Stutta kynningu: Hvað gerir þig/eik lið þitt sérstakt?",
-    "Myndir úr verkum: „Fyrir & eftir" virkar vel",
+    "Myndir úr verkum: 'Fyrir & eftir' virkar vel",
     "Verkþekking og vottanir: Skráðu réttindi og öryggisvottanir",
     "Tryggingar og skírteini: Eykur traust",
     "Þjónustusvæði og opnunartíma"
