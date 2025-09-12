@@ -145,7 +145,7 @@ const OurStoryPage = () => {
             
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-4">
-                <div className="border-l-2 border-blue-200 pl-4">
+                <div className="border-l-2 border-federal_blue-200 pl-4">
                   <h4 className="font-semibold text-gray-900 mb-1">
                     {language === 'is' ? 'Verki prófílar' : 'Verki Profiles'}
                   </h4>
