@@ -12,7 +12,7 @@ from datetime import datetime
 from typing import Dict, Any, List
 
 # Get backend URL from environment
-BACKEND_URL = "https://movers-platform-1.preview.emergentagent.com/api"
+BACKEND_URL = "https://icebuild-platform.preview.emergentagent.com/api"
 
 class BuildConnectAPITester:
     def __init__(self):
@@ -4497,7 +4497,7 @@ class BuildConnectAPITester:
         ]
         
         # Get frontend URL from environment
-        frontend_url = "https://movers-platform-1.preview.emergentagent.com"
+        frontend_url = "https://icebuild-platform.preview.emergentagent.com"
         
         for route in professional_routes:
             try:

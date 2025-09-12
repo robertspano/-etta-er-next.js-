@@ -8,7 +8,7 @@ import asyncio
 import aiohttp
 from datetime import datetime
 
-BACKEND_URL = "https://movers-platform-1.preview.emergentagent.com/api"
+BACKEND_URL = "https://icebuild-platform.preview.emergentagent.com/api"
 
 class FinalVerificationTester:
     def __init__(self):

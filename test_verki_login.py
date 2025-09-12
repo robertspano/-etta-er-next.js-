@@ -7,7 +7,7 @@ import asyncio
 import aiohttp
 import json
 
-BACKEND_URL = "https://movers-platform-1.preview.emergentagent.com/api"
+BACKEND_URL = "https://icebuild-platform.preview.emergentagent.com/api"
 
 async def test_verki_password_login():
     """Test password login functionality for verki@verki.is"""

@@ -8,8 +8,8 @@ import aiohttp
 from datetime import datetime
 
 # Frontend URL from environment
-FRONTEND_URL = "https://movers-platform-1.preview.emergentagent.com"
-BACKEND_URL = "https://movers-platform-1.preview.emergentagent.com/api"
+FRONTEND_URL = "https://icebuild-platform.preview.emergentagent.com"
+BACKEND_URL = "https://icebuild-platform.preview.emergentagent.com/api"
 
 class DashboardRedirectTester:
     def __init__(self):
