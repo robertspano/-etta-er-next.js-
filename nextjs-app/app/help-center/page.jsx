@@ -193,7 +193,7 @@ const HelpCenterPage = () => {
         </div>
 
         {/* Quick Actions Section */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 md:p-12 text-white text-center mb-16">
+        <div className="bg-federal_blue rounded-2xl p-8 md:p-12 text-white text-center mb-16">
           <h2 className="text-3xl font-bold mb-4">
             {language === 'is' ? 'Þarftu frekari aðstoð?' : 'Need Further Assistance?'}
           </h2>
@@ -207,7 +207,7 @@ const HelpCenterPage = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
               href="mailto:verki@verki.is" 
-              className="inline-flex items-center bg-white text-purple-600 font-semibold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-200 shadow-lg"
+              className="inline-flex items-center bg-white text-federal_blue font-semibold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-200 shadow-lg"
             >
               <LifeBuoy className="w-5 h-5 mr-3" />
               {language === 'is' ? 'Senda tölvupóst' : 'Send Email'}
