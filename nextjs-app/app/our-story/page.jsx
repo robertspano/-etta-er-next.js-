@@ -115,10 +115,10 @@ const OurStoryPage = () => {
           </div>
 
           {/* Now: Building Community */}
-          <div className="bg-white rounded-lg shadow-sm p-8 border-l-4 border-purple-500">
+          <div className="bg-white rounded-lg shadow-sm p-8 border-l-4 border-pacific_cyan">
             <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-                <Users className="w-6 h-6 text-purple-600" />
+              <div className="w-12 h-12 bg-pacific_cyan-100 rounded-full flex items-center justify-center mr-4">
+                <Users className="w-6 h-6 text-pacific_cyan" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900">
                 {language === 'is' ? 'Núna: Byggjum upp samfélag gagnsæis' : 'Now: Building a Community of Transparency'}
