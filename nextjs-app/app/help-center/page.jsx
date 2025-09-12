@@ -99,9 +99,9 @@ const HelpCenterPage = () => {
         <div className="text-center mb-16">
           <div className="relative">
             {/* Floating Elements */}
-            <div className="absolute -top-4 left-1/4 w-20 h-20 bg-blue-200 rounded-full opacity-20 animate-pulse"></div>
-            <div className="absolute -top-8 right-1/3 w-16 h-16 bg-purple-200 rounded-full opacity-30 animate-pulse delay-1000"></div>
-            <div className="absolute top-4 right-1/4 w-12 h-12 bg-green-200 rounded-full opacity-25 animate-pulse delay-500"></div>
+            <div className="absolute -top-4 left-1/4 w-20 h-20 bg-federal_blue-200 rounded-full opacity-20 animate-pulse"></div>
+            <div className="absolute -top-8 right-1/3 w-16 h-16 bg-honolulu_blue-200 rounded-full opacity-30 animate-pulse delay-1000"></div>
+            <div className="absolute top-4 right-1/4 w-12 h-12 bg-pacific_cyan-200 rounded-full opacity-25 animate-pulse delay-500"></div>
             
             <div className="relative z-10">
               <div className="w-24 h-24 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg">
