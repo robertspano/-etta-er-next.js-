@@ -280,7 +280,7 @@ const CompanyGettingStartedPage = () => {
               <div>
                 <h4 className="font-semibold text-gray-900 mb-4">Merktu verkefnið sem unnið</h4>
                 <p className="text-gray-700 leading-relaxed">
-                  Ljúktu því að merkja verkefnið „valið/unnið" þegar samningur liggur fyrir og staðfestu verklok þegar búið er. Þannig helst ferlið skýrt fyrir þig og viðskiptavininn.
+                  Ljúktu því að merkja verkefnið 'valið/unnið' þegar samningur liggur fyrir og staðfestu verklok þegar búið er. Þannig helst ferlið skýrt fyrir þig og viðskiptavininn.
                 </p>
               </div>
               <div>
