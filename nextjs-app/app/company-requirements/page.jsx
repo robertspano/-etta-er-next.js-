@@ -39,8 +39,10 @@ const CompanyRequirementsPage = () => {
             />
           </div>
           
-          <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
+        </div>
 
+        <div className="bg-white rounded-lg shadow-sm p-8">
+          <div className="prose max-w-none">
             {/* Company Requirements Section */}
             <section className="mb-12">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
