@@ -10,310 +10,212 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f8fafe;
+            background-color: #ffffff;
+            color: #333333;
         }
         .container {
             max-width: 600px;
             margin: 0 auto;
             background-color: #ffffff;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
-            padding: 40px 40px 30px 40px;
-            text-align: center;
-            position: relative;
-        }
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23pattern)"/></svg>');
-            opacity: 0.3;
+            padding: 40px 20px;
         }
         .logo {
-            display: inline-block;
-            width: 480px;
-            height: 180px;
-            background-image: url('https://customer-assets.emergentagent.com/job_cb46b66b-f1b7-493a-afdf-bd834fc17e54/artifacts/mlis8ab8_Your_paragraph_text__3000_x_3000_px___1000_x_1000_px___Logo___3_-removebg-preview.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            position: relative;
-            z-index: 1;
-            max-width: 90%;
-        }
-        .logo-fallback {
-            display: none;
-        }
-        .logo-subtitle {
-            display: none;
-        }
-        .content {
-            padding: 50px 40px 40px 40px;
             text-align: center;
+            margin-bottom: 40px;
         }
-        .icon-container {
-            width: 100px;
-            height: 100px;
-            background: #ffffff;
-            border-radius: 50%;
-            margin: 0 auto 30px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            box-shadow: 0 8px 25px rgba(0, 119, 182, 0.15);
-            border: 2px solid #e0f2fe;
+        .logo img {
+            width: 200px;
+            height: auto;
         }
-        .icon-container::after {
-            content: "";
-            width: 70px;
-            height: 70px;
-            background-image: url('https://customer-assets.emergentagent.com/job_cb46b66b-f1b7-493a-afdf-bd834fc17e54/artifacts/ltt8yh96_gmail.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
+        .envelope-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .envelope-img {
+            width: 120px;
+            height: auto;
         }
         .title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #0077b6;
-            margin: 0 0 16px 0;
-            letter-spacing: -0.5px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #333333;
+            text-align: center;
+            margin: 30px 0 20px 0;
         }
-        .subtitle {
+        .description {
             font-size: 16px;
-            color: #6b7280;
-            margin: 0 0 40px 0;
+            color: #666666;
+            text-align: center;
+            margin-bottom: 30px;
             line-height: 1.5;
         }
-        .code-container {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border: 2px solid #0077b6;
-            padding: 40px 30px;
-            border-radius: 16px;
-            margin: 0 0 40px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .code-container::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(135deg, #0077b6, #00b4d8, #90e0ef);
-            border-radius: 16px;
-            z-index: -1;
-        }
-        .code-label {
-            font-size: 16px;
-            font-weight: 600;
-            color: #0077b6;
-            margin: 0 0 20px 0;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .code {
-            font-size: 42px;
-            font-weight: 800;
-            color: #0077b6;
-            letter-spacing: 12px;
-            margin: 0 0 20px 0;
-            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Droid Sans Mono', 'Source Code Pro', monospace;
-            text-shadow: 0 2px 4px rgba(0, 119, 182, 0.1);
-        }
-        .expiry {
-            font-size: 14px;
-            color: #0077b6;
-            margin: 0;
-            font-weight: 500;
+        .login-button-container {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
         }
         .login-button {
             display: inline-block;
-            background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
-            color: #ffffff !important;
+            background-color: #007bff;
+            color: #ffffff;
             text-decoration: none;
-            padding: 18px 50px;
-            border-radius: 50px;
-            font-weight: 700;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 600;
             font-size: 16px;
-            margin: 0 0 40px 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0, 119, 182, 0.3);
-            position: relative;
-            overflow: hidden;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        .login-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-        .login-button:hover::before {
-            left: 100%;
+            transition: background-color 0.2s;
         }
         .login-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(0, 119, 182, 0.4);
+            background-color: #0056b3;
         }
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+        .code-section {
+            text-align: center;
             margin: 40px 0;
         }
-        .security-note {
-            background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
-            border-left: 4px solid #f59e0b;
-            border-radius: 12px;
-            padding: 24px;
-            margin: 30px 0;
-            text-align: left;
+        .code-description {
+            font-size: 16px;
+            color: #666666;
+            margin-bottom: 20px;
         }
-        .security-note::before {
-            content: "⚠️";
-            font-size: 20px;
-            float: left;
-            margin-right: 12px;
-            margin-top: 2px;
+        .code {
+            font-size: 48px;
+            font-weight: 700;
+            color: #333333;
+            letter-spacing: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
         }
-        .security-note p {
-            margin: 0;
+        .code-validity {
             font-size: 14px;
-            color: #92400e;
-            line-height: 1.6;
+            color: #666666;
+            margin-bottom: 30px;
+        }
+        .security-warning {
+            background-color: #f8f9fa;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 30px 0;
+            font-size: 14px;
+            color: #666666;
+            line-height: 1.5;
         }
         .footer {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            padding: 40px 40px 30px 40px;
             text-align: center;
-            border-top: 1px solid rgba(148, 163, 184, 0.3);
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #e9ecef;
         }
         .footer-logo {
-            font-size: 20px;
-            font-weight: 700;
-            color: #0077b6;
-            margin: 0 0 12px 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333333;
+            margin-bottom: 10px;
         }
         .footer-text {
             font-size: 14px;
-            color: #64748b;
-            margin: 0 0 24px 0;
-            line-height: 1.5;
+            color: #666666;
+            margin: 5px 0;
         }
         .footer-links {
-            font-size: 14px;
+            margin-top: 15px;
         }
         .footer-links a {
-            color: #0077b6;
+            color: #007bff;
             text-decoration: none;
-            margin: 0 20px;
-            font-weight: 500;
-            transition: color 0.2s;
+            margin: 0 10px;
+            font-size: 14px;
         }
         .footer-links a:hover {
-            color: #03045e;
             text-decoration: underline;
-        }
-        .social-links {
-            margin-top: 20px;
-        }
-        .social-links a {
-            display: inline-block;
-            width: 36px;
-            height: 36px;
-            background-color: #e2e8f0;
-            border-radius: 50%;
-            margin: 0 8px;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-        .social-links a:hover {
-            background-color: #0077b6;
-            transform: translateY(-2px);
-        }
-        @media (max-width: 600px) {
-            .container {
-                margin: 0 16px;
-            }
-            .header, .content, .footer {
-                padding-left: 24px;
-                padding-right: 24px;
-            }
-            .title {
-                font-size: 24px;
-            }
-            .code {
-                font-size: 36px;
-                letter-spacing: 8px;
-            }
-            .login-button {
-                padding: 16px 40px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="logo"></div>
+        <!-- Logo -->
+        <div class="logo">
+            <img src="https://customer-assets.emergentagent.com/job_cb46b66b-f1b7-493a-afdf-bd834fc17e54/artifacts/mlis8ab8_Your_paragraph_text__3000_x_3000_px___1000_x_1000_px___Logo___3_-removebg-preview.png" alt="Verki" />
         </div>
 
-        <!-- Main Content -->
-        <div class="content">
-            <!-- Icon -->
-            <div class="icon-container"></div>
+        <!-- Envelope Icon -->
+        <div class="envelope-container">
+            <img src="https://customer-assets.emergentagent.com/job_cb46b66b-f1b7-493a-afdf-bd834fc17e54/artifacts/xydcj2kt_Your_paragraph_text-removebg-preview.png" alt="Secure Email" class="envelope-img" />
+        </div>
 
-            <!-- Title -->
-            <h1 class="title">{{title}}</h1>
+        <!-- Title -->
+        <h1 class="title">
+            {% if language == 'is' %}Innskrá án lykilorðs{% else %}Log in without password{% endif %}
+        </h1>
+
+        <!-- Description -->
+        <p class="description">
+            {% if language == 'is' %}
+                Með því að smella á hnappinn að neðan verður þú skráð/ur inn á Verki.
+            {% else %}
+                By clicking the button below, you will be logged into Verki.
+            {% endif %}
+        </p>
+
+        <!-- Login Button -->
+        <div class="login-button-container">
+            <a href="{{login_url}}" class="login-button">
+                {% if language == 'is' %}Skrá inn{% else %}Log in{% endif %}
+            </a>
+        </div>
+
+        <!-- Code Section -->
+        <div class="code-section">
+            <p class="code-description">
+                {% if language == 'is' %}
+                    Virkar tengilinn ekki? Notaðu kóðann að neðan til að skrá þig inn.
+                {% else %}
+                    Link not working? Use the code below to log in.
+                {% endif %}
+            </p>
             
-            <!-- Subtitle -->
-            <p class="subtitle">{{message}}</p>
+            <div class="code">{{login_code}}</div>
+            
+            <p class="code-validity">
+                {% if language == 'is' %}
+                    Kóðinn gildir í 15 mínútur
+                {% else %}
+                    Code is valid for 15 minutes
+                {% endif %}
+            </p>
+        </div>
 
-            <!-- Code Container -->
-            <div class="code-container">
-                <p class="code-label">{{code_label}}</p>
-                <div class="code">{{login_code}}</div>
-                <p class="expiry">⏱ {{expiry_message}}</p>
-            </div>
-
-            <!-- Login Button -->
-            <a href="{{login_url}}" class="login-button">{{button_text}} →</a>
-
-            <!-- Divider -->
-            <div class="divider"></div>
-
-            <!-- Security Note -->
-            <div class="security-note">
-                <p>{{security_message}}</p>
-            </div>
+        <!-- Security Warning -->
+        <div class="security-warning">
+            {% if language == 'is' %}
+                Þessi tölvupóstur inniheldur tengla með innskráningu á þinn notendareikning hjá Verki og má ekki deila eða senda áfram til annarra.
+            {% else %}
+                This email contains links with login to your user account on Verki and must not be shared or forwarded to others.
+            {% endif %}
         </div>
 
         <!-- Footer -->
         <div class="footer">
             <div class="footer-logo">verki</div>
-            <p class="footer-text">{{footer_message}}</p>
-            <div class="footer-links">
-                <a href="{{website_url}}">{{website_text}}</a>
-                <a href="{{support_url}}">{{support_text}}</a>
+            <div class="footer-text">
                 {% if language == 'is' %}
-                <a href="{{website_url}}/privacy-policy">Persónuvernd</a>
+                    Íslenska byggingarvettvangurinn
                 {% else %}
-                <a href="{{website_url}}/privacy-policy">Privacy</a>
+                    The Icelandic Construction Platform
                 {% endif %}
+            </div>
+            <div class="footer-links">
+                <a href="{{website_url}}">
+                    {% if language == 'is' %}Heimasíða{% else %}Website{% endif %}
+                </a>
+                <a href="mailto:verki@verki.is">
+                    {% if language == 'is' %}Þjónustuver{% else %}Support{% endif %}
+                </a>
+                <a href="{{website_url}}/privacy-policy">
+                    {% if language == 'is' %}Persónuvernd{% else %}Privacy{% endif %}
+                </a>
             </div>
         </div>
     </div>
