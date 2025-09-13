@@ -11,6 +11,7 @@ const PasswordlessConfirm = ({ language = 'en', setLanguage }) => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+  const [emailSent, setEmailSent] = useState(false);
   
   const router = useRouter();
   const searchParams = useSearchParams();
