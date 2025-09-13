@@ -99,7 +99,7 @@ const Footer = ({ translations = {}, language }) => {
               
               {/* Copyright */}
               <p className="text-gray-400 text-sm">
-                verki Marketplaces AS © {currentYear}
+                Verki ehf. © {currentYear}
               </p>
               
               {/* Legal Links */}
