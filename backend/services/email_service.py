@@ -139,11 +139,28 @@ class EmailService:
             # Send email (for demo, we'll just log it)
             if self.smtp_username and self.smtp_password:
                 # Send actual email
-                with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
-                    server.starttls()
-                    server.login(self.smtp_username, self.smtp_password)
-                    server.send_message(msg)
-                    logger.info(f"Login code email sent to {email}")
+                logger.info("Attempting to send actual email...")
+                try:
+                    with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
+                        server.starttls()
+                        server.login(self.smtp_username, self.smtp_password)
+                        server.send_message(msg)
+                        logger.info(f"Login code email sent successfully to {email}")
+                except Exception as smtp_error:
+                    logger.error(f"SMTP Error: {str(smtp_error)}")
+                    # Fall back to demo mode if SMTP fails
+                    logger.info(f"[DEMO - SMTP FAILED] Login code email for {email}:")
+                    logger.info(f"Subject: {subject}")
+                    logger.info(f"Code: {code}")
+                    print(f"\n=== EMAIL FAILED, SHOWING DEMO ===")
+                    print(f"To: {email}")
+                    print(f"Subject: {subject}")
+                    print(f"Login Code: {code}")
+                    print(f"Valid for: 15 minutes")
+                    print(f"Login URL: {variables['login_url']}")
+                    print(f"SMTP Error: {str(smtp_error)}")
+                    print("="*50)
+                    return False
             else:
                 # Demo mode - just log the email content
                 logger.info(f"[DEMO] Login code email for {email}:")
