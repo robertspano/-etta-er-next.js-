@@ -31,6 +31,11 @@ const PasswordlessConfirm = ({ language = 'en', setLanguage }) => {
       return;
     }
 
+    // Prevent double submission
+    if (loading || emailSent) {
+      return;
+    }
+
     setLoading(true);
     setErrors({});
     
@@ -38,15 +43,23 @@ const PasswordlessConfirm = ({ language = 'en', setLanguage }) => {
       // Send passwordless login request to backend
       await apiService.sendLoginLink(email);
       
+      // Mark email as sent
+      setEmailSent(true);
+      
       // Store email and redirect to code entry page
       localStorage.setItem('loginEmail', email);
-      router.push(`/login-code?email=${encodeURIComponent(email)}`);
+      
+      // Small delay to show loading state, then redirect
+      setTimeout(() => {
+        router.push(`/login-code?email=${encodeURIComponent(email)}`);
+      }, 1000);
       
     } catch (error) {
       console.error('Failed to send login link:', error);
       setErrors({ 
         submit: error.message || (language === 'is' ? 'Villa kom upp. Reyndu aftur.' : 'An error occurred. Please try again.')
       });
+      setEmailSent(false);
     } finally {
       setLoading(false);
     }
