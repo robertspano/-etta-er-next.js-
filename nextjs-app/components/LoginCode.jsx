@@ -196,7 +196,7 @@ const LoginCode = ({ language = 'en', setLanguage }) => {
             {/* Footer Links */}
             <div className="mt-8 text-center space-y-3">
               <Link 
-                href={`/login-passwordless-confirm?email=${encodeURIComponent(email)}`}
+                href={`/login-passwordless-confirm?email=${encodeURIComponent(email)}&resend=true`}
                 className="block text-blue-600 hover:text-blue-700 text-sm"
               >
                 {language === 'is' ? 'Senda nýjan kóða' : 'Send new code'}
