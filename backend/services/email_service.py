@@ -178,6 +178,8 @@ class EmailService:
             
         except Exception as e:
             logger.error(f"Failed to send login code email: {str(e)}")
+            import traceback
+            traceback.print_exc()
             return False
 
 # Global email service instance
