@@ -23,7 +23,9 @@ import bcrypt
 
 # For demo purposes, we'll use a simple in-memory store
 # In production, use Redis or database
+# In-memory store for login codes and rate limiting
 login_codes_store = {}
+email_rate_limit_store = {}  # email -> last_sent_time
 
 # Login Link Schema
 class LoginLinkRequest(BaseModel):
