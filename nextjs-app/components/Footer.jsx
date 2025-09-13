@@ -112,7 +112,7 @@ const Footer = ({ translations = {}, language }) => {
                   {language === 'is' ? 'Síðukort' : 'Sitemap'}
                 </a>
                 <span>•</span>
-                <a href="#" className="hover:text-white hover:underline transition-colors">
+                <a href="/terms" className="hover:text-white hover:underline transition-colors">
                   {language === 'is' ? 'Skilmálar' : 'Terms'}
                 </a>
                 <span>•</span>
