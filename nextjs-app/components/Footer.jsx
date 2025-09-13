@@ -116,7 +116,7 @@ const Footer = ({ translations = {}, language }) => {
                   {language === 'is' ? 'Skilmálar' : 'Terms'}
                 </a>
                 <span>•</span>
-                <a href="#" className="hover:text-white hover:underline transition-colors">
+                <a href="/cookie-settings" className="hover:text-white hover:underline transition-colors">
                   {language === 'is' ? 'Vafrakökustillingar' : 'Cookie settings'}
                 </a>
               </div>
