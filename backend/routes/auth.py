@@ -225,6 +225,17 @@ async def send_login_link(
 ):
     """Send a passwordless login code to the user's email"""
     try:
+        # Rate limiting: Only allow one email per email address per 60 seconds
+        current_time = datetime.now()
+        last_sent = email_rate_limit_store.get(request.email)
+        
+        if last_sent and (current_time - last_sent).total_seconds() < 60:
+            # Still return success for security, but don't send email
+            return LoginLinkResponse(
+                message="If an account with this email exists, a login code has been sent",
+                email=request.email
+            )
+        
         # Check if user exists
         user = await user_manager.get_by_email(request.email)
         if not user:
@@ -244,6 +255,9 @@ async def send_login_link(
             'expiry': expiry_time,
             'user_id': str(user.id)
         }
+        
+        # Update rate limit store
+        email_rate_limit_store[request.email] = current_time
         
         # Send email with login code using real SMTP
         language = 'is'  # Default to Icelandic for verki users
