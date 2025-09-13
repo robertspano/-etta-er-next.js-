@@ -262,7 +262,7 @@
         <!-- Header -->
         <div class="header">
             <h1 class="logo">verki</h1>
-            <p class="logo-subtitle">{{language == 'is' ? 'Íslenska byggingarvettvangurinn' : 'Icelandic Construction Platform'}}</p>
+            <p class="logo-subtitle">{% if language == 'is' %}Íslenska byggingarvettvangurinn{% else %}Icelandic Construction Platform{% endif %}</p>
         </div>
 
         <!-- Main Content -->
