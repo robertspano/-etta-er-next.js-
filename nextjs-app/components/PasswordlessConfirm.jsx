@@ -113,12 +113,14 @@ const PasswordlessConfirm = ({ language = 'en', setLanguage }) => {
               {/* Submit Button - exactly like mittanbud */}
               <button
                 type="submit"
-                disabled={loading}
+                disabled={loading || emailSent}
                 className="w-full px-6 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed font-semibold text-lg transition-colors"
               >
-                {loading 
-                  ? (language === 'is' ? 'Sendir...' : 'Sending...') 
-                  : (language === 'is' ? 'Senda mér innskráningartengil' : 'Send me login link')
+                {emailSent 
+                  ? (language === 'is' ? 'Tölvupóstur sendur!' : 'Email sent!')
+                  : loading 
+                    ? (language === 'is' ? 'Sendir...' : 'Sending...') 
+                    : (language === 'is' ? 'Senda mér innskráningartengil' : 'Send me login link')
                 }
               </button>
             </form>
