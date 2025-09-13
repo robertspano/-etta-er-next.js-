@@ -47,6 +47,12 @@ class EmailService:
     def send_login_code_email(self, email: str, code: str, language: str = 'en') -> bool:
         """Send login code email"""
         try:
+            # Debug logging
+            logger.info(f"Attempting to send email to {email}")
+            logger.info(f"SMTP Server: {self.smtp_server}")
+            logger.info(f"SMTP Username: {self.smtp_username}")
+            logger.info(f"SMTP Password set: {'Yes' if self.smtp_password else 'No'}")
+            
             # Load template
             template_content = self.load_template('login_code_email.html')
             if not template_content:
