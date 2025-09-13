@@ -10,146 +10,250 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background-color: #f8fafe;
         }
         .container {
             max-width: 600px;
             margin: 0 auto;
             background-color: #ffffff;
-            padding: 0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
         }
         .header {
-            background-color: #006494;
-            padding: 40px 40px 20px 40px;
+            background: linear-gradient(135deg, #03045e 0%, #0077b6 100%);
+            padding: 40px 40px 30px 40px;
             text-align: center;
+            position: relative;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23pattern)"/></svg>');
+            opacity: 0.3;
         }
         .logo {
             color: #ffffff;
-            font-size: 28px;
-            font-weight: bold;
+            font-size: 32px;
+            font-weight: 700;
             margin: 0;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.5px;
+        }
+        .logo-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            font-weight: 400;
+            margin: 8px 0 0 0;
+            position: relative;
+            z-index: 1;
         }
         .content {
-            padding: 40px;
+            padding: 50px 40px 40px 40px;
             text-align: center;
         }
-        .email-icon {
+        .icon-container {
             width: 80px;
-            height: 64px;
-            background-color: #e5e7eb;
-            border-radius: 8px;
+            height: 80px;
+            background: linear-gradient(135deg, #caf0f8 0%, #90e0ef 100%);
+            border-radius: 50%;
             margin: 0 auto 30px auto;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            box-shadow: 0 8px 25px rgba(0, 119, 182, 0.15);
         }
-        .email-icon::after {
-            content: "✉";
-            font-size: 40px;
-            color: #6b7280;
-        }
-        .lock-icon {
-            position: absolute;
-            bottom: -8px;
-            right: -8px;
-            width: 32px;
-            height: 32px;
-            background-color: #006494;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .lock-icon::after {
-            content: "🔒";
-            font-size: 16px;
+        .icon-container::after {
+            content: "🔐";
+            font-size: 36px;
         }
         .title {
-            font-size: 24px;
-            font-weight: bold;
-            color: #003554;
-            margin: 0 0 30px 0;
+            font-size: 28px;
+            font-weight: 700;
+            color: #03045e;
+            margin: 0 0 16px 0;
+            letter-spacing: -0.5px;
         }
-        .message {
+        .subtitle {
             font-size: 16px;
-            color: #006494;
+            color: #6b7280;
             margin: 0 0 40px 0;
             line-height: 1.5;
         }
         .code-container {
-            background-color: #b8e6ff;
-            padding: 30px;
-            border-radius: 8px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0077b6;
+            padding: 40px 30px;
+            border-radius: 16px;
             margin: 0 0 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .code-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #03045e, #0077b6, #00b4d8);
+            border-radius: 16px;
+            z-index: -1;
         }
         .code-label {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
-            color: #003554;
+            color: #03045e;
             margin: 0 0 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .code {
-            font-size: 36px;
-            font-weight: bold;
-            color: #006494;
-            letter-spacing: 8px;
+            font-size: 42px;
+            font-weight: 800;
+            color: #03045e;
+            letter-spacing: 12px;
             margin: 0 0 20px 0;
-            font-family: 'Courier New', monospace;
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Droid Sans Mono', 'Source Code Pro', monospace;
+            text-shadow: 0 2px 4px rgba(3, 4, 94, 0.1);
         }
         .expiry {
             font-size: 14px;
-            color: #6b7280;
+            color: #0077b6;
             margin: 0;
+            font-weight: 500;
         }
         .login-button {
             display: inline-block;
-            background-color: #006494;
+            background: linear-gradient(135deg, #03045e 0%, #0077b6 100%);
             color: #ffffff;
             text-decoration: none;
-            padding: 16px 40px;
-            border-radius: 8px;
+            padding: 18px 50px;
+            border-radius: 50px;
             font-weight: 600;
             font-size: 16px;
             margin: 0 0 40px 0;
-            transition: background-color 0.2s;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(3, 4, 94, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .login-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        .login-button:hover::before {
+            left: 100%;
         }
         .login-button:hover {
-            background-color: #003554;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(3, 4, 94, 0.4);
         }
-        .footer {
-            background-color: #f9fafb;
-            padding: 30px 40px;
-            text-align: center;
-            border-top: 1px solid #e5e7eb;
-        }
-        .footer-text {
-            font-size: 14px;
-            color: #6b7280;
-            margin: 0 0 20px 0;
-        }
-        .footer-links {
-            font-size: 14px;
-        }
-        .footer-links a {
-            color: #006494;
-            text-decoration: none;
-            margin: 0 15px;
-        }
-        .footer-links a:hover {
-            text-decoration: underline;
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+            margin: 40px 0;
         }
         .security-note {
-            background-color: #fef3c7;
-            border: 1px solid #f59e0b;
-            border-radius: 8px;
-            padding: 20px;
+            background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%);
+            border-left: 4px solid #f59e0b;
+            border-radius: 12px;
+            padding: 24px;
             margin: 30px 0;
+            text-align: left;
+        }
+        .security-note::before {
+            content: "⚠️";
+            font-size: 20px;
+            float: left;
+            margin-right: 12px;
+            margin-top: 2px;
         }
         .security-note p {
             margin: 0;
             font-size: 14px;
             color: #92400e;
+            line-height: 1.6;
+        }
+        .footer {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 40px 40px 30px 40px;
+            text-align: center;
+            border-top: 1px solid rgba(148, 163, 184, 0.3);
+        }
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #03045e;
+            margin: 0 0 12px 0;
+        }
+        .footer-text {
+            font-size: 14px;
+            color: #64748b;
+            margin: 0 0 24px 0;
+            line-height: 1.5;
+        }
+        .footer-links {
+            font-size: 14px;
+        }
+        .footer-links a {
+            color: #0077b6;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: #03045e;
+            text-decoration: underline;
+        }
+        .social-links {
+            margin-top: 20px;
+        }
+        .social-links a {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background-color: #e2e8f0;
+            border-radius: 50%;
+            margin: 0 8px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .social-links a:hover {
+            background-color: #0077b6;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 600px) {
+            .container {
+                margin: 0 16px;
+            }
+            .header, .content, .footer {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+            .title {
+                font-size: 24px;
+            }
+            .code {
+                font-size: 36px;
+                letter-spacing: 8px;
+            }
+            .login-button {
+                padding: 16px 40px;
+            }
         }
     </style>
 </head>
@@ -158,30 +262,32 @@
         <!-- Header -->
         <div class="header">
             <h1 class="logo">verki</h1>
+            <p class="logo-subtitle">{{language == 'is' ? 'Íslenska byggingarvettvangurinn' : 'Icelandic Construction Platform'}}</p>
         </div>
 
         <!-- Main Content -->
         <div class="content">
-            <!-- Email Icon with Lock -->
-            <div class="email-icon">
-                <div class="lock-icon"></div>
-            </div>
+            <!-- Icon -->
+            <div class="icon-container"></div>
 
             <!-- Title -->
             <h1 class="title">{{title}}</h1>
-
-            <!-- Message -->
-            <p class="message">{{message}}</p>
+            
+            <!-- Subtitle -->
+            <p class="subtitle">{{message}}</p>
 
             <!-- Code Container -->
             <div class="code-container">
                 <p class="code-label">{{code_label}}</p>
                 <div class="code">{{login_code}}</div>
-                <p class="expiry">{{expiry_message}}</p>
+                <p class="expiry">⏱ {{expiry_message}}</p>
             </div>
 
             <!-- Login Button -->
-            <a href="{{login_url}}" class="login-button">{{button_text}}</a>
+            <a href="{{login_url}}" class="login-button">{{button_text}} →</a>
+
+            <!-- Divider -->
+            <div class="divider"></div>
 
             <!-- Security Note -->
             <div class="security-note">
@@ -191,10 +297,16 @@
 
         <!-- Footer -->
         <div class="footer">
+            <div class="footer-logo">verki</div>
             <p class="footer-text">{{footer_message}}</p>
             <div class="footer-links">
                 <a href="{{website_url}}">{{website_text}}</a>
                 <a href="{{support_url}}">{{support_text}}</a>
+                {% if language == 'is' %}
+                <a href="{{website_url}}/privacy-policy">Persónuvernd</a>
+                {% else %}
+                <a href="{{website_url}}/privacy-policy">Privacy</a>
+                {% endif %}
             </div>
         </div>
     </div>
