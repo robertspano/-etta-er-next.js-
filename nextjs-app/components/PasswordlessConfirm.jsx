@@ -21,6 +21,12 @@ const PasswordlessConfirm = ({ language = 'en', setLanguage }) => {
     // Get email from URL params or localStorage
     const emailFromUrl = searchParams.get('email') || localStorage.getItem('loginEmail') || '';
     setEmail(emailFromUrl);
+    
+    // Check if email was recently sent for this session
+    const lastSentTime = localStorage.getItem(`emailSent_${emailFromUrl}`);
+    if (lastSentTime && Date.now() - parseInt(lastSentTime) < 60000) { // 60 seconds
+      setEmailSent(true);
+    }
   }, [searchParams]);
 
   const handleSubmit = async (e) => {
