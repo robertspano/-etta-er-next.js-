@@ -49,8 +49,9 @@ const PasswordlessConfirm = ({ language = 'en', setLanguage }) => {
       // Send passwordless login request to backend
       await apiService.sendLoginLink(email);
       
-      // Mark email as sent
+      // Mark email as sent and store timestamp
       setEmailSent(true);
+      localStorage.setItem(`emailSent_${email}`, Date.now().toString());
       
       // Store email and redirect to code entry page
       localStorage.setItem('loginEmail', email);
