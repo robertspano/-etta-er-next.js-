@@ -5,6 +5,10 @@ from email.mime.multipart import MIMEMultipart
 from jinja2 import Template
 from pathlib import Path
 import logging
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 logger = logging.getLogger(__name__)
 
