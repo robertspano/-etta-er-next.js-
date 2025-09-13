@@ -104,7 +104,7 @@ const Footer = ({ translations = {}, language }) => {
               
               {/* Legal Links */}
               <div className="flex flex-wrap items-center space-x-4 text-sm text-gray-400">
-                <a href="#" className="hover:text-white hover:underline transition-colors">
+                <a href="/privacy-policy" className="hover:text-white hover:underline transition-colors">
                   {language === 'is' ? 'Persónuverndarstefna' : 'Privacy policy'}
                 </a>
                 <span>•</span>
